@@ -1,0 +1,120 @@
+<section class="chapter-section" id="sec-2-7">
+          <div class="section-heading">
+            <span class="section-number">2.7</span>
+            <h2>Um algoritmo de colisão para o PLD</h2>
+          </div>
+
+          <p class="lead">Nesta seção, descreveremos um algoritmo de logaritmo discreto devido a Shanks. Ele é um exemplo de algoritmo de colisão, também chamado algoritmo de encontro no meio. Algoritmos desse tipo serão discutidos com mais detalhes nas Seções 5.4 e 5.5.</p>
+
+          <p>O algoritmo de Shanks funciona em qualquer grupo, não apenas em \(\mathbb F_p^*\), e demonstrar seu funcionamento para grupos arbitrários não é mais difícil. Por isso, vamos enunciá-lo e demonstrá-lo em toda a sua generalidade. Comecemos recordando o tempo de execução do algoritmo trivial de força bruta para o PLD.</p>
+
+          <div class="semantic proposition" id="prop-2-19">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.19 — Limite trivial para o PLD</span>
+            </div>
+            <p>Seja \(G\) um grupo e seja \(g\in G\) um elemento de ordem \(N\). Recorde que isso significa que \(g^N=e\) e que nenhuma potência positiva menor de \(g\) é igual ao elemento identidade \(e\). Então o problema do logaritmo discreto</p>
+            <div class="equation" id="eq-2-2"><span class="equation-number">(2.2)</span>\[g^x=h\]</div>
+            <p>pode ser resolvido em \(\mathcal O(N)\) passos e com armazenamento \(\mathcal O(1)\), sendo que cada passo consiste em uma multiplicação por \(g\).</p>
+          </div>
+
+          <div class="semantic proof">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Simplesmente calculamos \(g,g^2,g^3,\ldots\). Cada valor é obtido multiplicando o valor anterior por \(g\), de modo que só precisamos armazenar dois valores por vez. Se existir uma solução para \(g^x=h\), então \(h\) aparecerá antes de chegarmos a \(g^N\). <span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-7-busca-trivial" data-enrichment-slot="exp-2-7-busca-trivial"></span>
+
+          <div class="semantic remark" id="obs-2-20">
+            <div class="semantic-header">
+              <span class="semantic-label">Observação</span>
+              <span class="semantic-title">2.20</span>
+            </div>
+            <p>Se trabalharmos em \(\mathbb F_p^*\), cada cálculo de \(g^x\pmod p\) exigirá \(\mathcal O((\log p)^k)\) operações do computador, em que a constante \(k\) e a constante implícita na notação de grande O dependem do computador e do algoritmo usado na multiplicação modular. Assim, o número total de passos do computador, ou tempo de execução, é \(\mathcal O(N(\log p)^k)\). Em geral, o fator \(\mathcal O((\log p)^k)\) é desprezível; por isso, vamos suprimi-lo e simplesmente dizer que o tempo de execução é \(\mathcal O(N)\).</p>
+          </div>
+
+          <p>A ideia por trás de um algoritmo de colisão é construir duas listas e procurar um elemento que apareça em ambas. Para o problema do logaritmo discreto descrito na Proposição 2.19, o tempo de execução de um algoritmo de colisão é pouco maior que \(\mathcal O(\sqrt N)\) passos, uma economia enorme em relação a \(\mathcal O(N)\) quando \(N\) é grande.</p>
+
+          <span id="slot-exp-2-7-encontro-no-meio" data-enrichment-slot="exp-2-7-encontro-no-meio"></span>
+
+          <div class="semantic proposition" id="prop-2-21">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.21 — Algoritmo passo de bebê–passo de gigante de Shanks</span>
+            </div>
+            <p>Seja \(G\) um grupo e seja \(g\in G\) um elemento de ordem \(N\ge2\). O algoritmo a seguir resolve o problema do logaritmo discreto \(g^x=h\) em \(\mathcal O(\sqrt N\log N)\) passos, usando armazenamento \(\mathcal O(\sqrt N)\).</p>
+            <ol class="steps">
+              <li>Defina \(n=1+\lfloor\sqrt N\rfloor\); em particular, \(n&gt;\sqrt N\).</li>
+              <li>Construa duas listas:
+                <div class="equation">\[\begin{aligned}
+                  \text{Lista 1: }&e,g,g^2,g^3,\ldots,g^n,\\
+                  \text{Lista 2: }&h,hg^{-n},hg^{-2n},hg^{-3n},\ldots,hg^{-n^2}.
+                \end{aligned}\]</div>
+              </li>
+              <li>Encontre uma coincidência entre as duas listas, digamos \(g^i=hg^{-jn}\).</li>
+              <li>Então \(x=i+jn\) é uma solução de \(g^x=h\).</li>
+            </ol>
+          </div>
+
+          <span id="slot-exp-2-7-algebra-da-colisao" data-enrichment-slot="exp-2-7-algebra-da-colisao"></span>
+
+          <div class="semantic proof">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Comecemos com algumas observações. Primeiro, ao construir a Lista 2, calculamos inicialmente \(u=g^{-n}\) e depois formamos a lista calculando \(h,hu,hu^2,\ldots,hu^n\). Portanto, construir as duas listas exige aproximadamente \(2n\) multiplicações.<sup><a href="#nota-8">8</a></sup></p>
+            <p>Segundo, supondo que exista uma coincidência, podemos encontrá-la em um pequeno múltiplo de \(n\log n\) passos, usando algoritmos usuais de ordenação e busca. Assim, o passo 3 exige \(\mathcal O(n\log n)\) passos, e o tempo total do algoritmo é \(\mathcal O(n\log n)=\mathcal O(\sqrt N\log N)\). Nessa última passagem, usamos o fato de que \(n\approx\sqrt N\), de modo que</p>
+            <div class="equation">\[n\log n\approx\sqrt N\log\sqrt N=\frac12\sqrt N\log N.\]</div>
+            <p>Terceiro, as listas do passo 2 têm comprimento \(n\), portanto exigem armazenamento \(\mathcal O(\sqrt N)\).</p>
+            <p>Para provar que o algoritmo funciona, precisamos mostrar que as Listas 1 e 2 sempre têm uma coincidência. Seja \(x\) a solução desconhecida de \(g^x=h\) e escreva</p>
+            <div class="equation">\[x=nq+r\qquad\text{com }0\le r&lt;n.\]</div>
+            <p>Sabemos que \(1\le x&lt;N\), logo</p>
+            <div class="equation">\[q=\frac{x-r}{n}&lt;\frac Nn&lt;n\qquad\text{pois }n&gt;\sqrt N.\]</div>
+            <p>Assim, podemos reescrever \(g^x=h\) na forma</p>
+            <div class="equation">\[g^r=h\,g^{-qn}\qquad\text{com }0\le r&lt;n\text{ e }0\le q&lt;n.\]</div>
+            <p>Portanto, \(g^r\) pertence à Lista 1 e \(hg^{-qn}\) pertence à Lista 2, o que mostra que as duas listas têm um elemento em comum. <span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-7-custo-e-memoria" data-enrichment-slot="exp-2-7-custo-e-memoria"></span>
+
+          <div class="semantic example" id="exemplo-2-22">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.22</span>
+            </div>
+            <p>Vamos ilustrar o método passo de bebê–passo de gigante de Shanks usando-o para resolver o problema do logaritmo discreto</p>
+            <div class="equation">\[g^x=h\quad\text{em}\quad\mathbb F_p^*,\qquad g=9704,\quad h=13896,\quad p=17389.\]</div>
+            <p>O número \(9704\) tem ordem \(1242\) em \(\mathbb F_{17389}^*\).<sup><a href="#nota-9">9</a></sup> Defina \(n=\lfloor\sqrt{1242}\rfloor+1=36\) e \(u=g^{-n}=9704^{-36}=2494\). A Tabela 2.4 apresenta os valores de \(g^k\) e \(h\,u^k\) para \(k=1,2,\ldots\).</p>
+
+            <div class="table-wrap">
+              <table>
+                <caption>Tabela 2.4 — Passo de bebê–passo de gigante para resolver \(9704^x\equiv13896\pmod{17389}\).</caption>
+                <thead>
+                  <tr>
+                    <th class="numeric">\(k\)</th><th class="numeric">\(g^k\)</th><th class="numeric">\(h\,u^k\)</th>
+                    <th class="numeric">\(k\)</th><th class="numeric">\(g^k\)</th><th class="numeric">\(h\,u^k\)</th>
+                    <th class="numeric">\(k\)</th><th class="numeric">\(g^k\)</th><th class="numeric">\(h\,u^k\)</th>
+                    <th class="numeric">\(k\)</th><th class="numeric">\(g^k\)</th><th class="numeric">\(h\,u^k\)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="numeric">1</td><td class="numeric">9704</td><td class="numeric">347</td><td class="numeric">9</td><td class="numeric">15774</td><td class="numeric">16564</td><td class="numeric">17</td><td class="numeric">10137</td><td class="numeric">10230</td><td class="numeric">25</td><td class="numeric">4970</td><td class="numeric">12260</td></tr>
+                  <tr><td class="numeric">2</td><td class="numeric">6181</td><td class="numeric">13357</td><td class="numeric">10</td><td class="numeric">12918</td><td class="numeric">11741</td><td class="numeric">18</td><td class="numeric">17264</td><td class="numeric">3957</td><td class="numeric">26</td><td class="numeric">9183</td><td class="numeric">6578</td></tr>
+                  <tr><td class="numeric">3</td><td class="numeric">5763</td><td class="numeric">12423</td><td class="numeric">11</td><td class="numeric">16360</td><td class="numeric">16367</td><td class="numeric">19</td><td class="numeric">4230</td><td class="numeric">9195</td><td class="numeric">27</td><td class="numeric">10596</td><td class="numeric">7705</td></tr>
+                  <tr><td class="numeric">4</td><td class="numeric">1128</td><td class="numeric">13153</td><td class="numeric">12</td><td class="numeric">13259</td><td class="numeric">7315</td><td class="numeric">20</td><td class="numeric">9880</td><td class="numeric">13628</td><td class="numeric">28</td><td class="numeric">2427</td><td class="numeric">1425</td></tr>
+                  <tr><td class="numeric">5</td><td class="numeric">8431</td><td class="numeric">7928</td><td class="numeric">13</td><td class="numeric">4125</td><td class="numeric">2549</td><td class="numeric">21</td><td class="numeric">9963</td><td class="numeric">10126</td><td class="numeric">29</td><td class="numeric">6902</td><td class="numeric">6594</td></tr>
+                  <tr><td class="numeric">6</td><td class="numeric">16568</td><td class="numeric">1139</td><td class="numeric">14</td><td class="numeric">16911</td><td class="numeric">10221</td><td class="numeric">22</td><td class="numeric">15501</td><td class="numeric">5416</td><td class="numeric">30</td><td class="numeric">11969</td><td class="numeric">12831</td></tr>
+                  <tr><td class="numeric">7</td><td class="numeric"><strong>14567</strong></td><td class="numeric">6259</td><td class="numeric">15</td><td class="numeric">4351</td><td class="numeric">16289</td><td class="numeric">23</td><td class="numeric">6854</td><td class="numeric">13640</td><td class="numeric">31</td><td class="numeric">6045</td><td class="numeric">4754</td></tr>
+                  <tr><td class="numeric">8</td><td class="numeric">2987</td><td class="numeric">12013</td><td class="numeric">16</td><td class="numeric">1612</td><td class="numeric">4062</td><td class="numeric">24</td><td class="numeric">15680</td><td class="numeric">5276</td><td class="numeric">32</td><td class="numeric">7583</td><td class="numeric"><strong>14567</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>Na tabela encontramos a colisão</p>
+            <div class="equation">\[9704^7=14567=13896\cdot2494^{32}\qquad\text{em }\mathbb F_{17389}.\]</div>
+            <p>Usando o fato de que \(2494=9704^{-36}\), calculamos</p>
+            <div class="equation">\[13896=9704^7\cdot2494^{-32}=9704^7\cdot(9704^{36})^{32}=9704^{1159}\qquad\text{em }\mathbb F_{17389}.\]</div>
+            <p>Logo, \(x=1159\) resolve o problema \(9704^x=13896\) em \(\mathbb F_{17389}\).</p>
+          </div>
+
+          <p class="footnote" id="nota-8"><sup>8</sup> A multiplicação por \(g\) é um "passo de bebê", e a multiplicação por \(u=g^{-n}\) é um "passo de gigante"; daí vem o nome do algoritmo.</p>
+          <p class="footnote" id="nota-9"><sup>9</sup> O teorema de Lagrange (Proposição 2.13) afirma que a ordem de \(g\) divide \(17388=2^2\cdot3^3\cdot7\cdot23\). Assim, podemos determinar a ordem de \(g\) calculando \(g^n\) para os 48 divisores distintos de \(17388\), embora na prática existam métodos mais eficientes.</p>
+        </section>

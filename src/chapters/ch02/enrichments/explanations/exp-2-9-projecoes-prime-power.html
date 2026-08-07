@@ -1,0 +1,12 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Intuição.</strong> Elevar a \(N/q_i^{e_i}\) funciona como um filtro: as componentes ligadas aos outros fatores primos completam voltas inteiras e desaparecem, enquanto a componente de ordem \(q_i^{e_i}\) permanece visível.</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> Partimos de \(g_i=g^{N/q_i^{e_i}}\) e \(h_i=h^{N/q_i^{e_i}}\).</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> Se \(g\) tem ordem \(N\), então a ordem de \(g^a\) é \(N/\gcd(N,a)\). Com \(a=N/q_i^{e_i}\), obtemos \(\operatorname{ord}(g_i)=q_i^{e_i}\).</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Como \(h=g^x\), temos \(h_i=h^{N/q_i^{e_i}}=(g^x)^{N/q_i^{e_i}}=(g^{N/q_i^{e_i}})^x=g_i^x\).</div>
+                <div class="step"><span class="step-tag definition">Definição</span> Resolver \(g_i^{y_i}=h_i\) recupera a informação \(x\equiv y_i\pmod{q_i^{e_i}}\). Cada projeção revela uma parte modular do mesmo expoente.</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> Como as potências \(q_i^{e_i}\) são coprimas entre si, o teorema chinês dos restos reúne todos os resíduos \(y_i\) em um único \(x\pmod N\).</div>
+              </div>
+              <div class="quick-check"><strong>Exemplo com \(N=12=4\cdot3\).</strong> Elevar a \(12/4=3\) produz \(g_1=g^3\) de ordem 4; elevar a \(12/3=4\) produz \(g_2=g^4\) de ordem 3. Os dois PLDs revelam \(x\bmod4\) e \(x\bmod3\), que o TCR recompõe módulo 12.</div>
+              <div class="watch-out"><strong>Cuidado.</strong> A potência não está tentando calcular \(x\) diretamente. Ela muda o grupo de trabalho para um subgrupo menor no qual só uma componente da ordem sobrevive.</div>
+            </div>

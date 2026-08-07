@@ -1,0 +1,135 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  max-width: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  max-width: 100%;
+  margin: 0;
+  overflow-x: clip;
+  background:
+    radial-gradient(circle at 12% -8%, color-mix(in srgb, var(--accent-soft) 72%, transparent), transparent 32rem),
+    var(--paper);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: calc(1rem * var(--reader-scale));
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--accent-strong); text-underline-offset: .18em; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button, input, select, textarea { font: inherit; }
+button { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 68%, transparent);
+  outline-offset: 3px;
+}
+
+[hidden] { display: none !important; }
+
+.skip-link {
+  position: fixed;
+  top: -5rem;
+  left: 1rem;
+  z-index: 1000;
+  padding: .7rem 1rem;
+  border-radius: .5rem;
+  background: var(--ink);
+  color: var(--surface);
+}
+
+.skip-link:focus { top: 1rem; }
+
+.enrichment-visually-hidden,
+.enrichment-sr-only,
+.enrichment-live,
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.icon-button,
+.enrichment-button,
+.enrichment-preset,
+.supplement__action,
+.supplement-button,
+.enrichment-section-tools button,
+.notes-panel button,
+.supplement--lab button {
+  display: inline-flex;
+  min-height: var(--control-height);
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  padding: .55rem .85rem;
+  border: 1px solid var(--line);
+  border-radius: .7rem;
+  background: var(--surface-raised);
+  color: var(--ink);
+  font-size: .78rem;
+  font-weight: 780;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform .16s ease, border-color .16s ease, background-color .16s ease, color .16s ease;
+}
+
+.icon-button { display: grid; min-width: var(--control-height); padding: .45rem; place-items: center; }
+
+:where(.icon-button, .enrichment-button, .enrichment-preset, .supplement__action,
+  .supplement-button, .enrichment-section-tools button, .notes-panel button,
+  .supplement--lab button):hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  transform: translateY(-1px);
+}
+
+:where(button, input, select, textarea):disabled { opacity: .5; cursor: not-allowed; }
+
+.enrichment-button--primary,
+.enrichment-preset[aria-pressed="true"],
+.enrichment-preset.is-active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+html[data-theme="dark"] :where(.enrichment-button--primary, .enrichment-preset[aria-pressed="true"]) { color: #101817; }
+
+.enrichment-button--danger { border-color: color-mix(in srgb, var(--coral) 45%, var(--line)); color: var(--coral); }
+.enrichment-button--danger:hover { border-color: var(--coral); background: var(--coral-soft); color: var(--coral); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0s !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :where(.semantic, .supplement, .enrichment-toolbar, .enrichment-panel, .enrichment-drawer) {
+    border-color: CanvasText;
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: none;
+  }
+}

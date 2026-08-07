@@ -1,0 +1,97 @@
+---
+import { ENRICHMENT_LAYERS, type ChapterMeta, type EnrichmentLayer } from "../framework/types";
+
+interface Props {
+  chapter: ChapterMeta;
+}
+
+const { chapter } = Astro.props;
+const drawerId = `reader-tools-${chapter.slug}`;
+const labels: Record<EnrichmentLayer, { name: string; help: string }> = {
+  explanation: { name: "Explicações", help: "Desenvolvimento lento e intuição matemática" },
+  lab: { name: "Laboratórios", help: "Explorações interativas" },
+  practice: { name: "Práticas", help: "Exercícios com retorno imediato" },
+  history: { name: "História", help: "Contexto humano e cronológico" },
+  reading: { name: "Para saber mais", help: "Leituras e fontes complementares" },
+};
+---
+
+<section class="enrichment-toolbar" aria-label="Camadas e ferramentas de leitura" data-reader-toolbar>
+  <header class="enrichment-toolbar__header">
+    <div class="enrichment-toolbar__heading">
+      <span class="enrichment-toolbar__eyebrow">Leitura em camadas</span>
+      <h2 class="enrichment-toolbar__title">Escolha quanto apoio você quer</h2>
+      <p class="enrichment-toolbar__description">O texto-fonte permanece intacto; estes recursos editoriais podem ser ligados ou ocultados.</p>
+    </div>
+    <button
+      class="enrichment-button enrichment-button--primary"
+      type="button"
+      aria-controls={drawerId}
+      aria-expanded="false"
+      data-reader-drawer-open
+    >Ajustar leitura</button>
+  </header>
+
+  <div class="enrichment-drawer" id={drawerId} aria-labelledby={`${drawerId}-title`} data-reader-drawer>
+    <div class="enrichment-drawer__header">
+      <div>
+        <span class="enrichment-toolbar__eyebrow">Ferramentas</span>
+        <h2 id={`${drawerId}-title`}>Personalize sua leitura</h2>
+      </div>
+      <button class="enrichment-drawer__close" type="button" aria-label="Fechar ferramentas de leitura" data-reader-drawer-close>Fechar</button>
+    </div>
+
+    <div class="enrichment-drawer__content">
+      <fieldset class="enrichment-presets">
+        <legend>Modos prontos</legend>
+        <button class="enrichment-preset" type="button" aria-pressed="false" data-layer-preset="source">Só o texto</button>
+        <button class="enrichment-preset" type="button" aria-pressed="false" data-layer-preset="guided">Leitura guiada</button>
+        <button class="enrichment-preset" type="button" aria-pressed="true" data-layer-preset="explore">Explorar tudo</button>
+      </fieldset>
+
+      <fieldset class="enrichment-layer-grid">
+        <legend>Camadas opcionais</legend>
+        {ENRICHMENT_LAYERS.map((layer) => (
+          <label class="enrichment-layer-option" data-layer={layer}>
+            <input type="checkbox" checked data-layer-toggle={layer} />
+            <span class="enrichment-switch" aria-hidden="true"></span>
+            <span class="enrichment-layer-option__copy">
+              <strong>{labels[layer].name} <span class="enrichment-layer-option__count" data-layer-count={layer}>0</span></strong>
+              <small>{labels[layer].help}</small>
+            </span>
+          </label>
+        ))}
+      </fieldset>
+
+      <section class="enrichment-panel enrichment-search" aria-labelledby={`${drawerId}-search-title`}>
+        <header class="enrichment-panel__header">
+          <h3 class="enrichment-panel__title" id={`${drawerId}-search-title`}>Buscar no capítulo</h3>
+          <p class="enrichment-panel__description">A busca inclui o texto e as camadas editoriais montadas.</p>
+        </header>
+        <label class="enrichment-visually-hidden" for={`${drawerId}-search`}>Buscar</label>
+        <input class="enrichment-search__input" id={`${drawerId}-search`} type="search" autocomplete="off" data-reader-search />
+        <p class="enrichment-search__status" role="status" data-reader-search-status>Digite ao menos duas letras.</p>
+        <div class="enrichment-search__results" data-reader-search-results></div>
+      </section>
+
+      <details class="enrichment-panel bookmark-panel">
+        <summary>Marcadores <span data-bookmark-count>0</span></summary>
+        <div class="bookmark-panel__content" data-bookmark-list></div>
+      </details>
+
+      <section class="enrichment-panel reading-resume" hidden data-reader-resume>
+        <h3 class="enrichment-panel__title">Continuar de onde você parou</h3>
+        <p>Última seção lida: <strong data-reader-resume-label></strong></p>
+        <button class="enrichment-button reading-resume__button" type="button" data-reader-resume-button>Retomar leitura</button>
+      </section>
+
+      <div class="enrichment-toolbar__actions">
+        <button class="enrichment-button" type="button" data-reader-print>Imprimir / salvar PDF</button>
+        <button class="enrichment-button enrichment-button--danger" type="button" data-reader-reset>Redefinir dados locais</button>
+      </div>
+      <p class="enrichment-storage-note">Notas e preferências ficam apenas neste navegador. Nenhum dado é enviado.</p>
+    </div>
+  </div>
+</section>
+
+<button class="enrichment-backdrop" type="button" aria-label="Fechar ferramentas de leitura" hidden data-reader-drawer-backdrop></button>

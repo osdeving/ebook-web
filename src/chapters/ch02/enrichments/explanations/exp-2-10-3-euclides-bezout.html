@@ -1,0 +1,11 @@
+<div class="explanation-body">
+              <p>O algoritmo de Euclides não serve apenas para encontrar o mdc. Ao substituir os restos de volta nas equações anteriores, ele também escreve o mdc como uma combinação dos polinômios de partida. Vejamos um caso curto em \(\mathbb Q[x]\).</p>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Divida \(a=x^2+1\) por \(b=x+1\): \(x^2+1=(x+1)(x-1)+2\).</p></div>
+                <div class="step"><span class="step-tag definition">Definição</span><p>O último resto não nulo é a constante \(2\). Como constantes não nulas são unidades em \(\mathbb Q[x]\), a versão mônica do mdc é \(1\).</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Isole o resto: \(2=a-(x-1)b\). Multiplique por \(1/2\): \(1=\tfrac12a-\tfrac12(x-1)b\).</p></div>
+                <div class="step"><span class="step-tag theorem">Teorema</span><p>Encontramos \(u=\tfrac12\) e \(v=-\tfrac12(x-1)\) tais que \(au+bv=1\). Essa é a identidade de Bézout para os dois polinômios.</p></div>
+              </div>
+              <div class="mental-model"><strong>Modelo mental.</strong> “Mdc igual a \(1\)” não é apenas ausência de fator comum. A identidade de Bézout fornece um certificado explícito dessa ausência. Mais adiante, reduzir essa identidade módulo \(m\) transformará \(u\) num inverso multiplicativo.</div>
+              <div class="quick-check"><strong>Conferência rápida.</strong> Substitua: \(\tfrac12(x^2+1)-\tfrac12(x-1)(x+1)=\tfrac12(x^2+1-x^2+1)=1\).</div>
+            </div>

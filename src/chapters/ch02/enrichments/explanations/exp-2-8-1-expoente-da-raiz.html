@@ -1,0 +1,12 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Intuição.</strong> Queremos um \(b\) cujo quadrado seja \(a\). Escolher \(b=a^{(p+1)/4}\) faz o quadrado ter expoente \((p+1)/2\). A parte \(p-1\) desse expoente desaparece graças ao pequeno teorema de Fermat; sobra exatamente uma cópia de \(a\).</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> Como \(p\equiv3\pmod4\), podemos escrever \(p=4t+3\). Logo \((p+1)/4=t+1\) é inteiro.</div>
+                <div class="step"><span class="step-tag definition">Definição</span> Se \(a\equiv0\pmod p\), a raiz é imediatamente \(b=0\). No restante da conta, assumimos \(a\ne0\).</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> Se esse \(a\) não nulo é quadrado módulo \(p\) e \(g\) é raiz primitiva, então \(a\equiv g^{2k}\): a existência de uma raiz força um expoente par.</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Ao elevar \(b=a^{(p+1)/4}\) ao quadrado, obtemos \(b^2=a^{(p+1)/2}\equiv g^{k(p+1)}=g^{2k}g^{k(p-1)}\).</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> Pelo pequeno teorema de Fermat, \(g^{p-1}\equiv1\pmod p\). Assim, \(g^{k(p-1)}\equiv1\), e resta \(b^2\equiv g^{2k}\equiv a\pmod p\).</div>
+              </div>
+              <div class="quick-check"><strong>Exemplo módulo 7.</strong> Temos \(7\equiv3\pmod4\), e 2 é quadrado porque \(3^2\equiv2\pmod7\). A fórmula dá \(b=2^{(7+1)/4}=2^2=4\). De fato, \(4^2=16\equiv2\pmod7\).</div>
+              <div class="watch-out"><strong>Cuidado.</strong> A fórmula não transforma um não quadrado em quadrado. A hipótese de que \(a\) já possui raiz é indispensável.</div>
+            </div>

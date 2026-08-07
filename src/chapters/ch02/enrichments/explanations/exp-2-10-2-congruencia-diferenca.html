@@ -1,0 +1,14 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Modelo mental.</strong> O módulo \(m\) determina quais diferenças decidimos ignorar. Se \(a-b\) é um múltiplo de \(m\), então \(a\) e \(b\) ocupam a mesma classe, embora possam não ser iguais como elementos do anel original.</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span><p>Para testar \(17\equiv5\pmod6\), comece pela diferença: \(17-5=12\).</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Exiba a divisibilidade: \(12=6\cdot2\). Logo, \(6\mid(17-5)\).</p></div>
+                <div class="step"><span class="step-tag definition">Definição</span><p>Pela definição, concluímos \(17\equiv5\pmod6\).</p></div>
+              </div>
+              <p>O mesmo roteiro funciona para polinômios. Em \(\mathbb R[x]\), por exemplo,</p>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>\((x^2+1)-(-1)=x^2+2\).</p></div>
+                <div class="step"><span class="step-tag definition">Definição</span><p>Como \(x^2+2\) é divisível pelo módulo \(x^2+2\), temos \(x^2+1\equiv-1\pmod{x^2+2}\).</p></div>
+              </div>
+              <div class="watch-out"><strong>Atenção.</strong> O símbolo \(\equiv\) não afirma igualdade em \(R\). Ele afirma que os elementos se tornam iguais depois que passamos ao anel quociente determinado por \(m\).</div>
+            </div>

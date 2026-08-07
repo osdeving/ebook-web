@@ -1,0 +1,104 @@
+<section class="section" id="sec-2-2">
+          <h2><span class="section-number">2.2</span> O problema do logaritmo discreto</h2>
+
+          <p>O problema do logaritmo discreto é um problema matemático que aparece em muitos contextos, entre eles a versão módulo \(p\) descrita nesta seção e a versão para curvas elípticas, que será estudada mais adiante, no Capítulo 6. A primeira construção de chave pública publicada, devida a Diffie e Hellman [38], baseia-se no problema do logaritmo discreto em um corpo finito \(\mathbb F_p\), lembrando que \(\mathbb F_p\) é um corpo com um número primo de elementos. Veja a Seção 1.4. Por conveniência, usamos alternadamente as notações \(\mathbb F_p\) e \(\mathbb Z/p\mathbb Z\) para esse corpo; empregamos a notação de igualdade para elementos de \(\mathbb F_p\) e a notação de congruência para elementos de \(\mathbb Z/p\mathbb Z\). Compare com a Observação 1.23.</p>
+
+          <p>Seja \(p\) um primo grande. O Teorema 1.30 nos diz que existe um elemento primitivo \(g\). Isso significa que todo elemento não nulo de \(\mathbb F_p\) é igual a alguma potência de \(g\). Em particular, \(g^{p-1}=1\) pelo pequeno teorema de Fermat (Teorema 1.24), e nenhuma potência positiva menor de \(g\) é igual a \(1\). De modo equivalente, a lista</p>
+
+          <div class="display-math">\[1,g,g^2,g^3,\ldots,g^{p-2}\in\mathbb F_p^*\]</div>
+
+          <p>é uma lista completa dos elementos de \(\mathbb F_p^*\), em alguma ordem.</p>
+
+          <span id="slot-exp-2-2-primitive-root-cycle" data-enrichment-slot="exp-2-2-primitive-root-cycle"></span>
+
+          <aside class="semantic definition" id="def-pld-fp">
+            <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+            <p>Seja \(g\) uma raiz primitiva de \(\mathbb F_p\), e seja \(h\) um elemento não nulo de \(\mathbb F_p\). O <strong>problema do logaritmo discreto</strong> (PLD) consiste em encontrar um expoente \(x\) tal que</p>
+            <div class="display-math">\[g^x\equiv h\pmod p.\]</div>
+            <p>O número \(x\) é chamado de <strong>logaritmo discreto de \(h\) na base \(g\)</strong> e é denotado por \(\log_g(h)\).</p>
+          </aside>
+
+          <aside class="semantic remark" id="obs-2-1">
+            <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">2.1</span></div>
+            <p>Um termo mais antigo para o logaritmo discreto é <em>índice</em>, denotado por \(\operatorname{ind}_g(h)\). Essa terminologia ainda é comum na teoria dos números. Ela também é conveniente quando existe risco de confusão entre logaritmos usuais e logaritmos discretos, pois, por exemplo, a expressão \(\log_2\) aparece com frequência nos dois contextos.</p>
+          </aside>
+
+          <aside class="semantic remark" id="obs-2-2">
+            <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">2.2</span></div>
+            <p>O problema do logaritmo discreto é bem formulado: busca-se um expoente inteiro \(x\) tal que \(g^x=h\). Entretanto, se existe uma solução, então existem infinitas, pois o pequeno teorema de Fermat (Teorema 1.24) afirma que \(g^{p-1}\equiv1\pmod p\). Portanto, se \(x\) é uma solução de \(g^x=h\), então \(x+k(p-1)\) também é solução para todo valor de \(k\), porque</p>
+            <div class="display-math">\[g^{x+k(p-1)}=g^x\bigl(g^{p-1}\bigr)^k\equiv h\cdot1^k\equiv h\pmod p.\]</div>
+            <p>Assim, \(\log_g(h)\) só é definido a menos da adição ou subtração de múltiplos de \(p-1\). Em outras palavras, \(\log_g(h)\) é, na verdade, definido módulo \(p-1\). Não é difícil verificar (Exercício 2.3(a)) que \(\log_g\) fornece uma função bem definida<sup id="fnref-2-2-4"><a href="#fn-2-2-4">4</a></sup></p>
+            <div class="numbered-equation" id="eq-2-1"><span class="math">\[\log_g:\mathbb F_p^*\longrightarrow\frac{\mathbb Z}{(p-1)\mathbb Z}.\]</span><span class="equation-number">(2.1)</span></div>
+            <p>Às vezes, para sermos concretos, chamamos de “o” logaritmo discreto o inteiro \(x\) entre \(0\) e \(p-2\) que satisfaz a congruência \(g^x\equiv h\pmod p\).</p>
+          </aside>
+
+          <span id="slot-exp-2-2-log-mod-p-minus-one" data-enrichment-slot="exp-2-2-log-mod-p-minus-one"></span>
+
+          <aside class="semantic remark" id="obs-2-3">
+            <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">2.3</span></div>
+            <p>Não é difícil provar (veja o Exercício 2.3(b)) que</p>
+            <div class="display-math">\[\log_g(ab)=\log_g(a)+\log_g(b)\qquad\text{para todos }a,b\in\mathbb F_p^*.\]</div>
+          </aside>
+
+          <div class="table-wrap" id="tab-2-1">
+            <table>
+              <caption><span class="label">Tabela 2.1.</span> Potências e logaritmos discretos para \(g=627\) módulo \(p=941\).</caption>
+              <thead>
+                <tr><th>\(n\)</th><th>\(g^n\bmod p\)</th><th>\(n\)</th><th>\(g^n\bmod p\)</th><th>\(h\)</th><th>\(\log_g(h)\)</th><th>\(h\)</th><th>\(\log_g(h)\)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>627</td><td>11</td><td>878</td><td>1</td><td>0</td><td>11</td><td>429</td></tr>
+                <tr><td>2</td><td>732</td><td>12</td><td>21</td><td>2</td><td>183</td><td>12</td><td>835</td></tr>
+                <tr><td>3</td><td>697</td><td>13</td><td>934</td><td>3</td><td>469</td><td>13</td><td>279</td></tr>
+                <tr><td>4</td><td>395</td><td>14</td><td>316</td><td>4</td><td>366</td><td>14</td><td>666</td></tr>
+                <tr><td>5</td><td>182</td><td>15</td><td>522</td><td>5</td><td>356</td><td>15</td><td>825</td></tr>
+                <tr><td>6</td><td>253</td><td>16</td><td>767</td><td>6</td><td>652</td><td>16</td><td>732</td></tr>
+                <tr><td>7</td><td>543</td><td>17</td><td>58</td><td>7</td><td>483</td><td>17</td><td>337</td></tr>
+                <tr><td>8</td><td>760</td><td>18</td><td>608</td><td>8</td><td>549</td><td>18</td><td>181</td></tr>
+                <tr><td>9</td><td>374</td><td>19</td><td>111</td><td>9</td><td>938</td><td>19</td><td>43</td></tr>
+                <tr><td>10</td><td>189</td><td>20</td><td>904</td><td>10</td><td>539</td><td>20</td><td>722</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Portanto, chamar \(\log_g\) de “logaritmo” é razoável, pois ele transforma multiplicação em adição do mesmo modo que a função logarítmica usual. Na terminologia matemática, o logaritmo discreto \(\log_g\) é um isomorfismo de grupos de \(\mathbb F_p^*\) para \(\mathbb Z/(p-1)\mathbb Z\).</p>
+
+          <span id="slot-exp-2-2-homomorphism" data-enrichment-slot="exp-2-2-homomorphism"></span>
+
+          <aside class="semantic example" id="ex-2-4">
+            <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">2.4</span></div>
+            <p>O número \(p=56509\) é primo, e pode-se verificar que \(g=2\) é uma raiz primitiva módulo \(p\). Como poderíamos calcular o logaritmo discreto de \(h=38679\)? O único método imediatamente evidente é calcular</p>
+            <div class="display-math">\[2^2,2^3,2^4,2^5,2^6,2^7,\ldots\pmod{56509}\]</div>
+            <p>até encontrarmos uma potência igual a \(38679\). Seria difícil fazer isso à mão, mas, com um computador, descobrimos que \(\log_2(h)=11235\). Você pode conferir calculando \(2^{11235}\bmod56509\) e verificando que o resultado é \(38679\).</p>
+          </aside>
+
+          <aside class="semantic remark" id="obs-2-5">
+            <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">2.5</span></div>
+            <p>É preciso enfatizar que o logaritmo discreto se parece muito pouco com o logaritmo contínuo definido nos números reais ou complexos. A terminologia ainda é razoável porque, nos dois casos, invertemos o processo de exponenciação. Porém, ao contrário do que ocorre no caso contínuo, a exponenciação módulo \(p\) varia de maneira muito irregular com o expoente. O comportamento aparentemente aleatório da exponenciação módulo \(p\) fica evidente mesmo em uma rápida olhada numa tabela como a Tabela 2.1, em que listamos as primeiras potências e os primeiros logaritmos discretos para o primo \(p=941\) e a base \(g=627\). Essa aparente aleatoriedade também é ilustrada pelo gráfico de dispersão de \(627^i\bmod941\) na Figura 2.2.</p>
+          </aside>
+
+          <aside class="semantic remark" id="obs-2-6">
+            <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">2.6</span></div>
+            <p>Nossa formulação do problema do logaritmo discreto inclui a hipótese de que a base \(g\) é uma raiz primitiva módulo \(p\), mas isso não é estritamente necessário. Em geral, para quaisquer \(g\in\mathbb F_p^*\) e \(h\in\mathbb F_p^*\), o problema do logaritmo discreto consiste em determinar um expoente \(x\) que satisfaça \(g^x\equiv h\pmod p\), supondo que tal \(x\) exista.</p>
+          </aside>
+
+          <figure class="figure" id="fig-2-2">
+            <canvas id="powersPlot" class="plot-canvas" width="900" height="430" role="img" aria-describedby="fig-2-2-desc">
+              Seu navegador não oferece suporte ao elemento canvas. O gráfico representa os valores de 627 elevado a i, módulo 941, para i de 1 a 270.
+            </canvas>
+            <p id="fig-2-2-desc" class="sr-only">Gráfico de dispersão dos valores de \(627^i\bmod941\), para \(i=1,2,3,\ldots,270\). Os pontos parecem distribuídos irregularmente.</p>
+            <figcaption><span class="label">Figura 2.2.</span> Potências \(627^i\bmod941\), para \(i=1,2,3,\ldots\).</figcaption>
+          </figure>
+
+          <p>De modo ainda mais geral, em vez de tomarmos elementos não nulos de um corpo finito \(\mathbb F_p\) e multiplicá-los ou elevá-los a potências, podemos tomar elementos de qualquer grupo e usar a operação do grupo no lugar da multiplicação. Isso conduz à forma mais geral do problema do logaritmo discreto. Se você ainda não conhece a teoria dos grupos, apresentamos uma breve visão geral na Seção 2.5.</p>
+
+          <aside class="semantic definition" id="def-pld-grupo">
+            <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+            <p>Seja \(G\) um grupo cuja operação denotamos pelo símbolo \(\star\). O <strong>problema do logaritmo discreto em \(G\)</strong> consiste em determinar, para dois elementos dados \(g\) e \(h\) de \(G\), um inteiro \(x\) que satisfaça</p>
+            <div class="display-math">\[\underbrace{g\star g\star g\star\cdots\star g}_{x\text{ vezes}}=h.\]</div>
+          </aside>
+
+          <ol class="footnotes" start="4">
+            <li id="fn-2-2-4">Se você estudou análise complexa, talvez tenha percebido uma analogia com o logaritmo complexo, que na verdade não é bem definido em \(\mathbb C^*\). Isso ocorre porque \(e^{2\pi i}=1\), de modo que \(\log(z)\) só é definido a menos da adição ou subtração de múltiplos de \(2\pi i\). Assim, o logaritmo complexo define um isomorfismo de \(\mathbb C^*\) para o grupo quociente \(\mathbb C/2\pi i\mathbb Z\), análogo a (2.1). <a href="#fnref-2-2-4" aria-label="Voltar à chamada da nota 4">↩</a></li>
+          </ol>
+        </section>

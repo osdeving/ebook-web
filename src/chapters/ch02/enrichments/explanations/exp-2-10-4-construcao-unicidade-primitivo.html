@@ -1,0 +1,15 @@
+<div class="explanation-body">
+              <p>A notação \(\mathbb F_{p^d}\) resume três resultados: podemos construir um corpo desse tamanho; diferentes construções dão o mesmo corpo em sentido abstrato; e existe um elemento que gera todos os elementos não nulos por potências.</p>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span><p><strong>Construção.</strong> Escolha um polinômio irredutível \(m\in\mathbb F_p[x]\) de grau \(d\) e forme \(\mathbb F_p[x]/(m)\). Os restos de grau menor que \(d\) dão \(p^d\) elementos, e a irredutibilidade garante que o quociente é corpo.</p></div>
+                <div class="step"><span class="step-tag theorem">Teorema</span><p><strong>Unicidade abstrata.</strong> Dois polinômios irredutíveis diferentes podem produzir fórmulas e representantes diferentes, mas os corpos resultantes são isomorfos: existe uma correspondência que preserva adição e multiplicação. É como usar dois sistemas de coordenadas para a mesma estrutura.</p></div>
+                <div class="step"><span class="step-tag theorem">Teorema</span><p><strong>Elemento primitivo.</strong> Se o corpo tem \(q=p^d\) elementos, seu grupo multiplicativo tem \(q-1\) elementos e é cíclico. Existe \(g\) cujas potências \(1,g,g^2,\ldots,g^{q-2}\) percorrem todos os elementos não nulos.</p></div>
+              </div>
+              <p>No corpo \(\mathbb F_2[x]/(x^2+x+1)\), escreva \(\alpha=\overline x\).</p>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Da relação \(\alpha^2+\alpha+1=0\), obtemos \(\alpha^2=\alpha+1\), pois \(-1=1\) em característica \(2\).</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Multiplicando por \(\alpha\), \(\alpha^3=\alpha(\alpha+1)=\alpha^2+\alpha=(\alpha+1)+\alpha=1\).</p></div>
+                <div class="step"><span class="step-tag definition">Definição</span><p>As potências \(1,\alpha,\alpha^2\) são os três elementos não nulos do corpo. Logo, \(\alpha\) é um elemento primitivo.</p></div>
+              </div>
+              <div class="watch-out"><strong>Atenção.</strong> O polinômio irredutível \(m\) usado para construir o corpo e o elemento primitivo \(g\) do grupo multiplicativo desempenham papéis diferentes. O primeiro impõe a relação de redução; o segundo gera os elementos não nulos por potências. A classe de \(x\) pode ser primitiva em algumas construções, mas isso não é automático.</div>
+            </div>

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ebook Web">
+  <rect width="64" height="64" rx="15" fill="#087f73"/>
+  <path d="M17 16h30v7H29l11 9-11 9h18v7H17V37l9-5-9-5Z" fill="#fffdf8"/>
+</svg>

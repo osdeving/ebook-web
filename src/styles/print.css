@@ -1,0 +1,73 @@
+@media print {
+  @page { size: A4; margin: 16mm 18mm; }
+
+  html, html[data-theme="light"], html[data-theme="dark"] {
+    color-scheme: light;
+    --paper: #fff;
+    --surface: #fff;
+    --surface-raised: #fff;
+    --ink: #111;
+    --muted: #444;
+    --line: #bbb;
+    --line-strong: #888;
+    --accent: #185f58;
+    --accent-strong: #124942;
+    --accent-soft: #eef6f4;
+    --explain: #84371f;
+    --explain-strong: #672714;
+    --explain-soft: #fff4ee;
+    --blue: #245d80;
+    --blue-soft: #eef5f8;
+    --violet: #57428c;
+    --violet-soft: #f4f1fa;
+    --gold: #75500d;
+    --gold-soft: #fbf5e7;
+  }
+
+  html, body, .app-shell, .main, .reader,
+  .supplement, .supplement__panel, .supplement__body,
+  body.is-printing .enrichment-drawer {
+    max-width: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  body { background: #fff; font-size: 10.5pt; line-height: 1.55; }
+  .skip-link, .sidebar, .mobile-bar, .menu-backdrop, .progress-track,
+  .back-top, .focus-exit, .copy-equation, .hero::after,
+  .enrichment-toolbar, .enrichment-backdrop, .enrichment-drawer,
+  .enrichment-section-tools, .supplement__actions,
+  [data-screen-only], [data-interactive-only] { display: none !important; }
+
+  .app-shell { display: block; }
+  .main { width: 100%; }
+  .hero { padding: 0 0 15mm; }
+  .hero h1 { font-size: 34pt; }
+  .reader { width: 100%; padding: 12mm 0 0; }
+  .chapter-section { margin-top: 0; break-before: page; }
+  .semantic, .figure, .table-wrap, .equation { box-shadow: none; break-inside: avoid; }
+
+  .trapdoor-diagram { grid-template-columns: 1fr; }
+  .diagram-row { grid-template-columns: minmax(5rem, 1fr) minmax(11rem, 2fr) minmax(5rem, 1fr); }
+  .diagram-arrow::after { content: "→"; }
+  .diagram-arrow.reverse::after { content: "←"; }
+
+  .supplement, .explanation { margin-block: 10pt 14pt; overflow: visible; border: 1pt solid var(--supplement-accent, var(--explain)); border-inline-start-width: 3pt; background: #fff; box-shadow: none; break-inside: auto; }
+  .supplement__summary, .explanation > summary { min-height: 0; padding: 7pt 8pt; background: var(--supplement-soft, var(--explain-soft)); break-after: avoid-page; }
+  .supplement__summary::after, .explanation > summary::after { display: none; }
+  .supplement__panel:not([open]) > :not(summary), .explanation:not([open]) > :not(summary) { display: block !important; }
+  .supplement__body, .explanation-body { padding: 8pt 9pt; }
+
+  .supplement-lab__controls, [data-lab-controls], .lab-controls, .lab-actions,
+  .practice-options, .practice-response, .practice-actions, .practice-save, .seed-row { display: none !important; }
+  [data-print-static] { display: block !important; }
+
+  a { color: inherit; text-decoration: none; }
+  .supplement a[href^="http"]::after, .reading-list__link[href^="http"]::after {
+    content: " (" attr(href) ")";
+    color: var(--muted);
+    font-size: .85em;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+}

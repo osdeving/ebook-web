@@ -1,0 +1,20 @@
+---
+import type { ChapterMeta } from "../framework/types";
+
+interface Props {
+  chapter: ChapterMeta;
+}
+
+const { chapter } = Astro.props;
+---
+
+<header class="hero" id="topo">
+  <p class="eyebrow">{chapter.eyebrow ?? `Capítulo ${chapter.number} · edição web`}</p>
+  <h1><slot name="title">{chapter.title}</slot></h1>
+  <p class="hero-deck">{chapter.description}</p>
+  {chapter.badges?.length ? (
+    <div class="hero-meta" aria-label="Informacoes do documento">
+      {chapter.badges.map((badge) => <span class="meta-chip">{badge}</span>)}
+    </div>
+  ) : null}
+</header>

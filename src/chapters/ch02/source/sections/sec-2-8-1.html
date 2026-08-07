@@ -1,0 +1,86 @@
+<section class="chapter-section" id="sec-2-8-1">
+          <div class="section-heading">
+            <span class="section-number">2.8.1</span>
+            <h2>Resolução de congruências com módulos compostos</h2>
+          </div>
+
+          <p class="lead">Em geral, a maneira mais simples de resolver uma congruência com módulo composto é resolver primeiro várias congruências módulo primos, ou potências de primos, e depois reunir as soluções pelo teorema chinês dos restos.</p>
+
+          <p>Nesta seção, ilustraremos esse princípio discutindo o problema de encontrar raízes quadradas módulo \(m\). É relativamente fácil calcular raízes quadradas módulo um primo. Para primos congruentes a \(3\) módulo \(4\), encontrá-las é extremamente simples, como mostra a proposição seguinte.</p>
+
+          <div class="semantic proposition" id="prop-2-26">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.26</span>
+            </div>
+            <p>Seja \(p\) um primo tal que \(p\equiv3\pmod4\). Seja \(a\) um inteiro para o qual a congruência \(x^2\equiv a\pmod p\) tem solução, isto é, \(a\) possui uma raiz quadrada módulo \(p\). Então</p>
+            <div class="equation">\[b\equiv a^{(p+1)/4}\pmod p\]</div>
+            <p>é uma solução, ou seja, satisfaz \(b^2\equiv a\pmod p\). Esta fórmula só é válida quando \(a\) possui uma raiz quadrada módulo \(p\). Na Seção 3.9, descreveremos um método eficiente para verificar quais números têm raízes quadradas módulo \(p\).</p>
+          </div>
+
+          <div class="semantic proof">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Seja \(g\) uma raiz primitiva módulo \(p\). Então \(a\) é igual a alguma potência de \(g\), e o fato de \(a\) ter uma raiz quadrada módulo \(p\) significa que \(a\) é uma potência par de \(g\), digamos \(a\equiv g^{2k}\pmod p\); veja o Exercício 2.5. Agora calculamos:</p>
+            <div class="equation">\[\begin{aligned}
+              b^2 &\equiv a^{(p+1)/2} &&\pmod p &&\text{pela definição de }b,\\
+                  &\equiv (g^{2k})^{(p+1)/2} &&\pmod p &&\text{pois }a\equiv g^{2k}\pmod p,\\
+                  &\equiv g^{(p+1)k} &&\pmod p,\\
+                  &\equiv g^{2k+(p-1)k} &&\pmod p,\\
+                  &\equiv a\,(g^{p-1})^k &&\pmod p &&\text{pois }a\equiv g^{2k}\pmod p,\\
+                  &\equiv a &&\pmod p &&\text{pois }g^{p-1}\equiv1\pmod p.
+            \end{aligned}\]</div>
+            <p>Logo, \(b\) é de fato uma raiz quadrada de \(a\) módulo \(p\). <span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-8-1-expoente-da-raiz" data-enrichment-slot="exp-2-8-1-expoente-da-raiz"></span>
+
+          <div class="semantic example" id="exemplo-2-27">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.27</span>
+            </div>
+            <p>Uma raiz quadrada de \(a=2201\) módulo o primo \(p=4127\) é</p>
+            <div class="equation">\[b\equiv a^{(p+1)/4}=2201^{4128/4}=2201^{1032}\equiv3718\pmod{4127}.\]</div>
+            <p>Para confirmar que \(a\) realmente possui uma raiz quadrada módulo \(4127\), basta elevar \(b\) ao quadrado e verificar que</p>
+            <div class="equation">\[3718^2=13823524\equiv2201\pmod{4127}.\]</div>
+          </div>
+
+          <p>Suponha agora que desejemos calcular uma raiz quadrada módulo \(m\), sem exigir que \(m\) seja primo. Um método eficiente consiste em fatorar \(m\), calcular a raiz quadrada módulo cada fator primo, ou potência de primo, e então combinar as soluções pelo teorema chinês dos restos. O exemplo seguinte esclarece a ideia.</p>
+
+          <div class="semantic example" id="exemplo-2-28">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.28</span>
+            </div>
+            <p>Procuramos uma solução da congruência</p>
+            <div class="equation" id="eq-2-11"><span class="equation-number">(2.11)</span>\[x^2\equiv197\pmod{437}.\]</div>
+            <p>O módulo se fatora como \(437=19\cdot23\), portanto começamos resolvendo as duas congruências</p>
+            <div class="equation">\[y^2\equiv197\equiv7\pmod{19}\qquad\text{e}\qquad z^2\equiv197\equiv13\pmod{23}.\]</div>
+            <p>Como \(19\) e \(23\) são ambos congruentes a \(3\) módulo \(4\), podemos encontrar essas raízes quadradas pela Proposição 2.26, ou por tentativa e erro. Em qualquer caso, temos</p>
+            <div class="equation">\[y\equiv\pm8\pmod{19}\qquad\text{e}\qquad z\equiv\pm6\pmod{23}.\]</div>
+            <p>Podemos escolher \(8\) ou \(-8\) para \(y\), e \(6\) ou \(-6\) para \(z\). Escolhendo as duas soluções positivas, usamos em seguida o teorema chinês dos restos para resolver as congruências simultâneas</p>
+            <div class="equation" id="eq-2-12"><span class="equation-number">(2.12)</span>\[x\equiv8\pmod{19}\qquad\text{e}\qquad x\equiv6\pmod{23}.\]</div>
+            <p>Encontramos \(x\equiv236\pmod{437}\), que é a solução desejada de (2.11).</p>
+          </div>
+
+          <span id="slot-exp-2-8-1-quatro-combinacoes" data-enrichment-slot="exp-2-8-1-quatro-combinacoes"></span>
+
+          <div class="semantic remark" id="obs-2-29">
+            <div class="semantic-header">
+              <span class="semantic-label">Observação</span>
+              <span class="semantic-title">2.29</span>
+            </div>
+            <p>A solução do Exemplo 2.28 não é única. Em primeiro lugar, sempre podemos tomar seu negativo,</p>
+            <div class="equation">\[-236\equiv201\pmod{437},\]</div>
+            <p>e obter uma segunda raiz quadrada de \(197\) módulo \(437\). Se o módulo fosse primo, existiriam apenas essas duas raízes; veja o Exercício 1.36(a). Porém, como \(437=19\cdot23\) é composto, há outras duas. Para encontrá-las, substituímos por seu negativo um dos números \(8\) e \(6\) em (2.12). Isso produz \(x=144\) e \(x=293\). Portanto, \(197\) possui quatro raízes quadradas módulo \(437\).</p>
+          </div>
+
+          <div class="semantic remark" id="obs-2-30">
+            <div class="semantic-header">
+              <span class="semantic-label">Observação</span>
+              <span class="semantic-title">2.30</span>
+            </div>
+            <p>O Exemplo 2.28 deixa claro — veja também os Exercícios 2.23 e 2.24 — que é relativamente fácil calcular raízes quadradas módulo \(m\) quando sabemos fatorar \(m\) como produto de potências de primos. Suponha, porém, que \(m\) seja tão grande que não consigamos fatorá-lo. Encontrar raízes quadradas módulo \(m\) torna-se então um problema muito difícil. De fato, em um sentido que pode ser formulado com razoável precisão, calcular raízes quadradas módulo \(m\) é tão difícil quanto fatorar \(m\).</p>
+            <p>Se \(m\) for um número composto grande cuja fatoração é desconhecida, será difícil até mesmo determinar se um inteiro dado \(a\) possui uma raiz quadrada módulo \(m\), ainda que não se peça o cálculo da raiz. O criptossistema de chave pública Goldwasser–Micali, descrito na Seção 3.10, baseia-se na dificuldade de identificar quais números possuem raízes quadradas módulo um módulo composto \(m\). A informação de alçapão é o conhecimento dos fatores de \(m\).</p>
+          </div>
+        </section>

@@ -1,0 +1,51 @@
+{
+  "name": "ebook-web",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "Framework modular para ebooks matemáticos ricos, acessíveis e interativos.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osdeving/ebook-web.git"
+  },
+  "homepage": "https://osdeving.github.io/ebook-web/",
+  "bugs": {
+    "url": "https://github.com/osdeving/ebook-web/issues"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "npm run validate && npm run build:site",
+    "build:site": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run",
+    "test:browser": "npm run build:site && playwright test",
+    "validate": "npm run validate:content && npm run check && npm run test",
+    "validate:content": "node scripts/validate-content.mjs",
+    "new:chapter": "node scripts/create-chapter.mjs",
+    "new:enrichment": "node scripts/create-enrichment.mjs",
+    "migrate:ch02": "node scripts/migrate-ch02.mjs",
+    "source:hash": "node scripts/hash-source.mjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "^6.0.2",
+    "astro": "^7.2.0",
+    "katex": "^0.16.22",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "linkedom": "^0.18.13",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

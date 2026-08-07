@@ -1,0 +1,21 @@
+.history-timeline { position: relative; display: grid; gap: .85rem; margin: 1rem 0; padding: 0 0 0 1.35rem; list-style: none; }
+.history-timeline::before { content: ""; position: absolute; inset: .35rem auto .35rem .32rem; width: 2px; background: color-mix(in srgb, var(--layer-history) 46%, var(--line)); }
+.history-timeline__item { position: relative; padding: .7rem .8rem; border: 1px solid var(--line); border-radius: .68rem; background: var(--surface-raised); }
+.history-timeline__item::before { content: ""; position: absolute; top: 1rem; left: -1.43rem; width: .7rem; height: .7rem; border: 2px solid var(--surface); border-radius: 50%; background: var(--layer-history); }
+.history-timeline__date { display: block; color: var(--layer-history); font-size: .68rem; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
+.history-timeline__item p { margin: .25rem 0 0; font-size: .84rem; }
+.history-tracks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 1rem 0; }
+.history-track { display: grid; gap: .6rem; align-content: start; padding: .8rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--surface-raised); }
+.history-track--open { border-color: color-mix(in srgb, var(--layer-history) 48%, var(--line)); background: color-mix(in srgb, var(--layer-history-soft) 42%, var(--surface-raised)); }
+.history-track h4 { margin: 0; color: var(--layer-history); font-size: .96rem; }
+.timeline-card { position: relative; padding: .7rem .75rem; border-inline-start: 3px solid var(--layer-history); border-radius: .58rem; background: var(--surface); }
+.timeline-card time { display: block; color: var(--layer-history); font-size: .64rem; font-weight: 880; letter-spacing: .06em; text-transform: uppercase; }
+.timeline-card h5 { margin: .2rem 0; font-size: .9rem; }
+.timeline-card p { margin: .25rem 0 0; color: var(--muted); font-size: .74rem; line-height: 1.5; }
+.portrait-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; }
+.portrait-card { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: .75rem; background: var(--surface-raised); }
+.portrait-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.portrait-card figcaption { display: grid; gap: .25rem; padding: .7rem; color: var(--muted); font-size: .68rem; line-height: 1.4; }
+.portrait-card figcaption strong { color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: .9rem; }
+.portrait-card figcaption small, .asset-credit-link { color: var(--muted); font-size: .62rem; }
+.source-links { display: grid; gap: .35rem; padding-inline-start: 1.2rem; font-size: .75rem; }

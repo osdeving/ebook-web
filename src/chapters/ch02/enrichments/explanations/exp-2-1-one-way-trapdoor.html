@@ -1,0 +1,11 @@
+<div class="explanation-body">
+            <div class="mental-model">
+              <p>Imagine uma caixa que qualquer pessoa consegue fechar com um clique, mas que levaria tempo absurdo para ser aberta por tentativa e erro. Dentro dela há, porém, uma fechadura discreta: quem possui a chave certa abre a caixa imediatamente. O clique de fechar representa o cálculo de \(f(x)\); a busca por \(x\) a partir de \(f(x)\) representa a inversão; a chave escondida representa o alçapão.</p>
+            </div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag definition">Definição</span><p><strong>Direção direta:</strong> dado \(x\), calcular \(y=f(x)\) deve ser eficiente. “Eficiente” significa que o trabalho cresce de maneira controlada quando o tamanho da entrada aumenta.</p></div>
+              <div class="step"><span class="step-tag definition">Definição</span><p><strong>Direção inversa sem o segredo:</strong> dado \(y\), encontrar um \(x\) com \(f(x)=y\) deve ser computacionalmente inviável. Isso não significa que \(x\) não exista nem que a inversão seja logicamente impossível; significa que não se conhece um procedimento rápido que funcione com probabilidade relevante para entradas grandes.</p></div>
+              <div class="step"><span class="step-tag definition">Definição</span><p><strong>Direção inversa com o alçapão:</strong> dada a informação secreta \(t\), há um algoritmo eficiente que recupera \(x\). Esquematicamente, \((y,t)\longmapsto x\).</p></div>
+            </div>
+            <div class="watch-out"><p>Uma função apenas “complicada de olhar” não é necessariamente unidirecional. A dificuldade precisa resistir a algoritmos, não somente ao cálculo manual. Também não basta esconder como \(f\) funciona: em criptografia moderna, o método pode ser público; o que permanece secreto é o alçapão.</p></div>
+          </div>

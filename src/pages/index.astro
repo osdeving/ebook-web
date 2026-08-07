@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ChapterLibrary from "../components/react/ChapterLibrary";
+import { chapters } from "../chapters";
+
+const base = import.meta.env.BASE_URL;
+const summaries = chapters.map((chapter) => ({
+  slug: chapter.slug,
+  number: chapter.number,
+  title: chapter.title,
+  description: chapter.description,
+  href: `${base}chapters/${chapter.slug}/`,
+  sections: chapter.sourceSections.length,
+  counts: {
+    explanation: chapter.enrichments.filter(({ layer }) => layer === "explanation").length,
+    lab: chapter.enrichments.filter(({ layer }) => layer === "lab").length,
+    practice: chapter.enrichments.filter(({ layer }) => layer === "practice").length,
+    history: chapter.enrichments.filter(({ layer }) => layer === "history").length,
+    reading: chapter.enrichments.filter(({ layer }) => layer === "reading").length,
+  },
+}));
+---
+
+<BaseLayout
+  title="Ebook Web"
+  description="Capítulos matemáticos em HTML semântico com explicações, laboratórios, práticas, história e leituras opcionais."
+>
+  <main class="library-page">
+    <header class="library-hero">
+      <a class="library-brand" href={base} aria-label="Ebook Web, início">
+        <span aria-hidden="true">∑</span>
+        <strong>Ebook Web</strong>
+      </a>
+      <div class="library-hero__copy">
+        <p class="library-kicker">Matemática em camadas</p>
+        <h1>O rigor do texto.<br /><em>As possibilidades da web.</em></h1>
+        <p>Leia a tradução sem interferências ou ative explicações lentas, experiências manipuláveis, práticas com feedback, história e fontes — cada recurso continua independente do texto.</p>
+      </div>
+      <div class="library-layer-map" aria-label="Camadas do framework">
+        <span>Fonte preservada</span><span>Explicação</span><span>Laboratório</span><span>Prática</span><span>História</span><span>Leitura</span>
+      </div>
+    </header>
+
+    <ChapterLibrary client:idle chapters={summaries} />
+
+    <section class="library-principles" aria-labelledby="principles-title">
+      <p class="library-kicker">Arquitetura editorial</p>
+      <h2 id="principles-title">Uma tradução, muitas formas de estudar</h2>
+      <div>
+        <article><span>01</span><h3>Fonte verificável</h3><p>Seções originais ficam isoladas e protegidas por hash contra alterações silenciosas.</p></article>
+        <article><span>02</span><h3>Recursos encaixáveis</h3><p>Cada apoio possui arquivo, tipo e âncora próprios. Ligar ou remover um não reescreve o capítulo.</p></article>
+        <article><span>03</span><h3>Interatividade sob medida</h3><p>Astro entrega HTML estático; JavaScript e React carregam somente nas ilhas que precisam deles.</p></article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

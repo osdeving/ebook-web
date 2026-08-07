@@ -1,0 +1,4 @@
+interface:
+  display_name: "Criar capítulo de ebook web"
+  short_description: "Cria capítulos modulares com fonte preservada"
+  default_prompt: "Use $criar-capitulo-ebook-web para criar um novo capítulo modular e validar sua camada-fonte."

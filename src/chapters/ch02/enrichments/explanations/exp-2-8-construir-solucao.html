@@ -1,0 +1,11 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Intuição.</strong> Primeiro respeitamos uma congruência e escrevemos todas as suas soluções. Depois ajustamos o parâmetro livre até satisfazer a próxima. O ajuste é feito sem destruir o que já estava correto.</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> De \(x\equiv a\pmod m\), escrevemos \(x=a+my\). Variar \(y\) percorre todas, e somente, as soluções da primeira congruência.</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Substitua na segunda condição \(x\equiv b\pmod n\): \(a+my\equiv b\pmod n\), portanto \(my\equiv b-a\pmod n\).</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> Como \(\gcd(m,n)=1\), o Teorema de Bézout garante que \(m\) tem inverso módulo \(n\). Multiplicar por esse inverso isola \(y\).</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Escolha um representante para \(y\) e volte a \(x=a+my\). Se houver outras congruências, trate essa solução como um novo ponto de partida, agora com passo \(mn\).</div>
+              </div>
+              <div class="quick-check"><strong>Exemplo pequeno.</strong> Resolva \(x\equiv2\pmod3\) e \(x\equiv1\pmod4\). Escreva \(x=2+3y\). Então \(2+3y\equiv1\pmod4\), isto é, \(3y\equiv3\pmod4\). Como \(3^{-1}\equiv3\pmod4\), temos \(y\equiv1\pmod4\), e \(x=2+3=5\).</div>
+              <div class="watch-out"><strong>Cuidado.</strong> Quando multiplicar uma congruência por um inverso, indique o módulo. O número 3 é seu próprio inverso módulo 4, mas isso não o torna inverso em todos os módulos.</div>
+            </div>

@@ -1,0 +1,25 @@
+---
+import type { ChapterMeta, TrustedHtml } from "../framework/types";
+
+interface Props {
+  chapter: ChapterMeta;
+  html?: TrustedHtml;
+}
+
+const { chapter, html } = Astro.props;
+---
+
+<article
+  class="reader"
+  data-reader-content
+  data-origin="source"
+  data-layer="source"
+  data-source-sha256={chapter.sourceHash}
+>
+  {chapter.sourceNote ? (
+    <aside class="source-note" data-origin="editorial" data-layer="system">
+      <strong>Sobre esta edição.</strong> {chapter.sourceNote}
+    </aside>
+  ) : null}
+  {html ? <Fragment set:html={html} /> : <slot />}
+</article>

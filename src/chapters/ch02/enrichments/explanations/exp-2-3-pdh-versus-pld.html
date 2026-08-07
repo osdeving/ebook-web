@@ -1,0 +1,10 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>O PLD pede a causa escondida — o expoente. O PDH pede apenas um efeito específico produzido por duas causas escondidas — a potência \(g^{ab}\). Recuperar uma causa fornece informação suficiente para calcular o efeito, mas calcular esse efeito particular pode não revelar a causa.</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag definition">Definição</span><p><strong>PLD:</strong> de \(g\) e \(A=g^a\), recuperar \(a\). <strong>PDH:</strong> de \(A=g^a\) e \(B=g^b\), calcular \(g^{ab}\).</p></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Suponha disponível um algoritmo para o PLD. Aplicamo-lo a \(A\) e obtemos \(a\); depois calculamos \(B^a=(g^b)^a=g^{ab}\). Assim, um resolvedor do PLD pode ser usado como sub-rotina para resolver o PDH.</p></div>
+              <div class="step"><span class="step-tag theorem">Teorema</span><p>Essa redução prova apenas a desigualdade de dificuldade na direção indicada: o PDH não é mais difícil que o PLD. Ela não prova que ambos tenham a mesma dificuldade.</p></div>
+            </div>
+            <div class="quick-check"><p>Observe que nem sequer precisamos recuperar os dois expoentes. Conhecer \(a\) basta para elevar o valor público \(B\) a \(a\); conhecer \(b\) também bastaria para elevar \(A\) a \(b\).</p></div>
+            <div class="watch-out"><p>Inverter a seta exigiria mostrar como transformar qualquer algoritmo eficiente para o PDH em um algoritmo eficiente para o PLD. O texto afirma corretamente que essa recíproca não é conhecida; não se deve substituir essa lacuna por uma suposta equivalência.</p></div>
+          </div>

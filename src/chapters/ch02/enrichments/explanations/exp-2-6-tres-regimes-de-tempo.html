@@ -1,0 +1,11 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Intuição.</strong> Imagine aumentar a entrada de \(k\) para \(2k\) bits. Um custo polinomial sofre um aumento por um fator fixo; um custo exponencial sofre um aumento que já depende de \(k\). Nos exemplos intermediários de interesse aqui, o custo subexponencial cresce mais que uma potência simples, mas mais devagar que \(e^{ck}\) para toda constante positiva fixa \(c\).</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> Como exemplo de crescimento quadrático, tome \(T(k)=k^2\). Dobrar a entrada dá \(T(2k)=4k^2\): o trabalho quadruplica, qualquer que seja \(k\).</div>
+                <div class="step"><span class="step-tag definition">Definição</span> Como exemplo de crescimento exponencial, tome \(T(k)=2^k\). Dobrar a entrada dá \(T(2k)=2^{2k}=(2^k)^2\): o novo custo é o quadrado do antigo.</div>
+                <div class="step"><span class="step-tag definition">Definição</span> Um exemplo subexponencial é \(T(k)=e^{\sqrt{k}}\). Seu expoente \(\sqrt{k}\) cresce sem limite, mas representa uma fração cada vez menor de \(k\), pois \(\sqrt{k}/k=1/\sqrt{k}\to0\).</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> A expressão \(e^{c\sqrt{k\log k}}\) também é subexponencial porque \(\frac{c\sqrt{k\log k}}{k}=c\sqrt{\frac{\log k}{k}}\to0\).</div>
+              </div>
+              <div class="quick-check"><strong>Comparação pequena.</strong> Ao passar de \(k=20\) para \(k=40\), \(k^2\) vai de 400 para 1.600, apenas quatro vezes mais. Já \(2^k\) vai de cerca de um milhão para cerca de um trilhão, aproximadamente um milhão de vezes mais.</div>
+              <div class="watch-out"><strong>Cuidado.</strong> A condição de ser subexponencial é um limite superior e, tomada sozinha, também é satisfeita por funções polinomiais. Neste capítulo, a palavra é usada para algoritmos intermediários que não são conhecidos como polinomiais. Além disso, todas essas classes são assintóticas: constantes ainda podem dominar entradas pequenas.</div>
+            </div>

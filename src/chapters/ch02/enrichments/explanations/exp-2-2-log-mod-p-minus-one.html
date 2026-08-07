@@ -1,0 +1,10 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>Depois de uma volta completa no relógio das potências, chegamos novamente ao mesmo ponto. Por isso, o expoente não é um endereço absoluto: ele é uma posição cíclica, determinada apenas a menos de voltas completas.</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag theorem">Teorema</span><p>O pequeno teorema de Fermat fornece \(g^{p-1}\equiv1\pmod p\) para \(g\ne0\).</p></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Se \(g^x\equiv h\), adicionar uma volta completa ao expoente não muda a potência:</p><div class="display-math">\[g^{x+(p-1)}=g^xg^{p-1}\equiv h\cdot1\equiv h\pmod p.\]</div><p>Repetindo o argumento, todo \(x+k(p-1)\) descreve a mesma potência.</p></div>
+              <div class="step"><span class="step-tag definition">Definição</span><p>Assim, \(\log_g(h)\) é uma classe em \(\mathbb Z/(p-1)\mathbb Z\). Escolher um representante entre \(0\) e \(p-2\) é apenas uma convenção para escrever essa classe com um único inteiro.</p></div>
+            </div>
+            <div class="quick-check"><p>No exemplo \(p=7\), \(g=3\), temos \(3^2\equiv2\pmod7\). Também \(3^8=3^{2+6}\equiv2\) e \(3^{14}=3^{2+2\cdot6}\equiv2\). Portanto, todos os expoentes \(\ldots,-4,2,8,14,\ldots\) representam o mesmo logaritmo, isto é, \(2\bmod6\).</p></div>
+            <div class="watch-out"><p>O módulo mudou: os valores da potência são reduzidos módulo \(p\), mas os expoentes são identificados módulo \(p-1\). Misturar esses dois módulos é uma fonte frequente de erros.</p></div>
+          </div>

@@ -1,0 +1,10 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>Comece na identidade e aplique repetidamente o mesmo elemento \(a\). A ordem de \(a\) é o número de passos da primeira volta completa, isto é, o primeiro expoente positivo que nos traz de volta à identidade.</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag definition">Definição</span><p>Procuramos o menor \(d>0\) tal que \(a^d=e\). A palavra “menor” é indispensável: expoentes posteriores também podem produzir \(e\), mas não definem a ordem.</p></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Em \(\mathbb F_7^*\), tome \(a=2\). As potências são</p><div class="display-math">\[2^1\equiv2,\qquad2^2\equiv4,\qquad2^3\equiv1\pmod7.\]</div><p>Como \(1\) é a identidade multiplicativa e não apareceu antes, \(\operatorname{ord}(2)=3\).</p></div>
+              <div class="step"><span class="step-tag theorem">Teorema</span><p>A Proposição 2.12 diz que, se outra potência satisfaz \(a^k=e\), então a ordem divide \(k\). De fato, \(2^6=(2^3)^2\equiv1\pmod7\), e \(3\mid6\).</p></div>
+            </div>
+            <div class="quick-check"><p>No mesmo grupo, \(3^1,3^2,\ldots,3^6\) só retornam a \(1\) no sexto passo; portanto, \(\operatorname{ord}(3)=6\). Elementos do mesmo grupo podem ter ordens diferentes.</p></div>
+            <div class="watch-out"><p>Não confunda a <strong>ordem do grupo</strong>, \(|G|\), que conta todos os elementos, com a <strong>ordem do elemento</strong>, que mede seu ciclo. No exemplo, \(|\mathbb F_7^*|=6\), enquanto o elemento \(2\) tem ordem \(3\).</p></div>
+          </div>

@@ -1,0 +1,10 @@
+<div class="explanation-body">
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> Escolhemos \(n\approx\sqrt N\). Cada lista contém aproximadamente \(n\) elementos, então construir as duas custa cerca de \(2n=\mathcal O(\sqrt N)\) multiplicações.</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Se ordenarmos uma lista, a ordenação custa \(\mathcal O(n\log n)\). Depois, cada busca é rápida. Esse é o motivo do fator \(\log N\) no limite apresentado.</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Como \(n\approx\sqrt N\), temos \(n\log n\approx\sqrt N\log(\sqrt N)=\tfrac12\sqrt N\log N\). O fator \(1/2\) é absorvido pela notação de grande O.</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> A prova garante que a colisão não é uma esperança probabilística: a decomposição \(x=qn+r\) força a presença do mesmo elemento nas duas listas.</div>
+              </div>
+              <div class="quick-check"><strong>Escala.</strong> Se \(N\) estiver perto de um milhão, a força bruta pode exigir um milhão de passos. O método de Shanks usa listas com cerca de mil elementos. Ainda há ordenação e armazenamento, mas a diferença é decisiva.</div>
+              <div class="watch-out"><strong>Cuidado.</strong> O limite conta operações do grupo. Em uma implementação real, cada elemento ocupa memória e cada comparação tem custo. Esses fatores não mudam o formato \(\sqrt N\), mas importam na escolha de parâmetros.</div>
+            </div>

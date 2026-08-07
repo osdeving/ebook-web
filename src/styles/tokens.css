@@ -1,0 +1,70 @@
+:root {
+  color-scheme: light;
+  --paper: #f7f4ed;
+  --surface: #fffdf8;
+  --surface-raised: #fff;
+  --ink: #17212b;
+  --muted: #62707c;
+  --line: #dcd9d1;
+  --line-strong: #c6c2b7;
+  --accent: #087f73;
+  --accent-strong: #056158;
+  --accent-soft: #e2f4ef;
+  --coral: #d9574a;
+  --coral-soft: #fceae6;
+  --gold: #a36d10;
+  --gold-soft: #fcf2d9;
+  --violet: #6952a3;
+  --violet-soft: #f0ecfa;
+  --blue: #286a94;
+  --blue-soft: #e7f2f8;
+  --explain: #b55232;
+  --explain-strong: #84371f;
+  --explain-soft: #fff0e7;
+  --shadow: 0 18px 55px rgb(35 45 50 / .09);
+  --radius-sm: .65rem;
+  --radius: 1rem;
+  --reader-scale: 1;
+  --content-width: 50rem;
+  --sidebar-width: 18.5rem;
+  --control-height: 2.75rem;
+  --drawer-width: min(29rem, calc(100vw - 2rem));
+
+  --layer-explanation: var(--explain);
+  --layer-explanation-strong: var(--explain-strong);
+  --layer-explanation-soft: var(--explain-soft);
+  --layer-lab: var(--blue);
+  --layer-lab-soft: var(--blue-soft);
+  --layer-practice: var(--violet);
+  --layer-practice-soft: var(--violet-soft);
+  --layer-history: var(--gold);
+  --layer-history-soft: var(--gold-soft);
+  --layer-reading: var(--accent);
+  --layer-reading-soft: var(--accent-soft);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0e1519;
+  --surface: #131d22;
+  --surface-raised: #18242a;
+  --ink: #e8efed;
+  --muted: #a0afad;
+  --line: #2c3b40;
+  --line-strong: #405158;
+  --accent: #47c9b7;
+  --accent-strong: #75dfd0;
+  --accent-soft: #173d38;
+  --coral: #ff8b7f;
+  --coral-soft: #452826;
+  --gold: #e7b655;
+  --gold-soft: #3d321d;
+  --violet: #b8a1ef;
+  --violet-soft: #302944;
+  --blue: #7fc7ee;
+  --blue-soft: #203846;
+  --explain: #ff9a73;
+  --explain-strong: #ffc0a7;
+  --explain-soft: #3d2922;
+  --shadow: 0 22px 60px rgb(0 0 0 / .28);
+}

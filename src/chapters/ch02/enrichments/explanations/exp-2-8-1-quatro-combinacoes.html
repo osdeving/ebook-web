@@ -1,0 +1,11 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Intuição.</strong> Módulo cada primo ímpar, uma raiz não nula vem com seu negativo. Ao fatorar \(437=19\cdot23\), fazemos uma escolha de sinal no relógio de 19 marcas e outra, independente, no de 23 marcas. Duas escolhas binárias produzem \(2\cdot2=4\) pares.</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> Módulo 19, as opções são \(8\) e \(-8\equiv11\). Módulo 23, são \(6\) e \(-6\equiv17\).</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> Para cada par de resíduos, o teorema chinês dos restos fornece exatamente uma classe módulo \(19\cdot23=437\).</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Os pares \((8,6)\), \((-8,-6)\), \((-8,6)\) e \((8,-6)\) produzem, respectivamente, \(236,201,144\) e \(293\) módulo 437.</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> Cada número obtido é raiz porque seu quadrado tem o mesmo resíduo 197 módulo 19 e módulo 23; pelo TCR, os quadrados são congruentes a 197 módulo 437.</div>
+              </div>
+              <div class="quick-check"><strong>Verificação curta.</strong> \(144\equiv-8\pmod{19}\) e \(144\equiv6\pmod{23}\). Portanto, \(144^2\equiv(-8)^2\equiv7\pmod{19}\) e \(144^2\equiv6^2\equiv13\pmod{23}\), exatamente os resíduos de 197.</div>
+              <div class="watch-out"><strong>Cuidado.</strong> A regra "duas raízes por fator, logo quatro" usa aqui dois primos distintos e raízes não nulas. Potências de primos, o primo 2 e raízes divisíveis pelo primo exigem análise adicional.</div>
+            </div>

@@ -1,0 +1,81 @@
+<section class="section" id="sec-2-3">
+          <h2><span class="section-number">2.3</span> Troca de chaves Diffie–Hellman</h2>
+
+          <p>O algoritmo de troca de chaves Diffie–Hellman resolve o seguinte dilema. Alice e Bob querem compartilhar uma chave secreta para usar numa cifra simétrica, mas o único meio de comunicação entre eles é inseguro. Toda informação que trocam é observada por sua adversária, Eva. Como Alice e Bob podem compartilhar uma chave sem torná-la disponível para Eva? À primeira vista, os dois parecem enfrentar uma tarefa impossível. A percepção brilhante de Diffie e Hellman foi que a dificuldade do problema do logaritmo discreto em \(\mathbb F_p^*\) oferece uma possível solução.</p>
+
+          <p>O primeiro passo é Alice e Bob concordarem quanto a um primo grande \(p\) e a um inteiro não nulo \(g\) módulo \(p\). Eles tornam públicos os valores de \(p\) e \(g\); poderiam, por exemplo, publicá-los em seus sites, de modo que Eva também os conhece. Por razões que serão discutidas mais adiante, é melhor escolher \(g\) de modo que sua ordem em \(\mathbb F_p^*\) seja um primo grande. Veja no Exercício 1.33 uma maneira de encontrar tal \(g\).</p>
+
+          <p>Em seguida, Alice escolhe um inteiro secreto \(a\), que não revela a ninguém, enquanto Bob escolhe um inteiro \(b\), que também mantém em segredo. Alice e Bob usam seus inteiros secretos para calcular</p>
+
+          <div class="display-math annotated-math">\[
+            \underbrace{A\equiv g^a\pmod p}_{\text{Alice calcula isto}}
+            \qquad\text{e}\qquad
+            \underbrace{B\equiv g^b\pmod p}_{\text{Bob calcula isto}}.
+          \]</div>
+
+          <p>Depois, trocam os valores calculados: Alice envia \(A\) a Bob, e Bob envia \(B\) a Alice. Observe que Eva vê os valores de \(A\) e \(B\), pois eles são enviados pelo canal de comunicação inseguro.</p>
+
+          <p>Por fim, Alice e Bob voltam a usar seus inteiros secretos para calcular</p>
+
+          <div class="display-math annotated-math">\[
+            \underbrace{A'\equiv B^a\pmod p}_{\text{Alice calcula isto}}
+            \qquad\text{e}\qquad
+            \underbrace{B'\equiv A^b\pmod p}_{\text{Bob calcula isto}}.
+          \]</div>
+
+          <p>Os valores que calculam, respectivamente \(A'\) e \(B'\), são na verdade iguais, pois</p>
+
+          <div class="display-math">\[A'\equiv B^a\equiv(g^b)^a\equiv g^{ab}\equiv(g^a)^b\equiv A^b\equiv B'\pmod p.\]</div>
+
+          <p>Esse valor comum é a chave trocada entre eles. O algoritmo de troca de chaves Diffie–Hellman está resumido na Tabela 2.2.</p>
+
+          <span id="slot-exp-2-3-dh-step-by-step" data-enrichment-slot="exp-2-3-dh-step-by-step"></span>
+
+          <div class="table-wrap" id="tab-2-2">
+            <table class="protocol-table">
+              <caption><span class="label">Tabela 2.2.</span> Troca de chaves Diffie–Hellman.</caption>
+              <tbody>
+                <tr class="phase"><th colspan="2">Criação dos parâmetros públicos</th></tr>
+                <tr><td colspan="2">Uma parte confiável escolhe e publica um primo grande \(p\) e um inteiro \(g\) de ordem prima grande em \(\mathbb F_p^*\).</td></tr>
+                <tr class="phase"><th colspan="2">Cálculos privados</th></tr>
+                <tr><th>Alice</th><th>Bob</th></tr>
+                <tr><td>Escolhe um inteiro secreto \(a\).<br>Calcula \(A\equiv g^a\pmod p\).</td><td>Escolhe um inteiro secreto \(b\).<br>Calcula \(B\equiv g^b\pmod p\).</td></tr>
+                <tr class="phase"><th colspan="2">Troca pública de valores</th></tr>
+                <tr><td>Alice envia \(A\) a Bob \(\longrightarrow\)</td><td>\(\longleftarrow\) Bob envia \(B\) a Alice</td></tr>
+                <tr class="phase"><th colspan="2">Novos cálculos privados</th></tr>
+                <tr><td>Calcula \(B^a\pmod p\).</td><td>Calcula \(A^b\pmod p\).</td></tr>
+                <tr class="result"><td colspan="2">O valor secreto compartilhado é \[B^a\equiv(g^b)^a\equiv g^{ab}\equiv(g^a)^b\equiv A^b\pmod p.\]</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <aside class="semantic example" id="ex-2-7">
+            <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">2.7</span></div>
+            <p>Alice e Bob concordam em usar o primo \(p=941\) e a raiz primitiva \(g=627\). Alice escolhe a chave secreta \(a=347\) e calcula</p>
+            <div class="display-math">\[A=390\equiv627^{347}\pmod{941}.\]</div>
+            <p>De modo semelhante, Bob escolhe a chave secreta \(b=781\) e calcula</p>
+            <div class="display-math">\[B=691\equiv627^{781}\pmod{941}.\]</div>
+            <p>Alice envia a Bob o número \(390\), e Bob envia a Alice o número \(691\). As duas transmissões ocorrem por um canal inseguro; portanto, tanto \(A=390\) quanto \(B=691\) devem ser considerados de conhecimento público. Os números \(a=347\) e \(b=781\) não são transmitidos e permanecem secretos. Alice e Bob conseguem então calcular o número</p>
+            <div class="display-math">\[470\equiv627^{347\cdot781}\equiv A^b\equiv B^a\pmod{941},\]</div>
+            <p>de modo que \(470\) é o segredo compartilhado entre eles.</p>
+
+            <p>Suponha que Eva observe toda essa troca. Ela poderá reconstruir o segredo compartilhado por Alice e Bob se conseguir resolver qualquer uma das congruências</p>
+            <div class="display-math">\[627^a\equiv390\pmod{941}\qquad\text{ou}\qquad627^b\equiv691\pmod{941},\]</div>
+            <p>pois então conhecerá um dos expoentes secretos. Até onde se sabe, essa é a única maneira de Eva encontrar o valor secreto compartilhado sem a ajuda de Alice ou Bob.</p>
+
+            <p>É claro que nosso exemplo usa números pequenos demais para proporcionar qualquer segurança real a Alice e Bob, pois o computador de Eva leva pouquíssimo tempo para testar todas as potências possíveis de \(627\) módulo \(941\). As orientações atuais sugerem que Alice e Bob escolham um primo \(p\) com aproximadamente \(1000\) bits — isto é, \(p\approx2^{1000}\) — e um elemento \(g\) cuja ordem seja prima e aproximadamente igual a \(p/2\). Nesse caso, Eva enfrentará uma tarefa realmente difícil.</p>
+
+            <p>Em termos gerais, o dilema de Eva é o seguinte. Ela conhece os valores de \(A\) e \(B\), portanto conhece \(g^a\) e \(g^b\). Também conhece \(g\) e \(p\); assim, se conseguir resolver o PLD, poderá encontrar \(a\) e \(b\), e então será fácil calcular o valor secreto compartilhado \(g^{ab}\). Parece que Alice e Bob estão seguros desde que Eva não consiga resolver o PLD, mas isso não é inteiramente correto. Resolver o PLD é, de fato, um modo de encontrar o valor compartilhado, mas não é exatamente o problema que Eva precisa resolver. A segurança da chave compartilhada por Alice e Bob repousa na dificuldade do problema a seguir, que pode ser mais fácil.</p>
+          </aside>
+
+          <span id="slot-exp-2-3-public-values-secret-exponents" data-enrichment-slot="exp-2-3-public-values-secret-exponents"></span>
+
+          <aside class="semantic definition" id="def-pdh">
+            <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+            <p>Sejam \(p\) um número primo e \(g\) um inteiro. O <strong>problema de Diffie–Hellman</strong> (PDH) consiste em calcular \(g^{ab}\bmod p\) a partir dos valores conhecidos \(g^a\bmod p\) e \(g^b\bmod p\).</p>
+          </aside>
+
+          <p>É claro que o PDH não é mais difícil que o PLD. Se Eva consegue resolver o PLD, pode calcular os expoentes secretos \(a\) e \(b\) de Alice e Bob a partir dos valores interceptados \(A=g^a\) e \(B=g^b\), e então é fácil calcular a chave compartilhada \(g^{ab}\). Na verdade, Eva precisa calcular apenas um entre \(a\) e \(b\). A recíproca, porém, é menos clara. Suponha que Eva disponha de um algoritmo que resolva o PDH com eficiência. Ela poderia usá-lo também para resolver o PLD com eficiência? A resposta não é conhecida.</p>
+
+          <span id="slot-exp-2-3-pdh-versus-pld" data-enrichment-slot="exp-2-3-pdh-versus-pld"></span>
+        </section>

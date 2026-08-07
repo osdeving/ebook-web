@@ -1,0 +1,11 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>Um grupo é um ambiente em que podemos combinar elementos, não sair do ambiente, desfazer cada combinação individual e reagrupar uma sequência de operações sem alterar o resultado. Os axiomas são garantias mínimas para que essas manipulações sejam legítimas.</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag definition">Definição</span><p><strong>Fechamento:</strong> ele já está embutido na frase “obter \(a\star b\in G\)”. Se começamos com dois elementos de \(G\), o resultado continua em \(G\).</p></div>
+              <div class="step"><span class="step-tag definition">Definição</span><p><strong>Identidade:</strong> existe um elemento neutro \(e\) que não altera nada: \(e\star a=a\star e=a\). Na adição módulo \(5\), esse elemento é \(0\).</p></div>
+              <div class="step"><span class="step-tag definition">Definição</span><p><strong>Inversos:</strong> cada \(a\) possui um elemento que desfaz seu efeito. Em \(\mathbb Z/5\mathbb Z\) com adição, o inverso de \(2\) é \(3\), pois \(2+3\equiv0\pmod5\).</p></div>
+              <div class="step"><span class="step-tag definition">Definição</span><p><strong>Associatividade:</strong> podemos trocar apenas os parênteses, \((a\star b)\star c=a\star(b\star c)\). Isso torna expressões como \(a\star b\star c\) inequívocas.</p></div>
+            </div>
+            <div class="quick-check"><p>Em \(\mathbb Z/5\mathbb Z\), a conta \(2+4\equiv1\pmod5\) apenas <em>ilustra</em> o fechamento. A justificativa geral é que, dadas quaisquer classes \(\overline a\) e \(\overline b\), a soma \(\overline{a+b}\) continua sendo uma classe módulo \(5\). Além disso, \(\overline0\) é neutra, cada classe \(\overline a\) possui a classe oposta \(\overline{-a}\), e a adição é associativa. Logo, esse conjunto com adição é um grupo.</p></div>
+            <div class="watch-out"><p>Comutatividade é uma propriedade adicional, não um dos três axiomas centrais listados. Além disso, ter uma operação conhecida não basta: \(\mathbb Z\) com multiplicação falha porque, por exemplo, o inverso multiplicativo de \(2\) é \(1/2\), que não pertence a \(\mathbb Z\).</p></div>
+          </div>

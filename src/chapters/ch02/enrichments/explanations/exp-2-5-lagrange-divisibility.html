@@ -1,0 +1,10 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>As potências de \(a\) formam um ciclo com \(d=\operatorname{ord}(a)\) elementos. Em um grupo finito, cópias deslocadas desse ciclo encaixam-se sem sobreposição parcial e repartem o grupo em blocos de mesmo tamanho. Por isso, o tamanho \(d\) do ciclo precisa dividir o total \(|G|\).</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag theorem">Teorema</span><p>O Teorema de Lagrange afirma</p><div class="display-math">\[\operatorname{ord}(a)\mid |G|.\]</div><p>Se \(|G|=n\) e \(\operatorname{ord}(a)=d\), existe um inteiro \(q\) tal que \(n=dq\).</p></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Na demonstração apresentada, multiplicar todos os elementos por \(a\) não perde nem repete elementos: se \(a\star g_i=a\star g_j\), multiplicamos por \(a^{-1}\) e obtemos \(g_i=g_j\). Logo, a lista \(a\star g_1,\ldots,a\star g_n\) é apenas uma reordenação de \(G\).</p></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>No caso comutativo, comparar os produtos das duas listas permite separar \(n\) cópias de \(a\), cancelar o produto dos \(g_i\) e concluir \(a^n=e\). Pela Proposição 2.12, todo expoente que leva \(a\) à identidade é múltiplo de \(d\); portanto, \(d\mid n\).</p></div>
+            </div>
+            <div class="quick-check"><p>O grupo \(\mathbb F_7^*\) tem \(6\) elementos. Assim, a ordem de qualquer elemento só pode ser \(1\), \(2\), \(3\) ou \(6\), os divisores positivos de \(6\). Uma suposta ordem \(4\) ou \(5\) contradiz imediatamente Lagrange.</p></div>
+            <div class="watch-out"><p>Lagrange fornece uma restrição necessária: a ordem de um elemento deve dividir \(|G|\). Em geral, a mera divisibilidade \(d\mid|G|\) não garante, sozinha, que exista um elemento de ordem \(d\). Além disso, embora a prova acima use comutatividade, o teorema é válido para todos os grupos finitos.</p></div>
+          </div>

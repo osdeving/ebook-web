@@ -1,0 +1,38 @@
+---
+import type { ChapterMeta } from "../framework/types";
+import Sidebar from "./Sidebar.astro";
+
+interface Props {
+  chapter: ChapterMeta;
+  sidebarNote?: string;
+}
+
+const { chapter, sidebarNote } = Astro.props;
+---
+
+<a class="skip-link" href="#reader-main">Pular para o conteúdo</a>
+<div class="progress-track" aria-hidden="true"><span class="progress-bar" data-reader-progress></span></div>
+<div class="app-shell" data-reader-shell data-chapter-id={chapter.slug} data-source-hash={chapter.sourceHash}>
+  <Sidebar chapter={chapter} note={sidebarNote} />
+  <main class="main" id="reader-main" data-reader-main>
+    <div class="mobile-bar">
+      <button
+        class="icon-button"
+        type="button"
+        aria-controls={`reader-sidebar-${chapter.slug}`}
+        aria-expanded="false"
+        aria-label="Abrir sumário"
+        data-reader-menu
+      >☰</button>
+      <span class="mobile-title">{chapter.shortTitle ?? chapter.title}</span>
+      <button class="icon-button" type="button" aria-label="Alternar tema" data-reader-theme>◐</button>
+    </div>
+    <slot />
+  </main>
+</div>
+
+<button class="menu-backdrop" type="button" aria-label="Fechar sumário" hidden data-reader-menu-backdrop></button>
+<button class="icon-button back-top" type="button" aria-label="Voltar ao topo" title="Voltar ao topo" data-reader-back-top>↑</button>
+<button class="icon-button focus-exit" type="button" aria-label="Sair do modo de foco" title="Sair do modo de foco" data-reader-focus-exit>Sair do foco</button>
+<p class="enrichment-live enrichment-visually-hidden" aria-live="polite" aria-atomic="true" data-reader-live></p>
+<slot name="runtime" />

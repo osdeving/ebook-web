@@ -1,0 +1,205 @@
+<section class="chapter-section" id="sec-2-9">
+          <div class="section-heading">
+            <span class="section-number">2.9</span>
+            <h2>O algoritmo de Pohlig–Hellman</h2>
+          </div>
+
+          <p class="lead">Além de ser um teorema e um algoritmo, sugerimos ao leitor que o teorema chinês dos restos é também uma maneira de pensar.</p>
+
+          <p>Se</p>
+          <div class="equation">\[m=m_1m_2\cdots m_t\]</div>
+          <p>é um produto de inteiros primos entre si dois a dois, o teorema chinês dos restos afirma que resolver uma equação módulo \(m\) equivale, em grande medida, a resolvê-la módulo \(m_i\) para cada \(i\), pois ele nos ensina a reunir essas soluções para obter uma solução módulo \(m\).</p>
+
+          <p>No problema do logaritmo discreto, precisamos resolver a equação</p>
+          <div class="equation">\[g^x\equiv h\pmod p.\]</div>
+          <p>Nesse caso, o módulo \(p\) é primo, o que parece tornar irrelevante o teorema chinês dos restos. Lembre-se, porém, de que a solução \(x\) só é determinada módulo \(p-1\), de modo que podemos vê-la como um elemento de \(\mathbb Z/(p-1)\mathbb Z\). Isso sugere que a fatoração de \(p-1\) em primos pode influenciar a dificuldade do PLD em \(\mathbb F_p^*\). Mais geralmente, se \(G\) é um grupo qualquer e \(g\in G\) tem ordem \(N\), as soluções de \(g^x=h\) em \(G\) só são determinadas módulo \(N\). Portanto, parece razoável que a fatoração de \(N\) em primos seja relevante. Essa ideia está no centro do algoritmo de Pohlig–Hellman.</p>
+
+          <span id="slot-exp-2-9-ordem-lisa" data-enrichment-slot="exp-2-9-ordem-lisa"></span>
+
+          <p>Assim como na Seção 2.7, enunciaremos e demonstraremos os resultados desta seção para um grupo arbitrário \(G\). Se você se sentir mais à vontade trabalhando com inteiros módulo \(p\), basta substituir \(G\) por \(\mathbb F_p^*\).</p>
+
+          <div class="semantic theorem" id="teorema-2-31">
+            <div class="semantic-header">
+              <span class="semantic-label">Teorema</span>
+              <span class="semantic-title">2.31 — Algoritmo de Pohlig–Hellman</span>
+            </div>
+            <p>Seja \(G\) um grupo e suponha que dispomos de um algoritmo capaz de resolver o problema do logaritmo discreto em \(G\) para qualquer elemento cuja ordem seja uma potência de primo. Mais concretamente: se \(g\in G\) tem ordem \(q^e\), suponha que possamos resolver \(g^x=h\) em \(\mathcal O(S_{q^e})\) passos. Por exemplo, a Proposição 2.21 diz que podemos tomar \(S_{q^e}=q^{e/2}\). Veja a Observação 2.32 para uma discussão adicional.</p>
+            <p>Agora seja \(g\in G\) um elemento de ordem \(N\), e suponha que \(N\) se fatore como um produto de potências de primos:</p>
+            <div class="equation">\[N=q_1^{e_1}q_2^{e_2}\cdots q_t^{e_t}.\]</div>
+            <p>Então o problema do logaritmo discreto \(g^x=h\) pode ser resolvido em</p>
+            <div class="equation" id="eq-2-13"><span class="equation-number">(2.13)</span>\[\mathcal O\!\left(\sum_{i=1}^{t}S_{q_i^{e_i}}+\log N\right)\text{ passos}\]</div>
+            <p>pelo procedimento a seguir:</p>
+            <ol class="steps">
+              <li>Para cada \(1\le i\le t\), defina
+                <div class="equation">\[g_i=g^{N/q_i^{e_i}}\qquad\text{e}\qquad h_i=h^{N/q_i^{e_i}}.\]</div>
+                <p>Observe que \(g_i\) tem ordem \(q_i^{e_i}\), que é uma potência de primo. Use, portanto, o algoritmo dado para resolver o problema do logaritmo discreto</p>
+                <div class="equation" id="eq-2-14"><span class="equation-number">(2.14)</span>\[g_i^y=h_i.\]</div>
+                <p>Seja \(y=y_i\) uma solução de (2.14).</p>
+              </li>
+              <li>Use o teorema chinês dos restos (Teorema 2.24) para resolver
+                <div class="equation" id="eq-2-15"><span class="equation-number">(2.15)</span>\[x\equiv y_1\pmod{q_1^{e_1}},\quad x\equiv y_2\pmod{q_2^{e_2}},\quad\ldots,\quad x\equiv y_t\pmod{q_t^{e_t}}.\]</div>
+              </li>
+            </ol>
+          </div>
+
+          <span id="slot-exp-2-9-projecoes-prime-power" data-enrichment-slot="exp-2-9-projecoes-prime-power"></span>
+
+          <div class="semantic proof">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>O tempo de execução é imediato: o passo 1 exige \(\mathcal O(\sum_i S_{q_i^{e_i}})\) passos, enquanto o passo 2, por meio do teorema chinês dos restos, exige \(\mathcal O(\log N)\) passos. Na prática, o cálculo do teorema chinês dos restos costuma ser desprezível em comparação com os cálculos de logaritmos discretos.</p>
+            <p>Resta mostrar que os passos 1 e 2 fornecem uma solução para \(g^x=h\). Seja \(x\) uma solução do sistema de congruências (2.15). Para cada \(i\), podemos escrever</p>
+            <div class="equation" id="eq-2-16"><span class="equation-number">(2.16)</span>\[x=y_i+q_i^{e_i}z_i\qquad\text{para algum }z_i.\]</div>
+            <p>Isso nos permite calcular</p>
+            <div class="equation">\[\begin{aligned}
+              (g^x)^{N/q_i^{e_i}}
+                &=\left(g^{y_i+q_i^{e_i}z_i}\right)^{N/q_i^{e_i}} &&\text{por (2.16)},\\
+                &=\left(g^{N/q_i^{e_i}}\right)^{y_i}g^{Nz_i},\\
+                &=\left(g^{N/q_i^{e_i}}\right)^{y_i} &&\text{pois }g^N\text{ é o elemento identidade},\\
+                &=g_i^{y_i} &&\text{pela definição de }g_i,\\
+                &=h_i &&\text{por (2.14)},\\
+                &=h^{N/q_i^{e_i}} &&\text{pela definição de }h_i.
+            \end{aligned}\]</div>
+            <p>Em termos de logaritmos discretos na base \(g\), podemos reescrever essa igualdade como</p>
+            <div class="equation" id="eq-2-17"><span class="equation-number">(2.17)</span>\[\frac{N}{q_i^{e_i}}\,x\equiv\frac{N}{q_i^{e_i}}\,\log_g(h)\pmod N,\]</div>
+            <p>lembrando que o logaritmo discreto na base \(g\) só é definido módulo \(N\), pois \(g^N\) é o elemento identidade.</p>
+            <p>Agora observamos que os números</p>
+            <div class="equation">\[\frac{N}{q_1^{e_1}},\quad\frac{N}{q_2^{e_2}},\quad\ldots,\quad\frac{N}{q_t^{e_t}}\]</div>
+            <p>não têm fator comum não trivial, isto é, seu máximo divisor comum é \(1\). Aplicações repetidas do teorema de Euclides estendido (Teorema 1.11; veja também o Exercício 1.13) garantem que podemos encontrar inteiros \(c_1,c_2,\ldots,c_t\) tais que</p>
+            <div class="equation" id="eq-2-18"><span class="equation-number">(2.18)</span>\[\frac{N}{q_1^{e_1}}c_1+\frac{N}{q_2^{e_2}}c_2+\cdots+\frac{N}{q_t^{e_t}}c_t=1.\]</div>
+            <p>Multiplique agora os dois lados de (2.17) por \(c_i\) e some sobre \(i=1,2,\ldots,t\). Obtemos</p>
+            <div class="equation">\[\sum_{i=1}^{t}\frac{N}{q_i^{e_i}}c_i x\equiv\sum_{i=1}^{t}\frac{N}{q_i^{e_i}}c_i\log_g(h)\pmod N,\]</div>
+            <p>e então (2.18) nos diz que</p>
+            <div class="equation">\[x\equiv\log_g(h)\pmod N.\]</div>
+            <p>Isso conclui a demonstração de que \(x\) satisfaz \(g^x=h\). <span class="proof-end">□</span></p>
+          </div>
+
+          <div class="semantic remark" id="obs-2-32">
+            <div class="semantic-header">
+              <span class="semantic-label">Observação</span>
+              <span class="semantic-title">2.32</span>
+            </div>
+            <p>O algoritmo de Pohlig–Hellman reduz, em grande medida, o problema do logaritmo discreto para elementos de ordem arbitrária ao problema do logaritmo discreto para elementos cuja ordem é uma potência de primo. Um refinamento adicional, que discutiremos mais adiante nesta seção, reduz essencialmente o problema a elementos de ordem prima. Mais precisamente, na notação do Teorema 2.31, o tempo de execução \(S_{q^e}\) para elementos de ordem \(q^e\) pode ser reduzido a \(\mathcal O(eS_q)\). Esse é o conteúdo da Proposição 2.33.</p>
+          </div>
+
+          <p>O algoritmo de Pohlig–Hellman mostra, portanto, que o problema do logaritmo discreto em um grupo \(G\) não é seguro quando a ordem do grupo é um produto de potências de primos pequenos. Mais geralmente, \(g^x=h\) é fácil de resolver quando a ordem de \(g\) é um produto de potências de primos pequenos. Isso se aplica, em particular, ao PLD em \(\mathbb F_p^*\) quando \(p-1\) se fatora em potências de primos pequenos. Como \(p-1\) é sempre par, o melhor que podemos fazer é tomar \(p=2q+1\), com \(q\) primo, e usar um elemento \(g\) de ordem \(q\). O tempo de execução do algoritmo de colisão da Proposição 2.21 será então \(\mathcal O(\sqrt q)=\mathcal O(\sqrt p)\). O método de cálculo de índices descrito na Seção 3.8, porém, tem tempo de execução subexponencial. Assim, mesmo que \(p=2q+1\), o primo \(q\) precisa ser bastante grande.</p>
+
+          <p>Explicaremos agora o algoritmo que reduz o problema do logaritmo discreto para elementos de ordem igual a uma potência de primo ao PLD para elementos de ordem prima. A ideia é simples: se \(g\) tem ordem \(q^e\), então \(g^{q^{e-1}}\) tem ordem \(q\). O truque é repetir esse processo várias vezes e depois reunir as informações na resposta final.</p>
+
+          <div class="semantic proposition" id="prop-2-33">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.33</span>
+            </div>
+            <p>Seja \(G\) um grupo. Suponha que \(q\) seja primo e que conheçamos um algoritmo que exija \(S_q\) passos para resolver o problema do logaritmo discreto \(g^x=h\) em \(G\) sempre que \(g\) tiver ordem \(q\). Seja agora \(g\in G\) um elemento de ordem \(q^e\), com \(e\ge1\). Então podemos resolver o problema do logaritmo discreto</p>
+            <div class="equation" id="eq-2-19"><span class="equation-number">(2.19)</span>\[g^x=h\qquad\text{em }\mathcal O(eS_q)\text{ passos}.\]</div>
+          </div>
+
+          <div class="semantic remark" id="obs-2-34">
+            <div class="semantic-header">
+              <span class="semantic-label">Observação</span>
+              <span class="semantic-title">2.34</span>
+            </div>
+            <p>A Proposição 2.21 diz que podemos tomar \(S_q=\mathcal O(\sqrt q)\). Portanto, a Proposição 2.33 afirma que podemos resolver o PLD (2.19) em \(\mathcal O(e\sqrt q)\) passos. Observe que, se aplicarmos diretamente a Proposição 2.21 ao PLD (2.19), o tempo de execução será \(\mathcal O(q^{e/2})\), muito mais lento quando \(e\ge2\).</p>
+          </div>
+
+          <div class="semantic proof">
+            <div class="semantic-header">
+              <span class="semantic-label">Demonstração</span>
+              <span class="semantic-title">Proposição 2.33</span>
+            </div>
+            <p>A ideia central é escrever o expoente desconhecido \(x\) na forma</p>
+            <div class="equation" id="eq-2-20"><span class="equation-number">(2.20)</span>\[x=x_0+x_1q+x_2q^2+\cdots+x_{e-1}q^{e-1},\qquad0\le x_i&lt;q,\]</div>
+            <p>e determinar sucessivamente \(x_0,x_1,x_2,\ldots\). Começamos observando que \(g^{q^{e-1}}\) tem ordem \(q\). Isso nos permite calcular</p>
+            <div class="equation">\[\begin{aligned}
+              h^{q^{e-1}}
+                &=(g^x)^{q^{e-1}} &&\text{elevando os dois lados de (2.19) a }q^{e-1},\\
+                &=\left(g^{x_0+x_1q+x_2q^2+\cdots+x_{e-1}q^{e-1}}\right)^{q^{e-1}} &&\text{por (2.20)},\\
+                &=g^{x_0q^{e-1}}\left(g^{q^e}\right)^{x_1+x_2q+\cdots+x_{e-1}q^{e-2}},\\
+                &=\left(g^{q^{e-1}}\right)^{x_0} &&\text{pois }g^{q^e}=1.
+            \end{aligned}\]</div>
+            <p>Como \(g^{q^{e-1}}\) é um elemento de ordem \(q\) em \(G\), a equação</p>
+            <div class="equation">\[\left(g^{q^{e-1}}\right)^{x_0}=h^{q^{e-1}}\]</div>
+            <p>é um problema do logaritmo discreto cuja base tem ordem \(q\). Por hipótese, podemos resolvê-lo em \(S_q\) passos. Feito isso, conhecemos um expoente \(x_0\) tal que</p>
+            <div class="equation">\[g^{x_0q^{e-1}}=h^{q^{e-1}}\qquad\text{em }G.\]</div>
+            <p>Fazemos em seguida um cálculo semelhante, desta vez elevando os dois lados de (2.19) à potência \(q^{e-2}\):</p>
+            <div class="equation">\[\begin{aligned}
+              h^{q^{e-2}}
+                &=(g^x)^{q^{e-2}}\\
+                &=\left(g^{x_0+x_1q+x_2q^2+\cdots+x_{e-1}q^{e-1}}\right)^{q^{e-2}}\\
+                &=g^{x_0q^{e-2}}g^{x_1q^{e-1}}\left(g^{q^e}\right)^{x_2+x_3q+\cdots+x_{e-1}q^{e-3}}\\
+                &=g^{x_0q^{e-2}}g^{x_1q^{e-1}}.
+            \end{aligned}\]</div>
+            <p>Tenha em mente que já determinamos \(x_0\) e que \(g^{q^{e-1}}\) tem ordem \(q\) em \(G\). Para encontrar \(x_1\), precisamos resolver o problema do logaritmo discreto</p>
+            <div class="equation">\[\left(g^{q^{e-1}}\right)^{x_1}=\left(hg^{-x_0}\right)^{q^{e-2}}\]</div>
+            <p>para a incógnita \(x_1\). Aplicando novamente o algoritmo dado, resolvemos esse problema em \(S_q\) passos. Assim, em \(\mathcal O(2S_q)\) passos, determinamos \(x_0\) e \(x_1\) de modo que</p>
+            <div class="equation">\[g^{(x_0+x_1q)q^{e-2}}=h^{q^{e-2}}\qquad\text{em }G.\]</div>
+            <p>De maneira semelhante, encontramos \(x_2\) resolvendo</p>
+            <div class="equation">\[\left(g^{q^{e-1}}\right)^{x_2}=\left(hg^{-x_0-x_1q}\right)^{q^{e-3}},\]</div>
+            <p>e, em geral, depois de determinarmos \(x_0,\ldots,x_{i-1}\), obtemos \(x_i\) resolvendo</p>
+            <div class="equation">\[\left(g^{q^{e-1}}\right)^{x_i}=\left(hg^{-x_0-x_1q-\cdots-x_{i-1}q^{i-1}}\right)^{q^{e-i-1}}\qquad\text{em }G.\]</div>
+            <p>Cada uma dessas equações é um problema do logaritmo discreto cuja base tem ordem \(q\), portanto cada uma pode ser resolvida em \(S_q\) passos. Depois de \(\mathcal O(eS_q)\) passos, obtemos um expoente \(x=x_0+x_1q+\cdots+x_{e-1}q^{e-1}\) que satisfaz \(g^x=h\), resolvendo assim o problema original. <span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-9-digitos-base-q" data-enrichment-slot="exp-2-9-digitos-base-q"></span>
+
+          <div class="semantic example" id="exemplo-2-35">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.35</span>
+            </div>
+            <p>Faremos um exemplo para esclarecer o algoritmo descrito na demonstração da Proposição 2.33. Vamos resolver</p>
+            <div class="equation" id="eq-2-21"><span class="equation-number">(2.21)</span>\[5448^x=6909\qquad\text{em }\mathbb F_{11251}^*.\]</div>
+            <p>O primo \(p=11251\) tem a propriedade de que \(p-1\) é divisível por \(5^4\), e é fácil verificar que \(5448\) tem ordem exatamente \(5^4\) em \(\mathbb F_{11251}\). O primeiro passo é resolver</p>
+            <div class="equation">\[\left(5448^{5^3}\right)^{x_0}=6909^{5^3},\]</div>
+            <p>o que se reduz a \(11089^{x_0}=11089\). Essa é fácil: a resposta é \(x_0=1\), portanto nosso valor inicial de \(x\) é \(x=1\).</p>
+            <p>O passo seguinte é resolver</p>
+            <div class="equation">\[\left(5448^{5^3}\right)^{x_1}=\left(6909\cdot5448^{-x_0}\right)^{5^2}=\left(6909\cdot5448^{-1}\right)^{5^2},\]</div>
+            <p>que se reduz a \(11089^{x_1}=3742\). Observe que precisamos testar apenas os valores de \(x_1\) entre \(1\) e \(4\). Se \(q\) fosse grande, valeria a pena usar um algoritmo mais rápido, como o da Proposição 2.21, para resolver esse problema do logaritmo discreto. A solução é \(x_1=2\), portanto o valor de \(x\) passa a ser \(x=11=1+2\cdot5\).</p>
+            <p>Prosseguindo, resolvemos</p>
+            <div class="equation">\[\left(5448^{5^3}\right)^{x_2}=\left(6909\cdot5448^{-x_0-x_1\cdot5}\right)^5=\left(6909\cdot5448^{-11}\right)^5,\]</div>
+            <p>que se reduz a \(11089^{x_2}=1\). Logo, \(x_2=0\), e o valor de \(x\) permanece \(x=11\).</p>
+            <p>O último passo é resolver</p>
+            <div class="equation">\[\left(5448^{5^3}\right)^{x_3}=6909\cdot5448^{-x_0-x_1\cdot5-x_2\cdot5^2}=6909\cdot5448^{-11}.\]</div>
+            <p>Isso se reduz a \(11089^{x_3}=6320\), cuja solução é \(x_3=4\). Portanto, nossa resposta final é</p>
+            <div class="equation">\[x=511=1+2\cdot5+4\cdot5^3.\]</div>
+            <p>Como verificação, calculamos</p>
+            <div class="equation">\[5448^{511}=6909\qquad\text{em }\mathbb F_{11251}.\quad\checkmark\]</div>
+            <p>O algoritmo de Pohlig–Hellman (Teorema 2.31) usa o teorema chinês dos restos (Teorema 2.24) para reunir as soluções correspondentes às potências de primos obtidas pela Proposição 2.33. O exemplo seguinte ilustra o algoritmo de Pohlig–Hellman completo.</p>
+          </div>
+
+          <div class="semantic example" id="exemplo-2-36">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.36</span>
+            </div>
+            <p>Considere o problema do logaritmo discreto</p>
+            <div class="equation" id="eq-2-22"><span class="equation-number">(2.22)</span>\[23^x=9689\qquad\text{em }\mathbb F_{11251}.\]</div>
+            <p>A base \(23\) é uma raiz primitiva em \(\mathbb F_{11251}\), isto é, tem ordem \(11250\). Como \(11250=2\cdot3^2\cdot5^4\) é um produto de primos pequenos, o algoritmo de Pohlig–Hellman deve funcionar bem. Na notação do Teorema 2.31, tomamos</p>
+            <div class="equation">\[p=11251,\qquad g=23,\qquad h=9689,\qquad N=p-1=2\cdot3^2\cdot5^4.\]</div>
+            <p>O primeiro passo consiste em resolver três problemas auxiliares de logaritmo discreto, como mostra a tabela.</p>
+            <div class="table-wrap">
+              <table>
+                <caption>Problemas auxiliares do algoritmo de Pohlig–Hellman.</caption>
+                <thead>
+                  <tr>
+                    <th class="numeric">\(q\)</th>
+                    <th class="numeric">\(e\)</th>
+                    <th class="numeric">\(g^{(p-1)/q^e}\)</th>
+                    <th class="numeric">\(h^{(p-1)/q^e}\)</th>
+                    <th>Resolver \(\bigl(g^{(p-1)/q^e}\bigr)^x=h^{(p-1)/q^e}\) para \(x\)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="numeric">2</td><td class="numeric">1</td><td class="numeric">11250</td><td class="numeric">11250</td><td class="numeric">1</td></tr>
+                  <tr><td class="numeric">3</td><td class="numeric">2</td><td class="numeric">5029</td><td class="numeric">10724</td><td class="numeric">4</td></tr>
+                  <tr><td class="numeric">5</td><td class="numeric">4</td><td class="numeric">5448</td><td class="numeric">6909</td><td class="numeric">511</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>O primeiro problema é trivial; o terceiro é justamente o problema resolvido no Exemplo 2.35. De todo modo, cada problema desta etapa pode ser resolvido como foi descrito na demonstração da Proposição 2.33.</p>
+            <p>O segundo passo é usar o teorema chinês dos restos para resolver as congruências simultâneas</p>
+            <div class="equation">\[x\equiv1\pmod2,\qquad x\equiv4\pmod{3^2},\qquad x\equiv511\pmod{5^4}.\]</div>
+            <p>A menor solução é \(x=4261\). Verificamos a resposta calculando</p>
+            <div class="equation">\[23^{4261}=9689\qquad\text{em }\mathbb F_{11251}.\quad\checkmark\]</div>
+          </div>
+        </section>

@@ -1,0 +1,10 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>Pense nas potências de \(g\) como passos em um relógio multiplicativo. A cada passo, multiplicamos pelo mesmo \(g\) e reduzimos módulo \(p\). Uma raiz primitiva dá uma volta completa: visita cada posição não nula exatamente uma vez antes de retornar a \(1\).</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag theorem">Teorema</span><p>Quando \(p\) é primo, existe pelo menos um elemento primitivo em \(\mathbb F_p^*\). Como esse conjunto tem \(p-1\) elementos, uma raiz primitiva tem ordem \(p-1\).</p></div>
+              <div class="step"><span class="step-tag definition">Definição</span><p>Dizer que \(g\) é uma raiz primitiva significa que as potências \(g^0,g^1,\ldots,g^{p-2}\) produzem todos os elementos de \(\mathbb F_p^*\), sem repetição nessa faixa.</p></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Com \(p=7\) e \(g=3\), reduzimos a cada multiplicação:</p><div class="display-math">\[3^0\equiv1,\quad3^1\equiv3,\quad3^2\equiv2,\quad3^3\equiv6,\quad3^4\equiv4,\quad3^5\equiv5\pmod7.\]</div><p>O passo seguinte retorna ao início: \(3^6\equiv1\pmod7\). A lista \(1,3,2,6,4,5\) contém exatamente os seis resíduos não nulos.</p></div>
+            </div>
+            <div class="quick-check"><p>Se escolhêssemos \(g=2\) no mesmo módulo, obteríamos \(2,4,1,2,\ldots\): o ciclo tem apenas três posições. Logo, \(2\) não é raiz primitiva módulo \(7\), embora seja um elemento perfeitamente válido de \(\mathbb F_7^*\).</p></div>
+            <div class="watch-out"><p>Em \(\mathbb F_p\), escrever \(3^4=4\) é uma igualdade entre classes de resíduos. Ao trabalhar com inteiros, a mesma ideia aparece como a congruência \(3^4\equiv4\pmod7\). Não se está afirmando que \(81=4\) nos inteiros.</p></div>
+          </div>

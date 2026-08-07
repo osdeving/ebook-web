@@ -1,0 +1,45 @@
+---
+import type { ChapterMeta } from "../framework/types";
+
+interface Props {
+  chapter: ChapterMeta;
+  note?: string;
+}
+
+const { chapter, note = "Edição web independente com texto-fonte e recursos opcionais em camadas." } = Astro.props;
+---
+
+<aside
+  class="sidebar"
+  id={`reader-sidebar-${chapter.slug}`}
+  aria-label="Navegação do capítulo"
+  data-reader-sidebar
+>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">{chapter.number}</span>
+    <span class="brand-copy">
+      <small>Capítulo {chapter.number}</small>
+      <strong>{chapter.shortTitle ?? chapter.title}</strong>
+    </span>
+  </div>
+
+  <div class="sidebar-tools" aria-label="Ferramentas de leitura">
+    <button class="icon-button" type="button" title="Alternar tema" aria-label="Alternar tema" data-reader-theme>◐</button>
+    <button class="icon-button" type="button" title="Diminuir texto" aria-label="Diminuir tamanho do texto" data-reader-font-down>A−</button>
+    <button class="icon-button" type="button" title="Aumentar texto" aria-label="Aumentar tamanho do texto" data-reader-font-up>A+</button>
+    <button class="icon-button" type="button" title="Modo de foco" aria-label="Alternar modo de foco" aria-pressed="false" data-reader-focus>◫</button>
+  </div>
+
+  <p class="toc-title">Neste capítulo</p>
+  <ol class="toc" data-reader-toc>
+    {chapter.toc.map((item) => (
+      <li class:list={{ sub: (item.depth ?? 1) > 1 }}>
+        <a href={`#${item.id}`}>
+          <span class="toc-num">{item.number}</span>
+          <span>{item.title}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+  <p class="sidebar-note">{note}</p>
+</aside>

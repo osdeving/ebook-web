@@ -1,0 +1,10 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Intuição.</strong> Comece em \(g\) e continue multiplicando sempre pelo mesmo \(g\). É como caminhar por posições de um relógio: como o grupo é finito, em algum momento voltamos à identidade. Se \(h\) pertence a esse ciclo, passaremos por ele.</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> Dizer que \(g\) tem ordem \(N\) significa que \(g^N=e\) e que \(N\) é o primeiro expoente positivo com essa propriedade. Portanto, \(e,g,g^2,\ldots,g^{N-1}\) formam um ciclo completo sem repetição.</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Não recalculamos cada potência do zero. Guardamos o valor atual \(v\), começando com \(v=e\), e repetimos \(v\leftarrow v\cdot g\). Depois de \(j\) atualizações, \(v=g^j\).</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> A Proposição 2.19 usa a ordem de \(g\) para garantir o limite: se \(h=g^x\), algum representante de \(x\) está entre \(0\) e \(N-1\), então serão necessários no máximo \(N\) passos.</div>
+              </div>
+              <div class="quick-check"><strong>Exemplo módulo 11.</strong> As potências de 2 começam \(1,2,4,8,5,10,9,7,\ldots\). Para resolver \(2^x\equiv7\pmod{11}\), avançamos até encontrar 7 e lemos \(x=7\).</div>
+              <div class="watch-out"><strong>Cuidado.</strong> Armazenamento \(\mathcal O(1)\) não significa tempo pequeno. Só guardamos o valor atual e o alvo, mas ainda podemos precisar percorrer praticamente os \(N\) elementos.</div>
+            </div>

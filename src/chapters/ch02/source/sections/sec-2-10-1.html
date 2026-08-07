@@ -1,0 +1,110 @@
+<section class="chapter-section" id="sec-2-10-1">
+          <div class="section-heading">
+            <span class="section-number">2.10.1</span>
+            <h2>Um panorama da teoria dos anéis</h2>
+          </div>
+
+          <p>Você já conhece muitos anéis, como o anel dos números inteiros com as operações de adição e multiplicação. Abstraímos as propriedades fundamentais dessas operações e as usamos para formular a definição fundamental a seguir.</p>
+
+          <div class="semantic definition" id="def-anel">
+            <div class="semantic-header">
+              <span class="semantic-label">Definição</span>
+              <span class="semantic-title">Anel</span>
+            </div>
+            <p>Um <strong>anel</strong> é um conjunto \(R\) munido de duas operações, que denotamos por \(+\) e \(\star\),<sup><a href="#fn-2-10-10" id="fnref-2-10-10">10</a></sup> com as propriedades a seguir.</p>
+
+            <h4>Propriedades de \(+\)</h4>
+            <div class="law-list">
+              <div class="law">
+                <div class="law-name">Lei da identidade</div>
+                <div>Existe uma identidade aditiva \(0\in R\) tal que \(0+a=a+0=a\) para todo \(a\in R\).</div>
+              </div>
+              <div class="law">
+                <div class="law-name">Lei dos inversos</div>
+                <div>Para todo elemento \(a\in R\), existe um inverso aditivo \(b\in R\) tal que \(a+b=b+a=0\).</div>
+              </div>
+              <div class="law">
+                <div class="law-name">Lei associativa</div>
+                <div>\(a+(b+c)=(a+b)+c\) para todos \(a,b,c\in R\).</div>
+              </div>
+              <div class="law">
+                <div class="law-name">Lei comutativa</div>
+                <div>\(a+b=b+a\) para todos \(a,b\in R\).</div>
+              </div>
+            </div>
+            <p>Em resumo, se considerarmos \(R\) somente com a operação \(+\), teremos um grupo comutativo cujo elemento identidade (aditivo) é \(0\).</p>
+
+            <h4>Propriedades de \(\star\)</h4>
+            <div class="law-list">
+              <div class="law">
+                <div class="law-name">Lei da identidade</div>
+                <div>Existe uma identidade multiplicativa \(1\in R\) tal que \(1\star a=a\star1=a\) para todo \(a\in R\).</div>
+              </div>
+              <div class="law">
+                <div class="law-name">Lei associativa</div>
+                <div>\(a\star(b\star c)=(a\star b)\star c\) para todos \(a,b,c\in R\).</div>
+              </div>
+              <div class="law">
+                <div class="law-name">Lei comutativa</div>
+                <div>\(a\star b=b\star a\) para todos \(a,b\in R\).</div>
+              </div>
+            </div>
+            <p>Assim, se considerarmos \(R\) somente com a operação \(\star\), teremos quase um grupo comutativo cujo elemento identidade (multiplicativo) é \(1\), exceto pelo fato de que não se exige que os elementos possuam inversos multiplicativos.</p>
+
+            <h4>Propriedade que liga \(+\) e \(\star\)</h4>
+            <div class="law-list">
+              <div class="law">
+                <div class="law-name">Lei distributiva</div>
+                <div>\(a\star(b+c)=a\star b+a\star c\) para todos \(a,b,c\in R\).</div>
+              </div>
+            </div>
+          </div>
+
+          <span id="slot-exp-2-10-1-duas-operacoes" data-enrichment-slot="exp-2-10-1-duas-operacoes"></span>
+
+          <p class="footnote" id="fn-2-10-10"><sup>10</sup> A adição num anel é quase sempre denotada por \(+\), mas há muitas notações diferentes para a multiplicação. Neste livro, usamos \(a\star b\), \(a\cdot b\) ou simplesmente \(ab\), conforme o contexto. <a href="#fnref-2-10-10" aria-label="Voltar à chamada da nota 10">↩</a></p>
+
+          <div class="semantic remark" id="rem-2-37">
+            <div class="semantic-header">
+              <span class="semantic-label">Observação</span>
+              <span class="semantic-title">2.37</span>
+            </div>
+            <p>De modo mais geral, às vezes se trabalha com anéis que não contêm uma identidade multiplicativa e também com anéis nos quais \(\star\) não é comutativa, isto é, em que \(a\star b\) pode não ser igual a \(b\star a\). Portanto, para falar formalmente, nossos anéis são, na verdade, anéis comutativos com identidade (multiplicativa). Contudo, todos os anéis que usaremos serão desse tipo, por isso os chamaremos simplesmente de anéis.</p>
+          </div>
+
+          <p>Todo elemento de um anel possui inverso aditivo, mas pode haver muitos elementos não nulos que não possuem inverso multiplicativo. Por exemplo, no anel dos inteiros \(\mathbb Z\), os únicos elementos que possuem inversos multiplicativos são \(1\) e \(-1\).</p>
+
+          <div class="semantic definition" id="def-corpo">
+            <div class="semantic-header">
+              <span class="semantic-label">Definição</span>
+              <span class="semantic-title">Corpo</span>
+            </div>
+            <p>Um anel (comutativo) no qual todo elemento não nulo possui inverso multiplicativo é chamado de <strong>corpo</strong>.</p>
+          </div>
+
+          <span id="slot-exp-2-10-1-teste-do-corpo" data-enrichment-slot="exp-2-10-1-teste-do-corpo"></span>
+
+          <div class="semantic example" id="ex-2-38">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.38</span>
+            </div>
+            <p>Eis alguns exemplos de anéis e corpos que você provavelmente já conhece.</p>
+            <ol type="a">
+              <li><p>\(R=\mathbb Q\), \(\star\) é a multiplicação e a adição é a usual. O elemento identidade multiplicativo é \(1\). Todo elemento não nulo possui inverso multiplicativo, portanto \(\mathbb Q\) é um corpo.</p></li>
+              <li><p>\(R=\mathbb Z\), \(\star\) é a multiplicação e a adição é a usual. O elemento identidade multiplicativo é \(1\). Os únicos elementos que possuem inversos multiplicativos são \(1\) e \(-1\), portanto \(\mathbb Z\) é um anel, mas não é um corpo.</p></li>
+              <li><p>\(R=\mathbb Z/n\mathbb Z\), em que \(n\) é qualquer inteiro positivo, \(\star\) é a multiplicação e a adição é a usual. O elemento identidade multiplicativo é \(1\). Nesse caso, \(R\) é sempre um anel e é um corpo se, e somente se, \(n\) é primo.</p></li>
+              <li><p>\(R=\mathbb F_p\), em que \(p\) é qualquer inteiro primo, \(\star\) é a multiplicação e a adição é a usual. O elemento identidade multiplicativo é \(1\). Pela Proposição 1.21, todo elemento não nulo possui inverso multiplicativo, portanto \(\mathbb F_p\) é um corpo.</p></li>
+              <li>
+                <p>O conjunto de todos os polinômios com coeficientes em \(\mathbb Z\) forma um anel com as operações usuais de adição e multiplicação de polinômios. Esse anel é denotado por \(\mathbb Z[x]\). Assim, escrevemos</p>
+                <div class="equation" data-tex="\mathbb Z[x]=\{a_0+a_1x+a_2x^2+\cdots+a_nx^n:n\ge0\text{ e }a_0,a_1,\ldots,a_n\in\mathbb Z\}">
+                  \[
+                    \mathbb Z[x]=\{a_0+a_1x+a_2x^2+\cdots+a_nx^n:n\ge0\text{ e }a_0,a_1,\ldots,a_n\in\mathbb Z\}.
+                  \]
+                </div>
+                <p>Por exemplo, \(1+x^2\) e \(3-7x^4+23x^9\) são polinômios do anel \(\mathbb Z[x]\), assim como \(17\) e \(-203\).</p>
+              </li>
+              <li><p>De modo mais geral, se \(R\) é qualquer anel, podemos formar um anel de polinômios cujos coeficientes pertencem a \(R\). Por exemplo, o anel \(R\) pode ser \(\mathbb Z/q\mathbb Z\) ou um corpo finito \(\mathbb F_p\). Discutimos esses anéis de polinômios gerais, denotados por \(R[x]\), na Seção 7.9.</p></li>
+            </ol>
+          </div>
+        </section>

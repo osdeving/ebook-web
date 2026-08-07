@@ -1,0 +1,10 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Intuição.</strong> Em vez de procurar sozinho desde o início até o fim, envie uma busca da esquerda e outra da direita. Cada lado percorre aproximadamente \(\sqrt N\) possibilidades. Quando os dois caminhos chegam ao mesmo ponto, a colisão revela como juntá-los.</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> Escolhemos \(n\) ligeiramente maior que \(\sqrt N\). Todo expoente relevante pode ser escrito como \(x=qn+r\), com \(q\) contando blocos grandes e \(r\) contando passos dentro do bloco.</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Existem cerca de \(n\) valores possíveis para \(r\) e cerca de \(n\) valores possíveis para \(q\). Não testamos todos os \(n^2\) pares: construímos uma lista para cada coordenada e procuramos uma igualdade entre elas.</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> Como \(n&gt;\sqrt N\), temos \(n^2&gt;N\). O algoritmo da divisão garante que os blocos cobrem todo expoente \(0\le x&lt;N\); por isso uma colisão necessariamente existe quando o PLD tem solução.</div>
+              </div>
+              <div class="quick-check"><strong>Miniatura.</strong> Para cobrir os expoentes de 0 a 99, blocos de tamanho 10 já mostram a ideia: uma coordenada registra a posição no bloco e a outra indica qual bloco usar. A prescrição uniforme do algoritmo toma \(n=1+\lfloor\sqrt{100}\rfloor=11\), garantindo estritamente \(n&gt;\sqrt N\).</div>
+              <div class="watch-out"><strong>Troca de recursos.</strong> A busca trivial economiza memória e gasta tempo. O encontro no meio reduz o tempo para perto de \(\sqrt N\), mas precisa armazenar perto de \(\sqrt N\) elementos.</div>
+            </div>

@@ -1,0 +1,11 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Intuição.</strong> Um cadeado com uma combinação longa parece forte; mas, se a combinação puder ser separada em vários cadeados minúsculos e independentes, podemos abrir cada um e depois reunir as respostas. Pohlig–Hellman faz essa separação usando os fatores primos da ordem de \(g\).</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> Uma ordem é chamada <em>lisa</em> quando todos os seus fatores primos são pequenos. Por exemplo, \(60=2^2\cdot3\cdot5\) é lisa em relação a primos até 5.</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> O algoritmo de Pohlig–Hellman reduz um PLD de ordem \(N=\prod q_i^{e_i}\) a PLDs cujas ordens são as potências \(q_i^{e_i}\).</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Se \(N=60\), em vez de atacar diretamente 60 possibilidades estruturais, resolvemos problemas de ordens 4, 3 e 5 e reconstruímos \(x\) módulo 60 pelo TCR.</div>
+                <div class="step"><span class="step-tag definition">Definição</span> O dado decisivo é a ordem do elemento base \(g\), não apenas o tamanho do grupo ambiente. Um elemento pode viver em um grupo enorme e, ainda assim, gerar um subgrupo pequeno.</div>
+              </div>
+              <div class="quick-check"><strong>Contraste.</strong> Se a ordem de \(g\) é um primo grande \(q\), não há fatores menores para separar: Pohlig–Hellman deixa um único PLD de ordem \(q\). Se a ordem é \(2^{20}\), o algoritmo explora repetidamente problemas de ordem 2.</div>
+              <div class="watch-out"><strong>Cuidado criptográfico.</strong> Escolher um primo \(p\) grande não basta. Em \(\mathbb F_p^*\), é preciso verificar a fatoração de \(p-1\) e a própria ordem de \(g\). Em geral se trabalha num subgrupo de ordem prima grande \(q\) e se confirma que \(\operatorname{ord}(g)=q\); apenas pertencer a um grupo grande não impede que \(g\) gere um ciclo pequeno.</div>
+            </div>

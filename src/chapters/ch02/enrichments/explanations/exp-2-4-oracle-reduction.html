@@ -1,0 +1,11 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>Uma redução é um adaptador. Não precisamos abrir a “caixa” do suposto decifrador Elgamal; construímos uma entrada especial, entregamos a ele e reinterpretamos sua saída como a solução de uma instância do PDH.</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag theorem">Teorema</span><p>A proposição começa com uma hipótese forte: existe um oráculo que decifra textos cifrados arbitrários para chaves públicas arbitrárias. O objetivo é usar essa capacidade para calcular \(g^{ab}\) a partir de \(A=g^a\) e \(B=g^b\).</p></div>
+              <div class="step"><span class="step-tag definition">Definição</span><p>Para a chave pública \(A\), a regra de decifração do oráculo é</p><div class="display-math">\[D_A(c_1,c_2)=(c_1^a)^{-1}c_2.\]</div></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Escolhemos \(c_1=B\) e \(c_2=1\). Então a resposta é</p><div class="display-math">\[D_A(B,1)=(B^a)^{-1}=\bigl((g^b)^a\bigr)^{-1}=(g^{ab})^{-1}.\]</div></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Tomamos mais uma vez o inverso módulo \(p\):</p><div class="display-math">\[\bigl(D_A(B,1)\bigr)^{-1}=g^{ab}.\]</div><p>A entrada pública do PDH foi convertida em uma consulta ao oráculo, e a saída foi convertida na resposta procurada.</p></div>
+            </div>
+            <div class="quick-check"><p>Se for inconveniente usar \(c_2=1\), pode-se escolher um \(c_2\ne0\). O oráculo devolve \(m=(g^{ab})^{-1}c_2\), e então \(m^{-1}c_2=g^{ab}\), pois os fatores \(c_2^{-1}\) e \(c_2\) se cancelam em \(\mathbb F_p^*\).</p></div>
+            <div class="watch-out"><p>A redução não afirma que esse oráculo exista na prática. Ela afirma uma consequência lógica: qualquer método geral que realize a decifração suposta também realizaria o PDH. A direção importa — estamos usando o quebrador de Elgamal para resolver o PDH.</p></div>
+          </div>

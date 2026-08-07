@@ -1,0 +1,129 @@
+<section class="chapter-section" id="sec-2-10-2">
+          <div class="section-heading">
+            <span class="section-number">2.10.2</span>
+            <h2>Divisibilidade e anéis quociente</h2>
+          </div>
+
+          <p>O conceito de divisibilidade, apresentado originalmente para os inteiros \(\mathbb Z\) na Seção 1.2, pode ser generalizado para qualquer anel.</p>
+
+          <div class="semantic definition" id="def-divisibilidade-anel">
+            <div class="semantic-header">
+              <span class="semantic-label">Definição</span>
+              <span class="semantic-title">Divisibilidade em um anel</span>
+            </div>
+            <p>Sejam \(a\) e \(b\) elementos de um anel \(R\), com \(b\ne0\). Dizemos que \(b\) <strong>divide</strong> \(a\), ou que \(a\) é <strong>divisível por</strong> \(b\), se existe um elemento \(c\in R\) tal que</p>
+            <div class="equation" data-tex="a=b\star c">\[a=b\star c.\]</div>
+            <p>Como antes, escrevemos \(b\mid a\) para indicar que \(b\) divide \(a\). Se \(b\) não divide \(a\), escrevemos \(b\nmid a\).</p>
+          </div>
+
+          <div class="semantic remark" id="rem-2-39">
+            <div class="semantic-header">
+              <span class="semantic-label">Observação</span>
+              <span class="semantic-title">2.39</span>
+            </div>
+            <p>As propriedades básicas da divisibilidade apresentadas na Proposição 1.4 valem para anéis em geral. A demonstração feita para \(\mathbb Z\) funciona para qualquer anel. Do mesmo modo, em todo anel vale \(b\mid0\) para qualquer \(b\ne0\). Veja o Exercício 2.30. Observe, porém, que nem todo anel se comporta tão bem quanto \(\mathbb Z\). Por exemplo, existem anéis com elementos não nulos \(a\) e \(b\) cujo produto \(a\star b\) é \(0\). Um exemplo é o anel \(\mathbb Z/6\mathbb Z\), no qual \(2\) e \(3\) são não nulos, mas \(2\cdot3=6=0\).</p>
+          </div>
+
+          <span id="slot-exp-2-10-2-divisores-zero" data-enrichment-slot="exp-2-10-2-divisores-zero"></span>
+
+          <p>Lembre-se de que um inteiro é chamado de primo quando não possui fatores não triviais. O que é um fator trivial? Podemos “fatorar” qualquer inteiro escrevendo \(a=1\cdot a\) e \(a=(-1)(-a)\), portanto essas são fatorações triviais. O que as torna triviais é o fato de \(1\) e \(-1\) possuírem inversos multiplicativos. Em geral, se \(R\) é um anel e \(u\in R\) é um elemento que possui inverso multiplicativo \(u^{-1}\in R\), podemos fatorar qualquer elemento \(a\in R\) escrevendo \(a=u^{-1}\cdot(ua)\). Elementos que possuem inversos multiplicativos e elementos que admitem apenas fatorações triviais são elementos especiais de um anel; por isso, damos nomes especiais a eles.</p>
+
+          <div class="semantic definition" id="def-unidade-irredutivel">
+            <div class="semantic-header">
+              <span class="semantic-label">Definição</span>
+              <span class="semantic-title">Unidade e elemento irredutível</span>
+            </div>
+            <p>Seja \(R\) um anel. Um elemento \(u\in R\) é chamado de <strong>unidade</strong> quando possui inverso multiplicativo, isto é, quando existe um elemento \(v\in R\) tal que \(u\star v=1\).</p>
+            <p>Um elemento \(a\) de um anel \(R\) é chamado de <strong>irredutível</strong> quando ele próprio não é uma unidade e, em toda fatoração \(a=b\star c\), ou \(b\) é uma unidade, ou \(c\) é uma unidade.</p>
+          </div>
+
+          <span id="slot-exp-2-10-2-unidades-irredutiveis" data-enrichment-slot="exp-2-10-2-unidades-irredutiveis"></span>
+
+          <div class="semantic remark" id="rem-2-40">
+            <div class="semantic-header">
+              <span class="semantic-label">Observação</span>
+              <span class="semantic-title">2.40</span>
+            </div>
+            <p>Os inteiros têm a propriedade de que todo inteiro se fatora de maneira única como produto de inteiros irredutíveis, a menos da reordenação dos fatores e da inclusão de alguns fatores extras iguais a \(1\) e \(-1\). Observe que um inteiro positivo irredutível é simplesmente outra maneira de falar em um número primo. Nem todo anel possui essa importante propriedade de fatoração única, mas, na próxima seção, provaremos que o anel de polinômios com coeficientes em um corpo é um anel de fatoração única.</p>
+          </div>
+
+          <p>Vimos que as congruências são uma ferramenta matemática muito importante e poderosa para trabalhar com os inteiros. Usando a definição de divisibilidade, podemos estender a noção de congruência a anéis arbitrários.</p>
+
+          <div class="semantic definition" id="def-congruencia-anel">
+            <div class="semantic-header">
+              <span class="semantic-label">Definição</span>
+              <span class="semantic-title">Congruência em um anel</span>
+            </div>
+            <p>Seja \(R\) um anel e escolha um elemento não nulo \(m\in R\). Dizemos que dois elementos \(a\) e \(b\) de \(R\) são <strong>congruentes módulo \(m\)</strong> quando a diferença \(a-b\) é divisível por \(m\). Escrevemos</p>
+            <div class="equation" data-tex="a\equiv b\pmod m">\[a\equiv b\pmod m\]</div>
+            <p>para indicar que \(a\) e \(b\) são congruentes módulo \(m\).</p>
+          </div>
+
+          <span id="slot-exp-2-10-2-congruencia-diferenca" data-enrichment-slot="exp-2-10-2-congruencia-diferenca"></span>
+
+          <p>As congruências em anéis arbitrários satisfazem as mesmas propriedades semelhantes às das equações que satisfazem no contexto original dos inteiros.</p>
+
+          <div class="semantic proposition" id="prop-2-41">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.41</span>
+            </div>
+            <p>Seja \(R\) um anel e seja \(m\in R\), com \(m\ne0\). Se</p>
+            <div class="equation" data-tex="a_1\equiv a_2\pmod m\quad\text{e}\quad b_1\equiv b_2\pmod m">
+              \[a_1\equiv a_2\pmod m\qquad\text{e}\qquad b_1\equiv b_2\pmod m,\]
+            </div>
+            <p>então</p>
+            <div class="equation" data-tex="a_1\pm b_1\equiv a_2\pm b_2\pmod m\quad\text{e}\quad a_1\star b_1\equiv a_2\star b_2\pmod m">
+              \[a_1\pm b_1\equiv a_2\pm b_2\pmod m\qquad\text{e}\qquad a_1\star b_1\equiv a_2\star b_2\pmod m.\]
+            </div>
+          </div>
+
+          <div class="semantic proof">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Deixamos a demonstração como exercício; veja o Exercício 2.32.<span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-10-2-operacoes-congruencias" data-enrichment-slot="exp-2-10-2-operacoes-congruencias"></span>
+
+          <div class="semantic remark" id="rem-2-42">
+            <div class="semantic-header">
+              <span class="semantic-label">Observação</span>
+              <span class="semantic-title">2.42</span>
+            </div>
+            <p>Nossa definição de congruência reúne todas as propriedades de que precisamos neste livro. Contudo, devemos observar que existe uma noção mais geral de congruência módulo ideais. Para nossos propósitos, basta trabalhar com congruências módulo ideais principais, isto é, ideais gerados por um único elemento.</p>
+          </div>
+
+          <p>Uma consequência importante da Proposição 2.41 é um método para criar anéis novos a partir de anéis antigos, assim como criamos \(\mathbb Z/q\mathbb Z\) a partir de \(\mathbb Z\) considerando congruências módulo \(q\).</p>
+
+          <div class="semantic definition" id="def-anel-quociente">
+            <div class="semantic-header">
+              <span class="semantic-label">Definição</span>
+              <span class="semantic-title">Classe de congruência e anel quociente</span>
+            </div>
+            <p>Seja \(R\) um anel e seja \(m\in R\), com \(m\ne0\). Para qualquer \(a\in R\), escrevemos \(\overline a\) para o conjunto de todos os \(a'\in R\) tais que \(a'\equiv a\pmod m\). O conjunto \(\overline a\) é chamado de <strong>classe de congruência</strong> de \(a\), e denotamos o conjunto de todas as classes de congruência por \(R/(m)\) ou \(R/mR\). Assim,</p>
+            <div class="equation" data-tex="R/(m)=R/mR=\{\overline a:a\in R\}">
+              \[R/(m)=R/mR=\{\overline a:a\in R\}.\]
+            </div>
+            <p>Somamos e multiplicamos classes de congruência usando as regras naturais</p>
+            <div class="equation" id="eq-2-23" data-tex="\overline a+\overline b=\overline{a+b}\quad\text{e}\quad\overline a\star\overline b=\overline{a\star b}">
+              <span class="equation-number">(2.23)</span>
+              \[\overline a+\overline b=\overline{a+b}\qquad\text{e}\qquad\overline a\star\overline b=\overline{a\star b}.\]
+            </div>
+            <p>Chamamos \(R/(m)\) de <strong>anel quociente</strong> de \(R\) por \(m\). Esse nome é justificado pela próxima proposição.</p>
+          </div>
+
+          <div class="semantic proposition" id="prop-2-43">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.43</span>
+            </div>
+            <p>As fórmulas (2.23) fornecem regras bem definidas de adição e multiplicação no conjunto de classes de congruência \(R/(m)\), e essas regras transformam \(R/(m)\) em um anel.</p>
+          </div>
+
+          <div class="semantic proof">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Deixamos a demonstração como exercício; veja o Exercício 2.43.<span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-10-2-bem-definido" data-enrichment-slot="exp-2-10-2-bem-definido"></span>
+        </section>

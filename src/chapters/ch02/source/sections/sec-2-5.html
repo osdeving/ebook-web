@@ -1,0 +1,151 @@
+<section class="section" id="sec-2-5">
+          <h2><span class="section-number">2.5</span> Uma visão geral da teoria de grupos</h2>
+
+          <p>Para quem ainda não conhece a teoria de grupos, apresentaremos brevemente alguns conceitos básicos que ajudarão a situar o estudo dos logaritmos discretos — tanto aqui quanto no Capítulo 6 — num contexto mais amplo.</p>
+
+          <p>Acabamos de passar algum tempo falando da exponenciação de elementos de \(\mathbb F_p^*\). Como exponenciar nada mais é que multiplicar repetidamente, esse parece um bom ponto de partida. Queremos destacar algumas propriedades importantes da multiplicação em \(\mathbb F_p^*\) e mostrar que elas aparecem em muitos outros contextos.</p>
+
+          <p>As propriedades são:</p>
+          <ul>
+            <li>Existe um elemento \(1\in\mathbb F_p^*\) tal que \(1\cdot a=a\) para todo \(a\in\mathbb F_p^*\).</li>
+            <li>Todo \(a\in\mathbb F_p^*\) possui um inverso \(a^{-1}\in\mathbb F_p^*\) tal que \(a\cdot a^{-1}=a^{-1}\cdot a=1\).</li>
+            <li>A multiplicação é associativa: \(a\cdot(b\cdot c)=(a\cdot b)\cdot c\) para todos \(a,b,c\in\mathbb F_p^*\).</li>
+            <li>A multiplicação é comutativa: \(a\cdot b=b\cdot a\) para todos \(a,b\in\mathbb F_p^*\).</li>
+          </ul>
+
+          <p>Suponha que, no lugar da multiplicação em \(\mathbb F_p^*\), usemos a adição em \(\mathbb F_p\). Também usamos \(0\) no lugar de \(1\) e \(-a\) no lugar de \(a^{-1}\). As quatro propriedades continuam verdadeiras:</p>
+          <ul>
+            <li>\(0+a=a\) para todo \(a\in\mathbb F_p\).</li>
+            <li>Todo \(a\in\mathbb F_p\) possui um inverso \(-a\in\mathbb F_p\), com \(a+(-a)=(-a)+a=0\).</li>
+            <li>A adição é associativa: \(a+(b+c)=(a+b)+c\) para todos \(a,b,c\in\mathbb F_p\).</li>
+            <li>A adição é comutativa: \(a+b=b+a\) para todos \(a,b\in\mathbb F_p\).</li>
+          </ul>
+
+          <p>Conjuntos e operações que se comportam como a multiplicação ou a adição são tão comuns que vale a pena abstrair o conceito geral e falar de todos esses sistemas de uma só vez. Isso conduz à noção de grupo.</p>
+
+          <aside class="semantic definition" id="def-grupo">
+            <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+            <p>Um <strong>grupo</strong> consiste em um conjunto \(G\) e uma regra, denotada por \(\star\), para combinar dois elementos \(a,b\in G\) e obter um elemento \(a\star b\in G\). A operação de composição \(\star\) deve possuir as três propriedades a seguir.</p>
+            <dl class="axiom-list">
+              <div><dt>Lei da identidade</dt><dd>Existe \(e\in G\) tal que \[e\star a=a\star e=a\qquad\text{para todo }a\in G.\]</dd></div>
+              <div><dt>Lei dos inversos</dt><dd>Para todo \(a\in G\), existe um único \(a^{-1}\in G\) tal que \[a\star a^{-1}=a^{-1}\star a=e.\]</dd></div>
+              <div><dt>Lei associativa</dt><dd>\[a\star(b\star c)=(a\star b)\star c\qquad\text{para todos }a,b,c\in G.\]</dd></div>
+            </dl>
+            <p>Se, além disso, a composição satisfaz a</p>
+            <dl class="axiom-list">
+              <div><dt>Lei comutativa</dt><dd>\[a\star b=b\star a\qquad\text{para todos }a,b\in G,\]</dd></div>
+            </dl>
+            <p>então o grupo é chamado de <strong>grupo comutativo</strong> ou <strong>grupo abeliano</strong>.</p>
+            <p>Se \(G\) tem um número finito de elementos, dizemos que \(G\) é um <strong>grupo finito</strong>. A <strong>ordem de \(G\)</strong> é o número de elementos de \(G\) e é denotada por \(|G|\) ou \(\#G\).</p>
+          </aside>
+
+          <span id="slot-exp-2-5-group-axioms" data-enrichment-slot="exp-2-5-group-axioms"></span>
+
+          <aside class="semantic example" id="ex-2-11">
+            <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">2.11</span></div>
+            <p>Os grupos estão por toda parte na matemática e nas ciências físicas. Eis alguns exemplos; os dois primeiros repetem casos mencionados anteriormente.</p>
+            <ol class="alpha-list">
+              <li><p>\(G=\mathbb F_p^*\) e \(\star\) é a multiplicação. O elemento identidade é \(e=1\). A Proposição 1.21 nos diz que os inversos existem. Portanto, \(G\) é um grupo finito de ordem \(p-1\).</p></li>
+              <li><p>\(G=\mathbb Z/N\mathbb Z\) e \(\star\) é a adição. O elemento identidade é \(e=0\), e o inverso de \(a\) é \(-a\). Esse \(G\) é um grupo finito de ordem \(N\).</p></li>
+              <li><p>\(G=\mathbb Z\) e \(\star\) é a adição. O elemento identidade é \(e=0\), e o inverso de \(a\) é \(-a\). Esse grupo \(G\) é infinito.</p></li>
+              <li><p>Observe que \(G=\mathbb Z\) com \(\star\) igual à multiplicação não é um grupo, pois a maioria de seus elementos não possui inverso multiplicativo dentro de \(\mathbb Z\).</p></li>
+              <li><p>Por outro lado, \(G=\mathbb R^*\) com \(\star\) igual à multiplicação é um grupo, pois todos os elementos possuem inverso multiplicativo dentro de \(\mathbb R^*\).</p></li>
+              <li>
+                <p>Um exemplo de grupo não comutativo é</p>
+                <div class="display-math">\[G=\left\{\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}:a,b,c,d\in\mathbb R\text{ e }ad-bc\ne0\right\},\]</div>
+                <p>com \(\star\) igual à multiplicação de matrizes. O elemento identidade é</p>
+                <div class="display-math">\[e=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix},\]</div>
+                <p>e o inverso é dado pela fórmula conhecida</p>
+                <div class="display-math">\[
+                  \begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}^{-1}
+                  =\begin{pmatrix}
+                    \dfrac{d}{ad-bc}&amp;\dfrac{-b}{ad-bc}\\[4pt]
+                    \dfrac{-c}{ad-bc}&amp;\dfrac{a}{ad-bc}
+                  \end{pmatrix}.
+                \]</div>
+                <p>Observe que \(G\) não é comutativo, pois, por exemplo,</p>
+                <div class="display-math">\[
+                  \begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}
+                  \begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}
+                  \ne
+                  \begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}
+                  \begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}.
+                \]</div>
+              </li>
+              <li>
+                <p>De modo mais geral, podemos usar matrizes de qualquer tamanho. Isso produz o <em>grupo linear geral</em></p>
+                <div class="display-math">\[\operatorname{GL}_n(\mathbb R)=\{\text{matrizes }n\times n\text{ com coeficientes reais e }\det(A)\ne0\},\]</div>
+                <p>com \(\star\) igual à multiplicação de matrizes. Podemos formar outros grupos substituindo \(\mathbb R\) por outro corpo, como o corpo finito \(\mathbb F_p\). Veja o Exercício 2.15. O grupo \(\operatorname{GL}_n(\mathbb F_p)\) é claramente finito, mas calcular sua ordem é um exercício interessante.</p>
+              </li>
+            </ol>
+          </aside>
+
+          <p>Seja \(g\) um elemento de um grupo \(G\), e seja \(x\) um inteiro positivo. Então \(g^x\) significa que aplicamos a operação do grupo a \(x\) cópias do elemento \(g\):</p>
+          <div class="display-math">\[g^x=\underbrace{g\star g\star g\star\cdots\star g}_{x\text{ repetições}}.\]</div>
+
+          <p>Por exemplo, a exponenciação \(g^x\) no grupo \(\mathbb F_p^*\) tem o sentido usual: multiplicar \(x\) cópias de \(g\). Já a “exponenciação” \(g^x\) no grupo \(\mathbb Z/N\mathbb Z\) significa somar \(x\) cópias de \(g\). É verdade que é mais comum escrever a quantidade “somar \(x\) cópias de \(g\)” como \(x\cdot g\), mas isso é apenas uma escolha de notação. O conceito fundamental por trás da exponenciação em um grupo é a aplicação repetida da operação do grupo a um de seus elementos.</p>
+
+          <p>Também é conveniente atribuir um significado a \(g^x\) quando \(x\) não é positivo. Se \(x\) é um inteiro negativo, definimos \(g^x=(g^{-1})^{|x|}\). Para \(x=0\), tomamos \(g^0=e\), o elemento identidade de \(G\).</p>
+
+          <p>Introduziremos agora um conceito central no estudo de grupos.</p>
+
+          <aside class="semantic definition" id="def-ordem-elemento">
+            <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+            <p>Seja \(G\) um grupo, e seja \(a\in G\). Suponha que exista um inteiro positivo \(d\) com a propriedade de que \(a^d=e\). O menor desses inteiros \(d\) é chamado de <strong>ordem de \(a\)</strong>. Se não existe tal \(d\), dizemos que \(a\) tem ordem infinita.</p>
+          </aside>
+
+          <span id="slot-exp-2-5-element-order-cycle" data-enrichment-slot="exp-2-5-element-order-cycle"></span>
+
+          <p>Provaremos agora duas proposições que descrevem propriedades importantes das ordens dos elementos de um grupo. Elas generalizam o Teorema 1.24 — o pequeno teorema de Fermat — e a Proposição 1.29, que tratam do grupo \(G=\mathbb F_p^*\). As demonstrações são essencialmente as mesmas.</p>
+
+          <aside class="semantic proposition" id="prop-2-12">
+            <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">2.12</span></div>
+            <p>Seja \(G\) um grupo finito. Então todo elemento de \(G\) tem ordem finita. Além disso, se \(a\in G\) tem ordem \(d\) e \(a^k=e\), então \(d\mid k\).</p>
+          </aside>
+
+          <div class="semantic proof" id="proof-prop-2-12">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Como \(G\) é finito, a sequência</p>
+            <div class="display-math">\[a,a^2,a^3,a^4,\ldots\]</div>
+            <p>acabará contendo uma repetição. Isto é, existem inteiros positivos \(i\) e \(j\), com \(j&lt;i\), tais que \(a^i=a^j\). Multiplicando os dois lados por \(a^{-j}\) e aplicando as leis de grupo, obtemos \(a^{i-j}=e\). Como \(i-j&gt;0\), isso prova que alguma potência de \(a\) é igual a \(e\). Seja \(d\) o menor expoente positivo que satisfaz \(a^d=e\).</p>
+
+            <p>Suponha agora que \(k\ge d\) também satisfaça \(a^k=e\). Dividimos \(k\) por \(d\) e obtemos</p>
+            <div class="display-math">\[k=dq+r\qquad\text{com}\qquad0\le r&lt;d.\]</div>
+            <p>Usando \(a^k=a^d=e\), encontramos</p>
+            <div class="display-math">\[e=a^k=a^{dq+r}=(a^d)^q\star a^r=e^q\star a^r=a^r.\]</div>
+            <p>Mas \(d\) é o menor expoente positivo para o qual uma potência de \(a\) é igual a \(e\); portanto, devemos ter \(r=0\). Logo, \(k=dq\), e assim \(d\mid k\).</p>
+          </div>
+
+          <aside class="semantic proposition" id="prop-2-13">
+            <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">2.13 — Teorema de Lagrange</span></div>
+            <p>Sejam \(G\) um grupo finito e \(a\in G\). Então a ordem de \(a\) divide a ordem de \(G\).</p>
+            <p>Mais precisamente, seja \(n=|G|\) a ordem de \(G\), e seja \(d\) a ordem de \(a\), isto é, \(a^d\) é a menor potência positiva de \(a\) igual a \(e\). Então</p>
+            <div class="display-math">\[a^n=e\qquad\text{e}\qquad d\mid n.\]</div>
+          </aside>
+
+          <div class="semantic proof" id="proof-prop-2-13">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Apresentaremos uma demonstração simples para o caso em que \(G\) é comutativo. Para uma demonstração no caso geral, consulte qualquer livro básico de álgebra, por exemplo [40, §3.2] ou [45, §2.3].</p>
+
+            <p>Como \(G\) é finito, podemos listar seus elementos como</p>
+            <div class="display-math">\[G=\{g_1,g_2,\ldots,g_n\}.\]</div>
+            <p>Multiplicamos agora cada elemento de \(G\) por \(a\), obtendo um novo conjunto, que chamamos de \(S_a\):</p>
+            <div class="display-math">\[S_a=\{a\star g_1,a\star g_2,\ldots,a\star g_n\}.\]</div>
+
+            <p>Afirmamos que os elementos de \(S_a\) são distintos. De fato, suponha que \(a\star g_i=a\star g_j\). Multiplicar os dois lados por \(a^{-1}\) dá \(g_i=g_j\).<sup id="fnref-2-5-6"><a href="#fn-2-5-6">6</a></sup> Logo, \(S_a\) contém \(n\) elementos distintos, o mesmo número de elementos de \(G\). Portanto, \(S_a=G\), e o produto de todos os elementos de \(S_a\) é igual ao produto de todos os elementos de \(G\). Observe que estamos usando a hipótese de que \(G\) é comutativo. Assim,</p>
+            <div class="display-math">\[(a\star g_1)\star(a\star g_2)\star\cdots\star(a\star g_n)=g_1\star g_2\star\cdots\star g_n.\]</div>
+
+            <p>Podemos reorganizar a ordem do produto no lado esquerdo — usando novamente a comutatividade — e obter</p>
+            <div class="display-math">\[a^n\star g_1\star g_2\star\cdots\star g_n=g_1\star g_2\star\cdots\star g_n.\]</div>
+            <p>Agora, multiplicar por \((g_1\star g_2\star\cdots\star g_n)^{-1}\) produz \(a^n=e\), o que prova a primeira afirmação. A divisibilidade de \(n\) por \(d\) segue imediatamente da Proposição 2.12.</p>
+          </div>
+
+          <span id="slot-exp-2-5-lagrange-divisibility" data-enrichment-slot="exp-2-5-lagrange-divisibility"></span>
+
+          <ol class="footnotes" start="6">
+            <li id="fn-2-5-6">Estamos sendo um pouco informais aqui, como costuma acontecer quando se trabalha com grupos. Eis uma demonstração mais formal. Partimos de \(a\star g_i=a\star g_j\). Usando essa hipótese e os axiomas de grupo, calculamos
+              \[g_i=e\star g_i=(a^{-1}\star a)\star g_i=a^{-1}\star(a\star g_i)=a^{-1}\star(a\star g_j)=(a^{-1}\star a)\star g_j=e\star g_j=g_j.\]
+              <a href="#fnref-2-5-6" aria-label="Voltar à chamada da nota 6">↩</a>
+            </li>
+          </ol>
+        </section>

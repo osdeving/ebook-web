@@ -1,0 +1,10 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Intuição.</strong> Ao observar uma estrada de muito longe, pequenas ondulações desaparecem e só a inclinação geral importa. A notação \(\mathcal O\) faz algo parecido: para entradas suficientemente grandes, ela retém o formato dominante do crescimento e aceita esconder um fator constante.</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> A afirmação \(f(x)=\mathcal O(g(x))\) pede duas testemunhas: uma constante \(c&gt;0\), que permite ampliar \(g\), e um ponto \(C\), a partir do qual a comparação vale.</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Para mostrar que \(7x+20=\mathcal O(x)\), observe que, se \(x\ge20\), então \(20\le x\). Logo \(7x+20\le7x+x=8x\). Podemos escolher \(c=8\) e \(C=20\).</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> A Proposição 2.14 oferece outro caminho. Como \(\frac{3x^2+5x}{x^2}=3+\frac5x\to3\), o quociente fica limitado; daí \(3x^2+5x=\mathcal O(x^2)\).</div>
+              </div>
+              <div class="quick-check"><strong>Cheque numérico.</strong> Para \(x=100\), temos \(7x+20=720\) e \(8x=800\). Para \(x=10,000\), os valores são \(70,020\) e \(80,000\). A distância absoluta cresce, mas a razão permanece controlada.</div>
+              <div class="watch-out"><strong>Cuidado.</strong> Grande O fornece um limite superior, não afirma que o limite seja o melhor possível. Por exemplo, \(x=\mathcal O(x^2)\) é verdadeiro para \(x\ge1\), embora \(\mathcal O(x)\) descreva o crescimento com muito mais precisão.</div>
+            </div>

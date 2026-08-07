@@ -1,0 +1,10 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>Um homomorfismo é um tradutor que preserva a maneira de combinar objetos. Aqui, o lado de partida combina elementos por multiplicação; o lado de chegada combina expoentes por adição. O tradutor \(\log_g\) muda a linguagem, mas conserva a estrutura do cálculo.</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag definition">Definição</span><p>Se \(a=g^r\) e \(b=g^s\), então \(\log_g(a)=r\) e \(\log_g(b)=s\), sempre entendendo os expoentes módulo \(p-1\).</p></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Multiplicar \(a\) e \(b\) soma os expoentes:</p><div class="display-math">\[ab=g^rg^s=g^{r+s}.\]</div><p>Aplicando o logaritmo discreto, obtemos \(\log_g(ab)=r+s=\log_g(a)+\log_g(b)\).</p></div>
+              <div class="step"><span class="step-tag theorem">Teorema</span><p>Como \(g\) é raiz primitiva, cada elemento não nulo aparece em exatamente uma posição módulo \(p-1\). Portanto, \(\log_g\) é bijetivo além de preservar a operação; é por isso que ele é um <em>isomorfismo</em>, e não apenas um homomorfismo.</p></div>
+            </div>
+            <div class="quick-check"><p>Com \(p=7\) e \(g=3\), \(2=3^2\) e \(6=3^3\). O produto é \(2\cdot6\equiv5\pmod7\), e \(5=3^5\). Logo,</p><div class="display-math">\[\log_3(2\cdot6)=5\equiv2+3=\log_3(2)+\log_3(6)\pmod6.\]</div></div>
+            <div class="watch-out"><p>O isomorfismo descreve uma correspondência matemática perfeita; ele não afirma que calcular a correspondência inversa seja fácil. Elevar \(g\) a um expoente é eficiente, mas recuperar o expoente é justamente o PLD.</p></div>
+          </div>

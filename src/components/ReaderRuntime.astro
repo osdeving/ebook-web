@@ -1,0 +1,39 @@
+<script>
+  import { bootstrapReader } from "../framework";
+  import type { ChapterDefinition } from "../framework/types";
+
+  const chapterModules = import.meta.glob<{ default: ChapterDefinition }>(
+    "../chapters/*/chapter.ts",
+  );
+  const shell = document.querySelector<HTMLElement>("[data-reader-shell]");
+  const article = document.querySelector<HTMLElement>("[data-reader-content]");
+  const slug = shell?.dataset.chapterId;
+
+  if (shell && article && slug) {
+    const entry = Object.entries(chapterModules).find(([path]) =>
+      path.endsWith(`/chapters/${slug}/chapter.ts`),
+    );
+    if (!entry) {
+      console.error(`[ebook-web] módulo do capítulo ausente: ${slug}`);
+    } else {
+      entry[1]().then(async ({ default: chapter }) => {
+        const chapterCleanup = chapter.initialize?.(article);
+        const reader = await bootstrapReader({
+          chapterId: chapter.slug,
+          sourceHash: chapter.sourceHash,
+          enrichments: chapter.enrichments,
+        });
+        window.addEventListener(
+          "pagehide",
+          () => {
+            chapterCleanup?.();
+            reader.destroy();
+          },
+          { once: true },
+        );
+      }).catch((error) => {
+        console.error(`[ebook-web] não foi possível iniciar ${slug}`, error);
+      });
+    }
+  }
+</script>

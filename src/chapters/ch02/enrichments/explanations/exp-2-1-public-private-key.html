@@ -1,0 +1,10 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>A chave pública funciona como um cadeado distribuído em milhares de cópias: qualquer pessoa pode usá-lo para fechar uma mensagem destinada a Alice. A chave privada é a única chave de abertura e nunca precisa atravessar o canal público.</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag definition">Definição</span><p>A geração de chaves produz o par \((k_{\mathrm{priv}},k_{\mathrm{pub}})\). A primeira componente fica secreta; a segunda foi feita para ser publicada.</p></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>O percurso correto de uma mensagem é</p><div class="display-math">\[m\xrightarrow{\ e_{k_{\mathrm{pub}}}\ }c\xrightarrow{\ d_{k_{\mathrm{priv}}}\ }m.\]</div><p>A segunda seta desfaz a primeira porque os algoritmos e as chaves foram construídos em conjunto.</p></div>
+              <div class="step"><span class="step-tag definition">Definição</span><p>A exigência de segurança é assimétrica: calcular \(e_{k_{\mathrm{pub}}}(m)\) deve ser fácil para todos, enquanto recuperar \(m\) de \(c\), sem \(k_{\mathrm{priv}}\), deve ser difícil.</p></div>
+            </div>
+            <div class="quick-check"><p>Se Bob conhece somente \(k_{\mathrm{pub}}\), ele deve conseguir cifrar. Se isso por si só lhe permitisse calcular \(k_{\mathrm{priv}}\) com eficiência, qualquer pessoa também poderia decifrar e o sistema não teria utilidade. Portanto, a publicação da chave não é um descuido: é precisamente o comportamento previsto pelo projeto.</p></div>
+            <div class="watch-out"><p>“A chave pública é calculada a partir da privada” não constitui, isoladamente, uma prova de segurança. A segurança depende da dificuldade concreta de inverter essa relação ou de decifrar sem o alçapão.</p></div>
+          </div>

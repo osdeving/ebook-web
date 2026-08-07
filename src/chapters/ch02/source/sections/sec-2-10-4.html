@@ -1,0 +1,280 @@
+<section class="chapter-section" id="sec-2-10-4">
+          <div class="section-heading">
+            <span class="section-number">2.10.4</span>
+            <h2>Quocientes de anéis de polinômios e corpos finitos de ordem potência de primo</h2>
+          </div>
+
+          <p>Na Seção 2.10.3, estudamos anéis de polinômios e, na Seção 2.10.2, estudamos anéis quociente. Nesta seção, combinamos essas duas construções e consideramos quocientes de anéis de polinômios.</p>
+
+          <p>Lembre-se de que, ao trabalhar com os inteiros módulo \(m\), muitas vezes é conveniente representar cada classe de congruência módulo \(m\) por um inteiro entre \(0\) e \(m-1\). O algoritmo de divisão com resto, a Proposição 2.44, permite fazer algo semelhante para o quociente de um anel de polinômios.</p>
+
+          <div class="semantic proposition" id="prop-2-50">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.50</span>
+            </div>
+            <p>Seja \(F\) um corpo e seja \(m\in F[x]\) um polinômio não nulo. Então toda classe de congruência não nula \(\overline a\in F[x]/(m)\) possui um único representante \(r\) que satisfaz</p>
+            <div class="equation" data-tex="\deg r&lt;\deg m\quad\text{e}\quad a\equiv r\pmod m">
+              \[\deg r<\deg m\qquad\text{e}\qquad a\equiv r\pmod m.\]
+            </div>
+          </div>
+
+          <div class="semantic proof" id="proof-2-50">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Usamos a Proposição 2.44 para encontrar polinômios \(k\) e \(r\) tais que</p>
+            <div class="equation" data-tex="a=mk+r">\[a=m\cdot k+r,\]</div>
+            <p>com \(r=0\) ou \(\deg r<\deg m\). Se \(r=0\), então \(a\equiv0\pmod m\), de modo que \(\overline a=\overline0\). Caso contrário, reduzindo módulo \(m\), obtemos \(a\equiv r\pmod m\), com \(\deg r<\deg m\). Isso mostra que \(r\) existe. Para mostrar que é único, suponha que \(r'\) possua as mesmas propriedades. Então</p>
+            <div class="equation" data-tex="r-r'\equiv a-a\equiv0\pmod m">
+              \[r-r'\equiv a-a\equiv0\pmod m,\]
+            </div>
+            <p>logo \(m\) divide \(r-r'\). Mas \(r-r'\) tem grau estritamente menor que o grau de \(m\), portanto devemos ter \(r-r'=0\).<span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-10-4-representante-canonico" data-enrichment-slot="exp-2-10-4-representante-canonico"></span>
+
+          <div class="semantic example" id="ex-2-51">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.51</span>
+            </div>
+            <p>Considere o anel \(F[x]/(x^2+1)\). A Proposição 2.50 afirma que todo elemento desse anel quociente é representado de maneira única por um polinômio da forma</p>
+            <div class="equation" data-tex="\overline{\alpha+\beta x}\quad\text{com }\alpha,\beta\in F">
+              \[\overline{\alpha+\beta x}\qquad\text{com }\alpha,\beta\in F.\]
+            </div>
+            <p>A adição é realizada da maneira natural:</p>
+            <div class="equation" data-tex="\overline{\alpha_1+\beta_1x}+\overline{\alpha_2+\beta_2x}=\overline{(\alpha_1+\alpha_2)+(\beta_1+\beta_2)x}">
+              \[
+                \overline{\alpha_1+\beta_1x}+\overline{\alpha_2+\beta_2x}
+                =\overline{(\alpha_1+\alpha_2)+(\beta_1+\beta_2)x}.
+              \]
+            </div>
+            <p>A multiplicação é semelhante, exceto pelo fato de que precisamos dividir o resultado final por \(x^2+1\) e tomar o resto. Assim,</p>
+            <div class="equation" data-tex="\begin{aligned}\overline{\alpha_1+\beta_1x}\cdot\overline{\alpha_2+\beta_2x}&amp;=\overline{\alpha_1\alpha_2+(\alpha_1\beta_2+\alpha_2\beta_1)x+\beta_1\beta_2x^2}\\&amp;=\overline{(\alpha_1\alpha_2-\beta_1\beta_2)+(\alpha_1\beta_2+\alpha_2\beta_1)x}\end{aligned}">
+              \[
+                \begin{aligned}
+                  \overline{\alpha_1+\beta_1x}\cdot\overline{\alpha_2+\beta_2x}
+                  &amp;=\overline{\alpha_1\alpha_2+(\alpha_1\beta_2+\alpha_2\beta_1)x+\beta_1\beta_2x^2}\\
+                  &amp;=\overline{(\alpha_1\alpha_2-\beta_1\beta_2)+(\alpha_1\beta_2+\alpha_2\beta_1)x}.
+                \end{aligned}
+              \]
+            </div>
+            <p>Observe que o efeito de dividir por \(x^2+1\) é o mesmo que substituir \(x^2\) por \(-1\). A intuição é que, no anel quociente \(F[x]/(x^2+1)\), tornamos a quantidade \(x^2+1\) igual a \(0\). Observe ainda que, se tomarmos \(F=\mathbb R\) neste exemplo, então \(\mathbb R[x]/(x^2+1)\) será simplesmente o corpo dos números complexos \(\mathbb C\).</p>
+          </div>
+
+          <p>Podemos usar a Proposição 2.50 para contar o número de elementos de um anel quociente de polinômios quando \(F\) é um corpo finito.</p>
+
+          <div class="semantic corollary" id="cor-2-52">
+            <div class="semantic-header">
+              <span class="semantic-label">Corolário</span>
+              <span class="semantic-title">2.52</span>
+            </div>
+            <p>Seja \(\mathbb F_p\) um corpo finito e seja \(m\in\mathbb F_p[x]\) um polinômio não nulo de grau \(d\ge1\). Então o anel quociente \(\mathbb F_p[x]/(m)\) contém exatamente \(p^d\) elementos.</p>
+          </div>
+
+          <div class="semantic proof" id="proof-2-52">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Pela Proposição 2.50, sabemos que todo elemento de \(\mathbb F_p[x]/(m)\) é representado por um único polinômio da forma</p>
+            <div class="equation" data-tex="a_0+a_1x+a_2x^2+\cdots+a_{d-1}x^{d-1}\quad\text{com }a_0,a_1,\ldots,a_{d-1}\in\mathbb F_p">
+              \[a_0+a_1x+a_2x^2+\cdots+a_{d-1}x^{d-1}\qquad\text{com }a_0,a_1,\ldots,a_{d-1}\in\mathbb F_p.\]
+            </div>
+            <p>Há \(p\) escolhas para \(a_0\), \(p\) escolhas para \(a_1\), e assim por diante, o que leva a um total de \(p^d\) escolhas para \(a_0,a_1,\ldots,a_{d-1}\).<span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-10-4-contagem-pd" data-enrichment-slot="exp-2-10-4-contagem-pd"></span>
+
+          <p>A seguir, apresentamos uma caracterização importante das unidades de um anel quociente de polinômios. Ela nos permitirá construir novos corpos finitos.</p>
+
+          <div class="semantic proposition" id="prop-2-53">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.53</span>
+            </div>
+            <p>Seja \(F\) um corpo e sejam \(a,m\in F[x]\) polinômios com \(m\ne0\). Então \(\overline a\) é uma unidade no anel quociente \(F[x]/(m)\) se, e somente se,</p>
+            <div class="equation" data-tex="\gcd(a,m)=1">\[\gcd(a,m)=1.\]</div>
+          </div>
+
+          <div class="semantic proof" id="proof-2-53">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Suponha primeiro que \(\overline a\) seja uma unidade em \(F[x]/(m)\). Por definição, isso significa que podemos encontrar algum \(\overline b\in F[x]/(m)\) que satisfaça \(\overline a\cdot\overline b=\overline1\). Em termos de congruências, isso significa que \(a\cdot b\equiv1\pmod m\), portanto existe algum \(c\in F[x]\) tal que</p>
+            <div class="equation" data-tex="ab-1=cm">\[a\cdot b-1=c\cdot m.\]</div>
+            <p>Segue-se que todo divisor comum de \(a\) e \(m\) também deve dividir \(1\). Portanto, \(\gcd(a,m)=1\).</p>
+            <p>Agora suponha que \(\gcd(a,m)=1\). A Proposição 2.46 nos diz que existem polinômios \(u,v\in F[x]\) tais que</p>
+            <div class="equation" data-tex="au+mv=1">\[a\cdot u+m\cdot v=1.\]</div>
+            <p>Reduzindo módulo \(m\), obtemos</p>
+            <div class="equation" data-tex="au\equiv1\pmod m">\[a\cdot u\equiv1\pmod m,\]</div>
+            <p>logo \(\overline u\) é um inverso de \(\overline a\) em \(F[x]/(m)\).<span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-10-4-inverso-via-mdc" data-enrichment-slot="exp-2-10-4-inverso-via-mdc"></span>
+
+          <p>Um caso importante da Proposição 2.53 ocorre quando o módulo é um polinômio irredutível.</p>
+
+          <div class="semantic corollary" id="cor-2-54">
+            <div class="semantic-header">
+              <span class="semantic-label">Corolário</span>
+              <span class="semantic-title">2.54</span>
+            </div>
+            <p>Seja \(F\) um corpo e seja \(m\in F[x]\) um polinômio irredutível. Então o anel quociente \(F[x]/(m)\) é um corpo; isto é, todo elemento não nulo de \(F[x]/(m)\) possui inverso multiplicativo.</p>
+          </div>
+
+          <div class="semantic proof" id="proof-2-54">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Substituindo \(m\) por um múltiplo constante, podemos supor que \(m\) seja um polinômio mônico. Seja \(\overline a\in F[x]/(m)\). Há dois casos a considerar. Primeiro, suponha que \(\gcd(a,m)=1\). A Proposição 2.53 nos diz que \(\overline a\) é uma unidade, e terminamos. Segundo, suponha que \(d=\gcd(a,m)\ne1\). Em particular, sabemos que \(d\mid m\). Mas \(m\) é mônico e irredutível, e \(d\ne1\), portanto devemos ter \(d=m\). Também sabemos que \(d\mid a\), logo \(m\mid a\). Assim, \(\overline a=\overline0\) em \(F[x]/(m)\). Isso conclui a demonstração de que todo elemento não nulo de \(F[x]/(m)\) possui inverso multiplicativo.<span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-10-4-irredutivel-produz-corpo" data-enrichment-slot="exp-2-10-4-irredutivel-produz-corpo"></span>
+
+          <div class="semantic example" id="ex-2-55">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.55</span>
+            </div>
+            <p>O polinômio \(x^2+1\) é irredutível em \(\mathbb R[x]\). O anel quociente \(\mathbb R[x]/(x^2+1)\) é um corpo. De fato, é o corpo dos números complexos \(\mathbb C\), no qual a “variável” \(x\) desempenha o papel de \(i=\sqrt{-1}\), pois, no anel \(\mathbb R[x]/(x^2+1)\), temos \(x^2=-1\).</p>
+            <p>Em contraste, o polinômio \(x^2-1\) claramente não é irredutível em \(\mathbb R[x]\). O anel quociente \(\mathbb R[x]/(x^2-1)\) não é um corpo. De fato,</p>
+            <div class="equation" data-tex="(x-1)(x+1)=0\quad\text{em }\mathbb R[x]/(x^2-1)">
+              \[(x-1)\cdot(x+1)=0\qquad\text{em }\mathbb R[x]/(x^2-1).\]
+            </div>
+            <p>Portanto, o anel \(\mathbb R[x]/(x^2-1)\) possui elementos não nulos cujo produto é \(0\), o que certamente significa que eles não podem ser unidades. Elementos não nulos de um anel cujo produto é \(0\) são chamados de <strong>divisores de zero</strong>.</p>
+          </div>
+
+          <p>Se aplicarmos o Corolário 2.54 a um anel de polinômios com coeficientes em um corpo finito \(\mathbb F_p\), poderemos criar novos corpos finitos cujo número de elementos é uma potência de primo.</p>
+
+          <div class="semantic corollary" id="cor-2-56">
+            <div class="semantic-header">
+              <span class="semantic-label">Corolário</span>
+              <span class="semantic-title">2.56</span>
+            </div>
+            <p>Seja \(\mathbb F_p\) um corpo finito e seja \(m\in\mathbb F_p[x]\) um polinômio irredutível de grau \(d\ge1\). Então \(\mathbb F_p[x]/(m)\) é um corpo com \(p^d\) elementos.</p>
+          </div>
+
+          <div class="semantic proof" id="proof-2-56">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Combinamos o Corolário 2.54, que afirma que \(\mathbb F_p[x]/(m)\) é um corpo, com o Corolário 2.52, que afirma que \(\mathbb F_p[x]/(m)\) possui \(p^d\) elementos.<span class="proof-end">□</span></p>
+          </div>
+
+          <div class="semantic example" id="ex-2-57">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.57</span>
+            </div>
+            <p>Não é difícil verificar que o polinômio \(x^3+x+1\) é irredutível em \(\mathbb F_2[x]\); veja o Exercício 2.37. Logo, \(\mathbb F_2[x]/(x^3+x+1)\) é um corpo com oito elementos. A Proposição 2.50 nos diz que os representantes dos oito elementos desse corpo são</p>
+            <div class="equation" data-tex="0,1,x,x^2,1+x,1+x^2,x+x^2,1+x+x^2">
+              \[0,\ 1,\ x,\ x^2,\ 1+x,\ 1+x^2,\ x+x^2,\ 1+x+x^2.\]
+            </div>
+            <p>A adição é fácil, desde que você se lembre de tratar os coeficientes módulo \(2\). Por exemplo,</p>
+            <div class="equation" data-tex="(1+x)+(x+x^2)=1+x^2">\[(1+x)+(x+x^2)=1+x^2.\]</div>
+            <p>A multiplicação também é fácil: basta multiplicar os polinômios, dividir por \(x^3+x+1\) e tomar o resto. Por exemplo,</p>
+            <div class="equation" data-tex="(1+x)(x+x^2)=x+2x^2+x^3=1">
+              \[(1+x)\cdot(x+x^2)=x+2x^2+x^3=1,\]
+            </div>
+            <p>portanto \(1+x\) e \(x+x^2\) são inversos multiplicativos. A tabela completa de multiplicação de \(\mathbb F_2[x]/(x^3+x+1)\) é descrita no Exercício 2.38.</p>
+          </div>
+
+          <div class="semantic example" id="ex-2-58">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.58</span>
+            </div>
+            <p>Quando o polinômio \(x^2+1\) é irredutível no anel \(\mathbb F_p[x]\)? Se ele for redutível, então se fatora como</p>
+            <div class="equation" data-tex="x^2+1=(x+\alpha)(x+\beta)\quad\text{para alguns }\alpha,\beta\in\mathbb F_p">
+              \[x^2+1=(x+\alpha)(x+\beta)\qquad\text{para alguns }\alpha,\beta\in\mathbb F_p.\]
+            </div>
+            <p>Comparando os coeficientes, obtemos \(\alpha+\beta=0\) e \(\alpha\beta=1\); portanto,</p>
+            <div class="equation" data-tex="\alpha^2=\alpha(-\beta)=-\alpha\beta=-1">
+              \[\alpha^2=\alpha\cdot(-\beta)=-\alpha\beta=-1.\]
+            </div>
+            <p>Em outras palavras, o corpo \(\mathbb F_p\) possui um elemento cujo quadrado é \(-1\). Reciprocamente, se \(\alpha\in\mathbb F_p\) satisfaz \(\alpha^2=-1\), então \(x^2+1=(x-\alpha)(x+\alpha)\) se fatora em \(\mathbb F_p[x]\). Isso demonstra que</p>
+            <div class="equation" data-tex="x^2+1\text{ é irredutível em }\mathbb F_p[x]\iff -1\text{ não é um quadrado em }\mathbb F_p">
+              \[x^2+1\text{ é irredutível em }\mathbb F_p[x]\quad\Longleftrightarrow\quad-1\text{ não é um quadrado em }\mathbb F_p.\]
+            </div>
+            <p>A reciprocidade quadrática, que estudaremos mais adiante na Seção 3.9, nos diz então que</p>
+            <div class="equation" data-tex="x^2+1\text{ é irredutível em }\mathbb F_p[x]\iff p\equiv3\pmod4">
+              \[x^2+1\text{ é irredutível em }\mathbb F_p[x]\quad\Longleftrightarrow\quad p\equiv3\pmod4.\]
+            </div>
+            <p>Seja \(p\) um primo que satisfaz \(p\equiv3\pmod4\). Então \(\mathbb F_p[x]/(x^2+1)\) é um corpo com \(p^2\) elementos. Ele contém um elemento \(x\) que é uma raiz quadrada de \(-1\). Assim, podemos considerar \(\mathbb F_p[x]/(x^2+1)\) uma espécie de análogo dos números complexos e escrever seus elementos na forma</p>
+            <div class="equation" data-tex="a+bi\quad\text{com }a,b\in\mathbb F_p">
+              \[a+bi\qquad\text{com }a,b\in\mathbb F_p,\]
+            </div>
+            <p>em que \(i\) é simplesmente um símbolo com a propriedade \(i^2=-1\). Adição, subtração, multiplicação e divisão são realizadas exatamente como nos números complexos, com a ressalva de que, em vez de números reais como coeficientes, usamos inteiros módulo \(p\). Por exemplo, a divisão é feita pelo procedimento usual de “racionalizar o denominador”:</p>
+            <div class="equation" data-tex="\frac{a+bi}{c+di}=\frac{a+bi}{c+di}\cdot\frac{c-di}{c-di}=\frac{(ac+bd)+(bc-ad)i}{c^2+d^2}">
+              \[
+                \frac{a+bi}{c+di}
+                =\frac{a+bi}{c+di}\cdot\frac{c-di}{c-di}
+                =\frac{(ac+bd)+(bc-ad)i}{c^2+d^2}.
+              \]
+            </div>
+            <p>Observe que nunca há problema de aparecer \(0\) no denominador, pois a hipótese \(p\equiv3\pmod4\) garante que \(c^2+d^2\ne0\), desde que pelo menos um entre \(c\) e \(d\) seja não nulo. Esses corpos de ordem \(p^2\) serão usados na Seção 6.9.3.</p>
+          </div>
+
+          <p>Para construir um corpo com \(p^d\) elementos, precisamos encontrar um polinômio irredutível de grau \(d\) em \(\mathbb F_p[x]\). Demonstra-se em textos mais avançados que sempre existe um polinômio desse tipo e, em geral, existem muitos. Além disso, em certo sentido abstrato, não importa qual polinômio irredutível escolhemos: sempre obtemos o mesmo corpo. Em termos práticos, porém, a escolha faz diferença, pois os cálculos em \(\mathbb F_p[x]/(m)\) são mais eficientes quando \(m\) não possui muitos coeficientes não nulos.</p>
+
+          <p>Resumimos algumas das propriedades principais dos corpos finitos no teorema a seguir.</p>
+
+          <div class="semantic theorem" id="thm-2-59">
+            <div class="semantic-header">
+              <span class="semantic-label">Teorema</span>
+              <span class="semantic-title">2.59</span>
+            </div>
+            <p>Seja \(\mathbb F_p\) um corpo finito.</p>
+            <ol type="a">
+              <li><p>Para todo \(d\ge1\), existe um polinômio irredutível \(m\in\mathbb F_p[x]\) de grau \(d\).</p></li>
+              <li><p>Para todo \(d\ge1\), existe um corpo finito com \(p^d\) elementos.</p></li>
+              <li><p>Se \(F\) e \(F'\) são corpos finitos com o mesmo número de elementos, existe uma maneira de fazer corresponder os elementos de \(F\) aos elementos de \(F'\) de modo que as tabelas de adição e multiplicação de \(F\) e \(F'\) sejam iguais. Na terminologia matemática, \(F\) e \(F'\) são isomorfos.</p></li>
+            </ol>
+          </div>
+
+          <div class="semantic proof" id="proof-2-59">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Sabemos pelo Corolário 2.56 que (a) implica (b). Para demonstrações de (a) e (c), consulte qualquer texto básico de álgebra ou teoria dos números; por exemplo, [40, §§13.5, 14.3], [53, Seção 7.1] ou [59, Capítulo 7].<span class="proof-end">□</span></p>
+          </div>
+
+          <div class="semantic definition" id="def-corpo-fpd">
+            <div class="semantic-header">
+              <span class="semantic-label">Definição</span>
+              <span class="semantic-title">O corpo \(\mathbb F_{p^d}\)</span>
+            </div>
+            <p>Escrevemos \(\mathbb F_{p^d}\) para indicar um corpo com \(p^d\) elementos. O Teorema 2.59 garante que existe pelo menos um corpo desse tipo e que quaisquer dois corpos com \(p^d\) elementos são essencialmente iguais, a menos de uma renomeação de seus elementos. Esses corpos também são chamados de <strong>corpos de Galois</strong> e denotados por \(\operatorname{GF}(p^d)\), em homenagem ao matemático francês do século XIX Évariste Galois, que os estudou.</p>
+          </div>
+
+          <div class="semantic remark" id="rem-2-60">
+            <div class="semantic-header">
+              <span class="semantic-label">Observação</span>
+              <span class="semantic-title">2.60</span>
+            </div>
+            <p>Não é difícil provar que, se \(F\) é um corpo finito, então \(F\) possui \(p^d\) elementos para algum primo \(p\) e algum \(d\ge1\). A demonstração usa álgebra linear; veja o Exercício 2.41. Portanto, o Teorema 2.59 descreve todos os corpos finitos.</p>
+          </div>
+
+          <div class="semantic remark" id="rem-2-61">
+            <div class="semantic-header">
+              <span class="semantic-label">Observação</span>
+              <span class="semantic-title">2.61</span>
+            </div>
+            <p>Para fins criptográficos, com frequência é vantajoso trabalhar num corpo \(\mathbb F_{2^d}\), em vez de num corpo \(\mathbb F_p\) com \(p\) grande. Isso se deve ao fato de que a natureza binária dos computadores muitas vezes lhes permite trabalhar de modo mais eficiente com \(\mathbb F_{2^d}\). Uma segunda razão é que, às vezes, convém ter um corpo finito que contenha corpos menores. No caso de \(\mathbb F_{p^d}\), pode-se mostrar que todo corpo \(\mathbb F_{p^e}\), com \(e\mid d\), é um subcorpo de \(\mathbb F_{p^d}\). Naturalmente, se pretendemos usar \(\mathbb F_{2^d}\) para a troca de chaves Diffie–Hellman ou para a cifração Elgamal, é necessário escolher \(2^d\) com tamanho aproximadamente igual ao tamanho que normalmente se escolheria para \(p\).</p>
+          </div>
+
+          <p>Seja \(F\) um corpo finito com \(q\) elementos. Todo elemento não nulo de \(F\) possui inverso, portanto o grupo de unidades \(F^*\) é um grupo de ordem \(q-1\). O teorema de Lagrange, o Teorema 2.13, nos diz que a ordem de todo elemento de \(F^*\) divide \(q-1\); logo,</p>
+
+          <div class="equation" data-tex="a^{q-1}=1\quad\text{para todo }a\in F^*">
+            \[a^{q-1}=1\qquad\text{para todo }a\in F^*.\]
+          </div>
+
+          <p>Essa é uma generalização do pequeno teorema de Fermat, o Teorema 1.24, para corpos finitos arbitrários. O teorema da raiz primitiva, o Teorema 1.30, também vale para todos os corpos finitos.</p>
+
+          <div class="semantic theorem" id="thm-2-62">
+            <div class="semantic-header">
+              <span class="semantic-label">Teorema</span>
+              <span class="semantic-title">2.62</span>
+            </div>
+            <p>Seja \(F\) um corpo finito com \(q\) elementos. Então \(F\) possui uma raiz primitiva; isto é, existe um elemento \(g\in F\) tal que</p>
+            <div class="equation" data-tex="F^*=\{1,g,g^2,g^3,\ldots,g^{q-2}\}">
+              \[F^*=\{1,g,g^2,g^3,\ldots,g^{q-2}\}.\]
+            </div>
+          </div>
+
+          <div class="semantic proof" id="proof-2-62">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Uma demonstração desse teorema pode ser encontrada em qualquer livro-texto básico de teoria dos números; veja, por exemplo, [59, §4.1] ou [137, Capítulo 28].<span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-10-4-construcao-unicidade-primitivo" data-enrichment-slot="exp-2-10-4-construcao-unicidade-primitivo"></span>
+        </section>

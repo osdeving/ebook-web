@@ -1,0 +1,125 @@
+<section class="chapter-section" id="sec-2-6">
+          <div class="section-heading">
+            <span class="section-number">2.6</span>
+            <h2>Quão difícil é o problema do logaritmo discreto?</h2>
+          </div>
+
+          <p class="lead">Dados um grupo \(G\) e dois elementos \(g,h\in G\), o problema do logaritmo discreto (PLD) pede um expoente \(x\) tal que \(g^x=h\). Mas o que significa falar da dificuldade desse problema? Como podemos quantificar a palavra "difícil"?</p>
+
+          <p>Uma medida natural de dificuldade é o número aproximado de operações de que uma pessoa ou um computador precisa para resolver o problema com o método mais eficiente conhecido no momento. Por exemplo, podemos resolver o problema do logaritmo discreto calculando a lista \(g,g^2,g^3,\ldots\) até encontrarmos um valor igual a \(h\). Se \(g\) tem ordem \(n\), esse algoritmo certamente encontra a solução em, no máximo, \(n\) multiplicações. Contudo, se \(n\) for grande, digamos \(n&gt;2^{80}\), ele não será um algoritmo viável com o poder computacional disponível hoje.</p>
+
+          <p>Como alternativa, poderíamos escolher valores aleatórios de \(x\), calcular \(g^x\) e verificar se \(g^x=h\). Pelo método de exponenciação rápida descrito na Seção 1.3.2, o cálculo de \(g^x\) exige um pequeno múltiplo de \(\log_2(x)\) multiplicações modulares. Se \(n\) e \(x\) forem números de \(k\) bits, isto é, ambos tiverem tamanho aproximado de \(2^k\), essa abordagem por tentativa e erro exigirá cerca de \(k\cdot2^k\) multiplicações. Se estivermos trabalhando no grupo \(\mathbb F_p^*\) e tratarmos a adição modular como operação básica, a multiplicação modular de dois números de \(k\) bits exigirá aproximadamente \(k^2\) operações básicas. Portanto, resolver o PLD por tentativa e erro exigirá um pequeno múltiplo de \(k^2\cdot2^k\) operações básicas.</p>
+
+          <span id="slot-exp-2-6-bits-e-candidatos" data-enrichment-slot="exp-2-6-bits-e-candidatos"></span>
+
+          <p>Estamos sendo um pouco imprecisos ao falar em "pequenos múltiplos" de \(2^k\), \(k\cdot2^k\) ou \(k^2\cdot2^k\). Isso ocorre porque, quando queremos saber se um cálculo é viável, números como \(3\cdot2^k\), \(10\cdot2^k\) e \(100\cdot2^k\) têm praticamente o mesmo significado quando \(k\) é grande. A propriedade importante é que o múltiplo constante permanece fixo à medida que \(k\) cresce. A notação de ordem foi criada para tornar precisas essas ideias.<sup><a href="#nota-7">7</a></sup> Ela aparece por toda a matemática e a ciência da computação e oferece uma maneira conveniente de avaliar a ordem de grandeza das quantidades.</p>
+
+          <span id="slot-exp-2-6-grande-o-sem-misterio" data-enrichment-slot="exp-2-6-grande-o-sem-misterio"></span>
+
+          <div class="semantic definition" id="def-notacao-ordem">
+            <div class="semantic-header">
+              <span class="semantic-label">Definição</span>
+              <span class="semantic-title">Notação de ordem</span>
+            </div>
+            <p>Sejam \(f(x)\) e \(g(x)\) funções de \(x\) com valores positivos. Dizemos que "\(f\) é grande O de \(g\)" e escrevemos</p>
+            <div class="equation">\[f(x)=\mathcal O\bigl(g(x)\bigr)\]</div>
+            <p>se existem constantes positivas \(c\) e \(C\) tais que</p>
+            <div class="equation">\[f(x)\le c g(x)\qquad\text{para todo }x\ge C.\]</div>
+            <p>Em particular, escrevemos \(f(x)=\mathcal O(1)\) quando \(f(x)\) é limitada para todo \(x\ge C\).</p>
+          </div>
+
+          <p>A proposição seguinte fornece um método que, em algumas situações, permite provar que \(f(x)=\mathcal O(g(x))\).</p>
+
+          <div class="semantic proposition" id="prop-2-14">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.14</span>
+            </div>
+            <p>Se o limite</p>
+            <div class="equation">\[\lim_{x\to\infty}\frac{f(x)}{g(x)}\]</div>
+            <p>existir e for finito, então \(f(x)=\mathcal O(g(x))\).</p>
+          </div>
+
+          <div class="semantic proof">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Seja \(L\) o limite. Pela definição de limite, para todo \(\epsilon&gt;0\) existe uma constante \(C_\epsilon\) tal que</p>
+            <div class="equation">\[\left|\frac{f(x)}{g(x)}-L\right|&lt;\epsilon\qquad\text{para todo }x&gt;C_\epsilon.\]</div>
+            <p>Em particular, tomando \(\epsilon=1\), obtemos</p>
+            <div class="equation">\[\frac{f(x)}{g(x)}&lt;L+1\qquad\text{para todo }x&gt;C_1.\]</div>
+            <p>Portanto, pela definição, \(f(x)=\mathcal O(g(x))\), com \(c=L+1\) e \(C=C_1\). <span class="proof-end">□</span></p>
+          </div>
+
+          <div class="semantic example" id="exemplo-2-15">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.15</span>
+            </div>
+            <p>Temos \(2x^3-3x^2+7=\mathcal O(x^3)\), pois</p>
+            <div class="equation">\[\lim_{x\to\infty}\frac{2x^3-3x^2+7}{x^3}=2.\]</div>
+            <p>De modo semelhante, \(x^2=\mathcal O(2^x)\), pois</p>
+            <div class="equation">\[\lim_{x\to\infty}\frac{x^2}{2^x}=0.\]</div>
+            <p>Se você não conhece o valor desse limite, aplique duas vezes a regra de L'Hôpital.</p>
+            <p>Observe, porém, que podemos ter \(f(x)=\mathcal O(g(x))\) mesmo quando o limite de \(f(x)/g(x)\) não existe. Por exemplo, o limite</p>
+            <div class="equation">\[\lim_{x\to\infty}\frac{(x+2)\cos^2(x)}{x}\]</div>
+            <p>não existe, mas</p>
+            <div class="equation">\[(x+2)\cos^2(x)=\mathcal O(x),\quad\text{pois}\quad (x+2)\cos^2(x)\le x+2\le2x\quad\text{para todo }x\ge2.\]</div>
+          </div>
+
+          <div class="semantic example" id="exemplo-2-16">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.16</span>
+            </div>
+            <p>A seguir estão mais alguns exemplos de notação de grande O. Deixamos a verificação como exercício.</p>
+            <div class="two-col">
+              <div>
+                <p>(a) \(\sqrt{x^2+x}=\mathcal O(x^2)\).</p>
+                <p>(b) \(5+6x^2-37x^5=\mathcal O(x^5)\).</p>
+                <p>(c) \(k^{300}=\mathcal O(2^k)\).</p>
+              </div>
+              <div>
+                <p>(d) \((\ln k)^{375}=\mathcal O(k^{0.001})\).</p>
+                <p>(e) \(k^2 2^k=\mathcal O(e^{2k})\).</p>
+                <p>(f) \(N^{10}2^N=\mathcal O(e^N)\).</p>
+              </div>
+            </div>
+          </div>
+
+          <p>A notação de ordem nos permite definir vários conceitos fundamentais usados para obter uma noção aproximada da complexidade computacional de problemas matemáticos.</p>
+
+          <div class="semantic definition" id="def-complexidade">
+            <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+            <p>Suponha que estejamos tentando resolver certo tipo de problema matemático cuja entrada é um número de tamanho variável. Como exemplo, considere o problema da fatoração de inteiros, cuja entrada é um número \(N\) e cuja saída é um fator primo de \(N\). Queremos saber quanto tempo é necessário para resolver o problema em função do tamanho da entrada. Em geral, mede-se o tamanho da entrada pelo número de bits, pois esse é o espaço de armazenamento necessário para registrá-la.</p>
+            <p>Suponha que exista uma constante \(A\ge0\), independente do tamanho da entrada, tal que, se a entrada tiver \(\mathcal O(k)\) bits, sejam necessários \(\mathcal O(k^A)\) passos para resolver o problema. Dizemos então que o problema é resolúvel em <em>tempo polinomial</em>.</p>
+            <p>Se pudermos tomar \(A=1\), o problema será resolúvel em <em>tempo linear</em>; se pudermos tomar \(A=2\), será resolúvel em <em>tempo quadrático</em>. Algoritmos de tempo polinomial são considerados algoritmos rápidos.</p>
+            <p>Por outro lado, se existir uma constante \(c&gt;0\) tal que, para entradas de tamanho \(\mathcal O(k)\) bits, haja um algoritmo que resolva o problema em \(\mathcal O(e^{ck})\) passos, então o problema será resolúvel em <em>tempo exponencial</em>. Algoritmos de tempo exponencial são considerados algoritmos lentos.</p>
+            <p>Entre os algoritmos de tempo polinomial e os de tempo exponencial estão os algoritmos de <em>tempo subexponencial</em>. Eles têm a propriedade de que, para todo \(\epsilon&gt;0\), resolvem o problema em \(\mathcal O_\epsilon(e^{\epsilon k})\) passos. Essa notação significa que as constantes \(c\) e \(C\) da definição de notação de ordem podem depender de \(\epsilon\). Por exemplo, no Capítulo 3 estudaremos um algoritmo de tempo subexponencial para o problema da fatoração de inteiros cujo tempo de execução é de \(\mathcal O(e^{c\sqrt{k\log k}})\) passos.</p>
+          </div>
+
+          <span id="slot-exp-2-6-tres-regimes-de-tempo" data-enrichment-slot="exp-2-6-tres-regimes-de-tempo"></span>
+
+          <p>Como regra prática geral em criptografia, problemas resolúveis em tempo polinomial são considerados "fáceis", enquanto problemas que exigem tempo exponencial são vistos como "difíceis"; o tempo subexponencial fica em algum ponto intermediário. Tenha em mente, porém, que essas são descrições assintóticas, aplicáveis apenas quando as variáveis se tornam muito grandes. Dependendo das constantes ocultas na notação de grande O e do tamanho da entrada, um problema exponencial pode ser mais fácil do que um problema polinomial. Ilustraremos esses conceitos gerais examinando o problema do logaritmo discreto em diversos grupos.</p>
+
+          <div class="semantic example" id="exemplo-2-17">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.17</span>
+            </div>
+            <p>Comecemos com nosso problema original do logaritmo discreto \(g^x=h\) em \(G=\mathbb F_p^*\). Se o primo \(p\) for escolhido entre \(2^k\) e \(2^{k+1}\), então \(g\), \(h\) e \(p\) exigirão, cada um, no máximo \(k\) bits, de modo que o problema poderá ser enunciado com \(\mathcal O(k)\) bits. Observe que \(\mathcal O(k)\) é o mesmo que \(\mathcal O(\log_2 p)\).</p>
+            <p>Se tentarmos resolver o PLD pelo método de tentativa e erro mencionado antes, serão necessários \(\mathcal O(p)\) passos. Como \(\mathcal O(p)=\mathcal O(2^k)\), esse algoritmo exige tempo exponencial. Se, em vez disso, considerarmos a multiplicação ou a adição como operação básica, o algoritmo exigirá \(\mathcal O(k\cdot2^k)\) ou \(\mathcal O(k^2\cdot2^k)\) passos, mas essas diferenças são irrelevantes: o tempo de execução ainda é exponencial, pois, por exemplo, ele é \(\mathcal O(3^k)\).</p>
+            <p>Há, contudo, maneiras mais rápidas de resolver o PLD em \(\mathbb F_p^*\). Algumas são muito rápidas, mas funcionam apenas para certos primos; outras são menos rápidas, porém funcionam para todos os primos. O algoritmo de Pohlig–Hellman descrito na Seção 2.9, por exemplo, mostra que o PLD é bastante fácil quando \(p-1\) se fatora inteiramente como produto de primos pequenos. Para primos arbitrários, o algoritmo descrito na Seção 2.7 resolve o PLD em \(\mathcal O(\sqrt p\log p)\) passos, muito menos que \(\mathcal O(p)\), mas ainda em tempo exponencial. Melhor ainda é o algoritmo de cálculo de índices descrito na Seção 3.8. Ele resolve o PLD em \(\mathcal O(e^{c\sqrt{(\log p)(\log\log p)}})\) passos e, portanto, é subexponencial.</p>
+          </div>
+
+          <div class="semantic example" id="exemplo-2-18">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.18</span>
+            </div>
+            <p>Consideremos agora o PLD no grupo \(G=\mathbb F_p\), em que a operação do grupo é a adição. Nesse contexto, o PLD pede uma solução \(x\) para a congruência</p>
+            <div class="equation">\[x\cdot g\equiv h\pmod p,\]</div>
+            <p>onde \(g\) e \(h\) são elementos dados de \(\mathbb Z/p\mathbb Z\). Como foi descrito na Seção 1.3, podemos resolver essa congruência usando o algoritmo de Euclides estendido (Teorema 1.11) para calcular \(g^{-1}\pmod p\) e tomando \(x\equiv g^{-1}h\pmod p\). Isso exige \(\mathcal O(\log p)\) passos (veja a Observação 1.15), de modo que existe um algoritmo de tempo linear para resolver o PLD no grupo aditivo \(\mathbb F_p\). Como esse algoritmo é muito rápido, o PLD em \(\mathbb F_p\) com adição não é um bom candidato a função unidirecional em criptografia.</p>
+            <p>Há aqui uma lição importante: os problemas do logaritmo discreto em grupos diferentes podem apresentar níveis diferentes de dificuldade. O PLD em \(\mathbb F_p\) com adição tem solução em tempo linear, enquanto o melhor algoritmo geral conhecido para resolver o PLD em \(\mathbb F_p^*\) com multiplicação é subexponencial. No Capítulo 6, discutiremos outro tipo de grupo, chamado curva elíptica. Acredita-se que o problema do logaritmo discreto para curvas elípticas seja ainda mais difícil do que o PLD em \(\mathbb F_p^*\). Em particular, se o grupo da curva elíptica for escolhido com cuidado e tiver \(N\) elementos, o melhor algoritmo conhecido para resolver o PLD exigirá \(\mathcal O(\sqrt N)\) passos. Assim, atualmente, resolver o problema do logaritmo discreto em curvas elípticas exige tempo exponencial.</p>
+          </div>
+
+          <p class="footnote" id="nota-7"><sup>7</sup> Embora usemos a mesma palavra para a ordem de um grupo finito e a ordem de crescimento de uma função, esses são dois conceitos diferentes. Tome cuidado para não confundi-los.</p>
+        </section>

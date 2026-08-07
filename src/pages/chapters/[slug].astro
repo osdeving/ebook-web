@@ -1,0 +1,26 @@
+---
+import { chapters } from "../../chapters";
+import { trustedHtml } from "../../framework";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ChapterArticle from "../../components/ChapterArticle.astro";
+import ChapterHeader from "../../components/ChapterHeader.astro";
+import EbookShell from "../../components/EbookShell.astro";
+import EnrichmentHost from "../../components/EnrichmentHost.astro";
+import ReaderRuntime from "../../components/ReaderRuntime.astro";
+
+export function getStaticPaths() {
+  return chapters.map((chapter) => ({ params: { slug: chapter.slug }, props: { chapter } }));
+}
+
+const { chapter } = Astro.props;
+const source = trustedHtml(chapter.sourceSections.map(({ html }) => html).join("\n"));
+---
+
+<BaseLayout title={chapter.title} description={chapter.description}>
+  <EbookShell chapter={chapter}>
+    <ChapterHeader chapter={chapter} />
+    <EnrichmentHost chapter={chapter} />
+    <ChapterArticle chapter={chapter} html={source} />
+    <ReaderRuntime slot="runtime" />
+  </EbookShell>
+</BaseLayout>

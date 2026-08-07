@@ -1,0 +1,230 @@
+<section class="chapter-section" id="sec-2-10-3">
+          <div class="section-heading">
+            <span class="section-number">2.10.3</span>
+            <h2>Anéis de polinômios e o algoritmo de Euclides</h2>
+          </div>
+
+          <p>No Exemplo 2.38(f), observamos que, se \(R\) é qualquer anel, podemos criar um anel de polinômios com coeficientes em \(R\). Esse anel é denotado por</p>
+
+          <div class="equation" data-tex="R[x]=\{a_0+a_1x+a_2x^2+\cdots+a_nx^n:n\ge0\text{ e }a_0,a_1,\ldots,a_n\in R\}">
+            \[
+              R[x]=\{a_0+a_1x+a_2x^2+\cdots+a_nx^n:n\ge0\text{ e }a_0,a_1,\ldots,a_n\in R\}.
+            \]
+          </div>
+
+          <p>O grau de um polinômio não nulo é o expoente da maior potência de \(x\) que aparece. Assim, se</p>
+
+          <div class="equation" data-tex="a(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n">
+            \[a(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n\]
+          </div>
+
+          <p>com \(a_n\ne0\), então \(a(x)\) tem grau \(n\). Denotamos o grau de \(a\) por \(\deg(a)\) e chamamos \(a_n\) de <strong>coeficiente líder</strong> de \(a(x)\). Um polinômio não nulo cujo coeficiente líder é igual a \(1\) é chamado de <strong>polinômio mônico</strong>. Por exemplo, \(3+x^2\) é um polinômio mônico, mas \(1+3x^2\) não é.</p>
+
+          <span id="slot-exp-2-10-3-grau-monico" data-enrichment-slot="exp-2-10-3-grau-monico"></span>
+
+          <p>São especialmente importantes os anéis de polinômios nos quais o anel \(R\) é um corpo; por exemplo, \(R\) pode ser \(\mathbb Q\), \(\mathbb R\), \(\mathbb C\) ou um corpo finito \(\mathbb F_p\). Para a criptografia, o último caso é, de longe, o mais importante. Uma razão pela qual é tão útil tomar \(R\) como um corpo \(F\) é que praticamente todas as propriedades de \(\mathbb Z\) que provamos na Seção 1.2 também valem para o anel de polinômios \(F[x]\). Esta seção é dedicada à discussão das propriedades de \(F[x]\).</p>
+
+          <p>Sem dúvida, você aprendeu no ensino médio a dividir um polinômio por outro. Vamos recordar o processo com um exemplo. Eis como se divide \(x^5+2x^4+7\) por \(x^3-5\):</p>
+
+          <div class="equation" data-tex="\begin{array}{rl}&amp;x^2+2x\quad\text{com resto }5x^2+10x+7\\ x^3-5\,\big)&amp;x^5+2x^4+7\\ &amp;\underline{x^5\phantom{{}+2x^4}-5x^2}\\ &amp;2x^4+5x^2+7\\ &amp;\underline{2x^4\phantom{{}+5x^2}-10x}\\ &amp;5x^2+10x+7\end{array}">
+            \[
+              \begin{array}{rl}
+                &amp;x^2+2x\quad\text{com resto }5x^2+10x+7\\
+                x^3-5\,\big)&amp;x^5+2x^4+7\\
+                &amp;\underline{x^5\phantom{{}+2x^4}-5x^2}\\
+                &amp;2x^4+5x^2+7\\
+                &amp;\underline{2x^4\phantom{{}+5x^2}-10x}\\
+                &amp;5x^2+10x+7
+              \end{array}
+            \]
+          </div>
+
+          <p>Em outras palavras, a divisão de \(x^5+2x^4+7\) por \(x^3-5\) fornece quociente \(x^2+2x\) e resto \(5x^2+10x+7\). Outra maneira de dizer a mesma coisa é escrever<sup><a href="#fn-2-10-11" id="fnref-2-10-11">11</a></sup></p>
+
+          <div class="equation" data-tex="x^5+2x^4+7=(x^2+2x)(x^3-5)+(5x^2+10x+7)">
+            \[x^5+2x^4+7=(x^2+2x)(x^3-5)+(5x^2+10x+7).\]
+          </div>
+
+          <p>Observe que o grau do resto \(5x^2+10x+7\) é estritamente menor que o grau do divisor \(x^3-5\).</p>
+
+          <p class="footnote" id="fn-2-10-11"><sup>11</sup> Por conveniência notacional, deixamos de usar \(\star\) para a multiplicação e escrevemos apenas \(a\cdot b\), ou até simplesmente \(ab\). <a href="#fnref-2-10-11" aria-label="Voltar à chamada da nota 11">↩</a></p>
+
+          <span id="slot-exp-2-10-3-divisao-lenta" data-enrichment-slot="exp-2-10-3-divisao-lenta"></span>
+
+          <p>Podemos fazer o mesmo em qualquer anel de polinômios \(F[x]\), desde que \(F\) seja um corpo. Anéis desse tipo, que possuem um algoritmo de “divisão com resto”, são chamados de anéis euclidianos.</p>
+
+          <div class="semantic proposition" id="prop-2-44">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.44 — O anel \(F[x]\) é euclidiano</span>
+            </div>
+            <p>Seja \(F\) um corpo e sejam \(a\) e \(b\) polinômios de \(F[x]\), com \(b\ne0\). Então é possível escrever</p>
+            <div class="equation" data-tex="a=bk+r\quad\text{com }k,r\text{ polinômios, e }r=0\text{ ou }\deg r&lt;\deg b">
+              \[a=b\cdot k+r\quad\text{com }k\text{ e }r\text{ polinômios, e com }r=0\text{ ou }\deg r<\deg b.\]
+            </div>
+            <p>Dizemos que a divisão de \(a\) por \(b\) tem quociente \(k\) e resto \(r\).</p>
+          </div>
+
+          <div class="semantic proof" id="proof-2-44">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Começamos com quaisquer valores de \(k\) e \(r\) que satisfaçam</p>
+            <div class="equation" data-tex="a=bk+r">\[a=b\cdot k+r.\]</div>
+            <p>Por exemplo, poderíamos começar com \(k=0\) e \(r=a\). Se \(\deg r<\deg b\), terminamos. Caso contrário, escrevemos</p>
+            <div class="equation" data-tex="b=b_0+b_1x+\cdots+b_dx^d\quad\text{e}\quad r=r_0+r_1x+\cdots+r_ex^e">
+              \[b=b_0+b_1x+\cdots+b_dx^d\qquad\text{e}\qquad r=r_0+r_1x+\cdots+r_ex^e,\]
+            </div>
+            <p>com \(b_d\ne0\), \(r_e\ne0\) e \(e\ge d\). Reescrevemos a equação \(a=b\cdot k+r\) como</p>
+            <div class="equation" data-tex="a=b\left(k+\frac{r_e}{b_d}x^{e-d}\right)+\left(r-\frac{r_e}{b_d}x^{e-d}b\right)=bk'+r'">
+              \[
+                a=b\left(k+\frac{r_e}{b_d}x^{e-d}\right)
+                +\left(r-\frac{r_e}{b_d}x^{e-d}\cdot b\right)
+                =b\cdot k'+r'.
+              \]
+            </div>
+            <p>Observe que cancelamos o termo de maior grau de \(r\), portanto \(\deg r'<\deg r\). Se \(\deg r'<\deg b\), terminamos. Caso contrário, repetimos o processo. Podemos fazer isso enquanto o termo de resto satisfizer \(\deg r\ge\deg b\), e, cada vez que aplicamos o processo, o grau desse termo diminui. Logo, acabamos chegando a um termo de resto cujo grau é estritamente menor que o grau de \(b\).<span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-10-3-grau-termina" data-enrichment-slot="exp-2-10-3-grau-termina"></span>
+
+          <p>Agora podemos definir divisores comuns e máximos divisores comuns em \(F[x]\).</p>
+
+          <div class="semantic definition" id="def-mdc-polinomios">
+            <div class="semantic-header">
+              <span class="semantic-label">Definição</span>
+              <span class="semantic-title">Divisor comum e máximo divisor comum</span>
+            </div>
+            <p>Um <strong>divisor comum</strong> de dois elementos \(a,b\in F[x]\) é um elemento \(d\in F[x]\) que divide tanto \(a\) quanto \(b\). Dizemos que \(d\) é um <strong>máximo divisor comum</strong> de \(a\) e \(b\) quando todo divisor comum de \(a\) e \(b\) também divide \(d\).</p>
+            <p>Veremos a seguir que todo par de elementos de \(F[x]\) possui um máximo divisor comum,<sup><a href="#fn-2-10-12" id="fnref-2-10-12">12</a></sup> único a menos da multiplicação por um elemento não nulo de \(F\). Escrevemos \(\gcd(a,b)\) para designar o único polinômio mônico que é um máximo divisor comum de \(a\) e \(b\).</p>
+          </div>
+
+          <p class="footnote" id="fn-2-10-12"><sup>12</sup> De acordo com nossa definição, mesmo quando \(a\) e \(b\) são ambos iguais a \(0\), eles possuem um máximo divisor comum, a saber, \(0\). Alguns autores, porém, preferem deixar \(\gcd(0,0)\) indefinido. <a href="#fnref-2-10-12" aria-label="Voltar à chamada da nota 12">↩</a></p>
+
+          <div class="semantic example" id="ex-2-45">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.45</span>
+            </div>
+            <p>O máximo divisor comum de \(x^2-1\) e \(x^3+1\) é \(x+1\). Observe que</p>
+            <div class="equation" data-tex="x^2-1=(x+1)(x-1)\quad\text{e}\quad x^3+1=(x+1)(x^2-x+1)">
+              \[x^2-1=(x+1)(x-1)\qquad\text{e}\qquad x^3+1=(x+1)(x^2-x+1),\]
+            </div>
+            <p>portanto \(x+1\) é um divisor comum. Deixamos para você verificar que ele é um máximo divisor comum.</p>
+          </div>
+
+          <p>Não é evidente, a priori, que todo par de elementos possua um máximo divisor comum. De fato, há muitos anéis nos quais máximos divisores comuns não existem, como o anel \(\mathbb Z[x]\). Entretanto, eles existem no anel de polinômios \(F[x]\) quando \(F\) é um corpo.</p>
+
+          <span id="slot-exp-2-10-3-precisao-zx" data-enrichment-slot="exp-2-10-3-precisao-zx"></span>
+
+          <div class="semantic proposition" id="prop-2-46">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.46 — O algoritmo de Euclides estendido para \(F[x]\)</span>
+            </div>
+            <p>Seja \(F\) um corpo e sejam \(a\) e \(b\) polinômios de \(F[x]\), com \(b\ne0\). Então existe o máximo divisor comum \(d\) de \(a\) e \(b\), e existem polinômios \(u\) e \(v\) em \(F[x]\) tais que</p>
+            <div class="equation" data-tex="au+bv=d">\[a\cdot u+b\cdot v=d.\]</div>
+          </div>
+
+          <div class="semantic proof" id="proof-2-46">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>Assim como na demonstração do Teorema 1.7, o polinômio \(\gcd(a,b)\) pode ser calculado aplicando repetidamente a Proposição 2.44, como mostra a Figura 2.3. Do mesmo modo, os polinômios \(u\) e \(v\) podem ser calculados substituindo uma equação em outra na Figura 2.3, exatamente como foi descrito na demonstração do Teorema 1.11.<span class="proof-end">□</span></p>
+          </div>
+
+          <figure class="figure" id="fig-2-3">
+            <div class="law-list" role="group" aria-label="Etapas do algoritmo de Euclides para polinômios">
+              <div class="law">
+                <div>\(a=b\cdot k_1+r_2\)</div>
+                <div>com \(0\le\deg r_2<\deg b\)</div>
+              </div>
+              <div class="law">
+                <div>\(b=r_2\cdot k_2+r_3\)</div>
+                <div>com \(0\le\deg r_3<\deg r_2\)</div>
+              </div>
+              <div class="law">
+                <div>\(r_2=r_3\cdot k_3+r_4\)</div>
+                <div>com \(0\le\deg r_4<\deg r_3\)</div>
+              </div>
+              <div class="law">
+                <div>\(r_3=r_4\cdot k_4+r_5\)</div>
+                <div>com \(0\le\deg r_5<\deg r_4\)</div>
+              </div>
+              <div class="law" aria-hidden="true">
+                <div>\(\vdots\)</div>
+                <div>\(\vdots\)</div>
+              </div>
+              <div class="law">
+                <div>\(r_{t-2}=r_{t-1}\cdot k_{t-2}+r_t\)</div>
+                <div>com \(0\le\deg r_t<\deg r_{t-1}\)</div>
+              </div>
+              <div class="law">
+                <div>\(r_{t-1}=r_t\cdot k_t\)</div>
+                <div>Então \(d=r_t=\gcd(a,b)\).</div>
+              </div>
+            </div>
+            <figcaption>Figura 2.3: O algoritmo de Euclides para polinômios.</figcaption>
+          </figure>
+
+          <span id="slot-exp-2-10-3-euclides-bezout" data-enrichment-slot="exp-2-10-3-euclides-bezout"></span>
+
+          <div class="semantic example" id="ex-2-47">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.47</span>
+            </div>
+            <p>Usamos o algoritmo de Euclides no anel \(\mathbb F_{13}[x]\) para calcular \(\gcd(x^5-1,x^3+2x-3)\):</p>
+            <div class="equation" data-tex="\begin{aligned}x^5-1&amp;=(x^3+2x-3)(x^2+11)+(3x^2+4x+6)\\x^3+2x-3&amp;=(3x^2+4x+6)(9x+1)+(9x+4)\\3x^2+4x+6&amp;=(9x+4)(9x+8)+0\end{aligned}">
+              \[
+                \begin{aligned}
+                  x^5-1&amp;=(x^3+2x-3)(x^2+11)+(3x^2+4x+6),\\
+                  x^3+2x-3&amp;=(3x^2+4x+6)(9x+1)+(9x+4) &amp;&amp;\leftarrow\ \gcd=9x+4,\\
+                  3x^2+4x+6&amp;=(9x+4)(9x+8)+0.
+                \end{aligned}
+              \]
+            </div>
+            <p>Assim, \(9x+4\) é um máximo divisor comum de \(x^5-1\) e \(x^3+2x-3\) em \(\mathbb F_{13}[x]\). Para obter um polinômio mônico, multiplicamos por \(3\equiv9^{-1}\pmod{13}\). Isso fornece</p>
+            <div class="equation" data-tex="\gcd(x^5-1,x^3+2x-3)=x-1\quad\text{em }\mathbb F_{13}[x]">
+              \[\gcd(x^5-1,x^3+2x-3)=x-1\qquad\text{em }\mathbb F_{13}[x].\]
+            </div>
+          </div>
+
+          <p>Recordamos da Seção 2.10.2 que um elemento \(u\) de um anel é uma unidade quando possui inverso multiplicativo \(u^{-1}\), e que um elemento \(a\) de um anel é irredutível quando não é uma unidade e a única maneira de fatorá-lo como \(a=bc\) exige que \(b\) ou \(c\) seja uma unidade. Não é difícil ver que as unidades de um anel de polinômios \(F[x]\) são precisamente os polinômios constantes não nulos, isto é, os elementos não nulos de \(F\); veja o Exercício 2.34. A questão da irredutibilidade é mais sutil, como mostram os exemplos a seguir.</p>
+
+          <div class="semantic example" id="ex-2-48">
+            <div class="semantic-header">
+              <span class="semantic-label">Exemplo</span>
+              <span class="semantic-title">2.48</span>
+            </div>
+            <p>O polinômio \(x^5-4x^3+3x^2-x+2\) é irredutível como polinômio de \(\mathbb Z[x]\), mas, se o considerarmos como elemento de \(\mathbb F_3[x]\), ele se fatora como</p>
+            <div class="equation" data-tex="x^5-4x^3+3x^2-x+2\equiv(x+1)(x^4+2x^3+2)\pmod3">
+              \[x^5-4x^3+3x^2-x+2\equiv(x+1)(x^4+2x^3+2)\pmod3.\]
+            </div>
+            <p>Ele também se fatora se o considerarmos como polinômio de \(\mathbb F_5[x]\), mas, dessa vez, como produto de um polinômio quadrático e um polinômio cúbico:</p>
+            <div class="equation" data-tex="x^5-4x^3+3x^2-x+2\equiv(x^2+4x+2)(x^3+x^2+1)\pmod5">
+              \[x^5-4x^3+3x^2-x+2\equiv(x^2+4x+2)(x^3+x^2+1)\pmod5.\]
+            </div>
+            <p>Por outro lado, se trabalharmos em \(\mathbb F_{13}[x]\), então \(x^5-4x^3+3x^2-x+2\) é irredutível.</p>
+          </div>
+
+          <p>Todo inteiro possui uma fatoração essencialmente única como produto de números primos. O mesmo vale para polinômios com coeficientes em um corpo. E, assim como no caso dos inteiros, a chave para demonstrar a fatoração única é o algoritmo de Euclides estendido.</p>
+
+          <div class="semantic proposition" id="prop-2-49">
+            <div class="semantic-header">
+              <span class="semantic-label">Proposição</span>
+              <span class="semantic-title">2.49</span>
+            </div>
+            <p>Seja \(F\) um corpo. Então todo polinômio não nulo de \(F[x]\) pode ser fatorado de maneira única como produto de polinômios mônicos irredutíveis, no seguinte sentido. Se \(a\in F[x]\) é fatorado como</p>
+            <div class="equation" data-tex="a=\alpha p_1p_2\cdots p_m\quad\text{e}\quad a=\beta q_1q_2\cdots q_n">
+              \[a=\alpha p_1\cdot p_2\cdots p_m\qquad\text{e}\qquad a=\beta q_1\cdot q_2\cdots q_n,\]
+            </div>
+            <p>em que \(\alpha,\beta\in F\) são constantes e \(p_1,\ldots,p_m,q_1,\ldots,q_n\) são polinômios mônicos irredutíveis, então, depois de reordenar \(q_1,\ldots,q_n\), temos</p>
+            <div class="equation" data-tex="\alpha=\beta,\quad m=n,\quad p_i=q_i\text{ para todo }1\le i\le m">
+              \[\alpha=\beta,\qquad m=n\qquad\text{e}\qquad p_i=q_i\quad\text{para todo }1\le i\le m.\]
+            </div>
+          </div>
+
+          <div class="semantic proof" id="proof-2-49">
+            <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+            <p>A existência de uma fatoração em irredutíveis decorre facilmente do fato de que, se \(a=b\cdot c\), então \(\deg a=\deg b+\deg c\). Veja o Exercício 2.34. A demonstração de que a fatoração é única é exatamente a mesma usada para os inteiros; compare com o Teorema 1.20. O passo-chave é a afirmação de que, se \(p\in F[x]\) é irredutível e divide o produto \(a\cdot b\), então \(p\mid a\), ou \(p\mid b\), ou ambos. Essa afirmação é a versão para polinômios da Proposição 1.19 e é demonstrada da mesma maneira, usando a versão polinomial do algoritmo de Euclides estendido, a Proposição 2.46.<span class="proof-end">□</span></p>
+          </div>
+
+          <span id="slot-exp-2-10-3-irredutibilidade-contexto" data-enrichment-slot="exp-2-10-3-irredutibilidade-contexto"></span>
+        </section>

@@ -1,0 +1,80 @@
+.reader { width: min(calc(100% - 2.5rem), var(--content-width)); margin: 0 auto; padding: 4rem 0 9rem; }
+.source-note { margin: 0 0 4rem; padding: 1.15rem 1.25rem 1.15rem 1.4rem; border: 1px solid var(--line); border-left: 4px solid var(--coral); border-radius: var(--radius-sm); background: var(--surface); color: var(--muted); font-size: .88rem; }
+.source-note strong { color: var(--ink); }
+.chapter-section, .section { margin-top: 5.5rem; scroll-margin-top: 2rem; }
+.reader > .chapter-section:first-of-type, .reader > .section:first-of-type { margin-top: 0; }
+.section-heading { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; margin-bottom: 2rem; }
+.section-number { min-width: 3.8rem; padding-top: .22rem; color: var(--accent); font-size: .78rem; font-weight: 850; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+.section > h2 { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem; align-items: start; margin-bottom: 2rem; }
+
+.semantic {
+  --semantic-color: var(--accent);
+  --semantic-bg: var(--accent-soft);
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.3rem 1.45rem 1.4rem;
+  border: 1px solid color-mix(in srgb, var(--semantic-color) 28%, var(--line));
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--semantic-bg), color-mix(in srgb, var(--surface) 88%, transparent));
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--semantic-color) 7%, transparent);
+}
+.semantic.definition { --semantic-color: var(--violet); --semantic-bg: var(--violet-soft); }
+.semantic.theorem, .semantic.proposition, .semantic.corollary { --semantic-color: var(--accent); --semantic-bg: var(--accent-soft); }
+.semantic.example { --semantic-color: var(--blue); --semantic-bg: var(--blue-soft); }
+.semantic.remark { --semantic-color: var(--gold); --semantic-bg: var(--gold-soft); }
+.semantic.proof { --semantic-color: var(--muted); --semantic-bg: color-mix(in srgb, var(--surface-raised) 82%, var(--paper)); box-shadow: none; }
+.semantic-header { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; margin-bottom: .8rem; }
+.semantic-label { padding: .25rem .5rem; border-radius: .35rem; background: var(--semantic-color); color: #fff; font-size: .67rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+html[data-theme="dark"] .semantic-label { color: #101817; }
+.semantic-title { font-family: Georgia, "Times New Roman", serif; font-size: 1.06rem; font-weight: 700; }
+.semantic > :last-child { margin-bottom: 0; }
+.semantic > h3 { margin: 0 0 .8rem; color: var(--semantic-color); font-size: 1.08rem; font-weight: 750; }
+.proof-end { float: right; font-size: 1.2rem; }
+
+.equation, .numbered-equation { position: relative; margin: 1.6rem 0; padding: 1.15rem 2.7rem 1.15rem 1.15rem; overflow-x: auto; border: 1px solid var(--line); border-radius: .75rem; background: var(--surface-raised); text-align: center; }
+.equation-number { float: right; margin-left: 1rem; color: var(--muted); font-size: .78rem; }
+.display-math, .aligned-equations { margin: 1.4rem 0; overflow-x: auto; overflow-y: hidden; text-align: center; }
+.katex-display { margin: .25rem 0 !important; overflow-x: auto; overflow-y: hidden; padding: .1rem 0; }
+.katex { font-size: 1.02em; }
+.copy-equation { position: absolute; top: .45rem; right: .45rem; width: 1.85rem; height: 1.85rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--surface); color: var(--muted); opacity: .55; cursor: pointer; }
+.equation:hover .copy-equation, .copy-equation:focus { opacity: 1; color: var(--accent-strong); }
+
+.table-wrap { margin: 2.25rem 0; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+table { width: 100%; border-collapse: collapse; font-size: .87rem; font-variant-numeric: tabular-nums; }
+caption { padding: 1rem 1.15rem; border-top: 1px solid var(--line); color: var(--muted); caption-side: bottom; text-align: left; font-size: .76rem; }
+th, td { padding: .72rem .85rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+th { background: var(--accent-soft); color: var(--accent-strong); font-size: .72rem; letter-spacing: .04em; }
+tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
+.numeric { text-align: right; }
+
+.figure { margin: 2.5rem 0; padding: 1.25rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+.figure figcaption { margin-top: 1rem; color: var(--muted); font-size: .78rem; text-align: center; }
+.trapdoor-diagram { display: grid; grid-template-columns: 1fr; gap: 1rem; align-items: center; max-width: 42rem; margin: 1rem auto; }
+.diagram-arrows { display: grid; gap: .55rem; }
+.diagram-row { display: grid; grid-template-columns: minmax(6rem, 1fr) minmax(12rem, 2fr) minmax(6rem, 1fr); gap: .75rem; align-items: center; text-align: center; }
+.diagram-label { color: var(--muted); font-size: .75rem; line-height: 1.35; }
+.diagram-node { padding: .7rem; border: 1px solid var(--line-strong); border-radius: .7rem; background: var(--surface-raised); font-weight: 750; }
+.diagram-arrow { position: relative; padding: .65rem .75rem; color: var(--muted); font-size: .75rem; }
+.diagram-arrow::after { content: "→"; display: block; color: var(--accent); font-size: 1.65rem; line-height: 1; }
+.diagram-arrow.reverse::after { content: "←"; color: var(--coral); }
+.plot-canvas { display: block; width: 100%; min-height: 18rem; border-radius: .65rem; background: var(--surface-raised); }
+
+.steps { counter-reset: steps; display: grid; gap: .75rem; margin: 1.5rem 0; padding: 0; list-style: none; }
+.steps > li { counter-increment: steps; position: relative; padding: 1rem 1rem 1rem 3.6rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--surface); }
+.steps > li::before { content: counter(steps); position: absolute; top: .9rem; left: 1rem; display: grid; width: 1.8rem; height: 1.8rem; place-items: center; border-radius: 50%; background: var(--accent); color: #fff; font-size: .75rem; font-weight: 850; }
+.law-list { display: grid; gap: .65rem; margin: 1.25rem 0; }
+.law { display: grid; grid-template-columns: minmax(8.5rem, .7fr) 1.6fr; gap: 1rem; padding: .75rem 0; border-bottom: 1px dashed var(--line); }
+.law-name { color: var(--accent-strong); font-size: .76rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.protocol-card { padding: 1rem; border: 1px solid var(--line); border-radius: .8rem; background: var(--surface-raised); }
+.protocol-card h4 { margin-top: 0; color: var(--accent-strong); }
+.mini-note { margin: 1rem 0; padding: .8rem 1rem; border-radius: .65rem; background: var(--coral-soft); color: color-mix(in srgb, var(--coral) 78%, var(--ink)); font-size: .85rem; }
+.axiom-list { display: grid; gap: .6rem; margin: 1rem 0; padding: 0; list-style: none; }
+.axiom-list > li { padding: .75rem .9rem; border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent-soft) 58%, transparent); }
+.alpha-list { padding-left: 1.4rem; }
+.alpha-list > li + li { margin-top: .8rem; }
+.exercise { margin: 1.3rem 0; padding: 1.15rem 1.25rem; border: 1px solid var(--line); border-radius: .8rem; background: var(--surface); }
+.exercise-number { color: var(--coral); font-weight: 850; }
+.end-marker { display: grid; place-items: center; gap: .65rem; margin-top: 3rem; padding: 2rem; border: 1px dashed var(--line-strong); border-radius: var(--radius); color: var(--muted); text-align: center; }
+.end-marker::before { content: "∎"; color: var(--accent); font-family: Georgia, serif; font-size: 2rem; }

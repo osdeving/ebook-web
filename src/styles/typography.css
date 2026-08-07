@@ -1,0 +1,43 @@
+h1, h2, h3, h4, h5 {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  text-wrap: balance;
+}
+
+h2 { margin: 0; font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.08; }
+h3 { margin: 3.5rem 0 1.25rem; font-size: 1.65rem; font-weight: 550; line-height: 1.2; }
+h4 { margin: 2.25rem 0 1rem; font-size: 1.15rem; }
+p { margin: 1.05rem 0; }
+
+.lead {
+  color: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.16rem;
+  line-height: 1.72;
+}
+
+.historical-quote,
+blockquote:not(.historical-quote) {
+  margin: 2rem 0;
+  padding: 1.4rem 1.6rem;
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--gold-soft);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.12rem;
+  font-style: italic;
+}
+
+.historical-quote cite {
+  display: block;
+  margin-top: .75rem;
+  color: var(--muted);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: .75rem;
+  font-style: normal;
+}
+
+.footnote, .footnotes { color: var(--muted); font-size: .84rem; }
+.footnote sup { color: var(--coral); font-weight: 800; }
+.footnotes { margin: 2.4rem 0; padding: 1.15rem 1.15rem 1.15rem 2.6rem; border-top: 1px solid var(--line); line-height: 1.55; }
+.footnotes li + li { margin-top: .7rem; }

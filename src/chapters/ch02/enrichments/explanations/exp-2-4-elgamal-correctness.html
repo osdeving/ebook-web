@@ -1,0 +1,11 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>A segunda componente \(c_2\) contém a mensagem multiplicada por uma máscara \(g^{ak}\). A primeira componente \(c_1\), combinada com o segredo \(a\) de Alice, reproduz exatamente essa máscara. Decifrar é multiplicar pela máscara inversa.</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag definition">Definição</span><p>Substituímos os valores definidos pelo algoritmo:</p><div class="display-math">\[c_1=g^k,\qquad A=g^a,\qquad c_2=mA^k.\]</div></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>A máscara presente em \(c_2\) pode ser exposta pelas leis dos expoentes:</p><div class="display-math">\[c_2=mA^k=m(g^a)^k=mg^{ak}.\]</div></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Alice eleva \(c_1\) à sua chave privada:</p><div class="display-math">\[c_1^a=(g^k)^a=g^{ka}=g^{ak}.\]</div><p>É o mesmo fator que multiplica \(m\).</p></div>
+              <div class="step"><span class="step-tag theorem">Teorema</span><p>Em \(\mathbb F_p^*\), todo elemento não nulo possui inverso. Portanto,</p><div class="display-math">\[(c_1^a)^{-1}c_2=(g^{ak})^{-1}(mg^{ak})=m.\]</div><p>O cancelamento usa o inverso multiplicativo; não é uma eliminação informal de símbolos.</p></div>
+            </div>
+            <div class="quick-check"><p>No exemplo \(p=23\), \(a=6\), \(m=7\), \(k=1\), recebemos \((c_1,c_2)=(5,10)\). Como \(c_1^a\equiv5^6\equiv8\) e \(8^{-1}\equiv3\pmod{23}\), a decifração dá \(3\cdot10\equiv30\equiv7\pmod{23}\).</p></div>
+            <div class="watch-out"><p>A identidade prova <em>correção</em>: um texto cifrado bem formado volta ao texto claro. Ela não prova, por si só, <em>segurança</em>; a segurança exige argumentar que um adversário sem \(a\) não consegue obter a máscara de modo eficiente.</p></div>
+          </div>

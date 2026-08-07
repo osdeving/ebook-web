@@ -1,0 +1,11 @@
+<div class="explanation-body">
+              <p>Um mesmo desenho de símbolos pode ser irredutível em um anel e redutível em outro, porque mudar os coeficientes permitidos muda os fatores disponíveis.</p>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag theorem">Teorema</span><p>Em \(\mathbb R[x]\), \(x^2+1\) não possui raiz real. Pelo critério para polinômios quadráticos, isso significa que não pode ser produto de dois polinômios lineares reais; portanto, é irredutível.</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Em \(\mathbb C[x]\), os coeficientes \(i\) e \(-i\) são permitidos: \(x^2+1=(x-i)(x+i)\). O polinômio torna-se redutível.</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Em \(\mathbb F_5[x]\), temos \(2^2=4\equiv-1\pmod5\). Assim, \(x^2+1=(x-2)(x+2)\), pois o produto é \(x^2-4\equiv x^2+1\pmod5\).</p></div>
+                <div class="step"><span class="step-tag theorem">Teorema</span><p>Para polinômios de grau \(2\) ou \(3\) sobre um corpo, ser redutível equivale a possuir uma raiz nesse corpo. Por exemplo, \(x^2+x+1\) não tem raiz em \(\mathbb F_2\): em \(0\) vale \(1\), e em \(1\) vale \(1+1+1=1\). Logo, é irredutível em \(\mathbb F_2[x]\).</p></div>
+              </div>
+              <div class="watch-out"><strong>Atenção.</strong> Nunca diga apenas “este polinômio é irredutível” quando o anel de coeficientes não estiver claro. A frase completa é “irredutível em \(F[x]\)”.</div>
+              <div class="mental-model"><strong>Por que a forma mônica aparece na fatoração única?</strong> Sem normalização, poderíamos mover constantes não nulas de um fator para outro indefinidamente. Exigir fatores mônicos separa a constante global \(\alpha\) da parte verdadeiramente estrutural da fatoração.</div>
+            </div>

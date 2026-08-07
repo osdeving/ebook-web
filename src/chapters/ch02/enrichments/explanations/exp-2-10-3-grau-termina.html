@@ -1,0 +1,10 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Modelo mental.</strong> O grau funciona como um contador de progresso que só pode assumir valores inteiros não negativos. Cada repetição cancela o termo de maior grau do resto e faz esse contador diminuir.</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span><p>Suponha que o resto atual tenha grau \(e\) e o divisor tenha grau \(d\), com \(e\ge d\).</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Multiplicamos o divisor por \(\frac{r_e}{b_d}x^{e-d}\). O termo líder desse produto é exatamente \(r_ex^e\), igual ao termo líder do resto.</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Ao subtrair, os termos \(r_ex^e-r_ex^e\) se cancelam. O novo resto tem grau estritamente menor que \(e\).</p></div>
+                <div class="step"><span class="step-tag theorem">Teorema</span><p>Não existe uma sequência infinita de inteiros não negativos estritamente decrescente. Logo, depois de um número finito de passos, o resto será \(0\) ou terá grau menor que \(d\).</p></div>
+              </div>
+              <div class="quick-check"><strong>Conferência rápida.</strong> Se o resto começa com grau \(5\) e o divisor tem grau \(3\), as únicas alturas possíveis antes de parar são \(5,4,3\) e então algo menor que \(3\). Algumas alturas podem ser puladas, mas nenhuma pode reaparecer.</div>
+            </div>

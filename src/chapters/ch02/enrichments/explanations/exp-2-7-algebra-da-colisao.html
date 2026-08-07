@@ -1,0 +1,12 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Intuição.</strong> \(q\) informa quantos saltos de tamanho \(n\) cabem em \(x\); \(r\) é o resto. A Lista 1 representa os restos. A Lista 2 remove de \(h\) um número variável de saltos grandes. A solução aparece quando sobra a mesma potência dos dois lados.</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag theorem">Teorema</span> Pelo algoritmo da divisão, existem \(q,r\) únicos tais que \(x=qn+r\) e \(0\le r&lt;n\).</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Substitua na equação: \(g^x=g^{qn+r}=g^{qn}g^r=h\).</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Multiplique os dois lados por \(g^{-qn}\): \(g^r=hg^{-qn}\). O lado esquerdo está na Lista 1; o direito, na Lista 2.</div>
+                <div class="step"><span class="step-tag definition">Definição</span> Se a colisão observada for \(g^i=hg^{-jn}\), então \(i\) desempenha o papel de \(r\) e \(j\) o de \(q\).</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Multiplicando por \(g^{jn}\), obtemos \(g^{i+jn}=h\). Logo, \(x=i+jn\).</div>
+              </div>
+              <div class="quick-check"><strong>Exemplo de índices.</strong> Se \(n=7\) e o expoente secreto é \(x=37\), então \(37=5\cdot7+2\). A colisão correta será \(g^2=hg^{-35}\), e a reconstrução devolve \(x=2+5\cdot7=37\).</div>
+              <div class="watch-out"><strong>Cuidado com os sinais.</strong> A Lista 2 usa expoentes negativos porque precisamos retirar os blocos \(qn\) de \(h\). Usar \(hg^{qn}\) levaria a \(g^r=hg^{qn}\), que não decorre de \(g^{qn+r}=h\).</div>
+            </div>

@@ -1,0 +1,10 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>O valor \(k\) funciona como uma máscara descartável. A mensagem pode ser a mesma e a chave pública pode ser a mesma, mas uma nova máscara produz outro par cifrado. Assim, observar dois textos cifrados iguais ou diferentes não entrega imediatamente se os textos claros coincidiam.</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag definition">Definição</span><p>No Elgamal, a cifração recebe três entradas: o texto claro \(m\), a chave pública \(A\) e um elemento aleatório fresco \(k\). Por isso, é útil pensar em \(e_A(m;k)\), deixando visível que o resultado também depende de \(k\).</p></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Use \(p=23\), \(g=5\), chave privada \(a=6\) e chave pública \(A=5^6\equiv8\pmod{23}\). Para \(m=7\) e \(k=1\),</p><div class="display-math">\[(c_1,c_2)=(5,\;7\cdot8)\equiv(5,10)\pmod{23}.\]</div></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Com a mesma mensagem, mas \(k=2\),</p><div class="display-math">\[(c_1,c_2)=(5^2,\;7\cdot8^2)\equiv(2,11)\pmod{23}.\]</div><p>Os pares \((5,10)\) e \((2,11)\) são diferentes, embora ambos decifrem para \(7\).</p></div>
+            </div>
+            <div class="quick-check"><p>A aleatoriedade não é um detalhe usado apenas para acelerar o algoritmo; ela faz parte do texto cifrado seguro. O destinatário não precisa receber \(k\) separadamente: a componente \(c_1=g^k\) permite que sua chave privada produza o fator necessário à decifração.</p></div>
+            <div class="watch-out"><p>Reutilizar ou prever \(k\) cria relações entre textos cifrados e pode revelar informação. “Escolhido ao acaso” deve significar gerado de modo imprevisível e no intervalo correto, não um contador ou uma escolha humana fácil de adivinhar.</p></div>
+          </div>

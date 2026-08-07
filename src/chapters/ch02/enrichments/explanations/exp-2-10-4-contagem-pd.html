@@ -1,0 +1,11 @@
+<div class="explanation-body">
+              <p>Se \(m\) tem grau \(d\), todo elemento do quociente possui um único representante com \(d\) posições de coeficientes:</p>
+              <p>\(a_0+a_1x+\cdots+a_{d-1}x^{d-1}\).</p>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span><p>Cada coeficiente \(a_i\) pertence a \(\mathbb F_p\), portanto tem \(p\) valores possíveis.</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>As escolhas são independentes: há \(p\) escolhas para \(a_0\), depois \(p\) para \(a_1\), e assim por diante, em \(d\) posições.</p></div>
+                <div class="step"><span class="step-tag theorem">Teorema</span><p>Pelo princípio multiplicativo da contagem, o total é \(\underbrace{p\cdot p\cdots p}_{d\text{ fatores}}=p^d\).</p></div>
+              </div>
+              <div class="quick-check"><strong>Exemplo \(p=2\), \(d=3\).</strong> Os coeficientes são três bits. Escrevendo as cadeias na ordem \((a_2,a_1,a_0)\), as oito escolhas \(000,001,010,011,100,101,110,111\) correspondem, respectivamente, aos polinômios \(0,1,x,1+x,x^2,1+x^2,x+x^2,1+x+x^2\).</div>
+              <div class="watch-out"><strong>Atenção.</strong> Polinômios de grau maior não criam novos elementos. Ao dividi-los por \(m\), eles retornam a um dos \(p^d\) restos já contados.</div>
+            </div>

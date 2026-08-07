@@ -1,0 +1,10 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Modelo mental.</strong> A congruência \(x\equiv a\pmod m\) informa a posição de \(x\) em um relógio com \(m\) marcas. Um sistema de congruências descreve várias leituras do mesmo número em relógios diferentes. O teorema chinês dos restos diz quando essas leituras identificam uma única posição em um relógio maior.</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> \(x\equiv a\pmod m\) significa que \(m\mid(x-a)\). Portanto, os valores possíveis são \(a,a+m,a+2m,\ldots\).</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> Se \(m\) e \(n\) são coprimos, todas as combinações de resíduos \((a\bmod m,b\bmod n)\) aparecem exatamente uma vez quando \(x\) percorre \(0,1,\ldots,mn-1\).</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Há \(m\) leituras possíveis no primeiro relógio e \(n\) no segundo, totalizando \(mn\) pares. O produto \(mn\) é justamente o período em que os dois relógios voltam juntos ao início.</div>
+              </div>
+              <div class="quick-check"><strong>Exemplo.</strong> Nos relógios de 3 e 5 marcas, procure \(x\equiv2\pmod3\) e \(x\equiv3\pmod5\). A sequência \(2,5,8,11,\ldots\) satisfaz a primeira condição; \(8\) é o primeiro termo com resto 3 por 5. Todas as soluções são \(8+15k\).</div>
+              <div class="watch-out"><strong>Cuidado.</strong> Se os módulos não forem coprimos, pode não existir solução, ou pode haver repetição antes do produto. Por exemplo, \(x\equiv0\pmod2\) e \(x\equiv1\pmod4\) são incompatíveis.</div>
+            </div>

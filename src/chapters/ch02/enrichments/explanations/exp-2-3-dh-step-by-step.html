@@ -1,0 +1,11 @@
+<div class="explanation-body">
+            <div class="mental-model"><p>Alice e Bob não enviam o segredo compartilhado. Cada um envia uma potência pública e, depois, aplica seu próprio expoente secreto à potência recebida. As duas ordens de aplicação chegam ao mesmo expoente \(ab\).</p></div>
+            <div class="slow-steps">
+              <div class="step"><span class="step-tag definition">Definição</span><p>Escolhemos apenas para conferir as contas \(p=23\), \(g=5\), o segredo \(a=3\) de Alice e o segredo \(b=7\) de Bob. Os valores \(p\) e \(g\) são públicos; \(a\) e \(b\) não são transmitidos.</p></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Alice calcula \(A\equiv5^3\equiv10\pmod{23}\). Bob calcula \(B\equiv5^7\equiv17\pmod{23}\). Eles publicam \(A=10\) e \(B=17\).</p></div>
+              <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Alice recebe \(B\) e calcula \(B^a\equiv17^3\equiv14\pmod{23}\). Bob recebe \(A\) e calcula \(A^b\equiv10^7\equiv14\pmod{23}\).</p></div>
+              <div class="step"><span class="step-tag theorem">Teorema</span><p>As leis dos expoentes garantem a concordância:</p><div class="display-math">\[(g^b)^a=g^{ba}=g^{ab}=(g^a)^b.\]</div><p>A igualdade \(ab=ba\) ocorre entre os expoentes inteiros; por isso os dois lados obtêm \(14\).</p></div>
+            </div>
+            <div class="quick-check"><p>O canal revelou \(23\), \(5\), \(10\) e \(17\), mas não transportou \(a=3\), \(b=7\) nem a chave \(14\). Neste exemplo minúsculo, Eva pode testar expoentes e descobrir os segredos; os números pequenos servem somente para verificar o mecanismo.</p></div>
+            <div class="watch-out"><p>A troca básica estabelece um valor compartilhado, mas não autentica quem está do outro lado. Sem um mecanismo adicional de autenticação, um adversário ativo pode intermediar duas trocas distintas.</p></div>
+          </div>

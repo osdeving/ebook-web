@@ -1,0 +1,12 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Modelo mental.</strong> Nos inteiros módulo \(m\), escolhemos um resto entre \(0\) e \(m-1\). Nos polinômios módulo \(m(x)\), escolhemos o resto cuja altura — o grau — é menor que \(\deg m\).</div>
+              <p>Considere o quociente \(F[x]/(x^2+1)\) e a classe de \(x^3+2x\).</p>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span><p>No quociente, \(x^2+1\equiv0\), portanto \(x^2\equiv-1\).</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Multiplique por \(x\): \(x^3\equiv-x\).</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Substitua no polinômio: \(x^3+2x\equiv-x+2x=x\).</p></div>
+                <div class="step"><span class="step-tag theorem">Teorema</span><p>Como \(\deg x=1<2=\deg(x^2+1)\), o polinômio \(x\) é o representante único de grau menor que \(\deg(x^2+1)=2\), garantido pela Proposição 2.50.</p></div>
+              </div>
+              <div class="quick-check"><strong>Conferência rápida.</strong> A diferença entre o original e o representante é \((x^3+2x)-x=x^3+x=x(x^2+1)\), que é divisível pelo módulo.</div>
+              <div class="watch-out"><strong>Atenção.</strong> Reduzir módulo \(m(x)\) não significa substituir \(x\) por um número. Significa dividir por \(m(x)\) e conservar o resto, ou usar repetidamente a relação \(m(x)\equiv0\).</div>
+            </div>

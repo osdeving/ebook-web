@@ -1,0 +1,12 @@
+<div class="explanation-body">
+              <p>A condição \(\gcd(a,m)=1\) é útil porque o algoritmo de Euclides estendido não apenas confirma o mdc: ele produz polinômios \(u\) e \(v\) com \(au+mv=1\). Ao reduzir módulo \(m\), o termo \(mv\) desaparece, e sobra \(au\equiv1\pmod m\).</p>
+              <p>Veja um exemplo em \(\mathbb F_2[x]/(x^2+x+1)\). Queremos inverter \(\overline x\).</p>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag theorem">Teorema</span><p>O módulo é \(m=x^2+x+1\). Como seu termo constante é \(1\), ele não é divisível por \(x\); como \(x\) é irredutível, isso implica \(\gcd(x,m)=1\).</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Em \(\mathbb F_2[x]\), temos a identidade \(1=m+x(x+1)\), pois \((x^2+x+1)+(x^2+x)=1\).</p></div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span><p>Reduza módulo \(m\): o termo \(m\) vira \(0\), então \(x(x+1)\equiv1\pmod m\).</p></div>
+                <div class="step"><span class="step-tag theorem">Teorema</span><p>Portanto, \(\overline{x+1}\) é o inverso multiplicativo de \(\overline x\).</p></div>
+              </div>
+              <div class="quick-check"><strong>Conferência rápida.</strong> Da relação \(x^2+x+1\equiv0\) e do fato de que \(-1=1\) em \(\mathbb F_2\), obtemos diretamente \(x^2+x\equiv1\), isto é, \(x(x+1)\equiv1\).</div>
+              <div class="mental-model"><strong>Receita geral.</strong> Calcule o algoritmo de Euclides estendido para \(a\) e \(m\). Se o mdc for \(1\), o coeficiente que multiplica \(a\) na identidade de Bézout é um representante de \(a^{-1}\) módulo \(m\).</div>
+            </div>

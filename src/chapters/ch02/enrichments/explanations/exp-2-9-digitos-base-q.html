@@ -1,0 +1,12 @@
+<div class="explanation-body">
+              <div class="mental-model"><strong>Intuição.</strong> Assim como 507 em base decimal significa \(7+0\cdot10+5\cdot10^2\), um expoente módulo \(q^e\) possui \(e\) dígitos em base \(q\). A Proposição 2.33 descobre primeiro o dígito menos significativo, remove sua contribuição e repete o processo.</div>
+              <div class="slow-steps">
+                <div class="step"><span class="step-tag definition">Definição</span> Escrevemos \(x=x_0+x_1q+\cdots+x_{e-1}q^{e-1}\), com cada dígito satisfazendo \(0\le x_i&lt;q\).</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Elevar \(h=g^x\) a \(q^{e-1}\) multiplica todos os expoentes por \(q^{e-1}\). Os termos que contêm \(q,q^2,\ldots\) tornam-se múltiplos de \(q^e\) e desaparecem porque \(g^{q^e}=1\). Sobra apenas \((g^{q^{e-1}})^{x_0}\).</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> A base \(g^{q^{e-1}}\) tem ordem \(q\), então o PLD restante determina \(x_0\) entre apenas \(q\) possibilidades.</div>
+                <div class="step"><span class="step-tag manipulation">Manipulação</span> Depois de conhecer \(x_0\), corrigimos o lado direito: \(h_1=hg^{-x_0}\). Como \(h_1=g^{q(x_1+x_2q+\cdots)}\), elevamos a \(q^{e-2}\) e obtemos <span class="math">\((hg^{-x_0})^{q^{e-2}}=(g^{q^{e-1}})^{x_1}\)</span>.</div>
+                <div class="step"><span class="step-tag theorem">Teorema</span> O lado direito volta a viver num grupo de ordem \(q\), portanto revela \(x_1\). Corrigimos então as contribuições já conhecidas e repetimos a mesma ideia para \(x_2,x_3,\ldots\).</div>
+              </div>
+              <div class="quick-check"><strong>Os dígitos de 511 em base 5.</strong> \(511\bmod5=1\), logo \(x_0=1\). Depois \((511-1)/5=102\) e \(102\bmod5=2\), logo \(x_1=2\). Em seguida \((102-2)/5=20\), dando \(x_2=0\); por fim \(20/5=4\), então \(x_3=4\). Reconstruindo: \(1+2\cdot5+0\cdot5^2+4\cdot5^3=511\).</div>
+              <div class="watch-out"><strong>Cuidado.</strong> A reconstrução é única módulo \(q^e\) somente quando cada \(x_i\) é escolhido no intervalo \(0\le x_i&lt;q\). Permitir "dígitos" fora desse intervalo cria representações redundantes.</div>
+            </div>
