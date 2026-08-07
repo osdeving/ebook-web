@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.14">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Produza um elemento não negativo</summary>
+      <p>Como \(b>0\), somar múltiplos suficientemente grandes de \(b\) a \(a\) acabará levando a um número não negativo. Reescreva essa soma na forma \(a-bq\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Explore a minimalidade</summary>
+      <p>Escolha o menor elemento não negativo do conjunto. Se ele fosse pelo menos \(b\), subtrair \(b\) produziria outro elemento admissível menor.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Prenda a diferença entre dois restos</summary>
+      <p>Ao comparar duas decomposições, obtenha \(b(q_1-q_2)=r_2-r_1\). O lado direito está estritamente entre \(-b\) e \(b\), mas é múltiplo de \(b\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>
       <p>Escolha um inteiro \(n\ge0\) suficientemente grande para que \(a+bn\ge0\). Tomando \(q=-n\), temos</p>
@@ -21,4 +38,5 @@
       <p>Como \(0\le r_1,r_2&lt;b\), vale \(-b&lt;r_2-r_1&lt;b\). O único múltiplo de \(b\) nesse intervalo é \(0\); logo \(r_2-r_1=0\) e \(q_1-q_2=0\). Portanto \(r_1=r_2\) e \(q_1=q_2\), provando a unicidade.</p>
     </li>
   </ol>
+  </details>
 </div>

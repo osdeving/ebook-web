@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.12">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Procure invariantes de Bézout</summary>
+      <p>Acompanhe não só os restos \(g,y\), mas também os coeficientes \(u,x\). Tente mostrar, em cada iteração, que \(g\equiv au\pmod b\) e \(y\equiv ax\pmod b\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Separe correção e término</summary>
+      <p>A atualização \((g,y)\leftarrow(y,t)\) é a do algoritmo de Euclides. Use \(0\le t&lt;y\) para provar o término; só então interprete os coeficientes quando \(y=0\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Normalize a família de soluções</summary>
+      <p>Todas as soluções de Bézout diferem por múltiplos de \((b/g,-a/g)\). Para obter o menor \(u>0\), reduza \(u\) à classe positiva mínima módulo \(b/g\), tratando \(b=0\) antes da divisão.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>
       <p>Além de serem restos consecutivos do algoritmo de Euclides, os valores mantêm os invariantes</p>
@@ -57,4 +74,5 @@
       </ol>
     </li>
   </ol>
+  </details>
 </div>

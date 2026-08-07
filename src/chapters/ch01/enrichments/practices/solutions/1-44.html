@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.44">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Faça álgebra linear módulo \(p\)</summary>
+      <p>Na cifra de Hill, cifre por \(c=K m+k_2\) e decifre por \(m=K^{-1}(c-k_2)\). Calcule o inverso da matriz usando determinante e adjunta no corpo finito.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Elimine o vetor de translação</summary>
+      <p>Subtraia um par claro/cifrado de todos os demais. Organize as diferenças como colunas de matrizes \(M\) e \(C\), obtendo \(KM=C\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Reconheça substituições como matrizes</summary>
+      <p>Codifique cada letra por um vetor da base padrão. Uma permutação do alfabeto age então por uma matriz com exatamente um \(1\) em cada linha e coluna.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>
       <ol type="i">
@@ -38,4 +55,5 @@
       A substituição nos três pares confirma a chave.</li>
     <li>Codifique as \(q\) letras do alfabeto pelos vetores da base padrão de \(F^q\). Toda permutação das letras corresponde a uma matriz de permutação \(P\). A cifra \(m\mapsto Pm\), com \(k_2=0\), é uma cifra de Hill e realiza exatamente a substituição dada.</li>
   </ol>
+  </details>
 </div>

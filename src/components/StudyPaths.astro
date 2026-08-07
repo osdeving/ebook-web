@@ -1,0 +1,118 @@
+---
+import type { LearningPathRecord } from "../lib/discovery";
+
+interface Props { paths: readonly LearningPathRecord[]; }
+const { paths } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="study-paths" id="page-content" data-study-paths>
+  <header class="discovery-hero">
+    <p class="library-kicker">Percursos guiados</p>
+    <h1>Rotas de estudo</h1>
+    <p>Escolha um objetivo e siga uma sequência curta de leituras, resultados, laboratórios e exercícios. Seu progresso continua salvo apenas neste navegador.</p>
+  </header>
+  <div class="discovery-filters">
+    <label>
+      <span>Objetivo</span>
+      <select data-path-goal>
+        <option value="">Todos</option>
+        <option value="fundamentos">Começar do zero</option>
+        <option value="matematica">Teoria dos números</option>
+        <option value="diffie-hellman">Diffie–Hellman</option>
+        <option value="algoritmos">Algoritmos de ataque</option>
+        <option value="algebra">Álgebra</option>
+        <option value="exercicios">Exercícios</option>
+      </select>
+    </label>
+    <label>
+      <span>Tempo disponível</span>
+      <select data-path-duration>
+        <option value="">Qualquer</option>
+        <option value="short">Até 4 horas</option>
+        <option value="medium">Até 7 horas</option>
+        <option value="long">Percurso aprofundado</option>
+      </select>
+    </label>
+  </div>
+  <p class="discovery-status" role="status" data-path-status>{paths.length} rotas</p>
+  <div class="study-path-grid">
+    {paths.map((path) => (
+      <article
+        class="study-path-card"
+        id={`path-${path.id}`}
+        data-study-path
+        data-goal={path.goal}
+        data-duration={path.duration === "Flexível" ? "long" : Number.parseInt(path.duration) <= 4 ? "short" : Number.parseInt(path.duration) <= 7 ? "medium" : "long"}
+      >
+        <header>
+          <div class="study-path-card__meta"><span>{path.level}</span><span>{path.duration}</span></div>
+          <h2><a href={`#path-${path.id}`}>{path.title}</a></h2>
+          <p class="study-path-card__tagline">{path.tagline}</p>
+          <p>{path.description}</p>
+          <div class="study-path-card__progress" data-path-progress>
+            <span><strong data-path-completed>0</strong> de {path.steps.length} etapas concluídas</span>
+            <progress value="0" max={path.steps.length} data-path-meter>0</progress>
+          </div>
+        </header>
+        <details>
+          <summary>Ver as {path.steps.length} etapas</summary>
+          <ol class="study-path-steps">
+            {path.steps.map((step, index) => (
+              <li data-path-step data-step-href={step.href}>
+                <span class="study-path-step__number">{String(index + 1).padStart(2, "0")}</span>
+                <div><span class="study-path-step__type">{step.type}</span><h3><a href={`${base}${step.href}`}>{step.title}</a></h3><p>{step.why}</p></div>
+              </li>
+            ))}
+          </ol>
+        </details>
+        <a class="study-path-card__start" href={`${base}${path.steps[0]?.href}`}>Começar esta rota →</a>
+      </article>
+    ))}
+  </div>
+  <p class="discovery-empty" hidden data-path-empty>Nenhuma rota corresponde aos filtros.</p>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-study-paths]");
+  const cards = Array.from(root?.querySelectorAll<HTMLElement>("[data-study-path]") ?? []);
+  const goal = root?.querySelector<HTMLSelectElement>("[data-path-goal]");
+  const duration = root?.querySelector<HTMLSelectElement>("[data-path-duration]");
+  const status = root?.querySelector<HTMLElement>("[data-path-status]");
+  const empty = root?.querySelector<HTMLElement>("[data-path-empty]");
+  const loadProgress = (chapter: string): Record<string, string> => {
+    try {
+      const raw = localStorage.getItem(`ebook-web.${chapter}.reader.v1`);
+      const parsed = raw ? JSON.parse(raw) : undefined;
+      return parsed?.value?.progress && typeof parsed.value.progress === "object" ? parsed.value.progress : {};
+    } catch { return {}; }
+  };
+  const progress = { ch01: loadProgress("ch01"), ch02: loadProgress("ch02") };
+  for (const card of cards) {
+    const steps = Array.from(card.querySelectorAll<HTMLElement>("[data-path-step]"));
+    let completed = 0;
+    for (const step of steps) {
+      const match = step.dataset.stepHref?.match(/chapters\/(ch\d+)\/#(.+)$/);
+      const done = Boolean(match?.[1] && match[2] && progress[match[1] as keyof typeof progress]?.[match[2]] === "completed");
+      step.classList.toggle("is-completed", done);
+      if (done) completed += 1;
+    }
+    const count = card.querySelector<HTMLElement>("[data-path-completed]");
+    const meter = card.querySelector<HTMLProgressElement>("[data-path-meter]");
+    if (count) count.textContent = String(completed);
+    if (meter) meter.value = completed;
+  }
+  const filter = () => {
+    let visible = 0;
+    for (const card of cards) {
+      const show = (!goal?.value || card.dataset.goal === goal.value)
+        && (!duration?.value || card.dataset.duration === duration.value);
+      card.hidden = !show;
+      if (show) visible += 1;
+    }
+    if (status) status.textContent = `${visible} ${visible === 1 ? "rota" : "rotas"}`;
+    if (empty) empty.hidden = visible !== 0;
+  };
+  goal?.addEventListener("change", filter);
+  duration?.addEventListener("change", filter);
+</script>

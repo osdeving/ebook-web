@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.3">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Use a ordem da raiz primitiva</summary>
+      <p>De \(g^a=g^b\), passe para \(g^{a-b}=1\). A ordem de \(g\) diz exatamente qual número deve dividir \(a-b\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Traduza produtos em somas de expoentes</summary>
+      <p>Escreva \(h_1=g^r\) e \(h_2=g^s\). Multiplicar os elementos soma os expoentes, e a primeira parte garante que a classe obtida é independente das escolhas.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Inclua expoentes negativos</summary>
+      <p>Para provar a regra de potências para todo \(n\in\mathbb Z\), trate primeiro \(n\ge0\) e depois use que todo elemento de \(\mathbb F_p^*\) possui inverso.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>
       <p>Se \(g^a\equiv h\equiv g^b\pmod p\), então \(g^{a-b}\equiv1\pmod p\). Como \(g\) é raiz primitiva, sua ordem em \(\mathbb F_p^*\) é \(p-1\). Logo \(p-1\mid a-b\), isto é,</p>
@@ -16,4 +33,5 @@
       <p>\[\log_g(h^n)=n\log_g(h)\quad\text{em }\mathbb Z/(p-1)\mathbb Z.\]</p>
     </li>
   </ol>
+  </details>
 </div>

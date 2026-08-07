@@ -51,6 +51,10 @@ npm run new:enrichment -- --chapter ch03 --type explanation \
   acessibilidade, progresso, notas e impressão;
 - referências cruzadas e permalinks estáveis para resultados, equações,
   exercícios e bibliografia;
+- busca global, glossário de conceitos e símbolos, prévias de links e relações
+  inversas gerados a partir do conteúdo publicado;
+- rotas guiadas, acompanhamento local de seções e exercícios e pistas graduais;
+- instalação como aplicativo web e leitura offline das rotas essenciais;
 - CSS por tokens, estrutura e tipo de recurso;
 - índice automático de capítulos e manifestos versionados;
 - build estático e publicação automática no GitHub Pages.

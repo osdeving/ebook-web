@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.13">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Aplique o homomorfismo à identidade</summary>
+      <p>Use \(e_G=e_Ge_G\). Depois cancele \(\phi(e_G)\) no grupo \(H\) para identificar sua imagem.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Aplique-o a \(gg^{-1}\)</summary>
+      <p>A imagem desse produto deve ser a identidade de \(H\). A unicidade do inverso determina \(\phi(g^{-1})\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Expanda o quadrado de um produto</summary>
+      <p>Compare \((g_1g_2)^2\) com \(g_1^2g_2^2\). Em grupos comutativos os termos se reordenam; em \(S_3\), procure dois elementos para os quais isso falha.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>
       <p>Como \(\phi(e_G)=\phi(e_Ge_G)=\phi(e_G)\phi(e_G)\), multiplicar por \(\phi(e_G)^{-1}\) dá \(\phi(e_G)=e_H\). Além disso,</p>
@@ -20,4 +37,5 @@
       <p>Como \(\sigma\neq\sigma^2\), a inversão não é homomorfismo em \(S_3\).</p>
     </li>
   </ol>
+  </details>
 </div>

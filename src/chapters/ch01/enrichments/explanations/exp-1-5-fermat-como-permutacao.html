@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>A demonstração direta do pequeno teorema de Fermat é uma prova por permutação: multiplicar todos os não nulos por uma unidade muda a ordem da lista, mas não muda seus elementos.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag theorem">Sem colisões</span><p>Se \(ja\equiv ka\pmod p\) e \(p\nmid a\), podemos cancelar \(a\) e obter \(j\equiv k\pmod p\). Para \(1\le j,k\le p-1\), isso força \(j=k\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Mesma lista</span><p>Os \(p-1\) resíduos \(a,2a,\ldots,(p-1)a\) são distintos e não nulos. Portanto são exatamente \(1,2,\ldots,p-1\), em alguma ordem.</p></div>
+    <div class="step"><span class="step-tag manipulation">Multiplique tudo</span><p>O produto das duas listas satisfaz</p><div class="display-math">\[a^{p-1}(p-1)!\equiv(p-1)!\pmod p.\]</div><p>Como nenhum fator de \((p-1)!\) é divisível por \(p\), o fatorial tem inverso e pode ser cancelado.</p></div>
+  </div>
+  <div class="quick-check"><p>Para \(p=7\) e \(a=3\), a lista \(3,6,2,5,1,4\) é uma reorganização de \(1,2,3,4,5,6\). Multiplicar seus termos introduz o fator \(3^6\), mas não muda o produto módulo \(7\).</p></div>
+  <div class="watch-out"><p>O teste \(a^{n-1}\not\equiv1\pmod n\) prova que \(n\) é composto; a congruência igual a \(1\), sozinha, não prova primalidade para todo \(n\).</p></div>
+</div>

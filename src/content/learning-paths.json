@@ -1,0 +1,113 @@
+[
+  {
+    "id": "comecando-do-zero",
+    "title": "Começando do zero",
+    "tagline": "Da primeira cifra ao primeiro segredo compartilhado",
+    "description": "Um percurso progressivo para quem ainda não estudou criptografia nem teoria dos números.",
+    "level": "Inicial",
+    "duration": "6–8 horas",
+    "goal": "fundamentos",
+    "steps": [
+      { "title": "Entenda mensagem, cifra e chave", "why": "Comece com uma transformação que pode ser feita à mão.", "href": "chapters/ch01/#sec-1-1", "type": "Leitura" },
+      { "title": "Ataque uma substituição", "why": "Veja por que esconder o algoritmo não basta para obter segurança.", "href": "chapters/ch01/#sec-1-1-1", "type": "Leitura e laboratório" },
+      { "title": "Aprenda divisibilidade e MDC", "why": "Essas ferramentas sustentam inversos e chaves modulares.", "href": "chapters/ch01/#sec-1-2", "type": "Leitura" },
+      { "title": "Passe aos relógios modulares", "why": "Transforme contas infinitas em sistemas finitos controláveis.", "href": "chapters/ch01/#sec-1-3", "type": "Leitura e laboratório" },
+      { "title": "Calcule potências sem expandi-las", "why": "A exponenciação rápida torna os protocolos executáveis.", "href": "chapters/ch01/#algorithm-1-fast-powering", "type": "Algoritmo" },
+      { "title": "Conheça corpos e geradores", "why": "Prepare o cenário algébrico do logaritmo discreto.", "href": "chapters/ch01/#theorem-1-30", "type": "Teorema" },
+      { "title": "Separe chave pública e privada", "why": "Chegue à mudança conceitual da criptografia assimétrica.", "href": "chapters/ch02/#sec-2-1", "type": "Leitura" },
+      { "title": "Monte Diffie–Hellman", "why": "Feche o percurso construindo um segredo comum por um canal público.", "href": "chapters/ch02/#sec-2-3", "type": "Leitura e laboratório" }
+    ]
+  },
+  {
+    "id": "teoria-dos-numeros",
+    "title": "Teoria dos números para criptografia",
+    "tagline": "Divisibilidade, congruências, primos e ordens",
+    "description": "Percurso concentrado nas ferramentas aritméticas que reaparecem nos algoritmos criptográficos.",
+    "level": "Inicial–intermediário",
+    "duration": "5–7 horas",
+    "goal": "matematica",
+    "steps": [
+      { "title": "Divisibilidade e máximo divisor comum", "why": "Fixe a linguagem que organiza todas as demonstrações seguintes.", "href": "chapters/ch01/#def-1-divisibility", "type": "Definição" },
+      { "title": "Algoritmo de Euclides", "why": "Calcule o MDC com uma sequência curta de restos.", "href": "chapters/ch01/#theorem-1-7", "type": "Algoritmo" },
+      { "title": "Euclides estendido e Bézout", "why": "Produza inversos modulares de modo construtivo.", "href": "chapters/ch01/#theorem-1-11", "type": "Teorema" },
+      { "title": "Congruências e classes", "why": "Aprenda a calcular corretamente dentro de um módulo.", "href": "chapters/ch01/#def-1-congruence", "type": "Definição" },
+      { "title": "Primos e fatoração única", "why": "Entenda por que os primos funcionam como blocos da aritmética.", "href": "chapters/ch01/#theorem-1-20", "type": "Teorema" },
+      { "title": "Pequeno teorema de Fermat", "why": "Controle expoentes módulo um primo.", "href": "chapters/ch01/#theorem-1-24", "type": "Teorema" },
+      { "title": "Ordens e raízes primitivas", "why": "Passe da aritmética à estrutura cíclica de F_p*.", "href": "chapters/ch01/#def-1-order-mod-p", "type": "Definição" },
+      { "title": "Teorema chinês dos restos", "why": "Aprenda a decompor e recompor cálculos em módulos coprimos.", "href": "chapters/ch02/#teorema-2-24", "type": "Teorema" }
+    ]
+  },
+  {
+    "id": "entender-diffie-hellman",
+    "title": "Quero entender Diffie–Hellman",
+    "tagline": "Pré-requisitos mínimos e construção completa",
+    "description": "Uma rota direta para compreender o acordo de chaves, sem pular as razões matemáticas de seu funcionamento.",
+    "level": "Intermediário",
+    "duration": "3–4 horas",
+    "goal": "diffie-hellman",
+    "steps": [
+      { "title": "Exponenciação modular rápida", "why": "As partes precisam calcular potências grandes de modo eficiente.", "href": "chapters/ch01/#algorithm-1-fast-powering", "type": "Algoritmo" },
+      { "title": "Corpo F_p e inversos", "why": "O protocolo opera em uma estrutura finita com divisão controlada.", "href": "chapters/ch01/#def-1-field", "type": "Definição" },
+      { "title": "Geradores de F_p*", "why": "As potências de um gerador percorrem o espaço público do protocolo.", "href": "chapters/ch01/#theorem-1-30", "type": "Teorema" },
+      { "title": "Logaritmo discreto", "why": "Identifique a assimetria entre elevar e recuperar o expoente.", "href": "chapters/ch02/#def-pld-fp", "type": "Problema" },
+      { "title": "Problema de Diffie–Hellman", "why": "Separe a hipótese de segurança da descrição operacional.", "href": "chapters/ch02/#def-pdh", "type": "Problema" },
+      { "title": "Execute o acordo de chaves", "why": "Acompanhe valores públicos, segredos e o valor comum.", "href": "chapters/ch02/#sec-2-3", "type": "Protocolo" },
+      { "title": "Teste sua compreensão", "why": "Resolva um caso completo com parâmetros pequenos.", "href": "chapters/ch02/#exercicio-2-4", "type": "Exercício" }
+    ]
+  },
+  {
+    "id": "ataques-logaritmo-discreto",
+    "title": "Algoritmos contra o logaritmo discreto",
+    "tagline": "Do ataque exaustivo a Pohlig–Hellman",
+    "description": "Percurso para comparar custos, hipóteses e trocas entre memória e tempo nos principais ataques do capítulo 2.",
+    "level": "Intermediário–avançado",
+    "duration": "5–6 horas",
+    "goal": "algoritmos",
+    "steps": [
+      { "title": "Formule o PLD em grupos", "why": "Fixe exatamente a entrada, a saída e a hipótese de existência.", "href": "chapters/ch02/#def-pld-grupo", "type": "Definição" },
+      { "title": "Meça o tamanho da entrada", "why": "Compare custos em bits, não apenas no valor numérico de p.", "href": "chapters/ch02/#sec-2-6", "type": "Complexidade" },
+      { "title": "Busca exaustiva", "why": "Estabeleça a linha de base que os algoritmos seguintes melhoram.", "href": "chapters/ch02/#sec-2-7", "type": "Algoritmo" },
+      { "title": "Baby-step–giant-step", "why": "Entenda a colisão que reduz o tempo para aproximadamente √N.", "href": "chapters/ch02/#prop-2-19", "type": "Algoritmo" },
+      { "title": "Teorema chinês dos restos", "why": "Prepare a decomposição do expoente em componentes menores.", "href": "chapters/ch02/#teorema-2-24", "type": "Teorema" },
+      { "title": "Pohlig–Hellman", "why": "Veja por que a fatoração da ordem do grupo muda a dificuldade.", "href": "chapters/ch02/#sec-2-9", "type": "Algoritmo" },
+      { "title": "Compare grupos candidatos", "why": "Relacione segurança com a presença de fatores primos grandes.", "href": "chapters/ch02/#exercicio-2-28", "type": "Exercício" }
+    ]
+  },
+  {
+    "id": "algebra-corpos-finitos",
+    "title": "Álgebra e corpos finitos",
+    "tagline": "Grupos, anéis, polinômios e extensões",
+    "description": "Uma trilha para construir as estruturas algébricas utilizadas pela criptografia moderna.",
+    "level": "Intermediário–avançado",
+    "duration": "7–9 horas",
+    "goal": "algebra",
+    "steps": [
+      { "title": "Grupos e suas leis", "why": "Abstraia as operações repetidas que aparecem nos protocolos.", "href": "chapters/ch02/#def-grupo", "type": "Definição" },
+      { "title": "Ordem de elementos", "why": "Relacione ciclos individuais ao tamanho do grupo.", "href": "chapters/ch02/#def-ordem-elemento", "type": "Definição" },
+      { "title": "Teorema de Lagrange", "why": "Controle quais ordens podem ocorrer em um grupo finito.", "href": "chapters/ch02/#prop-2-13", "type": "Teorema" },
+      { "title": "Anéis e corpos", "why": "Diferencie as estruturas em que a divisão é ou não possível.", "href": "chapters/ch02/#sec-2-10-1", "type": "Leitura" },
+      { "title": "Congruência em anéis", "why": "Generalize a aritmética modular para ideais e quocientes.", "href": "chapters/ch02/#def-congruencia-anel", "type": "Definição" },
+      { "title": "Algoritmo de Euclides para polinômios", "why": "Transporte a noção de MDC para F[x].", "href": "chapters/ch02/#sec-2-10-3", "type": "Algoritmo" },
+      { "title": "Quocientes por irredutíveis", "why": "Construa corpos finitos maiores a partir de polinômios.", "href": "chapters/ch02/#def-corpo-fpd", "type": "Construção" },
+      { "title": "Faça contas em F_49", "why": "Consolide a construção com um exemplo concreto.", "href": "chapters/ch02/#exercicio-2-40", "type": "Exercício" }
+    ]
+  },
+  {
+    "id": "maratona-exercicios",
+    "title": "Maratona de exercícios",
+    "tagline": "Pratique em blocos, com dicas antes da solução",
+    "description": "Seleção crescente de problemas textuais dos dois capítulos, organizada por objetivo e não apenas por numeração.",
+    "level": "Todos os níveis",
+    "duration": "Flexível",
+    "goal": "exercicios",
+    "steps": [
+      { "title": "Cifras e frequência", "why": "Comece com manipulação concreta de mensagens.", "href": "chapters/ch01/#exercicio-1-1", "type": "Exercícios 1.1–1.12" },
+      { "title": "MDC e Bézout", "why": "Treine algoritmos antes de usá-los em congruências.", "href": "chapters/ch01/#exercicio-1-13", "type": "Exercícios 1.13–1.24" },
+      { "title": "Congruências e potências", "why": "Pratique cálculo modular eficiente.", "href": "chapters/ch01/#exercicio-1-25", "type": "Exercícios 1.25–1.38" },
+      { "title": "Sistemas criptográficos", "why": "Integre aritmética, codificação e chaves.", "href": "chapters/ch01/#exercicio-1-40", "type": "Exercícios 1.40–1.50" },
+      { "title": "PLD, DH e Elgamal", "why": "Aplique os problemas computacionais aos protocolos.", "href": "chapters/ch02/#exercicio-2-3", "type": "Exercícios 2.3–2.14" },
+      { "title": "Grupos e complexidade", "why": "Passe da conta à demonstração estrutural.", "href": "chapters/ch02/#exercicio-2-15", "type": "Exercícios 2.15–2.29" },
+      { "title": "Anéis, polinômios e corpos", "why": "Feche com as estruturas de maior abstração.", "href": "chapters/ch02/#exercicio-2-30", "type": "Exercícios 2.30–2.41" }
+    ]
+  }
+]

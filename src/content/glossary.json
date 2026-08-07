@@ -1,0 +1,551 @@
+[
+  {
+    "id": "texto-claro",
+    "term": "Texto claro",
+    "aliases": ["mensagem aberta", "plaintext"],
+    "definition": "Mensagem antes da cifragem ou depois de uma decifragem correta.",
+    "category": "Criptografia",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#sec-1-1"
+  },
+  {
+    "id": "texto-cifrado",
+    "term": "Texto cifrado",
+    "aliases": ["criptograma", "ciphertext"],
+    "definition": "Resultado da transformação do texto claro por uma cifra e uma chave.",
+    "category": "Criptografia",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#sec-1-1"
+  },
+  {
+    "id": "cifra",
+    "term": "Cifra",
+    "aliases": ["algoritmo de cifragem"],
+    "definition": "Família de transformações que converte mensagens entre texto claro e texto cifrado usando uma chave.",
+    "category": "Criptografia",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#sec-1-1"
+  },
+  {
+    "id": "chave-criptografica",
+    "term": "Chave criptográfica",
+    "aliases": ["chave"],
+    "definition": "Parâmetro que seleciona uma transformação específica dentro de um sistema criptográfico.",
+    "category": "Criptografia",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#sec-1-1"
+  },
+  {
+    "id": "cifra-substituicao",
+    "term": "Cifra de substituição",
+    "aliases": ["substituição simples"],
+    "definition": "Cifra que troca cada símbolo do alfabeto por outro símbolo segundo uma permutação fixada pela chave.",
+    "category": "Criptografia clássica",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#sec-1-1"
+  },
+  {
+    "id": "cifra-deslocamento",
+    "term": "Cifra de deslocamento",
+    "aliases": ["cifra de César", "Caesar cipher"],
+    "definition": "Substituição em que todas as letras avançam a mesma quantidade de posições em um alfabeto circular.",
+    "category": "Criptografia clássica",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#fig-1-1"
+  },
+  {
+    "id": "criptoanalise",
+    "term": "Criptoanálise",
+    "aliases": ["ataque criptográfico"],
+    "definition": "Estudo de métodos para recuperar mensagens, chaves ou propriedades secretas sem possuir antecipadamente a chave necessária.",
+    "category": "Criptografia",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#sec-1-1-1"
+  },
+  {
+    "id": "analise-frequencia",
+    "term": "Análise de frequência",
+    "aliases": ["frequência de letras"],
+    "definition": "Técnica que compara a distribuição de símbolos do criptograma com padrões estatísticos do idioma.",
+    "category": "Criptografia clássica",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#sec-1-1-1"
+  },
+  {
+    "id": "divisibilidade",
+    "term": "Divisibilidade",
+    "aliases": ["divide"],
+    "definition": "Relação a ∣ b que afirma existir um inteiro c com b = ac.",
+    "category": "Teoria dos números",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-divisibility"
+  },
+  {
+    "id": "maximo-divisor-comum",
+    "term": "Máximo divisor comum",
+    "aliases": ["MDC", "gcd"],
+    "definition": "Maior inteiro positivo que divide simultaneamente dois inteiros dados.",
+    "category": "Teoria dos números",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-gcd"
+  },
+  {
+    "id": "divisao-com-resto",
+    "term": "Divisão com resto",
+    "aliases": ["algoritmo da divisão"],
+    "definition": "Escrita única a = bq + r, com quociente q e resto r no intervalo 0 ≤ r < b, para b positivo.",
+    "category": "Teoria dos números",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-division-with-remainder"
+  },
+  {
+    "id": "algoritmo-euclides",
+    "term": "Algoritmo de Euclides",
+    "aliases": ["Euclides"],
+    "definition": "Procedimento que substitui repetidamente um par de inteiros pelo divisor e pelo resto até obter o máximo divisor comum.",
+    "category": "Algoritmos",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#theorem-1-7"
+  },
+  {
+    "id": "euclides-estendido",
+    "term": "Algoritmo de Euclides estendido",
+    "aliases": ["Euclides estendido"],
+    "definition": "Versão do algoritmo de Euclides que também produz coeficientes inteiros para escrever o MDC como combinação linear.",
+    "category": "Algoritmos",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#theorem-1-11"
+  },
+  {
+    "id": "identidade-bezout",
+    "term": "Identidade de Bézout",
+    "aliases": ["coeficientes de Bézout"],
+    "definition": "Igualdade au + bv = gcd(a,b), com coeficientes inteiros u e v.",
+    "category": "Teoria dos números",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#theorem-1-11"
+  },
+  {
+    "id": "relativamente-primos",
+    "term": "Inteiros relativamente primos",
+    "aliases": ["coprimos", "primos entre si"],
+    "definition": "Inteiros cujo máximo divisor comum é 1.",
+    "category": "Teoria dos números",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-relatively-prime"
+  },
+  {
+    "id": "congruencia",
+    "term": "Congruência",
+    "aliases": ["congruência módulo m"],
+    "definition": "Relação a ≡ b (mod m) que afirma que m divide a diferença a − b.",
+    "category": "Aritmética modular",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-congruence"
+  },
+  {
+    "id": "classe-residuos",
+    "term": "Classe de resíduos",
+    "aliases": ["classe de congruência", "resíduo"],
+    "definition": "Conjunto de inteiros que possuem o mesmo resto, ou equivalentemente são congruentes, para um módulo fixado.",
+    "category": "Aritmética modular",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-zmodm"
+  },
+  {
+    "id": "anel-inteiros-modulo-m",
+    "term": "Inteiros módulo m",
+    "aliases": ["Z/mZ", "anel de resíduos"],
+    "definition": "Sistema de classes de congruência módulo m com adição e multiplicação realizadas módulo m.",
+    "category": "Aritmética modular",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-zmodm"
+  },
+  {
+    "id": "unidade-modular",
+    "term": "Unidade módulo m",
+    "aliases": ["elemento invertível"],
+    "definition": "Classe a módulo m que possui inverso multiplicativo; isso ocorre exatamente quando gcd(a,m) = 1.",
+    "category": "Aritmética modular",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-units"
+  },
+  {
+    "id": "inverso-modular",
+    "term": "Inverso modular",
+    "aliases": ["inverso multiplicativo"],
+    "definition": "Elemento b que satisfaz ab ≡ 1 para o módulo considerado.",
+    "category": "Aritmética modular",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#prop-1-13"
+  },
+  {
+    "id": "funcao-euler",
+    "term": "Função φ de Euler",
+    "aliases": ["totiente", "phi de Euler"],
+    "definition": "Quantidade de classes módulo m que são relativamente primas com m, isto é, o tamanho do grupo de unidades.",
+    "category": "Teoria dos números",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-euler-phi"
+  },
+  {
+    "id": "exponenciacao-rapida",
+    "term": "Exponenciação rápida",
+    "aliases": ["quadrados sucessivos", "square-and-multiply"],
+    "definition": "Algoritmo que calcula potências usando a expansão binária do expoente e sucessivos quadrados, inclusive sob redução modular.",
+    "category": "Algoritmos",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#algorithm-1-fast-powering"
+  },
+  {
+    "id": "numero-primo",
+    "term": "Número primo",
+    "aliases": ["primo"],
+    "definition": "Inteiro p ≥ 2 cujos únicos divisores positivos são 1 e o próprio p.",
+    "category": "Teoria dos números",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-prime"
+  },
+  {
+    "id": "fatoracao-unica",
+    "term": "Teorema fundamental da aritmética",
+    "aliases": ["fatoração única"],
+    "definition": "Afirma que todo inteiro maior ou igual a 2 se fatora em primos de maneira única, salvo a ordem dos fatores.",
+    "category": "Teoria dos números",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#theorem-1-20"
+  },
+  {
+    "id": "ordem-primo-em-inteiro",
+    "term": "Ordem de p em a",
+    "aliases": ["expoente p-ádico", "ord_p(a)"],
+    "definition": "Expoente com que o primo p aparece na fatoração do inteiro positivo a.",
+    "category": "Teoria dos números",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-ordp"
+  },
+  {
+    "id": "corpo-finito-primo",
+    "term": "Corpo finito primo",
+    "aliases": ["F_p", "GF(p)", "Z/pZ"],
+    "definition": "Corpo formado pelas classes módulo um primo p; possui exatamente p elementos.",
+    "category": "Álgebra",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-field"
+  },
+  {
+    "id": "pequeno-teorema-fermat",
+    "term": "Pequeno teorema de Fermat",
+    "aliases": ["Fermat"],
+    "definition": "Para p primo e a não divisível por p, afirma que a^(p−1) ≡ 1 (mod p).",
+    "category": "Teoria dos números",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#theorem-1-24"
+  },
+  {
+    "id": "ordem-modulo-p",
+    "term": "Ordem de um elemento módulo p",
+    "aliases": ["ordem multiplicativa"],
+    "definition": "Menor expoente positivo k para o qual a^k ≡ 1 (mod p).",
+    "category": "Álgebra",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-order-mod-p"
+  },
+  {
+    "id": "raiz-primitiva",
+    "term": "Raiz primitiva",
+    "aliases": ["gerador de F_p*"],
+    "definition": "Elemento de F_p* cuja ordem é p−1 e cujas potências percorrem todos os elementos não nulos do corpo.",
+    "category": "Álgebra",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#theorem-1-30"
+  },
+  {
+    "id": "cifra-simetrica",
+    "term": "Cifra simétrica",
+    "aliases": ["criptografia de chave secreta"],
+    "definition": "Sistema no qual as partes autorizadas compartilham material secreto para cifrar e decifrar.",
+    "category": "Criptografia",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#sec-1-7-1"
+  },
+  {
+    "id": "esquema-codificacao",
+    "term": "Esquema de codificação",
+    "aliases": ["encoding"],
+    "definition": "Regra que representa mensagens como blocos numéricos adequados às operações da cifra; não oferece sigilo por si só.",
+    "category": "Criptografia",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#def-1-encoding-scheme"
+  },
+  {
+    "id": "cifra-bloco",
+    "term": "Cifra de bloco",
+    "aliases": ["block cipher"],
+    "definition": "Cifra simétrica que transforma blocos de tamanho fixo sob uma chave.",
+    "category": "Criptografia",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#sec-1-7-3"
+  },
+  {
+    "id": "cifra-assimetrica",
+    "term": "Cifra assimétrica",
+    "aliases": ["criptografia de chave pública"],
+    "definition": "Sistema que separa a informação usada publicamente para cifrar daquela mantida em segredo para decifrar.",
+    "category": "Criptografia",
+    "chapter": "ch01",
+    "href": "chapters/ch01/#sec-1-7-6"
+  },
+  {
+    "id": "chave-publica",
+    "term": "Chave pública",
+    "aliases": ["public key"],
+    "definition": "Componente de um sistema assimétrico que pode ser divulgado e usado na operação pública, como cifrar ou verificar.",
+    "category": "Criptografia",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-1"
+  },
+  {
+    "id": "chave-privada",
+    "term": "Chave privada",
+    "aliases": ["private key", "chave secreta assimétrica"],
+    "definition": "Componente secreto associado a uma chave pública e necessário para a operação privada correspondente.",
+    "category": "Criptografia",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-1"
+  },
+  {
+    "id": "funcao-mao-unica",
+    "term": "Função de mão única",
+    "aliases": ["one-way function"],
+    "definition": "Função fácil de avaliar, mas cuja inversão é computacionalmente difícil para instâncias escolhidas adequadamente.",
+    "category": "Criptografia",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-1"
+  },
+  {
+    "id": "alcapao",
+    "term": "Alçapão",
+    "aliases": ["trapdoor"],
+    "definition": "Informação secreta adicional que torna viável uma inversão que permanece difícil sem essa informação.",
+    "category": "Criptografia",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-1"
+  },
+  {
+    "id": "logaritmo-discreto",
+    "term": "Problema do logaritmo discreto",
+    "aliases": ["PLD", "DLP"],
+    "definition": "Problema de recuperar um expoente x a partir de uma base g e de um valor h = g^x em um grupo finito.",
+    "category": "Problemas computacionais",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-pld-grupo"
+  },
+  {
+    "id": "pdh",
+    "term": "Problema de Diffie–Hellman",
+    "aliases": ["PDH", "CDH"],
+    "definition": "Problema de calcular g^(ab) quando são fornecidos g^a e g^b em um grupo apropriado.",
+    "category": "Problemas computacionais",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-pdh"
+  },
+  {
+    "id": "diffie-hellman",
+    "term": "Acordo de chaves Diffie–Hellman",
+    "aliases": ["DH", "troca de chaves Diffie–Hellman"],
+    "definition": "Protocolo pelo qual duas partes combinam valores públicos e expoentes secretos para chegar ao mesmo segredo compartilhado.",
+    "category": "Protocolos",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-3"
+  },
+  {
+    "id": "elgamal",
+    "term": "Cifra de Elgamal",
+    "aliases": ["ElGamal"],
+    "definition": "Cifra probabilística de chave pública construída com exponenciação em grupo e um segredo efêmero novo por mensagem.",
+    "category": "Criptografia",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-4"
+  },
+  {
+    "id": "grupo",
+    "term": "Grupo",
+    "aliases": ["estrutura de grupo"],
+    "definition": "Conjunto com uma operação associativa, uma identidade e inverso para cada elemento.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-grupo"
+  },
+  {
+    "id": "grupo-abeliano",
+    "term": "Grupo abeliano",
+    "aliases": ["grupo comutativo"],
+    "definition": "Grupo cuja operação também satisfaz a lei comutativa a⋆b = b⋆a.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-grupo"
+  },
+  {
+    "id": "identidade-grupo",
+    "term": "Elemento identidade",
+    "aliases": ["neutro", "e"],
+    "definition": "Elemento e de um grupo que satisfaz e⋆a = a⋆e = a para todo a.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-grupo"
+  },
+  {
+    "id": "inverso-grupo",
+    "term": "Inverso em um grupo",
+    "aliases": ["a^-1"],
+    "definition": "Elemento a⁻¹ que, combinado com a em qualquer ordem, produz a identidade do grupo.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-grupo"
+  },
+  {
+    "id": "ordem-elemento",
+    "term": "Ordem de um elemento",
+    "aliases": ["ord(g)"],
+    "definition": "Menor inteiro positivo d para o qual a^d é a identidade; é infinita quando esse d não existe.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-ordem-elemento"
+  },
+  {
+    "id": "teorema-lagrange",
+    "term": "Teorema de Lagrange",
+    "aliases": ["Lagrange para grupos"],
+    "definition": "Em um grupo finito, a ordem de cada elemento divide a ordem do grupo.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#prop-2-13"
+  },
+  {
+    "id": "notacao-grande-o",
+    "term": "Notação O grande",
+    "aliases": ["Big O", "complexidade assintótica"],
+    "definition": "Notação que expressa um limite superior assintótico para o crescimento do custo de um algoritmo.",
+    "category": "Algoritmos",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-notacao-ordem"
+  },
+  {
+    "id": "baby-step-giant-step",
+    "term": "Baby-step–giant-step",
+    "aliases": ["BSGS", "algoritmo de Shanks"],
+    "definition": "Algoritmo de logaritmo discreto que procura uma colisão ao trocar aproximadamente raiz quadrada do tempo por raiz quadrada da memória.",
+    "category": "Algoritmos",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-7"
+  },
+  {
+    "id": "teorema-chines-restos",
+    "term": "Teorema chinês dos restos",
+    "aliases": ["TCR", "CRT"],
+    "definition": "Reconstrói uma classe módulo o produto de módulos coprimos a partir de seus resíduos em cada módulo.",
+    "category": "Teoria dos números",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#teorema-2-24"
+  },
+  {
+    "id": "ordem-lisa",
+    "term": "Ordem lisa",
+    "aliases": ["smooth order"],
+    "definition": "Ordem de grupo cuja fatoração contém apenas fatores primos relativamente pequenos.",
+    "category": "Problemas computacionais",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-9"
+  },
+  {
+    "id": "pohlig-hellman",
+    "term": "Algoritmo de Pohlig–Hellman",
+    "aliases": ["Pohlig-Hellman"],
+    "definition": "Reduz um logaritmo discreto a problemas em subgrupos de ordem potência de primo e recompõe o expoente pelo teorema chinês do resto.",
+    "category": "Algoritmos",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-9"
+  },
+  {
+    "id": "anel",
+    "term": "Anel",
+    "aliases": ["estrutura de anel"],
+    "definition": "Na convenção deste ebook, conjunto com adição de grupo abeliano e multiplicação comutativa, associativa, distributiva e dotada de identidade.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-anel"
+  },
+  {
+    "id": "unidade-anel",
+    "term": "Unidade de um anel",
+    "aliases": ["elemento invertível do anel"],
+    "definition": "Elemento que possui inverso multiplicativo dentro do próprio anel.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-unidade-irredutivel"
+  },
+  {
+    "id": "divisor-zero",
+    "term": "Divisor de zero",
+    "aliases": ["zero divisor"],
+    "definition": "Elemento não nulo que produz zero quando multiplicado por algum outro elemento não nulo.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-10-2"
+  },
+  {
+    "id": "anel-polinomios",
+    "term": "Anel de polinômios",
+    "aliases": ["F[x]", "R[x]"],
+    "definition": "Conjunto de polinômios com coeficientes em um anel ou corpo, equipado com as operações usuais.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-10-3"
+  },
+  {
+    "id": "polinomio-irredutivel",
+    "term": "Polinômio irredutível",
+    "aliases": ["irredutível"],
+    "definition": "Polinômio não constante sobre um corpo que não se decompõe em produto de dois polinômios de grau positivo.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-unidade-irredutivel"
+  },
+  {
+    "id": "anel-quociente",
+    "term": "Anel quociente",
+    "aliases": ["R/I", "F[x]/(f)"],
+    "definition": "Estrutura que identifica elementos cuja diferença pertence a um ideal; em F[x]/(f), os restos módulo f representam as classes.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-anel-quociente"
+  },
+  {
+    "id": "corpo",
+    "term": "Corpo",
+    "aliases": ["field"],
+    "definition": "Anel comutativo em que todo elemento não nulo possui inverso multiplicativo.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-corpo"
+  },
+  {
+    "id": "corpo-finito-extensao",
+    "term": "Corpo finito de ordem p^d",
+    "aliases": ["F_{p^d}", "GF(p^d)"],
+    "definition": "Corpo com p^d elementos que pode ser construído como quociente de F_p[x] por um polinômio irredutível de grau d.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#def-corpo-fpd"
+  },
+  {
+    "id": "homomorfismo",
+    "term": "Homomorfismo",
+    "aliases": ["mapa que preserva operação"],
+    "definition": "Aplicação entre estruturas algébricas que preserva as operações relevantes.",
+    "category": "Álgebra",
+    "chapter": "ch02",
+    "href": "chapters/ch02/#sec-2-2"
+  }
+]

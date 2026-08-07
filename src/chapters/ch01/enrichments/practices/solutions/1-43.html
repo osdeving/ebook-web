@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.43">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Aplique e inverta a função afim</summary>
+      <p>Para cifrar, calcule \(k_1m+k_2\pmod p\). Para decifrar, encontre \(k_1^{-1}\pmod p\) e aplique-o a \(c-k_2\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Elimine o termo constante</summary>
+      <p>Subtraia as equações de dois pares conhecidos. Isso produz \(k_1(m_2-m_1)\equiv c_2-c_1\pmod p\), desde que a diferença dos textos claros seja invertível.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Quando \(p\) é secreto, produza múltiplos dele</summary>
+      <p>Com três pares, elimine \(k_1\) e \(k_2\) por determinantes de diferenças. Um quarto par fornece outro múltiplo de \(p\), e um máximo divisor comum tende a isolar o módulo.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>A cifragem é
       \[
@@ -27,4 +44,5 @@
       \]
       é divisível pelo primo desconhecido \(p\). Um único \(D\) pode conter fatores extras. Um quarto par fornece outro múltiplo \(D'\), e tipicamente \(\gcd(D,D')=p\) (ou um pequeno múltiplo fácil de testar). Depois disso, dois pares recuperam \(k_1,k_2\). Portanto, em geral, quatro pares conhecidos bastam.</li>
   </ol>
+  </details>
 </div>

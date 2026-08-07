@@ -1,4 +1,6 @@
 ---
+import type { ReaderBacklink } from "../framework/types";
+
 interface ReferenceEntry {
   number: number;
   citation: string;
@@ -8,13 +10,142 @@ interface ReferenceEntry {
 
 interface Props {
   entries: readonly ReferenceEntry[];
+  backlinks?: Readonly<Record<string, readonly ReaderBacklink[]>>;
 }
 
-const { entries } = Astro.props;
+interface TopicRule {
+  id: string;
+  label: string;
+  description: string;
+  keywords: readonly string[];
+}
+
+const topicRules = [
+  {
+    id: "number-theory",
+    label: "Teoria dos números",
+    description: "primos, primalidade, fatoração e aritmética",
+    keywords: ["number theory", "prime", "primes", "primality", "carmichael", "factorization", "factoring", "sieve", "fermat", "arithmetic", "primitive root", "primitive roots"],
+  },
+  {
+    id: "elliptic-curves",
+    label: "Curvas elípticas",
+    description: "curvas, emparelhamentos e contagem de pontos",
+    keywords: ["elliptic", "weil pairing", "point counting", "satoh", "schoof", "rational points"],
+  },
+  {
+    id: "lattices",
+    label: "Reticulados",
+    description: "problemas de vetores, redução de bases e NTRU",
+    keywords: ["lattice", "lattices", "shortest vector", "closest lattice", "ntru", "knapsack", "lll", "lovasz", "zonotope", "parallelepiped", "subset sum"],
+  },
+  {
+    id: "public-key",
+    label: "Chave pública e protocolos",
+    description: "RSA, Diffie–Hellman, assinaturas e protocolos",
+    keywords: ["rsa", "diffie", "elgamal", "public-key", "public key", "signature", "signatures", "key cryptosystem", "secret", "oaep", "random oracle", "electronic cash"],
+  },
+  {
+    id: "discrete-log",
+    label: "Logaritmo discreto",
+    description: "algoritmos, limites e ataques ao logaritmo discreto",
+    keywords: ["discrete log", "discrete logarithm", "index computation", "pollard’s rho", "pollard's rho"],
+  },
+  {
+    id: "symmetric",
+    label: "Cifras, hash e informação",
+    description: "criptografia simétrica, hashes e teoria da informação",
+    keywords: ["aes", "des", "hash", "symmetric", "block cipher", "information theory", "communication theory", "codebreakers", "secret writing"],
+  },
+  {
+    id: "quantum",
+    label: "Computação quântica",
+    description: "algoritmos e modelos quânticos",
+    keywords: ["quantum", "shor"],
+  },
+  {
+    id: "algebra-probability",
+    label: "Álgebra e probabilidade",
+    description: "fundamentos algébricos, analíticos e probabilísticos",
+    keywords: ["algebra", "probability", "random process", "complex analysis", "functions of several variables", "geometry of numbers"],
+  },
+  {
+    id: "complexity",
+    label: "Algoritmos e complexidade",
+    description: "complexidade, computabilidade e algoritmos eficientes",
+    keywords: ["np-hard", "np-complete", "complexity", "polynomial time", "algorithmic", "unsolvable", "theorem-proving", "monte carlo"],
+  },
+] as const satisfies readonly TopicRule[];
+
+const generalTopic = {
+  id: "general",
+  label: "Obras gerais",
+  description: "entradas sem um dos termos temáticos acima",
+  keywords: [],
+} as const satisfies TopicRule;
+
+const { entries, backlinks = {} } = Astro.props;
+const base = import.meta.env.BASE_URL;
 const linkedCount = entries.filter(({ url }) => url).length;
+
+const normalize = (value: string) => value
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/gu, "")
+  .toLocaleLowerCase("pt-BR");
+
+const looksLikePerson = (value: string) => {
+  const withoutMarks = value.normalize("NFD").replace(/[\u0300-\u036f]/gu, "");
+  return /^(?:[A-Z](?:[.\-][A-Za-z])*\.)+\s*[A-Za-z][A-Za-z’'.\-]*(?:\s+(?:Jr\.?|[A-Za-z][A-Za-z’'.\-]*))*$/u.test(withoutMarks.trim());
+};
+
+const inferAuthors = (citation: string) => {
+  const parts = citation.split(",").map((part) => part.trim()).filter(Boolean);
+  if (parts.length === 0) return "Autoria não identificada";
+  const authors = [parts[0]];
+  for (const candidate of parts.slice(1)) {
+    if (!looksLikePerson(candidate)) break;
+    authors.push(candidate);
+  }
+  return authors.join(", ");
+};
+
+const inferYear = (citation: string) => {
+  const years = Array.from(citation.matchAll(/\b(1[89]\d{2}|20\d{2})\b/gu), (match) => Number(match[1]));
+  return years.at(-1);
+};
+
+const inferTopics = (citation: string): TopicRule[] => {
+  const searchable = normalize(citation);
+  const matchesKeyword = (keyword: string) => {
+    const escaped = normalize(keyword).replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+    return new RegExp(`(?:^|[^a-z0-9])${escaped}(?:$|[^a-z0-9])`, "u").test(searchable);
+  };
+  const matches = topicRules.filter(({ keywords }) => keywords.some(matchesKeyword));
+  return matches.length > 0 ? matches : [generalTopic];
+};
+
+const preparedEntries = entries.map((entry) => {
+  const year = inferYear(entry.citation);
+  return {
+    ...entry,
+    authors: inferAuthors(entry.citation),
+    year,
+    decade: year ? Math.floor(year / 10) * 10 : undefined,
+    topics: inferTopics(entry.citation),
+    backlinks: backlinks[`ref-${entry.number}`] ?? [],
+  };
+});
+
+const decades = Array.from(new Set(preparedEntries.map(({ decade }) => decade).filter((decade): decade is number => Boolean(decade)))).sort((a, b) => a - b);
+const activeTopics = [...topicRules, generalTopic].filter(({ id }) => preparedEntries.some(({ topics }) => topics.some((topic) => topic.id === id)));
+
+const backlinkHref = (backlink: ReaderBacklink) => {
+  const fragment = backlink.href.includes("#") ? backlink.href.slice(backlink.href.indexOf("#")) : "";
+  return `${base}chapters/${backlink.chapter}/${fragment}`;
+};
 ---
 
-<section class="bibliography" aria-labelledby="bibliography-title" data-bibliography>
+<section class="bibliography" id="page-content" aria-labelledby="bibliography-title" data-bibliography>
   <div class="bibliography__heading">
     <div>
       <p class="library-kicker">Bibliografia do livro</p>
@@ -23,56 +154,351 @@ const linkedCount = entries.filter(({ url }) => url).length;
     <p><strong>{entries.length}</strong> entradas · <strong>{linkedCount}</strong> com acesso on-line localizado</p>
   </div>
 
-  <label class="bibliography-search">
-    <span>Buscar por autor, título ou número</span>
-    <input type="search" inputmode="search" autocomplete="off" placeholder="Ex.: Diffie, teoria dos números ou 38" data-reference-search />
-  </label>
-  <p class="bibliography-status" role="status" aria-live="polite" data-reference-status>
-    {entries.length} referências
-  </p>
+  <div class="bibliography-tools" aria-labelledby="filter-title">
+    <div class="bibliography-tools__heading">
+      <div>
+        <p class="bibliography-tools__eyebrow">Pesquisa combinada</p>
+        <h2 id="filter-title">Encontre uma fonte</h2>
+      </div>
+      <button class="bibliography-reset" type="button" data-reference-reset>Limpar filtros</button>
+    </div>
+
+    <div class="bibliography-filters">
+      <label class="bibliography-field bibliography-field--wide">
+        <span>Busca geral</span>
+        <input type="search" inputmode="search" autocomplete="off" placeholder="Título, termo, DOI ou número" data-reference-search />
+      </label>
+      <label class="bibliography-field">
+        <span>Autor ou organização</span>
+        <input type="search" inputmode="search" autocomplete="off" placeholder="Ex.: Silverman ou NIST" data-reference-author />
+      </label>
+      <label class="bibliography-field">
+        <span>Década</span>
+        <select data-reference-decade>
+          <option value="">Todas</option>
+          {decades.map((decade) => <option value={decade}>{decade}–{decade + 9}</option>)}
+        </select>
+      </label>
+      <label class="bibliography-field">
+        <span>Assunto inferido</span>
+        <select data-reference-topic>
+          <option value="">Todos os assuntos</option>
+          {activeTopics.map((topic) => <option value={topic.id}>{topic.label}</option>)}
+        </select>
+      </label>
+      <label class="bibliography-field">
+        <span>Disponibilidade</span>
+        <select data-reference-availability>
+          <option value="">Qualquer disponibilidade</option>
+          <option value="online">Com acesso on-line</option>
+          <option value="doi">Com DOI</option>
+          <option value="unlinked">Sem link verificado</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="bibliography-results">
+      <p class="bibliography-status" role="status" aria-live="polite" aria-atomic="true" data-reference-status>
+        {entries.length} referências encontradas
+      </p>
+      <div class="bibliography-export" aria-label="Exportar referências encontradas">
+        <span>Exportar resultado:</span>
+        <button type="button" data-reference-export="bibtex">BibTeX</button>
+        <button type="button" data-reference-export="ris">RIS</button>
+      </div>
+    </div>
+    <p class="bibliography-action-status" role="status" aria-live="polite" aria-atomic="true" data-reference-action-status></p>
+  </div>
+
+  <details class="bibliography-method">
+    <summary>Como os filtros de autor, data e assunto foram obtidos?</summary>
+    <div>
+      <p>As citações originais continuam intactas. Autorias são lidas do início de cada entrada; a data usa o último ano editorial registrado; e uma fonte pode pertencer a mais de um assunto quando sua citação contém os termos abaixo.</p>
+      <ul>
+        {topicRules.map((topic) => (
+          <li><strong>{topic.label}:</strong> {topic.description} <small>({topic.keywords.join(", ")})</small></li>
+        ))}
+        <li><strong>{generalTopic.label}:</strong> {generalTopic.description}.</li>
+      </ul>
+      <p>Esses rótulos servem para descoberta, não substituem uma catalogação bibliográfica especializada.</p>
+    </div>
+  </details>
 
   <ol class="bibliography-list" data-reference-list>
-    {entries.map((entry) => (
-      <li id={`ref-${entry.number}`} data-reference-entry data-reference-number={entry.number} tabindex="-1">
+    {preparedEntries.map((entry) => (
+      <li
+        id={`ref-${entry.number}`}
+        data-reference-entry
+        data-reference-number={entry.number}
+        data-reference-citation={entry.citation}
+        data-reference-authors={entry.authors}
+        data-reference-year={entry.year ?? ""}
+        data-reference-decade={entry.decade ?? ""}
+        data-reference-topics={entry.topics.map(({ id }) => id).join(" ")}
+        data-reference-url={entry.url ?? ""}
+        data-reference-doi={entry.doi ?? ""}
+        tabindex="-1"
+      >
         <a
           class="bibliography-number"
           href={`#ref-${entry.number}`}
           aria-label={`Link permanente para a referência ${entry.number}`}
         >[{entry.number}]</a>
-        <p>{entry.citation}</p>
-        {entry.url ? (
-          <a class="bibliography-link" href={entry.url} target="_blank" rel="noopener noreferrer">
-            {entry.doi ? `DOI ${entry.doi}` : "Abrir referência"}<span aria-hidden="true">↗</span>
-          </a>
-        ) : (
-          <span class="bibliography-unlinked">Sem link verificado</span>
-        )}
+
+        <div class="bibliography-record">
+          <p class="bibliography-citation">{entry.citation}</p>
+          <div class="bibliography-tags" aria-label="Metadados inferidos">
+            {entry.year ? <span>{entry.year}</span> : null}
+            {entry.topics.map((topic) => <span>{topic.label}</span>)}
+          </div>
+
+          {entry.doi ? (
+            <p class="bibliography-doi">
+              <span>DOI</span>
+              <a href={`https://doi.org/${entry.doi}`} target="_blank" rel="noopener noreferrer">{entry.doi}<span aria-hidden="true">↗</span></a>
+            </p>
+          ) : null}
+
+          <div class="bibliography-record__footer">
+            <details class="bibliography-cite-tools">
+              <summary>Citar e exportar</summary>
+              <div>
+                <button type="button" data-copy-reference>Copiar citação</button>
+                <button type="button" data-entry-export="bibtex">Baixar BibTeX</button>
+                <button type="button" data-entry-export="ris">Baixar RIS</button>
+              </div>
+            </details>
+
+            {entry.backlinks.length > 0 ? (
+              <details class="bibliography-backlinks">
+                <summary>Citado em {entry.backlinks.length} {entry.backlinks.length === 1 ? "trecho" : "trechos"}</summary>
+                <ul>
+                  {entry.backlinks.map((backlink) => (
+                    <li>
+                      <a href={backlinkHref(backlink)}>{backlink.label}</a>
+                      <p>{backlink.context}</p>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ) : null}
+          </div>
+        </div>
+
+        <div class="bibliography-access">
+          {entry.url ? (
+            <a class="bibliography-link" href={entry.url} target="_blank" rel="noopener noreferrer">
+              Acessar publicação<span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <span class="bibliography-unlinked">Sem link verificado</span>
+          )}
+        </div>
       </li>
     ))}
   </ol>
+
+  <p class="bibliography-empty" hidden data-reference-empty>Nenhuma referência corresponde a todos os filtros. Experimente retirar um deles.</p>
 </section>
 
 <script>
+  interface ExportRecord {
+    number: string;
+    citation: string;
+    authors: string;
+    year: string;
+    doi: string;
+    url: string;
+  }
+
   const root = document.querySelector<HTMLElement>("[data-bibliography]");
-  const input = root?.querySelector<HTMLInputElement>("[data-reference-search]");
+  const searchInput = root?.querySelector<HTMLInputElement>("[data-reference-search]");
+  const authorInput = root?.querySelector<HTMLInputElement>("[data-reference-author]");
+  const decadeSelect = root?.querySelector<HTMLSelectElement>("[data-reference-decade]");
+  const topicSelect = root?.querySelector<HTMLSelectElement>("[data-reference-topic]");
+  const availabilitySelect = root?.querySelector<HTMLSelectElement>("[data-reference-availability]");
+  const resetButton = root?.querySelector<HTMLButtonElement>("[data-reference-reset]");
   const status = root?.querySelector<HTMLElement>("[data-reference-status]");
+  const actionStatus = root?.querySelector<HTMLElement>("[data-reference-action-status]");
+  const emptyState = root?.querySelector<HTMLElement>("[data-reference-empty]");
   const entries = Array.from(root?.querySelectorAll<HTMLElement>("[data-reference-entry]") ?? []);
+  const exportButtons = Array.from(root?.querySelectorAll<HTMLButtonElement>("[data-reference-export]") ?? []);
 
   const normalize = (value: string) => value
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
     .toLocaleLowerCase("pt-BR");
 
+  const recordFrom = (entry: HTMLElement): ExportRecord => ({
+    number: entry.dataset.referenceNumber ?? "",
+    citation: entry.dataset.referenceCitation ?? "",
+    authors: entry.dataset.referenceAuthors ?? "",
+    year: entry.dataset.referenceYear ?? "",
+    doi: entry.dataset.referenceDoi ?? "",
+    url: entry.dataset.referenceUrl ?? "",
+  });
+
+  const matchesAvailability = (entry: HTMLElement, availability: string) => {
+    const hasUrl = Boolean(entry.dataset.referenceUrl);
+    const hasDoi = Boolean(entry.dataset.referenceDoi);
+    if (availability === "online") return hasUrl;
+    if (availability === "doi") return hasDoi;
+    if (availability === "unlinked") return !hasUrl;
+    return true;
+  };
+
   const filter = () => {
-    const query = normalize(input?.value.trim() ?? "");
+    const query = normalize(searchInput?.value ?? "");
+    const author = normalize(authorInput?.value ?? "");
+    const decade = decadeSelect?.value ?? "";
+    const topic = topicSelect?.value ?? "";
+    const availability = availabilitySelect?.value ?? "";
     let visible = 0;
+    if (actionStatus) actionStatus.textContent = "";
+
     for (const entry of entries) {
-      const matches = !query || normalize(entry.textContent ?? "").includes(query);
+      const generalText = normalize([
+        entry.dataset.referenceNumber,
+        entry.dataset.referenceCitation,
+        entry.dataset.referenceDoi,
+      ].filter(Boolean).join(" "));
+      const authors = normalize(entry.dataset.referenceAuthors ?? "");
+      const topics = (entry.dataset.referenceTopics ?? "").split(" ");
+      const matches = (!query || generalText.includes(query))
+        && (!author || authors.includes(author))
+        && (!decade || entry.dataset.referenceDecade === decade)
+        && (!topic || topics.includes(topic))
+        && matchesAvailability(entry, availability);
       entry.hidden = !matches;
       if (matches) visible += 1;
     }
-    if (status) status.textContent = `${visible} ${visible === 1 ? "referência" : "referências"}`;
+
+    if (status) status.textContent = `${visible} ${visible === 1 ? "referência encontrada" : "referências encontradas"}`;
+    if (emptyState) emptyState.hidden = visible !== 0;
+    for (const button of exportButtons) button.disabled = visible === 0;
   };
 
-  input?.addEventListener("input", filter);
+  const escapeBibTeX = (value: string) => value
+    .replace(/\\/g, "\\\\")
+    .replace(/[{}]/g, (character) => `\\${character}`)
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const asBibTeX = (records: ExportRecord[]) => records.map((record) => {
+    const fields = [
+      `  title = {Referência ${record.number}}`,
+      record.authors ? `  author = {${escapeBibTeX(record.authors.replace(/\s*,\s*/g, " and "))}}` : "",
+      `  note = {${escapeBibTeX(record.citation)}}`,
+      record.year ? `  year = {${record.year}}` : "",
+      record.doi ? `  doi = {${escapeBibTeX(record.doi)}}` : "",
+      record.url ? `  url = {${escapeBibTeX(record.url)}}` : "",
+    ].filter(Boolean);
+    return `@misc{ebookweb-ref-${record.number},\n${fields.join(",\n")}\n}`;
+  }).join("\n\n");
+
+  const asRIS = (records: ExportRecord[]) => records.map((record) => {
+    const authors = record.authors.split(/\s*,\s*/g).filter(Boolean).map((author) => `AU  - ${author}`);
+    return [
+      "TY  - GEN",
+      `ID  - ebookweb-ref-${record.number}`,
+      `TI  - Referência ${record.number}`,
+      ...authors,
+      `N1  - ${record.citation.replace(/\s+/g, " ").trim()}`,
+      record.year ? `PY  - ${record.year}` : "",
+      record.doi ? `DO  - ${record.doi}` : "",
+      record.url ? `UR  - ${record.url}` : "",
+      "ER  -",
+    ].filter(Boolean).join("\n");
+  }).join("\n\n");
+
+  const download = (records: ExportRecord[], format: "bibtex" | "ris", filename: string) => {
+    const content = format === "bibtex" ? asBibTeX(records) : asRIS(records);
+    const extension = format === "bibtex" ? "bib" : "ris";
+    const type = format === "bibtex" ? "application/x-bibtex" : "application/x-research-info-systems";
+    const url = URL.createObjectURL(new Blob([content], { type: `${type};charset=utf-8` }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${filename}.${extension}`;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 0);
+    if (actionStatus) actionStatus.textContent = `${records.length} ${records.length === 1 ? "referência exportada" : "referências exportadas"} em ${format === "bibtex" ? "BibTeX" : "RIS"}.`;
+  };
+
+  const fallbackCopy = (text: string) => {
+    const field = document.createElement("textarea");
+    field.value = text;
+    field.setAttribute("readonly", "");
+    field.style.position = "fixed";
+    field.style.opacity = "0";
+    document.body.append(field);
+    field.select();
+    const legacyDocument = document as unknown as { execCommand(command: string): boolean };
+    const copied = legacyDocument.execCommand("copy");
+    field.remove();
+    return copied;
+  };
+
+  const copyCitation = async (entry: HTMLElement, button: HTMLButtonElement) => {
+    const record = recordFrom(entry);
+    const identifier = record.doi ? ` DOI: https://doi.org/${record.doi}` : record.url ? ` Disponível em: ${record.url}` : "";
+    const text = `[${record.number}] ${record.citation}${identifier}`;
+    let copied = false;
+    try {
+      await navigator.clipboard.writeText(text);
+      copied = true;
+    } catch {
+      copied = fallbackCopy(text);
+    }
+    if (actionStatus) actionStatus.textContent = copied ? `Citação ${record.number} copiada.` : "Não foi possível copiar automaticamente. Selecione a citação e tente novamente.";
+    if (copied) {
+      const original = button.textContent;
+      button.textContent = "Copiada";
+      window.setTimeout(() => { button.textContent = original; }, 1600);
+    }
+  };
+
+  searchInput?.addEventListener("input", filter);
+  authorInput?.addEventListener("input", filter);
+  decadeSelect?.addEventListener("change", filter);
+  topicSelect?.addEventListener("change", filter);
+  availabilitySelect?.addEventListener("change", filter);
+
+  resetButton?.addEventListener("click", () => {
+    if (searchInput) searchInput.value = "";
+    if (authorInput) authorInput.value = "";
+    if (decadeSelect) decadeSelect.value = "";
+    if (topicSelect) topicSelect.value = "";
+    if (availabilitySelect) availabilitySelect.value = "";
+    filter();
+    searchInput?.focus();
+  });
+
+  for (const button of exportButtons) {
+    button.addEventListener("click", () => {
+      const format = button.dataset.referenceExport;
+      if (format !== "bibtex" && format !== "ris") return;
+      const records = entries.filter((entry) => !entry.hidden).map(recordFrom);
+      if (records.length > 0) download(records, format, "ebook-web-referencias");
+    });
+  }
+
+  root?.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLButtonElement)) return;
+    const entry = target.closest<HTMLElement>("[data-reference-entry]");
+    if (!entry) return;
+    if (target.hasAttribute("data-copy-reference")) {
+      void copyCitation(entry, target);
+      return;
+    }
+    const format = target.dataset.entryExport;
+    if (format === "bibtex" || format === "ris") {
+      const record = recordFrom(entry);
+      download([record], format, `ebook-web-ref-${record.number}`);
+    }
+  });
 </script>

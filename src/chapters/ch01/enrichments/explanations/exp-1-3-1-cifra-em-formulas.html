@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Ao numerar o alfabeto, a roda física vira uma translação em \(\mathbb Z/26\mathbb Z\). A mesma fórmula trata as letras do meio e o retorno de \(z\) para \(a\), sem casos especiais.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Espaços</span><p>Texto claro, texto cifrado e chave pertencem a \(\mathbb Z/26\mathbb Z\). Para uma chave fixa \(k\), a cifração é \(e_k(p)=p+k\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Inversa</span><p>A decifração é \(d_k(c)=c-k\). A correção aparece pela composição:</p><div class="display-math">\[d_k(e_k(p))=(p+k)-k=p.\]</div></div>
+    <div class="step"><span class="step-tag theorem">Permutação</span><p>Somar \(k\) a todas as classes apenas as reorganiza. Se \(p+k\equiv p'+k\pmod{26}\), cancelar \(k\) por subtração dá \(p\equiv p'\pmod{26}\).</p></div>
+  </div>
+  <div class="quick-check"><p>Com \(a=0\) e chave \(k=9\), a palavra “az” usa \(0,25\) e vira \(9,8\), isto é, “ji”. Decifrar subtrai \(9\): \(9\mapsto0\) e \(8\mapsto-1\equiv25\).</p></div>
+  <div class="watch-out"><p>A chave de decifração pode ser descrita como \(-k\), mas isso não cria independência entre as chaves: conhecer uma determina imediatamente a outra.</p></div>
+</div>

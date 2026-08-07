@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.21">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Conte resíduos coprimos</summary>
+      <p>Se \(m\) é primo, compare cada número \(1,\ldots,m-1\) com \(m\): nenhum deles pode compartilhar um divisor não trivial com o módulo.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — No sentido inverso, encontre uma testemunha</summary>
+      <p>Se \(m\) é composto, escreva \(m=rs\) com \(1&lt;r&lt;m\). Verifique por que a classe de \(r\) não pode ser unidade e como isso reduz a contagem de \(\phi(m)\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Consideramos \(m\ge2\), como é usual para um módulo.</p>
   <p>Se \(m\) é primo, todo inteiro \(1,2,\ldots,m-1\) é coprimo com \(m\). Portanto todos esses \(m-1\) resíduos são unidades e</p>
   <div class="display-math">\[\phi(m)=m-1.\]</div>
@@ -7,4 +20,5 @@
   <p>de modo que \(r\) não é uma unidade módulo \(m\). Logo nem todos os \(m-1\) resíduos não nulos são unidades, e</p>
   <div class="display-math">\[\phi(m)\le m-2&lt;m-1.\]</div>
   <p>Assim, \(\phi(m)=m-1\) ocorre se, e somente se, \(m\) é primo.</p>
+  </details>
 </div>

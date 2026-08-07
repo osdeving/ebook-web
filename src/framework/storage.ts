@@ -30,6 +30,7 @@ export function defaultPreferences(): ReaderPreferences {
     layers: ["explanation", "lab", "practice", "history", "reading"],
     bookmarks: [],
     notes: {},
+    progress: {},
   };
 }
 
@@ -111,6 +112,11 @@ export function validatePreferences(
         id.length > 0 && typeof note === "string"
       )))
     : {};
+  const progress = value.progress && typeof value.progress === "object" && !Array.isArray(value.progress)
+    ? Object.fromEntries(Object.entries(value.progress).filter(([id, state]) => (
+        id.length > 0 && (state === "started" || state === "completed")
+      ))) as ReaderPreferences["progress"]
+    : {};
 
   return {
     theme: value.theme === "dark" || value.theme === "light" ? value.theme : fallback.theme,
@@ -118,6 +124,7 @@ export function validatePreferences(
     layers,
     bookmarks,
     notes,
+    progress,
     lastSection: typeof value.lastSection === "string" ? value.lastSection : undefined,
     sourceHash: typeof value.sourceHash === "string" ? value.sourceHash : undefined,
   };

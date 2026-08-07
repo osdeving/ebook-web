@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.31">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Separe a potência de \(p\)</summary>
+      <p>Escreva \(a=p^ru\) e \(b=p^sv\), com \(p\nmid u,v\). Essa decomposição torna a propriedade do produto quase imediata.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Fatore a menor potência na soma</summary>
+      <p>Se \(t=\min(r,s)\), coloque \(p^t\) em evidência em \(a+b\). Isso prova primeiro a desigualdade, sem supor que as ordens sejam distintas.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Use a diferença das ordens para impedir cancelamento</summary>
+      <p>Quando, por exemplo, \(r&lt;s\), o fator que resta após retirar \(p^r\) tem a forma \(u+p^{s-r}v\). Reduza-o módulo \(p\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Fixe um primo \(p\). Para inteiros positivos \(a,b\), escreva</p>
   <div class="display-math">\[
     a=p^r u,\qquad b=p^s v,
@@ -37,4 +54,5 @@
       <p>O caso \(s&lt;r\) é simétrico.</p>
     </li>
   </ol>
+  </details>
 </div>

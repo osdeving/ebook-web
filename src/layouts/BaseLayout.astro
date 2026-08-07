@@ -1,6 +1,7 @@
 ---
 import "katex/dist/katex.min.css";
 import "../styles/index.css";
+import PwaControls from "../components/PwaControls.astro";
 
 interface Props {
   title: string;
@@ -20,9 +21,14 @@ const pageTitle = title === "Ebook Web" ? title : `${title} · Ebook Web`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#087f73" />
+    <meta name="application-name" content="Ebook Web" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}icons/icon-192.png`} />
+    <link rel="manifest" href={`${import.meta.env.BASE_URL}manifest.webmanifest`} />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:title" content={pageTitle} />
@@ -42,5 +48,6 @@ const pageTitle = title === "Ebook Web" ? title : `${title} · Ebook Web`;
   </head>
   <body>
     <slot />
+    <PwaControls />
   </body>
 </html>

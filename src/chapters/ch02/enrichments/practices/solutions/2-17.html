@@ -1,8 +1,26 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.17">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Escolha o tamanho da tabela</summary>
+      <p>Tome \(m=\lceil\sqrt{p-1}\rceil\) e armazene os passos de bebê \(g^j\) para \(0\le j&lt;m\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Faça os passos de gigante na direção inversa</summary>
+      <p>Calcule \(g^{-m}\pmod p\) e procure uma colisão entre a tabela e \(h(g^{-m})^i\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Recupere e verifique o expoente</summary>
+      <p>Da igualdade \(g^j=h(g^{-m})^i\), isole \(h=g^{im+j}\). Substitua o expoente no problema original antes de aceitá-lo.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>No método de Shanks, tome \(m=\lceil\sqrt{p-1}\rceil\), armazene \(g^j\) para \(0\le j&lt;m\) e procure uma colisão com \(h(g^{-m})^i\). Uma colisão \(g^j=h(g^{-m})^i\) fornece \(x=im+j\).</p>
   <ol type="a">
     <li>Para \(p=71\), \(m=9\). A colisão ocorre em \(i=4\), \(j=1\), no valor \(11\). Assim \(x=4\cdot9+1=37\), e \(11^{37}\equiv21\pmod{71}\).</li>
     <li>Para \(p=593\), \(m=25\). A colisão \(i=2\), \(j=9\), no valor \(315\), dá \(x=59\). De fato, \(156^{59}\equiv116\pmod{593}\).</li>
     <li>Para \(p=3571\), \(m=60\). A colisão \(i=5\), \(j=19\), no valor \(2801\), dá \(x=319\). A verificação é \(650^{319}\equiv2213\pmod{3571}\).</li>
   </ol>
+  </details>
 </div>

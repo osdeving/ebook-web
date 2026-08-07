@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.28">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Olhe para a diferença igual a \(1\)</summary>
+      <p>Todo \(N>1\) tem um divisor primo \(q\). Se \(q\) fosse um dos \(p_i\), ele dividiria o produto \(p_1\cdots p_r\) e também a diferença entre \(N\) e esse produto.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Converta a construção em contradição</summary>
+      <p>Suponha que a lista dada contenha todos os primos. Aplique a primeira parte a essa lista completa e interprete o novo divisor primo obtido.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>O número</p>
   <div class="display-math">\[
     N=p_1p_2\cdots p_r+1
@@ -9,4 +22,5 @@
   \]</div>
   <p>o que é impossível para um primo.</p>
   <p>Agora suponha, por contradição, que existam apenas finitos primos e que a lista completa seja \(p_1,\ldots,p_r\). A construção acima produz um número \(N\) com um divisor primo \(q\) que não está nessa lista. Isso contradiz a hipótese de que a lista era completa. Portanto existem infinitos números primos.</p>
+  </details>
 </div>

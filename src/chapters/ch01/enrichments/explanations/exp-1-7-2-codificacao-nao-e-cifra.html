@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Codificar muda a representação; cifrar muda quem consegue interpretar. Base64, ASCII, UTF-8 e hexadecimal não escondem dados porque o procedimento inverso é público e não usa segredo.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Codificação</span><p>Uma regra pública associa símbolos a números ou bytes. Em ASCII, \(A\) corresponde a \(65\), isto é, \(01000001_2\). Qualquer pessoa pode consultar a mesma tabela.</p></div>
+    <div class="step"><span class="step-tag definition">Cifragem</span><p>Uma cifra recebe, além da mensagem, material de chave. O algoritmo pode ser público; o valor secreto da chave controla a transformação que o adversário não deve conseguir desfazer.</p></div>
+    <div class="step"><span class="step-tag manipulation">Pipeline</span><p>Em sistemas digitais, primeiro codificamos texto como bytes, depois ciframos esses bytes. Ao receber, deciframos os bytes e só então os decodificamos como texto.</p></div>
+  </div>
+  <div class="quick-check"><p>A letra “ç” não pertence ao ASCII de 7 bits. Em UTF-8 ela é representada pelos bytes hexadecimais <code>C3 A7</code>. Conhecer esses bytes revela a letra; nenhuma chave foi usada.</p></div>
+  <div class="watch-out"><p>Uma sequência de bytes só pode ser interpretada corretamente se emissor e receptor concordarem sobre a codificação. Corrupção de caracteres não é evidência de criptografia.</p></div>
+</div>

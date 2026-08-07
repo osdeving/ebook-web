@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Multiplicar por \(k\) módulo \(p\) cifra porque \(k\ne0\) é uma unidade. Decifrar é multiplicar pela transformação inversa \(k^{-1}\); a correção é apenas associatividade.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Cifração</span><p>\(e_k(m)\equiv km\pmod p\), com \(k\in\mathbb F_p^*\). A exigência \(k\ne0\) impede que todas as mensagens colapsem em \(0\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Decifração</span><p>Se \(k'=k^{-1}\), então</p><div class="display-math">\[d_k(e_k(m))\equiv k'(km)\equiv(k'k)m\equiv m\pmod p.\]</div></div>
+    <div class="step"><span class="step-tag theorem">Ataque com par conhecido</span><p>Dado \(m\ne0\) e \(c=km\), o próprio \(m\) tem inverso. Logo \(k\equiv cm^{-1}\pmod p\). A álgebra que permite decifrar também expõe a chave a partir de um par.</p></div>
+  </div>
+  <div class="quick-check"><p>Módulo \(11\), use \(k=7\), cujo inverso é \(8\). A mensagem \(m=4\) vira \(c=7\cdot4\equiv6\); a volta dá \(8\cdot6\equiv4\).</p></div>
+  <div class="watch-out"><p>Uma transformação pode ser eficiente, invertível e ainda insegura. Linearidade cria relações que um atacante explora com pouquíssimos dados.</p></div>
+</div>

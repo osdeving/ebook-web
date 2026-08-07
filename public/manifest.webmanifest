@@ -1,0 +1,24 @@
+{
+  "id": "./",
+  "name": "Ebook Web — Introdução à Criptografia Matemática",
+  "short_name": "Ebook Web",
+  "description": "Criptografia matemática em uma edição web dinâmica, com texto, explicações, laboratórios e exercícios.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f4ed",
+  "theme_color": "#087f73",
+  "categories": ["education", "books"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Continuar capítulo 1", "short_name": "Capítulo 1", "url": "chapters/ch01/" },
+    { "name": "Buscar no ebook", "short_name": "Busca", "url": "search/" },
+    { "name": "Abrir glossário", "short_name": "Glossário", "url": "glossary/" }
+  ]
+}

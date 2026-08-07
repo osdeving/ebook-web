@@ -1,5 +1,6 @@
 import { listen, queryAll, queryOptional } from "./dom";
 import type { DrawerController } from "./drawer";
+import { renderMath } from "./math";
 
 export interface PrintOptions {
   drawer?: DrawerController;
@@ -11,6 +12,11 @@ export function mountPrint(options: PrintOptions = {}): () => void {
     options.drawer?.close(false);
     openBefore = queryAll<HTMLDetailsElement>("details[open]");
     queryAll<HTMLDetailsElement>("main details:not([hidden])").forEach((details) => { details.open = true; });
+    queryAll<HTMLElement>("[data-enrichment-body]").forEach((body) => {
+      if (body.dataset.mathRendered === "true") return;
+      renderMath(body);
+      body.dataset.mathRendered = "true";
+    });
     document.body.classList.add("is-printing");
   };
   const restore = () => {

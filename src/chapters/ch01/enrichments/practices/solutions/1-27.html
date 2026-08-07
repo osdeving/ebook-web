@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.27">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Extraia o máximo divisor comum</summary>
+      <p>Defina \(d=\gcd(a,m)\) e escreva \(a=da'\), \(m=dm'\). Se \(ax\equiv c\pmod m\), que divisibilidade por \(d\) é inevitável?</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Construa uma solução com Bézout</summary>
+      <p>Quando \(d\mid c\), multiplique uma identidade \(au+mv=d\) por \(c/d\). Um dos termos resultantes fornece um candidato explícito para \(x\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Conte por uma congruência reduzida</summary>
+      <p>Duas soluções diferem por um múltiplo de \(m'=m/d\). Liste \(x_0+km'\) para \(k=0,\ldots,d-1\) e prove tanto que são distintas módulo \(m\) quanto que esgotam as possibilidades.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Defina \(d=\gcd(a,m)\) e escreva</p>
   <div class="display-math">\[
     a=da',\qquad m=dm',\qquad\gcd(a',m')=1.
@@ -32,4 +49,5 @@
       <p>Portanto \(m'\mid a'(x-x_0)\). Como \(\gcd(a',m')=1\), segue que \(m'\mid x-x_0\), logo \(x\equiv x_0+km'\pmod m\) para exatamente um \(k\in\{0,\ldots,d-1\}\). Há, assim, exatamente \(d=\gcd(a,m)\) soluções distintas módulo \(m\).</p>
     </li>
   </ol>
+  </details>
 </div>

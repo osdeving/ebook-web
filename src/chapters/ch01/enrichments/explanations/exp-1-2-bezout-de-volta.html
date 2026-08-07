@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O algoritmo estendido não é um segundo algoritmo desconectado. Ele guarda o caminho de volta: cada resto é uma combinação linear dos dois números iniciais, e essa propriedade sobrevive até o mdc.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag manipulation">Descida</span><p>Para \(84\) e \(30\): \(84=2\cdot30+24\) e \(30=1\cdot24+6\). Assim, o mdc é \(6\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Substituição reversa</span><p>Da segunda linha, \(6=30-24\). Da primeira, \(24=84-2\cdot30\). Substituindo:</p><div class="display-math">\[6=30-(84-2\cdot30)=3\cdot30-84.\]</div></div>
+    <div class="step"><span class="step-tag theorem">Certificado</span><p>Os coeficientes \(u=-1\) e \(v=3\) certificam \(84u+30v=6\). Qualquer divisor comum de \(84\) e \(30\) precisa dividir essa combinação; por isso nenhum divisor comum pode exceder a estrutura capturada pelo mdc.</p></div>
+  </div>
+  <div class="quick-check"><p>Quando \(\gcd(a,m)=1\), uma identidade \(au+mv=1\) vira \(au\equiv1\pmod m\). Portanto, o mesmo coeficiente \(u\) é um inverso de \(a\) módulo \(m\).</p></div>
+  <div class="watch-out"><p>Os coeficientes de Bézout geralmente não são únicos. Se \((u_0,v_0)\) funciona, há infinitos pares obtidos deslocando-os na direção descrita pelo teorema.</p></div>
+</div>

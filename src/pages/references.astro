@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Bibliography from "../components/Bibliography.astro";
+import SiteNav from "../components/SiteNav.astro";
+import { chapters } from "../chapters";
 import references from "../content/references.json";
+import { buildDiscoveryData } from "../lib/discovery";
 
-const base = import.meta.env.BASE_URL;
+const referenceBacklinks = buildDiscoveryData(chapters, references).referenceBacklinks;
 ---
 
 <BaseLayout
@@ -11,16 +14,10 @@ const base = import.meta.env.BASE_URL;
   description="Bibliografia linkável de An Introduction to Mathematical Cryptography, com DOI e páginas originais quando localizados."
 >
   <main class="references-page">
-    <nav class="references-nav" aria-label="Navegação da bibliografia">
-      <a class="library-brand" href={base} aria-label="Ebook Web, início">
-        <span aria-hidden="true">∑</span>
-        <strong>Ebook Web</strong>
-      </a>
-      <a href={base}>Voltar aos capítulos</a>
-    </nav>
-    <Bibliography entries={references} />
+    <SiteNav current="references" />
+    <Bibliography entries={references} backlinks={referenceBacklinks} />
     <footer class="references-note">
-      <p>As entradas bibliográficas preservam os dados e os títulos do livro. URLs explícitas foram mantidas; links adicionais foram conferidos por DOI ou na página da editora/autoria.</p>
+      <p>As entradas bibliográficas preservam os dados e os títulos do livro. URLs explícitas foram mantidas; links adicionais foram conferidos por DOI ou na página da editora/autoria. Busca, filtros e exportações são processados neste dispositivo.</p>
       <a href="#bibliography-title">Voltar ao início</a>
     </footer>
   </main>

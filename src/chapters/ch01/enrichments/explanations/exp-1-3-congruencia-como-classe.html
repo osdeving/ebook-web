@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Uma congruência não afirma que dois inteiros são iguais. Ela afirma que os dois ocupam a mesma posição quando ignoramos voltas completas de tamanho \(m\).</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Diferença divisível</span><p>\(a\equiv b\pmod m\) significa \(m\mid(a-b)\). Portanto existe \(q\in\mathbb Z\) com \(a=b+qm\): os números diferem por um número inteiro de voltas.</p></div>
+    <div class="step"><span class="step-tag manipulation">Mesmo resto</span><p>A condição é equivalente a dizer que \(a\) e \(b\) deixam o mesmo resto na divisão por \(m\). Por exemplo, \(38\equiv3\pmod7\), pois ambos deixam resto \(3\).</p></div>
+    <div class="step"><span class="step-tag theorem">Relação de equivalência</span><p>Congruência é reflexiva, simétrica e transitiva. Assim, ela separa todos os inteiros em classes: \(\ldots,-11,-4,3,10,17,\ldots\) pertencem à classe \(3\) módulo \(7\).</p></div>
+  </div>
+  <div class="quick-check"><p>Para testar \(101\equiv17\pmod{12}\), não é preciso reduzir os dois lados: \(101-17=84=7\cdot12\), logo a congruência vale.</p></div>
+  <div class="watch-out"><p>O módulo faz parte da afirmação. \(10\equiv1\pmod3\), mas \(10\not\equiv1\pmod4\).</p></div>
+</div>

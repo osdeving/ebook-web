@@ -8,6 +8,7 @@ declare module "katex/contrib/auto-render" {
   interface AutoRenderOptions {
     delimiters?: Delimiter[];
     ignoredTags?: string[];
+    ignoredClasses?: string[];
     throwOnError?: boolean;
     strict?: boolean | string;
     trust?: boolean;

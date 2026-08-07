@@ -1,5 +1,11 @@
 export { default as ChapterArticle } from "./ChapterArticle.astro";
 export { default as Bibliography } from "./Bibliography.astro";
+export { default as ChapterDiscoveryData } from "./ChapterDiscoveryData.astro";
+export { default as GlobalSearch } from "./GlobalSearch.astro";
+export { default as GlossaryBrowser } from "./GlossaryBrowser.astro";
+export { default as SiteNav } from "./SiteNav.astro";
+export { default as PwaControls } from "./PwaControls.astro";
+export { default as StudyPaths } from "./StudyPaths.astro";
 export { default as ChapterHeader } from "./ChapterHeader.astro";
 export { default as EbookShell } from "./EbookShell.astro";
 export { default as EnrichmentHost } from "./EnrichmentHost.astro";

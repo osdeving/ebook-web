@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.32">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Primeira via: uma identidade de Bézout</summary>
+      <p>Aplique Euclides estendido a \(a\) e \(p\) até obter \(au+pv=1\). O coeficiente \(u\), reduzido módulo \(p\), é o inverso.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Segunda via: Fermat</summary>
+      <p>Como \(a^{p-1}\equiv1\pmod p\), reduza o problema a calcular \(a^{p-2}\pmod p\) por quadraturas sucessivas.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Use uma checagem comum</summary>
+      <p>As duas vias devem produzir a mesma classe. Multiplique o representante encontrado por \(a\) e confirme que o resto é \(1\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Em cada item, o algoritmo de Euclides estendido produz uma identidade \(au+pv=1\), logo \(u\) é o inverso de \(a\) módulo \(p\). Pelo pequeno teorema de Fermat, a segunda via é</p>
   <div class="display-math">\[
     a^{-1}\equiv a^{p-2}\pmod p,
@@ -115,4 +132,5 @@
     345\cdot114=1+67\cdot587,\quad
     78467\cdot1763=1+1320\cdot104801.
   \]</div>
+  </details>
 </div>

@@ -1,0 +1,89 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<aside class="pwa-controls" data-pwa-controls data-base={base} aria-label="Disponibilidade do aplicativo">
+  <p class="pwa-status" role="status" aria-live="polite" hidden data-pwa-status></p>
+  <button class="pwa-install" type="button" hidden data-pwa-install>Instalar ebook</button>
+  <button class="pwa-update" type="button" hidden data-pwa-update>Atualizar conteúdo</button>
+</aside>
+
+<script>
+  interface InstallPromptEvent extends Event {
+    prompt(): Promise<void>;
+    userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+  }
+
+  const controls = document.querySelector<HTMLElement>("[data-pwa-controls]");
+  const status = controls?.querySelector<HTMLElement>("[data-pwa-status]");
+  const install = controls?.querySelector<HTMLButtonElement>("[data-pwa-install]");
+  const update = controls?.querySelector<HTMLButtonElement>("[data-pwa-update]");
+  let installPrompt: InstallPromptEvent | undefined;
+
+  const announceConnection = () => {
+    if (!status) return;
+    status.hidden = navigator.onLine;
+    status.textContent = navigator.onLine ? "Conexão restabelecida." : "Modo offline: usando o conteúdo salvo neste aparelho.";
+    if (navigator.onLine) {
+      status.hidden = false;
+      window.setTimeout(() => { if (navigator.onLine) status.hidden = true; }, 2600);
+    }
+  };
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    installPrompt = event as InstallPromptEvent;
+    if (install) install.hidden = false;
+  });
+  window.addEventListener("appinstalled", () => {
+    installPrompt = undefined;
+    if (install) install.hidden = true;
+    if (status) {
+      status.textContent = "Ebook instalado neste aparelho.";
+      status.hidden = false;
+    }
+  });
+  install?.addEventListener("click", async () => {
+    if (!installPrompt) return;
+    await installPrompt.prompt();
+    const choice = await installPrompt.userChoice;
+    if (choice.outcome === "accepted") install.hidden = true;
+    installPrompt = undefined;
+  });
+  window.addEventListener("online", announceConnection);
+  window.addEventListener("offline", announceConnection);
+  if (!navigator.onLine) announceConnection();
+
+  if ("serviceWorker" in navigator && controls?.dataset.base) {
+    window.addEventListener("load", async () => {
+      try {
+        const registration = await navigator.serviceWorker.register(`${controls.dataset.base}sw.js`, { scope: controls.dataset.base });
+        const offerUpdate = (worker: ServiceWorker | null) => {
+          if (!worker || !navigator.serviceWorker.controller || !update) return;
+          update.hidden = false;
+          update.onclick = () => worker.postMessage({ type: "SKIP_WAITING" });
+        };
+        offerUpdate(registration.waiting);
+        registration.addEventListener("updatefound", () => {
+          const worker = registration.installing;
+          worker?.addEventListener("statechange", () => {
+            if (worker.state === "installed") offerUpdate(registration.waiting ?? worker);
+          });
+        });
+        let refreshing = false;
+        let hadController = Boolean(navigator.serviceWorker.controller);
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+          if (!hadController) {
+            hadController = true;
+            return;
+          }
+          if (refreshing) return;
+          refreshing = true;
+          location.reload();
+        });
+      } catch (error) {
+        console.warn("[ebook-web] leitura offline indisponível", error);
+      }
+    }, { once: true });
+  }
+</script>

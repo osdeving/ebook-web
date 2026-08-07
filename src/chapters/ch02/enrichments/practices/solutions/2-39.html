@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.39">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Reduza usando \(x^2=-1\)</summary>
+      <p>Em cada multiplicação, substitua \(x^2\) por \(-1\equiv6\pmod7\) para manter a forma \(a+bx\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Teste apenas subgrupos maximais</summary>
+      <p>O grupo multiplicativo tem ordem \(48=2^4\cdot3\). Para provar que \(u\) tem ordem \(48\), basta mostrar que \(u^{24}\ne1\) e \(u^{16}\ne1\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Para refutar, procure um expoente menor</summary>
+      <p>Se alguma potência correspondente a um divisor próprio de \(48\) já vale \(1\), a ordem de \(u\) é própria e ele não é raiz primitiva.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Em \(\mathbb F_7[x]/(x^2+1)\), usamos \(x^2=-1=6\). Como o grupo multiplicativo tem ordem \(48\), uma raiz primitiva deve ter ordem \(48\).</p>
   <ol type="a">
     <li>Para \(u=2+5x\), calculamos \(u^4=-1\) e \(u^8=1\). Sua ordem é \(8\); portanto não é raiz primitiva.</li>
@@ -9,4 +26,5 @@
       Logo sua ordem não divide nenhum subgrupo maximal próprio e é \(48\). Portanto \(2+x\) é raiz primitiva.</li>
     <li>Para \(u=1+x\), temos \(u^{24}=1\) (e \(u^{12}=-1\)); sua ordem é \(24\). Logo não é raiz primitiva.</li>
   </ol>
+  </details>
 </div>

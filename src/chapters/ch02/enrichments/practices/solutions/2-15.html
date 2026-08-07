@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.15">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Cheque os axiomas por propriedades de matrizes</summary>
+      <p>Fechamento e inversos seguem de \((AB)^{-1}=B^{-1}A^{-1}\); identidade e associatividade são herdadas da multiplicação matricial.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Exiba duas matrizes que não comutam</summary>
+      <p>Use matrizes triangulares elementares, uma superior e outra inferior. Elas são invertíveis sobre qualquer \(\mathbb F_p\), mas os dois produtos têm entradas diferentes.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Conte colunas linearmente independentes</summary>
+      <p>Para uma matriz \(n\times n\), a primeira coluna pode ser qualquer vetor não nulo; a segunda deve ficar fora do subespaço gerado pela primeira, e assim sucessivamente.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>
       <p>A associatividade vem da multiplicação de matrizes. A identidade é \(I_2\). Se \(A\) e \(B\) são invertíveis, então \(AB\) também é, pois</p>
@@ -52,4 +69,5 @@
       <p>\[\left|\operatorname{GL}_n(\mathbb F_p)\right|=\prod_{k=0}^{n-1}(p^n-p^k)=(p^n-1)(p^n-p)\cdots(p^n-p^{n-1}).\]</p>
     </li>
   </ol>
+  </details>
 </div>

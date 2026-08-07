@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.23">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Classifique quadrados módulo \(4\)</summary>
+      <p>Separe um inteiro em par ou ímpar e determine os únicos resíduos possíveis de seu quadrado módulo \(4\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Compare com a expressão dada</summary>
+      <p>Como \(m\) é ímpar, determine \(2m\pmod4\). Some esse resíduo aos dois casos possíveis para \(a^2\) e compare com a lista de resíduos quadráticos.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Todo quadrado inteiro é congruente a \(0\) ou \(1\) módulo \(4\): um inteiro par tem quadrado divisível por \(4\), e um inteiro ímpar tem quadrado congruente a \(1\).</p>
   <p>Como \(m\) é ímpar, \(2m\equiv2\pmod4\). Há então dois casos:</p>
   <ul>
@@ -6,4 +19,5 @@
     <li>se \(a\) é ímpar, \(a^2\equiv1\pmod4\), logo \(2m+a^2\equiv3\pmod4\).</li>
   </ul>
   <p>Em ambos os casos o resultado é \(2\) ou \(3\) módulo \(4\), nunca \(0\) ou \(1\). Portanto \(2m+a^2\) não pode ser um quadrado perfeito.</p>
+  </details>
 </div>

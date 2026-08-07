@@ -7,6 +7,7 @@
   );
   const shell = document.querySelector<HTMLElement>("[data-reader-shell]");
   const article = document.querySelector<HTMLElement>("[data-reader-content]");
+  const discoveryElement = document.querySelector<HTMLScriptElement>("[data-reader-discovery]");
   const slug = shell?.dataset.chapterId;
 
   if (shell && article && slug) {
@@ -17,11 +18,20 @@
       console.error(`[ebook-web] módulo do capítulo ausente: ${slug}`);
     } else {
       entry[1]().then(async ({ default: chapter }) => {
+        let discovery;
+        try {
+          discovery = discoveryElement?.textContent
+            ? JSON.parse(discoveryElement.textContent)
+            : undefined;
+        } catch (error) {
+          console.error("[ebook-web] dados de descoberta inválidos", error);
+        }
         const chapterCleanup = chapter.initialize?.(article);
         const reader = await bootstrapReader({
           chapterId: chapter.slug,
           sourceHash: chapter.sourceHash,
           enrichments: chapter.enrichments,
+          discovery,
         });
         window.addEventListener(
           "pagehide",

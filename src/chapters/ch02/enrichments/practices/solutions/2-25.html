@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.25">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Conte escolhas de sinais locais</summary>
+      <p>Uma raiz módulo \(pq\) reduz a raízes não nulas módulo \(p\) e \(q\). Em cada corpo, as únicas possibilidades são a raiz e sua oposta; combine-as pelo CRT.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Compare duas raízes não opostas</summary>
+      <p>Se \(z^2\equiv y^2\pmod n\) mas \(z\not\equiv\pm y\pmod n\), então \((z-y)(z+y)\) é múltiplo de \(n\), embora nenhum fator carregue simultaneamente todos os primos.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Extraia um fator com máximo divisor comum</summary>
+      <p>Calcule \(\gcd(z-y,n)\) ou \(\gcd(z+y,n)\). As escolhas de sinais locais explicam por que surge um fator próprio de \(n\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>Uma raiz \(r\) módulo \(n=pq\) determina raízes não nulas \(r_p\) módulo \(p\) e \(r_q\) módulo \(q\). Em cada corpo há exatamente duas raízes, \(\pm r_p\) e \(\pm r_q\). As quatro escolhas independentes de sinais produzem, pelo teorema chinês dos restos, quatro classes distintas módulo \(pq\).</li>
     <li>Escolha \(y\) aleatório com \(\gcd(y,n)=1\), ponha \(a\equiv y^2\pmod n\) e peça à máquina as quatro raízes. Escolha uma raiz \(z\) que não seja congruente a \(\pm y\pmod n\). Então
@@ -7,4 +24,5 @@
       \]
       As escolhas de sinais de \(z\) e \(y\) coincidem em um fator primo e divergem no outro; por isso \(\gcd(z-y,n)\) (ou \(\gcd(z+y,n)\)) é \(p\) ou \(q\), uma fatoração não trivial de \(n\).</li>
   </ol>
+  </details>
 </div>

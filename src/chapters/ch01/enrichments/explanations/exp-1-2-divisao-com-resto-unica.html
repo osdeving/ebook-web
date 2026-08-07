@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>A condição \(0\le r&lt;b\) escolhe um único representante entre infinitas maneiras de escrever \(a=bq+r\). Sem esse intervalo, quociente e resto poderiam deslizar juntos.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Existência</span><p>Para \(a=23\) e \(b=7\), agrupamos três blocos completos de tamanho \(7\): \(23=7\cdot3+2\). O que sobra é menor que um novo bloco.</p></div>
+    <div class="step"><span class="step-tag manipulation">Outras escritas</span><p>Também vale \(23=7\cdot2+9\) e \(23=7\cdot4-5\), mas \(9\not&lt;7\) e \(-5\not\ge0\). Elas não são divisões com resto na convenção adotada.</p></div>
+    <div class="step"><span class="step-tag theorem">Unicidade</span><p>Se \(a=bq+r=bq'+r'\), então \(b(q-q')=r'-r\). Como \(r,r'\in[0,b)\), temos \(|r'-r|&lt;b\). O único múltiplo de \(b\) nesse intervalo é \(0\); logo \(r=r'\) e \(q=q'\).</p></div>
+  </div>
+  <div class="quick-check"><p>Para inteiros negativos, a mesma convenção de resto não negativo dá \(-23=7(-4)+5\). Linguagens de programação podem adotar regras diferentes para o operador de resto; confira a especificação antes de transportar uma fórmula.</p></div>
+</div>

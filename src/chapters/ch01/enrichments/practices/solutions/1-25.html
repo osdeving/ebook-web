@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.25">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Congele o expoente de entrada</summary>
+      <p>Como a variável \(A\) muda durante o algoritmo, chame o valor inicial de \(A_0\). Procure uma relação que envolva simultaneamente \(b\), \(a^A\) e \(g^{A_0}\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Separe os casos par e ímpar</summary>
+      <p>Se \(A=2k\), quadrar \(a\) e substituir \(A\) por \(k\) preserva a potência. Se \(A=2k+1\), primeiro transfira um fator \(a\) para \(b\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Use a condição de parada</summary>
+      <p>Ao terminar, \(A=0\). Substitua esse valor no invariante e identifique diretamente o significado do acumulador \(b\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p><strong>Precisão de notação.</strong> Como o algoritmo altera a variável \(A\), chamaremos de \(A_0\) o expoente fornecido na entrada. A afirmação correta é que o valor devolvido satisfaz \(b\equiv g^{A_0}\pmod N\).</p>
   <p>No início de cada passagem pelo laço, vale o invariante</p>
   <div class="display-math">\[
@@ -26,4 +43,5 @@
     b=b\,a^0\equiv g^{A_0}\pmod N.
   \]</div>
   <p>Logo o algoritmo devolve exatamente a potência modular desejada.</p>
+  </details>
 </div>

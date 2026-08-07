@@ -1,0 +1,11 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Os nomes dos ataques descrevem a interface disponível ao adversário. Quanto mais ele pode observar ou escolher, mais forte é o teste imposto à cifra.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Somente texto cifrado</span><p>Eva recebe textos cifrados e conhece o algoritmo, mas não recebe pares correspondentes. Estatística da língua e formato das mensagens ainda podem vazar informação.</p></div>
+    <div class="step"><span class="step-tag definition">Texto claro conhecido</span><p>Eva conhece alguns pares \((m_i,c_i)\). Isso acontece naturalmente quando mensagens antigas são publicadas, cabeçalhos são previsíveis ou formatos têm campos fixos.</p></div>
+    <div class="step"><span class="step-tag definition">Texto claro escolhido</span><p>Eva escolhe mensagens e obtém suas cifrasções. Essa capacidade modela sistemas acessíveis por API e permite criar entradas que isolem regularidades do algoritmo.</p></div>
+    <div class="step"><span class="step-tag theorem">Relação entre modelos</span><p>Resistir a um adversário mais forte implica resistir aos mais fracos correspondentes: quem pode escolher entradas também pode ignorar essa capacidade e agir como se apenas conhecesse pares.</p></div>
+  </div>
+  <div class="quick-check"><p>Para a cifra afim \(c\equiv k_1m+k_2\pmod p\), escolher \(m=0\) revela \(k_2\); escolher \(m=1\) revela \(k_1+k_2\). Duas consultas bastam para obter a chave.</p></div>
+  <div class="watch-out"><p>Criptografia moderna também considera texto cifrado escolhido, manipulação ativa, repetição e canais laterais. A lista do capítulo é uma primeira escada de modelos, não o catálogo completo.</p></div>
+</div>

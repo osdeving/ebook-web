@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.16">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Use a definição de \(\mathcal O\)</summary>
+      <p>Para cada par \(f,g\), procure constantes \(C\) e um limiar a partir do qual \(|f(x)|\le C|g(x)|\). Comparar o quociente \(|f/g|\) costuma ser mais rápido.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Separe polinômios, logaritmos e exponenciais</summary>
+      <p>Termos de menor grau são dominados pelo maior grau; qualquer potência fixa é dominada por uma exponencial; e qualquer potência de \(\log x\) é dominada por \(x^\varepsilon\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Reescreva bases exponenciais</summary>
+      <p>Compare \(2^k\) com \(e^{ck}\) usando \(2^k=e^{k\ln2}\). Depois incorpore fatores polinomiais ao quociente.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Em todos os itens basta comparar o quociente das duas funções quando a variável tende ao infinito.</p>
   <ol type="a">
     <li>Para \(x\ge1\), temos \(\sqrt{x}\le x^2\); logo \(x^2+\sqrt{x}\le2x^2\).</li>
@@ -22,4 +39,5 @@
       pois \(2/e&lt;1\).
     </li>
   </ol>
+  </details>
 </div>

@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GlobalSearch from "../components/GlobalSearch.astro";
+import SiteNav from "../components/SiteNav.astro";
+---
+
+<BaseLayout title="Busca global" description="Busca unificada no texto, resultados, exercícios, recursos editoriais, referências e glossário do Ebook Web.">
+  <main class="discovery-page">
+    <SiteNav current="search" />
+    <GlobalSearch />
+  </main>
+</BaseLayout>

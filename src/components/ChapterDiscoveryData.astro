@@ -1,0 +1,12 @@
+---
+import type { ReaderDiscoveryData } from "../framework/types";
+
+interface Props {
+  data: ReaderDiscoveryData;
+}
+
+const { data } = Astro.props;
+const serialized = JSON.stringify(data).replace(/</gu, "\\u003c");
+---
+
+<script is:inline type="application/json" data-reader-discovery set:html={serialized}></script>

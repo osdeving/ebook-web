@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.1">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Modele as letras como resíduos</summary>
+      <p>Identifique \(A=0,\ldots,Z=25\). Uma rotação de \(k\) posições vira a regra \(c\equiv p+k\pmod{26}\); para decifrar, inverta a operação.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Separe as três regras</summary>
+      <p>No item (a), use sempre \(k=11\); no item (b), subtraia \(7\). Preserve espaços apenas ao reconstruir a frase, depois de operar letra por letra.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Faça a rotação depender da posição</summary>
+      <p>No item (c), numere as letras a partir de \(i=1\). Se a \(i\)-ésima letra foi avançada \(i\) casas, escreva uma fórmula para recuperar \(p_i\) a partir de \(c_i\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>A construção física consiste em recortar dois alfabetos circulares, prender o disco menor pelo centro e girá-lo até que \(A\) do alfabeto claro corresponda a \(L\) no alfabeto cifrado. Isso realiza uma rotação de \(11\) posições. Não há como registrar aqui o artefato manual, mas todas as leituras que ele produziria são obtidas pela regra</p>
   <p>\[E(p)\equiv p+11\pmod{26},\]</p>
   <p>identificando \(A=0,B=1,\ldots,Z=25\).</p>
@@ -17,4 +34,5 @@
       <blockquote lang="en">When angry, count ten before you speak; if very angry, an hundred.</blockquote>
     </li>
   </ol>
+  </details>
 </div>

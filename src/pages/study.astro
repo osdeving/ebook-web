@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteNav from "../components/SiteNav.astro";
+import StudyPaths from "../components/StudyPaths.astro";
+import paths from "../content/learning-paths.json";
+---
+
+<BaseLayout title="Rotas de estudo" description="Percursos guiados pelo conteúdo, laboratórios e exercícios do Ebook Web.">
+  <main class="discovery-page">
+    <SiteNav current="study" />
+    <StudyPaths paths={paths} />
+  </main>
+</BaseLayout>

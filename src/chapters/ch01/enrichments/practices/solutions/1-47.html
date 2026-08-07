@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.47">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Use o custo médio da busca</summary>
+      <p>Se há \(2^B\) chaves igualmente prováveis, uma busca exaustiva encontra a chave, em média, após testar metade do espaço.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Converta todas as unidades</summary>
+      <p>Divida o número médio de tentativas pela taxa por segundo; depois converta segundos em dias ou anos. Para escolher \(B\), resolva a desigualdade e arredonde para cima.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>Metade de \(2^{56}\) é \(2^{55}\). A \(10^{10}\) chaves por segundo, o tempo é
       \[
@@ -15,4 +28,5 @@
       \]
       Com \(65\) bits a busca média levaria cerca de \(58{,}5\) anos; com \(66\), cerca de \(116{,}9\) anos.</li>
   </ol>
+  </details>
 </div>

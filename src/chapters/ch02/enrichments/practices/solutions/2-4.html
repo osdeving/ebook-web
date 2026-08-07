@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.4">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Construa potências sem busca cega</summary>
+      <p>Calcule \(g,g^2,g^4,g^8,\ldots\pmod p\). Produtos dessas entradas correspondem à expansão binária de um expoente candidato.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Confirme a classe do expoente</summary>
+      <p>Quando encontrar \(g^x=h\), verifique a congruência diretamente. Lembre-se de que logaritmos discretos são classes módulo a ordem de \(g\), não inteiros únicos.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>
       <p>Calculando potências de \(2\) módulo \(23\),</p>
@@ -20,4 +33,5 @@
       <p>Logo \(\log_{627}(608)=18\) em \(\mathbb Z/940\mathbb Z\).</p>
     </li>
   </ol>
+  </details>
 </div>

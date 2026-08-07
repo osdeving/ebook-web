@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>A escrita binária informa exatamente quais potências obtidas por quadraturas sucessivas precisam ser multiplicadas. Cada bit \(1\) liga uma potência; cada bit \(0\) a ignora.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Decomposição</span><p>\(218\) em binário é \(11011010_2\), portanto</p><div class="display-math">\[218=128+64+16+8+2.\]</div></div>
+    <div class="step"><span class="step-tag manipulation">Quadraturas</span><p>Partindo de \(g\), quadrar sucessivamente produz \(g^2,g^4,g^8,g^{16},\ldots,g^{128}\). São as potências correspondentes às casas binárias.</p></div>
+    <div class="step"><span class="step-tag manipulation">Seleção</span><p>Como as casas \(128,64,16,8,2\) estão ligadas,</p><div class="display-math">\[g^{218}=g^{128}g^{64}g^{16}g^8g^2.\]</div><p>Podemos reduzir módulo \(N\) depois de cada quadratura e multiplicação.</p></div>
+  </div>
+  <div class="quick-check"><p>\(13=1101_2=8+4+1\), então \(g^{13}=g^8g^4g\). Para obter essas parcelas bastam três quadraturas a partir de \(g\).</p></div>
+  <div class="watch-out"><p>A expansão binária reduz o número de multiplicações, não o valor matemático do expoente. O resultado continua sendo exatamente \(g^A\bmod N\).</p></div>
+</div>

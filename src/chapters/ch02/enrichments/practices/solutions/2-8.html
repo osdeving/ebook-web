@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.8">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Separe as três fórmulas do Elgamal</summary>
+      <p>A chave pública é \(g^a\). Para cifrar com segredo efêmero \(k\), calcule \(c_1=g^k\) e \(c_2=mB^k\), sempre módulo \(p\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Desfaça apenas o fator compartilhado</summary>
+      <p>Na decifragem, Alice recompõe \(c_1^a\), que coincide com o fator usado por Bob. Multiplique \(c_2\) pelo inverso modular desse fator.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Use quadratura e multiplicação em cada potência</summary>
+      <p>Não expanda os expoentes grandes diretamente. Registre os restos sucessivos e confirme o texto claro recifrando-o com os dados do enunciado.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>
       <p>A chave pública de Alice é</p>
@@ -26,4 +43,5 @@
       <p>\[m\equiv793\cdot532\equiv365\pmod{1373}.\]</p>
     </li>
   </ol>
+  </details>
 </div>

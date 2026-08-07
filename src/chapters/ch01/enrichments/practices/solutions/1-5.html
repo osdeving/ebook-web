@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.5">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Traduza cifras em permutações</summary>
+      <p>Uma substituição simples escolhe uma imagem distinta para cada uma das \(26\) letras. Portanto o item (a) é uma contagem de permutações, e letras fixas são pontos fixos dessas permutações.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Conte o complemento com inclusão-exclusão</summary>
+      <p>Para contar permutações sem pontos fixos, defina \(A_i\) como o conjunto das permutações que fixam a letra \(i\). Aplique inclusão-exclusão à união dos \(A_i\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Reduza os outros casos a desarranjos</summary>
+      <p>Exatamente uma letra fixa significa: escolha essa letra e desarranje as demais. “Pelo menos” pode ser obtido por complemento, tomando cuidado para não contar a identidade mais de uma vez.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Uma cifra de substituição simples é uma permutação das \(26\) letras.</p>
   <ol type="a">
     <li>
@@ -29,4 +46,5 @@
       </ol>
     </li>
   </ol>
+  </details>
 </div>

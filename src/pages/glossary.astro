@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GlossaryBrowser from "../components/GlossaryBrowser.astro";
+import SiteNav from "../components/SiteNav.astro";
+import glossary from "../content/glossary.json";
+import symbols from "../content/symbols.json";
+---
+
+<BaseLayout title="Glossário e símbolos" description="Glossário linkável e índice de notação dos capítulos publicados no Ebook Web.">
+  <main class="discovery-page">
+    <SiteNav current="glossary" />
+    <GlossaryBrowser entries={glossary} symbols={symbols} />
+  </main>
+</BaseLayout>

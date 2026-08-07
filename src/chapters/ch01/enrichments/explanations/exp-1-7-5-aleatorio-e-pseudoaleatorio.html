@@ -1,0 +1,11 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>“Parece aleatório” é uma propriedade estatística; “é imprevisível para o adversário” é uma propriedade criptográfica. Uma sequência pode passar testes de frequência e ainda ser totalmente previsível.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Entropia de entrada</span><p>Uma fonte coleta incerteza do mundo físico ou de eventos que o adversário não controla nem observa completamente. Essa incerteza inicial é usada para formar uma semente.</p></div>
+    <div class="step"><span class="step-tag definition">Expansão determinística</span><p>Um gerador criptográfico transforma uma semente curta em muitos bits. Para uma mesma semente e estado, a saída é determinada; a segurança exige que, sem o estado, ela seja computacionalmente indistinguível de uma saída aleatória.</p></div>
+    <div class="step"><span class="step-tag theorem">Previsão é o teste</span><p>Contar aproximadamente a mesma quantidade de zeros e uns não basta. A sequência \(010101\ldots\) é equilibrada, mas o próximo bit é trivial de prever.</p></div>
+    <div class="step"><span class="step-tag manipulation">Ciclo de vida</span><p>Geradores reais precisam de inicialização segura, proteção do estado, atualização e, conforme o projeto, nova coleta de entropia. Uma semente fraca limita as saídas posteriores até que uma ressemeadura segura incorpore entropia fresca suficiente.</p></div>
+  </div>
+  <div class="quick-check"><p>Um relógio fornece muitos valores possíveis, mas se Eva conhece a hora aproximada da inicialização, o conjunto que precisa testar pode ser pequeno. Quantidade de bits armazenados não mede automaticamente incerteza.</p></div>
+  <div class="watch-out"><p>Não use geradores destinados a simulação, jogos ou amostragem para gerar chaves. Use a interface criptográfica fornecida e documentada pelo sistema operacional ou por biblioteca especializada.</p></div>
+</div>

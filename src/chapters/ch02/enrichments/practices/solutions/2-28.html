@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.28">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Fatore a ordem do grupo</summary>
+      <p>Comece fatorando \(p-1\) em potências de primos. Cada fator define um subproblema que Pohlig–Hellman resolve separadamente.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Determine os dígitos do expoente</summary>
+      <p>Para uma potência \(q^e\), projete sucessivamente a equação em subgrupos de ordem \(q\) e recupere os dígitos de \(x\) em base \(q\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Recomponha e faça a verificação final</summary>
+      <p>Use o teorema chinês dos restos para juntar as classes módulo as potências coprimas. Confirme cada resultado calculando \(g^x\pmod p\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Em cada caso, Pohlig–Hellman encontra o expoente módulo das potências de primos que compõem \(p-1\); o teorema chinês dos restos recompõe \(x\).</p>
   <ol type="a">
     <li>\(432=2^4\cdot3^3\). Os pequenos PLDs dão
@@ -23,4 +40,5 @@
       Logo \(x\equiv984414\pmod{1291798}\).</li>
   </ol>
   <p>As verificações finais são, respectivamente, \(7^{47}\equiv166\pmod{433}\), \(10^{223755}\equiv243278\pmod{746497}\), \(2^{33703314}\equiv39183497\pmod{41022299}\) e \(17^{984414}\equiv192988\pmod{1291799}\).</p>
+  </details>
 </div>

@@ -1,0 +1,11 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Quebrar uma substituição simples é resolver um sistema de restrições. Cada palpite precisa concordar simultaneamente com frequências, padrões de repetição, palavras já parcialmente abertas e a regra de que a tabela é uma permutação.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Estado parcial</span><p>Comece com algumas associações prováveis, por exemplo \(Q\mapsto e\). Cada associação fixa também a direção inversa: nenhum outro símbolo pode representar \(e\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Propagação</span><p>Substitua as letras conhecidas em toda a mensagem. Um fragmento como <code>_e__e</code> sugere palavras e, ao mesmo tempo, cada palavra candidata sugere novas letras.</p></div>
+    <div class="step"><span class="step-tag manipulation">Retrocesso</span><p>Se um palpite obriga duas letras claras diferentes a corresponder ao mesmo símbolo, ou produz muitos fragmentos linguisticamente impossíveis, desfaça-o. Um bom ataque aceita voltar atrás.</p></div>
+    <div class="step"><span class="step-tag theorem">Convergência</span><p>As restrições se reforçam mutuamente: uma palavra bem identificada fornece várias associações, que revelam outras palavras, que por sua vez confirmam ou refutam o primeiro palpite.</p></div>
+  </div>
+  <div class="quick-check"><p>Palavras cifradas de três letras com padrão <code>ABA</code> só podem corresponder a palavras claras cuja primeira e terceira letras coincidam. Essa restrição é independente da frequência absoluta.</p></div>
+  <div class="watch-out"><p>Uma frase legível não basta para provar que toda a chave está correta. Verifique a correspondência em todas as ocorrências e mantenha a bijetividade.</p></div>
+</div>

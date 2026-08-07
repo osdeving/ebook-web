@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Uma cifra de bloco transforma uma entrada de comprimento fixo. Para processar mensagens longas, precisamos de uma regra de composição — um modo de operação — e de uma maneira não ambígua de tratar o último bloco.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Bloco</span><p>Com \(B=128\), cada entrada é um dos \(2^{128}\) blocos possíveis. Para uma chave fixa, a cifra de bloco moderna age como uma permutação desse conjunto.</p></div>
+    <div class="step"><span class="step-tag definition">Preenchimento</span><p>Acrescentar apenas zeros pode ser ambíguo: a mensagem que já termina em zero torna-se indistinguível de uma mensagem mais curta preenchida. Esquemas reais registram de modo recuperável quantos bytes foram acrescentados, ou usam modos que não exigem preenchimento.</p></div>
+    <div class="step"><span class="step-tag theorem">Modo de operação</span><p>Cifrar cada bloco isoladamente e de forma determinística preserva igualdade entre blocos. Modos modernos combinam estado, contadores ou valores únicos para que posição e contexto influenciem a saída.</p></div>
+  </div>
+  <div class="quick-check"><p>Se dois blocos claros iguais sempre gerassem dois blocos cifrados iguais, um observador não saberia o conteúdo, mas enxergaria repetições e estrutura. Ocultar esse padrão faz parte da composição, não da permutação de bloco isolada.</p></div>
+  <div class="watch-out"><p>Não projete um modo de operação a partir desta descrição didática. Padrões como os da série NIST SP 800-38 especificam detalhes e requisitos de segurança indispensáveis.</p></div>
+</div>

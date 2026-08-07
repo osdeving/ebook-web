@@ -1,0 +1,11 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>XOR é adição bit a bit módulo \(2\). Cada bit é seu próprio inverso, por isso o mesmo circuito combina mensagem e chave e também desfaz a combinação.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Identidades</span><p>Para qualquer sequência \(x\), valem \(x\oplus0=x\), \(x\oplus x=0\), comutatividade e associatividade.</p></div>
+    <div class="step"><span class="step-tag manipulation">Correção</span><p>Se \(c=m\oplus k\), então</p><div class="display-math">\[c\oplus k=(m\oplus k)\oplus k=m\oplus(k\oplus k)=m.\]</div></div>
+    <div class="step"><span class="step-tag theorem">Reuso</span><p>Para \(c=m\oplus k\) e \(c'=m'\oplus k\),</p><div class="display-math">\[c\oplus c'=m\oplus m'.\]</div><p>A chave desaparece. Estrutura e palpites sobre uma mensagem passam a revelar informação sobre a outra.</p></div>
+    <div class="step"><span class="step-tag definition">Uso único</span><p>Sigilo perfeito exige uma chave uniforme, independente, tão longa quanto a mensagem e jamais reutilizada. Esses requisitos, não o XOR isolado, caracterizam a cifra de uso único.</p></div>
+  </div>
+  <div class="quick-check"><p>Se um atacante adivinha um trecho de \(m\), calcula o trecho correspondente da chave como \(k=m\oplus c\) e o aplica a \(c'\) para obter o mesmo trecho de \(m'\).</p></div>
+  <div class="watch-out"><p>Um fluxo pseudoaleatório seguro também não pode ser reutilizado com o mesmo contexto. Protocolos reais controlam chaves, nonces e contadores para evitar repetição.</p></div>
+</div>

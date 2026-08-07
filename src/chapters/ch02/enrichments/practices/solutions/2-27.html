@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.27">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Projete o PLD em cada fator</summary>
+      <p>Da equação \(g^x=a\), eleve ambos os lados a \((p-1)/q_i\). Isso cria uma equação em um subgrupo cuja ordem é apenas \(q_i\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Recupere resíduos do expoente</summary>
+      <p>O pequeno logaritmo discreto no subgrupo determina \(x\pmod{q_i}\). Faça isso separadamente para \(q_1\) e \(q_2\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Recomponha pelo CRT e revise a hipótese</summary>
+      <p>Combine os dois resíduos para obter \(x\pmod{q_1q_2}\). Verifique por que a demonstração precisa que a ordem de \(g\) seja o produto completo considerado.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>No caso considerado, \(g\) tem ordem \(p-1=q_1q_2\), com \(q_1\ne q_2\) primos. Escreva \(g^x=a\). Elevando a igualdade à potência \((p-1)/q_i\), obtemos</p>
   \[
   \left(g^{(p-1)/q_i}\right)^x=a^{(p-1)/q_i}.
@@ -10,4 +27,5 @@
   \]
   <p>Como os expoentes de \(g\) são definidos módulo \(p-1\), essa classe é exatamente o logaritmo procurado.</p>
   <p class="solution-note">A hipótese \(\operatorname{ord}(g)=p-1\) é necessária para esta formulação. Se \(g\) não for raiz primitiva, deve-se substituir \(p-1\) por \(N=\operatorname{ord}(g)\) e fatorar \(N\); a mera fatoração de \(p-1\) não garante que os elementos auxiliares tenham ordens \(q_1\) e \(q_2\).</p>
+  </details>
 </div>

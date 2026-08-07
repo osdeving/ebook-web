@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.2">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Explore um espaço de chaves pequeno</summary>
+      <p>Uma cifra de César tem somente \(26\) deslocamentos possíveis. Aplique \(D_k(c)\equiv c-k\pmod{26}\) a cada mensagem, variando \(k\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use linguagem como verificação</summary>
+      <p>Não escolha o deslocamento por uma única letra: procure sequências que formem várias palavras inglesas coerentes. Ao encontrar um começo promissor, confirme-o no restante do criptograma.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Em cada caso, testamos \(D_k(c)\equiv c-k\pmod{26}\) para \(k=0,1,\ldots,25\). O deslocamento correto é reconhecido quando os grupos de letras passam a formar palavras coerentes.</p>
   <ol type="a">
     <li>
@@ -14,4 +27,5 @@
       <blockquote lang="en">In baiting a mousetrap with cheese, always leave room for the mouse.</blockquote>
     </li>
   </ol>
+  </details>
 </div>

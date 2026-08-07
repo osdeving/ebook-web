@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O que separa \(\mathbb Z/p\mathbb Z\) de um módulo composto é a ausência de divisores de zero não triviais. Isso garante que todo elemento não nulo tenha inverso e torna possível dividir.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Coprimalidade automática</span><p>Se \(p\) é primo e \(a\not\equiv0\pmod p\), então \(p\nmid a\). Os únicos divisores positivos de \(p\) são \(1\) e \(p\), logo \(\gcd(a,p)=1\).</p></div>
+    <div class="step"><span class="step-tag theorem">Inverso</span><p>Pelo critério de Bézout, existem \(u,v\) com \(au+pv=1\). Reduzindo módulo \(p\), obtemos \(au\equiv1\). Portanto todo não nulo é invertível.</p></div>
+    <div class="step"><span class="step-tag manipulation">Contraste composto</span><p>Em \(\mathbb Z/8\mathbb Z\), \(2\cdot4\equiv0\), embora \(2\) e \(4\) sejam não nulos. Nenhum deles pode ter inverso: multiplicar a igualdade por um suposto inverso produziria uma contradição.</p></div>
+  </div>
+  <div class="quick-check"><p>Em \(\mathbb F_7\), \(3^{-1}=5\), pois \(3\cdot5=15\equiv1\). Assim, a equação \(3x=4\) tem solução única \(x=5\cdot4\equiv6\).</p></div>
+  <div class="watch-out"><p>“Corpo finito” não significa apenas “conjunto finito com contas”. As operações precisam satisfazer os axiomas de corpo, sobretudo a existência de inverso para todo elemento não nulo.</p></div>
+</div>

@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>A versão operacional de quadratura e multiplicação mantém dois registros: uma base corrente \(b\), que representa uma potência de dois do expoente original, e um acumulador \(y\), que reúne os bits já processados.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Estado inicial</span><p>Comece com \(y=1\), \(b=g\bmod N\) e expoente restante \(a=A\). O invariante é</p><div class="display-math">\[y\,b^a\equiv g^A\pmod N.\]</div></div>
+    <div class="step"><span class="step-tag manipulation">Bit ímpar</span><p>Se \(a\) é ímpar, incorpore uma cópia de \(b\): substitua \(y\) por \(yb\bmod N\) e \(a\) por \(a-1\). O produto \(y b^a\) não muda.</p></div>
+    <div class="step"><span class="step-tag manipulation">Metade do expoente</span><p>Quando \(a\) é par, substitua \(b\) por \(b^2\bmod N\) e \(a\) por \(a/2\). Como \((b^2)^{a/2}=b^a\), o invariante continua verdadeiro.</p></div>
+    <div class="step"><span class="step-tag theorem">Final</span><p>Quando \(a=0\), o invariante dá \(y\equiv g^A\pmod N\). A cada divisão por dois, o número de bits restantes diminui, por isso o laço leva \(O(\log A)\) iterações.</p></div>
+  </div>
+  <div class="quick-check"><p>O invariante é também uma ferramenta de depuração: depois de cada passo em um exemplo pequeno, confira se \(y b^a\bmod N\) permanece igual ao alvo.</p></div>
+</div>

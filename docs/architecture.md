@@ -17,7 +17,9 @@ src/
 │           ├── history/          # contexto histórico
 │           └── readings/         # fontes e “para saber mais”
 ├── components/                   # casca Astro reutilizável
+├── content/                      # glossário, símbolos, rotas e bibliografia
 ├── framework/                    # registro, montagem e comportamento
+├── lib/discovery.ts              # índices e relações derivados no build
 ├── styles/                       # folhas por responsabilidade
 └── pages/                        # rotas, sem conteúdo editorial
 ```
@@ -33,6 +35,16 @@ src/
    de estado local, acessibilidade, impressão e navegação.
 4. **Shell** — componentes Astro compõem página, sumário e índice de capítulos.
 5. **Delivery** — build estático e workflow oficial do GitHub Pages.
+
+## Descoberta e estudo
+
+O build deriva do HTML confiável um índice global e um grafo leve de relações.
+O primeiro alimenta busca, glossário e rotas; o segundo oferece prévias de
+links e relações inversas. Nenhum desses artefatos reescreve a camada-fonte.
+
+Progresso, marcadores, notas e preferências são mantidos no armazenamento local
+do navegador e vinculados ao hash da fonte. O service worker salva o shell e as
+rotas publicadas para leitura offline, sem transmitir esses dados pessoais.
 
 ## Fronteiras
 

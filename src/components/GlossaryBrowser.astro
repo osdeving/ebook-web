@@ -1,0 +1,129 @@
+---
+import type { GlossaryRecord, SymbolRecord } from "../lib/discovery";
+
+interface Props {
+  entries: readonly GlossaryRecord[];
+  symbols: readonly SymbolRecord[];
+}
+
+const { entries, symbols } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const categories = [...new Set(entries.map(({ category }) => category))].sort((a, b) => a.localeCompare(b, "pt-BR"));
+---
+
+<section class="glossary-browser" id="page-content" data-global-glossary>
+  <header class="discovery-hero">
+    <p class="library-kicker">Consulta conceitual</p>
+    <h1>Glossário e símbolos</h1>
+    <p>{entries.length} conceitos e {symbols.length} símbolos dos capítulos publicados, com ligação para a primeira apresentação no texto.</p>
+  </header>
+
+  <div class="discovery-filters glossary-filters">
+    <label>
+      <span>Buscar termo, alias ou definição</span>
+      <input type="search" autocomplete="off" placeholder="Ex.: inverso, F_p ou Diffie" data-glossary-query />
+    </label>
+    <label>
+      <span>Área</span>
+      <select data-glossary-category>
+        <option value="">Todas</option>
+        {categories.map((category) => <option value={category}>{category}</option>)}
+      </select>
+    </label>
+    <label>
+      <span>Capítulo</span>
+      <select data-glossary-chapter>
+        <option value="">Todos</option>
+        <option value="ch01">Capítulo 1</option>
+        <option value="ch02">Capítulo 2</option>
+      </select>
+    </label>
+  </div>
+  <p class="discovery-status" role="status" aria-live="polite" data-glossary-status>{entries.length + symbols.length} itens</p>
+
+  <section aria-labelledby="terms-title">
+    <div class="discovery-section-heading">
+      <div><p class="library-kicker">Conceitos</p><h2 id="terms-title">Termos fundamentais</h2></div>
+      <a href={`${base}search/`}>Pesquisar em todo o ebook →</a>
+    </div>
+    <dl class="global-glossary-list">
+      {entries.map((entry) => (
+        <div
+          id={`term-${entry.id}`}
+          data-glossary-item
+          data-kind="term"
+          data-category={entry.category}
+          data-chapter={entry.chapter}
+          data-search={`${entry.term} ${entry.aliases.join(" ")} ${entry.definition} ${entry.category}`}
+          tabindex="-1"
+        >
+          <dt>
+            <a class="discovery-permalink" href={`#term-${entry.id}`} aria-label={`Link permanente para ${entry.term}`}>#</a>
+            {entry.term}
+          </dt>
+          {entry.aliases.length ? <dd class="global-glossary-aliases">Também: {entry.aliases.join(", ")}</dd> : null}
+          <dd>{entry.definition}</dd>
+          <dd class="global-glossary-meta">
+            <span>{entry.category}</span>
+            <a href={`${base}${entry.href}`}>Ver no capítulo {entry.chapter === "ch01" ? "1" : "2"} →</a>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <section aria-labelledby="symbols-title">
+    <div class="discovery-section-heading">
+      <div><p class="library-kicker">Notação</p><h2 id="symbols-title">Índice de símbolos</h2></div>
+    </div>
+    <div class="symbol-index">
+      {symbols.map((entry) => (
+        <article
+          id={`symbol-${entry.id}`}
+          data-glossary-item
+          data-kind="symbol"
+          data-category="Símbolos"
+          data-chapter={entry.chapter}
+          data-search={`${entry.symbol} ${entry.meaning}`}
+          tabindex="-1"
+        >
+          <a class="discovery-permalink" href={`#symbol-${entry.id}`} aria-label={`Link permanente para ${entry.symbol}`}>#</a>
+          <code>{entry.symbol}</code>
+          <p>{entry.meaning}</p>
+          <a href={`${base}${entry.href}`}>Contexto no texto →</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <p class="discovery-empty" hidden data-glossary-empty>Nenhum termo ou símbolo corresponde aos filtros.</p>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-global-glossary]");
+  const query = root?.querySelector<HTMLInputElement>("[data-glossary-query]");
+  const category = root?.querySelector<HTMLSelectElement>("[data-glossary-category]");
+  const chapter = root?.querySelector<HTMLSelectElement>("[data-glossary-chapter]");
+  const status = root?.querySelector<HTMLElement>("[data-glossary-status]");
+  const empty = root?.querySelector<HTMLElement>("[data-glossary-empty]");
+  const items = Array.from(root?.querySelectorAll<HTMLElement>("[data-glossary-item]") ?? []);
+  const normalize = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
+  const filter = () => {
+    const needle = normalize(query?.value.trim() ?? "");
+    const wantedCategory = category?.value ?? "";
+    const wantedChapter = chapter?.value ?? "";
+    let visible = 0;
+    for (const item of items) {
+      const matches = (!needle || normalize(item.dataset.search ?? "").includes(needle))
+        && (!wantedCategory || item.dataset.category === wantedCategory)
+        && (!wantedChapter || item.dataset.chapter === wantedChapter);
+      item.hidden = !matches;
+      if (matches) visible += 1;
+    }
+    if (status) status.textContent = `${visible} ${visible === 1 ? "item" : "itens"}`;
+    if (empty) empty.hidden = visible !== 0;
+  };
+  query?.addEventListener("input", filter);
+  category?.addEventListener("change", filter);
+  chapter?.addEventListener("change", filter);
+</script>

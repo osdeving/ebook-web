@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.42">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Trate cada caractere separadamente</summary>
+      <p>Maiúsculas, minúsculas, espaços e pontuação têm códigos ASCII distintos. Consulte a linha correta da tabela para cada caractere, sem normalizar a frase.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Complete sempre oito bits</summary>
+      <p>Converta cada código em binário e acrescente zeros à esquerda até obter um byte. Só depois concatene os bytes na ordem original.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Usando bytes ASCII de oito bits:</p>
   <div class="table-wrap">
     <table>
@@ -22,4 +35,5 @@
   </div>
   <p>Logo a sequência, separada em bytes para facilitar a leitura, é</p>
   <p class="solution-code"><code>01000010 01100001 01100100 00100000 01100100 01100001 01111001 00101100 00100000 01000100 01100001 01100100 00101110</code></p>
+  </details>
 </div>

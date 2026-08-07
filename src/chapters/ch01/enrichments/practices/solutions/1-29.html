@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.29">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Comece por Bézout, não por fatoração</summary>
+      <p>Da coprimalidade, obtenha \(au+bv=1\). Essa identidade contém exatamente a informação que substituirá a fatoração única.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Multiplique pelo fator que deseja isolar</summary>
+      <p>Multiplique toda a identidade por \(c\). Mostre separadamente que os dois termos do lado esquerdo são divisíveis por \(a\), usando \(a\mid bc\) em um deles.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Como \(\gcd(a,b)=1\), a identidade de Bézout fornece \(u,v\in\mathbb Z\) tais que</p>
   <div class="display-math">\[
     au+bv=1.
@@ -9,4 +22,5 @@
   \]</div>
   <p>O primeiro termo do lado esquerdo é divisível por \(a\). O segundo também é divisível por \(a\), pois a hipótese \(a\mid bc\) implica \(a\mid bcv\). Logo a soma é divisível por \(a\), e portanto \(a\mid c\).</p>
   <p>A demonstração usa apenas Bézout e divisibilidade; não usa fatoração única.</p>
+  </details>
 </div>

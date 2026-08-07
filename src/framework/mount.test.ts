@@ -5,13 +5,16 @@ import { trustedHtml } from "./trusted-html";
 vi.mock("./math", () => ({ renderMath: vi.fn() }));
 
 import { mountEnrichments } from "./mount";
+import { renderMath } from "./math";
 
 describe("montagem de enriquecimentos", () => {
   beforeEach(() => {
+    vi.clearAllMocks();
     const { document, window } = parseHTML(`
       <html><body><article id="chapter"><span id="slot-reference"></span></article></body></html>
     `);
     vi.stubGlobal("document", document);
+    vi.stubGlobal("window", window);
     vi.stubGlobal("CustomEvent", window.CustomEvent);
   });
 
@@ -36,8 +39,31 @@ describe("montagem de enriquecimentos", () => {
     expect(host.dataset.enrichmentTitle).toBe("Versão online da referência 38");
     expect(host.querySelector("details")).toBeNull();
     expect(host.querySelector("a")?.textContent).toBe("Fonte online");
+    expect(renderMath).toHaveBeenCalledOnce();
 
     mounted.destroy();
     expect(chapterRoot.querySelector("#reading-ref-38-online")).toBeNull();
+  });
+
+  it("adia a matemática de painéis fechados até a primeira abertura", async () => {
+    const chapterRoot = document.querySelector<HTMLElement>("#chapter")!;
+    const mounted = await mountEnrichments({
+      chapterRoot,
+      definitions: [{
+        id: "exp-lenta",
+        layer: "explanation",
+        anchor: "slot-reference",
+        title: "Explicação lenta",
+        content: trustedHtml("<p>\\(a+b\\)</p>"),
+      }],
+    });
+    const panel = chapterRoot.querySelector<HTMLDetailsElement>("#exp-lenta details")!;
+    expect(renderMath).not.toHaveBeenCalled();
+    panel.open = true;
+    panel.dispatchEvent(new window.Event("toggle"));
+    expect(renderMath).toHaveBeenCalledOnce();
+    panel.dispatchEvent(new window.Event("toggle"));
+    expect(renderMath).toHaveBeenCalledOnce();
+    mounted.destroy();
   });
 });

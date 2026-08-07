@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O passo especial dos números primos não é apenas “ter poucos divisores”. É a propriedade de que um primo não pode aparecer escondido em um produto sem dividir pelo menos um dos fatores.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Duas possibilidades</span><p>Para primo \(p\), \(\gcd(p,a)\) só pode ser \(1\) ou \(p\). Se for \(p\), então \(p\mid a\). Se for \(1\), \(a\) possui inverso módulo \(p\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Cancelamento</span><p>Se \(p\mid ab\) e \(p\nmid a\), então \(ab\equiv0\pmod p\) e podemos multiplicar por \(a^{-1}\): \(b\equiv0\pmod p\). Portanto \(p\mid b\).</p></div>
+    <div class="step"><span class="step-tag theorem">Por que composto falha</span><p>Para \(m=6\), os fatores \(2\) e \(3\) não são unidades e \(2\cdot3\equiv0\pmod6\). Assim, \(6\mid2\cdot3\) sem que \(6\) divida nenhum fator.</p></div>
+  </div>
+  <div class="quick-check"><p>Se \(13\mid5n\), então \(13\nmid5\) e \(5^{-1}\equiv8\pmod{13}\). Multiplicar \(5n\equiv0\) por \(8\) mostra \(n\equiv0\pmod{13}\).</p></div>
+  <div class="watch-out"><p>A proposição usa a primalidade de \(p\). Substituir “primo” por “inteiro positivo” destrói o argumento.</p></div>
+</div>

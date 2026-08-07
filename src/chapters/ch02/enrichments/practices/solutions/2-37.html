@@ -1,7 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.37">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Use o grau três</summary>
+      <p>Se um cúbico se fatorasse de modo não trivial sobre um corpo, pelo menos um dos fatores teria grau \(1\). Portanto ele teria uma raiz no corpo.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Teste todo o corpo \(\mathbb F_2\)</summary>
+      <p>Há apenas dois candidatos a raiz. Avalie o polinômio em cada um, reduzindo as somas módulo \(2\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Um polinômio cúbico sobre um corpo é redutível somente se possui um fator linear, ou seja, uma raiz no corpo. Para \(f(x)=x^3+x+1\) em \(\mathbb F_2\), os únicos candidatos são \(0\) e \(1\):</p>
   \[
   f(0)=1,\qquad f(1)=1+1+1=1\quad\text{em }\mathbb F_2.
   \]
   <p>Não há raiz em \(\mathbb F_2\); portanto não há fator linear e \(x^3+x+1\) é irredutível.</p>
+  </details>
 </div>

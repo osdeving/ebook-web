@@ -1,0 +1,11 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Publicar uma chave resolve o problema de disponibilizar uma transformação de cifração; não prova, por si só, a quem essa chave pertence. Confidencialidade e autenticação são objetivos distintos.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Par de chaves</span><p>A chave pública controla uma operação que todos podem executar. A chave privada fornece a operação reservada, como decifrar ou assinar, conforme o esquema.</p></div>
+    <div class="step"><span class="step-tag theorem">Substituição de chave</span><p>Se Eva consegue trocar a chave pública anunciada por Alice pela própria chave, Bob cifra para Eva sem perceber. A matemática da cifra funciona perfeitamente — para a destinatária errada.</p></div>
+    <div class="step"><span class="step-tag definition">Vínculo de identidade</span><p>Certificados, diretórios autenticados, impressões digitais verificadas ou uma confiança previamente estabelecida ligam uma chave pública a uma identidade e a um contexto de uso.</p></div>
+    <div class="step"><span class="step-tag manipulation">Serviços diferentes</span><p>Cifrar para uma chave pública busca confidencialidade. Verificar uma assinatura busca autenticidade e integridade. Protocolos completos combinam primitivas e validam todos os dados relevantes.</p></div>
+  </div>
+  <div class="quick-check"><p>O “cofre com fenda” precisa estar identificado e protegido contra substituição. Um cofre resistente colocado por Eva no lugar do cofre de Alice continua sendo resistente, mas entrega as mensagens a Eva.</p></div>
+  <div class="watch-out"><p>O capítulo apresenta a arquitetura conceitual. Implementações reais devem seguir protocolos padronizados; não basta aplicar diretamente uma função matemática de chave pública a arquivos ou senhas.</p></div>
+</div>

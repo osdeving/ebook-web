@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.31">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Separe o que decorre dos axiomas da convenção unital</summary>
+      <p>A preservação de soma determina \(\phi(0)\) e \(\phi(-a)\). A igualdade \(\phi(1)=1\) requer que o homomorfismo seja assumido unital.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Leve equações de inverso pela aplicação</summary>
+      <p>Aplique \(\phi\) a \(aa^{-1}=1\). Depois use a unicidade do inverso em \(S\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Use o binômio em característica \(p\)</summary>
+      <p>Na aplicação de Frobenius, expanda \((a+b)^p\). Os coeficientes binomiais intermediários são divisíveis por \(p\), e a comutatividade permite a expansão usual.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p class="solution-warning"><strong>Nota editorial.</strong> A fórmula impressa \(\phi(a\star a)=\phi(a)\star\phi(a)\) deve envolver \(a\star b\). Além disso, \(\phi(1_R)=1_S\) não decorre apenas da preservação de soma e produto: o homomorfismo zero é um contraexemplo. A afirmação vale sob a convenção, usada aqui, de que homomorfismos de anéis com identidade também preservam \(1\).</p>
   <ol type="a">
     <li>Temos
@@ -20,4 +37,5 @@
       \]
       pois \(p\mid\binom pj\) para \(0&lt;j&lt;p\). Além disso, \((ab)^p=a^pb^p\) e \(1^p=1\). Portanto \(a\mapsto a^p\) preserva soma, produto e identidade: é o homomorfismo de Frobenius.</li>
   </ol>
+  </details>
 </div>

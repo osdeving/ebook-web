@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.8">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Calcule apenas o que é pedido</summary>
+      <p>Use diretamente \(r=a-b\lfloor a/b\rfloor\). Não é necessário apresentar o quociente como resposta, embora ele apareça no cálculo.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Reduza o risco de arredondamento</summary>
+      <p>Para números grandes, obtenha um quociente inteiro aproximado, multiplique-o pelo divisor e ajuste por uma unidade até a diferença cair em \([0,b)\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Calculamos \(r=a-b\lfloor a/b\rfloor\). As identidades abaixo também conferem que cada resto está no intervalo exigido.</p>
   <ol type="a">
     <li>\[78745=127\cdot620+5,\] logo o resto é \(5\).</li>
@@ -6,4 +19,5 @@
     <li>\[8739287463=18754\cdot465995+17233,\] logo o resto é \(17233\).</li>
     <li>\[4536782793=9784537\cdot463+6542162,\] logo o resto é \(6542162\).</li>
   </ol>
+  </details>
 </div>

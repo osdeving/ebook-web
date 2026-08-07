@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.40">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Compare unidades e divisores de zero</summary>
+      <p>Um dos anéis é corpo; no outro, examine a classe de \(p\). Pergunte se ela é zero, invertível ou divisor de zero.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Compare características</summary>
+      <p>Calcule quantas vezes é preciso somar \(1\) para obter \(0\) em cada anel. O mesmo número de elementos não força a mesma característica.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Compare os grupos aditivos</summary>
+      <p>Observe a ordem aditiva de \(1\) e a estrutura como espaço vetorial sobre \(\mathbb F_p\). Esses invariantes distinguem os anéis sem depender de uma apresentação.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Apesar de terem \(p^e\) elementos, os anéis possuem estruturas diferentes:</p>
   <ul>
     <li>\(\mathbb F_{p^e}\) é um corpo: todo elemento não nulo é invertível. Em \(\mathbb Z/p^e\mathbb Z\), a classe de \(p\) é não nula, mas não é invertível.</li>
@@ -6,4 +23,5 @@
     <li>As características diferem: \(\operatorname{char}(\mathbb Z/p^e\mathbb Z)=p^e\), enquanto \(\operatorname{char}(\mathbb F_{p^e})=p\).</li>
     <li>Seus grupos aditivos também diferem: o primeiro é cíclico de ordem \(p^e\); o segundo é um espaço vetorial de dimensão \(e\) sobre \(\mathbb F_p\), isomorfo a \((\mathbb Z/p\mathbb Z)^e\).</li>
   </ul>
+  </details>
 </div>

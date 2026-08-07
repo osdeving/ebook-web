@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>“\(k\) bits de chave” e “\(k\) bits de segurança” não são sinônimos. O primeiro mede o número nominal de chaves; o segundo resume o custo do melhor ataque conhecido dentro de um modelo e de uma tecnologia.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Espaço nominal</span><p>Uma chave uniforme de \(B_k\) bits tem \(2^{B_k}\) valores. A busca exaustiva precisa, em média, testar aproximadamente metade deles.</p></div>
+    <div class="step"><span class="step-tag theorem">Ataques melhores</span><p>Se uma propriedade reduz o trabalho a \(2^{80}\) operações embora a chave tenha 128 bits, a força efetiva nesse modelo é de cerca de 80 bits. O elo mais fraco determina o nível.</p></div>
+    <div class="step"><span class="step-tag definition">Contexto atual</span><p>O limiar histórico de 80 bits apresentado no texto ajuda a comparar ordens de grandeza, mas não deve ser lido como recomendação atual. A NIST SP 800-57 considera 112 bits como força mínima aceitável até 2030 e 128 bits para aplicação de proteção após 2030; AES-128 é associado a 128 bits de força em seu modelo clássico.</p></div>
+  </div>
+  <div class="quick-check"><p>Dobrar o tamanho de uma chave de busca pura de \(n\) para \(n+1\) bits dobra o número de candidatos. Acrescentar 32 bits multiplica o espaço por \(2^{32}\), não por \(32\).</p></div>
+  <div class="watch-out"><p>Força suficiente depende do tempo de sigilo exigido, do modelo de computação, do algoritmo completo, da geração de chaves e da implementação. Não escolha parâmetros apenas por esta conta.</p></div>
+</div>

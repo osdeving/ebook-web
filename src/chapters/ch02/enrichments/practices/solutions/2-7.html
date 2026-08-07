@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.7">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Use o algoritmo mais forte como subrotina</summary>
+      <p>Se uma rotina computa \(g^{ab}\) a partir de \(g^a\) e \(g^b\), execute-a sobre \(A\) e \(B\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Transforme cálculo em decisão</summary>
+      <p>Compare o valor produzido pela rotina com \(C\) módulo \(p\). Essa comparação decide exatamente se a tripla fornecida é uma tripla de Diffie–Hellman.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>
       <p>Suponha disponível um algoritmo para o problema computacional de Diffie–Hellman. Dadas \(A\equiv g^a\), \(B\equiv g^b\) e a candidata \(C\), execute o algoritmo sobre \(A\) e \(B\). Ele devolve</p>
@@ -12,4 +25,5 @@
       <p>Assim, as paridades deduzidas de \(A\), \(B\) e \(C\) podem às vezes provar imediatamente que \(C\neq g^{ab}\). Isso não resolve todos os casos, mas mostra por que uma resposta uniforme seria enganosa: em grupos adequados o problema é considerado difícil; em grupos com informação auxiliar suficiente ele pode ser fácil.</p>
     </li>
   </ol>
+  </details>
 </div>

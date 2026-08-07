@@ -6,7 +6,7 @@ export interface MathRendererOptions {
   copySelector?: string;
 }
 
-export function renderMath(root: HTMLElement = document.body): void {
+export function renderMath(root: HTMLElement = document.body, ignoredClasses: string[] = []): void {
   renderMathInElement(root, {
     delimiters: [
       { left: "\\[", right: "\\]", display: true },
@@ -16,6 +16,7 @@ export function renderMath(root: HTMLElement = document.body): void {
     strict: false,
     trust: false,
     ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+    ignoredClasses,
   });
 }
 
@@ -50,6 +51,8 @@ export function mountEquationCopy(root: HTMLElement = document.body): () => void
 
 export function initializeMath(options: MathRendererOptions = {}): () => void {
   const root = options.root ?? document.body;
-  renderMath(root);
+  // Enriquecimentos fechados são renderizados sob demanda por `mount`.
+  // Isso evita bloquear a primeira leitura com milhares de fórmulas ocultas.
+  renderMath(root, ["supplement", "enrichment-inline"]);
   return mountEquationCopy(root);
 }

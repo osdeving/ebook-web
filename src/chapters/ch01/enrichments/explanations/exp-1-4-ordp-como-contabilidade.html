@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>\(\operatorname{ord}_p(a)\) funciona como um contador: informa quantas cópias do primo \(p\) aparecem na fatoração de \(a\). Também é chamado de valoração \(p\)-ádica em muitos textos.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Contagem</span><p>Como \(360=2^3\cdot3^2\cdot5\), temos \(\operatorname{ord}_2(360)=3\), \(\operatorname{ord}_3(360)=2\), \(\operatorname{ord}_5(360)=1\) e \(\operatorname{ord}_7(360)=0\).</p></div>
+    <div class="step"><span class="step-tag theorem">Produtos viram somas</span><p>A unicidade da fatoração implica</p><div class="display-math">\[\operatorname{ord}_p(ab)=\operatorname{ord}_p(a)+\operatorname{ord}_p(b).\]</div><p>Multiplicar junta as cópias de \(p\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Divisibilidade</span><p>Para inteiros positivos, \(a\mid b\) se, e somente se, \(\operatorname{ord}_p(a)\le\operatorname{ord}_p(b)\) para todo primo \(p\). Cada fator exigido por \(a\) precisa estar disponível em \(b\).</p></div>
+  </div>
+  <div class="quick-check"><p>\(\operatorname{ord}_2(72)=3\) e \(\operatorname{ord}_2(50)=1\); portanto \(\operatorname{ord}_2(72\cdot50)=4\), sem fatorar novamente o produto inteiro.</p></div>
+  <div class="watch-out"><p>Esta “ordem de \(p\) em \(a\)” não é a mesma coisa que a ordem multiplicativa de um elemento módulo \(p\), definida na seção seguinte. O argumento e o contexto distinguem as duas noções.</p></div>
+</div>

@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.16">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Reduza cada operação ao representante padrão</summary>
+      <p>A entrada da linha \(a\) e coluna \(b\) é \(a+b\) ou \(ab\), reduzida ao intervalo de \(0\) a \(m-1\). Use a primeira linha e coluna como checagem.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Filtre as unidades antes de multiplicar</summary>
+      <p>Em \((\mathbb Z/m\mathbb Z)^*\), inclua somente resíduos \(a\) com \(\gcd(a,m)=1\). O produto de duas unidades deve permanecer na lista, o que fornece uma verificação da tabela.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Cada entrada é obtida efetuando a operação indicada e tomando o representante entre \(0\) e \(m-1\). Nas tabelas de unidades aparecem apenas as classes coprimas com o módulo.</p>
   <ol type="a">
     <li>
@@ -92,4 +105,5 @@
       </div>
     </li>
   </ol>
+  </details>
 </div>

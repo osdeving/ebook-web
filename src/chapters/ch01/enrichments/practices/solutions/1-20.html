@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.20">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Nomeie os inversos conhecidos</summary>
+      <p>Como \(a_1\) e \(a_2\) são unidades, escolha \(b_1,b_2\) com \(a_ib_i\equiv1\pmod m\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Monte um inverso para o produto</summary>
+      <p>Reagrupe \((a_1a_2)(b_1b_2)\) usando a comutatividade da multiplicação modular. Isso sugere explicitamente qual é o inverso de \(a_1a_2\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Como \(a_1\) e \(a_2\) são unidades módulo \(m\), existem \(b_1,b_2\in\mathbb Z\) tais que</p>
   <div class="display-math">\[
     a_1b_1\equiv1\pmod m
@@ -10,4 +23,5 @@
     (a_1a_2)(b_1b_2)=(a_1b_1)(a_2b_2)\equiv1\pmod m.
   \]</div>
   <p>Assim, \(b_1b_2\) é um inverso multiplicativo de \(a_1a_2\), e \(a_1a_2\) é uma unidade módulo \(m\).</p>
+  </details>
 </div>

@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Uma cifra precisa primeiro ser correta e só depois pode ser avaliada como segura. Correção é uma identidade matemática; segurança é uma afirmação sobre o que adversários conseguem calcular.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Correção</span><p>Para cada chave válida \(k\) e mensagem \(m\), deve valer</p><div class="display-math">\[d_k(e_k(m))=m.\]</div><p>Isso garante que o destinatário legítimo recupera exatamente a entrada.</p></div>
+    <div class="step"><span class="step-tag theorem">Injetividade necessária</span><p>Se \(e_k(m)=e_k(m')\), aplicar \(d_k\) aos dois lados dá \(m=m'\). Portanto, para uma chave fixa, duas mensagens diferentes não podem produzir o mesmo texto cifrado quando a decifração é determinística e sem informação adicional.</p></div>
+    <div class="step"><span class="step-tag definition">Segurança</span><p>Mesmo uma bijeção perfeitamente reversível pode ser trivial de inverter sem a chave. Segurança exige especificar capacidades do adversário, informações observadas e um limite de sucesso ou custo.</p></div>
+  </div>
+  <div class="quick-check"><p>A função \(e_k(m)=m\) é correta com \(d_k(c)=c\), mas não oculta nada. A cifra de César também é correta, porém sua chave pode ser encontrada testando poucas possibilidades.</p></div>
+  <div class="watch-out"><p>“Funciona” significa que o receptor decifra. “É segura” exige uma análise separada e muito mais forte.</p></div>
+</div>

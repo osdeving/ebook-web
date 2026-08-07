@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Uma tabela de substituição é uma permutação do alfabeto: ela apenas reorganiza as 26 letras. Essa palavra concentra duas exigências diferentes — nenhuma saída se repete e nenhuma saída fica de fora.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Injetividade</span><p>Se \(e(a)=Q\) e também \(e(b)=Q\), o símbolo \(Q\) não informa se a letra original era \(a\) ou \(b\). Logo, uma cifra decifrável precisa enviar letras distintas a símbolos distintos.</p></div>
+    <div class="step"><span class="step-tag theorem">Conjuntos finitos</span><p>O domínio e a imagem têm ambos 26 elementos. Uma função injetiva entre dois conjuntos finitos de mesmo tamanho é automaticamente sobrejetiva: ao usar 26 saídas sem repetir, usamos todas elas.</p></div>
+    <div class="step"><span class="step-tag manipulation">Função inversa</span><p>A tabela de decifração registra a permutação inversa \(e^{-1}\). Se \(e(r)=B\), então \(e^{-1}(B)=r\). Não é uma nova chave; é a mesma correspondência lida ao contrário.</p></div>
+  </div>
+  <div class="quick-check"><p>Em um alfabeto reduzido \(\{a,b,c\}\), a linha cifrada \(\{C,A,B\}\) define \(a\mapsto C\), \(b\mapsto A\), \(c\mapsto B\). Sua inversa é \(A\mapsto b\), \(B\mapsto c\), \(C\mapsto a\).</p></div>
+  <div class="watch-out"><p>Ser bijetiva garante que a mensagem possa ser recuperada por quem conhece a chave. Não garante que a permutação resista à análise estatística.</p></div>
+</div>

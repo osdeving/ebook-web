@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.23">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Fatore o módulo e resolva localmente</summary>
+      <p>Para cada fator primo ou potência de primo, encontre as raízes de \(a\) separadamente. Comece testando quadrados quando os fatores forem pequenos.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Combine sinais pelo CRT</summary>
+      <p>Cada raiz local vem acompanhada de sua oposta. Escolha independentemente um sinal em cada fator e use o teorema chinês dos restos para recompor uma classe global.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Conte antes de calcular</summary>
+      <p>O produto das quantidades de raízes locais prevê quantas respostas globais distintas devem aparecer. Use essa contagem para detectar combinações ausentes ou repetidas.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Em cada fator primo calculamos as raízes locais e depois combinamos os sinais pelo teorema chinês dos restos.</p>
   <ol type="a">
     <li>Módulo \(19\), as raízes são \(\pm6\); módulo \(23\), são \(\pm8\). Uma combinação é
@@ -16,4 +33,5 @@
       41,\ 83,\ 351,\ 393,\ 475,\ 517,\ 785,\ 827\pmod{868}.
       \]</li>
   </ol>
+  </details>
 </div>

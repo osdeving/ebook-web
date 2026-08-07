@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>As unidades são exatamente os elementos pelos quais é permitido dividir. Sob multiplicação, elas formam um sistema fechado: produto, identidade e inversos permanecem dentro do conjunto.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Pertencimento</span><p>\(a\in(\mathbb Z/m\mathbb Z)^*\) quando \(\gcd(a,m)=1\). Para \(m=12\), as unidades são \(1,5,7,11\).</p></div>
+    <div class="step"><span class="step-tag theorem">Fechamento</span><p>Se \(a\) e \(b\) têm inversos \(a^{-1}\) e \(b^{-1}\), então</p><div class="display-math">\[(ab)(b^{-1}a^{-1})\equiv1\pmod m.\]</div><p>Logo \(ab\) também é unidade; no caso comutativo, seu inverso é \(a^{-1}b^{-1}\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Tabela</span><p>Módulo \(12\), \(5^2\equiv1\), \(7^2\equiv1\), \(11^2\equiv1\) e \(5\cdot7\equiv11\). Nenhum produto sai de \(\{1,5,7,11\}\).</p></div>
+  </div>
+  <div class="quick-check"><p>A soma não tem o mesmo fechamento: \(5+7\equiv0\pmod{12}\), e \(0\) não possui inverso.</p></div>
+  <div class="watch-out"><p>\(\mathbb Z/m\mathbb Z\) contém todas as classes; \((\mathbb Z/m\mathbb Z)^*\) contém apenas as invertíveis. O asterisco não significa “sem o zero” quando \(m\) é composto.</p></div>
+</div>

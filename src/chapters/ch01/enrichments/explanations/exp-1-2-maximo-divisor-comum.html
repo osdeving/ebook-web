@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O máximo divisor comum resume exatamente todos os fatores compartilhados. Ele não é apenas “um divisor grande”: qualquer divisor comum dos números também divide o próprio mdc.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Lista comum</span><p>Os divisores positivos de \(18\) são \(1,2,3,6,9,18\); os de \(30\) são \(1,2,3,5,6,10,15,30\). A interseção é \(\{1,2,3,6\}\), portanto \(\gcd(18,30)=6\).</p></div>
+    <div class="step"><span class="step-tag theorem">Caracterização</span><p>O número \(g=\gcd(a,b)\) satisfaz duas condições: \(g\mid a\) e \(g\mid b\); além disso, se \(d\mid a\) e \(d\mid b\), então \(d\mid g\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Sinais e zero</span><p>O mdc é escolhido positivo, então \(\gcd(-18,30)=6\). Para \(a\ne0\), \(\gcd(a,0)=|a|\), pois todo divisor de \(a\) também divide \(0\).</p></div>
+  </div>
+  <div class="quick-check"><p>Se \(\gcd(a,b)=1\), não estamos dizendo que \(a\) e \(b\) são números primos. Por exemplo, \(8\) e \(15\) são compostos, mas não compartilham fator primo e, por isso, são relativamente primos.</p></div>
+</div>

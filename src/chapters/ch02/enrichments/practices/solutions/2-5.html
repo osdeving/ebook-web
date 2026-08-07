@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.5">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Escreva tudo como potência de \(g\)</summary>
+      <p>Como \(g\) é primitiva, represente \(a=g^r\) e qualquer raiz candidata como \(x=g^s\). A equação \(x^2=a\) torna-se uma relação entre expoentes.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Verifique que “par” é bem definido</summary>
+      <p>Os representantes de \(\log_g(a)\) diferem por múltiplos de \(p-1\). Use o fato de \(p-1\) ser par antes de falar da paridade da classe.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Considere \(a\in\mathbb F_p^*\) e ponha \(r=\log_g(a)\), de modo que \(a\equiv g^r\pmod p\). Como \(p-1\) é par, somar um múltiplo de \(p-1\) não muda a paridade de \(r\); portanto faz sentido dizer que essa classe é par.</p>
   <p>Se \(a\) possui uma raiz quadrada \(x\), escreva \(x\equiv g^s\pmod p\). Então</p>
   <p>\[a\equiv x^2\equiv g^{2s}\pmod p,\]</p>
@@ -6,4 +19,5 @@
   <p>Reciprocamente, se \(r\) é par, escolha um representante par \(r=2s\). O elemento \(x=g^s\) satisfaz</p>
   <p>\[x^2\equiv g^{2s}=g^r\equiv a\pmod p.\]</p>
   <p>Assim, \(a\) é quadrado módulo \(p\) se, e somente se, \(\log_g(a)\) é par.</p>
+  </details>
 </div>

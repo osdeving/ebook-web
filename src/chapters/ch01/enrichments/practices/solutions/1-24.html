@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.24">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Parametrize uma das congruências</summary>
+      <p>No sistema de dois módulos, escreva \(x=a+my\) usando a primeira congruência e substitua essa forma na segunda. O problema se reduz a uma congruência linear para \(y\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Encontre o inverso modular necessário</summary>
+      <p>Quando os módulos são coprimos, o coeficiente de \(y\) possui inverso no segundo módulo. Use Euclides estendido para calculá-lo, em vez de testar muitos valores.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Generalize e verifique a unicidade</summary>
+      <p>Para provar a forma geral, construa uma solução com Bézout. Se \(x\) e \(x'\) resolvem o mesmo sistema, mostre que a diferença é divisível por cada módulo e, portanto, pelo produto.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>
       <p>Escreva \(x=3+7y\). A segunda congruência exige</p>
@@ -55,4 +72,5 @@
       <p>não têm solução: a primeira exige \(x\) par e a segunda exige \(x\) ímpar. Aqui \(\gcd(4,6)=2\).</p>
     </li>
   </ol>
+  </details>
 </div>

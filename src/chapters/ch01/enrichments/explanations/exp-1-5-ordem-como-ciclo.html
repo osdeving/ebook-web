@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>A ordem multiplicativa de \(a\) é o comprimento do ciclo gerado por multiplicações repetidas por \(a\), começando em \(1\).</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Primeiro retorno</span><p>Em \(\mathbb F_{7}^{*}\), as potências de \(2\) são \(2,4,1,2,4,1,\ldots\). O primeiro retorno a \(1\) ocorre no expoente \(3\), então \(\operatorname{ord}(2)=3\).</p></div>
+    <div class="step"><span class="step-tag theorem">Divisão do expoente</span><p>Se \(a^n=1\) e \(k=\operatorname{ord}(a)\), divida \(n=qk+r\). Então \(1=a^n=(a^k)^q a^r=a^r\). Pela minimalidade de \(k\), só pode ocorrer \(r=0\); logo \(k\mid n\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Consequência de Fermat</span><p>Como \(a^{p-1}=1\) para \(a\ne0\), a ordem de \(a\) divide \(p-1\). Os comprimentos possíveis do ciclo estão entre os divisores de \(p-1\).</p></div>
+  </div>
+  <div class="quick-check"><p>Módulo \(11\), \(3^1=3\), \(3^2=9\), \(3^3=5\), \(3^4=4\), \(3^5=1\); portanto a ordem de \(3\) é \(5\), que divide \(10\).</p></div>
+  <div class="watch-out"><p>Calcular apenas \(a^k=1\) mostra que a ordem divide \(k\); para provar que ela é exatamente \(k\), descarte todos os expoentes positivos menores relevantes.</p></div>
+</div>

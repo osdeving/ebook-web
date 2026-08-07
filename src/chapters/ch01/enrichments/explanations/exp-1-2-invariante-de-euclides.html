@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O algoritmo de Euclides troca um par por outro menor sem perder nenhum divisor comum. O mdc é um invariante: muda a aparência dos números, mas não muda a informação relevante.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag manipulation">Uma divisão</span><p>Se \(a=bq+r\), todo divisor comum de \(a\) e \(b\) divide \(r=a-bq\). Portanto, ele também é divisor comum de \(b\) e \(r\).</p></div>
+    <div class="step"><span class="step-tag manipulation">A volta</span><p>Reciprocamente, todo divisor comum de \(b\) e \(r\) divide \(a=bq+r\). Os pares \((a,b)\) e \((b,r)\) têm exatamente a mesma coleção de divisores comuns.</p></div>
+    <div class="step"><span class="step-tag theorem">Terminação</span><p>Os restos satisfazem \(0\le r_{i+1}&lt;r_i\). Uma sequência estritamente decrescente de inteiros não negativos precisa chegar a \(0\). O resto anterior, \(r_t\), divide o par final e é o mdc de todos os pares anteriores.</p></div>
+  </div>
+  <div class="quick-check"><p>\(\gcd(84,30)=\gcd(30,24)=\gcd(24,6)=\gcd(6,0)=6\). Em cada seta, substituímos o maior número pelo resto.</p></div>
+  <div class="watch-out"><p>O último resto é \(0\); o mdc é o último resto <em>não nulo</em>.</p></div>
+</div>

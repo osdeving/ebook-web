@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.35">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Liste as ordens possíveis</summary>
+      <p>A ordem \(d\) de \(g\) divide \(p-1=2q\). Como \(q\) é primo, há apenas quatro divisores a considerar.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Associe uma hipótese a cada exclusão</summary>
+      <p>Use \(g\not\equiv1\), \(g\not\equiv-1\) e \(g^q\not\equiv1\) para eliminar, uma a uma, as ordens próprias. A ordem restante caracteriza uma raiz primitiva.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Como \(g\not\equiv0\pmod p\), o resíduo de \(g\) pertence ao grupo \(\mathbb F_p^*\). Seja \(d\) sua ordem. Pelo pequeno teorema de Fermat,</p>
   <div class="display-math">\[
     d\mid p-1=2q.
@@ -13,4 +26,5 @@
     <li>A condição \(g^q\not\equiv1\pmod p\) exclui \(d=q\).</li>
   </ul>
   <p>Resta apenas \(d=2q=p-1\). Portanto \(g\) tem ordem \(p-1\) e é uma raiz primitiva módulo \(p\).</p>
+  </details>
 </div>

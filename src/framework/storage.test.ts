@@ -11,4 +11,13 @@ describe("preferências do leitor", () => {
     const fallback = { ...defaultPreferences(), theme: "dark" as const };
     expect(validatePreferences({ ...fallback, theme: "desconhecido" }, fallback).theme).toBe("dark");
   });
+
+  it("mantém apenas estados de progresso reconhecidos", () => {
+    const fallback = defaultPreferences();
+    const value = validatePreferences({
+      ...fallback,
+      progress: { secao: "started", exercicio: "completed", invalido: "feito" },
+    }, fallback);
+    expect(value.progress).toEqual({ secao: "started", exercicio: "completed" });
+  });
 });

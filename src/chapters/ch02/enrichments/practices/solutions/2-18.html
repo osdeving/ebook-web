@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.18">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Cheque compatibilidade antes de resolver</summary>
+      <p>Para dois módulos não necessariamente coprimos, é necessário que os resíduos coincidam módulo o máximo divisor comum dos módulos.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Combine duas congruências por vez</summary>
+      <p>Escreva \(x=a+my\), substitua na congruência seguinte e resolva a congruência linear resultante para \(y\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Registre o novo módulo</summary>
+      <p>Após combinar um par compatível, as soluções formam uma classe módulo \(\operatorname{lcm}(m,n)\). Use essa classe como entrada ao incorporar uma terceira condição.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Aplicando sucessivamente o teorema chinês dos restos, obtemos:</p>
   <ol type="a">
     <li>\(x\equiv31\pmod{63}\).</li>
@@ -8,4 +25,5 @@
     <li>\(x\equiv11733\pmod{149597}\).</li>
   </ol>
   <p>Substituir cada representante nas congruências originais verifica imediatamente os cinco resultados.</p>
+  </details>
 </div>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ChapterLibrary from "../components/react/ChapterLibrary";
+import SiteNav from "../components/SiteNav.astro";
 import { chapters } from "../chapters";
 
 const base = import.meta.env.BASE_URL;
@@ -26,11 +27,8 @@ const summaries = chapters.map((chapter) => ({
   description="Capítulos matemáticos em HTML semântico com explicações, laboratórios, práticas, história e leituras opcionais."
 >
   <main class="library-page">
-    <header class="library-hero">
-      <a class="library-brand" href={base} aria-label="Ebook Web, início">
-        <span aria-hidden="true">∑</span>
-        <strong>Ebook Web</strong>
-      </a>
+    <SiteNav current="home" />
+    <header class="library-hero" id="page-content">
       <div class="library-hero__copy">
         <p class="library-kicker">Ebook web dinâmico</p>
         <h1>Explore o conteúdo<br /><em>de forma dinâmica.</em></h1>
@@ -41,6 +39,18 @@ const summaries = chapters.map((chapter) => ({
       </div>
       <a class="library-reference-link" href={`${base}references/`}>Consultar as 150 referências <span aria-hidden="true">→</span></a>
     </header>
+
+    <section class="library-tools" aria-labelledby="library-tools-title">
+      <div class="library-tools__heading">
+        <div><p class="library-kicker">Ferramentas de estudo</p><h2 id="library-tools-title">Encontre seu próximo passo</h2></div>
+      </div>
+      <div class="library-tools__grid">
+        <article class="library-tool-card"><span>01 · DESCOBRIR</span><h3><a href={`${base}search/`}>Busca global</a></h3><p>Pesquise o texto, resultados, exercícios, soluções, laboratórios e referências.</p></article>
+        <article class="library-tool-card"><span>02 · CONSULTAR</span><h3><a href={`${base}glossary/`}>Glossário e símbolos</a></h3><p>Revise conceitos e notação com links diretos para o contexto matemático.</p></article>
+        <article class="library-tool-card"><span>03 · PERCORRER</span><h3><a href={`${base}study/`}>Rotas de estudo</a></h3><p>Siga percursos por objetivo, tempo disponível e nível de familiaridade.</p></article>
+        <article class="library-tool-card"><span>04 · INVESTIGAR</span><h3><a href={`${base}references/`}>Referências</a></h3><p>Filtre a bibliografia, visite fontes abertas e descubra onde cada obra é citada.</p></article>
+      </div>
+    </section>
 
     <ChapterLibrary client:idle chapters={summaries} />
 

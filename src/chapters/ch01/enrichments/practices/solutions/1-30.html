@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.30">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Interprete \(\operatorname{ord}_p\)</summary>
+      <p>Procure a maior potência \(p^e\) que divide o número. Divida repetidamente por \(p\) até o quociente deixar de ser divisível por ele.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Fatore apenas o necessário</summary>
+      <p>Para o mesmo número e vários primos, uma fatoração parcial é suficiente. Se o primo não aparece na fatoração, a ordem correspondente é zero.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>A quantidade \(\operatorname{ord}_p(n)\) é o expoente de \(p\) na fatoração prima de \(n\).</p>
   <ol type="a">
     <li>
@@ -29,4 +42,5 @@
       \]</div>
     </li>
   </ol>
+  </details>
 </div>

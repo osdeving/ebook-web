@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Encontrar \(a^{-1}\bmod m\) é procurar um coeficiente de Bézout. A existência e o cálculo do inverso são duas faces da mesma identidade inteira.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Objetivo</span><p>Queremos \(u\) tal que \(au\equiv1\pmod m\). Isso equivale a pedir que \(au-1\) seja múltiplo de \(m\), ou seja, que existam \(u,v\in\mathbb Z\) com \(au+mv=1\).</p></div>
+    <div class="step"><span class="step-tag theorem">Critério</span><p>Bézout produz \(au+mv=\gcd(a,m)\). O lado direito pode ser \(1\) exatamente quando \(\gcd(a,m)=1\). Portanto, \(a\) é invertível módulo \(m\) se, e somente se, é coprimo com \(m\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Exemplo</span><p>O algoritmo estendido fornece</p><div class="display-math">\[1=3\cdot7-2\cdot10.\]</div><p>Reduzindo módulo \(10\), obtemos \(3\cdot7\equiv1\pmod{10}\). Logo, \(7^{-1}\equiv3\pmod{10}\).</p></div>
+  </div>
+  <div class="quick-check"><p>Para verificar um inverso, basta uma multiplicação: \(7\cdot3=21\equiv1\pmod{10}\). O representante \(-7\) também descreve a mesma classe inversa, pois \(-7\equiv3\pmod{10}\).</p></div>
+  <div class="watch-out"><p>Se \(\gcd(a,m)>1\), a busca não está apenas difícil: o inverso não existe. Por exemplo, nenhum múltiplo de \(6\) pode ser congruente a \(1\) módulo \(15\).</p></div>
+</div>

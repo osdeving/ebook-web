@@ -7,6 +7,9 @@ import ChapterHeader from "../../components/ChapterHeader.astro";
 import EbookShell from "../../components/EbookShell.astro";
 import EnrichmentHost from "../../components/EnrichmentHost.astro";
 import ReaderRuntime from "../../components/ReaderRuntime.astro";
+import ChapterDiscoveryData from "../../components/ChapterDiscoveryData.astro";
+import references from "../../content/references.json";
+import { buildDiscoveryData } from "../../lib/discovery";
 
 export function getStaticPaths() {
   return chapters.map((chapter) => ({ params: { slug: chapter.slug }, props: { chapter } }));
@@ -14,6 +17,8 @@ export function getStaticPaths() {
 
 const { chapter } = Astro.props;
 const source = trustedHtml(chapter.sourceSections.map(({ html }) => html).join("\n"));
+const discovery = buildDiscoveryData(chapters, references).chapters[chapter.slug]
+  ?? { previews: {}, backlinks: {} };
 ---
 
 <BaseLayout title={chapter.title} description={chapter.description}>
@@ -21,6 +26,9 @@ const source = trustedHtml(chapter.sourceSections.map(({ html }) => html).join("
     <ChapterHeader chapter={chapter} />
     <EnrichmentHost chapter={chapter} />
     <ChapterArticle chapter={chapter} html={source} />
-    <ReaderRuntime slot="runtime" />
+    <Fragment slot="runtime">
+      <ChapterDiscoveryData data={discovery} />
+      <ReaderRuntime />
+    </Fragment>
   </EbookShell>
 </BaseLayout>

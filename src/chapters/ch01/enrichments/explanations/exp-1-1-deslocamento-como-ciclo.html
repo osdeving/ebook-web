@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Uma cifra de deslocamento não move letras sobre uma reta: ela percorre um ciclo. Depois de \(z\), a contagem continua em \(a\). É exatamente a mesma ideia de um relógio depois das 12 horas.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Representação</span><p>Numere as letras de \(0\) a \(25\): \(a\leftrightarrow0,\ldots,z\leftrightarrow25\). Um deslocamento de cinco transforma o número \(x\) em \(x+5\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Redução</span><p>Se a soma ultrapassa \(25\), tomamos o resto da divisão por \(26\). Assim, \(y\leftrightarrow24\) vai para \(24+5=29\equiv3\pmod{26}\), isto é, para \(d\).</p></div>
+    <div class="step"><span class="step-tag theorem">Inversão</span><p>Decifrar é percorrer o ciclo no sentido oposto: de \(c\equiv p+k\pmod{26}\) obtemos \(p\equiv c-k\pmod{26}\). Somar \(k\) e depois subtrair \(k\) sempre devolve a classe inicial.</p></div>
+  </div>
+  <div class="quick-check"><p>Com chave \(k=5\), \(e\leftrightarrow4\) vira \(j\leftrightarrow9\). Na volta, \(9-5=4\). Para \(b\leftrightarrow1\), a decifração de \(1-5=-4\) usa \(-4\equiv22\pmod{26}\), portanto chega a \(w\).</p></div>
+  <div class="watch-out"><p>A roda explica a correção do método, não sua segurança. Existem apenas 26 posições possíveis — e uma delas nem altera a mensagem.</p></div>
+</div>

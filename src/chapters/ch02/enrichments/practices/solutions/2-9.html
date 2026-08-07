@@ -1,7 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.9">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Identifique as duas potências disponíveis</summary>
+      <p>No texto cifrado, Eva vê \(c_1=g^k\); na chave pública, vê \(B=g^b\). Elas têm exatamente a forma de entrada do algoritmo de Diffie–Hellman.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Remova a máscara multiplicativa</summary>
+      <p>A subrotina fornece \(g^{bk}\). Como esse elemento está em \(\mathbb F_p^*\), calcule seu inverso e aplique-o ao segundo componente do criptograma.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>A chave pública de Bob é \(B\equiv g^b\pmod p\). Para cifrar com um expoente efêmero \(k\), Alice envia</p>
   <p>\[(c_1,c_2)=\left(g^k,\,mB^k\right)=\left(g^k,\,m g^{bk}\right)\pmod p.\]</p>
   <p>Eva conhece \(B=g^b\) e \(c_1=g^k\). Ao entregar esses dois valores ao algoritmo de Diffie–Hellman, obtém \(g^{bk}\). Como esse elemento é não nulo módulo \(p\), Eva calcula seu inverso e recupera</p>
   <p>\[c_2\left(g^{bk}\right)^{-1}\equiv m g^{bk}\left(g^{bk}\right)^{-1}\equiv m\pmod p.\]</p>
   <p>Portanto um algoritmo que resolve Diffie–Hellman quebra diretamente a confidencialidade do Elgamal.</p>
+  </details>
 </div>

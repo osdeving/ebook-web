@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.36">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Guarde quocientes e restos do exercício anterior</summary>
+      <p>O algoritmo estendido usa a mesma cadeia euclidiana do Exercício 2.35. Comece escrevendo o último resto não nulo em função dos dois anteriores.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Retroceda até \(a\) e \(b\)</summary>
+      <p>Substitua os restos de baixo para cima, sempre reduzindo coeficientes no corpo correto, até obter uma combinação \(au+bv\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Confira por multiplicação</summary>
+      <p>Expanda os dois produtos e some-os no corpo correspondente. O resultado deve coincidir exatamente com o máximo divisor comum mônico escolhido.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Retrocedendo no algoritmo de Euclides estendido, uma escolha de coeficientes de Bézout em cada corpo é:</p>
   <ol type="a">
     <li>Em \(\mathbb F_2[x]\):
@@ -24,4 +41,5 @@
       e \(au+bv=1\).</li>
   </ol>
   <p>Todos os coeficientes são interpretados no corpo correspondente; sinais negativos podem, naturalmente, ser substituídos por seus resíduos positivos.</p>
+  </details>
 </div>

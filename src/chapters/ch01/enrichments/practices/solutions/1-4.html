@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.4">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Comece por padrões, não por palpites isolados</summary>
+      <p>Uma substituição simples preserva frequências, letras repetidas e formatos de palavras. Marque os bigramas recorrentes e as ocorrências duplas antes de atribuir letras.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Teste palavras estruturais</summary>
+      <p>Em inglês, combinações como <span lang="en">TH</span>, <span lang="en">HE</span> e palavras curtas restringem várias correspondências de uma vez. Toda hipótese deve ser aplicada a todas as ocorrências do símbolo cifrado.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Mantenha uma chave reversível</summary>
+      <p>Registre duas linhas — alfabeto claro e cifrado — e rejeite imediatamente qualquer hipótese que mande duas letras claras distintas para o mesmo símbolo. Use o sentido global do texto apenas para desempatar.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Uma substituição simples preserva repetições: letras frequentes continuam frequentes e padrões como letras duplicadas e bigramas reaparecem nas mesmas posições. Em cada texto, começamos pelos grupos mais frequentes, testamos candidatos como <span lang="en">TH</span>, <span lang="en">HE</span> e <span lang="en">THE</span> e propagamos cada correspondência por toda a mensagem. As chaves finais abaixo permitem conferir a decifração letra por letra.</p>
   <ol type="a">
     <li>
@@ -19,4 +36,5 @@
       <p class="solution-note">Não se trata de falha da decifração: o enunciado suprimiu intencionalmente cinco ocorrências. Para restaurar a prosa original, inserimos <span lang="en">the</span> antes de <span lang="en">author</span>, <span lang="en">subject</span>, <span lang="en">object</span>, <span lang="en">idea</span> e <span lang="en">mere random sketches</span>.</p>
     </li>
   </ol>
+  </details>
 </div>

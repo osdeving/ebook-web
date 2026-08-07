@@ -46,7 +46,28 @@ export async function mountEnrichments(options: MountOptions): Promise<MountedEn
       body.append(definition.content(context));
     }
     insertAt(host, anchor, definition.position ?? "after", tails, definition.anchor);
-    renderMath(body);
+    const panel = host.querySelector<HTMLDetailsElement>(":scope > .supplement__panel");
+    let mathRendered = false;
+    const renderBodyMath = () => {
+      if (mathRendered || body.dataset.mathRendered === "true") {
+        mathRendered = true;
+        return;
+      }
+      renderMath(body);
+      body.dataset.mathRendered = "true";
+      mathRendered = true;
+    };
+    if (!panel || panel.open) {
+      renderBodyMath();
+    } else {
+      const renderWhenOpened = () => {
+        if (!panel.open) return;
+        renderBodyMath();
+        panel.removeEventListener("toggle", renderWhenOpened);
+      };
+      panel.addEventListener("toggle", renderWhenOpened);
+      cleanups.push(() => panel.removeEventListener("toggle", renderWhenOpened));
+    }
     roots.push(host);
     try {
       const cleanup = await definition.initialize?.(context);

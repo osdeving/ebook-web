@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.34">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Observe o termo líder</summary>
+      <p>Se os termos líderes são \(\alpha x^r\) e \(\beta x^s\), o candidato a termo líder do produto é \(\alpha\beta x^{r+s}\). Use que um corpo não tem divisores de zero.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use graus para caracterizar unidades</summary>
+      <p>Se \(ab=1\), aplique a fórmula dos graus. Na volta, lembre que toda constante não nula do corpo tem inverso constante.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Faça indução sobre o grau e depois quebre a hipótese</summary>
+      <p>Se um polinômio não é irredutível, fatore-o em dois de graus menores e aplique a indução. Para \(\mathbb Z/6\mathbb Z\), procure coeficientes líderes não nulos cujo produto seja zero.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>Se os termos líderes são \(\alpha x^r\) e \(\beta x^s\), então o termo líder do produto é \(\alpha\beta x^{r+s}\). Como \(F\) é corpo, \(\alpha\beta\ne0\). Logo \(\deg(ab)=r+s\).</li>
     <li>Se \(ab=1\), o item (a) dá \(\deg a+\deg b=0\), de modo que ambos são constantes não nulas. Reciprocamente, toda constante não nula \(a\in F\) possui o inverso constante \(a^{-1}\).</li>
@@ -18,4 +35,5 @@
       \]
       tem grau \(1\), e não \(2\). O coeficiente líder desaparece porque \(2\cdot3=0\) em \(\mathbb Z/6\mathbb Z\).</li>
   </ol>
+  </details>
 </div>

@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.19">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Transforme o máximo divisor comum em expoente</summary>
+      <p>Use Bézout para escrever \(d=\gcd(a,b)\) como \(d=au+bv\). O objetivo é então interpretar \(g^d\) em termos de \(g^a\) e \(g^b\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Justifique expoentes negativos</summary>
+      <p>Os coeficientes de Bézout podem ser negativos. Antes de usá-los como expoentes, observe que \(g^a\equiv1\pmod m\) implica que \(g\) é uma unidade módulo \(m\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Escreva \(d=\gcd(a,b)\). Como \(g^a\equiv1\pmod m\), o número \(g\) é uma unidade módulo \(m\): por exemplo, \(g^{a-1}\) é um inverso de \(g\). Portanto, também podemos usar expoentes negativos de \(g\) módulo \(m\).</p>
   <p>Pela identidade de Bézout, existem \(u,v\in\mathbb Z\) tais que</p>
   <div class="display-math">\[d=au+bv.\]</div>
@@ -7,4 +20,5 @@
     g^d=g^{au+bv}=(g^a)^u(g^b)^v\equiv1^u1^v\equiv1\pmod m.
   \]</div>
   <p>Logo \(g^{\gcd(a,b)}\equiv1\pmod m\), como queríamos demonstrar.</p>
+  </details>
 </div>

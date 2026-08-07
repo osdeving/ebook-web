@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>A afirmação \(b\mid a\) não descreve uma operação de divisão com vírgula: ela afirma a existência de um inteiro que serve de testemunha. Provar divisibilidade é exibir ou deduzir esse inteiro.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Testemunha</span><p>\(b\mid a\) significa que existe \(c\in\mathbb Z\) com \(a=bc\). Para provar \(7\mid-42\), basta mostrar \(-42=7(-6)\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Combinações</span><p>Se \(d\mid a\) e \(d\mid b\), escreva \(a=dr\) e \(b=ds\). Para quaisquer \(x,y\in\mathbb Z\), temos \(ax+by=d(rx+sy)\); logo, \(d\mid ax+by\).</p></div>
+    <div class="step"><span class="step-tag theorem">Direção da barra</span><p>Em \(b\mid a\), o divisor fica à esquerda. A expressão não é uma fração: \(3\mid12\) é verdadeira, enquanto \(12\mid3\) é falsa.</p></div>
+  </div>
+  <div class="quick-check"><p>De \(5\mid20\) e \(5\mid35\), segue \(5\mid(3\cdot20-35)=25\). A nova testemunha é \(3\cdot4-7=5\).</p></div>
+  <div class="watch-out"><p>O quociente precisa ser inteiro. Toda divisão real \(a/b\) existe quando \(b\ne0\), mas isso não implica \(b\mid a\).</p></div>
+</div>

@@ -1,8 +1,22 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.19">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Traduza o enigma em congruências</summary>
+      <p>Cada frase sobre o resto ao dividir a quantidade fornece uma congruência para \(x\), com módulos \(3\), \(5\) e \(7\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Combine e escolha a menor solução positiva</summary>
+      <p>Os módulos são dois a dois coprimos, portanto o teorema chinês dos restos dá uma classe módulo o produto. Verifique os representantes positivos desde o menor.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>As condições são \(x\equiv2\pmod3\), \(x\equiv3\pmod5\) e \(x\equiv2\pmod7\). O número \(23\) satisfaz as três: deixa restos \(2\), \(3\) e \(2\), respectivamente.</p>
   <p>Como \(3\), \(5\) e \(7\) são dois a dois coprimos, todas as soluções são</p>
   \[
   x\equiv23\pmod{105}.
   \]
   <p>A menor quantidade positiva é, portanto, \(23\).</p>
+  </details>
 </div>

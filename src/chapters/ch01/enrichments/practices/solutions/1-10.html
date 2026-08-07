@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.10">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Guarde a cadeia euclidiana</summary>
+      <p>Use exatamente as divisões do Exercício 1.9. Comece pela igualdade que produz o último resto não nulo.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Retroceda sem perder os sinais</summary>
+      <p>Isole cada resto anterior e substitua de baixo para cima até restarem apenas \(a\) e \(b\). Ao final, verifique numericamente \(au+bv=\gcd(a,b)\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Retrocedendo pelas divisões euclidianas do exercício anterior, escrevemos o último resto não nulo como combinação linear dos dois números iniciais. Um par \((u,v)\) válido em cada caso é:</p>
   <ol type="a">
     <li>
@@ -23,4 +36,5 @@
     </li>
   </ol>
   <p>As quatro identidades exibidas verificam diretamente tanto os coeficientes quanto os valores dos máximos divisores comuns.</p>
+  </details>
 </div>

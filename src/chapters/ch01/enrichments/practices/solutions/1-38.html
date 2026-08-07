@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.38">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Calcule usando quadraturas</summary>
+      <p>Para cada primo pequeno, reduza \(2^{(p-1)/2}\) módulo \(p\). Compare os resultados também com o representante \(-1\equiv p-1\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Eleve o valor desconhecido ao quadrado</summary>
+      <p>Defina \(x=2^{(p-1)/2}\). Fermat determina \(x^2\pmod p\); depois fatore \(x^2-1\) e use que \(p\) é primo.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Os primos no intervalo são \(3,5,7,11,13,17,19\). Os cálculos dão</p>
   <div class="display-math">\[
     \begin{array}{c|c|c}
@@ -28,4 +41,5 @@
     2^{(p-1)/2}\equiv-1\pmod p,
   \]</div>
   <p>confirmando a conjectura.</p>
+  </details>
 </div>

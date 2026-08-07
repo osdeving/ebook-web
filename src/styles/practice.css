@@ -30,3 +30,30 @@
 .solution-code { padding: .85rem; overflow-x: auto; border-radius: .65rem; background: var(--paper); font-size: .76rem; line-height: 1.5; }
 .solution-note { color: var(--muted); font-size: .76rem; }
 .solution-warning { margin: 0; padding: .75rem .85rem; border-inline-start: 4px solid var(--gold); border-radius: .62rem; background: var(--gold-soft); font-size: .8rem; }
+
+/* Ajuda progressiva: cada pista e a resolução integral continuam fechadas
+   de modo independente, para o estudante decidir quanto quer revelar. */
+.graduated-help { display: grid; gap: .55rem; margin-top: .9rem; }
+.graduated-help > :where(.solution-hint, .solution-reveal) {
+  margin: 0;
+  overflow: clip;
+  border: 1px solid color-mix(in srgb, var(--layer-practice) 34%, var(--line));
+  border-radius: .72rem;
+  background: color-mix(in srgb, var(--layer-practice-soft) 45%, var(--surface-raised));
+}
+.graduated-help > :where(.solution-hint, .solution-reveal) > summary {
+  min-height: var(--control-height);
+  padding: .65rem .8rem;
+  color: var(--layer-practice);
+  font-size: .76rem;
+  font-weight: 820;
+  cursor: pointer;
+}
+.graduated-help > :where(.solution-hint, .solution-reveal) > summary:hover {
+  background: color-mix(in srgb, var(--layer-practice-soft) 70%, transparent);
+}
+.graduated-help > :where(.solution-hint, .solution-reveal)[open] > summary { border-bottom: 1px solid var(--line); }
+.graduated-help > :where(.solution-hint, .solution-reveal) > :not(summary) { margin-inline: .85rem; }
+.graduated-help > :where(.solution-hint, .solution-reveal) > :last-child { margin-bottom: .85rem; }
+.graduated-help > .solution-reveal { border-style: solid; background: var(--surface-raised); }
+.graduated-help > .solution-reveal > summary { color: var(--ink); }

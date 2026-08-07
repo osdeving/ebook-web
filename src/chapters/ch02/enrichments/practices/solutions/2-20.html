@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.20">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — A primeira congruência já está embutida</summary>
+      <p>Para \(x=a+cm\), reduzir módulo \(m\) elimina o segundo termo. Para a outra, substitua a definição de \(c\) e use \(m^{-1}m\equiv1\pmod n\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Compare duas soluções</summary>
+      <p>Se \(x'\) também resolve o sistema, então \(x'-x\) é divisível por \(m\) e por \(n\). Use a coprimalidade para concluir divisibilidade pelo produto.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Para \(x=a+cm\), a primeira congruência é automática. Pela definição de \(c\),</p>
   \[
   x\equiv a+(b-a)m^{-1}m\equiv b\pmod n.
@@ -8,4 +21,5 @@
   x'=x+ymn=a+cm+ymn.
   \]
   <p>Reciprocamente, somar um múltiplo de \(mn\) não altera nenhum dos dois resíduos, de modo que essa fórmula descreve todas as soluções.</p>
+  </details>
 </div>

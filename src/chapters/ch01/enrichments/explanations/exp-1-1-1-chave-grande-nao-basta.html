@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Contar chaves mede apenas o custo de um ataque que testa chaves uma a uma. A segurança real é limitada pelo melhor ataque conhecido, que pode explorar a estrutura da cifra e ignorar quase todo o espaço de chaves.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Busca exaustiva</span><p>Para substituições simples há \(26!\) tabelas. Enumerá-las seria impraticável. Esse cálculo responde à pergunta: “quanto custa não saber nada além da lista de chaves?”.</p></div>
+    <div class="step"><span class="step-tag manipulation">Informação lateral</span><p>O texto cifrado preserva repetições: letras iguais continuam iguais, padrões de palavras continuam com os mesmos formatos e frequências aproximadas sobrevivem. Essas restrições eliminam enormes famílias de chaves sem testá-las individualmente.</p></div>
+    <div class="step"><span class="step-tag theorem">Conclusão correta</span><p>Um espaço grande de chaves é necessário quando a busca completa é possível, mas não é suficiente. Também precisamos que nenhuma regularidade observável permita um ataque substancialmente melhor.</p></div>
+  </div>
+  <div class="quick-check"><p>A palavra-modelo <code>ABBA</code> revela um padrão \(1\!-\!2\!-\!2\!-\!1\), qualquer que seja a substituição. Candidatos como “elle” têm o mesmo padrão; “casa” não tem. Nenhuma chave foi enumerada para obter essa filtragem.</p></div>
+  <div class="watch-out"><p>“Há muitas chaves” e “a cifra é segura” são afirmações diferentes. A primeira é combinatória; a segunda depende de um modelo de ataque, de recursos computacionais e das informações disponíveis ao adversário.</p></div>
+</div>

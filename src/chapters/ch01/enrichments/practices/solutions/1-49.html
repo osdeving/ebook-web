@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.49">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Extraia exatamente os dígitos pedidos</summary>
+      <p>Calcule \(\sqrt{k}\), descarte a parte inteira e retenha os primeiros \(d\) algarismos decimais. Trate esse bloco como um inteiro módulo \(10^d\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Inverta a soma modular</summary>
+      <p>A cifragem é uma translação: \(c\equiv m+\alpha\pmod{10^d}\). Para decifrar, subtraia o mesmo \(\alpha\) e escolha o representante com \(d\) algarismos.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Relacione a parte fracionária a \(k\)</summary>
+      <p>Escreva \(\sqrt{k}=q+f\), com \(q=\lfloor\sqrt{k}\rfloor\), e expanda \(k=(q+f)^2\). Os dígitos revelam um intervalo muito estreito para \(f\), que permite testar os poucos \(q\) compatíveis.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>\(\sqrt{11}=3{,}316624790\ldots\), portanto \(\alpha=316624\). Logo
       \[
@@ -23,4 +40,5 @@
       \]
       Portanto Eva procura \(0\le q\le\sqrt K\) para o qual \(2q\beta+\beta^2\) esteja, dentro do pequeno erro \((2q+2)/10^d\), de um inteiro \(j\). Cada candidato fornece \(k=q^2+j\), que é verificado recalculando os \(d\) algarismos. Quando \(10^d\gg K\), a tolerância é minúscula e em geral resta um único candidato. Essa busca também pode ser acelerada como um problema de aproximação racional, mas a verificação final é sempre direta.</li>
   </ol>
+  </details>
 </div>

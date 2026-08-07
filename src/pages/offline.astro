@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteNav from "../components/SiteNav.astro";
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Leitura offline" description="A conexão está indisponível, mas o conteúdo já salvo do Ebook Web continua acessível.">
+  <main class="discovery-page">
+    <SiteNav />
+    <section class="offline-page" id="page-content">
+      <p class="library-kicker">Sem conexão</p>
+      <h1>O que já foi aberto continua por aqui.</h1>
+      <p>Este endereço ainda não estava salvo no aparelho. Você pode voltar ao início ou abrir um dos capítulos preparados para leitura offline.</p>
+      <nav aria-label="Conteúdo disponível offline">
+        <a class="enrichment-button enrichment-button--primary" href={base}>Ir ao início</a>
+        <a class="enrichment-button" href={`${base}chapters/ch01/`}>Capítulo 1</a>
+        <a class="enrichment-button" href={`${base}chapters/ch02/`}>Capítulo 2</a>
+      </nav>
+    </section>
+  </main>
+</BaseLayout>

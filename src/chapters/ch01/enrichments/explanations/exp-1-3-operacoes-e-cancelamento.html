@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Somar, subtrair e multiplicar preservam congruências porque essas operações preservam diferenças múltiplas do módulo. Dividir exige cuidado: o fator cancelado precisa ter inverso.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag manipulation">Soma</span><p>Se \(a-a'=rm\) e \(b-b'=sm\), então \((a+b)-(a'+b')=(r+s)m\). Logo, \(a+b\equiv a'+b'\pmod m\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Produto</span><p>Escreva \(a=a'+rm\) e \(b=b'+sm\). Ao expandir \(ab\), todos os termos extras contêm um fator \(m\); portanto \(ab\equiv a'b'\pmod m\).</p></div>
+    <div class="step"><span class="step-tag theorem">Cancelamento condicionado</span><p>De \(ac\equiv bc\pmod m\), podemos cancelar \(c\) se \(\gcd(c,m)=1\). Nesse caso existe \(c^{-1}\), e multiplicar os dois lados por ele dá \(a\equiv b\pmod m\).</p></div>
+  </div>
+  <div class="quick-check"><p>Módulo \(8\), temos \(2\cdot1\equiv2\cdot5\), pois ambos são congruentes a \(2\). Cancelar \(2\) produziria a conclusão falsa \(1\equiv5\pmod8\). O problema é \(\gcd(2,8)\ne1\).</p></div>
+  <div class="watch-out"><p>A frase “congruências funcionam como igualdades” é útil até o ponto da divisão. Sempre verifique se o divisor é uma unidade.</p></div>
+</div>

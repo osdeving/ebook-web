@@ -57,6 +57,9 @@
 .toc-num { color: var(--accent); font-variant-numeric: tabular-nums; }
 .sidebar-reference-link { margin: 0 .35rem 1rem; padding: .55rem .65rem; border: 1px solid var(--line); border-radius: .6rem; color: var(--accent-strong); font-size: .72rem; font-weight: 800; text-decoration: none; }
 .sidebar-reference-link:hover, .sidebar-reference-link:focus-visible { border-color: var(--accent); background: var(--accent-soft); }
+.sidebar-global-links { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; margin: 0 .35rem 1rem; }
+.sidebar-global-links a { padding: .48rem .52rem; border: 1px solid var(--line); border-radius: .55rem; color: var(--muted); font-size: .66rem; font-weight: 780; line-height: 1.25; text-align: center; text-decoration: none; }
+.sidebar-global-links a:hover, .sidebar-global-links a:focus-visible { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-strong); }
 .sidebar-note { margin-top: auto; padding: .85rem; border: 1px solid var(--line); border-radius: .75rem; color: var(--muted); font-size: .72rem; line-height: 1.5; }
 
 .main { grid-column: 2; min-width: 0; max-width: 100%; overflow-x: clip; }

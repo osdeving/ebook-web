@@ -1,0 +1,132 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="global-search" id="page-content" data-global-search data-index-url={`${base}search-index.json`}>
+  <header class="discovery-hero">
+    <p class="library-kicker">Todo o conteúdo publicado</p>
+    <h1>Busca global</h1>
+    <p>Encontre seções, resultados, exercícios, soluções, laboratórios, referências, conceitos e rotas de estudo em uma única consulta.</p>
+  </header>
+  <div class="global-search__query">
+    <label>
+      <span>O que você quer encontrar?</span>
+      <input type="search" autocomplete="off" autofocus placeholder="Ex.: inverso modular, Diffie–Hellman ou Exercício 1.25" data-global-search-query />
+    </label>
+  </div>
+  <div class="discovery-filters">
+    <label>
+      <span>Tipo</span>
+      <select data-global-search-kind>
+        <option value="">Todos</option>
+        <option value="source">Texto, resultados e exercícios</option>
+        <option value="enrichment">Explicações e recursos</option>
+        <option value="reference">Referências</option>
+        <option value="glossary">Glossário e símbolos</option>
+        <option value="path">Rotas de estudo</option>
+      </select>
+    </label>
+    <label>
+      <span>Capítulo</span>
+      <select data-global-search-chapter>
+        <option value="">Todos</option>
+        <option value="ch01">Capítulo 1</option>
+        <option value="ch02">Capítulo 2</option>
+      </select>
+    </label>
+  </div>
+  <p class="discovery-status" role="status" aria-live="polite" data-global-search-status>Carregando índice…</p>
+  <div class="global-search-results" data-global-search-results></div>
+  <p class="discovery-empty" hidden data-global-search-empty>Nenhum resultado corresponde à consulta e aos filtros.</p>
+  <noscript><p class="discovery-empty">A busca global precisa de JavaScript. O texto dos capítulos continua disponível sem ele.</p></noscript>
+</section>
+
+<script>
+  interface SearchEntry {
+    id: string;
+    title: string;
+    excerpt: string;
+    searchText: string;
+    kind: string;
+    kindLabel: string;
+    href: string;
+    chapter?: string;
+    chapterLabel?: string;
+    layer?: string;
+  }
+  const root = document.querySelector<HTMLElement>("[data-global-search]");
+  const input = root?.querySelector<HTMLInputElement>("[data-global-search-query]");
+  const kind = root?.querySelector<HTMLSelectElement>("[data-global-search-kind]");
+  const chapter = root?.querySelector<HTMLSelectElement>("[data-global-search-chapter]");
+  const status = root?.querySelector<HTMLElement>("[data-global-search-status]");
+  const results = root?.querySelector<HTMLElement>("[data-global-search-results]");
+  const empty = root?.querySelector<HTMLElement>("[data-global-search-empty]");
+  const baseUrl = new URL(import.meta.env.BASE_URL, location.origin);
+  let entries: SearchEntry[] = [];
+  const normalize = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim().toLocaleLowerCase("pt-BR");
+  const sourceKinds = new Set(["section", "definition", "theorem", "proposition", "corollary", "example", "remark", "exercise", "equation", "figure", "table"]);
+  const matchesKind = (entry: SearchEntry, wanted: string) => !wanted
+    || (wanted === "source" && sourceKinds.has(entry.kind))
+    || (wanted === "glossary" && (entry.kind === "glossary" || entry.kind === "symbol"))
+    || entry.kind === wanted;
+  const render = () => {
+    if (!results) return;
+    results.replaceChildren();
+    const rawQuery = input?.value.trim() ?? "";
+    const needle = normalize(rawQuery);
+    const url = new URL(location.href);
+    if (rawQuery) url.searchParams.set("q", rawQuery);
+    else url.searchParams.delete("q");
+    history.replaceState(history.state, "", url);
+    if (needle.length < 2) {
+      if (status) status.textContent = `${entries.length} itens indexados · digite ao menos duas letras.`;
+      if (empty) empty.hidden = true;
+      return;
+    }
+    const terms = needle.split(" ").filter(Boolean);
+    const found = entries
+      .filter((entry) => terms.every((term) => entry.searchText.includes(term)))
+      .filter((entry) => matchesKind(entry, kind?.value ?? ""))
+      .filter((entry) => !chapter?.value || entry.chapter === chapter.value)
+      .slice(0, 80);
+    if (status) status.textContent = `${found.length} ${found.length === 1 ? "resultado" : "resultados"}${found.length === 80 ? " exibidos" : ""}.`;
+    if (empty) empty.hidden = found.length !== 0;
+    for (const entry of found) {
+      const card = document.createElement("article");
+      card.className = "global-search-result";
+      const meta = document.createElement("span");
+      meta.className = "global-search-result__meta";
+      meta.textContent = [entry.chapterLabel, entry.kindLabel].filter(Boolean).join(" · ");
+      const heading = document.createElement("h2");
+      const link = document.createElement("a");
+      link.href = new URL(entry.href, baseUrl).href;
+      link.textContent = entry.title;
+      heading.append(link);
+      const excerpt = document.createElement("p");
+      excerpt.textContent = entry.excerpt;
+      card.append(meta, heading, excerpt);
+      results.append(card);
+    }
+  };
+  const indexUrl = root?.dataset.indexUrl;
+  if (root && indexUrl) {
+    fetch(indexUrl)
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then((value) => {
+        entries = Array.isArray(value) ? value : [];
+        const initial = new URL(location.href).searchParams.get("q") ?? "";
+        if (input) input.value = initial;
+        render();
+      })
+      .catch((error) => {
+        console.error("[ebook-web] índice global indisponível", error);
+        if (status) status.textContent = "A busca global está temporariamente indisponível.";
+      });
+  }
+  input?.addEventListener("input", render);
+  kind?.addEventListener("change", render);
+  chapter?.addEventListener("change", render);
+</script>

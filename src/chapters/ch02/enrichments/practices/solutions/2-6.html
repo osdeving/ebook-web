@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.6">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Calcule a mensagem pública de Bob</summary>
+      <p>Use quadratura e multiplicação para obter \(B=g^b\pmod p\). Em seguida, Bob calcula o segredo elevando a mensagem pública de Alice ao mesmo expoente privado \(b\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Formule o segredo de Alice como PLD</summary>
+      <p>Descobrir o expoente privado de Alice significa resolver \(g^a=A\pmod p\). Para este módulo pequeno, uma busca por passos de bebê e de gigante é viável.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Faça a conferência pelos dois lados</summary>
+      <p>Depois de obter um expoente candidato \(a\), verifique tanto \(g^a=A\) quanto \(B^a=A^b\pmod p\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Bob calcula sua mensagem pública por exponenciação modular:</p>
   <p>\[B\equiv g^b\equiv2^{871}\equiv805\pmod{1373}.\]</p>
   <p>Usando o valor \(A=974\) recebido de Alice, o segredo compartilhado calculado por Bob é</p>
@@ -6,4 +23,5 @@
   <p>Para descobrir a chave de Alice é preciso resolver \(2^a\equiv974\pmod{1373}\). Uma busca de logaritmo discreto, por exemplo com passos de bebê e de gigante, fornece</p>
   <p>\[a=587,\qquad 2^{587}\equiv974\pmod{1373}.\]</p>
   <p>A conferência pelo outro lado é \(B^a\equiv805^{587}\equiv397\pmod{1373}\). Como \(2\) é a base geradora usada no protocolo, \(a\) fica determinado módulo \(1372\).</p>
+  </details>
 </div>

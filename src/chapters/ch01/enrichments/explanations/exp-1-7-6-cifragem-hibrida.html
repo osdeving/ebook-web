@@ -1,0 +1,11 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Cifragem híbrida usa cada família onde ela é mais adequada: chave pública para estabelecer ou encapsular um segredo curto; cifra simétrica autenticada para proteger o conteúdo volumoso.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Segredo de sessão</span><p>O remetente obtém uma chave simétrica nova para aquela sessão. Em construções modernas, isso pode ocorrer por um mecanismo de encapsulamento de chave ou por um acordo autenticado.</p></div>
+    <div class="step"><span class="step-tag manipulation">Dados</span><p>A chave de sessão alimenta uma cifra autenticada, que produz texto cifrado e um autenticador. Arquivos grandes são processados com eficiência sem serem submetidos diretamente à aritmética de chave pública.</p></div>
+    <div class="step"><span class="step-tag theorem">Composição</span><p>O destinatário usa a chave privada para recuperar o segredo de sessão e, depois, usa esse segredo para verificar e decifrar os dados. O pacote transporta a parte assimétrica e a parte simétrica.</p></div>
+    <div class="step"><span class="step-tag definition">Contexto</span><p>Identidades, versões, parâmetros e metadados precisam ser autenticados. A segurança da composição depende do protocolo inteiro, não apenas de cada primitiva isolada.</p></div>
+  </div>
+  <div class="quick-check"><p>O padrão aparece em protocolos de rede e formatos de mensagem: uma pequena quantidade de material estabelece as chaves; a maior parte do tráfego usa operações simétricas.</p></div>
+  <div class="watch-out"><p>“Cifrar a chave simétrica com a chave pública” é apenas uma intuição. Construções atuais especificam encapsulamento, derivação de chaves, nonces e autenticação; use uma especificação revisada.</p></div>
+</div>

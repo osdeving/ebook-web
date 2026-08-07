@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O teorema fundamental reúne duas afirmações independentes. Existência diz que podemos decompor; unicidade diz que qualquer caminho de decomposição chega aos mesmos primos e expoentes.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag theorem">Existência</span><p>Se \(n\ge2\) não é primo, escreva \(n=ab\) com \(1<a,b<n\) e repita nos fatores compostos. Como os fatores diminuem, o processo termina em primos.</p></div>
+    <div class="step"><span class="step-tag theorem">Unicidade</span><p>Suponha duas listas de primos com o mesmo produto. O primeiro primo \(p_1\) de uma lista divide o produto da outra; pelo lema de Euclides, divide algum \(q_j\). Como ambos são primos, \(p_1=q_j\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Cancelamento e indução</span><p>Cancele esse fator comum e repita. Cada primo de uma lista é emparelhado com um primo igual da outra, restando apenas uma possível mudança de ordem.</p></div>
+  </div>
+  <div class="quick-check"><p>\(360=2^3\cdot3^2\cdot5\). Podemos chegar a essa expressão começando por \(360=36\cdot10\) ou por \(360=8\cdot45\); a árvore muda, as folhas primas não.</p></div>
+  <div class="watch-out"><p>Fatoração única é um teorema sobre os inteiros, não uma regra automática de todo sistema algébrico. Há anéis nos quais elementos admitem fatorações essencialmente diferentes.</p></div>
+</div>

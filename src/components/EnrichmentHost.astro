@@ -79,6 +79,22 @@ const labels: Record<EnrichmentLayer, { name: string; help: string }> = {
         <div class="bookmark-panel__content" data-bookmark-list></div>
       </details>
 
+      <details class="enrichment-panel study-progress-panel">
+        <summary>Meu progresso</summary>
+        <div class="study-progress-summary" data-study-progress-summary>
+          <div>
+            <span>Seções concluídas <strong data-progress-sections>0/0</strong></span>
+            <progress value="0" max="1" data-progress-sections-meter>0</progress>
+          </div>
+          <div>
+            <span>Exercícios concluídos <strong data-progress-exercises>0/0</strong></span>
+            <progress value="0" max="1" data-progress-exercises-meter>0</progress>
+          </div>
+          <p><strong data-progress-active>0</strong> itens em andamento.</p>
+          <button class="enrichment-button" type="button" data-study-progress-clear>Limpar progresso</button>
+        </div>
+      </details>
+
       <section class="enrichment-panel reading-resume" hidden data-reader-resume>
         <h3 class="enrichment-panel__title">Continuar de onde você parou</h3>
         <p>Última seção lida: <strong data-reader-resume-label></strong></p>

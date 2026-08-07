@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.41">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Represente o bloco como matriz</summary>
+      <p>Na cifragem \(5\times5\), escreva o texto claro pelas linhas e leia o resultado pelas colunas. Para desfazer, coloque os blocos cifrados como colunas e leia as linhas.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use o tamanho do texto para descobrir dimensões</summary>
+      <p>Quando as dimensões não são dadas, fatore o número total de letras. Teste os pares de fatores como números de linhas e colunas, procurando linguagem legível.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Preserve a orientação</summary>
+      <p>Anote se a escrita foi horizontal e a leitura vertical. Trocar linha por coluna no passo errado produz outra transposição, não a inversa.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>Removendo espaços e pontuação, os primeiros \(25\) caracteres são <span lang="en">FOURSCOREANDSEVENYEARSAGO</span>. Escrevendo-os em cinco linhas e lendo as colunas, resulta
       <p class="solution-result" lang="en">FCNER OODNS URSYA REEEG SAVAO</p>
@@ -10,4 +27,5 @@
       <p class="solution-result" lang="en">WE HOLD THESE TRUTHS TO BE SELF EVIDENT THAT ALL MEN ARE CREATED EQUAL THA…</p>
       Novamente, o bloco termina no meio da palavra seguinte, <span lang="en">that</span>.</li>
   </ol>
+  </details>
 </div>

@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.24">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Meça o erro da aproximação atual</summary>
+      <p>Como \(b^2\equiv a\pmod p\), escreva \(b^2-a=tp\). Procure a nova raiz na forma \(b+kp\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Linearize módulo a próxima potência</summary>
+      <p>Expanda \((b+kp)^2-a\) e, após retirar um fator \(p\), reduza o coeficiente restante módulo \(p\). O termo quadrático em \(k\) desaparece nessa redução.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Repita o mesmo padrão em \(p^n\)</summary>
+      <p>Se \(b^2-a=tp^n\), tente \(b+jp^n\). A condição para \(j\) volta a ser uma congruência linear, pois \(2b\) é invertível módulo \(p\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>Escreva \(b^2-a=tp\). Então
       \[
@@ -25,4 +42,5 @@
       61+6\cdot13^2=1075,\qquad 1075^2\equiv3\pmod{13^3}.
       \]</li>
   </ol>
+  </details>
 </div>

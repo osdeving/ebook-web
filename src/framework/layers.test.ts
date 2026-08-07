@@ -25,6 +25,7 @@ describe("controle de camadas", () => {
       layers: [],
       bookmarks: [],
       notes: {},
+      progress: {},
     };
     const persist = vi.fn();
     const controller = mountLayers({

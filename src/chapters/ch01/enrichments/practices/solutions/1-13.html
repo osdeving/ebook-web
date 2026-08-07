@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.13">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Prove uma afirmação mais forte</summary>
+      <p>Mostre que uma combinação linear dos primeiros \(j\) números produz \(d_j=\gcd(a_1,\ldots,a_j)\), mesmo quando esse máximo divisor comum não é \(1\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Faça o passo indutivo em duas camadas</summary>
+      <p>Aplique Bézout a \(d_{j-1}\) e \(a_j\); depois substitua em \(d_{j-1}\) a combinação linear já obtida para \(a_1,\ldots,a_{j-1}\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Provaremos a afirmação mais forte: para quaisquer inteiros \(a_1,\ldots,a_k\), existem inteiros \(u_1,\ldots,u_k\) tais que</p>
   <p>\[a_1u_1+\cdots+a_ku_k=\gcd(a_1,\ldots,a_k).\]</p>
   <p>Defina \(d_j=\gcd(a_1,\ldots,a_j)\). Para \(j=1\), temos \(d_1=|a_1|\), que é \(a_1\) multiplicado por \(1\) ou por \(-1\) (o caso \(a_1=0\) é imediato).</p>
@@ -7,4 +20,5 @@
   <p>Substituindo a combinação que representa \(d_{j-1}\), obtemos</p>
   <p>\[d_j=a_1(rc_1)+\cdots+a_{j-1}(rc_{j-1})+a_js,\]</p>
   <p>que completa a indução. Para \(j=k\), a hipótese do exercício diz \(d_k=1\); os coeficientes encontrados são os \(u_1,\ldots,u_k\) procurados.</p>
+  </details>
 </div>

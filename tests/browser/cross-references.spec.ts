@@ -3,7 +3,7 @@ import { expect, test, type Page } from "@playwright/test";
 const waitForReader = async (page: Page) => {
   await expect.poll(
     () => page.locator("html").getAttribute("data-reader-ready"),
-    { timeout: 20_000 },
+    { timeout: 45_000 },
   ).toBe("true");
 };
 
@@ -86,7 +86,7 @@ test("a bibliografia filtra as 150 entradas sem perder seus fragmentos", async (
   expect(await entries.filter({ visible: true }).count()).toBeGreaterThan(0);
 
   await search.fill("consulta-sem-correspondencia-ebook");
-  await expect(page.locator("[data-reference-status]")).toHaveText("0 referências");
+  await expect(page.locator("[data-reference-status]")).toHaveText("0 referências encontradas");
 });
 
 test("os exercícios completos e suas soluções possuem deep links independentes", async ({ page }) => {

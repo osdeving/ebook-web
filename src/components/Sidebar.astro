@@ -41,6 +41,11 @@ const { chapter, note = "Edição web independente com texto-fonte e recursos op
       </li>
     ))}
   </ol>
-  <a class="sidebar-reference-link" href={`${import.meta.env.BASE_URL}references/`}>Referências do livro</a>
+  <nav class="sidebar-global-links" aria-label="Ferramentas do ebook">
+    <a href={`${import.meta.env.BASE_URL}search/`}>Busca global</a>
+    <a href={`${import.meta.env.BASE_URL}glossary/`}>Glossário</a>
+    <a href={`${import.meta.env.BASE_URL}study/`}>Rotas de estudo</a>
+    <a href={`${import.meta.env.BASE_URL}references/`}>Referências</a>
+  </nav>
   <p class="sidebar-note">{note}</p>
 </aside>

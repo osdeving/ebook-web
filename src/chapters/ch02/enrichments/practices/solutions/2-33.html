@@ -1,8 +1,22 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.33">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Prove primeiro que as operações não dependem do representante</summary>
+      <p>Se \(a\equiv a'\) e \(b\equiv b'\pmod m\), aplique a Proposição 2.41 à soma e ao produto antes de usar qualquer axioma no quociente.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Transporte os axiomas do anel</summary>
+      <p>Escolha representantes para três classes e use associatividade, comutatividade e distributividade em \(R\). Identifique também as classes de \(0\), \(1\) e \(-a\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Se \(\bar a=\overline{a'}\) e \(\bar b=\overline{b'}\), então \(a\equiv a'\pmod m\) e \(b\equiv b'\pmod m\). Pela Proposição 2.41,</p>
   \[
   a+b\equiv a'+b'\pmod m,\qquad ab\equiv a'b'\pmod m.
   \]
   <p>Portanto \(\overline{a+b}\) e \(\overline{ab}\) não dependem dos representantes: as duas operações são bem definidas.</p>
   <p>Associatividade, comutatividade e distributividade seguem escolhendo representantes e usando as respectivas leis em \(R\). A classe \(\bar0\) é a identidade aditiva, \(-\bar a=\overline{-a}\), e \(\bar1\) é a identidade multiplicativa. Assim \(R/(m)\), com essas operações, satisfaz todos os axiomas de anel.</p>
+  </details>
 </div>

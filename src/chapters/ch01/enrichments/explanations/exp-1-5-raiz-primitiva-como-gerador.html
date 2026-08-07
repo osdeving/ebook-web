@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Uma raiz primitiva é um elemento cujo ciclo é tão longo quanto possível. Suas potências servem como um sistema de coordenadas para todos os elementos não nulos do corpo.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Gerador</span><p>Se \(\operatorname{ord}(g)=p-1\), então \(1,g,g^2,\ldots,g^{p-2}\) são \(p-1\) elementos distintos de \(\mathbb F_p^*\). Como o grupo tem exatamente esse tamanho, a lista contém todos.</p></div>
+    <div class="step"><span class="step-tag manipulation">Expoentes como endereços</span><p>Para cada \(h\in\mathbb F_p^*\), existe \(x\) módulo \(p-1\) com \(g^x=h\). Encontrar \(h\) a partir de \(x\) é exponenciação; recuperar \(x\) a partir de \(h\) é o problema do logaritmo discreto.</p></div>
+    <div class="step"><span class="step-tag theorem">Teste com fatores</span><p>Para \(g\in\mathbb F_p^*\), se conhecemos a fatoração de \(p-1\), basta verificar que</p><div class="display-math">\[g^{(p-1)/q}\not\equiv1\pmod p\]</div><p>para cada primo \(q\mid p-1\). Isso impede que a ordem seja um divisor próprio de \(p-1\).</p></div>
+  </div>
+  <div class="quick-check"><p>Para \(p=11\), os primos que dividem \(10\) são \(2\) e \(5\). Como \(2^5\equiv10\ne1\) e \(2^2\equiv4\ne1\), a ordem de \(2\) é \(10\); logo \(2\) é raiz primitiva.</p></div>
+  <div class="watch-out"><p>O teorema garante raízes primitivas em \(\mathbb F_p^*\). Nem todo grupo de unidades \((\mathbb Z/m\mathbb Z)^*\) para módulo composto é cíclico.</p></div>
+</div>

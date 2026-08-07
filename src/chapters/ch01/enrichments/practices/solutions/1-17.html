@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.17">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Reduza cedo e frequentemente</summary>
+      <p>Após cada soma, produto ou quadratura, substitua o resultado por seu resto módulo \(m\). Isso mantém os números pequenos sem mudar a classe final.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Decomponha potências</summary>
+      <p>Para expoentes maiores, use quadraturas sucessivas e a expansão binária do expoente. Nos produtos longos, registre cada resto intermediário para localizar eventuais erros.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Reduzimos após cada soma, multiplicação ou quadratura para manter os números pequenos.</p>
   <ol type="a">
     <li>\[347+513=860\equiv97\pmod{763}.\]</li>
@@ -37,4 +50,5 @@
       <p>Então \(42\cdot77\equiv33\) e \(33\cdot91\equiv93\pmod{97}\). O resultado é \(93\).</p>
     </li>
   </ol>
+  </details>
 </div>

@@ -92,6 +92,7 @@ export interface ReaderPreferences {
   layers: EnrichmentLayer[];
   bookmarks: string[];
   notes: Record<string, string>;
+  progress: Record<string, "started" | "completed">;
   lastSection?: string;
   sourceHash?: string;
 }
@@ -104,6 +105,25 @@ export interface ReaderRuntimeOptions {
   sidebarSelector?: string;
   mobileQuery?: string;
   storagePrefix?: string;
+}
+
+export interface ReaderTargetPreview {
+  title: string;
+  kind: string;
+  excerpt: string;
+  href: string;
+}
+
+export interface ReaderBacklink {
+  href: string;
+  label: string;
+  chapter: string;
+  context: string;
+}
+
+export interface ReaderDiscoveryData {
+  previews: Record<string, ReaderTargetPreview>;
+  backlinks: Record<string, ReaderBacklink[]>;
 }
 
 export interface Disposable {

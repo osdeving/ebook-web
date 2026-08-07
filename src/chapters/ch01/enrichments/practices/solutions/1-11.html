@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.11">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Use o divisor comum universal</summary>
+      <p>Se \(d=\gcd(a,b)\), então \(d\) divide toda combinação linear \(au+bv\). Aplique essa observação aos valores \(1\), \(6\) e \(g\) que aparecem nos itens.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Compare duas soluções</summary>
+      <p>Subtraia as duas equações \(au+bv=1\). A igualdade obtida, junto com \(\gcd(a,b)=1\), permite aplicar o lema de Euclides a cada diferença.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Parametrize a equação homogênea</summary>
+      <p>Para o item final, divida a equação das diferenças por \(g\). Como \(a/g\) e \(b/g\) são coprimos, uma das diferenças deve ser múltipla do coeficiente oposto.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <ol type="a">
     <li>
       <p>Se \(d=\gcd(a,b)\), então \(d\mid a\) e \(d\mid b\); logo \(d\mid(au+bv)\). Pela hipótese, \(d\mid1\). Como \(d\) é positivo, \(d=1\).</p>
@@ -22,4 +39,5 @@
       <p>Reciprocamente, substituir qualquer par dessa forma em \(au+bv\) cancela os termos com \(k\), produzindo \(g\); logo a parametrização contém exatamente todas as soluções.</p>
     </li>
   </ol>
+  </details>
 </div>

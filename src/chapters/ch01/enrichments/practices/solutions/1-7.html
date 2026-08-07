@@ -1,4 +1,17 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.7">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Escolha o quociente pelo piso</summary>
+      <p>Para uma divisão \(a=bq+r\) com \(b>0\), tome \(q=\lfloor a/b\rfloor\) e calcule \(r=a-bq\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Faça a verificação obrigatória</summary>
+      <p>Em cada item, confira simultaneamente a identidade \(a=bq+r\) e o intervalo \(0\le r&lt;b\). Se o resto sair do intervalo, ajuste o quociente.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Para cada divisão, tomamos \(q=\lfloor a/b\rfloor\) e calculamos \(r=a-bq\), verificando \(0\le r&lt;b\).</p>
   <ol type="a">
     <li>\[34787=353\cdot98+193.\] Portanto, \(q=98\) e \(r=193\).</li>
@@ -6,4 +19,5 @@
     <li>\[9829387493=873485\cdot11253+60788.\] Portanto, \(q=11253\) e \(r=60788\).</li>
     <li>\[1498387487=76348\cdot19625+57987.\] Portanto, \(q=19625\) e \(r=57987\).</li>
   </ol>
+  </details>
 </div>

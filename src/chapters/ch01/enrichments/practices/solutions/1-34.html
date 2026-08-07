@@ -1,4 +1,21 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 1.34">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Teste apenas os fatores primos da ordem</summary>
+      <p>Para verificar se \(g\) tem ordem \(p-1\), fatore \(p-1\) e teste se \(g^{(p-1)/q}\not\equiv1\pmod p\) para cada primo \(q\mid p-1\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Reaproveite quadraturas</summary>
+      <p>Calcule \(g,g^2,g^4,\ldots\) uma vez por módulo. Combine essas potências para todos os expoentes do teste e para cada candidato.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Gere todas as raízes a partir de uma</summary>
+      <p>Se \(g\) é primitiva, as demais raízes primitivas são \(g^k\) com \(\gcd(k,p-1)=1\). Isso também explica a contagem por \(\phi(p-1)\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Usaremos o seguinte teste. Se \(p\) é primo, então \(g\) é uma raiz primitiva módulo \(p\) se, e somente se,</p>
   <div class="display-math">\[
     g^{(p-1)/q}\not\equiv1\pmod p
@@ -102,4 +119,5 @@ def primitive_roots(p):
       <p>logo a ordem de \(4\) é menor que \(p-1\); para \(p=2\), \(4\equiv0\) nem sequer pertence a \(\mathbb F_2^*\).</p>
     </li>
   </ol>
+  </details>
 </div>

@@ -1,4 +1,18 @@
 <div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 2.29">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Transforme multiplicação em uma aplicação</summary>
+      <p>Fixe \(a\ne0\) e considere \(L_a(b)=ab\). Mostre que duas entradas com a mesma imagem produziriam um divisor de zero.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use a finitude no ponto decisivo</summary>
+      <p>Em um conjunto finito, injetividade implica sobrejetividade. Portanto algum \(b\) deve ser levado ao elemento \(1\); interprete essa igualdade.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
   <p>Fixe \(a\ne0\) e considere \(L_a:R\to R\), \(L_a(b)=ab\). Se \(L_a(b)=L_a(c)\), então \(a(b-c)=0\). Como não há divisores de zero e \(a\ne0\), segue \(b-c=0\), logo \(b=c\). Assim \(L_a\) é injetiva.</p>
   <p>Como \(R\) é finito, toda aplicação injetiva \(R\to R\) é também sobrejetiva. Em particular, \(1\) está na imagem: existe \(b\in R\) tal que \(ab=1\). Portanto todo elemento não nulo possui inverso multiplicativo, e \(R\) é um corpo.</p>
+  </details>
 </div>
