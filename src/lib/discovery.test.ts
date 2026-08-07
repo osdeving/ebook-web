@@ -16,6 +16,8 @@ const chapter = {
   enrichments: [],
 } satisfies ChapterDefinition;
 
+const longFormula = `\\[${"a+b=".repeat(80)}c\\]`;
+
 describe("discovery", () => {
   it("normaliza diacríticos e espaços para busca", () => {
     expect(normalizeDiscoveryText("  Álgebra\nMÓDULAR ")).toBe("algebra modular");
@@ -32,5 +34,20 @@ describe("discovery", () => {
     expect(data.chapters.ch01?.previews["#def-1"]?.title).toContain("Definição");
     expect(data.chapters.ch01?.backlinks["def-1"]).toHaveLength(1);
     expect(data.referenceBacklinks["ref-2"]).toHaveLength(1);
+  });
+
+  it("não corta uma prévia dentro dos delimitadores matemáticos", () => {
+    const chapterWithLongMath = {
+      ...chapter,
+      sourceSections: [{
+        id: "sec-math",
+        file: "sec-math.html",
+        html: `<section id="sec-math"><p><a data-source-xref href="#eq-long">equação</a></p><div class="equation" id="eq-long"><span class="equation-number">(T)</span>${longFormula}</div></section>`,
+      }],
+    } satisfies ChapterDefinition;
+    const preview = buildDiscoveryData([chapterWithLongMath], []).chapters.ch01?.previews["#eq-long"];
+    expect(preview?.excerpt).toContain(longFormula);
+    expect(preview?.excerpt.match(/\\\[/gu)).toHaveLength(1);
+    expect(preview?.excerpt.match(/\\\]/gu)).toHaveLength(1);
   });
 });

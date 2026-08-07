@@ -1,0 +1,31 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 4.8">
+    <p class="graduated-help__intro">Reutilizar \(k\) transforma duas equações com segredos em um sistema linear observável.</p>
+    <details class="solution-hint"><summary>Dica 1 — O indício visual</summary><p>O mesmo \(k\) produz o mesmo \(S_1=g^k\bmod p\).</p></details>
+    <details class="solution-hint"><summary>Dica 2 — Elimine \(aS_1\)</summary><p>Reescreva \(kS_2\equiv D-aS_1\) e subtraia as duas assinaturas.</p></details>
+    <details class="solution-hint"><summary>Dica 3 — Módulo composto exige cuidado</summary><p>Não presuma que \(S_2-S_2'\) seja invertível módulo \(p-1\). Resolva a congruência linear, teste as classes candidatas por \(g^k=S_1\), e só então recupere \(a\).</p></details>
+  </div>
+  <details class="solution-reveal"><summary>Ver solução completa</summary>
+    <h4>(a) Como detectar</h4>
+    <p>Como \(S_1\equiv g^k\pmod p\), assinaturas de documentos distintos com o mesmo primeiro componente \(S_1=S_1'\) denunciam imediatamente a reutilização do nonce. Sendo \(g\) uma raiz primitiva e \(k\) escolhido em um intervalo completo de resíduos, a igualdade corresponde ao mesmo \(k\).</p>
+    <h4>(b) Como recuperar a chave</h4>
+    <p>Das duas definições de \(S_2\),</p>
+    <p>\[kS_2\equiv D-aS_1,\qquad kS_2'\equiv D'-aS_1\pmod{p-1}.\]</p>
+    <p>Subtraindo:</p>
+    <p>\[k(S_2-S_2')\equiv D-D'\pmod{p-1}.\]</p>
+    <p>Resolvida essa congruência, cada candidato a \(k\) deve satisfazer \(\gcd(k,p-1)=1\) e \(g^k\equiv S_1\pmod p\). Então se resolve</p>
+    <p>\[aS_1\equiv D-kS_2\pmod{p-1}\]</p>
+    <p>e se seleciona a solução que também satisfaz \(g^a\equiv A\pmod p\). Essa formulação cobre o caso em que os coeficientes não têm inverso.</p>
+    <h4>(c) Aplicação numérica</h4>
+    <p>A primeira congruência torna-se</p>
+    <p>\[-8624k\equiv25844\pmod{348148}.\]</p>
+    <p>O máximo divisor comum é \(4\), então, após dividir, obtemos uma classe módulo \(87037\):</p>
+    <p>\[k\equiv59623\pmod{87037}.\]</p>
+    <p>As quatro classes módulo \(348148\) são \(59623,146660,233697,320734\). Somente \(59623\) reúne as duas condições: é coprima a \(348148\) e satisfaz \(113459^k\equiv208913\pmod{348149}\).</p>
+    <p>Agora</p>
+    <p>\[a\cdot208913\equiv153405-59623\cdot209176\equiv158561\pmod{348148}.\]</p>
+    <p>Como \(\gcd(208913,348148)=1\), resulta</p>
+    <p>\[\boxed{a=72729}.\]</p>
+    <p>A checagem \(113459^{72729}\equiv185149\pmod{348149}\) confirma a chave privada recuperada.</p>
+  </details>
+</div>

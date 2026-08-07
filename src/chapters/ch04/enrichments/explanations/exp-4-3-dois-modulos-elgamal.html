@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>ElGamal alterna entre o grupo de valores módulo \(p\) e a aritmética de seus expoentes módulo \(p-1\). Misturar essas duas linhas é a fonte mais comum de erros.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Linha dos elementos</span><p>\(g,A,S_1\in\mathbb F_p^\ast\). Potências como \(g^a\), \(g^k\) e \(A^{S_1}S_1^{S_2}\) são avaliadas módulo \(p\).</p></div>
+    <div class="step"><span class="step-tag definition">Linha dos expoentes</span><p>Como \(g^{p-1}\equiv1\pmod p\), expoentes equivalentes módulo \(p-1\) produzem a mesma potência. Por isso \(S_2\) e \(k^{-1}\) são calculados módulo \(p-1\).</p></div>
+    <div class="step"><span class="step-tag theorem">Por que \(\gcd(k,p-1)=1\)</span><p>A fórmula exige \(k^{-1}\pmod{p-1}\). Se o máximo divisor comum não for \(1\), esse inverso não existe e o procedimento de assinatura não está definido como escrito.</p></div>
+  </div>
+  <div class="quick-check"><p>Use uma tabela de tipos: \(S_1=g^k\bmod p\) é um representante entre \(1\) e \(p-1\); depois esse inteiro aparece multiplicando \(a\) em uma congruência módulo \(p-1\). O mesmo símbolo atravessa as duas linhas, mas cada operação declara seu módulo.</p></div>
+</div>

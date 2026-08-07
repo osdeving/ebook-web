@@ -1,0 +1,22 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 4.11">
+    <p class="graduated-help__intro">O subgrupo tem apenas \(q=1571\) elementos; uma busca didática é suficiente.</p>
+    <details class="solution-hint"><summary>Dica 1 — Resolva o logaritmo no subgrupo</summary><p>Multiplique sucessivamente por \(g\) até encontrar \(A\), ou use baby-step giant-step para achar \(a\) em \(g^a=A\pmod p\).</p></details>
+    <details class="solution-hint"><summary>Dica 2 — Assine com o segredo recuperado</summary><p>Calcule \(S_1=(g^k\bmod p)\bmod q\) e depois \(S_2=(D+aS_1)k^{-1}\bmod q\).</p></details>
+    <details class="solution-hint"><summary>Dica 3 — Verificação independente</summary><p>Use a chave pública original, não \(a\), no teste final.</p></details>
+  </div>
+  <details class="solution-reveal"><summary>Ver solução completa</summary>
+    <h4>Logaritmo discreto</h4>
+    <p>Uma busca no subgrupo — no máximo \(1570\) multiplicações — encontra</p>
+    <p>\[21947^{602}\equiv31377\pmod{103687}.\]</p>
+    <p>Assim, a chave privada é \(\boxed{a=602}\).</p>
+    <h4>Assinatura de \(D=510\)</h4>
+    <p>Temos \(1105^{-1}\equiv1008\pmod{1571}\) e</p>
+    <p>\[21947^{1105}\bmod103687=6723,\qquad S_1=6723\bmod1571=439.\]</p>
+    <p>O segundo componente é</p>
+    <p>\[S_2\equiv(510+602\cdot439)\cdot1008\equiv1259\pmod{1571}.\]</p>
+    <p>Portanto a assinatura é \(\boxed{(439,1259)}\). Com \(1259^{-1}=1143\), o verificador obtém \(V_1=89\), \(V_2=628\) e</p>
+    <p>\[(21947^{89}31377^{628}\bmod103687)\bmod1571=439,\]</p>
+    <p>confirmando a resposta.</p>
+  </details>
+</div>

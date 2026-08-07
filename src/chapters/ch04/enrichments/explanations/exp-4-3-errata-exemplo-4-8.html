@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Três trocas tipográficas inequívocas foram preservadas na tradução-fonte, mas precisam ser sinalizadas para que a conta e o papel das chaves não sejam aprendidos incorretamente.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Chave pública de ElGamal</span><p>Após definir \(A\equiv g^a\pmod p\), o original afirma que “\(a\), junto com \(p,g\), forma a chave pública”. Isso contradiz imediatamente a frase anterior, em que \(a\) é a chave secreta. A quantidade pública é \(A\), portanto a chave de verificação é \((p,g,A)\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Primeiro componente do Exemplo 4.8</span><p>O original imprime \(5260^{427}\bmod48731=2727\) e, em seguida, \(2727\bmod443=59\). As duas igualdades não podem ser verdadeiras: a exponenciação modular dá \(2717\), enquanto \(2727\bmod443=69\). A linha coerente é \[5260^{427}\bmod48731=2717,\qquad 2717\bmod443=59.\] O próprio cálculo de verificação apresentado logo depois também retorna \(2717\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Segundo componente do Exemplo 4.8</span><p>O original imprime \((343+343\cdot59)427^{-1}\equiv166\pmod{443}\), embora a chave secreta declarada seja \(a=242\). Com \(427^{-1}\equiv83\pmod{443}\), a expressão impressa vale \(375\), não \(166\).</p></div>
+    <div class="step"><span class="step-tag theorem">Correção verificável de \(S_2\)</span><p>Substituindo o segundo \(343\) por \(242\), \[(343+242\cdot59)\cdot83\equiv166\pmod{443},\] em acordo com a fórmula do DSA e com o restante da verificação.</p></div>
+  </div>
+  <div class="quick-check"><p><strong>Política editorial:</strong> a camada-fonte conserva o que está impresso. Este painel documenta a correção e exibe uma checagem aritmética independente, sem alterar silenciosamente a tradução.</p></div>
+</div>

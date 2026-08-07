@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>A verificação funciona porque \(S_2\) foi escolhido para fazer o expoente secreto \(aS_1\) cancelar, deixando exatamente o expoente do documento \(D\).</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Dados honestos</span><p>\(A\equiv g^a\pmod p\), \(S_1\equiv g^k\pmod p\) e \(S_2\equiv(D-aS_1)k^{-1}\pmod{p-1}\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Substitua as bases</span><p>\[A^{S_1}S_1^{S_2}\equiv(g^a)^{S_1}(g^k)^{S_2}=g^{aS_1+kS_2}\pmod p.\]</p></div>
+    <div class="step"><span class="step-tag manipulation">Substitua \(S_2\)</span><p>No expoente módulo \(p-1\), \[kS_2\equiv k(D-aS_1)k^{-1}\equiv D-aS_1.\]</p></div>
+    <div class="step"><span class="step-tag theorem">Cancele</span><p>Logo \(aS_1+kS_2\equiv D\pmod{p-1}\) e \(A^{S_1}S_1^{S_2}\equiv g^D\pmod p\), exatamente o teste público.</p></div>
+  </div>
+  <div class="quick-check"><p>O segredo não foi revelado: o verificador vê duas potências que contêm \(a\), mas o cancelamento ocorre dentro do expoente sem isolá-lo.</p></div>
+</div>

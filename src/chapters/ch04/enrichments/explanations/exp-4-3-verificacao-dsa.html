@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Os expoentes \(V_1\) e \(V_2\) recompõem \(k\) sem revelá-lo. A inversão de \(S_2\) “desfaz” a escala usada na assinatura.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Inversão pública</span><p>O verificador calcula \(w=S_2^{-1}\pmod q\), \(V_1=Dw\pmod q\) e \(V_2=S_1w\pmod q\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Combine as potências</span><p>Como \(A=g^a\), \[g^{V_1}A^{V_2}\equiv g^{(D+aS_1)S_2^{-1}}\pmod p.\]</p></div>
+    <div class="step"><span class="step-tag manipulation">Use a assinatura</span><p>De \(S_2\equiv(D+aS_1)k^{-1}\pmod q\), resulta \((D+aS_1)S_2^{-1}\equiv k\pmod q\).</p></div>
+    <div class="step"><span class="step-tag theorem">Reconstrua \(S_1\)</span><p>Como \(g\) tem ordem \(q\), os expoentes congruentes produzem o mesmo elemento: \(g^{V_1}A^{V_2}\equiv g^k\pmod p\). Reduzir o representante módulo \(q\) recupera \(S_1\).</p></div>
+  </div>
+  <div class="quick-check"><p>O verificador também deve rejeitar componentes fora do intervalo e valores zero. A derivação algébrica pressupõe que \(S_2^{-1}\) exista.</p></div>
+</div>

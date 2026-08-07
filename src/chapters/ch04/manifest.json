@@ -1,0 +1,42 @@
+{
+  "slug": "ch04",
+  "number": "4",
+  "title": "Assinaturas digitais",
+  "shortTitle": "Assinaturas digitais",
+  "eyebrow": "Capítulo 4 · tradução para português",
+  "description": "Do conceito de assinatura digital aos esquemas RSA, Elgamal e DSA, com criação de chaves, assinatura, verificação e exercícios.",
+  "sourceHash": "461c682b7c5cd6fe9ac3bddd94dd15c2e96b0914991850f65e93a58727e875e6",
+  "textLength": 28795,
+  "toc": [
+    {
+      "id": "sec-4-1",
+      "number": "4.1",
+      "title": "O que é uma assinatura digital?",
+      "depth": 1
+    },
+    {
+      "id": "sec-4-2",
+      "number": "4.2",
+      "title": "Assinaturas digitais RSA",
+      "depth": 1
+    },
+    {
+      "id": "sec-4-3",
+      "number": "4.3",
+      "title": "Assinaturas digitais Elgamal e DSA",
+      "depth": 1
+    },
+    {
+      "id": "exercicios-ch04",
+      "number": "EX",
+      "title": "Exercícios",
+      "depth": 1
+    }
+  ],
+  "sourceOrder": [
+    "source/sections/sec-4-1.html",
+    "source/sections/sec-4-2.html",
+    "source/sections/sec-4-3.html",
+    "source/sections/exercicios.html"
+  ]
+}

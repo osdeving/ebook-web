@@ -1,0 +1,16 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 4.6">
+    <p class="graduated-help__intro">Victor não precisa reconstruir o segredo: basta aplicar a equação pública.</p>
+    <details class="solution-hint"><summary>Dica 1 — Lado esquerdo</summary><p>Para cada assinatura, calcule \(A^{S_1}S_1^{S_2}\bmod p\).</p></details>
+    <details class="solution-hint"><summary>Dica 2 — Lado direito</summary><p>Calcule separadamente \(g^D\bmod p\) e compare.</p></details>
+  </div>
+  <details class="solution-reveal"><summary>Ver solução completa</summary>
+    <p>Com \(p=6961\), \(g=437\) e \(A=4250\), obtemos:</p>
+    <div class="solution-table-wrap"><table><thead><tr><th scope="col">Documento</th><th scope="col">\(A^{S_1}S_1^{S_2}\bmod p\)</th><th scope="col">\(g^D\bmod p\)</th><th scope="col">Conclusão</th></tr></thead><tbody>
+      <tr><td>\(1521\)</td><td>\(231\)</td><td>\(231\)</td><td>válida</td></tr>
+      <tr><td>\(1837\)</td><td>\(6208\)</td><td>\(2081\)</td><td>inválida</td></tr>
+      <tr><td>\(1614\)</td><td>\(2243\)</td><td>\(2243\)</td><td>válida</td></tr>
+    </tbody></table></div>
+    <p>Logo a primeira e a terceira assinaturas são válidas; a segunda não é.</p>
+  </details>
+</div>

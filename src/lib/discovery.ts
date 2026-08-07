@@ -318,7 +318,34 @@ function excerpt(value: string, limit = 280): string {
   if (text.length <= limit) return text;
   const slice = text.slice(0, limit + 1);
   const boundary = slice.lastIndexOf(" ");
-  return `${slice.slice(0, boundary > limit * 0.65 ? boundary : limit).trim()}…`;
+  const proseBoundary = boundary > limit * 0.65 ? boundary : limit;
+  const safeBoundary = mathSafeBoundary(text, proseBoundary);
+  return `${text.slice(0, safeBoundary).trim()}…`;
+}
+
+/**
+ * Não deixa o resumo terminar dentro de um delimitador reconhecido pelo KaTeX.
+ * Quando o alvo começa pela própria expressão (como uma equação numerada),
+ * preserva a primeira fórmula inteira; nos demais casos, encerra antes dela.
+ */
+function mathSafeBoundary(value: string, preferredBoundary: number): number {
+  let cursor = 0;
+  while (cursor < preferredBoundary) {
+    const inlineStart = value.indexOf("\\(", cursor);
+    const displayStart = value.indexOf("\\[", cursor);
+    const starts = [inlineStart, displayStart].filter((index) => index >= 0);
+    if (!starts.length) return preferredBoundary;
+    const start = Math.min(...starts);
+    if (start >= preferredBoundary) return preferredBoundary;
+    const close = value.startsWith("\\(", start) ? "\\)" : "\\]";
+    const endStart = value.indexOf(close, start + 2);
+    if (endStart < 0) return start;
+    const end = endStart + close.length;
+    // Equações numeradas trazem um prefixo curto como "(3.12)" antes de `\[`.
+    if (end > preferredBoundary) return start <= 48 ? end : start;
+    cursor = end;
+  }
+  return preferredBoundary;
 }
 
 function describeSourceNode(node: HTMLElement): { title: string; kind: SearchKind; kindLabel: string } {

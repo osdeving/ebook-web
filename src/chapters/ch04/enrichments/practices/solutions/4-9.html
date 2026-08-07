@@ -1,0 +1,19 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 4.9">
+    <p class="graduated-help__intro">No DSA, as exponenciações vivem módulo \(p\), mas os componentes da assinatura vivem módulo \(q\).</p>
+    <details class="solution-hint"><summary>Dica 1 — Chave pública</summary><p>Calcule \(A\equiv g^a\pmod p\).</p></details>
+    <details class="solution-hint"><summary>Dica 2 — Redução em dois estágios</summary><p>Para \(S_1\), obtenha primeiro \(g^k\bmod p\) e somente depois reduza esse representante módulo \(q\).</p></details>
+    <details class="solution-hint"><summary>Dica 3 — Segundo componente</summary><p>Use \(S_2\equiv(D+aS_1)k^{-1}\pmod q\).</p></details>
+  </div>
+  <details class="solution-reveal"><summary>Ver solução completa</summary>
+    <h4>(a) Chave pública</h4>
+    <p>\[A\equiv4488^{674}\equiv4940\pmod{22531}.\]</p>
+    <h4>(b) Assinatura</h4>
+    <p>O nonce satisfaz \(574^{-1}\equiv297\pmod{751}\). A redução em dois estágios dá</p>
+    <p>\[4488^{574}\bmod22531=7954,\qquad S_1=7954\bmod751=444.\]</p>
+    <p>Então</p>
+    <p>\[S_2\equiv(244+674\cdot444)\cdot297\equiv56\pmod{751}.\]</p>
+    <p>Logo \(\boxed{(S_1,S_2)=(444,56)}\). Para conferir, \(S_2^{-1}=228\), \(V_1=58\), \(V_2=598\), e</p>
+    <p>\[(4488^{58}4940^{598}\bmod22531)\bmod751=444=S_1.\]</p>
+  </details>
+</div>

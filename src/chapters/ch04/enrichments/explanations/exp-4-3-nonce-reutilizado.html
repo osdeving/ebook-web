@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O nonce \(k\) não é um detalhe cosmético. Ele mascara a chave privada em uma equação linear. Repeti-lo fornece duas equações com a mesma máscara, que desaparece por subtração.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Primeira assinatura</span><p>\(kS_2\equiv D-aS_1\pmod{p-1}\).</p></div>
+    <div class="step"><span class="step-tag definition">Segunda assinatura</span><p>Com o mesmo \(k\), também \(kS_2'\equiv D'-aS_1\pmod{p-1}\), e o primeiro componente repetido torna o erro observável.</p></div>
+    <div class="step"><span class="step-tag manipulation">Eliminação</span><p>\[k(S_2-S_2')\equiv D-D'\pmod{p-1}.\] Resolver essa congruência fornece candidatos ao nonce; \(g^k\equiv S_1\) seleciona o correto.</p></div>
+    <div class="step"><span class="step-tag manipulation">Extração</span><p>Com \(k\), a relação \(aS_1\equiv D-kS_2\pmod{p-1}\) entrega candidatos a \(a\), conferidos pela chave pública \(A=g^a\).</p></div>
+  </div>
+  <div class="quick-check"><p>O mesmo fenômeno aparece em DSA e ECDSA com fórmulas ligeiramente diferentes. Nonces repetidos, previsíveis ou parcialmente vazados podem comprometer a chave; a RFC 6979 especifica geração determinística vinculada à mensagem e à chave para reduzir dependência de aleatoriedade externa.</p></div>
+</div>

@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Um hash não “encolhe o documento e pronto”. Ele cria uma representação de tamanho fixo que deve continuar inequivocamente ligada ao documento e ao esquema usado.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Compressão</span><p>\(h=H(m)\) tem tamanho fixo mesmo quando \(m\) possui gigabytes. Isso permite que a operação de chave pública processe uma entrada curta.</p></div>
+    <div class="step"><span class="step-tag theorem">Colisões</span><p>Se um atacante encontra \(m\ne m'\) com \(H(m)=H(m')\), a mesma assinatura do digest pode ser transferida. Por isso resistência a colisões é uma propriedade decisiva para assinatura.</p></div>
+    <div class="step"><span class="step-tag manipulation">Codificação de domínio</span><p>Esquemas reais não aplicam simplesmente \(h^d\bmod N\). Eles codificam o hash, identificam parâmetros, impõem comprimento e, no RSA-PSS, incorporam sal e uma função geradora de máscara.</p></div>
+    <div class="step"><span class="step-tag definition">Documento exato</span><p>Codificação de caracteres, normalização, metadados e formato também são bytes. Assinar uma visualização e verificar outra representação pode criar ambiguidades fora da matemática.</p></div>
+  </div>
+  <div class="quick-check"><p>Altere um byte do documento: o digest deve mudar de modo imprevisível e a assinatura deve ser rejeitada. Altere apenas o nome do arquivo, fora dos bytes assinados: a resposta depende do formato do protocolo.</p></div>
+</div>

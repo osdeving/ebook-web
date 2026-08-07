@@ -1,11 +1,12 @@
 /* Ebook Web: shell offline conservador e atualização transparente. */
-const CACHE_VERSION = "ebook-web-v5";
+const CACHE_VERSION = "ebook-web-v6";
 const BASE = new URL("./", self.location.href);
 const CORE = [
   "./",
   "./chapters/ch01/",
   "./chapters/ch02/",
   "./chapters/ch03/",
+  "./chapters/ch04/",
   "./references/",
   "./search/",
   "./glossary/",

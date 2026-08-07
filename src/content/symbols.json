@@ -46,5 +46,17 @@
   { "id": "miller-rabin-decomposition", "symbol": "N−1 = 2^s q", "meaning": "decomposição com q ímpar usada pelo teste de Miller–Rabin", "href": "chapters/ch03/#sec-3-4", "chapter": "ch03" },
   { "id": "gm-public-key", "symbol": "(N,a)", "meaning": "chave pública Goldwasser–Micali com Jacobi(a,N)=1 e a não quadrado módulo N", "href": "chapters/ch03/#sec-3-10", "chapter": "ch03" },
   { "id": "gm-encryption-zero", "symbol": "c ≡ r² (mod N)", "meaning": "cifragem probabilística do bit 0 no Goldwasser–Micali", "href": "chapters/ch03/#sec-3-10", "chapter": "ch03" },
-  { "id": "gm-encryption-one", "symbol": "c ≡ ar² (mod N)", "meaning": "cifragem probabilística do bit 1 no Goldwasser–Micali", "href": "chapters/ch03/#sec-3-10", "chapter": "ch03" }
+  { "id": "gm-encryption-one", "symbol": "c ≡ ar² (mod N)", "meaning": "cifragem probabilística do bit 1 no Goldwasser–Micali", "href": "chapters/ch03/#sec-3-10", "chapter": "ch03" },
+  { "id": "signature-private-key", "symbol": "K^Pri", "meaning": "chave privada usada para assinar", "href": "chapters/ch04/#sec-4-1", "chapter": "ch04" },
+  { "id": "signature-public-key", "symbol": "K^Pub", "meaning": "chave pública usada para verificar assinaturas", "href": "chapters/ch04/#sec-4-1", "chapter": "ch04" },
+  { "id": "signature-document", "symbol": "D^sig", "meaning": "assinatura digital associada ao documento D", "href": "chapters/ch04/#sec-4-1", "chapter": "ch04" },
+  { "id": "document-hash", "symbol": "Hash(D)", "meaning": "resumo criptográfico do documento D", "href": "chapters/ch04/#sec-4-1", "chapter": "ch04" },
+  { "id": "rsa-signature", "symbol": "S ≡ D^d (mod N)", "meaning": "assinatura RSA didática do documento D", "href": "chapters/ch04/#sec-4-2", "chapter": "ch04" },
+  { "id": "rsa-signature-verification", "symbol": "S^e ≡ D (mod N)", "meaning": "equação pública de verificação da assinatura RSA", "href": "chapters/ch04/#sec-4-2", "chapter": "ch04" },
+  { "id": "elgamal-verification-key", "symbol": "A ≡ g^a (mod p)", "meaning": "chave pública de verificação Elgamal ou DSA", "href": "chapters/ch04/#sec-4-3", "chapter": "ch04" },
+  { "id": "elgamal-signature-first", "symbol": "S₁ ≡ g^k (mod p)", "meaning": "primeiro componente da assinatura Elgamal", "href": "chapters/ch04/#sec-4-3", "chapter": "ch04" },
+  { "id": "elgamal-signature-second", "symbol": "S₂ ≡ (D−aS₁)k⁻¹ (mod p−1)", "meaning": "segundo componente da assinatura Elgamal", "href": "chapters/ch04/#sec-4-3", "chapter": "ch04" },
+  { "id": "elgamal-signature-check", "symbol": "A^S₁ S₁^S₂ ≡ g^D (mod p)", "meaning": "equação de verificação da assinatura Elgamal", "href": "chapters/ch04/#sec-4-3", "chapter": "ch04" },
+  { "id": "dsa-subgroup-condition", "symbol": "p ≡ 1 (mod q)", "meaning": "condição para um subgrupo de ordem prima q em F_p*", "href": "chapters/ch04/#sec-4-3", "chapter": "ch04" },
+  { "id": "dsa-verification-exponents", "symbol": "V₁ = DS₂⁻¹, V₂ = S₁S₂⁻¹ (mod q)", "meaning": "expoentes públicos usados na verificação DSA", "href": "chapters/ch04/#sec-4-3", "chapter": "ch04" }
 ]

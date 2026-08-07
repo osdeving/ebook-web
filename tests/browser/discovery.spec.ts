@@ -15,7 +15,7 @@ test("a capa e as páginas de descoberta navegam e filtram sem erros", async ({ 
   });
 
   await page.goto("/");
-  await expect(page.locator(".chapter-card")).toHaveCount(3);
+  await expect(page.locator(".chapter-card")).toHaveCount(4);
   const navigation = page.getByRole("navigation", { name: "Navegação principal" });
   await expect(navigation.getByRole("link", { name: "Busca global" })).toHaveAttribute("href", "/search/");
   await expect(navigation.getByRole("link", { name: "Glossário" })).toHaveAttribute("href", "/glossary/");
@@ -40,7 +40,7 @@ test("a capa e as páginas de descoberta navegam e filtram sem erros", async ({ 
   await expect(page).toHaveURL(/\/search\/$/);
 
   await page.goto("/glossary/");
-  await expect(page.locator("[data-glossary-status]")).toHaveText("142 itens");
+  await expect(page.locator("[data-glossary-status]")).toHaveText("172 itens");
   await page.locator("[data-glossary-query]").fill("inverso");
   await page.locator("[data-glossary-chapter]").selectOption("ch01");
   await expect(page.locator("[data-glossary-status]")).toHaveText("3 itens");
@@ -50,7 +50,7 @@ test("a capa e as páginas de descoberta navegam e filtram sem erros", async ({ 
   await expect(page.locator("#term-inverso-modular")).toBeFocused();
 
   await page.goto("/study/");
-  await expect(page.locator("[data-study-path]")).toHaveCount(9);
+  await expect(page.locator("[data-study-path]")).toHaveCount(10);
   await page.locator("[data-path-goal]").selectOption("algoritmos");
   await page.locator("[data-path-duration]").selectOption("medium");
   await expect(page.locator("[data-path-status]")).toHaveText("1 rota");
@@ -142,7 +142,7 @@ test("manifesto e instalação offline incluem o leitor completo desde a primeir
   expect(manifest.icons).toHaveLength(3);
   expect(manifest.shortcuts).toHaveLength(4);
   expect(manifest.shortcuts).toEqual(expect.arrayContaining([
-    expect.objectContaining({ name: "Abrir capítulo 3", url: "chapters/ch03/" }),
+    expect.objectContaining({ name: "Abrir capítulo 4", url: "chapters/ch04/" }),
   ]));
 
   const iconSizes = await page.evaluate(async () => Promise.all(
@@ -158,7 +158,7 @@ test("manifesto e instalação offline incluem o leitor completo desde a primeir
   await page.evaluate(() => navigator.serviceWorker.ready);
   await expect.poll(() => page.evaluate(() => Boolean(navigator.serviceWorker.controller))).toBe(true);
   const cached = await page.evaluate(async () => {
-    const cache = await caches.open("ebook-web-v5");
+    const cache = await caches.open("ebook-web-v6");
     return (await cache.keys()).map(({ url }) => url);
   });
   expect(cached.length).toBeGreaterThan(70);
@@ -166,6 +166,7 @@ test("manifesto e instalação offline incluem o leitor completo desde a primeir
   expect(cached.some((url) => /\/chapter\.[^/]+\.js$/.test(url))).toBe(true);
   expect(cached.some((url) => url.endsWith(".woff2"))).toBe(true);
   expect(cached.some((url) => url.endsWith("/chapters/ch03/"))).toBe(true);
+  expect(cached.some((url) => url.endsWith("/chapters/ch04/"))).toBe(true);
 
   await context.setOffline(true);
   await page.goto("/chapters/ch01/?offline=1#sec-1-3");
@@ -198,7 +199,7 @@ test("manifesto e instalação offline incluem o leitor completo desde a primeir
   await page.goto("/search/?q=privacidade");
   await expect(page).toHaveTitle(/Busca global/);
   await expect.poll(() => page.evaluate(async () => {
-    const cache = await caches.open("ebook-web-v5");
+    const cache = await caches.open("ebook-web-v6");
     return (await cache.keys()).some(({ url }) => new URL(url).search.length > 0);
   })).toBe(false);
   expect(errors).toEqual([]);

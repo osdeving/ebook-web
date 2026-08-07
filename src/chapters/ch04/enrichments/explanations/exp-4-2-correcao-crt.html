@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>A igualdade \(S^e\equiv D\pmod N\) precisa valer mesmo quando \(D\) é múltiplo de \(p\) ou \(q\). A prova mais transparente verifica separadamente os dois primos.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Expoente</span><p>Escolhemos \(de=1+t(p-1)(q-1)\) para algum inteiro \(t\). Logo \(S^e\equiv D^{de}\pmod N\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Módulo \(p\)</span><p>Se \(p\mid D\), então \(D^{de}\equiv D\equiv0\pmod p\). Se \(p\nmid D\), Fermat dá \(D^{p-1}\equiv1\), portanto \(D^{de}=D(D^{p-1})^{t(q-1)}\equiv D\pmod p\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Módulo \(q\)</span><p>O mesmo argumento produz \(D^{de}\equiv D\pmod q\), sem supor que \(D\) seja invertível módulo \(N\).</p></div>
+    <div class="step"><span class="step-tag theorem">Recomposição</span><p>Como \(p\) e \(q\) são coprimos, o Teorema Chinês do Resto implica \(D^{de}\equiv D\pmod{pq}\).</p></div>
+  </div>
+  <div class="quick-check"><p>Também basta impor \(de\equiv1\pmod{\lambda(N)}\), com \(\lambda(N)=\operatorname{lcm}(p-1,q-1)\). Esse módulo registra o período comum necessário, em vez do produto possivelmente redundante.</p></div>
+</div>

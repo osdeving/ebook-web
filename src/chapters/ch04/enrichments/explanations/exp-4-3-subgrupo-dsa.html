@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>DSA mantém a exponenciação em \(\mathbb F_p^\ast\), mas coloca a chave secreta e a assinatura em um subgrupo de ordem prima \(q\). A segurança genérica é governada por \(q\); a aritmética de campo também depende de \(p\).</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Parâmetros</span><p>Escolhem-se primos com \(q\mid p-1\) e um elemento \(g\) de ordem exatamente \(q\) módulo \(p\). Assim \(g^q\equiv1\pmod p\), mas \(g^r\not\equiv1\) para \(0\lt r\lt q\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Como obter \(g\)</span><p>Se \(h\in\mathbb F_p^\ast\), então \(g=h^{(p-1)/q}\bmod p\) satisfaz \(g^q=1\). É preciso rejeitar \(g=1\); como \(q\) é primo, qualquer outro resultado tem ordem \(q\).</p></div>
+    <div class="step"><span class="step-tag definition">Tamanhos</span><p>A chave \(a\), o nonce \(k\) e \((S_1,S_2)\) vivem módulo \(q\). Por isso a assinatura possui aproximadamente \(2\log_2 q\) bits, menor que dois elementos completos módulo \(p\).</p></div>
+  </div>
+  <div class="quick-check"><p>Um \(p\) grande não compensa um \(q\) minúsculo: uma busca genérica no subgrupo custa cerca de \(\sqrt q\). Por outro lado, \(q\) grande não elimina ataques específicos ao campo \(\mathbb F_p\).</p></div>
+</div>

@@ -1,0 +1,20 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 4.3">
+    <p class="graduated-help__intro">O exercício autoriza qualquer método de fatoração; divisão por candidatos até \(\sqrt N\) já basta neste tamanho.</p>
+    <details class="solution-hint"><summary>Dica 1 — Fatore primeiro</summary><p>Os fatores são próximos de \(10^5\). Uma busca encontra \(128311\mid N\).</p></details>
+    <details class="solution-hint"><summary>Dica 2 — Reconstrua \(d\)</summary><p>Depois de obter \(p,q\), calcule \(\varphi(N)\) e inverta \(e\) nesse módulo.</p></details>
+    <details class="solution-hint"><summary>Dica 3 — Forje e verifique</summary><p>Produza \(S=D^d\bmod N\) e confirme que \(S^e\bmod N=D\).</p></details>
+  </div>
+  <details class="solution-reveal"><summary>Ver solução completa</summary>
+    <p>A fatoração é</p>
+    <p>\[27212325191=128311\cdot212081.\]</p>
+    <p>Ambos os fatores são primos. Portanto,</p>
+    <p>\[\varphi(N)=128310\cdot212080=27211984800.\]</p>
+    <p>Invertendo o expoente público:</p>
+    <p>\[d\equiv22824469379^{-1}\equiv18408628619\pmod{27211984800}.\]</p>
+    <p>Com a chave privada reconstruída, a falsificação é</p>
+    <p>\[S\equiv12910258780^{18408628619}\equiv22054770669\pmod{27212325191}.\]</p>
+    <p>O teste público retorna \(22054770669^{22824469379}\equiv12910258780\pmod N\). Logo \(\boxed{S=22054770669}\) passa pela verificação.</p>
+    <p class="solution-caution"><strong>Interpretação:</strong> aqui “forjar” significa produzir uma assinatura matematicamente aceita sem a autorização de Samantha. Os números pequenos tornam a fatoração didática; não representam parâmetros atuais.</p>
+  </details>
+</div>

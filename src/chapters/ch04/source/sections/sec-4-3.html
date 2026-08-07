@@ -1,0 +1,186 @@
+<section class="chapter-section" id="sec-4-3">
+  <div class="section-heading">
+    <span class="section-number">4.3</span>
+    <h2>Assinaturas digitais Elgamal e DSA</h2>
+  </div>
+
+  <p>A passagem da cifragem RSA para as assinaturas digitais RSA, conforme descrita na <a href="#sec-4-2" data-source-xref>Seção 4.2</a>, é bastante direta. Isso não acontece com esquemas de cifragem baseados em logaritmos discretos, como o Elgamal (<a href="../ch02/#sec-2-4" data-source-xref>Seção 2.4</a>).</p>
+
+  <p>Um esquema de assinatura digital no estilo Elgamal foi proposto em 1985, e uma versão modificada chamada <em>Digital Signature Algorithm</em> (DSA), que permite assinaturas mais curtas, foi proposta em 1991 e publicada oficialmente como um <em>Digital Signature Standard</em> (DSS) nacional em 1994; veja <a href="../../references/#ref-98" data-source-xref>[98]</a>. Começamos com o esquema Elgamal, que é mais fácil de compreender, e depois explicamos como o DSA funciona.</p>
+
+  <p>Samantha, ou algum terceiro de confiança, escolhe um primo grande \(p\) e uma raiz primitiva \(g\) módulo \(p\). Em seguida, Samantha escolhe um expoente secreto de assinatura \(a\) e calcula</p>
+  <div class="equation">\[A\equiv g^a\pmod p.\]</div>
+  <p>A quantidade \(a\), junto com os parâmetros públicos \(p\) e \(g\), forma a chave pública de verificação de Samantha.</p>
+
+  <p>Suponha agora que Samantha queira assinar um documento digital \(D\), em que \(D\) é um inteiro que satisfaz \(1&lt;D&lt;p\). Ela escolhe um elemento aleatório \(1&lt;k&lt;p\) que satisfaz \(\gcd(k,p-1)=1\) e calcula as duas quantidades</p>
+  <div class="equation" id="eq-4-2"><span class="equation-number">(4.2)</span>\[S_1\equiv g^k\pmod p\qquad\text{e}\qquad S_2\equiv(D-aS_1)k^{-1}\pmod{p-1}.\]</div>
+  <p>Observe que \(S_2\) é calculado módulo \(p-1\), e não módulo \(p\). A assinatura digital de Samantha para o documento \(D\) é o par \((S_1,S_2)\).</p>
+
+  <p>Victor verifica a assinatura conferindo se</p>
+  <div class="equation">\[A^{S_1}S_1^{S_2}\bmod p\qquad\text{é igual a}\qquad g^D\bmod p.\]</div>
+  <p>O algoritmo de assinatura digital Elgamal está ilustrado na <a href="#tab-4-2" data-source-xref>Tabela 4.2</a>.</p>
+
+  <p>Por que o Elgamal funciona? Quando Victor calcula \(A^{S_1}S_1^{S_2}\), na realidade está calculando</p>
+  <div class="equation">\[
+    \begin{aligned}
+      A^{S_1}\cdot S_1^{S_2}
+        &amp;\equiv g^{aS_1}\cdot g^{kS_2}\\
+        &amp;\equiv g^{aS_1+kS_2}
+         \equiv g^{aS_1+k(D-aS_1)k^{-1}}
+         \equiv g^{aS_1+(D-aS_1)}
+         \equiv g^D\pmod p,
+    \end{aligned}
+  \]</div>
+  <p>de modo que a verificação devolve VERDADEIRO para uma assinatura válida.</p>
+
+  <p>Observe a importância de escolher \(S_2\) módulo \(p-1\). A quantidade \(S_2\) aparece como expoente de \(g\), e sabemos que \(g^{p-1}\equiv1\pmod p\); portanto, na expressão \(g^{S_2}\bmod p\), podemos substituir \(S_2\) por qualquer quantidade que seja congruente a \(S_2\) módulo \(p-1\).</p>
+
+  <p>Se Eva souber resolver o problema do logaritmo discreto, poderá resolver \(g^a\equiv A\pmod p\) para obter a chave privada de assinatura \(a\) de Samantha e, a partir daí, falsificar a assinatura de Samantha. Entretanto, não está nada claro que essa seja a única maneira de falsificar uma assinatura Elgamal. A tarefa de Eva é a seguinte. Dados os valores de \(A\) e \(g^D\), Eva precisa encontrar inteiros \(x\) e \(y\) que satisfaçam</p>
+  <div class="equation" id="eq-4-3"><span class="equation-number">(4.3)</span>\[A^x x^y\equiv g^D\pmod p.\]</div>
+  <p>A congruência <a href="#eq-4-3" data-source-xref>(4.3)</a> é bastante curiosa, pois a variável \(x\) aparece tanto como base quanto como expoente. Usando logaritmos discretos na base \(g\), podemos reescrever <a href="#eq-4-3" data-source-xref>(4.3)</a> como</p>
+  <div class="equation" id="eq-4-4"><span class="equation-number">(4.4)</span>\[\log_g(A)x+y\log_g(x)\equiv D\pmod{p-1}.\]</div>
+
+  <div class="table-wrap" id="tab-4-2">
+    <table class="protocol-table">
+      <caption><span class="label">Tabela 4.2.</span> O algoritmo de assinatura digital Elgamal.</caption>
+      <thead>
+        <tr class="phase"><th colspan="2">Criação dos parâmetros públicos</th></tr>
+        <tr><td colspan="2">Um terceiro de confiança escolhe e publica um primo grande \(p\)<br>e uma raiz primitiva \(g\) módulo \(p\).</td></tr>
+        <tr><th>Samantha</th><th>Victor</th></tr>
+      </thead>
+      <tbody>
+        <tr class="phase"><th colspan="2">Criação das chaves</th></tr>
+        <tr>
+          <td>Escolhe a chave secreta de assinatura<br>\(1\le a\le p-1\).<br>Calcula \(A=g^a\pmod p\).<br>Publica a chave de verificação \(A\).</td>
+          <td></td>
+        </tr>
+        <tr class="phase"><th colspan="2">Assinatura</th></tr>
+        <tr>
+          <td>Escolhe o documento \(D\) módulo \(p\).<br>Escolhe um elemento aleatório \(1&lt;k&lt;p\)<br>que satisfaz \(\gcd(k,p-1)=1\).<br>Calcula a assinatura<br>\(S_1\equiv g^k\pmod p\) e<br>\(S_2\equiv(D-aS_1)k^{-1}\pmod{p-1}\).</td>
+          <td></td>
+        </tr>
+        <tr class="phase"><th colspan="2">Verificação</th></tr>
+        <tr>
+          <td></td>
+          <td>Calcula \(A^{S_1}S_1^{S_2}\bmod p\).<br>Verifica se o resultado é igual a \(g^D\bmod p\).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Se Eva conseguir resolver o problema do logaritmo discreto, poderá tomar um valor arbitrário para \(x\), calcular \(\log_g(A)\) e \(\log_g(x)\) e, em seguida, resolver <a href="#eq-4-4" data-source-xref>(4.4)</a> para \(y\). Atualmente, esse é o único método conhecido para encontrar uma solução de <a href="#eq-4-4" data-source-xref>(4.4)</a>.</p>
+
+  <aside class="semantic remark" id="obs-4-6">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">4.6</span></div>
+    <p>Há muitas sutilezas associadas ao uso de um esquema de assinatura digital aparentemente seguro, como o Elgamal. Veja os <a href="#exercicio-4-7" data-source-xref>Exercícios 4.7</a> e <a href="#exercicio-4-8" data-source-xref>4.8</a> para alguns exemplos do que pode dar errado.</p>
+  </aside>
+
+  <div class="semantic example" id="exemplo-4-7">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">4.7</span></div>
+    <p>Samantha escolhe o primo \(p=21739\) e a raiz primitiva \(g=7\). Ela escolhe a chave secreta de assinatura \(a=15140\) e calcula sua chave pública de verificação</p>
+    <div class="equation">\[A\equiv g^a\equiv7^{15140}\equiv17702\pmod{21739}.\]</div>
+    <p>Ela assina o documento digital \(D=5331\) usando o elemento aleatório \(k=10727\), calculando</p>
+    <div class="equation">\[
+      \begin{aligned}
+        S_1&amp;\equiv g^k\equiv7^{10727}\equiv15775\pmod{21739},\\
+        S_2&amp;\equiv(D-aS_1)k^{-1}
+          \equiv(5331-15140\cdot15775)\cdot6353
+          \equiv791\pmod{21738}.
+      \end{aligned}
+    \]</div>
+    <p>Samantha publica a assinatura \((S_1,S_2)=(15775,791)\) e o documento digital \(D=5331\). Victor verifica a assinatura calculando</p>
+    <div class="equation">\[A^{S_1}S_1^{S_2}\equiv17702^{15775}\cdot15775^{791}\equiv13897\pmod{21739}\]</div>
+    <p>e conferindo se o resultado coincide com</p>
+    <div class="equation">\[g^D\equiv7^{5331}\equiv13897\pmod{21739}.\]</div>
+  </div>
+
+  <p>Uma assinatura Elgamal \((S_1,S_2)\) consiste em um número módulo \(p\) e um número módulo \(p-1\), portanto tem comprimento aproximado de \(2\log_2(p)\) bits. Para oferecer segurança contra ataques de cálculo de índices ao problema do logaritmo discreto, o primo \(p\) em geral é escolhido com tamanho entre \(1000\) e \(2000\) bits; assim, as assinaturas têm entre \(2000\) e \(4000\) bits.</p>
+
+  <p>O <em>Digital Signature Algorithm</em> (DSA) encurta significativamente a assinatura trabalhando em um subgrupo de \(\mathbb F_p^*\) de ordem prima \(q\). A hipótese subjacente é que usar o cálculo de índices para resolver o problema do logaritmo discreto no subgrupo não é mais fácil do que resolvê-lo em \(\mathbb F_p^*\). Portanto, basta tomar um subgrupo no qual seja inviável resolver o problema do logaritmo discreto usando um algoritmo de colisão. Descrevemos agora os detalhes do DSA.</p>
+
+  <p>Samantha, ou algum terceiro de confiança, escolhe dois primos \(p\) e \(q\) tais que</p>
+  <div class="equation">\[p\equiv1\pmod q.\]</div>
+  <p>(Na prática, escolhas típicas satisfazem \(2^{1000}&lt;p&lt;2^{2000}\) e \(2^{160}&lt;q&lt;2^{320}\).) Ela também escolhe um elemento \(g\in\mathbb F_p^*\) de ordem exatamente \(q\). Isso é fácil de fazer. Por exemplo, ela pode tomar</p>
+  <div class="equation">\[g=g_1^{(p-1)/q}\qquad\text{para uma raiz primitiva }g_1\text{ em }\mathbb F_p.\]</div>
+
+  <p>Samantha escolhe um expoente secreto \(a\) e calcula</p>
+  <div class="equation">\[A\equiv g^a\pmod p.\]</div>
+  <p>A quantidade \(A\), junto com os parâmetros públicos \((p,q,g)\), forma a chave pública de verificação de Samantha.</p>
+
+  <p>Suponha agora que Samantha queira assinar um documento digital \(D\), em que \(D\) é um inteiro que satisfaz \(1\le D&lt;q\). Ela escolhe um elemento aleatório \(k\) no intervalo \(1&lt;k&lt;q\) e calcula as duas quantidades</p>
+  <div class="equation" id="eq-4-5"><span class="equation-number">(4.5)</span>\[S_1=(g^k\bmod p)\bmod q\qquad\text{e}\qquad S_2\equiv(D+aS_1)k^{-1}\pmod q.\]</div>
+  <p>Observe a semelhança entre <a href="#eq-4-5" data-source-xref>(4.5)</a> e a assinatura Elgamal <a href="#eq-4-2" data-source-xref>(4.2)</a>. Entretanto, há uma diferença importante, pois, ao calcular \(S_1\) em <a href="#eq-4-5" data-source-xref>(4.5)</a>, Samantha primeiro calcula \(g^k\bmod p\) como um inteiro no intervalo de \(1\) a \(p-1\) e depois o reduz módulo \(q\) para obter um inteiro no intervalo de \(1\) a \(q-1\). A assinatura digital de Samantha para o documento \(D\) é o par \((S_1,S_2)\), portanto a assinatura consiste em dois números módulo \(q\).</p>
+
+  <p>Victor verifica a assinatura calculando primeiro</p>
+  <div class="equation">\[V_1\equiv DS_2^{-1}\pmod q\qquad\text{e}\qquad V_2\equiv S_1S_2^{-1}\pmod q.\]</div>
+  <p>Em seguida, confere se</p>
+  <div class="equation">\[(g^{V_1}A^{V_2}\bmod p)\bmod q\qquad\text{é igual a}\qquad S_1.\]</div>
+  <p>O algoritmo de assinatura digital (DSA) está ilustrado na <a href="#tab-4-3" data-source-xref>Tabela 4.3</a>.</p>
+
+  <div class="table-wrap" id="tab-4-3">
+    <table class="protocol-table">
+      <caption><span class="label">Tabela 4.3.</span> O algoritmo de assinatura digital (DSA).</caption>
+      <thead>
+        <tr class="phase"><th colspan="2">Criação dos parâmetros públicos</th></tr>
+        <tr><td colspan="2">Um terceiro de confiança escolhe e publica primos grandes \(p\) e \(q\) que satisfazem<br>\(p\equiv1\pmod q\) e um elemento \(g\) de ordem \(q\) módulo \(p\).</td></tr>
+        <tr><th>Samantha</th><th>Victor</th></tr>
+      </thead>
+      <tbody>
+        <tr class="phase"><th colspan="2">Criação das chaves</th></tr>
+        <tr>
+          <td>Escolhe a chave secreta de assinatura<br>\(1\le a\le q-1\).<br>Calcula \(A=g^a\pmod p\).<br>Publica a chave de verificação \(A\).</td>
+          <td></td>
+        </tr>
+        <tr class="phase"><th colspan="2">Assinatura</th></tr>
+        <tr>
+          <td>Escolhe o documento \(D\) módulo \(q\).<br>Escolhe um elemento aleatório \(1&lt;k&lt;q\).<br>Calcula a assinatura<br>\(S_1\equiv(g^k\bmod p)\bmod q\) e<br>\(S_2\equiv(D+aS_1)k^{-1}\pmod q\).</td>
+          <td></td>
+        </tr>
+        <tr class="phase"><th colspan="2">Verificação</th></tr>
+        <tr>
+          <td></td>
+          <td>Calcula \(V_1\equiv DS_2^{-1}\pmod q\) e<br>\(V_2\equiv S_1S_2^{-1}\pmod q\).<br>Verifica se<br>\((g^{V_1}A^{V_2}\bmod p)\bmod q=S_1\).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>O DSA parece um tanto complicado, mas é fácil verificar que funciona. Assim, Victor calcula</p>
+  <div class="equation">\[
+    \begin{aligned}
+      g^{V_1}A^{V_2}\pmod p
+        &amp;\equiv g^{DS_2^{-1}}g^{aS_1S_2^{-1}}
+        &amp;&amp;\text{pois }V_1\equiv DS_2^{-1},\ V_2\equiv S_1S_2^{-1}\text{ e }A\equiv g^a,\\
+        &amp;\equiv g^{(D+aS_1)S_2^{-1}}\pmod p,\\
+        &amp;\equiv g^k\pmod p
+        &amp;&amp;\text{pois }S_2\equiv(D+aS_1)k^{-1}.
+    \end{aligned}
+  \]</div>
+  <p>Portanto,</p>
+  <div class="equation">\[(g^{V_1}A^{V_2}\bmod p)\bmod q=(g^k\bmod p)\bmod q=S_1.\]</div>
+
+  <div class="semantic example" id="exemplo-4-8">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">4.8</span></div>
+    <p>Ilustramos o DSA com um pequeno exemplo numérico. Samantha usa os parâmetros públicos</p>
+    <div class="equation">\[p=48731,\qquad q=443,\qquad\text{e}\qquad g=5260.\]</div>
+    <p>(O elemento \(g\) foi calculado como \(g\equiv7^{48730/443}\pmod{48731}\), em que \(7\) é uma raiz primitiva módulo \(48731\).) Samantha escolhe a chave secreta de assinatura \(a=242\) e publica sua chave pública de verificação</p>
+    <div class="equation">\[A\equiv5260^{242}\equiv3438\pmod{48731}.\]</div>
+    <p>Ela assina o documento \(D=343\) usando o elemento aleatório \(k=427\), calculando as duas quantidades</p>
+    <div class="equation">\[
+      \begin{aligned}
+        S_1&amp;=(5260^{427}\bmod48731)\bmod443=2727\bmod443=59,\\
+        S_2&amp;\equiv(343+343\cdot59)427^{-1}\equiv166\pmod{443}.
+      \end{aligned}
+    \]</div>
+    <p>Samantha publica a assinatura \((S_1,S_2)=(59,166)\) para o documento \(D=343\).</p>
+    <p>Victor verifica a assinatura calculando primeiro</p>
+    <div class="equation">\[V_1\equiv343\cdot166^{-1}\equiv357\pmod{443}\qquad\text{e}\qquad V_2\equiv59\cdot166^{-1}\equiv414\pmod{443}.\]</div>
+    <p>Em seguida, ele calcula</p>
+    <div class="equation">\[g^{V_1}A^{V_2}\equiv5260^{357}\cdot3438^{414}\equiv2717\pmod{48731}\]</div>
+    <p>e confere se</p>
+    <div class="equation">\[(g^{V_1}A^{V_2}\bmod48731)\bmod443=2717\bmod443=59\]</div>
+    <p>é igual a \(S_1=59\).</p>
+  </div>
+
+  <p>Tanto o esquema de assinatura digital Elgamal quanto o DSA podem ser adaptados a outros grupos nos quais o problema do logaritmo discreto seja aparentemente mais difícil de resolver. Em particular, o uso de grupos de curvas elípticas leva ao <em>Elliptic Curve Digital Signature Algorithm</em> (ECDSA), descrito na Seção 6.4.3.</p>
+</section>

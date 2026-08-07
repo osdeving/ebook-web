@@ -1,0 +1,11 @@
+<div class="explanation-body">
+  <div class="mental-model">
+    <p><strong>Perguntas diferentes pedem garantias diferentes.</strong> Cifrar pergunta “quem consegue ler?”. Assinar pergunta “quem autorizou estes bytes, e eles ainda são os mesmos?”. Uma operação não substitui a outra.</p>
+  </div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Confidencialidade</span><p>Na cifração de chave pública, qualquer remetente usa a chave pública de Bob para produzir \(c\); só Bob usa a chave privada para recuperar \(m\). O destinatário é o centro do contrato.</p></div>
+    <div class="step"><span class="step-tag definition">Autenticidade e integridade</span><p>Na assinatura, Samantha usa sua chave privada para produzir \(\sigma\); qualquer verificador usa a chave pública associada a Samantha para decidir se \((m,\sigma)\) é aceito. O signatário é o centro do contrato.</p></div>
+    <div class="step"><span class="step-tag manipulation">Teste de direção</span><p>Enviar uma mensagem cifrada para Bob não identifica o remetente, pois a chave de cifração é pública. Publicar uma assinatura não esconde a mensagem, pois a verificação deve ser pública.</p></div>
+  </div>
+  <div class="quick-check"><p><strong>Cheque:</strong> quem recebe documento e assinatura para verificar não ganha sigilo: a assinatura comum não esconde \(m\). O documento pode circular separadamente; para sigilo e autoria, o protocolo compõe assinatura e cifração com regras explícitas.</p></div>
+</div>

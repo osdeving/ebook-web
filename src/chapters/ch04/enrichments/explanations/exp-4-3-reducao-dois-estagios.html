@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>A definição \[S_1=(g^k\bmod p)\bmod q\] contém duas reduções ordenadas. Não é lícito trocar por \(g^k\bmod q\).</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag manipulation">Exponencie no grupo</span><p>Primeiro calcule \(R=g^k\bmod p\). Esse \(R\) representa um elemento do subgrupo de \(\mathbb F_p^\ast\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Codifique como componente curto</span><p>Depois tome o inteiro canônico \(R\in\{1,\ldots,p-1\}\) e calcule \(S_1=R\bmod q\).</p></div>
+    <div class="step"><span class="step-tag theorem">Por que não comuta</span><p>A aplicação “representante módulo \(p\), depois resto módulo \(q\)” não é um homomorfismo que permita substituir a base ou o módulo da exponenciação. Em geral, \((g^k\bmod p)\bmod q\ne g^k\bmod q\).</p></div>
+  </div>
+  <div class="quick-check"><p>Com os parâmetros do exemplo, \(g^k\bmod p=2717\) e \(2717\bmod443=59\). O original impresso troca \(2717\) por \(2727\); essa errata é detalhada no painel editorial específico. Calcular \(5260^{427}\bmod443\) é outra operação e não define \(S_1\).</p></div>
+</div>

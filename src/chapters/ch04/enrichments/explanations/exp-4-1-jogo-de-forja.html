@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>“Não descobrir a chave privada” é uma meta insuficiente. Um adversário vence se produzir <em>uma nova mensagem com uma assinatura válida</em>, mesmo sem jamais aprender o segredo.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Oráculo de assinatura</span><p>O adversário pode solicitar assinaturas de mensagens escolhidas por ele, adaptando a próxima escolha às respostas anteriores. Isso modela uma API de assinatura usada muitas vezes.</p></div>
+    <div class="step"><span class="step-tag definition">Transcrição</span><p>O histórico \((m_1,\sigma_1),\ldots,(m_t,\sigma_t)\) é informação pública. Segurança deve sobreviver a essa exposição normal do sistema.</p></div>
+    <div class="step"><span class="step-tag theorem">Vitória</span><p>O adversário entrega \((m^\star,\sigma^\star)\) com \(m^\star\notin\{m_1,\ldots,m_t\}\) e verificação válida. Essa meta é chamada, em linguagem moderna, de não falsificabilidade existencial sob ataque adaptativo de mensagem escolhida.</p></div>
+  </div>
+  <div class="quick-check"><p><strong>Por que “existencial”?</strong> O atacante não precisa assinar a mensagem mais valiosa; basta conseguir qualquer mensagem nova. O Exercício 4.7 mostra exatamente por que essa distinção importa.</p></div>
+</div>

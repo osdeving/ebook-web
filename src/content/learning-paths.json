@@ -96,7 +96,7 @@
     "id": "maratona-exercicios",
     "title": "Maratona de exercícios",
     "tagline": "Pratique em blocos, com dicas antes da solução",
-    "description": "Seleção crescente de problemas textuais dos três capítulos, organizada por objetivo e não apenas por numeração.",
+    "description": "Seleção crescente de problemas textuais dos quatro capítulos, organizada por objetivo e não apenas por numeração.",
     "level": "Todos os níveis",
     "duration": "Flexível",
     "goal": "exercicios",
@@ -110,7 +110,8 @@
       { "title": "Anéis, polinômios e corpos", "why": "Consolide as estruturas algébricas de maior abstração.", "href": "chapters/ch02/#exercicio-2-30", "type": "Exercícios 2.30–2.41" },
       { "title": "RSA e primalidade", "why": "Conecte potências modulares, geração de chaves e testes de primos.", "href": "chapters/ch03/#exercicio-3-1", "type": "Exercícios 3.1–3.21" },
       { "title": "Fatoração e crivos", "why": "Passe de métodos elementares à coleta de relações suaves.", "href": "chapters/ch03/#exercicio-3-22", "type": "Exercícios 3.22–3.33" },
-      { "title": "Resíduos e cifragem probabilística", "why": "Feche com reciprocidade quadrática e Goldwasser–Micali.", "href": "chapters/ch03/#exercicio-3-34", "type": "Exercícios 3.34–3.43" }
+      { "title": "Resíduos e cifragem probabilística", "why": "Consolide reciprocidade quadrática e Goldwasser–Micali.", "href": "chapters/ch03/#exercicio-3-34", "type": "Exercícios 3.34–3.43" },
+      { "title": "Assinaturas digitais", "why": "Feche com RSA, Elgamal, DSA e falhas de nonce.", "href": "chapters/ch04/#exercicio-4-1", "type": "Exercícios 4.1–4.11" }
     ]
   },
   {
@@ -129,7 +130,8 @@
       { "title": "Examine a maleabilidade", "why": "Descubra por que RSA cru não oferece segurança sem uma construção adequada.", "href": "chapters/ch03/#sec-3-3", "type": "Leitura e laboratório" },
       { "title": "Gere primos com confiança", "why": "Teste candidatos e quantifique a chance residual de erro.", "href": "chapters/ch03/#sec-3-4", "type": "Leitura e laboratório" },
       { "title": "Compare com a especificação moderna", "why": "Confronte o modelo didático com codificação e padding padronizados.", "href": "chapters/ch03/#reading-3-rsa-padroes", "type": "Leitura externa" },
-      { "title": "Resolva um ciclo completo", "why": "Consolide geração, cifragem, decifragem e justificativa.", "href": "chapters/ch03/#exercicio-3-5", "type": "Exercício" }
+      { "title": "Resolva um ciclo completo", "why": "Consolide geração, cifragem, decifragem e justificativa.", "href": "chapters/ch03/#exercicio-3-5", "type": "Exercício" },
+      { "title": "Reaproveite a armadilha para assinar", "why": "Compare a transformação RSA usada para confidencialidade com a usada para autenticidade.", "href": "chapters/ch04/#sec-4-2", "type": "Leitura e laboratório" }
     ]
   },
   {
@@ -167,6 +169,25 @@
       { "title": "Compare cifragem determinística e aleatória", "why": "Veja por que repetir a mensagem não precisa repetir o criptograma.", "href": "chapters/ch03/#sec-3-10", "type": "Leitura" },
       { "title": "Execute Goldwasser–Micali", "why": "Acompanhe resíduos, não resíduos e decifragem bit a bit.", "href": "chapters/ch03/#exemplo-3-70", "type": "Exemplo e laboratório" },
       { "title": "Teste a distribuição", "why": "Experimente muitas aleatoriedades para a mesma mensagem.", "href": "chapters/ch03/#lab-3-10-goldwasser-micali", "type": "Laboratório" }
+    ]
+  },
+  {
+    "id": "assinaturas-digitais",
+    "title": "Quero entender assinaturas digitais",
+    "tagline": "Autenticidade pública sem revelar o segredo",
+    "description": "Percurso que separa assinatura de cifragem, constrói RSA, Elgamal e DSA e mostra por que hash, parâmetros e nonces são parte da segurança.",
+    "level": "Intermediário",
+    "duration": "4–6 horas",
+    "goal": "assinaturas",
+    "steps": [
+      { "title": "Separe sigilo de autenticidade", "why": "Entenda o problema específico resolvido por uma assinatura digital.", "href": "chapters/ch04/#sec-4-1", "type": "Leitura e explicação" },
+      { "title": "Assine o resumo, não o arquivo inteiro", "why": "Relacione eficiência, vinculação ao documento e resistência a colisões.", "href": "chapters/ch04/#sec-4-1", "type": "Explicação e laboratório" },
+      { "title": "Relembre a transformação RSA", "why": "Use a inversão modular construída no capítulo anterior.", "href": "chapters/ch03/#sec-3-2", "type": "Pré-requisito" },
+      { "title": "Assine e verifique com RSA", "why": "Acompanhe a correção algébrica e a diferença entre expoentes de assinatura e verificação.", "href": "chapters/ch04/#sec-4-2", "type": "Leitura e laboratório" },
+      { "title": "Passe ao logaritmo discreto", "why": "Veja por que assinar com Elgamal não é apenas inverter a cifragem.", "href": "chapters/ch04/#sec-4-3", "type": "Leitura e laboratório" },
+      { "title": "Comprima a assinatura com DSA", "why": "Entenda o papel do subgrupo de ordem prima q.", "href": "chapters/ch04/#sec-4-3", "type": "Explicação e laboratório" },
+      { "title": "Reutilize k e quebre a chave", "why": "Observe como duas assinaturas transformam um nonce repetido em equações solucionáveis.", "href": "chapters/ch04/#exercicio-4-8", "type": "Exercício e laboratório" },
+      { "title": "Compare com padrões atuais", "why": "Distinga os esquemas didáticos das codificações e recomendações de produção.", "href": "chapters/ch04/#sec-4-3", "type": "Leitura externa" }
     ]
   }
 ]

@@ -1,4 +1,5 @@
 import { listen } from "./dom";
+import { renderMath } from "./math";
 import type { ReaderTargetPreview } from "./types";
 
 export interface CrossReferencePreviewOptions {
@@ -45,6 +46,11 @@ export function mountCrossReferencePreviews(options: CrossReferencePreviewOption
     kind.textContent = preview.kind;
     title.textContent = preview.title;
     excerpt.textContent = preview.excerpt;
+    // A prévia nasce depois da passagem inicial do KaTeX pelo artigo. Como os
+    // valores entram como texto (e nunca como HTML), renderizamos apenas o DOM
+    // editorial recém-preenchido. Uma nova prévia substitui `textContent`, o
+    // que também remove a renderização anterior antes desta nova passagem.
+    renderMath(popover);
     link.setAttribute("aria-describedby", popover.id);
     popover.hidden = false;
     positionPopover(popover, link);

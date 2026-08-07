@@ -1,0 +1,100 @@
+<section class="chapter-section" id="sec-4-2">
+  <div class="section-heading">
+    <span class="section-number">4.2</span>
+    <h2>Assinaturas digitais RSA</h2>
+  </div>
+
+  <p>O artigo original sobre RSA descreveu tanto o esquema de cifragem RSA quanto um esquema de assinatura digital RSA. A ideia é muito simples. A preparação é a mesma que para a <a href="../ch03/#sec-3-2" data-source-xref>cifragem RSA</a>: Samantha escolhe dois primos secretos grandes \(p\) e \(q\) e publica seu produto \(N=pq\) e um expoente público de verificação \(e\). Samantha usa seu conhecimento da fatoração de \(N\) para resolver a congruência</p>
+  <div class="equation" id="eq-4-1"><span class="equation-number">(4.1)</span>\[de\equiv1\pmod{(p-1)(q-1)}.\]</div>
+
+  <p>Observe que, se Samantha estivesse fazendo cifragem RSA, então \(e\) seria seu expoente de cifragem e \(d\) seria seu expoente de decifração. Entretanto, na configuração atual, \(d\) é seu expoente de assinatura e \(e\) é seu expoente de verificação.</p>
+
+  <p>Para assinar um documento digital \(D\), que supomos ser um inteiro no intervalo \(1&lt;D&lt;N\), Samantha calcula</p>
+  <div class="equation">\[S\equiv D^d\pmod N.\]</div>
+
+  <div class="table-wrap" id="tab-4-1">
+    <table class="protocol-table">
+      <caption><span class="label">Tabela 4.1.</span> Assinaturas digitais RSA.</caption>
+      <thead>
+        <tr><th>Samantha</th><th>Victor</th></tr>
+      </thead>
+      <tbody>
+        <tr class="phase"><th colspan="2">Criação das chaves</th></tr>
+        <tr>
+          <td>Escolhe os primos secretos \(p\) e \(q\).<br>Escolhe o expoente de verificação \(e\) com<br>\(\gcd(e,(p-1)(q-1))=1\).<br>Publica \(N=pq\) e \(e\).</td>
+          <td></td>
+        </tr>
+        <tr class="phase"><th colspan="2">Assinatura</th></tr>
+        <tr>
+          <td>Calcula \(d\) satisfazendo<br>\(de\equiv1\pmod{(p-1)(q-1)}\).<br>Assina o documento \(D\) calculando<br>\(S\equiv D^d\pmod N\).</td>
+          <td></td>
+        </tr>
+        <tr class="phase"><th colspan="2">Verificação</th></tr>
+        <tr>
+          <td></td>
+          <td>Calcula \(S^e\bmod N\) e verifica<br>se o resultado é igual a \(D\).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Victor verifica a validade da assinatura \(S\) de \(D\) calculando</p>
+  <div class="equation">\[S^e\bmod N\]</div>
+  <p>e conferindo se o resultado é igual a \(D\). Esse processo funciona porque a fórmula de Euler (<a href="../ch03/#teorema-3-1" data-source-xref>Teorema 3.1</a>) nos diz que</p>
+  <div class="equation">\[S^e\equiv D^{de}\equiv D\pmod N.\]</div>
+  <p>O esquema de assinatura digital RSA está resumido na <a href="#tab-4-1" data-source-xref>Tabela 4.1</a>.</p>
+
+  <p>Se Eva conseguir fatorar \(N\), poderá resolver <a href="#eq-4-1" data-source-xref>(4.1)</a> para obter a chave secreta de assinatura \(d\) de Samantha. Entretanto, assim como na cifragem RSA, o problema difícil subjacente às assinaturas digitais RSA não é diretamente o problema da fatoração. Para falsificar uma assinatura de um documento \(D\), Eva precisa encontrar uma raiz \(e\)-ésima de \(D\) módulo \(N\). Esse problema é idêntico ao problema difícil subjacente à decifração RSA, na qual o texto claro é a raiz \(e\)-ésima do texto cifrado.</p>
+
+  <aside class="semantic remark" id="obs-4-4">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">4.4</span></div>
+    <p>Assim como na cifragem RSA, pode-se obter um pouco de eficiência escolhendo \(d\) e \(e\) de modo que satisfaçam</p>
+    <div class="equation">\[de\equiv1\pmod{\dfrac{(p-1)(q-1)}{\gcd(p-1,q-1)}}.\]</div>
+    <p>O <a href="../ch03/#teorema-3-1" data-source-xref>Teorema 3.1</a> garante que a etapa de verificação continua funcionando.</p>
+  </aside>
+
+  <div class="semantic example" id="exemplo-4-5">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">4.5</span></div>
+    <p>Ilustramos o esquema de assinatura digital RSA com um pequeno exemplo numérico.</p>
+
+    <h3>Criação das chaves de assinatura RSA</h3>
+    <ul>
+      <li>
+        <p>Samantha escolhe dois primos secretos \(p=1223\) e \(q=1987\) e calcula seu módulo público</p>
+        <div class="equation">\[N=p\cdot q=1223\cdot1987=2430101.\]</div>
+      </li>
+      <li>
+        <p>Samantha escolhe um expoente público de verificação \(e=948047\) com a propriedade</p>
+        <div class="equation">\[\gcd\bigl(e,(p-1)(q-1)\bigr)=\gcd(948047,2426892)=1.\]</div>
+      </li>
+    </ul>
+
+    <h3>Assinatura RSA</h3>
+    <ul>
+      <li>
+        <p>Samantha calcula sua chave privada de assinatura \(d\), usando os valores secretos de \(p\) e \(q\) para calcular \((p-1)(q-1)=1222\cdot1986=2426892\) e, em seguida, resolvendo a congruência</p>
+        <div class="equation">\[ed\equiv1\pmod{(p-1)(q-1)},\qquad948047\cdot d\equiv1\pmod{2426892}.\]</div>
+        <p>Ela encontra \(d=1051235\).</p>
+      </li>
+      <li>
+        <p>Samantha escolhe um documento digital para assinar,</p>
+        <div class="equation">\[D=1070777\qquad\text{com}\qquad1\le D&lt;N.\]</div>
+        <p>Ela calcula a assinatura digital</p>
+        <div class="equation">\[S\equiv D^d\pmod N,\qquad S\equiv1070777^{1051235}\equiv153337\pmod{2430101}.\]</div>
+      </li>
+      <li>
+        <p>Samantha publica o documento e a assinatura</p>
+        <div class="equation">\[D=1070777\qquad\text{e}\qquad S=153337.\]</div>
+      </li>
+    </ul>
+
+    <h3>Verificação RSA</h3>
+    <ul>
+      <li>
+        <p>Victor usa o módulo público \(N\) e o expoente de verificação \(e\) de Samantha para calcular</p>
+        <div class="equation">\[S^e\bmod N,\qquad153337^{948047}\equiv1070777\pmod{2430101}.\]</div>
+        <p>Ele verifica que o valor de \(S^e\) módulo \(N\) é igual ao valor do documento digital \(D=1070777\).</p>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Uma assinatura cega separa duas capacidades: o signatário autoriza um item sem aprender seu conteúdo; depois, qualquer verificador reconhece a assinatura sobre o item revelado.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Cegar</span><p>O usuário transforma \(m\) em \(\widetilde m\) com aleatoriedade secreta. Para o signatário, diferentes mensagens cegadas não devem ser vinculáveis aos originais.</p></div>
+    <div class="step"><span class="step-tag manipulation">Assinar</span><p>O signatário aplica sua operação privada a \(\widetilde m\), geralmente depois de verificar regras externas de autorização.</p></div>
+    <div class="step"><span class="step-tag manipulation">Descegar</span><p>O usuário remove o fator de cegamento e obtém \(\sigma\), válida sobre \(m\), sem pedir uma segunda interação.</p></div>
+    <div class="step"><span class="step-tag theorem">Tensão de protocolo</span><p>Privacidade não significa ausência de controles: dinheiro eletrônico e votação também precisam impedir gasto ou voto duplicado, coerção e mensagens malformadas.</p></div>
+  </div>
+  <div class="quick-check"><p>A propriedade nova não é “assinatura secreta”. A assinatura final continua verificável; o que fica oculto durante a emissão é a ligação entre o ato de assinar e o conteúdo posteriormente apresentado.</p></div>
+</div>

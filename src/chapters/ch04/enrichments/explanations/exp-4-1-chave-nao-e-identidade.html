@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>A verificação responde “esta assinatura corresponde a esta chave pública?”. Ela não responde sozinha “esta chave pertence a Samantha?”. Essa segunda afirmação vem de um sistema de confiança.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Validade matemática</span><p>Parâmetros e chave pública precisam pertencer ao conjunto correto: módulo, grupo, subgrupo, intervalos e ordem devem passar por validações.</p></div>
+    <div class="step"><span class="step-tag definition">Posse</span><p>Também pode ser necessário demonstrar que a entidade registrada possui a chave privada correspondente, sem revelá-la.</p></div>
+    <div class="step"><span class="step-tag definition">Vínculo de identidade</span><p>Certificados, diretórios autenticados, transparência de chaves ou verificação fora de banda associam nome, finalidade, período de validade e chave.</p></div>
+    <div class="step"><span class="step-tag theorem">Decisão de confiança</span><p>Uma assinatura válida de uma chave expirada, revogada ou autorizada para outra finalidade pode ser matematicamente correta e operacionalmente inaceitável.</p></div>
+  </div>
+  <div class="quick-check"><p>“Não repúdio” não nasce apenas de uma congruência: políticas, custódia da chave, carimbo de tempo, auditoria e legislação influenciam o valor probatório. A matemática fornece evidência de uso da chave, não uma explicação humana automática de intenção.</p></div>
+</div>

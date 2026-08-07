@@ -1,0 +1,87 @@
+<section class="chapter-section" id="sec-4-1">
+  <div class="section-heading">
+    <span class="section-number">4.1</span>
+    <h2>O que é uma assinatura digital?</h2>
+  </div>
+
+  <p>Os esquemas de cifragem, sejam simétricos ou assimétricos, resolvem o problema da comunicação segura por uma rede insegura. As assinaturas digitais resolvem um problema diferente, análogo à finalidade de uma assinatura feita a tinta em um documento físico. Por isso, é interessante que as ferramentas usadas para construir assinaturas digitais sejam muito semelhantes às ferramentas usadas para construir cifras assimétricas.</p>
+
+  <p>Eis o problema exato que uma assinatura digital deve resolver. Samantha<sup id="fnref-4-1-1"><a href="#fn-4-1-1" data-source-xref>1</a></sup> possui um documento (digital) \(D\), por exemplo, um arquivo de computador, e quer criar alguma informação adicional \(D_{\mathrm{Sam}}\) que possa ser usada para provar de modo conclusivo que a própria Samantha aprova o documento. Assim, você pode considerar a assinatura digital \(D_{\mathrm{Sam}}\) de Samantha análoga à assinatura real dela em um documento comum de papel.</p>
+
+  <p>Para contrastar a finalidade e o funcionamento dos criptossistemas de chave pública (assimétricos) com os das assinaturas digitais, consideramos uma analogia com cofres de depósito bancário e anéis de sinete. Um cofre de depósito bancário possui uma abertura estreita (a “chave pública de cifragem”) pela qual qualquer pessoa pode depositar um envelope, mas somente quem conhece a combinação (a “chave privada de decifração”) da fechadura do cofre consegue abri-lo e ler a mensagem. Assim, um criptossistema de chave pública é uma versão digital de um cofre de depósito bancário. Um anel de sinete (a “chave privada de assinatura”) é um anel que possui uma imagem gravada em baixo-relevo. O proprietário pinga um pouco de cera de uma vela sobre seu documento e pressiona o anel contra a cera para produzir uma impressão (a “assinatura pública”). Qualquer pessoa que examine o documento pode verificar que a impressão na cera foi feita pelo proprietário do anel de sinete, mas somente o proprietário do anel consegue produzir impressões válidas.<sup id="fnref-4-1-2"><a href="#fn-4-1-2" data-source-xref>2</a></sup> Assim, pode-se considerar um sistema de assinatura digital uma versão moderna de um anel de sinete.</p>
+
+  <figure class="figure" id="fig-4-1">
+    <div class="table-wrap">
+      <table aria-label="Os dois componentes de um esquema de assinatura digital">
+        <tbody>
+          <tr>
+            <td>\(D\)<br><small>Documento digital<br>a ser assinado</small></td>
+            <td>→</td>
+            <td><strong>Algoritmo<br>de assinatura</strong><br><small>entrada: chave privada \(K^{\mathrm{Pri}}\)</small></td>
+            <td>→</td>
+            <td>\(D^{\mathrm{sig}}\)<br><small>Assinatura digital</small></td>
+          </tr>
+          <tr>
+            <td>\(D\)<br><small>Documento</small><br>\(D^{\mathrm{sig}}\)<br><small>Assinatura</small></td>
+            <td>→</td>
+            <td><strong>Algoritmo<br>de verificação</strong><br><small>entrada: chave pública \(K^{\mathrm{Pub}}\)</small></td>
+            <td>→</td>
+            <td>VERDADEIRO se a assinatura de \(D\) feita por \(K^{\mathrm{Pri}}\) for \(D^{\mathrm{sig}}\);<br>FALSO caso contrário</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption><span class="label">Figura 4.1.</span> Os dois componentes de um esquema de assinatura digital.</figcaption>
+  </figure>
+
+  <p>Apesar de suas finalidades diferentes, os esquemas de assinatura digital são semelhantes aos criptossistemas assimétricos por envolverem chaves públicas e privadas e utilizarem algoritmos que empregam essas chaves. Eis uma descrição abstrata das partes que compõem um esquema de assinatura digital:</p>
+
+  <dl>
+    <dt>\(K^{\mathrm{Pri}}\)</dt>
+    <dd>Uma chave privada de assinatura.</dd>
+    <dt>\(K^{\mathrm{Pub}}\)</dt>
+    <dd>Uma chave pública de verificação.</dd>
+    <dt>\(\operatorname{Assinar}\)</dt>
+    <dd>Um algoritmo de assinatura que recebe como entrada um documento digital \(D\) e uma chave privada \(K^{\mathrm{Pri}}\) e devolve uma assinatura \(D^{\mathrm{sig}}\) para \(D\).</dd>
+    <dt>\(\operatorname{Verificar}\)</dt>
+    <dd>Um algoritmo de verificação que recebe como entrada um documento digital \(D\), uma assinatura \(D^{\mathrm{sig}}\) e uma chave pública \(K^{\mathrm{Pub}}\). O algoritmo devolve Verdadeiro se \(D^{\mathrm{sig}}\) for uma assinatura para \(D\) associada à chave privada \(K^{\mathrm{Pri}}\); caso contrário, devolve Falso.</dd>
+  </dl>
+
+  <p>O funcionamento de um esquema de assinatura digital está representado na <a href="#fig-4-1" data-source-xref>Figura 4.1</a>. Um ponto importante a observar na <a href="#fig-4-1" data-source-xref>Figura 4.1</a> é que o algoritmo de verificação não conhece a chave privada \(K^{\mathrm{Pri}}\) quando determina se a assinatura de \(D\) feita por \(K^{\mathrm{Pri}}\) é igual a \(D^{\mathrm{sig}}\). O algoritmo de verificação tem acesso apenas à chave pública \(K^{\mathrm{Pub}}\).</p>
+
+  <p>Não é difícil produzir algoritmos (inúteis) que satisfaçam as propriedades de assinatura digital. Por exemplo, faça \(K^{\mathrm{Pub}}=K^{\mathrm{Pri}}\). O difícil é criar um esquema de assinatura digital no qual o proprietário da chave privada \(K^{\mathrm{Pri}}\) consiga criar assinaturas válidas, mas o conhecimento da chave pública \(K^{\mathrm{Pub}}\) não revele a chave privada \(K^{\mathrm{Pri}}\). Entre as condições gerais necessárias para que um esquema de assinatura digital seja seguro estão as seguintes:</p>
+
+  <ul>
+    <li>Dada \(K^{\mathrm{Pub}}\), uma atacante não consegue determinar \(K^{\mathrm{Pri}}\) de modo viável, nem consegue determinar qualquer outra chave privada que produza as mesmas assinaturas que \(K^{\mathrm{Pri}}\).</li>
+    <li>Dadas \(K^{\mathrm{Pub}}\) e uma lista de documentos assinados \(D_1,\ldots,D_n\), com suas assinaturas \(D_1^{\mathrm{sig}},\ldots,D_n^{\mathrm{sig}}\), uma atacante não consegue determinar de modo viável uma assinatura válida para nenhum documento \(D\) que não esteja na lista \(D_1,\ldots,D_n\).</li>
+  </ul>
+
+  <p>A segunda condição é bastante diferente da situação dos esquemas de cifragem. Na cifragem de chave pública, uma atacante pode criar quantos pares texto cifrado/texto claro desejar, pois pode criá-los usando a chave pública conhecida. No entanto, toda vez que um esquema de assinatura digital é usado para assinar um novo documento, revela-se um novo par documento/assinatura, o que fornece novas informações a uma atacante. A segunda condição diz que a atacante não obtém nada além do conhecimento desse novo par. Um ataque a um esquema de assinatura digital que utiliza grande número de assinaturas conhecidas é chamado de <strong>ataque de transcrição</strong>. (Veja a Seção 7.12 para uma discussão adicional.)</p>
+
+  <aside class="semantic remark" id="obs-4-1">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">4.1</span></div>
+    <p>As assinaturas digitais são pelo menos tão importantes quanto os criptossistemas de chave pública para a realização de negócios na era digital e, de fato, poder-se-ia argumentar que são ainda mais importantes. Para tomar um exemplo significativo, seu computador sem dúvida recebe atualizações de programas e do sistema pela internet. Como seu computador pode saber que uma atualização vem de uma fonte legítima, nesse caso, da empresa que escreveu o programa originalmente? A resposta é uma assinatura digital. O programa original vem acompanhado da chave pública de verificação da empresa. A empresa usa sua chave privada de assinatura para assinar a atualização e envia a seu computador tanto o novo programa quanto a assinatura. Seu computador pode usar a chave pública para verificar a assinatura e, assim, confirmar que o programa vem de uma fonte confiável antes de instalá-lo em seu sistema.</p>
+    <p>Devemos enfatizar, contudo, que, embora isso transmita a ideia de como uma assinatura digital pode ser usada, trata-se de uma explicação extremamente simplificada. As aplicações reais de esquemas de assinatura digital exigem bastante cuidado para evitar uma série de problemas de segurança sutis, porém fatais. Em particular, à medida que as assinaturas digitais se disseminam, pode se tornar problemático ter certeza de que uma suposta chave pública de verificação realmente pertence ao suposto proprietário. E, evidentemente, uma adversária que engane você para que use a chave de verificação dela em vez da verdadeira conseguirá convencê-lo a aceitar todos os documentos falsificados por ela.</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-4-2">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">4.2</span></div>
+    <p>A capacidade natural da maioria dos esquemas de assinatura digital é assinar apenas uma pequena quantidade de dados, digamos \(b\) bits, em que \(b\) está entre \(80\) e \(1000\). Assim, é bastante ineficiente assinar um documento digital grande \(D\), tanto porque leva muito tempo assinar cada bloco de \(b\) bits de \(D\) quanto porque a assinatura digital resultante provavelmente será tão grande quanto o documento original.</p>
+    <p>A solução padrão para esse problema é usar uma função hash, que é uma função fácil de calcular</p>
+    <div class="equation">\[\operatorname{Hash}:(\text{documentos de tamanho arbitrário})\longrightarrow\{0,1\}^k\]</div>
+    <p>e muito difícil de inverter. (Mais geralmente, deseja-se que seja muito difícil encontrar duas entradas distintas \(D\) e \(D'\) cujas saídas \(\operatorname{Hash}(D)\) e \(\operatorname{Hash}(D')\) sejam iguais.) Então, em vez de assinar seu documento \(D\), Samantha calcula e assina o hash \(\operatorname{Hash}(D)\). Para a verificação, Victor calcula e verifica a assinatura de \(\operatorname{Hash}(D)\).</p>
+    <p>Também há vantagens de segurança em assinar um hash de \(D\), entre elas vincular intrinsecamente a assinatura ao documento inteiro e impedir que uma adversária escolha assinaturas aleatórias e determine quais documentos elas assinam. Para uma breve introdução às funções hash e referências para leituras adicionais, veja a Seção 8.1. Não nos ocuparemos mais dessas questões neste capítulo.</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-4-3">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">4.3</span></div>
+    <p>Há muitas variantes do paradigma básico da assinatura digital. Por exemplo, uma <strong>assinatura cega</strong> é aquela em que a pessoa que assina não conhece o conteúdo do documento que está sendo assinado. Isso pode ser útil, por exemplo, se eleitores quiserem que uma autoridade eleitoral assine seus votos sem revelar quais são esses votos. Mais material sobre assinaturas cegas, com um exemplo no estilo RSA e aplicações a sistemas de dinheiro digital, é apresentado na Seção 8.8.</p>
+  </aside>
+
+  <p>Neste capítulo, discutimos esquemas de assinatura digital cujos problemas difíceis subjacentes são a fatoração de inteiros e o problema do logaritmo discreto em \(\mathbb F_p^*\). Capítulos posteriores incluem descrições de esquemas de assinatura digital baseados no problema do logaritmo discreto em grupos de curvas elípticas (Seção 6.4.3) e em problemas difíceis de reticulados (Seção 7.12).</p>
+
+  <ol class="footnotes">
+    <li id="fn-4-1-1">Neste capítulo, damos a Alice e Bob um merecido descanso e deixamos Samantha, a signatária, e Victor, o verificador, assumirem as funções criptográficas. <a href="#fnref-4-1-1" data-source-xref aria-label="Voltar à chamada da nota 1">↩</a></li>
+    <li id="fn-4-1-2">Na época em que a iluminação de interiores era feita com velas, selar documentos com anéis de sinete era uma maneira comum de criar assinaturas impossíveis de falsificar. No mundo de hoje, com sua abundância de ferramentas mecânicas, anéis de sinete e imagens de cera evidentemente não ofereceriam muita segurança. <a href="#fnref-4-1-2" data-source-xref aria-label="Voltar à chamada da nota 2">↩</a></li>
+  </ol>
+</section>

@@ -1,0 +1,24 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 4.7">
+    <p class="graduated-help__intro">Não tente descobrir a chave privada associada a \(A\); a construção foi escolhida para fazê-la cancelar.</p>
+    <details class="solution-hint"><summary>Dica 1 — Comece pelo verificador</summary><p>Substitua \(S_1=g^iA^j\) em \(A^{S_1}S_1^{S_2}\).</p></details>
+    <details class="solution-hint"><summary>Dica 2 — Distribua o expoente</summary><p>Use \((g^iA^j)^{S_2}=g^{iS_2}A^{jS_2}\).</p></details>
+    <details class="solution-hint"><summary>Dica 3 — Faça \(A\) desaparecer</summary><p>Como \(S_2\equiv-S_1j^{-1}\pmod{p-1}\), vale \(jS_2\equiv-S_1\).</p></details>
+  </div>
+  <details class="solution-reveal"><summary>Ver solução completa</summary>
+    <p>Todos os expoentes podem ser reduzidos módulo \(p-1\). Substituindo as escolhas de Eva no lado esquerdo do teste de ElGamal:</p>
+    <p>\[
+      \begin{aligned}
+      A^{S_1}S_1^{S_2}
+      &amp;\equiv A^{S_1}(g^iA^j)^{S_2}\\
+      &amp;\equiv g^{iS_2}A^{S_1+jS_2}\pmod p.
+      \end{aligned}
+    \]</p>
+    <p>Da definição \(S_2\equiv-S_1j^{-1}\pmod{p-1}\), seguem</p>
+    <p>\[S_1+jS_2\equiv0,\qquad iS_2\equiv-S_1ij^{-1}\equiv D\pmod{p-1}.\]</p>
+    <p>Portanto,</p>
+    <p>\[A^{S_1}S_1^{S_2}\equiv g^D A^0\equiv g^D\pmod p,\]</p>
+    <p>que é exatamente a condição de verificação. Eva produziu uma assinatura válida, mas não escolheu previamente o documento: \(D\) saiu da própria construção.</p>
+    <p class="solution-caution"><strong>O que a prova mostra:</strong> o ElGamal “de livro” admite falsificação existencial sobre uma mensagem aparentemente aleatória. Isso não equivale automaticamente a assinar um contrato específico, mas viola uma noção moderna básica de segurança de assinaturas.</p>
+  </details>
+</div>

@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O ElGamal apresentado no capítulo permite construir uma assinatura válida e deixar que a própria construção determine o documento. Isso é uma forja existencial.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag manipulation">Escolhas livres</span><p>Eva escolhe \(i\) e um \(j\) invertível módulo \(p-1\), sem conhecer \(a=\log_g A\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Construa o par</span><p>\[S_1\equiv g^iA^j\pmod p,\qquad S_2\equiv-S_1j^{-1}\pmod{p-1}.\]</p></div>
+    <div class="step"><span class="step-tag manipulation">Deixe a mensagem nascer</span><p>Defina \(D\equiv-S_1ij^{-1}\pmod{p-1}\). Então os fatores que contêm \(A\) cancelam no teste e sobra \(g^D\).</p></div>
+    <div class="step"><span class="step-tag theorem">Diagnóstico</span><p>A mensagem \(D\) não foi escolhida antes do ataque, mas o par \((D,(S_1,S_2))\) é novo e válido. Uma definição robusta de assinatura deve excluir até essa vitória.</p></div>
+  </div>
+  <div class="quick-check"><p>Aplicar um hash e uma transformação adequada da mensagem ajuda a impedir que um inteiro produzido algebricamente corresponda livremente a um documento válido; ainda assim, a segurança precisa ser analisada para o esquema completo.</p></div>
+</div>

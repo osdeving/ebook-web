@@ -844,5 +844,167 @@
     "category": "Criptografia de chave pública",
     "chapter": "ch03",
     "href": "chapters/ch03/#sec-3-10"
+  },
+  {
+    "id": "assinatura-digital",
+    "term": "Assinatura digital",
+    "aliases": ["digital signature"],
+    "definition": "Valor calculado com uma chave privada sobre um documento ou seu resumo, verificável publicamente e vinculado ao conteúdo assinado.",
+    "category": "Assinaturas digitais",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-1"
+  },
+  {
+    "id": "chave-privada-assinatura",
+    "term": "Chave privada de assinatura",
+    "aliases": ["private signing key", "chave de assinatura"],
+    "definition": "Segredo usado pelo signatário para produzir assinaturas que correspondem à sua chave pública de verificação.",
+    "category": "Assinaturas digitais",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-1"
+  },
+  {
+    "id": "chave-publica-verificacao",
+    "term": "Chave pública de verificação",
+    "aliases": ["public verification key", "chave de verificação"],
+    "definition": "Informação pública que permite verificar uma assinatura sem revelar a chave privada que a produziu.",
+    "category": "Assinaturas digitais",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-1"
+  },
+  {
+    "id": "algoritmo-assinatura",
+    "term": "Algoritmo de assinatura",
+    "aliases": ["Sign", "signing algorithm"],
+    "definition": "Algoritmo que recebe um documento e uma chave privada e devolve uma assinatura para aquele conteúdo.",
+    "category": "Assinaturas digitais",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-1"
+  },
+  {
+    "id": "algoritmo-verificacao-assinatura",
+    "term": "Algoritmo de verificação de assinatura",
+    "aliases": ["Verify", "signature verification"],
+    "definition": "Algoritmo público que decide se uma assinatura é válida para um documento e uma chave de verificação determinados.",
+    "category": "Assinaturas digitais",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-1"
+  },
+  {
+    "id": "falsificacao-assinatura",
+    "term": "Falsificação de assinatura",
+    "aliases": ["signature forgery"],
+    "definition": "Produção, sem a chave privada, de uma assinatura aceita para um documento que o signatário legítimo não assinou.",
+    "category": "Segurança criptográfica",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-1"
+  },
+  {
+    "id": "ataque-transcricao",
+    "term": "Ataque de transcrição",
+    "aliases": ["transcript attack"],
+    "definition": "Ataque que explora uma coleção de pares documento–assinatura já observados para tentar produzir uma nova assinatura válida.",
+    "category": "Criptoanálise",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-1"
+  },
+  {
+    "id": "funcao-hash-criptografica",
+    "term": "Função hash criptográfica",
+    "aliases": ["hash", "resumo criptográfico", "digest"],
+    "definition": "Função eficiente que comprime documentos de tamanho arbitrário em resumos de tamanho fixo, projetada para dificultar inversões e colisões relevantes.",
+    "category": "Primitivas criptográficas",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-1"
+  },
+  {
+    "id": "resistencia-pre-imagem",
+    "term": "Resistência à pré-imagem",
+    "aliases": ["preimage resistance"],
+    "definition": "Propriedade desejada de um hash: dado um resumo, deve ser computacionalmente difícil encontrar uma entrada que o produza.",
+    "category": "Funções hash",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-1"
+  },
+  {
+    "id": "resistencia-colisao",
+    "term": "Resistência a colisões",
+    "aliases": ["collision resistance"],
+    "definition": "Propriedade desejada de um hash: deve ser computacionalmente difícil encontrar duas entradas distintas com o mesmo resumo.",
+    "category": "Funções hash",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-1"
+  },
+  {
+    "id": "assinatura-cega",
+    "term": "Assinatura cega",
+    "aliases": ["blind signature"],
+    "definition": "Protocolo no qual alguém assina um valor ocultado sem aprender o conteúdo que, após a remoção do cegamento, ficará validamente assinado.",
+    "category": "Assinaturas digitais",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-1"
+  },
+  {
+    "id": "assinatura-rsa",
+    "term": "Assinatura RSA",
+    "aliases": ["RSA signature"],
+    "definition": "Construção didática em que a chave privada calcula uma raiz modular do documento e a chave pública verifica elevando a assinatura ao expoente público.",
+    "category": "RSA",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-2"
+  },
+  {
+    "id": "assinatura-elgamal",
+    "term": "Assinatura Elgamal",
+    "aliases": ["Elgamal signature"],
+    "definition": "Esquema baseado em logaritmo discreto cuja assinatura contém um compromisso efêmero e uma congruência que liga documento, segredo e aleatoriedade.",
+    "category": "Logaritmo discreto",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-3"
+  },
+  {
+    "id": "nonce-assinatura",
+    "term": "Nonce de assinatura",
+    "aliases": ["k efêmero", "ephemeral signing nonce"],
+    "definition": "Valor secreto usado uma única vez em esquemas como Elgamal e DSA; repetição ou previsibilidade pode expor a chave privada.",
+    "category": "Segurança criptográfica",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-3"
+  },
+  {
+    "id": "dsa",
+    "term": "Digital Signature Algorithm",
+    "aliases": ["DSA"],
+    "definition": "Algoritmo de assinatura que opera em um subgrupo de ordem prima e produz dois valores reduzidos módulo essa ordem.",
+    "category": "Assinaturas digitais",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-3"
+  },
+  {
+    "id": "dss",
+    "term": "Digital Signature Standard",
+    "aliases": ["DSS", "padrão de assinatura digital"],
+    "definition": "Família de padrões federais do NIST que especifica algoritmos e requisitos para geração e verificação de assinaturas digitais.",
+    "category": "Padrões criptográficos",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-3"
+  },
+  {
+    "id": "reutilizacao-nonce-assinatura",
+    "term": "Reutilização de nonce em assinaturas",
+    "aliases": ["repeated nonce", "nonce reuse"],
+    "definition": "Falha em que duas assinaturas usam o mesmo segredo efêmero, criando equações relacionadas que podem revelar a chave de assinatura.",
+    "category": "Falhas de implementação",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#exercicio-4-8"
+  },
+  {
+    "id": "ecdsa",
+    "term": "Elliptic Curve Digital Signature Algorithm",
+    "aliases": ["ECDSA"],
+    "definition": "Adaptação da estrutura do DSA a grupos de pontos de curvas elípticas, mencionada aqui e desenvolvida posteriormente no livro.",
+    "category": "Assinaturas digitais",
+    "chapter": "ch04",
+    "href": "chapters/ch04/#sec-4-3"
   }
 ]

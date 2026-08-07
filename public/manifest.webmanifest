@@ -18,7 +18,7 @@
   ],
   "shortcuts": [
     { "name": "Continuar capítulo 1", "short_name": "Capítulo 1", "url": "chapters/ch01/" },
-    { "name": "Abrir capítulo 3", "short_name": "Capítulo 3", "url": "chapters/ch03/" },
+    { "name": "Abrir capítulo 4", "short_name": "Capítulo 4", "url": "chapters/ch04/" },
     { "name": "Buscar no ebook", "short_name": "Busca", "url": "search/" },
     { "name": "Abrir glossário", "short_name": "Glossário", "url": "glossary/" }
   ]

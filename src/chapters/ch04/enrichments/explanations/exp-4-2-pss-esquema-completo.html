@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>RSA-PSS coloca uma camada de codificação verificável entre a mensagem e a potência RSA. A assinatura não é \(H(m)^d\); ela é a primitiva RSA aplicada a uma representação estruturada.</p></div>
+  <ol class="slow-steps">
+    <li class="step"><span class="step-tag definition">Hash e sal</span><p>O gerador escolhe um sal e calcula um hash que depende de \(H(m)\), do sal e de bytes de domínio. O sal permite que a mesma mensagem tenha assinaturas diferentes.</p></li>
+    <li class="step"><span class="step-tag manipulation">Máscara</span><p>Uma função geradora de máscara expande um digest para proteger a estrutura que contém o sal. Bits excedentes e um byte final fixo tornam o formato reconhecível.</p></li>
+    <li class="step"><span class="step-tag manipulation">Primitiva RSA</span><p>A representação codificada \(EM\) vira um inteiro \(M\), e só então se calcula \(S\equiv M^d\pmod N\).</p></li>
+    <li class="step"><span class="step-tag theorem">Verificação completa</span><p>O verificador recupera \(EM\) com \(S^e\), rejeita comprimentos e bits inválidos, reconstrói a máscara e confere o hash. Aceitar apenas a congruência é insuficiente.</p></li>
+  </ol>
+  <div class="quick-check"><p>Na RFC 8017, RSASP1 é a primitiva; RSASSA-PSS é o esquema. Essa diferença de nome registra uma diferença real de segurança e interoperabilidade.</p></div>
+</div>

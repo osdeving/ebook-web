@@ -1,0 +1,108 @@
+<section class="chapter-section exercises-section" id="exercicios-ch04">
+  <div class="section-heading"><span class="section-number">EX</span><h2>Exercícios</h2></div>
+
+  <h3>Seção 4.2 — Assinaturas digitais RSA</h3>
+
+  <div class="exercise" id="exercicio-4-1">
+    <p><span class="exercise-number">4.1.</span> Samantha usa o esquema de assinatura RSA com os primos \(p=541\) e \(q=1223\) e o expoente público de verificação \(e=159853\).</p>
+    <ol type="a">
+      <li>Qual é o módulo público de Samantha? Qual é sua chave privada de assinatura?</li>
+      <li>Samantha assina o documento digital \(D=630579\). Qual é a assinatura?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-4-2">
+    <p><span class="exercise-number">4.2.</span> Samantha usa o esquema de assinatura RSA com módulo público \(N=1562501\) e expoente público de verificação \(e=87953\). Adam afirma que Samantha assinou cada um dos documentos</p>
+    <div class="equation">\[D=119812,\qquad D'=161153,\qquad D''=586036,\]</div>
+    <p>e que as assinaturas associadas são</p>
+    <div class="equation">\[S=876453,\qquad S'=870099,\qquad S''=602754.\]</div>
+    <p>Quais delas são assinaturas válidas?</p>
+  </div>
+
+  <div class="exercise" id="exercicio-4-3">
+    <p><span class="exercise-number">4.3.</span> Samantha usa o esquema de assinatura RSA com módulo público e expoente público de verificação</p>
+    <div class="equation">\[N=27212325191\qquad\text{e}\qquad e=22824469379.\]</div>
+    <p>Use qualquer método que desejar para fatorar \(N\) e, em seguida, falsifique a assinatura de Samantha para o documento \(D=12910258780\).</p>
+  </div>
+
+  <div class="exercise" id="exercicio-4-4">
+    <p><span class="exercise-number">4.4.</span> Suponha que Alice e Bob se comuniquem usando o criptossistema de chave pública RSA. Isso significa que Alice possui um módulo público \(N_A=p_Aq_A\), um expoente público de cifragem \(e_A\) e um expoente privado de decifração \(d_A\), em que \(p_A\) e \(q_A\) são primos, e \(e_A\) e \(d_A\) satisfazem</p>
+    <div class="equation">\[e_Ad_A\equiv1\pmod{(p_A-1)(q_A-1)}.\]</div>
+    <p>Do mesmo modo, Bob possui um módulo público \(N_B=p_Bq_B\), um expoente público de cifragem \(e_B\) e um expoente privado de decifração \(d_B\).</p>
+    <p>Nessa situação, Alice pode simultaneamente cifrar e assinar uma mensagem da seguinte maneira. Alice escolhe seu texto claro \(m\) e calcula o texto cifrado RSA usual</p>
+    <div class="equation">\[c\equiv m^{e_B}\pmod{N_B}.\]</div>
+    <p>Em seguida, aplica uma função hash a seu texto claro e usa sua chave privada de decifração para calcular</p>
+    <div class="equation">\[s\equiv\operatorname{Hash}(m)^{d_A}\pmod{N_A}.\]</div>
+    <p>Ela envia o par \((c,s)\) a Bob.</p>
+    <p>Bob primeiro decifra o texto cifrado usando seu expoente privado de decifração \(d_B\),</p>
+    <div class="equation">\[m\equiv c^{d_B}\pmod{N_B}.\]</div>
+    <p>Depois, usa o expoente público de cifragem \(e_A\) de Alice para verificar que</p>
+    <div class="equation">\[\operatorname{Hash}(m)\equiv s^{e_A}\pmod{N_A}.\]</div>
+    <p>Explique por que a verificação funciona e por que seria difícil para qualquer pessoa que não fosse Alice enviar a Bob uma mensagem assinada de modo válido.</p>
+  </div>
+
+  <h3>Seção 4.3 — Assinaturas digitais de logaritmo discreto</h3>
+
+  <div class="exercise" id="exercicio-4-5">
+    <p><span class="exercise-number">4.5.</span> Samantha usa o esquema de assinatura Elgamal com o primo \(p=6961\) e a raiz primitiva \(g=437\).</p>
+    <ol type="a">
+      <li>A chave privada de assinatura de Samantha é \(a=6104\). Qual é sua chave pública de verificação?</li>
+      <li>Samantha assina o documento digital \(D=5584\) usando o elemento aleatório \(k=4451\). Qual é a assinatura?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-4-6">
+    <p><span class="exercise-number">4.6.</span> Samantha usa o esquema de assinatura Elgamal com o primo \(p=6961\) e a raiz primitiva \(g=437\). Sua chave pública de verificação é \(A=4250\). Adam afirma que Samantha assinou cada um dos documentos</p>
+    <div class="equation">\[D=1521,\qquad D'=1837,\qquad D''=1614,\]</div>
+    <p>e que as assinaturas associadas são</p>
+    <div class="equation">\[(S_1,S_2)=(4129,5575),\qquad(S_1',S_2')=(3145,1871),\qquad(S_1'',S_2'')=(2709,2994).\]</div>
+    <p>Quais delas são assinaturas válidas?</p>
+  </div>
+
+  <div class="exercise" id="exercicio-4-7">
+    <p><span class="exercise-number">4.7.</span> Seja \(p\) um primo, sejam \(i\) e \(j\) inteiros com \(\gcd(j,p-1)=1\) e seja \(A\) arbitrário. Defina</p>
+    <div class="equation">\[
+      S_1\equiv g^iA^j\pmod p,\qquad
+      S_2\equiv-S_1j^{-1}\pmod{p-1},\qquad
+      D\equiv-S_1ij^{-1}\pmod{p-1}.
+    \]</div>
+    <p>Prove que \((S_1,S_2)\) é uma assinatura Elgamal válida do documento \(D\) para a chave de verificação \(A\). Assim, Eva consegue produzir assinaturas para documentos aleatórios.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-4-8">
+    <p><span class="exercise-number">4.8.</span> Suponha que Samantha esteja usando o esquema de assinatura Elgamal, mas seja descuidada e use o mesmo elemento aleatório \(k\) para assinar dois documentos \(D\) e \(D'\).</p>
+    <ol type="a">
+      <li>Explique como Eva consegue perceber imediatamente se Samantha cometeu esse erro.</li>
+      <li>Se a assinatura de \(D\) é \((S_1,S_2)\) e a assinatura de \(D'\) é \((S_1',S_2')\), explique como Eva consegue recuperar \(a\), a chave privada de assinatura de Samantha.</li>
+      <li>
+        <p>Aplique seu método do item (b) ao exemplo a seguir e recupere a chave de assinatura \(a\) de Samantha, em que Samantha usa o primo \(p=348149\), a base \(g=113459\) e a chave de verificação \(A=185149\).</p>
+        <div class="equation">\[
+          \begin{array}{lll}
+            D=153405, &amp; S_1=208913, &amp; S_2=209176,\\
+            D'=127561, &amp; S_1'=208913, &amp; S_2'=217800.
+          \end{array}
+        \]</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-4-9">
+    <p><span class="exercise-number">4.9.</span> Samantha usa o DSA com os parâmetros públicos \((p,q,g)=(22531,751,4488)\). Ela escolhe a chave secreta de assinatura \(a=674\).</p>
+    <ol type="a">
+      <li>Qual é a chave pública de verificação de Samantha?</li>
+      <li>Samantha assina o documento \(D=244\) usando o elemento aleatório \(k=574\). Qual é a assinatura?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-4-10">
+    <p><span class="exercise-number">4.10.</span> Samantha usa o DSA com os parâmetros públicos \((p,q,g)=(22531,751,4488)\). Sua chave pública de verificação é \(A=22476\).</p>
+    <ol type="a">
+      <li>\((S_1,S_2)=(183,260)\) é uma assinatura válida para o documento \(D=329\)?</li>
+      <li>\((S_1,S_2)=(211,97)\) é uma assinatura válida para o documento \(D=432\)?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-4-11">
+    <p><span class="exercise-number">4.11.</span> Os parâmetros públicos DSA de Samantha são \((p,q,g)=(103687,1571,21947)\), e sua chave pública de verificação é \(A=31377\). Use qualquer método que preferir (força bruta, colisão, cálculo de índices,...) para resolver o problema do logaritmo discreto e encontrar a chave privada de assinatura de Samantha. Use a chave dela para assinar o documento \(D=510\) com o elemento aleatório \(k=1105\).</p>
+  </div>
+</section>

@@ -7,8 +7,8 @@ describe("descoberta durante a leitura", () => {
   beforeEach(() => {
     const { document, window } = parseHTML(`
       <html><body><article id="chapter">
-        <section id="sec-1"><h2>Primeira seção</h2><p>Veja a <a data-source-xref href="#prop-1">Proposição 1</a>.</p></section>
-        <aside class="semantic proposition" id="prop-1"><span class="semantic-label">Proposição 1.</span><p>Um resultado.</p></aside>
+        <section id="sec-1"><h2>Primeira seção</h2><p>Veja a <a data-source-xref href="#prop-1">Proposição 1</a> e a <a data-source-xref href="../../references/#ref-7">referência 7</a>.</p></section>
+        <aside class="semantic proposition" id="prop-1"><span class="semantic-label">Proposição 1.</span><p>Se \\(N=pq\\), então há um resultado.</p></aside>
       </article></body></html>
     `);
     Object.defineProperty(window.HTMLElement.prototype, "getBoundingClientRect", {
@@ -40,23 +40,42 @@ describe("descoberta durante a leitura", () => {
     expect(article.querySelector("[data-backlinks-for]")).toBeNull();
   });
 
-  it("mostra prévia textual no foco e mantém o destino navegável", () => {
+  it("renderiza matemática nas prévias acionadas por teclado e mouse sem duplicá-la", () => {
     const article = document.querySelector<HTMLElement>("#chapter")!;
-    const link = article.querySelector<HTMLAnchorElement>("a[data-source-xref]")!;
+    const [semanticLink, referenceLink] = Array.from(article.querySelectorAll<HTMLAnchorElement>("a[data-source-xref]"));
     const cleanup = mountCrossReferencePreviews({
       article,
       previews: {
-        "#prop-1": { href: "#prop-1", kind: "Proposição", title: "Proposição 1", excerpt: "Um resultado." },
+        "#prop-1": { href: "#prop-1", kind: "Proposição", title: "Proposição 1", excerpt: "Se \\(N=pq\\), então há um resultado." },
+        "../../references/#ref-7": {
+          href: "../../references/#ref-7",
+          kind: "Referência",
+          title: "Referência 7",
+          excerpt: "Uma análise do problema \\(x^2\\equiv a\\pmod N\\).",
+        },
       },
     });
-    link.dispatchEvent(new window.Event("focus"));
+    semanticLink!.dispatchEvent(new window.Event("focus"));
     const preview = document.querySelector<HTMLElement>("#source-xref-preview")!;
     expect(preview.hidden).toBe(false);
     expect(preview.getAttribute("role")).toBe("tooltip");
     expect(preview.textContent).toContain("Proposição 1");
-    expect(link.getAttribute("href")).toBe("#prop-1");
-    expect(link.getAttribute("aria-describedby")).toBe(preview.id);
+    expect(preview.querySelectorAll(".katex")).toHaveLength(1);
+    expect(preview.textContent).not.toContain("\\(");
+    expect(semanticLink!.getAttribute("href")).toBe("#prop-1");
+    expect(semanticLink!.getAttribute("aria-describedby")).toBe(preview.id);
+
+    referenceLink!.dispatchEvent(new window.Event("pointerenter"));
+    expect(preview.textContent).toContain("Referência 7");
+    expect(preview.querySelectorAll(".katex")).toHaveLength(1);
+    expect(preview.textContent).not.toContain("\\(");
+    expect(semanticLink!.hasAttribute("aria-describedby")).toBe(false);
+    expect(referenceLink!.getAttribute("aria-describedby")).toBe(preview.id);
+
+    referenceLink!.dispatchEvent(new window.Event("pointerenter"));
+    expect(preview.querySelectorAll(".katex")).toHaveLength(1);
     cleanup();
     expect(document.querySelector("#source-xref-preview")).toBeNull();
+    expect(referenceLink!.hasAttribute("aria-describedby")).toBe(false);
   });
 });

@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>“Extrair a raiz de um documento escolhido é difícil” não torna o RSA cru uma assinatura segura. O adversário pode inverter a ordem: escolhe uma assinatura e deixa que a chave pública determine qual documento ela assina.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag manipulation">Forja existencial</span><p>Eva escolhe qualquer \(S\in\mathbb Z_N\) e calcula \(D\equiv S^e\pmod N\). Por construção, o verificador aceita \(S\) como assinatura de \(D\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Maleabilidade</span><p>De assinaturas \(S_1^e\equiv D_1\) e \(S_2^e\equiv D_2\), segue \((S_1S_2)^e\equiv D_1D_2\pmod N\). A operação algébrica pública transporta assinaturas para uma nova relação.</p></div>
+    <div class="step"><span class="step-tag theorem">O papel da codificação</span><p>Uma codificação segura faz com que quase nenhum inteiro arbitrário seja uma representação válida de mensagem e vincula hash, parâmetros e estrutura. Assim, calcular \(S^e\) não entrega automaticamente um documento admissível.</p></div>
+  </div>
+  <div class="quick-check"><p>O ataque não fatora \(N\) nem descobre \(d\). Ele mostra por que reduzir segurança à recuperação da chave privada deixa de fora formas diretas de fabricar pares aceitos.</p></div>
+</div>

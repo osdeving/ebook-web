@@ -1,0 +1,21 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 4.10">
+    <p class="graduated-help__intro">Faça a verificação na ordem indicada; reduzir cedo demais muda a conta.</p>
+    <details class="solution-hint"><summary>Dica 1 — Inverta \(S_2\) módulo \(q\)</summary><p>Calcule \(w=S_2^{-1}\pmod q\), depois \(V_1=Dw\) e \(V_2=S_1w\), ambos módulo \(q\).</p></details>
+    <details class="solution-hint"><summary>Dica 2 — Respeite os parênteses</summary><p>Compare \(S_1\) com \((g^{V_1}A^{V_2}\bmod p)\bmod q\).</p></details>
+  </div>
+  <details class="solution-reveal"><summary>Ver solução completa</summary>
+    <h4>(a) \((183,260)\) sobre \(D=329\)</h4>
+    <p>Temos \(260^{-1}\equiv26\pmod{751}\), de modo que</p>
+    <p>\[V_1\equiv329\cdot26\equiv293,\qquad V_2\equiv183\cdot26\equiv252\pmod{751}.\]</p>
+    <p>O teste produz</p>
+    <p>\[(4488^{293}22476^{252}\bmod22531)\bmod751=183.\]</p>
+    <p>Ele coincide com \(S_1\), portanto a assinatura é <strong>válida</strong>.</p>
+    <h4>(b) \((211,97)\) sobre \(D=432\)</h4>
+    <p>Agora \(97^{-1}\equiv511\pmod{751}\),</p>
+    <p>\[V_1\equiv709,\qquad V_2\equiv428\pmod{751}.\]</p>
+    <p>Porém,</p>
+    <p>\[(4488^{709}22476^{428}\bmod22531)\bmod751=224\ne211.\]</p>
+    <p>Logo a segunda assinatura é <strong>inválida</strong>.</p>
+  </details>
+</div>

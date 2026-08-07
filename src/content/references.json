@@ -588,8 +588,9 @@
   {
     "number": 98,
     "citation": "NIST–DSS, Digital Signature Standard (DSS). FIPS Publication 186-2, National Institue of Standards and Technology, 2004.",
-    "url": "https://csrc.nist.gov/publications/fips/fips180-2/fips180-2withchangenotice.pdf",
-    "linkSource": "book"
+    "url": "https://csrc.nist.gov/pubs/fips/186-2/upd1/final",
+    "doi": "10.6028/NIST.FIPS.186-2",
+    "linkSource": "official"
   },
   {
     "number": 99,

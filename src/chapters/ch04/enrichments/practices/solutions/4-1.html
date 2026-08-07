@@ -1,0 +1,22 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 4.1">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint"><summary>Dica 1 — Separe módulo e totiente</summary><p>Calcule \(N=pq\) e \(\varphi(N)=(p-1)(q-1)\). A chave privada \(d\) é o inverso de \(e\) módulo \(\varphi(N)\).</p></details>
+    <details class="solution-hint"><summary>Dica 2 — Use Euclides estendido</summary><p>Procure \(d\) tal que \(159853d\equiv1\pmod{659880}\).</p></details>
+    <details class="solution-hint"><summary>Dica 3 — Assine por exponenciação modular</summary><p>A assinatura é \(S\equiv630579^d\pmod N\); confira elevando \(S\) novamente ao expoente público.</p></details>
+  </div>
+  <details class="solution-reveal"><summary>Ver solução completa</summary>
+    <h4>(a) Chaves</h4>
+    <p>O módulo público e o totiente são</p>
+    <p>\[N=541\cdot1223=661643,\qquad \varphi(N)=540\cdot1222=659880.\]</p>
+    <p>O algoritmo de Euclides estendido fornece</p>
+    <p>\[d\equiv159853^{-1}\equiv561517\pmod{659880}.\]</p>
+    <p>A verificação local \(159853\cdot561517\equiv1\pmod{659880}\) confirma o inverso. Logo a chave de assinatura privada é \(d=561517\).</p>
+    <h4>(b) Assinatura</h4>
+    <p>Por exponenciação binária modular,</p>
+    <p>\[S\equiv630579^{561517}\equiv206484\pmod{661643}.\]</p>
+    <p>Victor obtém</p>
+    <p>\[206484^{159853}\equiv630579\pmod{661643},\]</p>
+    <p>portanto a assinatura pedida é \(\boxed{206484}\).</p>
+  </details>
+</div>

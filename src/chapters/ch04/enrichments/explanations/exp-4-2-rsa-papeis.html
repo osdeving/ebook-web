@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>No RSA de livro, cifrar/decifrar e assinar/verificar usam as mesmas duas potências. O que muda é <em>quem escolhe a entrada, qual chave inicia a operação e qual propriedade o protocolo promete</em>.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Cifração</span><p>O remetente usa \(e\): \(c\equiv m^e\pmod N\). O dono da chave usa \(d\) para recuperar \(m\). A entrada precisa de codificação de cifração, como OAEP.</p></div>
+    <div class="step"><span class="step-tag definition">Assinatura</span><p>O dono da chave usa \(d\): \(S\equiv M^d\pmod N\), onde \(M\) é uma representação codificada da mensagem. O público usa \(e\) para conferir. Uma codificação como PSS define \(M\).</p></div>
+    <div class="step"><span class="step-tag theorem">Mesma álgebra, esquemas distintos</span><p>As primitivas RSAEP/RSADP e RSASP1/RSAVP1 têm parentesco algébrico, mas domínios, tratamento de erro e codificações são contratos diferentes. “Assinar é decifrar” apaga justamente essas fronteiras.</p></div>
+  </div>
+  <div class="quick-check"><p>Se alguém oferece uma API única “RSA privado” para decifrar e assinar dados arbitrários, o desenho mistura protocolos e pode transformar um serviço em oráculo para o outro.</p></div>
+</div>

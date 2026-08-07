@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Pense no esquema como uma pequena API matemática. A potência modular é apenas uma possível implementação interna; o contrato completo tem quatro etapas.</p></div>
+  <ol class="slow-steps">
+    <li class="step"><span class="step-tag definition">Geração</span><p>\(\operatorname{KeyGen}\) recebe um parâmetro de segurança e cria \((sk,pk)\). O segredo \(sk\) não sai do signatário; \(pk\) é distribuído por um canal que preserve sua associação à identidade.</p></li>
+    <li class="step"><span class="step-tag definition">Representação</span><p>Uma codificação transforma o documento arbitrário em uma entrada do domínio correto. Normalmente inclui hash, identificação do algoritmo e, em alguns esquemas, aleatoriedade.</p></li>
+    <li class="step"><span class="step-tag manipulation">Assinatura</span><p>\(\sigma\leftarrow\operatorname{Sign}(sk,m)\) produz um artefato que depende do segredo e da mensagem. O algoritmo pode ser determinístico ou usar aleatoriedade efêmera.</p></li>
+    <li class="step"><span class="step-tag theorem">Verificação</span><p>\(\operatorname{Verify}(pk,m,\sigma)\in\{\mathsf{aceita},\mathsf{rejeita}\}\). A correção exige que assinaturas honestas sejam aceitas; a segurança exige muito mais do que correção.</p></li>
+  </ol>
+  <div class="quick-check"><p>Uma chave pública correta, mas atribuída à pessoa errada, ainda verifica matematicamente. Por isso geração, distribuição e identidade não podem ser apagadas do diagrama operacional.</p></div>
+</div>

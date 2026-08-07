@@ -1,0 +1,21 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 4.4">
+    <p class="graduated-help__intro">Siga separadamente o caminho da confidencialidade e o da autenticidade.</p>
+    <details class="solution-hint"><summary>Dica 1 — Por que Bob recupera \(m\)?</summary><p>Substitua \(c\equiv m^{e_B}\) em \(c^{d_B}\) e use \(e_Bd_B\equiv1\pmod{\varphi(N_B)}\).</p></details>
+    <details class="solution-hint"><summary>Dica 2 — Por que a assinatura verifica?</summary><p>Substitua \(s\equiv\operatorname{Hash}(m)^{d_A}\) em \(s^{e_A}\).</p></details>
+    <details class="solution-hint"><summary>Dica 3 — Separe as chaves</summary><p>Qualquer pessoa cifra para Bob usando \(e_B\), mas só Alice deveria conhecer \(d_A\), necessário para assinar.</p></details>
+  </div>
+  <details class="solution-reveal"><summary>Ver solução completa</summary>
+    <h4>Decifração</h4>
+    <p>Bob calcula</p>
+    <p>\[c^{d_B}\equiv(m^{e_B})^{d_B}=m^{e_Bd_B}\equiv m\pmod{N_B},\]</p>
+    <p>pela correção do RSA.</p>
+    <h4>Verificação</h4>
+    <p>Como a assinatura foi calculada com a chave privada de Alice,</p>
+    <p>\[s^{e_A}\equiv\bigl(\operatorname{Hash}(m)^{d_A}\bigr)^{e_A}\equiv\operatorname{Hash}(m)\pmod{N_A}.\]</p>
+    <p>Bob primeiro recupera \(m\), calcula o hash desse mesmo \(m\) e compara com o resultado da operação pública sobre \(s\). Isso vincula a assinatura ao texto decifrado.</p>
+    <h4>Por que um terceiro encontra dificuldade?</h4>
+    <p>A cifra \(c\) não prova a origem: \(e_B\) é público, portanto qualquer pessoa consegue cifrar para Bob. Já produzir um \(s\) que satisfaça \(s^{e_A}\equiv\operatorname{Hash}(m)\pmod{N_A}\) exige, no modelo simplificado, extrair uma raiz RSA ou conhecer \(d_A\). Assim, a confidencialidade depende da chave privada de Bob e a autoria criptográfica depende da chave privada de Alice.</p>
+    <p class="solution-caution"><strong>Limite do modelo:</strong> no mundo real não se usa “RSA cru”. São necessários esquemas padronizados de codificação de assinatura, como RSA-PSS, hashes aprovados e validação confiável da chave pública de Alice.</p>
+  </details>
+</div>

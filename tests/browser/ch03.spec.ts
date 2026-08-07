@@ -20,7 +20,7 @@ test("a biblioteca e o leitor publicam o capítulo 3 completo sem alterar a font
   const errors = watchBrowserErrors(page);
 
   await page.goto("/");
-  await expect(page.locator(".chapter-card")).toHaveCount(3);
+  await expect(page.locator(".chapter-card")).toHaveCount(4);
   await expect(page.getByRole("heading", { name: "Fatoração de inteiros e RSA" })).toBeVisible();
 
   await page.goto("/chapters/ch03/");
@@ -144,9 +144,18 @@ test("permalinks, prévias, backlinks e progresso funcionam no capítulo 3", asy
   await expect(preview).toBeVisible();
   await expect(preview).toHaveAttribute("role", "tooltip");
   await expect(preview.locator("a, button")).toHaveCount(0);
+  expect(await preview.locator(".katex").count()).toBeGreaterThan(0);
+  await expect(preview).not.toContainText("\\(");
   await page.keyboard.press("Escape");
   await expect(preview).toBeHidden();
   await expect(crossReference).toBeFocused();
+
+  const bibliographyReference = page.locator('a[data-source-xref][href="../../references/#ref-28"]').first();
+  await expect(bibliographyReference).toHaveAttribute("href", "../../references/#ref-28");
+  await bibliographyReference.hover();
+  await expect(preview).toBeVisible();
+  await expect(preview.locator("[data-xref-preview-kind]")).toHaveText("Referência");
+  await expect(preview).toContainText("Referência 28");
 
   const backlinks = page.locator('[data-backlinks-for="prop-3-48"]');
   const backlinksSummary = backlinks.locator("summary");
@@ -180,7 +189,7 @@ test("permalinks, prévias, backlinks e progresso funcionam no capítulo 3", asy
   })).toBe("completed");
 
   await page.goto("/study/");
-  await expect(page.locator("[data-study-path]")).toHaveCount(9);
+  await expect(page.locator("[data-study-path]")).toHaveCount(10);
   await expect(page.locator('#path-primos-e-fatoracao [data-step-href="chapters/ch03/#sec-3-7-2"]')).toHaveClass(/is-completed/);
   expect(errors).toEqual([]);
 });
@@ -201,7 +210,7 @@ test("busca, glossário e rotas descobrem o conteúdo do capítulo 3", async ({ 
   await expect(results.first().getByRole("link")).toHaveAttribute("href", /\/chapters\/ch03\/#/);
 
   await page.goto("/glossary/");
-  await expect(page.locator("[data-glossary-status]")).toHaveText("142 itens");
+  await expect(page.locator("[data-glossary-status]")).toHaveText("172 itens");
   await page.locator("[data-glossary-chapter]").selectOption("ch03");
   await expect(page.locator("[data-glossary-status]")).toHaveText("51 itens");
   const wrongChapter = await page.locator("[data-glossary-item]").evaluateAll((items) =>
@@ -210,8 +219,8 @@ test("busca, glossário e rotas descobrem o conteúdo do capítulo 3", async ({ 
   expect(wrongChapter).toEqual([]);
 
   await page.goto("/study/");
-  await expect(page.locator("[data-path-status]")).toHaveText("9 rotas");
-  await expect(page.locator("[data-study-path]")).toHaveCount(9);
+  await expect(page.locator("[data-path-status]")).toHaveText("10 rotas");
+  await expect(page.locator("[data-study-path]")).toHaveCount(10);
   expect(await page.locator('[data-step-href*="chapters/ch03/"]').count()).toBeGreaterThan(0);
   expect(errors).toEqual([]);
 });

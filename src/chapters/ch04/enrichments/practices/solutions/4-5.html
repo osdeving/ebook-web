@@ -1,0 +1,19 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 4.5">
+    <p class="graduated-help__intro">Há duas aritméticas simultâneas: bases módulo \(p\), expoentes módulo \(p-1\).</p>
+    <details class="solution-hint"><summary>Dica 1 — Chave pública</summary><p>Calcule \(A\equiv g^a\pmod p\).</p></details>
+    <details class="solution-hint"><summary>Dica 2 — Inverso do nonce</summary><p>Encontre \(4451^{-1}\pmod{6960}\); ele existe porque o nonce foi escolhido coprimo a \(p-1\).</p></details>
+    <details class="solution-hint"><summary>Dica 3 — Duas partes da assinatura</summary><p>Use \(S_1\equiv g^k\pmod p\) e \(S_2\equiv(D-aS_1)k^{-1}\pmod{p-1}\).</p></details>
+  </div>
+  <details class="solution-reveal"><summary>Ver solução completa</summary>
+    <h4>(a) Chave de verificação</h4>
+    <p>\[A\equiv437^{6104}\equiv2065\pmod{6961}.\]</p>
+    <h4>(b) Assinatura</h4>
+    <p>O inverso efêmero é \(4451^{-1}\equiv491\pmod{6960}\). Assim,</p>
+    <p>\[S_1\equiv437^{4451}\equiv3534\pmod{6961},\]</p>
+    <p>e</p>
+    <p>\[S_2\equiv(5584-6104\cdot3534)\cdot491\equiv5888\pmod{6960}.\]</p>
+    <p>A assinatura é, portanto, \(\boxed{(3534,5888)}\). Como controle independente, os dois lados da verificação valem \(4094\) módulo \(6961\):</p>
+    <p>\[2065^{3534}\,3534^{5888}\equiv437^{5584}\equiv4094\pmod{6961}.\]</p>
+  </details>
+</div>

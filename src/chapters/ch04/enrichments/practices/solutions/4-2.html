@@ -1,0 +1,16 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 4.2">
+    <p class="graduated-help__intro">A chave privada não é necessária para verificar uma assinatura.</p>
+    <details class="solution-hint"><summary>Dica 1 — Aplique exatamente o teste público</summary><p>Para cada par \((D,S)\), calcule \(S^e\bmod N\).</p></details>
+    <details class="solution-hint"><summary>Dica 2 — Não compare assinaturas entre si</summary><p>Cada resultado deve ser comparado ao documento associado, não aos outros documentos.</p></details>
+  </div>
+  <details class="solution-reveal"><summary>Ver solução completa</summary>
+    <p>Usamos \(N=1562501\) e \(e=87953\) nos três testes:</p>
+    <div class="solution-table-wrap"><table><thead><tr><th scope="col">Documento</th><th scope="col">Assinatura alegada</th><th scope="col">\(S^e\bmod N\)</th><th scope="col">Conclusão</th></tr></thead><tbody>
+      <tr><td>\(119812\)</td><td>\(876453\)</td><td>\(772481\)</td><td>inválida</td></tr>
+      <tr><td>\(161153\)</td><td>\(870099\)</td><td>\(161153\)</td><td>válida</td></tr>
+      <tr><td>\(586036\)</td><td>\(602754\)</td><td>\(586036\)</td><td>válida</td></tr>
+    </tbody></table></div>
+    <p>Assim, somente as assinaturas de \(D'=161153\) e \(D''=586036\) são válidas. A primeira falha porque sua potência pública produz outro documento.</p>
+  </details>
+</div>
