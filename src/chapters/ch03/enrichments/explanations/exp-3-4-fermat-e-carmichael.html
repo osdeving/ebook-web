@@ -1,0 +1,7 @@
+<p class="supplement-lead">O teste de Fermat explora uma condição necessária para primos, mas alguns compostos imitam essa condição para muitas bases — e os números de Carmichael a imitam para todas as bases coprimas.</p>
+<ol class="slow-steps">
+  <li><strong>Teste.</strong> Para uma base a coprima com N, verifique \(a^{N-1}\equiv1\pmod N\).</li>
+  <li><strong>Falha conclusiva.</strong> Se a congruência falhar, N é composto.</li>
+  <li><strong>Sucesso inconclusivo.</strong> Se passar, a estrutura do grupo pode ter alinhado o expoente mesmo com N composto. Miller–Rabin observa também as raízes quadradas de 1 na cadeia.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Testar mais bases de Fermat não elimina os números de Carmichael. É preciso fortalecer a condição, não apenas repetir a mesma condição.</div>

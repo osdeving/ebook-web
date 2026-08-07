@@ -1,0 +1,31 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.8">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Teste primos menores que 100</summary>
+      <p>Dividir \(12191\) por \(73\) não deixa resto; o quociente também é primo.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Reconstrua a chave privada</summary>
+      <p>Com \(N=pq\), calcule \(\varphi(N)=(p-1)(q-1)\) e encontre o inverso de \(37\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Confira por recifração</summary>
+      <p>Depois de elevar \(587\) ao expoente privado, eleve a resposta a \(37\) e verifique que retorna \(587\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>A busca sugerida encontra</p>
+    <p>\[12191=73\cdot167.\]</p>
+    <p>Logo</p>
+    <p>\[\varphi(12191)=72\cdot166=11952.\]</p>
+    <p>O inverso de \(37\) módulo \(11952\) é \(11629\), pois</p>
+    <p>\[37\cdot11629=430273=1+36\cdot11952.\]</p>
+    <p>Eva pode, portanto, aplicar o expoente privado reconstruído:</p>
+    <p>\[m\equiv587^{11629}\equiv4894\pmod{12191}.\]</p>
+    <p>De fato,</p>
+    <p>\[4894^{37}\equiv587\pmod{12191},\]</p>
+    <p>de modo que o texto simples de Alice é \(m=4894\).</p>
+  </details>
+</div>

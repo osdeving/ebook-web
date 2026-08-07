@@ -1,0 +1,7 @@
+<p class="supplement-lead">A lei de reciprocidade quadrática transforma um símbolo grande em outro com numerador e denominador trocados. Com redução por restos, o processo lembra o algoritmo de Euclides.</p>
+<ol class="slow-steps">
+  <li><strong>Retire fatores de 2.</strong> Use a fórmula suplementar para \((2/p)\), determinada por p módulo 8.</li>
+  <li><strong>Troque argumentos ímpares.</strong> Na reciprocidade para Legendre — e em sua extensão a Jacobi — a troca introduz sinal apenas quando ambos são 3 módulo 4.</li>
+  <li><strong>Reduza.</strong> Substitua o numerador pelo resto módulo o denominador e repita até chegar a 1 ou a um divisor comum.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> O controle dos sinais é o algoritmo. Anotar classes módulo 4 e 8 em cada passo evita que uma sequência correta de reduções termine com resposta oposta.</div>

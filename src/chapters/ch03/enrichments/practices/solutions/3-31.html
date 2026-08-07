@@ -1,0 +1,68 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.31">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Reduza o problema a uma potência de \(t=\ln X\)</summary>
+      <p>Temos \(\ln F_{a,b}(X)=t^{1/a}(\ln t)^{1/b}\). Compare essa expressão primeiro com \(\alpha\ln t\) e depois com \(\beta t\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — O sinal de \(1/a-1\) decide a comparação com \(X^\beta\)</summary>
+      <p>Divida \(\ln F_{a,b}(X)\) por \(\ln X=t\). O resultado é \(t^{1/a-1}(\ln t)^{1/b}\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Trate \(a=1\) como o caso-limite</summary>
+      <p>Quando \(a=1\), o quociente \(\ln F_{1,b}(X)/\ln X\) ainda tende ao infinito, pois é \((\ln\ln X)^{1/b}\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Seja \(t=\ln X\). Para \(a,b&gt;0\) fixos,</p>
+    <div class="display-math">
+      \[
+        \ln F_{a,b}(X)=t^{1/a}(\ln t)^{1/b}.
+      \]
+    </div>
+    <ol type="a">
+      <li>
+        <p>Suponha \(a&gt;1\). Para qualquer \(\alpha&gt;0\),</p>
+        <div class="display-math">
+          \[
+            \frac{\ln F_{a,b}(X)}{\ln((\ln X)^\alpha)}
+            =\frac{t^{1/a}(\ln t)^{1/b}}{\alpha\ln t}
+            =\frac1\alpha t^{1/a}(\ln t)^{1/b-1}\longrightarrow\infty,
+          \]
+        </div>
+        <p>pois toda potência positiva de \(t\) domina toda potência fixa de \(\ln t\). Logo \(F_{a,b}(X)/(\ln X)^\alpha\to\infty\).</p>
+        <p>Por outro lado, para qualquer \(\beta&gt;0\),</p>
+        <div class="display-math">
+          \[
+            \frac{\ln F_{a,b}(X)}{\ln(X^\beta)}
+            =\frac1\beta t^{1/a-1}(\ln t)^{1/b}\longrightarrow0,
+          \]
+        </div>
+        <p>porque \(1/a-1&lt;0\). Consequentemente, para \(X\) grande, \(\ln F_{a,b}(X)&lt;\beta\ln X\), e \(F_{a,b}(X)=\mathcal O(X^\beta)\). As duas comparações provam que \(F_{a,b}\) é subexponencial.</p>
+      </li>
+      <li>
+        <p>Se \(a=1\), então</p>
+        <div class="display-math">
+          \[
+            \ln\frac{F_{1,b}(X)}{X^\alpha}
+            =t(\ln t)^{1/b}-\alpha t
+            =t\bigl((\ln t)^{1/b}-\alpha\bigr)\longrightarrow\infty
+          \]
+        </div>
+        <p>para todo \(\alpha&gt;0\). Portanto \(F_{1,b}(X)/X^\alpha\to\infty\), em particular \(F_{1,b}(X)=\Omega(X^\alpha)\) para todo \(\alpha&gt;0\). Esse é o crescimento chamado de superexponencial no enunciado.</p>
+      </li>
+      <li>
+        <p>Se \(a&lt;1\), então \(1/a-1&gt;0\), e</p>
+        <div class="display-math">
+          \[
+            \frac{\ln F_{a,b}(X)}{\ln X}
+            =t^{1/a-1}(\ln t)^{1/b}\longrightarrow\infty.
+          \]
+        </div>
+        <p>Logo, também nesse caso, \(F_{a,b}(X)/X^\alpha\to\infty\) para toda constante \(\alpha&gt;0\). A função é superexponencial — e cresce ainda mais depressa, na escala logarítmica, que o caso-limite \(a=1\).</p>
+      </li>
+    </ol>
+  </details>
+</div>

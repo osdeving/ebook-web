@@ -1,0 +1,7 @@
+<p class="supplement-lead">No Miller–Rabin, um primo nunca é rejeitado por uma base válida; um composto pode escapar, mas apenas por uma fração limitada das bases. Isso permite amplificar a confiança.</p>
+<ol class="slow-steps">
+  <li><strong>Uma rodada.</strong> Para um composto ímpar, no máximo um quarto das bases coprimas são mentirosas no limite geral do teste.</li>
+  <li><strong>Rodadas independentes.</strong> Com k bases aleatórias independentes, a probabilidade de todas serem mentirosas é no máximo \(4^{-k}\).</li>
+  <li><strong>Interpretação.</strong> O limite é condicional ao modo de escolher as bases, à correção da implementação e à ausência de falhas laterais; não é uma probabilidade a priori de qualquer N ser primo.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Reusar bases previsíveis pode ser perfeitamente adequado quando existe um conjunto determinístico provado para uma faixa de inteiros. O que não se pode fazer é alegar independência aleatória quando ela não existe.</div>

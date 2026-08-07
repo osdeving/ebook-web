@@ -1,0 +1,128 @@
+<section class="chapter-section" id="sec-3-5">
+  <div class="section-heading">
+    <span class="section-number">3.5</span>
+    <h2>Algoritmo de fatoração \(p-1\) de Pollard</h2>
+  </div>
+
+  <p>Vimos na <a href="#sec-3-4" data-source-xref>Seção 3.4</a> que é relativamente fácil verificar se um número grande é (provavelmente) primo. Isso é bom, pois o criptossistema RSA precisa de primos grandes para funcionar.</p>
+
+  <p>Por outro lado, a segurança do RSA depende da aparente dificuldade de fatorar números grandes. O estudo da fatoração remonta pelo menos à Grécia Antiga, mas foi somente com o advento dos computadores que se começou a desenvolver algoritmos capazes de fatorar números muito grandes. O paradoxo do RSA é que, para torná-lo mais eficiente, queremos usar um módulo \(N=pq\) tão pequeno quanto possível. Por outro lado, se um adversário consegue fatorar \(N\), então nossas mensagens cifradas não estão seguras. Portanto, é vital compreender quão difícil é fatorar números grandes e, em particular, compreender as capacidades dos diferentes algoritmos usados atualmente para fatoração.</p>
+
+  <p>Nas próximas seções, discutiremos, com diferentes graus de detalhe, alguns dos métodos conhecidos para fatorar inteiros grandes. Um método adicional que usa curvas elípticas é descrito na Seção 6.6. Leitores interessados em se aprofundar nesse assunto podem consultar [<a href="../../references/#ref-28" data-source-xref>28</a>, <a href="../../references/#ref-34" data-source-xref>34</a>, <a href="../../references/#ref-109" data-source-xref>109</a>, <a href="../../references/#ref-150" data-source-xref>150</a>] e as referências citadas nessas obras.</p>
+
+  <p>Começamos com um algoritmo chamado método \(p-1\) de Pollard. Embora não seja útil para todos os números, há certos tipos de números para os quais ele é bastante eficiente. O método de Pollard mostra que existem módulos RSA inseguros que, à primeira vista, parecem seguros. Isso, por si só, justifica seu estudo. Além disso, o método \(p-1\) fornece a inspiração para o método de fatoração por curvas elípticas de Lenstra, que estudaremos mais adiante, na Seção 6.6.</p>
+
+  <p>Recebemos um número \(N=pq\), e nossa tarefa é determinar os fatores primos \(p\) e \(q\). Suponha que, por sorte, trabalho árduo ou algum outro método, consigamos encontrar um inteiro \(L\) com a propriedade de que</p>
+
+  <div class="equation">\[p-1\mid L\qquad\text{e}\qquad q-1\nmid L.\]</div>
+
+  <p>Isso significa que existem inteiros \(i\), \(j\) e \(k\), com \(k\ne0\), que satisfazem</p>
+
+  <div class="equation">\[L=i(p-1)\qquad\text{e}\qquad L=j(q-1)+k.\]</div>
+
+  <p>Considere o que acontece quando escolhemos ao acaso um inteiro \(a\) e calculamos \(a^L\). O pequeno teorema de Fermat (<a href="../ch01/#theorem-1-24" data-source-xref>Teorema 1.24</a>) nos diz que<sup id="fnref-3-5-4"><a href="#fn-3-5-4" data-source-xref>4</a></sup></p>
+
+  <div class="equation">\[
+    \begin{aligned}
+      a^L&=a^{i(p-1)}=(a^{p-1})^i\equiv1^i\equiv1\pmod p,\\
+      a^L&=a^{j(q-1)+k}=a^k(a^{q-1})^j\equiv a^k\cdot1^j\equiv a^k\pmod q.
+    \end{aligned}
+  \]</div>
+
+  <p>O expoente \(k\) não é igual a \(0\), por isso é bastante improvável que \(a^k\) seja congruente a \(1\) módulo \(q\). Assim, com probabilidade muito alta, isto é, para a maioria das escolhas de \(a\), temos</p>
+
+  <div class="equation">\[p\mid a^L-1\qquad\text{e}\qquad q\nmid a^L-1.\]</div>
+
+  <p>Isso é excelente, pois significa que podemos recuperar \(p\) por meio do simples cálculo de máximo divisor comum</p>
+
+  <div class="equation">\[p=\gcd(a^L-1,N).\]</div>
+
+  <p>Tudo isso está muito bem, mas onde, você pode perguntar, encontraremos um expoente \(L\) divisível por \(p-1\) e não por \(q-1\)? A observação de Pollard é que, se \(p-1\) por acaso for produto de muitos primos pequenos, então ele dividirá \(n!\) para algum valor não muito grande de \(n\). Eis, portanto, a ideia. Para cada número \(n=2,3,4,\ldots\), escolhemos um valor de \(a\) e calculamos</p>
+
+  <div class="equation">\[\gcd(a^{n!}-1,N).\]</div>
+
+  <p>Na prática, podemos simplesmente tomar \(a=2\). Se o máximo divisor comum for igual a \(1\), passamos ao próximo valor de \(n\). Se ele alguma vez for igual a \(N\), tivemos bastante azar, mas outro valor de \(a\) provavelmente funcionará. E, se obtivermos um número estritamente entre \(1\) e \(N\), teremos um fator não trivial de \(N\) e o trabalho estará concluído.</p>
+
+  <aside class="semantic remark" id="obs-3-28">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.28</span></div>
+    <p>Há duas observações importantes a fazer antes de colocarmos em prática a ideia de Pollard. A primeira diz respeito à quantidade \(a^{n!}-1\). Mesmo para \(a=2\) e valores bastante moderados de \(n\), digamos \(n=100\), não é viável calcular \(a^{n!}-1\) exatamente. De fato, o número \(2^{100!}\) tem mais de \(10^{157}\) algarismos, o que é maior que o número de partículas elementares no universo conhecido! Felizmente, não há necessidade de calculá-lo exatamente. Estamos interessados apenas no máximo divisor comum de \(a^{n!}-1\) e \(N\), portanto basta calcular</p>
+    <div class="equation">\[a^{n!}-1\pmod N\]</div>
+    <p>e, em seguida, tomar o máximo divisor comum com \(N\). Assim, nunca precisamos trabalhar com números maiores que \(N\).</p>
+    <p>Em segundo lugar, nem sequer precisamos calcular o expoente \(n!\). Supondo que já tenhamos calculado \(a^{n!}\bmod N\) na etapa anterior, podemos calcular o próximo valor por</p>
+    <div class="equation">\[a^{(n+1)!}\equiv\left(a^{n!}\right)^{n+1}\pmod N.\]</div>
+    <p>Isso conduz ao algoritmo descrito na <a href="#tab-3-3" data-source-xref>Tabela 3.3</a>.</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-29">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.29</span></div>
+    <p>Quanto tempo leva para calcular o valor de \(a^{n!}\bmod N\)? O algoritmo de exponenciação rápida descrito na <a href="../ch01/#sec-1-3-2" data-source-xref>Seção 1.3.2</a> fornece um método para calcular \(a^k\bmod N\) em no máximo \(2\log_2k\) etapas, cada uma delas uma multiplicação módulo \(N\). A fórmula de Stirling<sup id="fnref-3-5-5"><a href="#fn-3-5-5" data-source-xref>5</a></sup> diz que, se \(n\) é grande, então \(n!\) é aproximadamente igual a \((n/e)^n\). Portanto, podemos calcular \(a^{n!}\bmod N\) em \(2n\log_2(n)\) etapas. Assim, é viável calcular \(a^{n!}\bmod N\) para valores razoavelmente grandes de \(n\).</p>
+  </aside>
+
+  <div class="table-wrap" id="tab-3-3">
+    <table>
+      <caption>Tabela 3.3: Algoritmo de fatoração \(p-1\) de Pollard</caption>
+      <tbody>
+        <tr><th scope="row">Entrada.</th><td>Inteiro \(N\) a ser fatorado.</td></tr>
+        <tr><th scope="row">1.</th><td>Defina \(a=2\) (ou algum outro valor conveniente).</td></tr>
+        <tr><th scope="row">2.</th><td>Repita para \(j=2,3,4,\ldots\) até um limite especificado.</td></tr>
+        <tr><th scope="row">3.</th><td>Defina \(a=a^j\bmod N\).</td></tr>
+        <tr><th scope="row">4.</th><td>Calcule \(d=\gcd(a-1,N)\)<sup>†</sup>.</td></tr>
+        <tr><th scope="row">5.</th><td>Se \(1&lt;d&lt;N\), então <strong>sucesso</strong>: devolva \(d\).</td></tr>
+        <tr><th scope="row">6.</th><td>Incremente \(j\) e volte à Etapa 2.</td></tr>
+        <tr><td colspan="2"><sup>†</sup> Para maior eficiência, escolha um \(k\) apropriado e calcule o máximo divisor comum na Etapa 4 apenas a cada \(k\)-ésima iteração.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <aside class="semantic example" id="exemplo-3-30">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.30</span></div>
+    <p>Usamos o método \(p-1\) de Pollard para fatorar \(N=13927189\). Começando com \(\gcd(2^{9!}-1,N)\) e tomando sucessivamente fatoriais maiores no expoente, encontramos</p>
+    <div class="equation">\[
+      \begin{aligned}
+        2^{9!}-1&\equiv13867883&&\pmod{13927189},&\gcd(2^{9!}-1,13927189)&=1,\\
+        2^{10!}-1&\equiv5129508&&\pmod{13927189},&\gcd(2^{10!}-1,13927189)&=1,\\
+        2^{11!}-1&\equiv4405233&&\pmod{13927189},&\gcd(2^{11!}-1,13927189)&=1,\\
+        2^{12!}-1&\equiv6680550&&\pmod{13927189},&\gcd(2^{12!}-1,13927189)&=1,\\
+        2^{13!}-1&\equiv6161077&&\pmod{13927189},&\gcd(2^{13!}-1,13927189)&=1,\\
+        2^{14!}-1&\equiv879290&&\pmod{13927189},&\gcd(2^{14!}-1,13927189)&=3823.
+      \end{aligned}
+    \]</div>
+    <p>A última linha nos dá um fator não trivial \(p=3823\) de \(N\). Esse fator é primo, e o outro fator \(q=N/p=13927189/3823=3643\) também é primo. A razão pela qual um expoente \(14!\) funcionou neste caso é que \(p-1\) se fatora como produto de primos pequenos,</p>
+    <div class="equation">\[p-1=3822=2\cdot3\cdot7^2\cdot13.\]</div>
+    <p>O outro fator satisfaz \(q-1=3642=2\cdot3\cdot607\), que não é produto de primos pequenos.</p>
+  </aside>
+
+  <aside class="semantic example" id="exemplo-3-31">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.31</span></div>
+    <p>Apresentamos mais um exemplo, agora com números maiores. Seja \(N=168441398857\). Então</p>
+    <div class="equation">\[
+      \begin{aligned}
+        2^{50!}-1&\equiv114787431143&&\pmod N,&\gcd(2^{50!}-1,N)&=1,\\
+        2^{51!}-1&\equiv36475745067&&\pmod N,&\gcd(2^{51!}-1,N)&=1,\\
+        2^{52!}-1&\equiv67210629098&&\pmod N,&\gcd(2^{52!}-1,N)&=1,\\
+        2^{53!}-1&\equiv8182353513&&\pmod N,&\gcd(2^{53!}-1,N)&=350437.
+      \end{aligned}
+    \]</div>
+    <p>Assim, usar \(2^{53!}-1\) produz o fator primo \(p=350437\) de \(N\), e o outro fator, também primo, é \(480661\). Tivemos sorte, é claro, pois \(p-1\) é produto de fatores pequenos,</p>
+    <div class="equation">\[p-1=350436=2^2\cdot3\cdot19\cdot29\cdot53.\]</div>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-32">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.32</span></div>
+    <p>Observe que é fácil para Bob e Alice evitarem os perigos do método \(p-1\) de Pollard ao criar chaves RSA. Eles simplesmente verificam se os primos secretos \(p\) e \(q\) escolhidos têm a propriedade de que nem \(p-1\) nem \(q-1\) se fatora inteiramente em primos pequenos. Do ponto de vista criptográfico, a importância do método de Pollard está na seguinte lição. À primeira vista, a maioria das pessoas não esperaria que as propriedades de fatoração de \(p-1\) e \(q-1\) tivessem alguma relação com a dificuldade de fatorar \(pq\). A moral é que, mesmo quando construímos um criptossistema com base em um problema aparentemente difícil, como a fatoração de inteiros, devemos estar atentos a casos especiais do problema que, por razões sutis e não óbvias, são mais fáceis de resolver que o caso geral. Já vimos um exemplo disso no algoritmo de Pohlig–Hellman para o problema do logaritmo discreto (<a href="../ch02/#sec-2-9" data-source-xref>Seção 2.9</a>), e voltaremos a vê-lo quando discutirmos curvas elípticas e o problema do logaritmo discreto em curvas elípticas.</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-33">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.33</span></div>
+    <p>Ainda não discutimos a probabilidade de sucesso do algoritmo \(p-1\) de Pollard. Suponha que \(p\) e \(q\) sejam primos escolhidos aleatoriamente e de aproximadamente o mesmo tamanho. O método de Pollard funciona se ao menos um de \(p-1\) e \(q-1\) se fatora inteiramente como produto de potências de primos pequenos. É claro que \(p-1\) é par, de modo que podemos retirar um fator \(2\), mas, depois disso, a quantidade \(\tfrac12(p-1)\) deve se comportar mais ou menos como um número aleatório de tamanho aproximadamente \(\tfrac12p\). Isso conduz à seguinte pergunta:</p>
+    <blockquote>Qual é a probabilidade de que um inteiro escolhido aleatoriamente, de tamanho aproximadamente \(n\), divida \(B!\) (\(B\) fatorial)?</blockquote>
+    <p>Observe, em particular, que, se \(n\) divide \(B!\), então todo primo que divide \(n\) deve ser menor ou igual a \(B\). Um número cujos fatores primos são todos menores ou iguais a \(B\) é chamado de <a href="#def-numero-b-suave" data-source-xref>número \(B\)-suave</a>. Assim, é natural perguntar qual é a probabilidade de que um inteiro escolhido aleatoriamente, de tamanho aproximadamente \(n\), seja \(B\)-suave. Invertendo a pergunta, também podemos indagar:</p>
+    <blockquote>Dado \(n\), quão grande devemos escolher \(B\) para que um inteiro escolhido aleatoriamente, de tamanho aproximadamente \(n\), tenha uma probabilidade razoavelmente boa de ser \(B\)-suave?</blockquote>
+    <p>A eficiência — ou a falta dela — de todos os métodos modernos de fatoração de inteiros é determinada em grande medida pela resposta a essa pergunta. Estudaremos os números suaves na <a href="#sec-3-7" data-source-xref>Seção 3.7</a>.</p>
+  </aside>
+
+  <ol class="footnotes" start="4">
+    <li id="fn-3-5-4">Supusemos que \(p\nmid a\) e \(q\nmid a\), pois, se \(p\) e \(q\) forem muito grandes, isso ocorrerá quase certamente. Além disso, se por acaso \(p\mid a\) e \(q\nmid a\), podemos recuperar \(p\) como \(p=\gcd(a,N)\). <a href="#fnref-3-5-4" data-source-xref aria-label="Voltar à chamada da nota 4">↩</a></li>
+    <li id="fn-3-5-5">Mais precisamente, a fórmula de Stirling diz que \(\ln(n!)=n\ln(n)-n+\tfrac12\ln(2\pi n)+O(1/n)\). <a href="#fnref-3-5-5" data-source-xref aria-label="Voltar à chamada da nota 5">↩</a></li>
+  </ol>
+</section>

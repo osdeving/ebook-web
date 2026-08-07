@@ -1,0 +1,38 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.2">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Escreva tudo em uma raiz primitiva</summary>
+      <p>Para \(p\gt2\), escolha uma raiz primitiva \(g\) e escreva \(c=g^k\) e \(x=g^r\). A equação de potências vira uma congruência linear para \(r\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use o critério da congruência linear</summary>
+      <p>A congruência \(er\equiv k\pmod{p-1}\) possui solução exatamente quando \(\gcd(e,p-1)\mid k\); quando é solúvel, conte suas classes de solução.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Conte a imagem, não as tentativas</summary>
+      <p>No item (b), conte quantos expoentes \(k\) módulo \(p-1\) são múltiplos de \(\gcd(e,p-1)\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Ponha \(n=p-1\) e \(d=\gcd(e,n)\). O caso \(p=2\) é imediato, portanto suponhamos \(p\gt2\). Pelo teorema da raiz primitiva, existe \(g\) que gera \(\mathbb F_p^*\). Há expoentes únicos \(k,r\pmod n\) tais que</p>
+    <p>\[c\equiv g^k\pmod p,\qquad x\equiv g^r\pmod p.\]</p>
+    <p>Consequentemente,</p>
+    <p>\[x^e\equiv c\pmod p\quad\Longleftrightarrow\quad er\equiv k\pmod n.\]</p>
+    <ol type="a">
+      <li>
+        <p>Uma congruência linear \(er\equiv k\pmod n\) é solúvel se, e somente se, \(d\mid k\). Quando isso ocorre, divida por \(d\):</p>
+        <p>\[\frac edr\equiv\frac kd\pmod{n/d}.\]</p>
+        <p>Como \(\gcd(e/d,n/d)=1\), existe uma única solução \(r_0\pmod{n/d}\). Suas classes módulo \(n\) são</p>
+        <p>\[r_0,\ r_0+\frac nd,\ \ldots,\ r_0+(d-1)\frac nd.\]</p>
+        <p>Elas são distintas e totalizam exatamente \(d=\gcd(e,p-1)\) soluções para \(x\).</p>
+      </li>
+      <li>
+        <p>Os valores de \(c=g^k\) que admitem raiz são precisamente aqueles com \(d\mid k\). Entre as \(n=p-1\) classes de expoentes existem</p>
+        <p>\[\frac nd=\frac{p-1}{\gcd(e,p-1)}\]</p>
+        <p>múltiplos de \(d\). Portanto esse é o número de valores não nulos de \(c\pmod p\) para os quais a congruência possui solução. Equivalentemente, a aplicação \(x\mapsto x^e\) tem fibras de tamanho \(d\) e imagem de tamanho \((p-1)/d\).</p>
+      </li>
+    </ol>
+  </details>
+</div>

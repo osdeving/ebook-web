@@ -1,0 +1,59 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.1">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Inverta o expoente</summary>
+      <p>Fatore o módulo, calcule \(\varphi(N)\) e procure \(d\) tal que \(ed\equiv1\pmod{\varphi(N)}\). Então eleve o lado direito à potência \(d\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Observe os módulos compostos</summary>
+      <p>Nos itens (c) e (d), use \(1159=19\cdot61\) e \(8023=71\cdot113\). No item (e), a fatoração já fornecida determina \(\varphi(N)\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Faça uma verificação independente</summary>
+      <p>Depois de calcular \(x\), use quadratura e multiplicação diretamente para conferir que \(x^e\) produz o resíduo indicado.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Em todos os cinco casos, o lado direito é uma unidade módulo \(N\), e \(e\) é coprimo com \(\varphi(N)\). Se \(d\) é o inverso de \(e\) módulo \(\varphi(N)\), então</p>
+    <p>\[x\equiv c^d\pmod N\]</p>
+    <p>satisfaz \(x^e\equiv c^{de}\equiv c\pmod N\). As contas são:</p>
+    <ol type="a">
+      <li>
+        <p>Temos \(\varphi(97)=96\) e</p>
+        <p>\[19\cdot91=1729=1+18\cdot96.\]</p>
+        <p>Logo \(d=91\), e a exponenciação modular dá</p>
+        <p>\[x\equiv36^{91}\equiv36\pmod{97}.\]</p>
+        <p>A verificação é \(36^{19}\equiv36\pmod{97}\).</p>
+      </li>
+      <li>
+        <p>Como \(\varphi(541)=540\) e</p>
+        <p>\[137\cdot473=64801=1+120\cdot540,\]</p>
+        <p>obtemos</p>
+        <p>\[x\equiv428^{473}\equiv213\pmod{541},\qquad213^{137}\equiv428\pmod{541}.\]</p>
+      </li>
+      <li>
+        <p>A fatoração \(1159=19\cdot61\) fornece \(\varphi(1159)=18\cdot60=1080\). Além disso,</p>
+        <p>\[73\cdot577=42121=1+39\cdot1080.\]</p>
+        <p>Portanto</p>
+        <p>\[x\equiv614^{577}\equiv158\pmod{1159},\qquad158^{73}\equiv614\pmod{1159}.\]</p>
+      </li>
+      <li>
+        <p>Usando \(8023=71\cdot113\), calculamos \(\varphi(8023)=70\cdot112=7840\), e</p>
+        <p>\[751\cdot7151=5370401=1+685\cdot7840.\]</p>
+        <p>Assim,</p>
+        <p>\[x\equiv677^{7151}\equiv1355\pmod{8023},\qquad1355^{751}\equiv677\pmod{8023}.\]</p>
+      </li>
+      <li>
+        <p>Da fatoração \(401227=607\cdot661\),</p>
+        <p>\[\varphi(401227)=606\cdot660=399960.\]</p>
+        <p>O algoritmo de Euclides estendido produz \(d=265457\), pois</p>
+        <p>\[38993\cdot265457=10350964801=1+25880\cdot399960.\]</p>
+        <p>Logo</p>
+        <p>\[x\equiv328047^{265457}\equiv36219\pmod{401227}.\]</p>
+        <p>Uma nova exponenciação modular confirma \(36219^{38993}\equiv328047\pmod{401227}\).</p>
+      </li>
+    </ol>
+  </details>
+</div>

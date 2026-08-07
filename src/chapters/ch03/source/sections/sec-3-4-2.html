@@ -1,0 +1,43 @@
+<section class="chapter-section subsection" id="sec-3-4-2">
+  <div class="section-heading">
+    <span class="section-number">3.4.2</span>
+    <h2>Provas de primalidade versus testes probabilísticos</h2>
+  </div>
+
+  <p>O teste de Miller–Rabin é um método poderoso e prático para encontrar números grandes que são “provavelmente primos”. De fato, a <a href="#prop-3-18" data-source-xref>Proposição 3.18</a> diz que todo número composto possui muitas testemunhas de Miller–Rabin, de modo que cinquenta ou cem repetições do teste de Miller–Rabin fornecem evidências sólidas de que \(n\) é primo. Existe, porém, uma diferença entre evidências a favor de uma afirmação e uma demonstração rigorosa de que ela está correta. Suponha que Bob não se satisfaça com meras evidências. Ele quer ter certeza absoluta de que o número \(n\) escolhido é primo.</p>
+
+  <p>Em princípio, nada poderia ser mais simples. Bob verifica se \(n\) é divisível por algum dos números \(1,2,3,4,\ldots\) até \(\sqrt n\). Se nenhum desses números dividir \(n\), Bob saberá, com certeza absoluta, que \(n\) é primo. Infelizmente, se \(n\) for grande, digamos \(n\approx2^{1000}\), o Sol terá se extinguido antes que Bob termine sua tarefa. Observe que o tempo de execução desse algoritmo ingênuo é \(O(\sqrt n)\), o que significa que ele é um algoritmo de tempo exponencial segundo a definição da <a href="../ch02/#sec-2-6" data-source-xref>Seção 2.6</a>, pois \(\sqrt n\) é exponencial no <em>número de bits</em> necessários para escrever o número \(n\).</p>
+
+  <p>Seria bom se pudéssemos usar o teste de Miller–Rabin para provar, de maneira eficiente e conclusiva, que um número \(n\) é primo. Mais precisamente, gostaríamos de um algoritmo de tempo polinomial que provasse a primalidade. Se uma versão generalizada da hipótese de Riemann for verdadeira, <a href="#prop-3-25" data-source-xref>a proposição a seguir</a> diz que isso pode ser feito. (Discutimos a hipótese de Riemann na <a href="#obs-3-24" data-source-xref>Observação 3.24</a>.)</p>
+
+  <div class="semantic proposition" id="prop-3-25">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">3.25</span></div>
+    <p>Se uma versão generalizada da hipótese de Riemann for verdadeira, então todo número composto \(n\) possui uma testemunha de Miller–Rabin \(a\) de sua composição que satisfaz</p>
+    <div class="equation">\[a\le2(\ln n)^2.\]</div>
+  </div>
+
+  <div class="semantic proof" id="proof-3-25">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Veja <a href="../../references/#ref-87" data-source-xref>[87]</a> para uma demonstração de que todo número composto \(n\) possui uma testemunha que satisfaz \(a=O\bigl((\ln n)^2\bigr)\), e [<a href="../../references/#ref-9" data-source-xref>9</a>, <a href="../../references/#ref-10" data-source-xref>10</a>] para a estimativa mais precisa \(a\le2(\ln n)^2\). <span class="proof-end">□</span></p>
+  </div>
+
+  <p>Assim, se a hipótese de Riemann generalizada for verdadeira, podemos provar que \(n\) é primo aplicando o teste de Miller–Rabin com todo \(a\) menor que \(2(\ln n)^2\). Se algum \(a\) provar que \(n\) é composto, então \(n\) é composto; caso contrário, a <a href="#prop-3-25" data-source-xref>Proposição 3.25</a> nos diz que \(n\) é primo. Infelizmente, a demonstração da <a href="#prop-3-25" data-source-xref>Proposição 3.25</a> pressupõe que a hipótese de Riemann generalizada seja verdadeira, e ninguém conseguiu provar sequer a hipótese de Riemann original, apesar de quase \(150\) anos de trabalho sobre o problema.</p>
+
+  <p>Depois da criação da criptografia de chave pública e, especialmente, depois da publicação do criptossistema RSA em 1978, tornou-se muito importante encontrar um teste de primalidade de tempo polinomial que não dependesse de nenhuma hipótese não demonstrada. Muitos anos de pesquisa culminaram em 2002, quando M. Agrawal, N. Kayal e N. Saxena <a href="../../references/#ref-1" data-source-xref>[1]</a> encontraram tal algoritmo. Aperfeiçoamentos posteriores de seu algoritmo produziram <a href="#teorema-3-26" data-source-xref>o resultado a seguir</a>.</p>
+
+  <div class="semantic theorem" id="teorema-3-26">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">3.26 — Teste de primalidade AKS</span></div>
+    <p>Para todo \(\epsilon&gt;0\), existe um algoritmo que determina conclusivamente se um número dado \(n\) é primo em não mais que</p>
+    <div class="equation">\[O\!\left((\ln n)^{6+\epsilon}\right)\text{ passos}.\]</div>
+  </div>
+
+  <div class="semantic proof" id="proof-3-26">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>O algoritmo original foi publicado em <a href="../../references/#ref-1" data-source-xref>[1]</a>. Análises e aperfeiçoamentos adicionais podem ser encontrados em <a href="../../references/#ref-76" data-source-xref>[76]</a>. A monografia <a href="../../references/#ref-36" data-source-xref>[36]</a> contém uma boa descrição dos testes de primalidade, incluindo o teste AKS. <span class="proof-end">□</span></p>
+  </div>
+
+  <aside class="semantic remark" id="obs-3-27">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.27</span></div>
+    <p>O resultado descrito no <a href="#teorema-3-26" data-source-xref>Teorema 3.26</a> representa um triunfo da teoria algorítmica dos números moderna. Sua importância para a criptografia prática é menos clara, pois o algoritmo AKS é muito mais lento que o teste de Miller–Rabin. Na prática, a maioria das pessoas está disposta a aceitar que um número é primo se ele passa no teste de Miller–Rabin para, digamos, cinquenta a cem valores de \(a\) escolhidos ao acaso.</p>
+  </aside>
+</section>

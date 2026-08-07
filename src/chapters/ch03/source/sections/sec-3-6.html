@@ -1,0 +1,367 @@
+<section class="chapter-section" id="sec-3-6">
+  <div class="section-heading">
+    <span class="section-number">3.6</span>
+    <h2>Fatoração por diferença de quadrados</h2>
+  </div>
+
+  <p>Os métodos de fatoração mais poderosos conhecidos atualmente se apoiam em uma das identidades mais simples de toda a matemática,</p>
+
+  <div class="equation" id="eq-3-13"><span class="equation-number">(3.13)</span>\[X^2-Y^2=(X+Y)(X-Y).\]</div>
+
+  <p>Essa bela fórmula diz que uma diferença de quadrados é igual a um produto. A possível aplicação à fatoração é imediata. Para fatorar um número \(N\), procuramos um inteiro \(b\) tal que a quantidade \(N+b^2\) seja um quadrado perfeito, digamos igual a \(a^2\). Então \(N+b^2=a^2\), de modo que</p>
+
+  <div class="equation">\[N=a^2-b^2=(a+b)(a-b),\]</div>
+
+  <p>e efetuamos uma fatoração de \(N\).</p>
+
+  <aside class="semantic example" id="exemplo-3-34">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.34</span></div>
+    <p>Fatoramos \(N=25217\) procurando um inteiro \(b\) que faça \(N+b^2\) ser um quadrado perfeito:</p>
+    <div class="equation">\[
+      \begin{aligned}
+        25217+1^2&=25218&&\text{não é quadrado},\\
+        25217+2^2&=25221&&\text{não é quadrado},\\
+        25217+3^2&=25226&&\text{não é quadrado},\\
+        25217+4^2&=25233&&\text{não é quadrado},\\
+        25217+5^2&=25242&&\text{não é quadrado},\\
+        25217+6^2&=25253&&\text{não é quadrado},\\
+        25217+7^2&=25266&&\text{não é quadrado},\\
+        25217+8^2&=25281=159^2&&\text{Eureca! ** quadrado **}.
+      \end{aligned}
+    \]</div>
+    <p>Então calculamos</p>
+    <div class="equation">\[25217=159^2-8^2=(159+8)(159-8)=167\cdot151.\]</div>
+  </aside>
+
+  <p>Se \(N\) é grande, é improvável que um valor de \(b\) escolhido ao acaso transforme \(N+b^2\) em um quadrado perfeito. Precisamos encontrar uma maneira inteligente de escolher \(b\). Uma observação importante é que não precisamos necessariamente escrever o próprio \(N\) como diferença de dois quadrados. Muitas vezes basta escrever algum múltiplo \(kN\) de \(N\) como diferença de dois quadrados, pois, se</p>
+
+  <div class="equation">\[kN=a^2-b^2=(a+b)(a-b),\]</div>
+
+  <p>há uma probabilidade razoável de os fatores de \(N\) ficarem separados no lado direito da equação, isto é, de \(N\) ter um fator não trivial em comum com cada um de \(a+b\) e \(a-b\). Nesse caso, é simples recuperar os fatores calculando \(\gcd(N,a+b)\) e \(\gcd(N,a-b)\). Ilustramos isso com um exemplo.</p>
+
+  <aside class="semantic example" id="exemplo-3-35">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.35</span></div>
+    <p>Fatoramos \(N=203299\). Se fizermos uma lista de \(N+b^2\) para \(b=1,2,3,\ldots\), digamos até \(b=100\), não encontraremos nenhum valor quadrado. Em seguida, tentamos listar os valores de \(3N+b^2\) e encontramos</p>
+    <div class="equation">\[
+      \begin{aligned}
+        3\cdot203299+1^2&=609898&&\text{não é quadrado},\\
+        3\cdot203299+2^2&=609901&&\text{não é quadrado},\\
+        3\cdot203299+3^2&=609906&&\text{não é quadrado},\\
+        3\cdot203299+4^2&=609913&&\text{não é quadrado},\\
+        3\cdot203299+5^2&=609922&&\text{não é quadrado},\\
+        3\cdot203299+6^2&=609933&&\text{não é quadrado},\\
+        3\cdot203299+7^2&=609946&&\text{não é quadrado},\\
+        3\cdot203299+8^2&=609961=781^2&&\text{Eureca! ** quadrado **}.
+      \end{aligned}
+    \]</div>
+    <p>Portanto,</p>
+    <div class="equation">\[3\cdot203299=781^2-8^2=(781+8)(781-8)=789\cdot773,\]</div>
+    <p>de modo que, ao calcular</p>
+    <div class="equation">\[\gcd(203299,789)=263\qquad\text{e}\qquad\gcd(203299,773)=773,\]</div>
+    <p>encontramos fatores não triviais de \(N\). Os números \(263\) e \(773\) são primos, portanto a fatoração completa de \(N\) é \(203299=263\cdot773\).</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-36">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.36</span></div>
+    <p>No <a href="#exemplo-3-35" data-source-xref>Exemplo 3.35</a>, fizemos uma lista de valores de \(3N+b^2\). Por que não tentamos primeiro \(2N+b^2\)? A resposta é que, se \(N\) é ímpar, então \(2N+b^2\) nunca pode ser um quadrado, de modo que tentar isso seria perda de tempo. A razão é a seguinte (compare com o <a href="../ch01/#exercicio-1-23" data-source-xref>Exercício 1.23</a>). Calculando módulo \(4\), obtemos</p>
+    <div class="equation">\[
+      2N+b^2\equiv2+b^2\equiv
+      \begin{cases}
+        2+0\equiv2\pmod4,&\text{se }b\text{ é par},\\
+        2+1\equiv3\pmod4,&\text{se }b\text{ é ímpar}.
+      \end{cases}
+    \]</div>
+    <p>Assim, \(2N+b^2\) é congruente a \(2\) ou a \(3\) módulo \(4\). Mas quadrados são congruentes a \(0\) ou a \(1\) módulo \(4\). Logo, se \(N\) é ímpar, então \(2N+b^2\) nunca é um quadrado.</p>
+  </aside>
+
+  <p>Os múltiplos de \(N\) são os números congruentes a \(0\) módulo \(N\). Assim, em vez de procurar uma diferença de quadrados \(a^2-b^2\) que seja múltiplo de \(N\), podemos procurar números distintos \(a\) e \(b\) que satisfaçam</p>
+
+  <div class="equation" id="eq-3-14"><span class="equation-number">(3.14)</span>\[a^2\equiv b^2\pmod N.\]</div>
+
+  <p>Naturalmente, esse é exatamente o mesmo problema, mas o uso da aritmética modular ajuda a esclarecer nossa tarefa.</p>
+
+  <p>Na prática, não é viável procurar diretamente inteiros \(a\) e \(b\) que satisfaçam <a href="#eq-3-14" data-source-xref>(3.14)</a>. Em vez disso, usamos o processo em três etapas descrito na <a href="#tab-3-4" data-source-xref>Tabela 3.4</a>. Esse procedimento, sob uma forma ou outra, está na base da maioria dos métodos modernos de fatoração.</p>
+
+  <div class="table-wrap" id="tab-3-4">
+    <table>
+      <caption>Tabela 3.4: Um procedimento de fatoração em três etapas</caption>
+      <tbody>
+        <tr>
+          <th scope="row">1. Construção de relações</th>
+          <td>Encontre muitos inteiros \(a_1,a_2,a_3,\ldots,a_r\) com a propriedade de que a quantidade \(c_i\equiv a_i^2\pmod N\) se fatora como produto de primos pequenos.</td>
+        </tr>
+        <tr>
+          <th scope="row">2. Eliminação</th>
+          <td>Tome um produto \(c_{i_1}c_{i_2}\cdots c_{i_s}\) de alguns dos \(c_i\) de modo que todo primo presente no produto apareça elevado a uma potência par. Então \(c_{i_1}c_{i_2}\cdots c_{i_s}=b^2\) é um quadrado perfeito.</td>
+        </tr>
+        <tr>
+          <th scope="row">3. Cálculo de MDC</th>
+          <td>Seja \(a=a_{i_1}a_{i_2}\cdots a_{i_s}\) e calcule o máximo divisor comum \(d=\gcd(N,a-b)\). Como
+            \[
+              a^2=(a_{i_1}a_{i_2}\cdots a_{i_s})^2
+              \equiv a_{i_1}^2a_{i_2}^2\cdots a_{i_s}^2
+              \equiv c_{i_1}c_{i_2}\cdots c_{i_s}
+              \equiv b^2\pmod N,
+            \]
+            há uma probabilidade razoável de \(d\) ser um fator não trivial de \(N\).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <aside class="semantic example" id="exemplo-3-37">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.37</span></div>
+    <p>Fatoramos \(N=914387\) usando o procedimento descrito na <a href="#tab-3-4" data-source-xref>Tabela 3.4</a>. Primeiro procuramos inteiros \(a\) com a propriedade de que \(a^2\bmod N\) seja produto de primos pequenos. Para este exemplo, exigimos que cada \(a^2\bmod N\) seja produto de primos no conjunto \(\{2,3,5,7,11\}\). Deixando de lado, por enquanto, a questão de como encontrar tais valores de \(a\), observamos que</p>
+    <div class="equation">\[
+      \begin{aligned}
+        1869^2&\equiv750000\pmod{914387},&750000&=2^4\cdot3\cdot5^6,\\
+        1909^2&\equiv901120\pmod{914387},&901120&=2^{14}\cdot5\cdot11,\\
+        3387^2&\equiv499125\pmod{914387},&499125&=3\cdot5^3\cdot11^3.
+      \end{aligned}
+    \]</div>
+    <p>Nenhum dos números à direita é um quadrado, mas, se os multiplicarmos, obteremos um quadrado. Assim,</p>
+    <div class="equation">\[
+      \begin{aligned}
+        1869^2\cdot1909^2\cdot3387^2
+        &\equiv750000\cdot901120\cdot499125\pmod{914387}\\
+        &\equiv(2^4\cdot3\cdot5^6)(2^{14}\cdot5\cdot11)(3\cdot5^3\cdot11^3)\pmod{914387}\\
+        &=(2^9\cdot3\cdot5^5\cdot11^2)^2\\
+        &=580800000^2\\
+        &\equiv164255^2\pmod{914387}.
+      \end{aligned}
+    \]</div>
+    <p>Observamos ainda que \(1869\cdot1909\cdot3387\equiv9835\pmod{914387}\), de modo que calculamos</p>
+    <div class="equation">\[\gcd(914387,9835-164255)=\gcd(914387,154420)=1103.\]</div>
+    <p>Viva! Fatoramos \(914387=1103\cdot829\).</p>
+  </aside>
+
+  <aside class="semantic example" id="exemplo-3-38">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.38</span></div>
+    <p>Fazemos um segundo exemplo para ilustrar uma possível armadilha desse método. Fatoraremos \(N=636683\). Depois de alguma busca, encontramos</p>
+    <div class="equation">\[
+      \begin{aligned}
+        1387^2&\equiv13720\pmod{636683},&13720&=2^3\cdot5\cdot7^3,\\
+        2774^2&\equiv54880\pmod{636683},&54880&=2^5\cdot5\cdot7^3.
+      \end{aligned}
+    \]</div>
+    <p>Multiplicar esses dois valores produz um quadrado,</p>
+    <div class="equation">\[1387^2\cdot2774^2\equiv13720\cdot54880=(2^4\cdot5\cdot7^3)^2=27440^2.\]</div>
+    <p>Infelizmente, ao calcular o máximo divisor comum, encontramos</p>
+    <div class="equation">\[\gcd(636683,1387\cdot2774-27440)=\gcd(636683,3820098)=636683.\]</div>
+    <p>Assim, depois de todo o trabalho, não fizemos progresso algum! Contudo, nem tudo está perdido. Podemos reunir mais valores de \(a\) e tentar encontrar uma relação diferente. Ampliando a lista acima, descobrimos que</p>
+    <div class="equation">\[3359^2\equiv459270\pmod{636683}\qquad\text{e}\qquad459270=2\cdot3^8\cdot5\cdot7.\]</div>
+    <p>Multiplicar \(1387^2\) e \(3359^2\) dá</p>
+    <div class="equation">\[1387^2\cdot3359^2\equiv13720\cdot459270=(2^2\cdot3^4\cdot5\cdot7^2)^2=79380^2,\]</div>
+    <p>e, agora, quando calculamos o máximo divisor comum, obtemos</p>
+    <div class="equation">\[\gcd(636683,1387\cdot3359-79380)=\gcd(636683,4579553)=787.\]</div>
+    <p>Isso fornece a fatoração \(N=787\cdot809\).</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-39">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.39</span></div>
+    <p>Quantas soluções de \(a^2\equiv b^2\pmod N\) provavelmente teremos de tentar antes de encontrar um fator de \(N\)? O caso mais difícil ocorre quando \(N=pq\) é produto de dois primos de aproximadamente o mesmo tamanho. Isso acontece porque o menor fator primo é \(O(\sqrt N)\), enquanto, em qualquer outro caso, o menor fator primo será \(O(N^\alpha)\), com \(\alpha&lt;1/2\). À medida que \(\alpha\) diminui, a dificuldade de fatorar \(N\) também diminui. Suponha que consigamos encontrar valores mais ou menos aleatórios de \(a\) e \(b\) que satisfaçam \(a^2\equiv b^2\pmod N\). Quais são nossas chances de encontrar um fator não trivial de \(N\) ao calcular \(\gcd(a-b,N)\)? Sabemos que</p>
+    <div class="equation">\[(a-b)(a+b)=a^2-b^2=kN=kpq\qquad\text{para algum valor de }k.\]</div>
+    <p>O primo \(p\) deve dividir pelo menos um dos números \(a-b\) e \(a+b\), e tem aproximadamente a mesma probabilidade de dividir cada um deles. O mesmo vale para \(q\). Ganhamos se \(a-b\) for divisível por exatamente um dentre \(p\) e \(q\), o que acontece aproximadamente \(50\%\) das vezes. Portanto, se realmente conseguirmos gerar valores aleatórios de \(a\) e \(b\) que satisfaçam \(a^2\equiv b^2\pmod N\), não levaremos muito tempo para encontrar um fator de \(N\). É claro que ainda resta saber quão difícil é encontrar esses valores de \(a\) e \(b\).</p>
+  </aside>
+
+  <p>Depois de dar uma amostra do processo por meio de vários exemplos, passamos a uma análise mais sistemática. O procedimento de fatoração descrito na <a href="#tab-3-4" data-source-xref>Tabela 3.4</a> consiste em três etapas:</p>
+
+  <ol>
+    <li>Construção de relações;</li>
+    <li>Eliminação;</li>
+    <li>Cálculo de MDC.</li>
+  </ol>
+
+  <p>Na verdade, nada há a dizer sobre a Etapa 3, pois o algoritmo de Euclides (<a href="../ch01/#theorem-1-7" data-source-xref>Teorema 1.7</a>) nos ensina a calcular eficientemente \(\gcd(N,a-b)\) em \(O(\ln N)\) etapas. Por outro lado, há tanto a dizer sobre a construção de relações que adiamos sua discussão para a <a href="#sec-3-7" data-source-xref>Seção 3.7</a>. Finalmente, o que dizer da Etapa 2, a etapa de eliminação?</p>
+
+  <p>Supomos que cada um dos números \(a_1,\ldots,a_r\) encontrados na Etapa 1 tenha a propriedade de que \(c_i\equiv a_i^2\pmod m\) se fatora como produto de primos pequenos — digamos que cada \(c_i\) seja produto de primos escolhidos no conjunto dos primeiros \(t\) primos \(\{p_1,p_2,p_3,\ldots,p_t\}\). Isso significa que existem expoentes \(e_{ij}\) tais que</p>
+
+  <div class="equation">\[
+    \begin{aligned}
+      c_1&=p_1^{e_{11}}p_2^{e_{12}}p_3^{e_{13}}\cdots p_t^{e_{1t}},\\
+      c_2&=p_1^{e_{21}}p_2^{e_{22}}p_3^{e_{23}}\cdots p_t^{e_{2t}},\\
+      &\ \vdots\\
+      c_r&=p_1^{e_{r1}}p_2^{e_{r2}}p_3^{e_{r3}}\cdots p_t^{e_{rt}}.
+    \end{aligned}
+  \]</div>
+
+  <p>Nosso objetivo é tomar o produto de alguns dos \(c_i\) para que cada primo do lado direito da equação apareça elevado a uma potência par. Em outras palavras, nosso problema se reduz a encontrar \(u_1,u_2,\ldots,u_r\in\{0,1\}\) tais que</p>
+
+  <div class="equation">\[c_1^{u_1}c_2^{u_2}\cdots c_r^{u_r}\qquad\text{seja um quadrado perfeito}.\]</div>
+
+  <p>Aqui tomamos \(u_i=1\) se quisermos incluir \(c_i\) no produto, e tomamos \(u_i=0\) se não quisermos incluí-lo.</p>
+
+  <p>Escrever o produto em termos das fatorações primas de \(c_1,\ldots,c_r\) produz a expressão um tanto confusa</p>
+
+  <div class="equation" id="eq-3-15"><span class="equation-number">(3.15)</span>\[
+    \begin{aligned}
+      c_1^{u_1}c_2^{u_2}\cdots c_r^{u_r}
+      &=(p_1^{e_{11}}p_2^{e_{12}}p_3^{e_{13}}\cdots p_t^{e_{1t}})^{u_1}
+        (p_1^{e_{21}}p_2^{e_{22}}p_3^{e_{23}}\cdots p_t^{e_{2t}})^{u_2}\cdots
+        (p_1^{e_{r1}}p_2^{e_{r2}}p_3^{e_{r3}}\cdots p_t^{e_{rt}})^{u_r}\\
+      &=p_1^{e_{11}u_1+e_{21}u_2+\cdots+e_{r1}u_r}
+        p_2^{e_{12}u_1+e_{22}u_2+\cdots+e_{r2}u_r}\cdots
+        p_t^{e_{1t}u_1+e_{2t}u_2+\cdots+e_{rt}u_r}.
+    \end{aligned}
+  \]</div>
+
+  <p>Talvez isso fique mais claro quando escrito com notação de somatório e produto,</p>
+
+  <div class="equation" id="eq-3-16"><span class="equation-number">(3.16)</span>\[
+    \prod_{i=1}^{r}c_i^{u_i}=\prod_{j=1}^{t}p_j^{\sum_{i=1}^{r}e_{ij}u_i}.
+  \]</div>
+
+  <p>Em todo caso, nosso objetivo é escolher \(u_1,\ldots,u_r\) de modo que todos os expoentes de <a href="#eq-3-15" data-source-xref>(3.15)</a>, ou, equivalentemente, de <a href="#eq-3-16" data-source-xref>(3.16)</a>, sejam pares.</p>
+
+  <p>Recapitulando, são dados os inteiros</p>
+
+  <div class="equation">\[e_{11},e_{12},\ldots,e_{1t},e_{21},e_{22},\ldots,e_{2t},\ldots,e_{r1},e_{r2},\ldots,e_{rt}\]</div>
+
+  <p>e procuramos inteiros \(u_1,u_2,\ldots,u_r\) tais que</p>
+
+  <div class="equation" id="eq-3-17"><span class="equation-number">(3.17)</span>\[
+    \begin{aligned}
+      e_{11}u_1+e_{21}u_2+\cdots+e_{r1}u_r&\equiv0\pmod2,\\
+      e_{12}u_1+e_{22}u_2+\cdots+e_{r2}u_r&\equiv0\pmod2,\\
+      &\ \vdots\\
+      e_{1t}u_1+e_{2t}u_2+\cdots+e_{rt}u_r&\equiv0\pmod2.
+    \end{aligned}
+  \]</div>
+
+  <p>Você sem dúvida reconheceu que o sistema de congruências <a href="#eq-3-17" data-source-xref>(3.17)</a> é simplesmente um sistema de equações lineares sobre o corpo finito \(\mathbb F_2\). Portanto, técnicas usuais de álgebra linear, como a eliminação gaussiana, podem ser usadas para resolver essas equações. Na verdade, fazer álgebra linear no corpo \(\mathbb F_2\) é muito mais fácil do que fazê-la no corpo \(\mathbb R\), pois não é necessário preocupar-se com erros de arredondamento.</p>
+
+  <aside class="semantic example" id="exemplo-3-40">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.40</span></div>
+    <p>Ilustramos a etapa de eliminação por álgebra linear fatorando o número</p>
+    <div class="equation">\[N=9788111.\]</div>
+    <p>Procuramos números \(a\) com a propriedade de que \(a^2\bmod N\) seja \(50\)-suave, isto é, números \(a\) tais que \(a^2\bmod N\) seja igual a um produto de primos no conjunto</p>
+    <div class="equation">\[\{2,3,5,7,11,13,17,19,23,29,31,37,41,43,47\}.\]</div>
+    <p>A parte superior da <a href="#tab-3-5" data-source-xref>Tabela 3.5</a> lista os \(20\) números \(a_1,a_2,\ldots,a_{20}\) entre \(3129\) e \(4700\) que possuem essa propriedade,<sup id="fnref-3-6-6"><a href="#fn-3-6-6" data-source-xref>6</a></sup> junto com a fatoração de cada</p>
+    <div class="equation">\[c_i\equiv a_i^2\pmod N.\]</div>
+    <p>A parte inferior da <a href="#tab-3-5" data-source-xref>Tabela 3.5</a> traduz a exigência de que um produto \(c_1^{u_1}c_2^{u_2}\cdots c_{20}^{u_{20}}\) seja um quadrado em um sistema de equações lineares para \((u_1,u_2,\ldots,u_{20})\), conforme descrito por <a href="#eq-3-17" data-source-xref>(3.17)</a>. Por conveniência notacional, escrevemos o sistema de equações lineares na <a href="#tab-3-5" data-source-xref>Tabela 3.5</a> em forma matricial.</p>
+
+    <div class="table-wrap" id="tab-3-5">
+      <table>
+        <caption>Tabela 3.5: Fatoração de \(N=9788111\)</caption>
+        <thead><tr><th>Relação módulo \(9788111\)</th><th>Fatoração</th></tr></thead>
+        <tbody>
+          <tr><td>\(3129^2\equiv2530\)</td><td>\(2530=2\cdot5\cdot11\cdot23\)</td></tr>
+          <tr><td>\(3130^2\equiv8789\)</td><td>\(8789=11\cdot17\cdot47\)</td></tr>
+          <tr><td>\(3131^2\equiv15050\)</td><td>\(15050=2\cdot5^2\cdot7\cdot43\)</td></tr>
+          <tr><td>\(3166^2\equiv235445\)</td><td>\(235445=5\cdot7^2\cdot31^2\)</td></tr>
+          <tr><td>\(3174^2\equiv286165\)</td><td>\(286165=5\cdot11^3\cdot43\)</td></tr>
+          <tr><td>\(3215^2\equiv548114\)</td><td>\(548114=2\cdot7^3\cdot17\cdot47\)</td></tr>
+          <tr><td>\(3313^2\equiv1187858\)</td><td>\(1187858=2\cdot7^2\cdot17\cdot23\cdot31\)</td></tr>
+          <tr><td>\(3449^2\equiv2107490\)</td><td>\(2107490=2\cdot5\cdot7^2\cdot11\cdot17\cdot23\)</td></tr>
+          <tr><td>\(3481^2\equiv2329250\)</td><td>\(2329250=2\cdot5^3\cdot7\cdot11^3\)</td></tr>
+          <tr><td>\(3561^2\equiv2892610\)</td><td>\(2892610=2\cdot5\cdot7\cdot31^2\cdot43\)</td></tr>
+          <tr><td>\(4394^2\equiv9519125\)</td><td>\(9519125=5^3\cdot7\cdot11\cdot23\cdot43\)</td></tr>
+          <tr><td>\(4425^2\equiv4403\)</td><td>\(4403=7\cdot17\cdot37\)</td></tr>
+          <tr><td>\(4426^2\equiv13254\)</td><td>\(13254=2\cdot3\cdot47^2\)</td></tr>
+          <tr><td>\(4432^2\equiv66402\)</td><td>\(66402=2\cdot3^2\cdot7\cdot17\cdot31\)</td></tr>
+          <tr><td>\(4442^2\equiv155142\)</td><td>\(155142=2\cdot3^3\cdot13^2\cdot17\)</td></tr>
+          <tr><td>\(4468^2\equiv386802\)</td><td>\(386802=2\cdot3^3\cdot13\cdot19\cdot29\)</td></tr>
+          <tr><td>\(4551^2\equiv1135379\)</td><td>\(1135379=7^2\cdot17\cdot29\cdot47\)</td></tr>
+          <tr><td>\(4595^2\equiv1537803\)</td><td>\(1537803=3^2\cdot17\cdot19\cdot23^2\)</td></tr>
+          <tr><td>\(4651^2\equiv2055579\)</td><td>\(2055579=3\cdot23\cdot31^3\)</td></tr>
+          <tr><td>\(4684^2\equiv2363634\)</td><td>\(2363634=2\cdot3^3\cdot7\cdot13^2\cdot37\)</td></tr>
+          <tr><th colspan="2">Etapa de construção de relações</th></tr>
+          <tr><td colspan="2">\[
+            \left(\begin{array}{rrrrrrrrrrrrrrrrrrrr}
+              1&0&1&0&0&1&1&1&1&1&0&0&1&1&1&1&0&0&0&1\\
+              0&0&0&0&0&0&0&0&0&0&0&0&1&0&1&1&0&0&1&1\\
+              1&0&0&1&1&0&0&1&1&1&1&0&0&0&0&0&0&0&0&0\\
+              0&0&1&0&0&1&0&0&1&1&1&1&0&1&0&0&0&0&0&1\\
+              1&1&0&0&1&0&0&1&1&0&1&0&0&0&0&0&0&0&0&0\\
+              0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&1&0&0&0&0\\
+              0&1&0&0&0&1&1&1&0&0&0&1&0&1&1&0&1&1&0&0\\
+              0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&1&0&1&0&0\\
+              1&0&0&0&0&0&1&1&0&0&1&0&0&0&0&0&0&0&1&0\\
+              0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&1&1&0&0&0\\
+              0&0&0&0&0&0&1&0&0&0&0&0&0&1&0&0&0&0&1&0\\
+              0&0&0&0&0&0&0&0&0&0&0&1&0&0&0&0&0&0&0&1\\
+              0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+              0&0&1&0&1&0&0&0&0&1&1&0&0&0&0&0&0&0&0&0\\
+              0&1&0&0&0&1&0&0&0&0&0&0&0&0&0&0&1&0&0&0
+            \end{array}\right)
+            \left(\begin{array}{c}u_1\\u_2\\u_3\\u_4\\u_5\\u_6\\u_7\\u_8\\u_9\\u_{10}\\u_{11}\\u_{12}\\u_{13}\\u_{14}\\u_{15}\\u_{16}\\u_{17}\\u_{18}\\u_{19}\\u_{20}\end{array}\right)
+            \equiv
+            \left(\begin{array}{c}0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\end{array}\right)
+            \pmod2
+          \]</td></tr>
+          <tr><th colspan="2">Etapa de eliminação por álgebra linear</th></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>A próxima etapa é resolver o sistema de equações lineares da <a href="#tab-3-5" data-source-xref>Tabela 3.5</a>. Isso pode ser feito por eliminação gaussiana usual, sempre lembrando que todos os cálculos são realizados módulo \(2\). O conjunto das soluções resulta ser um espaço vetorial sobre \(\mathbb F_2\) de dimensão \(8\). Uma base para o conjunto de soluções é dada pelos oito vetores a seguir, que escrevemos horizontalmente, em vez de verticalmente, para economizar espaço:</p>
+    <div class="equation">\[
+      \begin{aligned}
+        \mathbf v_1&=(0,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0),\\
+        \mathbf v_2&=(0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\\
+        \mathbf v_3&=(0,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0),\\
+        \mathbf v_4&=(1,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0),\\
+        \mathbf v_5&=(1,0,1,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0),\\
+        \mathbf v_6&=(1,0,0,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0),\\
+        \mathbf v_7&=(1,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,1,0),\\
+        \mathbf v_8&=(1,0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,1).
+      \end{aligned}
+    \]</div>
+    <p>Cada um dos vetores \(\mathbf v_1,\ldots,\mathbf v_8\) fornece uma congruência \(a^2\equiv b^2\pmod N\) que pode produzir uma fatoração de \(N\). Por exemplo, \(\mathbf v_1\) diz que, se multiplicarmos o terceiro, o quinto e o nono números da lista na parte superior da <a href="#tab-3-5" data-source-xref>Tabela 3.5</a>, obteremos um quadrado; de fato,</p>
+    <div class="equation">\[
+      \begin{aligned}
+        3131^2\cdot3174^2\cdot3481^2
+        &\equiv(2\cdot5^2\cdot7\cdot43)(5\cdot11^3\cdot43)(2\cdot5^3\cdot7\cdot11^3)\pmod{9788111}\\
+        &=(2\cdot5^3\cdot7\cdot11^3\cdot43)^2\\
+        &=100157750^2.
+      \end{aligned}
+    \]</div>
+    <p>Em seguida, calculamos</p>
+    <div class="equation">\[\gcd(9788111,3131\cdot3174\cdot3481-100157750)=9788111,\]</div>
+    <p>o que devolve o número original \(N\). Isso é uma pena, mas nem tudo está perdido, pois temos outras sete soluções independentes para nosso sistema de equações lineares. Tentando cada uma delas, obtemos os resultados listados na <a href="#tab-3-6" data-source-xref>Tabela 3.6</a>.</p>
+
+    <div class="table-wrap" id="tab-3-6">
+      <table>
+        <caption>Tabela 3.6: Fatoração de \(N=9788111\); cálculo dos máximos divisores comuns</caption>
+        <tbody>
+          <tr><th>\(\mathbf v_1=(0,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0)\)</th></tr>
+          <tr><td>\(3131^2\cdot3174^2\cdot3481^2\equiv(2\cdot5^3\cdot7\cdot11^3\cdot43)^2=100157750^2\)</td></tr>
+          <tr><td>\(\gcd(9788111,3131\cdot3174\cdot3481-100157750)=9788111\)</td></tr>
+          <tr><th>\(\mathbf v_2=(0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0)\)</th></tr>
+          <tr><td>\(3130^2\cdot3131^2\cdot3166^2\cdot3174^2\cdot3215^2\equiv(2\cdot5^2\cdot7^3\cdot11^2\cdot17\cdot31\cdot43\cdot47)^2=2210173785050^2\)</td></tr>
+          <tr><td>\(\gcd(9788111,3130\cdot3131\cdot3166\cdot3174\cdot3215-2210173785050)=1\)</td></tr>
+          <tr><th>\(\mathbf v_3=(0,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0)\)</th></tr>
+          <tr><td>\(3131^2\cdot3166^2\cdot3561^2\equiv(2\cdot5^2\cdot7^2\cdot31^2\cdot43)^2=101241350^2\)</td></tr>
+          <tr><td>\(\gcd(9788111,3131\cdot3166\cdot3561-101241350)=9788111\)</td></tr>
+          <tr><th>\(\mathbf v_4=(1,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0)\)</th></tr>
+          <tr><td>\(3129^2\cdot3131^2\cdot4394^2\equiv(2\cdot5^3\cdot7\cdot11\cdot23\cdot43)^2=19038250^2\)</td></tr>
+          <tr><td>\(\gcd(9788111,3129\cdot3131\cdot4394-19038250)=9788111\)</td></tr>
+          <tr><th>\(\mathbf v_5=(1,0,1,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0)\)</th></tr>
+          <tr><td>\(3129^2\cdot3131^2\cdot3174^2\cdot3313^2\cdot4432^2\equiv(2^2\cdot3\cdot5^2\cdot7^2\cdot11^2\cdot17\cdot23\cdot31\cdot43)^2=927063776100^2\)</td></tr>
+          <tr><td>\(\gcd(9788111,3129\cdot3131\cdot3174\cdot3313\cdot4432-927063776100)=1\)</td></tr>
+          <tr><th>\(\mathbf v_6=(1,0,0,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0)\)</th></tr>
+          <tr><td>\(3129^2\cdot3449^2\cdot4426^2\cdot4442^2\equiv(2^2\cdot3^2\cdot5\cdot7\cdot11\cdot13\cdot17\cdot23\cdot47)^2=3311167860^2\)</td></tr>
+          <tr><td>\(\gcd(9788111,3129\cdot3449\cdot4426\cdot4442-3311167860)=1\)</td></tr>
+          <tr><th>\(\mathbf v_7=(1,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,1,0)\)</th></tr>
+          <tr><td>\(3129^2\cdot3313^2\cdot3449^2\cdot4426^2\cdot4651^2\equiv(2^2\cdot3\cdot5\cdot7^2\cdot11\cdot17\cdot23^2\cdot31^2\cdot47)^2=13136082114540^2\)</td></tr>
+          <tr><td>\(\gcd(9788111,3129\cdot3313\cdot3449\cdot4426\cdot4651-13136082114540)=\mathbf{2741}\)</td></tr>
+          <tr><th>\(\mathbf v_8=(1,0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,1)\)</th></tr>
+          <tr><td>\(3129^2\cdot3449^2\cdot4425^2\cdot4426^2\cdot4684^2\equiv(2^2\cdot3^2\cdot5\cdot7^2\cdot11\cdot13\cdot17\cdot23\cdot37\cdot47)^2=857592475740^2\)</td></tr>
+          <tr><td>\(\gcd(9788111,3129\cdot3449\cdot4425\cdot4426\cdot4684-857592475740)=1\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Sete das oito soluções do sistema de equações lineares não fornecem informação útil sobre \(N\), pois o máximo divisor comum resultante é \(1\) ou \(N\). Contudo, uma solução, listada no penúltimo bloco da <a href="#tab-3-6" data-source-xref>Tabela 3.6</a>, leva a uma fatoração não trivial de \(N\). Assim, \(2741\) é um fator de \(N\); dividindo por ele, obtemos \(N=9788111=2741\cdot3571\). Como \(2741\) e \(3571\) são primos, essa é a fatoração completa de \(N\).</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-41">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.41</span></div>
+    <p>Para fatorar um número grande \(N\), talvez seja necessário usar um conjunto \(\{p_1,p_2,p_3,\ldots,p_t\}\) que contenha centenas de milhares, ou até milhões, de primos. Nesse caso, o sistema <a href="#eq-3-17" data-source-xref>(3.17)</a> contém milhões de equações lineares e, mesmo trabalhando no corpo \(\mathbb F_2\), pode ser muito difícil resolver sistemas gerais desse tamanho. Contudo, acontece que os sistemas de equações lineares usados na fatoração são bastante esparsos, o que significa que a maioria de seus coeficientes é zero. Isso é plausível porque, se um número \(A\) é produto de primos menores que \(B\), espera-se que \(A\) seja produto de aproximadamente \(\ln(A)/\ln(B)\) primos distintos. Existem técnicas especiais para resolver sistemas esparsos de equações lineares que são muito mais eficientes que a eliminação gaussiana comum; veja, por exemplo, [<a href="../../references/#ref-31" data-source-xref>31</a>, <a href="../../references/#ref-72" data-source-xref>72</a>].</p>
+  </aside>
+
+  <ol class="footnotes" start="6">
+    <li id="fn-3-6-6">Por que começamos com \(a=3129\)? A resposta é que, a menos que \(a^2\) seja maior que \(N\), não há redução módulo \(N\) em \(a^2\bmod N\), e portanto não podemos esperar obter informação alguma. O valor \(3129\) vem do fato de que \(\sqrt N=\sqrt{9788111}\approx3128{,}6\). <a href="#fnref-3-6-6" data-source-xref aria-label="Voltar à chamada da nota 6">↩</a></li>
+  </ol>
+</section>

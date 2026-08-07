@@ -1,0 +1,7 @@
+<p class="supplement-lead">Tentar fatorar cada \(Q(x)=x^2-N\) isoladamente repete trabalho. O crivo marca, para cada primo, todos os x em que esse primo divide Q(x).</p>
+<ol class="slow-steps">
+  <li><strong>Resolva uma vez.</strong> Para cada primo da base, encontre raízes de \(x^2\equiv N\pmod p\).</li>
+  <li><strong>Marque progressões.</strong> Se r é raiz, todos os \(x\equiv\pm r\pmod p\) produzem Q(x) divisível por p.</li>
+  <li><strong>Acumule.</strong> Remova potências ou some logaritmos ao longo dessas progressões. Restos pequenos identificam candidatos suaves.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Primos que dividem N, potências de primos e o caso p=2 exigem tratamento próprio numa implementação completa.</div>

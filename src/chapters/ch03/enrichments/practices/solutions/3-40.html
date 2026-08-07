@@ -1,0 +1,82 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.40">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — O símbolo de Legendre revela a paridade</summary>
+      <p>Para uma raiz primitiva \(g\), vale \(\left(\frac yp\right)=(-1)^{\log_g y}\). Assim, o símbolo informa o bit menos significativo do logaritmo de \(y\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Remova o bit e divida o expoente por \(2\)</summary>
+      <p>Se o bit é \(\epsilon\), então \(yg^{-\epsilon}\) tem logaritmo par e é quadrado. Uma raiz quadrada reduz esse logaritmo à metade.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — A ambiguidade da raiz só alcança bits posteriores</summary>
+      <p>As duas raízes diferem por um fator \(-1=g^{(p-1)/2}\). Após \(j\) iterações, essa escolha só muda o logaritmo por um múltiplo de \(2^{s-j}\), sem alterar o próximo bit enquanto \(j&lt;s\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p class="solution-warning"><strong>Errata literal do enunciado.</strong> A expansão está impressa como
+      \[
+        \epsilon_0+2\epsilon_2+4\epsilon_2+8\epsilon_3+\cdots,
+      \]
+      repetindo \(\epsilon_2\) e omitindo \(\epsilon_1\). A expansão binária matematicamente correta, usada abaixo, é
+      \[
+        \log_g(h)=\epsilon_0+2\epsilon_1+4\epsilon_2+8\epsilon_3+\cdots.
+      \]</p>
+    <p>Para todo \(y\in\mathbb F_p^*\), o <a href="#exemplo-3-69" data-source-xref>Exemplo 3.69</a> fornece</p>
+    <div class="display-math">
+      \[
+        \left(\frac yp\right)=(-1)^{\log_g(y)}.
+      \]
+    </div>
+    <p>Logo o símbolo de Legendre vale \(1\) se o logaritmo é par e \(-1\) se ele é ímpar. Isso conduz ao algoritmo:</p>
+    <pre><code>entrada: p, g, h e s, com p - 1 = 2^s m e m ímpar
+y ← h
+para j = 0, 1, ..., s - 1:
+    se Legendre(y, p) = 1:
+        ε[j] ← 0
+    senão:
+        ε[j] ← 1
+    se j &lt; s - 1:
+        z ← y · g^(-ε[j]) mod p
+        y ← qualquer raiz quadrada de z módulo p
+devolva ε[0], ..., ε[s - 1]</code></pre>
+    <p>O elemento \(z\) sempre possui raiz: seu logaritmo é \(\log_g(y)-\epsilon_j\), que é par pela escolha de \(\epsilon_j\).</p>
+    <p>Provaremos que a escolha entre as duas raízes não afeta os bits recuperados. Seja</p>
+    <div class="display-math">
+      \[
+        x=\log_g(h),\qquad
+        E_j=\sum_{i=0}^{j-1}\epsilon_i2^i,
+      \]
+    </div>
+    <p>e seja \(r_j=\log_g(y_j)\) o logaritmo do elemento mantido no início da iteração \(j\). O invariante é</p>
+    <div class="display-math">
+      \[
+        r_j\equiv\frac{x-E_j}{2^j}\pmod{2^{s-j}}.
+      \]
+    </div>
+    <p>Para \(j=0\), ele é imediato, pois \(y_0=h\). Se \(j&lt;s\), reduzir o invariante módulo \(2\) mostra que a paridade de \(r_j\), revelada pelo símbolo de Legendre, é exatamente</p>
+    <div class="display-math">
+      \[
+        \epsilon_j\equiv\frac{x-E_j}{2^j}\pmod2,
+      \]
+    </div>
+    <p>isto é, o bit \(j\) de \(x\). Depois de remover esse bit, qualquer raiz escolhida satisfaz</p>
+    <div class="display-math">
+      \[
+        2r_{j+1}\equiv r_j-\epsilon_j\pmod{p-1}.
+      \]
+    </div>
+    <p>Como \(2^s\mid p-1\), dividir a congruência relevante por \(2\) preserva</p>
+    <div class="display-math">
+      \[
+        r_{j+1}\equiv
+        \frac{x-E_j-\epsilon_j2^j}{2^{j+1}}
+        =\frac{x-E_{j+1}}{2^{j+1}}
+        \pmod{2^{s-j-1}}.
+      \]
+    </div>
+    <p>Esse é o invariante da iteração seguinte. As duas raízes diferem por \(-1=g^{(p-1)/2}\); a diferença entre seus logaritmos é \((p-1)/2\), que já é absorvida pelo módulo do invariante. Por indução, o algoritmo recupera corretamente \(\epsilon_0,\ldots,\epsilon_{s-1}\) usando \(s\) símbolos de Legendre e no máximo \(s-1\) extrações de raiz. Esses \(s\) bits, portanto, não oferecem a segurança esperada de um logaritmo discreto completo.</p>
+  </details>
+</div>

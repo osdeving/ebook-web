@@ -1,0 +1,7 @@
+<p class="supplement-lead">Fatorar N permite calcular a chave privada e, portanto, inverter RSA. A recíproca — transformar qualquer inversor em um fatorador eficiente — não é um fato automático apresentado pela construção.</p>
+<ol class="slow-steps">
+  <li><strong>Redução conhecida.</strong> De p e q calculamos \(\varphi(N)\), depois \(d\), e então invertemos a potência pública.</li>
+  <li><strong>Outra informação.</strong> Conhecer um expoente privado válido costuma permitir fatorar o módulo com um algoritmo probabilístico, pois revela múltiplos do expoente do grupo.</li>
+  <li><strong>Hipótese exata.</strong> Ainda assim, uma alegação de segurança deve dizer qual problema e qual modelo usa. “RSA é seguro porque fatorar é difícil” é uma síntese pedagógica, não uma equivalência geral demonstrada.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Dificuldade computacional não é transitiva por semelhança. É a direção de uma redução que justifica qual quebra implica qual solução.</div>

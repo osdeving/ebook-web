@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { chapters } from "../chapters";
 import SiteNav from "../components/SiteNav.astro";
 const base = import.meta.env.BASE_URL;
 ---
@@ -13,8 +14,9 @@ const base = import.meta.env.BASE_URL;
       <p>Este endereço ainda não estava salvo no aparelho. Você pode voltar ao início ou abrir um dos capítulos preparados para leitura offline.</p>
       <nav aria-label="Conteúdo disponível offline">
         <a class="enrichment-button enrichment-button--primary" href={base}>Ir ao início</a>
-        <a class="enrichment-button" href={`${base}chapters/ch01/`}>Capítulo 1</a>
-        <a class="enrichment-button" href={`${base}chapters/ch02/`}>Capítulo 2</a>
+        {chapters.map((chapter) => (
+          <a class="enrichment-button" href={`${base}chapters/${chapter.slug}/`}>Capítulo {chapter.number}</a>
+        ))}
       </nav>
     </section>
   </main>

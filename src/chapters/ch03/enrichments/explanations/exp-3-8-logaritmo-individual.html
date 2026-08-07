@@ -1,0 +1,7 @@
+<p class="supplement-lead">Depois do banco de logaritmos da base, resta expressar o alvo com fatores conhecidos. Essa fase é chamada de logaritmo individual ou descida.</p>
+<ol class="slow-steps">
+  <li><strong>Desloque o alvo.</strong> Procure um expoente k para que \(h g^k\) tenha representação mais fácil.</li>
+  <li><strong>Decomponha.</strong> Se \(h g^k\equiv\prod p_i^{e_i}\pmod p\), então \(\log_g h\equiv\sum e_i\log_g p_i-k\pmod{p-1}\).</li>
+  <li><strong>Desça fatores grandes.</strong> Em algoritmos avançados, fatores fora da base são reescritos por novas relações até chegar aos elementos pré-calculados.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Uma relação suave rara pode dominar o custo de um único alvo. As variantes modernas usam árvores e estratégias de descida, não apenas tentativa uniforme.</div>

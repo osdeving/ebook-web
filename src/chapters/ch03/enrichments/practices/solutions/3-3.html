@@ -1,0 +1,30 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.3">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Trabalhe primo a primo</summary>
+      <p>É suficiente provar \(c^{de}\equiv c\) separadamente módulo \(p\) e módulo \(q\), e então aplicar o teorema chinês dos restos.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Separe dois casos</summary>
+      <p>Módulo \(p\), trate primeiro \(p\mid c\). Se \(p\nmid c\), use Fermat e escreva \(de=1+k(p-1)(q-1)\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Da hipótese existe \(k\in\mathbb Z\) tal que</p>
+    <p>\[de=1+k(p-1)(q-1).\]</p>
+    <p>Vamos mostrar que \(c^{de}\equiv c\pmod p\). Se \(p\mid c\), ambos os lados são congruentes a \(0\) módulo \(p\). Se \(p\nmid c\), o pequeno teorema de Fermat dá \(c^{p-1}\equiv1\pmod p\), e então</p>
+    <p>\[
+      c^{de}=c^{1+k(p-1)(q-1)}
+      =c\bigl(c^{p-1}\bigr)^{k(q-1)}
+      \equiv c\pmod p.
+    \]</p>
+    <p>O mesmo argumento, trocando \(p\) por \(q\), prova \(c^{de}\equiv c\pmod q\): se \(q\mid c\), a congruência é trivial; caso contrário, usa-se \(c^{q-1}\equiv1\pmod q\).</p>
+    <p>Como \(p\) e \(q\) são distintos, são coprimos. Logo as duas congruências implicam, pelo teorema chinês dos restos,</p>
+    <p>\[c^{de}\equiv c\pmod{pq}.\]</p>
+    <p>Tomando \(x\equiv c^d\pmod{pq}\), obtemos</p>
+    <p>\[x^e\equiv(c^d)^e=c^{de}\equiv c\pmod{pq},\]</p>
+    <p>inclusive quando \(c\) compartilha um ou os dois fatores primos com \(pq\), como se queria.</p>
+  </details>
+</div>

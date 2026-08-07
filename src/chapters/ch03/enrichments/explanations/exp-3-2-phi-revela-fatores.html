@@ -1,0 +1,7 @@
+<p class="supplement-lead">Para um módulo semiprimo, \(N\) e \(\varphi(N)\) determinam a soma dos fatores. A partir daí, fatorar é apenas resolver uma equação quadrática.</p>
+<ol class="slow-steps">
+  <li><strong>Expanda.</strong> \(\varphi(N)=(p-1)(q-1)=N-(p+q)+1\). Logo \(p+q=N-\varphi(N)+1\).</li>
+  <li><strong>Construa o polinômio.</strong> Como \(pq=N\), os fatores são as raízes de \(X^2-(p+q)X+N=0\).</li>
+  <li><strong>Extraia.</strong> O discriminante \((p+q)^2-4N=(p-q)^2\) é quadrado perfeito; suas duas raízes devolvem p e q.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Esse argumento usa que N é produto de dois primos. Para uma fatoração com mais fatores ou multiplicidades, o valor de φ ainda vaza estrutura, mas a reconstrução não se reduz à mesma quadrática.</div>

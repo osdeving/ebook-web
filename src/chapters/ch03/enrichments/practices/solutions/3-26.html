@@ -1,0 +1,109 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.26">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Some vetores de paridades</summary>
+      <p>Escolha relações cujo produto tenha expoente par em cada primo. Isso faz o produto dos resíduos ser um quadrado \(b^2\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Multiplique também os lados esquerdos</summary>
+      <p>Para o mesmo subconjunto, defina \(a\) como o produto dos números à esquerda, reduzido módulo \(N\). Então \(a^2\equiv b^2\pmod N\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Uma dependência pode ser trivial</summary>
+      <p>Se \(a\equiv\pm b\pmod N\), o MDC será \(N\) ou \(1\). Nesse caso use outra combinação das relações fornecidas.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Multiplicamos as duas relações. O produto dos resíduos é</p>
+        <p>\[
+          270\cdot60750
+          =2^2\cdot3^8\cdot5^4
+          =(2\cdot3^4\cdot5^2)^2
+          =4050^2.
+        \]</p>
+        <p>O produto dos lados esquerdos dá</p>
+        <p>\[
+          a\equiv1882\cdot1898\equiv30382\pmod{61063},
+          \qquad b=4050.
+        \]</p>
+        <p>Portanto \(a^2\equiv b^2\pmod N\), e</p>
+        <p>\[
+          \gcd(61063,30382-4050)=227,\qquad
+          \gcd(61063,30382+4050)=269.
+        \]</p>
+        <p>Logo \(\boxed{61063=227\cdot269}\).</p>
+      </li>
+      <li>
+        <p>As relações de \(763\) e \(773\) já têm o mesmo vetor de paridades:</p>
+        <p>\[
+          192\cdot15552
+          =2^{12}\cdot3^6
+          =(2^6\cdot3^3)^2
+          =1728^2.
+        \]</p>
+        <p>Além disso,</p>
+        <p>\[
+          a\equiv763\cdot773\equiv7822\pmod{52907},
+          \qquad b=1728.
+        \]</p>
+        <p>Assim,</p>
+        <p>\[
+          \gcd(52907,7822-1728)=277,\qquad
+          \gcd(52907,7822+1728)=191,
+        \]</p>
+        <p>e \(\boxed{52907=191\cdot277}\).</p>
+      </li>
+      <li>
+        <p>O produto das relações de \(1189\) e \(2378\) é um quadrado, mas produz \(a=b=54000\) e, portanto, o MDC trivial \(N\). Usamos em vez disso as relações de \(1189\), \(1605\) e \(2815\):</p>
+        <p>\[
+          \begin{aligned}
+          27000\cdot686\cdot105
+          &=2^4\cdot3^4\cdot5^4\cdot7^4\\
+          &=(2^2\cdot3^2\cdot5^2\cdot7^2)^2
+          =44100^2.
+          \end{aligned}
+        \]</p>
+        <p>O produto correspondente à esquerda é</p>
+        <p>\[
+          a\equiv1189\cdot1605\cdot2815
+          \equiv32124\pmod{198103},
+          \qquad b=44100.
+        \]</p>
+        <p>Logo</p>
+        <p>\[
+          \gcd(198103,32124-44100)=499,\qquad
+          \gcd(198103,32124+44100)=397,
+        \]</p>
+        <p>e \(\boxed{198103=397\cdot499}\).</p>
+      </li>
+      <li>
+        <p>Produtos de duas entre as três primeiras relações dão congruências triviais \(a\equiv b\pmod N\). Uma dependência útil usa a primeira, a quarta e a quinta:</p>
+        <p>\[
+          \begin{aligned}
+          5390\cdot40824\cdot1386000
+          &=2^8\cdot3^8\cdot5^4\cdot7^4\cdot11^2\\
+          &=(2^4\cdot3^4\cdot5^2\cdot7^2\cdot11)^2\\
+          &=17463600^2.
+          \end{aligned}
+        \]</p>
+        <p>Reduzindo os dois produtos módulo \(2525891\),</p>
+        <p>\[
+          \begin{aligned}
+          a&\equiv1591\cdot5275\cdot5401\equiv913530,\\
+          b&\equiv17463600\equiv2308254.
+          \end{aligned}
+        \]</p>
+        <p>Os MDCs são</p>
+        <p>\[
+          \gcd(2525891,913530-2308254)=1637,\qquad
+          \gcd(2525891,913530+2308254)=1543.
+        \]</p>
+        <p>Portanto \(\boxed{2525891=1543\cdot1637}\).</p>
+      </li>
+    </ol>
+  </details>
+</div>

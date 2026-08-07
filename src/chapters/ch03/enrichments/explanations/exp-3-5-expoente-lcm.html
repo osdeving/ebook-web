@@ -1,0 +1,7 @@
+<p class="supplement-lead">Usar B! funciona porque contém muitas potências de primos, mas o estágio 1 costuma usar o expoente menor \(M=\operatorname{mmc}(1,\ldots,B)\).</p>
+<ol class="slow-steps">
+  <li><strong>Alvo.</strong> Queremos \(p-1\mid M\). Para esse M, isso ocorre quando toda potência prima \(\ell^e\) que divide p−1 satisfaz \(\ell^e\le B\); ter apenas fatores primos menores que B, sem controlar seus expoentes, não basta.</li>
+  <li><strong>Potências máximas.</strong> Para cada primo \(\ell\le B\), inclua \(\ell^{\lfloor\log_\ell B\rfloor}\). O produto dessas potências é \(\operatorname{mmc}(1,\ldots,B)\).</li>
+  <li><strong>Cálculo incremental.</strong> Em vez de construir M gigantesco, eleve a sucessivamente às potências, sempre reduzindo módulo N.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Fazer B crescer indefinidamente também eleva o custo; e se M se tornar múltiplo das ordens módulo todos os fatores, o mdc pode devolver N em vez de um fator próprio.</div>

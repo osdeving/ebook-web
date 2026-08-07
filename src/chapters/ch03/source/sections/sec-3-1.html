@@ -1,0 +1,225 @@
+<section class="chapter-section" id="sec-3-1">
+  <div class="section-heading">
+    <span class="section-number">3.1</span>
+    <h2>Fórmula de Euler e raízes módulo \(pq\)</h2>
+  </div>
+
+  <p>O método de troca de chaves Diffie–Hellman e o criptossistema de chave pública Elgamal estudados nas <a href="../ch02/#sec-2-3" data-source-xref>Seções 2.3</a> e <a href="../ch02/#sec-2-4" data-source-xref>2.4</a> baseiam-se no fato de que é fácil calcular potências \(a^n\bmod p\), mas difícil recuperar o expoente \(n\) quando se conhecem apenas os valores de \(a\) e \(a^n\bmod p\). Um resultado essencial que usamos para analisar a segurança de Diffie–Hellman e Elgamal é o pequeno teorema de Fermat (<a href="../ch01/#theorem-1-24" data-source-xref>Teorema 1.24</a>),</p>
+  <div class="equation">\[a^{p-1}\equiv1\pmod p\qquad\text{para todo }a\not\equiv0\pmod p.\]</div>
+
+  <p>O pequeno teorema de Fermat expressa uma bela propriedade dos números primos. É natural perguntar o que acontece se substituirmos \(p\) por um número \(m\) que não seja primo. Ainda é verdade que \(a^{m-1}\equiv1\pmod m\)? Alguns cálculos como os do <a href="../ch01/#example-1-28" data-source-xref>Exemplo 1.28</a>, na <a href="../ch01/#sec-1-4" data-source-xref>Seção 1.4</a>, convencerão você de que a resposta é não. Nesta seção, investigamos a generalização correta do pequeno teorema de Fermat quando \(m=pq\) é o produto de dois primos distintos, pois esse é o caso mais importante para aplicações criptográficas. Deixamos o caso geral para você resolver nos <a href="#exercicio-3-4" data-source-xref>Exercícios 3.4</a> e <a href="#exercicio-3-5" data-source-xref>3.5</a>.</p>
+
+  <p>Como de costume, começamos com um exemplo. Como são as potências módulo \(15\)? Se fizermos uma tabela de quadrados e cubos módulo \(15\), eles não parecem muito interessantes, mas muitas quartas potências são iguais a \(1\) módulo \(15\). Mais precisamente, constatamos que</p>
+  <div class="equation">\[
+    \begin{aligned}
+      a^4&amp;\equiv1\pmod{15} &amp;&amp;\text{para }a=1,2,4,7,8,11,13\text{ e }14;\\
+      a^4&amp;\not\equiv1\pmod{15} &amp;&amp;\text{para }a=3,5,6,9,10\text{ e }12.
+    \end{aligned}
+  \]</div>
+
+  <p>O que distingue a lista de números \(1,2,4,7,8,11,13,14\), cuja quarta potência é \(1\) módulo \(15\), da lista de números \(3,5,6,9,10,12,15\), cuja quarta potência não é \(1\) módulo \(15\)? Uma breve reflexão mostra que cada um dos números \(3,5,6,9,10,12,15\) possui um fator não trivial em comum com o módulo \(15\), enquanto os números \(1,2,4,7,8,11,13,14\) são primos com \(15\). Isso sugere que alguma versão do pequeno teorema de Fermat deve ser verdadeira quando o número \(a\) é primo com o módulo \(m\), mas o expoente correto a usar não é necessariamente \(m-1\).</p>
+
+  <p>Para \(m=15\), descobrimos que o expoente correto é \(4\). Por que \(4\) funciona? Poderíamos simplesmente verificar cada valor de \(a\), mas seria melhor um argumento mais esclarecedor. Para mostrar que \(a^4\equiv1\pmod{15}\), basta verificar as duas congruências</p>
+  <div class="equation" id="eq-3-1"><span class="equation-number">(3.1)</span>\[a^4\equiv1\pmod3\qquad\text{e}\qquad a^4\equiv1\pmod5.\]</div>
+
+  <p>Isso ocorre porque as duas congruências <a href="#eq-3-1" data-source-xref>(3.1)</a> dizem que</p>
+  <div class="equation">\[3\text{ divide }a^4-1\qquad\text{e}\qquad5\text{ divide }a^4-1,\]</div>
+  <p>o que, por sua vez, implica que \(15\) divide \(a^4-1\).</p>
+
+  <p>As duas congruências em <a href="#eq-3-1" data-source-xref>(3.1)</a> têm módulos primos, de modo que podemos usar o pequeno teorema de Fermat para verificar que são verdadeiras. Assim,</p>
+  <div class="equation">\[
+    \begin{aligned}
+      a^4&amp;=(a^2)^2=\left(a^{3-1}\right)^2\equiv1^2\equiv1\pmod3,\\
+      a^4&amp;=a^{5-1}\equiv1\pmod5.
+    \end{aligned}
+  \]</div>
+
+  <p>Se você refletir sobre essas duas congruências, verá que a propriedade crucial do expoente \(4\) é ser múltiplo de \(p-1\) tanto para \(p=3\) quanto para \(p=5\). Observe que isso não é verdade para \(14\), que não funciona como expoente. Com essa observação, estamos prontos para enunciar a fórmula fundamental subjacente ao criptossistema de chave pública RSA.</p>
+
+  <div class="semantic theorem" id="teorema-3-1">
+    <div class="semantic-header">
+      <span class="semantic-label">Teorema</span>
+      <span class="semantic-title">3.1 — Fórmula de Euler para \(pq\)</span>
+    </div>
+    <p>Sejam \(p\) e \(q\) primos distintos e seja</p>
+    <div class="equation">\[g=\gcd(p-1,q-1).\]</div>
+    <p>Então</p>
+    <div class="equation">\[a^{(p-1)(q-1)/g}\equiv1\pmod{pq}\qquad\text{para todo }a\text{ que satisfaça }\gcd(a,pq)=1.\]</div>
+    <p>Em particular, se \(p\) e \(q\) são primos ímpares, então</p>
+    <div class="equation">\[a^{(p-1)(q-1)/2}\equiv1\pmod{pq}\qquad\text{para todo }a\text{ que satisfaça }\gcd(a,pq)=1.\]</div>
+  </div>
+
+  <div class="semantic proof" id="proof-3-1">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Por hipótese, sabemos que \(p\) não divide \(a\) e que \(g\) divide \(q-1\), de modo que podemos calcular</p>
+    <div class="equation">\[
+      \begin{aligned}
+        a^{(p-1)(q-1)/g}
+          &amp;=\left(a^{p-1}\right)^{(q-1)/g}
+          &amp;&amp;\text{pois }(q-1)/g\text{ é inteiro},\\
+          &amp;\equiv1^{(q-1)/g}\pmod p
+          &amp;&amp;\text{pelo pequeno teorema de Fermat},\\
+          &amp;\equiv1\pmod p
+          &amp;&amp;\text{pois 1 elevado a qualquer potência é 1!}
+      \end{aligned}
+    \]</div>
+    <p>Exatamente o mesmo cálculo, invertendo os papéis de \(p\) e \(q\), mostra que</p>
+    <div class="equation">\[a^{(p-1)(q-1)/g}\equiv1\pmod q.\]</div>
+    <p>Isso prova que \(a^{(p-1)(q-1)/g}-1\) é divisível tanto por \(p\) quanto por \(q\); portanto, é divisível por \(pq\), o que conclui a demonstração do <a href="#teorema-3-1" data-source-xref>Teorema 3.1</a>. <span class="proof-end">□</span></p>
+  </div>
+
+  <p>A troca de chaves Diffie–Hellman e o criptossistema de chave pública Elgamal (<a href="../ch02/#sec-2-3" data-source-xref>Seções 2.3</a> e <a href="../ch02/#sec-2-4" data-source-xref>2.4</a>) baseiam sua segurança na dificuldade de resolver equações da forma</p>
+  <div class="equation">\[a^x\equiv b\pmod p,\]</div>
+  <p>em que \(a\), \(b\) e \(p\) são quantidades conhecidas, \(p\) é primo e \(x\) é a variável desconhecida. O criptossistema de chave pública RSA, que estudaremos na próxima seção, baseia-se na dificuldade de resolver equações da forma</p>
+  <div class="equation">\[x^e\equiv c\pmod N,\]</div>
+  <p>em que agora as quantidades \(e\), \(c\) e \(N\) são conhecidas e \(x\) é a incógnita. Em outras palavras, a segurança do RSA baseia-se na suposição de que é difícil extrair raízes \(e\)-ésimas módulo \(N\).</p>
+
+  <p>Essa suposição é razoável? Se o módulo \(N\) for primo, verifica-se que é comparativamente fácil calcular raízes \(e\)-ésimas módulo \(N\), como descreve <a href="#prop-3-2" data-source-xref>a próxima proposição</a>.</p>
+
+  <div class="semantic proposition" id="prop-3-2">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">3.2</span></div>
+    <p>Seja \(p\) primo e seja \(e\ge1\) um inteiro que satisfaça \(\gcd(e,p-1)=1\). A <a href="../ch01/#prop-1-13" data-source-xref>Proposição 1.13</a> nos diz que \(e\) possui um inverso módulo \(p-1\), digamos</p>
+    <div class="equation">\[de\equiv1\pmod{p-1}.\]</div>
+    <p>Então a congruência</p>
+    <div class="equation" id="eq-3-2"><span class="equation-number">(3.2)</span>\[x^e\equiv c\pmod p\]</div>
+    <p>possui a única solução \(x\equiv c^d\pmod p\).</p>
+  </div>
+
+  <div class="semantic proof" id="proof-3-2">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Se \(c\equiv0\pmod p\), então \(x\equiv0\pmod p\) é a única solução, e terminamos. Portanto, supomos que \(c\not\equiv0\pmod p\). A demonstração é então uma aplicação simples do pequeno teorema de Fermat (<a href="../ch01/#theorem-1-24" data-source-xref>Teorema 1.24</a>). A congruência \(de\equiv1\pmod{p-1}\) significa que existe um inteiro \(k\) tal que</p>
+    <div class="equation">\[de=1+k(p-1).\]</div>
+    <p>Agora verificamos que \(c^d\) é uma solução de \(x^e\equiv c\pmod p\):</p>
+    <div class="equation">\[
+      \begin{aligned}
+        (c^d)^e&amp;\equiv c^{de}\pmod p &amp;&amp;\text{lei dos expoentes},\\
+        &amp;\equiv c^{1+k(p-1)}\pmod p &amp;&amp;\text{pois }de=1+k(p-1),\\
+        &amp;\equiv c\cdot\left(c^{p-1}\right)^k\pmod p &amp;&amp;\text{novamente pela lei dos expoentes},\\
+        &amp;\equiv c\cdot1^k\pmod p &amp;&amp;\text{pelo pequeno teorema de Fermat},\\
+        &amp;\equiv c\pmod p.
+      \end{aligned}
+    \]</div>
+    <p>Isso conclui a demonstração de que \(x=c^d\) é uma solução de \(x^e\equiv c\pmod p\).</p>
+    <p>Para ver que a solução é única, suponha que \(x_1\) e \(x_2\) sejam ambas soluções da congruência <a href="#eq-3-2" data-source-xref>(3.2)</a>. Acabamos de provar que \(z^{de}\equiv z\pmod p\) para qualquer valor não nulo \(z\), de modo que</p>
+    <div class="equation">\[x_1\equiv x_1^{de}\equiv(x_1^e)^d\equiv c^d\equiv(x_2^e)^d\equiv x_2^{de}\equiv x_2\pmod p.\]</div>
+    <p>Portanto, \(x_1\) e \(x_2\) são iguais módulo \(p\), de modo que <a href="#eq-3-2" data-source-xref>(3.2)</a> possui no máximo uma solução. <span class="proof-end">□</span></p>
+  </div>
+
+  <div class="semantic example" id="exemplo-3-3">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.3</span></div>
+    <p>Resolvemos a congruência</p>
+    <div class="equation">\[x^{1583}\equiv4714\pmod{7919},\]</div>
+    <p>em que o módulo \(p=7919\) é primo. A <a href="#prop-3-2" data-source-xref>Proposição 3.2</a> diz que primeiro precisamos resolver a congruência</p>
+    <div class="equation">\[1583d\equiv1\pmod{7918}.\]</div>
+    <p>A solução, obtida pelo algoritmo de Euclides estendido (<a href="../ch01/#theorem-1-11" data-source-xref>Teorema 1.11</a>; veja também a <a href="../ch01/#remark-1-15" data-source-xref>Observação 1.15</a> e o <a href="../ch01/#exercicio-1-12" data-source-xref>Exercício 1.12</a>), é \(d\equiv5277\pmod{7918}\). Então a <a href="#prop-3-2" data-source-xref>Proposição 3.2</a> nos diz que</p>
+    <div class="equation">\[x\equiv4714^{5277}\equiv6059\pmod{7919}\]</div>
+    <p>é uma solução de \(x^{1583}\equiv4714\pmod{7919}\).</p>
+  </div>
+
+  <aside class="semantic remark" id="obs-3-4">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.4</span></div>
+    <p>A <a href="#prop-3-2" data-source-xref>Proposição 3.2</a> inclui a hipótese \(\gcd(e,p-1)=1\). Se essa hipótese for omitida, a congruência \(x^e\equiv c\pmod p\) terá solução para alguns valores de \(c\), mas não para todos. Além disso, se possuir uma solução, terá mais de uma. Veja o <a href="#exercicio-3-2" data-source-xref>Exercício 3.2</a> para mais detalhes.</p>
+  </aside>
+
+  <p>A <a href="#prop-3-2" data-source-xref>Proposição 3.2</a> mostra que é fácil extrair raízes \(e\)-ésimas quando o módulo é um primo \(p\). A situação para um módulo composto \(N\) parece semelhante, mas há uma diferença crucial. Se soubermos fatorar \(N\), volta a ser fácil calcular raízes \(e\)-ésimas. <a href="#prop-3-5" data-source-xref>A proposição a seguir</a> explica como fazer isso quando \(N=pq\) é o produto de dois primos. O caso geral fica para você resolver no <a href="#exercicio-3-6" data-source-xref>Exercício 3.6</a>.</p>
+
+  <div class="semantic proposition" id="prop-3-5">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">3.5</span></div>
+    <p>Sejam \(p\) e \(q\) primos distintos e seja \(e\ge1\) tal que</p>
+    <div class="equation">\[\gcd\bigl(e,(p-1)(q-1)\bigr)=1.\]</div>
+    <p>A <a href="../ch01/#prop-1-13" data-source-xref>Proposição 1.13</a> nos diz que \(e\) possui um inverso módulo \((p-1)(q-1)\), digamos</p>
+    <div class="equation">\[de\equiv1\pmod{(p-1)(q-1)}.\]</div>
+    <p>Então a congruência</p>
+    <div class="equation" id="eq-3-3"><span class="equation-number">(3.3)</span>\[x^e\equiv c\pmod{pq}\]</div>
+    <p>possui a única solução \(x\equiv c^d\pmod{pq}\).</p>
+  </div>
+
+  <div class="semantic proof" id="proof-3-5">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Supomos que \(\gcd(c,pq)=1\); veja o <a href="#exercicio-3-3" data-source-xref>Exercício 3.3</a> para os outros casos. A demonstração da <a href="#prop-3-5" data-source-xref>Proposição 3.5</a> é quase idêntica à demonstração da <a href="#prop-3-2" data-source-xref>Proposição 3.2</a>, mas, em vez de usar o pequeno teorema de Fermat, usamos a fórmula de Euler (<a href="#teorema-3-1" data-source-xref>Teorema 3.1</a>). A congruência \(de\equiv1\pmod{(p-1)(q-1)}\) significa que existe um inteiro \(k\) tal que</p>
+    <div class="equation">\[de=1+k(p-1)(q-1).\]</div>
+    <p>Agora verificamos que \(c^d\) é uma solução de \(x^e\equiv c\pmod{pq}\):</p>
+    <div class="equation">\[
+      \begin{aligned}
+        (c^d)^e&amp;\equiv c^{de}\pmod{pq} &amp;&amp;\text{lei dos expoentes},\\
+        &amp;\equiv c^{1+k(p-1)(q-1)}\pmod{pq} &amp;&amp;\text{pois }de=1+k(p-1)(q-1),\\
+        &amp;\equiv c\cdot\left(c^{(p-1)(q-1)}\right)^k\pmod{pq} &amp;&amp;\text{novamente pela lei dos expoentes},\\
+        &amp;\equiv c\cdot1^k\pmod{pq} &amp;&amp;\text{pela fórmula de Euler (Teorema 3.1)},\\
+        &amp;\equiv c\pmod{pq}.
+      \end{aligned}
+    \]</div>
+    <p>Isso conclui a demonstração de que \(x=c^d\) é uma solução da congruência <a href="#eq-3-3" data-source-xref>(3.3)</a>. Resta mostrar que a solução é única. Suponha que \(x=u\) seja uma solução de <a href="#eq-3-3" data-source-xref>(3.3)</a>. Então</p>
+    <div class="equation">\[
+      \begin{aligned}
+        u&amp;\equiv u^{de-k(p-1)(q-1)}\pmod{pq} &amp;&amp;\text{pois }de=1+k(p-1)(q-1),\\
+        &amp;\equiv(u^e)^d\cdot\left(u^{(p-1)(q-1)}\right)^{-k}\pmod{pq},\\
+        &amp;\equiv(u^e)^d\cdot1^{-k}\pmod{pq} &amp;&amp;\text{pela fórmula de Euler (Teorema 3.1)},\\
+        &amp;\equiv c^d\pmod{pq} &amp;&amp;\text{pois }u\text{ é solução de (3.3)}.
+      \end{aligned}
+    \]</div>
+    <p>Assim, toda solução de <a href="#eq-3-3" data-source-xref>(3.3)</a> é igual a \(c^d\pmod{pq}\), portanto esta é a única solução. <span class="proof-end">□</span></p>
+  </div>
+
+  <aside class="semantic remark" id="obs-3-6">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.6</span></div>
+    <p>A <a href="#prop-3-5" data-source-xref>Proposição 3.5</a> fornece um algoritmo para resolver \(x^e\equiv c\pmod{pq}\) que envolve primeiro resolver \(de\equiv1\pmod{(p-1)(q-1)}\) e depois calcular \(c^d\bmod pq\). Muitas vezes podemos tornar o cálculo mais rápido usando um valor menor de \(d\). Seja \(g=\gcd(p-1,q-1)\) e suponha que resolvamos a congruência a seguir para \(d\):</p>
+    <div class="equation">\[de\equiv1\pmod{\frac{(p-1)(q-1)}{g}}.\]</div>
+    <p>A fórmula de Euler (<a href="#teorema-3-1" data-source-xref>Teorema 3.1</a>) diz que \(a^{(p-1)(q-1)/g}\equiv1\pmod{pq}\). Portanto, exatamente como na demonstração da <a href="#prop-3-5" data-source-xref>Proposição 3.5</a>, se escrevermos \(de=1+k(p-1)(q-1)/g\), então</p>
+    <div class="equation">\[(c^d)^e=c^{de}=c^{1+k(p-1)(q-1)/g}=c\cdot\left(c^{(p-1)(q-1)/g}\right)^k\equiv c\pmod{pq}.\]</div>
+    <p>Assim, usando esse valor menor de \(d\), ainda obtemos que \(c^d\bmod pq\) é uma solução de \(x^e\equiv c\pmod{pq}\).</p>
+  </aside>
+
+  <div class="semantic example" id="exemplo-3-7">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.7</span></div>
+    <p>Resolvemos a congruência</p>
+    <div class="equation">\[x^{17389}\equiv43927\pmod{64349},\]</div>
+    <p>em que o módulo \(N=64349=229\cdot281\) é um produto dos dois primos \(p=229\) e \(q=281\). O primeiro passo é resolver a congruência</p>
+    <div class="equation">\[17389d\equiv1\pmod{63840},\]</div>
+    <p>em que \(63840=(p-1)(q-1)=228\cdot280\). A solução, usando o método descrito na <a href="../ch01/#remark-1-15" data-source-xref>Observação 1.15</a> ou no <a href="../ch01/#exercicio-1-12" data-source-xref>Exercício 1.12</a>, é \(d\equiv53509\pmod{63840}\). Então a <a href="#prop-3-5" data-source-xref>Proposição 3.5</a> nos diz que</p>
+    <div class="equation">\[x\equiv43927^{53509}\equiv14458\pmod{64349}\]</div>
+    <p>é a solução de \(x^{17389}\equiv43927\pmod{64349}\).</p>
+    <p>Podemos poupar um pouco de trabalho usando a ideia descrita na <a href="#obs-3-6" data-source-xref>Observação 3.6</a>. Temos</p>
+    <div class="equation">\[g=\gcd(p-1,q-1)=\gcd(228,280)=4,\]</div>
+    <p>portanto \((p-1)(q-1)/g=(228)(280)/4=15960\), o que significa que podemos encontrar um valor de \(d\) resolvendo a congruência</p>
+    <div class="equation">\[17389d\equiv1\pmod{15960}.\]</div>
+    <p>A solução é \(d\equiv5629\pmod{15960}\), e então</p>
+    <div class="equation">\[x\equiv43927^{5629}\equiv14458\pmod{64349}\]</div>
+    <p>é a solução de \(x^{17389}\equiv43927\pmod{64349}\). Observe que obtivemos a mesma solução, como deveria acontecer, mas precisamos elevar \(43927\) apenas à potência \(5629\), enquanto usar diretamente a <a href="#prop-3-5" data-source-xref>Proposição 3.5</a> exigia elevar \(43927\) à potência \(53509\). Isso economiza algum tempo, embora não tanto quanto parece, pois lembre-se de que calcular \(c^d\bmod N\) leva tempo \(O(\ln d)\). Assim, o método mais rápido leva cerca de \(80\%\) do tempo do método mais lento, pois \(\ln(5629)/\ln(53509)\approx0{,}793\).</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-3-8">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.8</span></div>
+    <p>Alice desafia Eva a resolver a congruência</p>
+    <div class="equation">\[x^{9843}\equiv134872\pmod{30069476293}.\]</div>
+    <p>O módulo \(30069476293\) não é primo, pois (compare com o <a href="../ch01/#example-1-28" data-source-xref>Exemplo 1.28</a>)</p>
+    <div class="equation">\[2^{30069476293-1}\equiv18152503626\not\equiv1\pmod{30069476293}.\]</div>
+    <p>Acontece que \(30069476293\) é um produto de dois primos, mas, se Eva não conhecer os fatores primos, não poderá usar a <a href="#prop-3-5" data-source-xref>Proposição 3.5</a> para resolver o desafio de Alice. Depois de aceitar a admissão de derrota de Eva, Alice informa que \(30069476293\) é igual a \(104729\cdot287117\). Com esse novo conhecimento, o desafio de Alice se torna fácil. Eva calcula \(104728\cdot287116=30069084448\), resolve a congruência \(9843d\equiv1\pmod{30069084448}\) para encontrar \(d\equiv18472798299\pmod{30069084448}\) e calcula a solução</p>
+    <div class="equation">\[x\equiv134872^{18472798299}\equiv25470280263\pmod{30069476293}.\]</div>
+  </div>
+
+  <div class="table-wrap" id="tab-3-1">
+    <table class="protocol-table">
+      <caption><span class="label">Tabela 3.1.</span> Criação de chaves, cifração e decifração RSA.</caption>
+      <thead>
+        <tr><th>Bob</th><th>Alice</th></tr>
+      </thead>
+      <tbody>
+        <tr class="phase"><th colspan="2">Criação de chaves</th></tr>
+        <tr>
+          <td>Escolhe os primos secretos \(p\) e \(q\).<br>Escolhe o expoente de cifração \(e\) com \(\gcd(e,(p-1)(q-1))=1\).<br>Publica \(N=pq\) e \(e\).</td>
+          <td></td>
+        </tr>
+        <tr class="phase"><th colspan="2">Cifração</th></tr>
+        <tr>
+          <td></td>
+          <td>Escolhe o texto claro \(m\).<br>Usa a chave pública \((N,e)\) de Bob para calcular \(c\equiv m^e\pmod N\).<br>Envia o texto cifrado \(c\) a Bob.</td>
+        </tr>
+        <tr class="phase"><th colspan="2">Decifração</th></tr>
+        <tr>
+          <td>Calcula \(d\) que satisfaça \(ed\equiv1\pmod{(p-1)(q-1)}\).<br>Calcula \(m'\equiv c^d\pmod N\).<br>Então \(m'\) é igual ao texto claro \(m\).</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

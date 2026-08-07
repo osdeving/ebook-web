@@ -1,0 +1,96 @@
+<section class="chapter-section" id="sec-3-2">
+  <div class="section-heading">
+    <span class="section-number">3.2</span>
+    <h2>O criptossistema de chave pública RSA</h2>
+  </div>
+
+  <p>Bob e Alice enfrentam o problema habitual de trocar informações confidenciais por uma linha de comunicação insegura. Vimos no Capítulo 2 várias maneiras pelas quais Bob e Alice podem realizar essa tarefa, baseadas na dificuldade de resolver o problema do logaritmo discreto. Nesta seção, descrevemos o criptossistema de chave pública RSA, o primeiro sistema desse tipo a ser inventado e certamente o mais conhecido. RSA recebe esse nome em homenagem a seus inventores (públicos), Ron Rivest, Adi Shamir e Leonard Adleman.</p>
+
+  <p>A segurança do RSA depende da seguinte dicotomia:</p>
+  <ul>
+    <li><strong>Preparação.</strong> Sejam \(p\) e \(q\) primos grandes, seja \(N=pq\) e sejam \(e\) e \(c\) inteiros.</li>
+    <li><strong>Problema.</strong> Resolver a congruência \(x^e\equiv c\pmod N\) para a variável \(x\).</li>
+    <li><strong>Fácil.</strong> Bob, que conhece os valores de \(p\) e \(q\), pode resolver facilmente para \(x\), como descrito na <a href="#prop-3-5" data-source-xref>Proposição 3.5</a>.</li>
+    <li><strong>Difícil.</strong> Eva, que não conhece os valores de \(p\) e \(q\), não consegue encontrar \(x\) facilmente.</li>
+    <li><strong>Dicotomia.</strong> Resolver \(x^e\equiv c\pmod N\) é fácil para uma pessoa que dispõe de certas informações adicionais, mas aparentemente difícil para todas as demais.</li>
+  </ul>
+
+  <p>O criptossistema de chave pública RSA está resumido na <a href="#tab-3-1" data-source-xref>Tabela 3.1</a>. A chave secreta de Bob é um par de primos grandes \(p\) e \(q\). Sua chave pública é o par \((N,e)\), formado pelo produto \(N=pq\) e por um expoente de cifração \(e\) que é primo com \((p-1)(q-1)\). Alice toma seu texto claro e o converte em um inteiro \(m\) entre \(1\) e \(N\). Ela cifra \(m\) calculando a quantidade</p>
+  <div class="equation">\[c\equiv m^e\pmod N.\]</div>
+  <p>O inteiro \(c\) é seu texto cifrado, que ela envia a Bob. Para Bob, é então simples resolver a congruência \(x^e\equiv c\pmod N\) e recuperar a mensagem \(m\) de Alice, porque Bob conhece a fatoração \(N=pq\). Eva, por outro lado, pode interceptar o texto cifrado \(c\), mas, a menos que saiba fatorar \(N\), provavelmente enfrentará grande dificuldade para resolver \(x^e\equiv c\pmod N\).</p>
+
+  <div class="semantic example" id="exemplo-3-9">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.9</span></div>
+    <p>Ilustramos o criptossistema de chave pública RSA com um pequeno exemplo numérico. Naturalmente, este exemplo não é seguro, pois os números são tão pequenos que Eva poderia fatorar o módulo \(N\) com facilidade. Implementações seguras do RSA usam módulos \(N\) com centenas de algarismos.</p>
+
+    <p><strong>Criação de chaves RSA</strong></p>
+    <ul>
+      <li><p>Bob escolhe dois primos secretos \(p=1223\) e \(q=1987\). Bob calcula seu módulo público</p>
+        <div class="equation">\[N=p\cdot q=1223\cdot1987=2430101.\]</div>
+      </li>
+      <li><p>Bob escolhe um expoente público de cifração \(e=948047\) com a propriedade de que</p>
+        <div class="equation">\[\gcd\bigl(e,(p-1)(q-1)\bigr)=\gcd(948047,2426892)=1.\]</div>
+      </li>
+    </ul>
+
+    <p><strong>Cifração RSA</strong></p>
+    <ul>
+      <li><p>Alice converte seu texto claro em um inteiro</p>
+        <div class="equation">\[m=1070777\qquad\text{que satisfaz}\qquad1\le m&lt;N.\]</div>
+      </li>
+      <li><p>Alice usa a chave pública \((N,e)=(2430101,948047)\) de Bob para calcular</p>
+        <div class="equation">\[c\equiv m^e\pmod N,\qquad c\equiv1070777^{948047}\equiv1473513\pmod{2430101}.\]</div>
+      </li>
+      <li>Alice envia o texto cifrado \(c=1473513\) a Bob.</li>
+    </ul>
+
+    <p><strong>Decifração RSA</strong></p>
+    <ul>
+      <li><p>Bob sabe que \((p-1)(q-1)=1222\cdot1986=2426892\), de modo que pode resolver</p>
+        <div class="equation">\[ed\equiv1\pmod{(p-1)(q-1)},\qquad948047\cdot d\equiv1\pmod{2426892},\]</div>
+        <p>para \(d\), obtendo \(d=1051235\).</p>
+      </li>
+      <li><p>Bob toma o texto cifrado \(c=1473513\) e calcula</p>
+        <div class="equation">\[c^d\pmod N,\qquad1473513^{1051235}\equiv1070777\pmod{2430101}.\]</div>
+        <p>O valor que ele calcula é a mensagem \(m=1070777\) de Alice.</p>
+      </li>
+    </ul>
+  </div>
+
+  <aside class="semantic remark" id="obs-3-10">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.10</span></div>
+    <p>As quantidades \(N\) e \(e\) que formam a chave pública de Bob são chamadas, respectivamente, de <strong>módulo</strong> e <strong>expoente de cifração</strong>. O número \(d\) que Bob usa para decifrar a mensagem de Alice, isto é, o número \(d\) que satisfaz</p>
+    <div class="equation" id="eq-3-4"><span class="equation-number">(3.4)</span>\[ed\equiv1\pmod{(p-1)(q-1)},\]</div>
+    <p>é chamado de <strong>expoente de decifração</strong>. É claro que a cifração pode ser realizada com maior eficiência se o expoente de cifração \(e\) for um número pequeno e, de modo semelhante, a decifração é mais eficiente se o expoente de decifração \(d\) for pequeno. Naturalmente, Bob não pode escolher ambos pequenos, pois, depois de selecionar um deles, o outro é determinado pela congruência <a href="#eq-3-4" data-source-xref>(3.4)</a>. (Isso não é estritamente verdade, pois, se Bob tomar \(e=1\), então também \(d=1\), de modo que tanto \(d\) quanto \(e\) são pequenos. Mas então o texto claro e o texto cifrado são idênticos, portanto escolher \(e=1\) é uma péssima ideia!)</p>
+    <p>Observe que Bob não pode tomar \(e=2\), pois precisa que \(e\) seja primo com \((p-1)(q-1)\). Assim, o menor valor possível de \(e\) é \(e=3\). Até onde se sabe, escolher \(e=3\) é tão seguro quanto escolher um valor maior de \(e\), embora algumas dúvidas sejam levantadas em <a href="../../references/#ref-22" data-source-xref>[22]</a>. Quem deseja cifração rápida, mas teme que \(e=3\) seja pequeno demais, costuma escolher \(e=2^{16}+1=65537\), pois são necessários apenas dezesseis quadrados e uma multiplicação para calcular \(m^{65537}\) pelo algoritmo de quadratura e multiplicação descrito na <a href="../ch01/#sec-1-3-2" data-source-xref>Seção 1.3.2</a>.</p>
+    <p>Uma alternativa é Bob usar um valor pequeno para \(d\) e empregar a congruência <a href="#eq-3-4" data-source-xref>(3.4)</a> para determinar \(e\), de modo que \(e\) seria grande. Contudo, verifica-se que isso pode levar a uma versão insegura do RSA. Mais precisamente, se \(d\) for menor que \(N^{1/4}\), a teoria das frações contínuas permite que Eva quebre o RSA. Veja [<a href="../../references/#ref-17" data-source-xref>17</a>, <a href="../../references/#ref-18" data-source-xref>18</a>, <a href="../../references/#ref-19" data-source-xref>19</a>, <a href="../../references/#ref-149" data-source-xref>149</a>] para detalhes.</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-11">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.11</span></div>
+    <p>A chave pública de Bob inclui o número \(N=pq\), que é o produto de dois primos secretos \(p\) e \(q\). A <a href="#prop-3-5" data-source-xref>Proposição 3.5</a> diz que, se Eva conhecer o valor de \((p-1)(q-1)\), poderá resolver \(x^e\equiv c\pmod N\) e, assim, decifrar mensagens enviadas a Bob.</p>
+    <p>Expandindo \((p-1)(q-1)\), obtemos</p>
+    <div class="equation" id="eq-3-5"><span class="equation-number">(3.5)</span>\[(p-1)(q-1)=pq-p-q+1=N-(p+q)+1.\]</div>
+    <p>Bob publicou o valor de \(N\), portanto Eva já conhece \(N\). Assim, se Eva puder determinar o valor da soma \(p+q\), então <a href="#eq-3-5" data-source-xref>(3.5)</a> lhe dará o valor de \((p-1)(q-1)\), o que lhe permitirá decifrar mensagens.</p>
+    <p>Na verdade, se Eva conhecer os valores de \(p+q\) e \(pq\), será fácil calcular os valores de \(p\) e \(q\). Ela simplesmente usa a fórmula quadrática para encontrar as raízes do polinômio</p>
+    <div class="equation">\[X^2-(p+q)X+pq,\]</div>
+    <p>pois esse polinômio se fatora como \((X-p)(X-q)\), de modo que suas raízes são \(p\) e \(q\). Portanto, depois que Bob publica o valor de \(N=pq\), não é mais fácil para Eva encontrar o valor de \((p-1)(q-1)\) do que encontrar os próprios \(p\) e \(q\).</p>
+    <p>Ilustramos isso com um exemplo. Suponha que Eva saiba que</p>
+    <div class="equation">\[N=pq=66240912547\qquad\text{e}\qquad(p-1)(q-1)=66240396760.\]</div>
+    <p>Primeiro, ela usa <a href="#eq-3-5" data-source-xref>(3.5)</a> para calcular</p>
+    <div class="equation">\[p+q=N+1-(p-1)(q-1)=515788.\]</div>
+    <p>Em seguida, usa a fórmula quadrática para fatorar o polinômio</p>
+    <div class="equation">\[
+      \begin{aligned}
+        X^2-(p+q)X+N&amp;=X^2-515788X+66240912547\\
+        &amp;=(X-241511)(X-274277).
+      \end{aligned}
+    \]</div>
+    <p>Isso lhe fornece a fatoração \(N=66240912547=241511\cdot274277\).</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-12">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.12</span></div>
+    <p>Uma última observação, mas muito importante. Mostramos que não é mais fácil para Eva determinar \((p-1)(q-1)\) do que fatorar \(N\). Isso, porém, não prova que Eva precise fatorar \(N\) para decifrar as mensagens de Bob. O ponto é que o que Eva realmente precisa fazer é resolver congruências da forma \(x^e\equiv c\pmod N\), e é concebível que exista um algoritmo eficiente para resolver tais congruências sem conhecer o valor de \((p-1)(q-1)\). Ninguém sabe se tal método existe, embora <a href="../../references/#ref-22" data-source-xref>[22]</a> sugira que calcular raízes módulo \(N\) talvez seja mais fácil do que fatorar \(N\).</p>
+  </aside>
+</section>

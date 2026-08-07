@@ -19,6 +19,8 @@ export type SearchKind =
   | "equation"
   | "figure"
   | "table"
+  | "algorithm"
+  | "proof"
   | "enrichment"
   | "reference"
   | "glossary"
@@ -90,6 +92,8 @@ interface LinkOrigin {
 const SOURCE_TARGET_SELECTOR = [
   "section[id]",
   ".semantic[id]",
+  ".algorithm[id]",
+  ".proof[id]",
   ".exercise[id]",
   ".equation[id]",
   ".numbered-equation[id]",
@@ -322,6 +326,10 @@ function describeSourceNode(node: HTMLElement): { title: string; kind: SearchKin
     const number = compactText(node.querySelector(".exercise-number")?.textContent ?? node.id.replace("exercicio-", ""));
     return { title: `Exercício ${number.replace(/\.$/u, "")}`, kind: "exercise", kindLabel: "Exercício" };
   }
+  if (node.matches(".algorithm")) {
+    const title = compactText(node.querySelector("h3, h4, strong")?.textContent ?? node.id);
+    return { title, kind: "algorithm", kindLabel: "Algoritmo" };
+  }
   if (node.matches(".semantic")) {
     const label = compactText(node.querySelector(".semantic-label")?.textContent ?? "Resultado");
     const explicitTitle = compactText(node.querySelector(".semantic-title")?.textContent ?? "");
@@ -351,6 +359,7 @@ function semanticKind(node: HTMLElement): SearchKind {
   if (node.classList.contains("proposition")) return "proposition";
   if (node.classList.contains("corollary")) return "corollary";
   if (node.classList.contains("example")) return "example";
+  if (node.classList.contains("proof")) return "proof";
   return "remark";
 }
 
@@ -365,7 +374,7 @@ function layerLabel(layer: EnrichmentLayer): string {
 }
 
 function closestMeaningfulOrigin(link: HTMLAnchorElement): HTMLElement | null {
-  return link.closest<HTMLElement>(".exercise[id], .semantic[id], section[id], figure[id], .table-wrap[id]");
+  return link.closest<HTMLElement>(".exercise[id], .semantic[id], .algorithm[id], section[id], figure[id], .table-wrap[id]");
 }
 
 function resolveTargetKey(sourceChapter: string, href: string): string | undefined {

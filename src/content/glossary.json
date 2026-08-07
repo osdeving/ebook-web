@@ -547,5 +547,302 @@
     "category": "Álgebra",
     "chapter": "ch02",
     "href": "chapters/ch02/#sec-2-2"
+  },
+  {
+    "id": "fatoracao-inteiros",
+    "term": "Fatoração de inteiros",
+    "aliases": ["decomposição em fatores primos", "integer factorization"],
+    "definition": "Problema de recuperar os fatores primos de um inteiro composto; para módulos grandes bem escolhidos, não se conhece algoritmo clássico eficiente em geral.",
+    "category": "Problemas computacionais",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-1"
+  },
+  {
+    "id": "modulo-rsa",
+    "term": "Módulo RSA",
+    "aliases": ["n = pq", "RSA modulus"],
+    "definition": "Produto N = pq de dois primos secretos que define o anel modular usado pelo RSA.",
+    "category": "RSA",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-2"
+  },
+  {
+    "id": "criptossistema-rsa",
+    "term": "RSA",
+    "aliases": ["Rivest–Shamir–Adleman", "criptossistema RSA"],
+    "definition": "Família de operações de chave pública baseada em exponenciação modular, cuja chave privada permite inverter a potência pública módulo um produto de primos.",
+    "category": "RSA",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-2"
+  },
+  {
+    "id": "expoente-publico-rsa",
+    "term": "Expoente público RSA",
+    "aliases": ["expoente de cifragem", "e"],
+    "definition": "Inteiro e coprimo com φ(N) usado na transformação pública m ↦ m^e mod N.",
+    "category": "RSA",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-2"
+  },
+  {
+    "id": "expoente-privado-rsa",
+    "term": "Expoente privado RSA",
+    "aliases": ["expoente de decifragem", "d"],
+    "definition": "Inverso modular de e no expoente apropriado do grupo, usado para desfazer a transformação pública RSA.",
+    "category": "RSA",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-2"
+  },
+  {
+    "id": "rsa-textbook",
+    "term": "RSA sem padding",
+    "aliases": ["textbook RSA", "RSA cru"],
+    "definition": "Aplicação determinística direta da potência RSA à mensagem; é maleável e não constitui, por si só, um esquema seguro para uso real.",
+    "category": "Segurança criptográfica",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-3"
+  },
+  {
+    "id": "ataque-texto-cifrado-escolhido",
+    "term": "Ataque de texto cifrado escolhido",
+    "aliases": ["CCA", "chosen-ciphertext attack"],
+    "definition": "Modelo em que o adversário pode consultar a decifragem de textos cifrados escolhidos, respeitadas as restrições do experimento de segurança.",
+    "category": "Segurança criptográfica",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-3"
+  },
+  {
+    "id": "teste-primalidade",
+    "term": "Teste de primalidade",
+    "aliases": ["primality test"],
+    "definition": "Algoritmo que decide, ou fornece evidência controlada, se um inteiro é primo sem precisar fatorá-lo por tentativa exaustiva.",
+    "category": "Primalidade",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-4"
+  },
+  {
+    "id": "testemunha-fermat",
+    "term": "Testemunha de Fermat",
+    "aliases": ["Fermat witness"],
+    "definition": "Base a para a qual a congruência exigida pelo pequeno teorema de Fermat falha, certificando que o número testado é composto.",
+    "category": "Primalidade",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#def-testemunha-composicao"
+  },
+  {
+    "id": "pseudoprimo",
+    "term": "Pseudoprimo",
+    "aliases": ["pseudoprime"],
+    "definition": "Inteiro composto que satisfaz um teste de congruência de primalidade para uma base ou família de condições específica.",
+    "category": "Primalidade",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-4"
+  },
+  {
+    "id": "numero-carmichael",
+    "term": "Número de Carmichael",
+    "aliases": ["pseudoprimo absoluto"],
+    "definition": "Inteiro composto N que satisfaz a^(N−1) ≡ 1 (mod N) para toda base a coprima com N, enganando o teste simples de Fermat.",
+    "category": "Primalidade",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-4"
+  },
+  {
+    "id": "miller-rabin",
+    "term": "Teste de Miller–Rabin",
+    "aliases": ["teste do pseudoprimo forte", "Miller-Rabin"],
+    "definition": "Teste probabilístico que examina uma cadeia de quadrados módulo N e possui limite explícito para a chance de aceitar um composto após bases aleatórias independentes.",
+    "category": "Primalidade",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#def-testemunha-miller-rabin"
+  },
+  {
+    "id": "erro-unilateral",
+    "term": "Erro unilateral",
+    "aliases": ["one-sided error"],
+    "definition": "Comportamento probabilístico em que um resultado tem certeza lógica — por exemplo, uma testemunha prova composição — enquanto o outro acumula confiança estatística.",
+    "category": "Algoritmos probabilísticos",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-4"
+  },
+  {
+    "id": "teorema-numeros-primos",
+    "term": "Teorema dos números primos",
+    "aliases": ["PNT", "prime number theorem"],
+    "definition": "Resultado assintótico segundo o qual a quantidade de primos até X é equivalente a X/ln X.",
+    "category": "Teoria dos números",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#teorema-3-21"
+  },
+  {
+    "id": "primo-provavel",
+    "term": "Primo provável",
+    "aliases": ["probable prime"],
+    "definition": "Inteiro que passou por testes probabilísticos de primalidade com uma margem de erro quantificada, mas sem necessariamente carregar uma prova determinística.",
+    "category": "Primalidade",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-4-2"
+  },
+  {
+    "id": "certificado-primalidade",
+    "term": "Certificado de primalidade",
+    "aliases": ["primality certificate"],
+    "definition": "Objeto verificável que acompanha a afirmação de que um inteiro é primo e permite checá-la sem repetir toda a busca que o produziu.",
+    "category": "Primalidade",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-4-2"
+  },
+  {
+    "id": "algoritmo-aks",
+    "term": "Algoritmo AKS",
+    "aliases": ["Agrawal–Kayal–Saxena", "PRIMES is in P"],
+    "definition": "Teste determinístico de primalidade em tempo polinomial, importante sobretudo por estabelecer a classificação teórica do problema.",
+    "category": "Primalidade",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-4-2"
+  },
+  {
+    "id": "pollard-p-menos-1",
+    "term": "Algoritmo p − 1 de Pollard",
+    "aliases": ["Pollard p-1"],
+    "definition": "Método de fatoração eficaz quando p−1, para algum fator primo p de N, divide um expoente construído com potências de primos suficientemente pequenas.",
+    "category": "Fatoração",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-5"
+  },
+  {
+    "id": "diferenca-quadrados",
+    "term": "Fatoração por diferença de quadrados",
+    "aliases": ["método de Fermat"],
+    "definition": "Estratégia que procura N = a²−b² e então obtém fatores por gcd(a−b,N) e gcd(a+b,N).",
+    "category": "Fatoração",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-6"
+  },
+  {
+    "id": "congruencia-quadrados",
+    "term": "Congruência de quadrados",
+    "aliases": ["x² ≡ y² mod N"],
+    "definition": "Relação modular que pode revelar um fator de N quando x não é congruente a ±y e se calcula gcd(x−y,N).",
+    "category": "Fatoração",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-6"
+  },
+  {
+    "id": "numero-suave",
+    "term": "Número B-suave",
+    "aliases": ["número liso", "B-smooth number"],
+    "definition": "Inteiro cujos fatores primos são todos menores ou iguais ao limite de suavidade B.",
+    "category": "Fatoração",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#def-numero-b-suave"
+  },
+  {
+    "id": "base-fatores",
+    "term": "Base de fatores",
+    "aliases": ["factor base"],
+    "definition": "Conjunto pequeno de primos — às vezes acompanhado das potências relevantes — sobre o qual se decompõem valores para formar relações de fatoração ou logaritmo discreto.",
+    "category": "Algoritmos",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#def-base-de-fatores"
+  },
+  {
+    "id": "relacao-fatoracao",
+    "term": "Relação de fatoração",
+    "aliases": ["smooth relation"],
+    "definition": "Identidade modular cujos dois lados possuem fatorações conhecidas sobre uma base de fatores e que pode ser combinada por álgebra linear de paridades.",
+    "category": "Fatoração",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-7"
+  },
+  {
+    "id": "crivo-quadratico",
+    "term": "Crivo quadrático",
+    "aliases": ["QS", "quadratic sieve"],
+    "definition": "Algoritmo de fatoração que criva valores próximos de quadrados para coletar relações suaves e produzir uma congruência de quadrados.",
+    "category": "Fatoração",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-7-2"
+  },
+  {
+    "id": "crivo-corpo-numeros",
+    "term": "Crivo do corpo de números",
+    "aliases": ["NFS", "number field sieve"],
+    "definition": "Família de algoritmos subexponenciais que coleta relações simultâneas nos lados racional e algébrico de uma construção em corpo de números.",
+    "category": "Fatoração",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-7-3"
+  },
+  {
+    "id": "notacao-l-subexponencial",
+    "term": "Notação L subexponencial",
+    "aliases": ["L-notation", "L_N[α,c]"],
+    "definition": "Notação que interpola regimes polinomiais e exponenciais e descreve o custo assintótico de diversos algoritmos de fatoração e logaritmo discreto.",
+    "category": "Complexidade",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#def-funcao-l-epsilon"
+  },
+  {
+    "id": "calculo-indices",
+    "term": "Cálculo de índices",
+    "aliases": ["index calculus"],
+    "definition": "Método de logaritmo discreto que pré-calcula logaritmos de uma base de fatores a partir de relações e reduz alvos posteriores a essa base.",
+    "category": "Logaritmo discreto",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-8"
+  },
+  {
+    "id": "residuo-quadratico",
+    "term": "Resíduo quadrático",
+    "aliases": ["quadratic residue", "quadrado módulo p"],
+    "definition": "Classe não nula a módulo p para a qual existe x com x² ≡ a (mod p).",
+    "category": "Teoria dos números",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#def-residuo-quadratico"
+  },
+  {
+    "id": "simbolo-legendre",
+    "term": "Símbolo de Legendre",
+    "aliases": ["Legendre symbol"],
+    "definition": "Função que vale 1, −1 ou 0 conforme a classe seja resíduo quadrático, não resíduo ou múltipla do primo do módulo.",
+    "category": "Teoria dos números",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#def-simbolo-legendre"
+  },
+  {
+    "id": "simbolo-jacobi",
+    "term": "Símbolo de Jacobi",
+    "aliases": ["Jacobi symbol"],
+    "definition": "Extensão multiplicativa do símbolo de Legendre a denominadores ímpares positivos; para denominador composto, valor 1 não garante que o numerador seja quadrado módulo esse denominador.",
+    "category": "Teoria dos números",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#def-simbolo-jacobi"
+  },
+  {
+    "id": "reciprocidade-quadratica",
+    "term": "Reciprocidade quadrática",
+    "aliases": ["lei da reciprocidade quadrática"],
+    "definition": "Lei que relaciona a condição de p ser quadrado módulo q à condição de q ser quadrado módulo p, com um sinal determinado pelas classes dos primos módulo 4.",
+    "category": "Teoria dos números",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-9"
+  },
+  {
+    "id": "cifragem-probabilistica",
+    "term": "Cifragem probabilística",
+    "aliases": ["randomized encryption"],
+    "definition": "Cifragem que usa aleatoriedade nova para permitir que a mesma mensagem produza muitos textos cifrados possíveis.",
+    "category": "Segurança criptográfica",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-10"
+  },
+  {
+    "id": "goldwasser-micali",
+    "term": "Criptossistema Goldwasser–Micali",
+    "aliases": ["GM"],
+    "definition": "Esquema probabilístico bit a bit cuja segurança conecta a distinção entre resíduos e não resíduos quadráticos ao desconhecimento da fatoração do módulo.",
+    "category": "Criptografia de chave pública",
+    "chapter": "ch03",
+    "href": "chapters/ch03/#sec-3-10"
   }
 ]

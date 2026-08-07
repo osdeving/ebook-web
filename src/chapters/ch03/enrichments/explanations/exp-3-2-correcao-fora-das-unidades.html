@@ -1,0 +1,7 @@
+<p class="supplement-lead">A prova curta com Euler supõe \(\gcd(m,N)=1\), mas o RSA deve devolver também mensagens múltiplas de p ou q. O teorema chinês dos restos fecha essa lacuna.</p>
+<ol class="slow-steps">
+  <li><strong>Módulo p.</strong> Se \(p\mid m\), então tanto \(m\) quanto \(m^{ed}\) valem 0 módulo p. Se \(p\nmid m\), Fermat reduz o expoente.</li>
+  <li><strong>Módulo q.</strong> O mesmo argumento, por casos, vale independentemente módulo q.</li>
+  <li><strong>Recomposição.</strong> As duas congruências \(m^{ed}\equiv m\pmod p\) e \(m^{ed}\equiv m\pmod q\) implicam \(m^{ed}\equiv m\pmod{pq}\).</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Cancelar m numa congruência composta sem verificar que ele é uma unidade descartaria exatamente os casos que esta prova precisa recuperar.</div>

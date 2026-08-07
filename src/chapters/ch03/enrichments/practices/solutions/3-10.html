@@ -1,0 +1,86 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.10">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Transforme cada par em um expoente universal</summary>
+      <p>Para cada par \((e_i,d_i)\), ponha \(K_i=e_id_i-1\). Toda unidade \(a\) satisfaz \(a^{K_i}\equiv1\pmod N\); tome o máximo divisor comum dos \(K_i\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Procure uma raiz não trivial de 1</summary>
+      <p>Escreva o expoente comum como \(G=2^su\), com \(u\) ímpar, e acompanhe \(a^u,a^{2u},\ldots,a^{2^su}=1\). Um termo diferente de \(\pm1\) cujo quadrado é \(1\) revela os fatores.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Extraia os fatores com mdc</summary>
+      <p>Se \(y^2\equiv1\pmod N\), mas \(y\not\equiv\pm1\pmod N\), então \(N\mid(y-1)(y+1)\) e \(\gcd(y-1,N)\), \(\gcd(y+1,N)\) dão divisores próprios.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Para cada resposta \(d_i\) da caixa, defina</p>
+        <p>\[K_i=e_id_i-1.\]</p>
+        <p>Pela definição de expoente de decifração, toda unidade \(a\pmod N\) satisfaz \(a^{K_i}\equiv1\pmod N\). Se \(G=\gcd(K_1,K_2,\ldots)\), uma identidade de Bézout para os \(K_i\), usando que \(a\) é invertível, mostra também que</p>
+        <p>\[a^G\equiv1\pmod N.\]</p>
+        <p>Escreva \(G=2^su\), com \(u\) ímpar. Escolha \(a\) ao acaso. Se \(\gcd(a,N)\gt1\), um fator já foi encontrado. Caso contrário, calcule</p>
+        <p>\[a^u,a^{2u},a^{4u},\ldots,a^{2^su}\equiv1\pmod N.\]</p>
+        <p>Quando a cadeia contém um \(y\not\equiv\pm1\pmod N\) seguido de \(y^2\equiv1\pmod N\), temos uma raiz quadrada não trivial de \(1\), e</p>
+        <p>\[\gcd(y-1,N)\quad\text{e}\quad\gcd(y+1,N)\]</p>
+        <p>separam os fatores de \(N=pq\). Se a base escolhida não produzir essa passagem, Eva tenta outra. Com muitas respostas da caixa, o mdc costuma remover fatores excedentes dos expoentes; de todo modo, qualquer \(K_i\) também pode ser usado nessa busca.</p>
+      </li>
+      <li>
+        <p>Os dois expoentes são</p>
+        <p>\[
+          \begin{aligned}
+          K_1&amp;=10988423\cdot16784693-1=184437306609138,\\
+          K_2&amp;=25910155\cdot11514115-1=298332504337824,
+          \end{aligned}
+        \]</p>
+        <p>e</p>
+        <p>\[G=\gcd(K_1,K_2)=19368558=2\cdot9684279.\]</p>
+        <p>Com a base \(a=2\), a exponenciação modular fornece</p>
+        <p>\[y=2^{9684279}\equiv7464411\pmod{38749709},\qquad y^2\equiv1\pmod{38749709}.\]</p>
+        <p>Como \(y\not\equiv\pm1\),</p>
+        <p>\[
+          \gcd(y-1,N)=7247,\qquad
+          \gcd(y+1,N)=5347.
+        \]</p>
+        <p>Portanto \(38749709=5347\cdot7247\).</p>
+      </li>
+      <li>
+        <p>Neste caso,</p>
+        <p>\[
+          \begin{aligned}
+          K_1&amp;=346649081132214,\\
+          K_2&amp;=1271853374967042,\\
+          K_3&amp;=5336720840990868,
+          \end{aligned}
+          \qquad
+          G=37498566=2\cdot18749283.
+        \]</p>
+        <p>A base \(a=7\) produz</p>
+        <p>\[y=7^{18749283}\equiv107800641\pmod{225022969},\qquad y^2\equiv1\pmod{225022969}.\]</p>
+        <p>Então</p>
+        <p>\[\gcd(y-1,N)=10867,\qquad\gcd(y+1,N)=20707,\]</p>
+        <p>e \(225022969=10867\cdot20707\).</p>
+      </li>
+      <li>
+        <p>Agora,</p>
+        <p>\[
+          \begin{aligned}
+          K_1&amp;=84917656495673550,\\
+          K_2&amp;=109174200786382950,\\
+          K_3&amp;=3009594676141500,
+          \end{aligned}
+          \qquad
+          G=129112350=2\cdot64556175.
+        \]</p>
+        <p>Tomando \(a=2\),</p>
+        <p>\[y=2^{64556175}\equiv1031355017\pmod{1291233941},\qquad y^2\equiv1\pmod{1291233941}.\]</p>
+        <p>Os máximos divisores comuns são</p>
+        <p>\[\gcd(y-1,N)=97151,\qquad\gcd(y+1,N)=13291.\]</p>
+        <p>Logo \(1291233941=13291\cdot97151\).</p>
+      </li>
+    </ol>
+  </details>
+</div>

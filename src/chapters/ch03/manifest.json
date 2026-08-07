@@ -1,0 +1,126 @@
+{
+  "slug": "ch03",
+  "number": "3",
+  "title": "Fatoração de inteiros e RSA",
+  "shortTitle": "Fatoração de inteiros e RSA",
+  "eyebrow": "Capítulo 3 · tradução para português",
+  "description": "Da fórmula de Euler e do RSA aos testes de primalidade, algoritmos de fatoração, crivos, reciprocidade quadrática e cifragem probabilística.",
+  "sourceHash": "6c9dfb0f00f6ce11a715fae0092b11b53d9f0e76c9a5a4dec4b215a46ace1180",
+  "textLength": 184716,
+  "toc": [
+    {
+      "id": "sec-3-1",
+      "number": "3.1",
+      "title": "Fórmula de Euler e raízes módulo pq",
+      "depth": 1
+    },
+    {
+      "id": "sec-3-2",
+      "number": "3.2",
+      "title": "O criptossistema de chave pública RSA",
+      "depth": 1
+    },
+    {
+      "id": "sec-3-3",
+      "number": "3.3",
+      "title": "Questões de implementação e segurança",
+      "depth": 1
+    },
+    {
+      "id": "sec-3-4",
+      "number": "3.4",
+      "title": "Testes de primalidade",
+      "depth": 1
+    },
+    {
+      "id": "sec-3-4-1",
+      "number": "3.4.1",
+      "title": "A distribuição do conjunto dos primos",
+      "depth": 2
+    },
+    {
+      "id": "sec-3-4-2",
+      "number": "3.4.2",
+      "title": "Provas de primalidade versus testes probabilísticos",
+      "depth": 2
+    },
+    {
+      "id": "sec-3-5",
+      "number": "3.5",
+      "title": "Algoritmo de fatoração p − 1 de Pollard",
+      "depth": 1
+    },
+    {
+      "id": "sec-3-6",
+      "number": "3.6",
+      "title": "Fatoração por diferença de quadrados",
+      "depth": 1
+    },
+    {
+      "id": "sec-3-7",
+      "number": "3.7",
+      "title": "Números suaves, crivos e construção de relações para fatoração",
+      "depth": 1
+    },
+    {
+      "id": "sec-3-7-1",
+      "number": "3.7.1",
+      "title": "Números suaves",
+      "depth": 2
+    },
+    {
+      "id": "sec-3-7-2",
+      "number": "3.7.2",
+      "title": "O crivo quadrático",
+      "depth": 2
+    },
+    {
+      "id": "sec-3-7-3",
+      "number": "3.7.3",
+      "title": "O crivo do corpo de números",
+      "depth": 2
+    },
+    {
+      "id": "sec-3-8",
+      "number": "3.8",
+      "title": "O método do cálculo de índices para logaritmos discretos",
+      "depth": 1
+    },
+    {
+      "id": "sec-3-9",
+      "number": "3.9",
+      "title": "Resíduos quadráticos e reciprocidade quadrática",
+      "depth": 1
+    },
+    {
+      "id": "sec-3-10",
+      "number": "3.10",
+      "title": "Cifragem probabilística e o criptossistema Goldwasser–Micali",
+      "depth": 1
+    },
+    {
+      "id": "exercicios-ch03",
+      "number": "EX",
+      "title": "Exercícios",
+      "depth": 1
+    }
+  ],
+  "sourceOrder": [
+    "source/sections/sec-3-1.html",
+    "source/sections/sec-3-2.html",
+    "source/sections/sec-3-3.html",
+    "source/sections/sec-3-4.html",
+    "source/sections/sec-3-4-1.html",
+    "source/sections/sec-3-4-2.html",
+    "source/sections/sec-3-5.html",
+    "source/sections/sec-3-6.html",
+    "source/sections/sec-3-7.html",
+    "source/sections/sec-3-7-1.html",
+    "source/sections/sec-3-7-2.html",
+    "source/sections/sec-3-7-3.html",
+    "source/sections/sec-3-8.html",
+    "source/sections/sec-3-9.html",
+    "source/sections/sec-3-10.html",
+    "source/sections/exercicios.html"
+  ]
+}

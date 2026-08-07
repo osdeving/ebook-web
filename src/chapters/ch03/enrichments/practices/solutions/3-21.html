@@ -1,0 +1,92 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.21">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Derive \(t/\ln t\)</summary>
+      <p>A identidade \(\frac{d}{dt}(t/\ln t)=1/\ln t-1/(\ln t)^2\) já contém a integração por partes desejada.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Domine o termo de resto</summary>
+      <p>Em \([2,\sqrt X]\), use \(1/(\ln t)^2\le1/(\ln2)^2\). Em \([\sqrt X,X]\), use \(\ln t\ge\tfrac12\ln X\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Compare o erro da hipótese de Riemann</summary>
+      <p>Divida \(\sqrt X\ln X\) por \(X/\ln X\). O quociente \((\ln X)^2/\sqrt X\) tende a zero.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Calculando a derivada,</p>
+        <p>\[
+          \frac{d}{dt}\left(\frac t{\ln t}\right)
+          =\frac1{\ln t}-\frac1{(\ln t)^2}.
+        \]</p>
+        <p>Logo</p>
+        <p>\[
+          \begin{aligned}
+          \operatorname{Li}(X)
+          &=\int_2^X\frac{dt}{\ln t}\\
+          &=\left[\frac t{\ln t}\right]_2^X
+            +\int_2^X\frac{dt}{(\ln t)^2}\\
+          &=\frac X{\ln X}
+            +\int_2^X\frac{dt}{(\ln t)^2}
+            -\frac2{\ln2}.
+          \end{aligned}
+        \]</p>
+        <p>O último termo é constante, portanto</p>
+        <p>\[
+          \operatorname{Li}(X)=
+          \frac X{\ln X}+
+          \int_2^X\frac{dt}{(\ln t)^2}+\mathcal O(1).
+        \]</p>
+      </li>
+      <li>
+        <p>Denote o integral restante por \(R(X)\) e divida-o em \(R_1+R_2\) no ponto \(\sqrt X\). Para a primeira parte,</p>
+        <p>\[
+          0\le R_1
+          \le\frac{\sqrt X-2}{(\ln2)^2}
+          =O(\sqrt X).
+        \]</p>
+        <p>Na segunda parte, \(\ln t\ge\tfrac12\ln X\), então</p>
+        <p>\[
+          0\le R_2
+          \le\frac{X-\sqrt X}{(\tfrac12\ln X)^2}
+          \le\frac{4X}{(\ln X)^2}.
+        \]</p>
+        <p>Ao dividir por \(X/\ln X\), os dois limites tornam-se</p>
+        <p>\[
+          O\!\left(\frac{\ln X}{\sqrt X}\right)
+          \quad\text{e}\quad
+          O\!\left(\frac1{\ln X}\right),
+        \]</p>
+        <p>ambos tendendo a zero. Portanto \(R(X)=o(X/\ln X)\), e o item (a) fornece</p>
+        <p>\[
+          \boxed{\displaystyle
+          \lim_{X\to\infty}\frac{\operatorname{Li}(X)}{X/\ln X}=1}.
+        \]</p>
+      </li>
+      <li>
+        <p>A fórmula (3.12) afirma</p>
+        <p>\[
+          \pi(X)=\operatorname{Li}(X)+O(\sqrt X\ln X).
+        \]</p>
+        <p>O termo de erro também é desprezível em relação a \(X/\ln X\), pois</p>
+        <p>\[
+          \frac{\sqrt X\ln X}{X/\ln X}
+          =\frac{(\ln X)^2}{\sqrt X}\longrightarrow0.
+        \]</p>
+        <p>Usando o item (b),</p>
+        <p>\[
+          \frac{\pi(X)}{X/\ln X}
+          =
+          \frac{\operatorname{Li}(X)}{X/\ln X}
+          +O\!\left(\frac{(\ln X)^2}{\sqrt X}\right)
+          \longrightarrow1+0=1.
+        \]</p>
+        <p>Essa é exatamente a afirmação do teorema dos números primos.</p>
+      </li>
+    </ol>
+  </details>
+</div>

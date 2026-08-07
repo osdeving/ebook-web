@@ -1,0 +1,61 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.20">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Conte candidatos e primos separadamente</summary>
+      <p>Num intervalo de comprimento comparável a \(N\), cerca de \(1/m\) dos inteiros estão numa classe fixa módulo \(m\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Só classes invertíveis contêm muitos primos</summary>
+      <p>Para \(N\) grande, um primo que não divide \(m\) pertence a uma das \(\varphi(m)\) classes \(k\) com \(\gcd(k,m)=1\), e essas classes têm a mesma densidade assintótica de primos.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Compare duas densidades</summary>
+      <p>Divida a fração assintótica \(1/\varphi(m)\) dos primos pela fração \(1/m\) dos inteiros candidatos. O fator corretivo será \(m/\varphi(m)\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Damos sentido às afirmações como no Exercício 3.19: fixamos \(0&lt;c_1&lt;c_2\), escolhemos uniformemente um inteiro do intervalo \(c_1N\le n\le c_2N\) sujeito à congruência indicada e fazemos \(N\to\infty\). Usaremos o teorema dos números primos em progressões aritméticas: para \(m\) fixo e \(\gcd(k,m)=1\),</p>
+    <p>\[
+      \#\{p\text{ primo}:c_1N\le p\le c_2N,\ p\equiv k\pmod m\}
+      \sim\frac{(c_2-c_1)N}{\varphi(m)\ln N}.
+    \]</p>
+    <p>Já a quantidade de inteiros candidatos é \((c_2-c_1)N/m+O(1)\). Portanto a probabilidade condicional é</p>
+    <p>\[
+      \frac{(c_2-c_1)N/(\varphi(m)\ln N)}
+           {(c_2-c_1)N/m}
+      \sim\frac{m}{\varphi(m)\ln N}.
+    \]</p>
+    <ol type="a">
+      <li>
+        <p>Para números ímpares, \(m=2\), \(k=1\) e \(\varphi(2)=1\); a probabilidade é \(2/\ln N\). Para números pares, o único primo possível é \(2\). Em qualquer intervalo proporcional a \(N\), quando \(N\) é suficientemente grande esse valor nem sequer aparece, logo a probabilidade é</p>
+        <p>\[\boxed{0}.\]</p>
+      </li>
+      <li>
+        <p>Para \(N\equiv1\pmod3\), temos \(m=3\) e \(\varphi(3)=2\), portanto</p>
+        <p>\[\Pr(\text{primo}\mid N\equiv1\pmod3)\sim\frac{3}{2\ln N}.\]</p>
+      </li>
+      <li>
+        <p>Para \(N\equiv1\pmod6\), temos \(m=6\) e \(\varphi(6)=2\), logo</p>
+        <p>\[\Pr(\text{primo}\mid N\equiv1\pmod6)\sim\frac{6}{2\ln N}=\frac3{\ln N}.\]</p>
+      </li>
+      <li>
+        <p>Se \(m=p_1p_2\cdots p_r\) é produto de primos distintos, então</p>
+        <p>\[
+          \varphi(m)=m\prod_{i=1}^r\left(1-\frac1{p_i}\right).
+        \]</p>
+        <p>Assim, a caixa de (3.37) deve conter</p>
+        <p>\[
+          \boxed{\frac m{\varphi(m)}
+          =\prod_{i=1}^r\frac{p_i}{p_i-1}}.
+        \]</p>
+      </li>
+      <li>
+        <p>Para um \(m\) arbitrário fixo, a resposta continua sendo</p>
+        <p>\[\boxed{\frac m{\varphi(m)}}.\]</p>
+        <p>As potências dos primos alteram tanto a frequência \(1/m\) da classe entre os inteiros quanto o número \(\varphi(m)\) de classes admissíveis; a mesma divisão das densidades continua válida. Para \(m=\prod p_i^{e_i}\), também temos \(m/\varphi(m)=\prod_{p\mid m}p/(p-1)\), portanto o fator depende apenas dos primos distintos que dividem \(m\).</p>
+      </li>
+    </ol>
+  </details>
+</div>

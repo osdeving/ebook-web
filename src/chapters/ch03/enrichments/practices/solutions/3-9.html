@@ -1,0 +1,56 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.9">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Recupere a soma dos primos</summary>
+      <p>Expanda \((p-1)(q-1)=N-(p+q)+1\), de onde \(S=p+q=N+1-\varphi(N)\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Monte o polinômio</summary>
+      <p>Os primos são as raízes de \(T^2-ST+N\). Calcule o discriminante \(\Delta=S^2-4N\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Verifique as duas informações</summary>
+      <p>Para cada par encontrado, confira tanto \(pq=N\) quanto \((p-1)(q-1)\) igual ao valor fornecido.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Em todos os itens, ponha \(\Phi=(p-1)(q-1)\). Então</p>
+    <p>\[S=p+q=N+1-\Phi\]</p>
+    <p>e os dois primos são</p>
+    <p>\[p,q=\frac{S\mp\sqrt{S^2-4N}}2.\]</p>
+    <ol type="a">
+      <li>
+        <p>\[S=352717+1-351520=1198,\qquad\Delta=1198^2-4\cdot352717=24336=156^2.\]</p>
+        <p>Portanto</p>
+        <p>\[p=\frac{1198-156}{2}=521,\qquad q=\frac{1198+156}{2}=677.\]</p>
+      </li>
+      <li>
+        <p>\[S=17710,\qquad\Delta=17710^2-4\cdot77083921=5308416=2304^2,\]</p>
+        <p>logo</p>
+        <p>\[p=7703,\qquad q=10007.\]</p>
+      </li>
+      <li>
+        <p>\[S=23550,\qquad\Delta=23550^2-4\cdot109404161=116985856=10816^2,\]</p>
+        <p>e, assim,</p>
+        <p>\[p=6367,\qquad q=17183.\]</p>
+      </li>
+      <li>
+        <p>\[S=830076,\qquad\Delta=830076^2-4\cdot172205490419=204204100=14290^2.\]</p>
+        <p>Consequentemente,</p>
+        <p>\[p=407893,\qquad q=422183.\]</p>
+      </li>
+    </ol>
+    <p>As verificações são</p>
+    <p>\[
+      \begin{array}{c|c|c}
+      (p,q)&amp;pq&amp;(p-1)(q-1)\\ \hline
+      (521,677)&amp;352717&amp;351520\\
+      (7703,10007)&amp;77083921&amp;77066212\\
+      (6367,17183)&amp;109404161&amp;109380612\\
+      (407893,422183)&amp;172205490419&amp;172204660344
+      \end{array}
+    \]</p>
+  </details>
+</div>

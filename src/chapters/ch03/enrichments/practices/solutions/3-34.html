@@ -1,0 +1,106 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.34">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Cada potência de primo remove um único fator</summary>
+      <p>Para uma potência \(q=\ell^e\le B\), resolva \(T^2\equiv493\pmod q\). Em cada posição atingida, remova mais um fator \(\ell\) do valor original \(F(T)\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Há uma relação quadrada já em \(T=23\)</summary>
+      <p>\(F(23)=36=2^2\cdot3^2\), de modo que \(23^2\equiv6^2\pmod{493}\). Calcule os MDCs de \(23-6\) e \(23+6\) com \(493\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Em \(B=16\), observe o papel de \(13\)</summary>
+      <p>As novas passagens são \(13\) e \(16\). A passagem por \(13\) reduz \(F(31)\) e \(F(47)\) a \(1\); a passagem por \(16\) não encontra raiz de \(T^2\equiv493\pmod{16}\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Em cada passagem por \(q=\ell^e\), dividimos por \(\ell\) exatamente os valores para os quais \(q\mid F(T)\). Para \(B=11\), as potências a considerar são</p>
+    <div class="display-math">
+      \[
+        2,3,4,5,7,8,9,11.
+      \]
+    </div>
+    <ol type="a">
+      <li>
+        <p>O resultado acumulado das passagens do crivo em \(F(23),\ldots,F(38)\) é:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>\(T\)</th><th>\(F(T)=T^2-493\)</th><th>quociente final</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>23</td><td>\(36=2^2\cdot3^2\)</td><td>1</td></tr>
+              <tr><td>24</td><td>83</td><td>83</td></tr>
+              <tr><td>25</td><td>\(132=2^2\cdot3\cdot11\)</td><td>1</td></tr>
+              <tr><td>26</td><td>\(183=3\cdot61\)</td><td>61</td></tr>
+              <tr><td>27</td><td>\(236=2^2\cdot59\)</td><td>59</td></tr>
+              <tr><td>28</td><td>\(291=3\cdot97\)</td><td>97</td></tr>
+              <tr><td>29</td><td>\(348=2^2\cdot3\cdot29\)</td><td>29</td></tr>
+              <tr><td>30</td><td>\(407=11\cdot37\)</td><td>37</td></tr>
+              <tr><td>31</td><td>\(468=2^2\cdot3^2\cdot13\)</td><td>13</td></tr>
+              <tr><td>32</td><td>\(531=3^2\cdot59\)</td><td>59</td></tr>
+              <tr><td>33</td><td>\(596=2^2\cdot149\)</td><td>149</td></tr>
+              <tr><td>34</td><td>\(663=3\cdot13\cdot17\)</td><td>221</td></tr>
+              <tr><td>35</td><td>\(732=2^2\cdot3\cdot61\)</td><td>61</td></tr>
+              <tr><td>36</td><td>\(803=11\cdot73\)</td><td>73</td></tr>
+              <tr><td>37</td><td>\(876=2^2\cdot3\cdot73\)</td><td>73</td></tr>
+              <tr><td>38</td><td>\(951=3\cdot317\)</td><td>317</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Assim, somente \(F(23)\) e \(F(25)\) são crivados até \(1\), produzindo</p>
+        <div class="display-math">
+          \[
+            23^2\equiv2^2\cdot3^2=6^2\pmod{493},
+            \qquad
+            25^2\equiv2^2\cdot3\cdot11\pmod{493}.
+          \]
+        </div>
+        <p>A primeira relação já fatora \(N\):</p>
+        <div class="display-math">
+          \[
+            \gcd(23-6,493)=\gcd(17,493)=17,
+            \qquad
+            \gcd(23+6,493)=\gcd(29,493)=29.
+          \]
+        </div>
+        <p>Logo \(493=17\cdot29\).</p>
+      </li>
+      <li>
+        <p>Para \(B=16\), acrescentamos as potências \(13\) e \(16\). Não há solução para \(T^2\equiv493\equiv13\pmod{16}\), portanto a passagem por \(16\) nada altera. A passagem por \(13\), junto com o intervalo ampliado, produz os seguintes quocientes finais:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>\(T\)</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th><th>29</th><th>30</th><th>31</th><th>32</th><th>33</th><th>34</th><th>35</th><th>36</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>resto</th><td>1</td><td>83</td><td>1</td><td>61</td><td>59</td><td>97</td><td>29</td><td>37</td><td>1</td><td>59</td><td>149</td><td>17</td><td>61</td><td>73</td></tr>
+              <tr><th>\(T\)</th><td>37</td><td>38</td><td>39</td><td>40</td><td>41</td><td>42</td><td>43</td><td>44</td><td>45</td><td>46</td><td>47</td><td>48</td><td>49</td><td>50</td></tr>
+              <tr><th>resto</th><td>73</td><td>317</td><td>257</td><td>123</td><td>3</td><td>1271</td><td>113</td><td>37</td><td>383</td><td>541</td><td>1</td><td>1811</td><td>53</td><td>223</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Além dos antigos \(T=23,25\), os novos valores crivados até \(1\) são precisamente \(T=31\) e \(T=47\). Eles dão as relações</p>
+        <div class="display-math">
+          \[
+            31^2\equiv2^2\cdot3^2\cdot13\pmod{493},
+            \qquad
+            47^2\equiv2^2\cdot3\cdot11\cdot13\pmod{493}.
+          \]
+        </div>
+        <p>Com a relação de \(T=25\), os vetores de paridade somam zero:</p>
+        <div class="display-math">
+          \[
+            (25\cdot31\cdot47)^2
+            \equiv(2^3\cdot3^2\cdot11\cdot13)^2
+            =10296^2\pmod{493}.
+          \]
+        </div>
+        <p>Neste exemplo essa dependência específica é trivial: \(25\cdot31\cdot47\equiv10296\equiv436\pmod{493}\), de modo que não revela um novo fator. A relação de \(T=23\), porém, já forneceu os dois fatores.</p>
+        <p>Vale notar a diferença entre “ser \(16\)-suave” e “ser reduzido a \(1\) usando somente potências de primos até \(16\)”. Por exemplo, \(F(41)=1188=2^2\cdot3^3\cdot11\) é \(16\)-suave, mas as passagens \(3\) e \(9\) retiram apenas dois fatores \(3\); como \(27&gt;16\), seu quociente final é \(3\), não \(1\).</p>
+      </li>
+    </ol>
+  </details>
+</div>

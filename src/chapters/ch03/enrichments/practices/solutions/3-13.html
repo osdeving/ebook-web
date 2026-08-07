@@ -1,0 +1,57 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.13">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Aplique Euclides aos expoentes</summary>
+      <p>Calcule \(\gcd(e_1,e_2)\). Se ele for \(1\), encontre \(u,v\) com \(e_1u+e_2v=1\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Interprete o coeficiente negativo</summary>
+      <p>Uma potência negativa módulo \(N\) é uma potência do inverso modular. Verifique primeiro que \(c_2\) é coprimo com \(N\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Valide com as duas cifras</summary>
+      <p>Depois de obter \(m\equiv c_1^u c_2^v\pmod N\), confirme separadamente que \(m^{e_1}\equiv c_1\) e \(m^{e_2}\equiv c_2\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>O algoritmo de Euclides estendido fornece</p>
+    <p>\[
+      \gcd(1021763679,519424709)=1
+    \]</p>
+    <p>e os coeficientes</p>
+    <p>\[
+      1021763679(252426389)
+      +519424709(-496549570)=1.
+    \]</p>
+    <p>Portanto podemos tomar \(u=252426389\) e \(v=-496549570\). Como \(c_1\equiv m^{e_1}\) e \(c_2\equiv m^{e_2}\),</p>
+    <p>\[
+      c_1^u c_2^v
+      \equiv m^{e_1u+e_2v}
+      \equiv m\pmod N.
+    \]</p>
+    <p>Aqui \(\gcd(c_2,N)=1\), e seu inverso é</p>
+    <p>\[c_2^{-1}\equiv732959706^{-1}\equiv1873807620\pmod{1889570071}.\]</p>
+    <p>Usando quadratura e multiplicação, obtemos</p>
+    <p>\[
+      \begin{aligned}
+      c_1^u&amp;\equiv1244183534^{252426389}\equiv1031756109\pmod N,\\
+      c_2^v&amp;\equiv1873807620^{496549570}\equiv603385073\pmod N.
+      \end{aligned}
+    \]</p>
+    <p>Multiplicando os dois resíduos,</p>
+    <p>\[
+      m\equiv1031756109\cdot603385073
+      \equiv1054592380\pmod{1889570071}.
+    \]</p>
+    <p>As duas verificações independentes retornam exatamente os textos interceptados:</p>
+    <p>\[
+      \begin{aligned}
+      1054592380^{1021763679}&amp;\equiv1244183534\pmod{1889570071},\\
+      1054592380^{519424709}&amp;\equiv732959706\pmod{1889570071}.
+      \end{aligned}
+    \]</p>
+    <p>Logo o texto simples de Bob é \(1054592380\), obtido sem fatorar \(N\).</p>
+  </details>
+</div>

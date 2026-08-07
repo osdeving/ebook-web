@@ -1,0 +1,178 @@
+<section class="chapter-section" id="sec-3-10">
+  <div class="section-heading">
+    <span class="section-number">3.10</span>
+    <h2>Cifragem probabilística e o criptossistema Goldwasser–Micali</h2>
+  </div>
+
+  <p>Suponha que Alice queira usar um criptossistema de chave pública para cifrar e enviar a Bob \(1\) bit, isto é, Alice quer enviar a Bob um dos valores \(0\) e \(1\). À primeira vista, tal arranjo parece inerentemente inseguro. Tudo o que Eva precisa fazer é cifrar os dois possíveis textos simples \(m=0\) e \(m=1\) e então comparar as cifragens com o texto cifrado de Alice. De modo mais geral, em qualquer criptossistema para o qual o conjunto de textos simples possíveis seja pequeno, Eva pode cifrar cada texto simples usando a chave pública de Bob até encontrar aquele que corresponde ao de Alice.</p>
+
+  <p>A cifragem probabilística foi inventada por Goldwasser e Micali como uma maneira de contornar esse problema. A ideia é que Alice escolha tanto um texto simples \(m\) quanto uma sequência aleatória de dados \(r\), e então use a chave pública de Bob para cifrar o par \((m,r)\). Idealmente, à medida que \(r\) varia entre todos os seus valores possíveis, os textos cifrados de \((m,r)\) variam “aleatoriamente” entre os textos cifrados possíveis. Mais precisamente, para quaisquer \(m_1\) e \(m_2\) fixos e com \(r\) variando, as distribuições dos valores das duas quantidades</p>
+
+  <div class="display-math">
+    \[
+    \begin{aligned}
+      e(m_1,r)&=\text{o texto cifrado do texto simples }m_1\text{ e da sequência aleatória }r,\\
+      e(m_2,r)&=\text{o texto cifrado do texto simples }m_2\text{ e da sequência aleatória }r
+    \end{aligned}
+    \]
+  </div>
+
+  <p>devem ser essencialmente indistinguíveis. Observe que não é necessário que Bob consiga recuperar o par completo \((m,r)\) ao efetuar a decifração. Ele precisa recuperar apenas o texto simples \(m\).</p>
+
+  <p>Essa ideia abstrata é clara, mas como se poderia criar, na prática, um esquema de cifragem probabilística? Goldwasser e Micali descrevem um esquema desse tipo que, embora seja impraticável por cifrar apenas \(1\) bit de cada vez, tem a vantagem de ser bastante simples de descrever e analisar. A ideia se baseia na dificuldade do seguinte problema.</p>
+
+  <blockquote>
+    <p>Sejam \(p\) e \(q\) números primos secretos e suponha que \(N=pq\) seja dado. Para um inteiro \(a\), determine se \(a\) é um quadrado módulo \(N\), isto é, determine se existe um inteiro \(u\) que satisfaça \(u^2\equiv a\pmod N\).</p>
+  </blockquote>
+
+  <p>Observe que Bob, que sabe fatorar \(N=pq\), consegue resolver esse problema com muita facilidade, pois</p>
+
+  <div class="display-math">
+    \[
+      a\text{ é um quadrado módulo }pq
+      \quad\Longleftrightarrow\quad
+      \left(\frac ap\right)=1
+      \text{ e }
+      \left(\frac aq\right)=1.
+    \]
+  </div>
+
+  <p>Eva, por outro lado, enfrenta uma dificuldade maior, pois conhece apenas o valor de \(N\). Eva pode calcular \(\left(\frac aN\right)\), mas, como observamos anteriormente na <a href="#obs-3-68" data-source-xref>Observação 3.68</a>, isso não lhe diz se \(a\) é um quadrado módulo \(N\). Goldwasser e Micali exploram esse fato<sup id="fnref-3-10-12"><a href="#fn-3-10-12">12</a></sup> para criar o criptossistema probabilístico de chave pública descrito na <a href="#tab-3-9" data-source-xref>Tabela 3.9</a>.</p>
+
+  <div class="table-wrap" id="tab-3-9">
+    <table>
+      <caption><span class="label">Tabela 3.9.</span> Criptossistema probabilístico de chave pública Goldwasser–Micali</caption>
+      <thead>
+        <tr><th>Bob</th><th>Alice</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>Criação das chaves</strong>
+            <ol class="steps">
+              <li>Escolha primos secretos \(p\) e \(q\).</li>
+              <li>Escolha \(a\) com \(\left(\frac ap\right)=\left(\frac aq\right)=-1\).</li>
+              <li>Publique \(N=pq\) e \(a\).</li>
+            </ol>
+          </td>
+          <td>
+            <strong>Cifração</strong>
+            <ol class="steps">
+              <li>Escolha o texto simples \(m\in\{0,1\}\).</li>
+              <li>Escolha aleatoriamente \(r\) com \(1&lt;r&lt;N\).</li>
+              <li>Use a chave pública \((N,a)\) de Bob para calcular
+                \[
+                c=\begin{cases}
+                  r^2\bmod N,&\text{se }m=0,\\
+                  ar^2\bmod N,&\text{se }m=1.
+                \end{cases}
+                \]
+              </li>
+              <li>Envie o texto cifrado \(c\) a Bob.</li>
+            </ol>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Decifração</strong>
+            <p>Calcule \(\left(\frac cp\right)\). Decifre por</p>
+            \[
+              m=\begin{cases}
+                0,&\text{se }\left(\frac cp\right)=1,\\
+                1,&\text{se }\left(\frac cp\right)=-1.
+              \end{cases}
+            \]
+          </td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>É fácil verificar que o criptossistema de Goldwasser–Micali funciona como anunciado, pois</p>
+
+  <div class="display-math">
+    \[
+      \left(\frac cp\right)=
+      \begin{cases}
+        \left(\dfrac{r^2}{p}\right)=\left(\dfrac rp\right)^2=1,
+          &\text{se }m=0,\\[6pt]
+        \left(\dfrac{ar^2}{p}\right)=
+        \left(\dfrac ap\right)\left(\dfrac rp\right)^2=
+        \left(\dfrac ap\right)=-1,
+          &\text{se }m=1.
+      \end{cases}
+    \]
+  </div>
+
+  <p>Além disso, como Alice escolhe \(r\) aleatoriamente, o conjunto de valores que Eva vê quando Alice cifra \(m=0\) consiste em todos os quadrados possíveis módulo \(N\), e o conjunto de valores que Eva vê quando Alice cifra \(m=1\) consiste em todos os números possíveis \(c\) que satisfazem \(\left(\frac cN\right)=1\) e que não são quadrados módulo \(N\).</p>
+
+  <p>Que informação Eva obtém se calcular o símbolo de Jacobi \(\left(\frac cN\right)\), o que ela pode fazer porque \(N\) é uma quantidade pública? Se \(m=0\), então \(c\equiv r^2\pmod N\), logo</p>
+
+  <div class="display-math">
+    \[
+      \left(\frac cN\right)=
+      \left(\frac{r^2}{N}\right)=
+      \left(\frac rN\right)^2=1.
+    \]
+  </div>
+
+  <p>Por outro lado, se \(m=1\), então \(c\equiv ar^2\pmod N\), logo</p>
+
+  <div class="display-math">
+    \[
+      \left(\frac cN\right)=
+      \left(\frac{ar^2}{N}\right)=
+      \left(\frac aN\right)=
+      \left(\frac a{pq}\right)=
+      \left(\frac ap\right)\left(\frac aq\right)=
+      (-1)(-1)=1.
+    \]
+  </div>
+
+  <p>Esse valor também é igual a \(1\). Observe que Bob escolheu \(a\) de modo que \(\left(\frac ap\right)=\left(\frac aq\right)=-1\). Assim, \(\left(\frac cN\right)\) é igual a \(1\), independentemente do valor de \(N\), de modo que o símbolo de Jacobi não fornece a Eva informação útil alguma.</p>
+
+  <div class="semantic example" id="exemplo-3-70">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.70</span></div>
+    <p>Bob cria uma chave pública Goldwasser–Micali escolhendo</p>
+    <div class="display-math">
+      \[
+        p=2309,\qquad q=5651,\qquad N=pq=13048159,\qquad a=6283665.
+      \]
+    </div>
+    <p>Observe que \(a\) tem a propriedade \(\left(\frac ap\right)=\left(\frac aq\right)=-1\). Ele publica o par \((N,a)\) e mantém secretos os valores dos primos \(p\) e \(q\).</p>
+    <p>Alice começa enviando a Bob o bit de texto simples \(m=0\). Para isso, escolhe \(r=1642087\) aleatoriamente no intervalo de \(1\) a \(13048158\). Então calcula</p>
+    <div class="display-math">
+      \[
+        c\equiv r^2\equiv1642087^2\equiv8513742\pmod{13048159}
+      \]
+    </div>
+    <p>e envia a Bob o texto cifrado \(c=8513742\). Bob o decifra calculando \(\left(\frac{8513742}{2309}\right)=1\), o que fornece o bit de texto simples \(m=0\).</p>
+    <p>Em seguida, Alice decide enviar a Bob o bit de texto simples \(m=1\). Ela escolhe um valor aleatório \(r=11200984\) e calcula</p>
+    <div class="display-math">
+      \[
+        c\equiv ar^2\equiv6283665\cdot11200984^2
+        \equiv2401627\pmod{13048159}.
+      \]
+    </div>
+    <p>Bob decifra \(c=2401627\) calculando \(\left(\frac{2401627}{2309}\right)=-1\), o que lhe diz que o bit de texto simples é \(m=1\).</p>
+    <p>Por fim, Alice quer enviar a Bob outro bit de texto simples \(m=1\). Ela escolhe o valor aleatório \(r=11442423\) e calcula</p>
+    <div class="display-math">
+      \[
+        c\equiv ar^2\equiv6283665\cdot11442423^2
+        \equiv4099266\pmod{13048159}.
+      \]
+    </div>
+    <p>Observe que o texto cifrado desta cifração de \(m=1\) não tem relação alguma com o da cifração anterior de \(m=1\). Bob decifra \(c=4099266\) calculando \(\left(\frac{4099266}{2309}\right)=-1\) e conclui que o bit de texto simples é \(m=1\).</p>
+  </div>
+
+  <aside class="semantic remark" id="obs-3-71">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.71</span></div>
+    <p>O criptossistema de chave pública Goldwasser–Micali não é prático, pois cada bit do texto simples é cifrado por um número módulo \(N\). Para que seja seguro, é necessário que Eva seja incapaz de fatorar \(N=pq\); portanto, na prática, \(N\) terá pelo menos \(1000\) bits. Assim, se Alice quiser enviar \(k\) bits de texto simples a Bob, seu texto cifrado terá \(1000k\) bits. O criptossistema Goldwasser–Micali tem, portanto, uma razão de expansão de mensagem igual a \(1000\), pois o texto cifrado é \(1000\) vezes mais longo que o texto simples. Em geral, ele expande uma mensagem por um fator de \(\log_2(N)\).</p>
+    <p>Existem outros criptossistemas probabilísticos de chave pública cuja expansão de mensagem é muito menor. Na verdade, já vimos um: o elemento aleatório \(k\) usado pelo criptossistema de chave pública Elgamal, na <a href="../ch02/#sec-2-4" data-source-xref>Seção 2.4</a>, torna o Elgamal um criptossistema probabilístico. O Elgamal tem razão de expansão de mensagem \(2\), como explicado na <a href="../ch02/#obs-2-9" data-source-xref>Observação 2.9</a>. Mais adiante, na Seção 7.10, veremos outro criptossistema probabilístico chamado NTRU. De modo mais geral, é possível — e em geral desejável — transformar um criptossistema determinístico, como o RSA, em um sistema probabilístico, mesmo ao custo de aumentar sua razão de expansão de mensagem. Veja o <a href="#exercicio-3-43" data-source-xref>Exercício 3.43</a> e a Seção 8.6.</p>
+  </aside>
+
+  <ol class="footnotes">
+    <li id="fn-3-10-12">Goldwasser e Micali não foram os primeiros a usar, em criptografia, o problema dos quadrados módulo \(pq\). De fato, um antigo criptossistema de chave pública devido a Rabin, comprovadamente seguro contra ataques de texto simples escolhido — supondo a dificuldade da fatoração —, baseia-se nesse problema. <a href="#fnref-3-10-12" aria-label="Voltar à chamada da nota 12">↩</a></li>
+  </ol>
+</section>

@@ -1,0 +1,7 @@
+<p class="supplement-lead">A função \(x\mapsto x^e\) não precisa ser analisada mensagem por mensagem. Quando \(e\) é coprimo com o expoente do grupo, ela apenas reorganiza as unidades do módulo.</p>
+<ol class="slow-steps">
+  <li><strong>Injetividade.</strong> Escolha \(d\) com \(ed\equiv1\pmod{\lambda(N)}\). Se \(x^e=y^e\), elevar os dois lados a \(d\) devolve \(x=y\).</li>
+  <li><strong>Sobrejetividade.</strong> Num conjunto finito, uma aplicação injetiva já atinge todos os elementos. Cada criptograma invertível tem uma única preimagem invertível.</li>
+  <li><strong>Inversa explícita.</strong> A permutação inversa é \(c\mapsto c^d\). O segredo não está em existir uma inversa, mas em calcular seu expoente sem conhecer a estrutura escondida do módulo.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Esse argumento de grupo cobre diretamente as unidades. Para mensagens divisíveis por p ou q, a correção completa usa a decomposição pelo teorema chinês dos restos.</div>

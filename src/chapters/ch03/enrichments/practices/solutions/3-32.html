@@ -1,0 +1,84 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.32">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Uma escolha concreta funciona no item (a)</summary>
+      <p>Tome \(\epsilon=1/8\), ponha \(t=\ln X\) e eleve as desigualdades ao quadrado. Basta mostrar \(t^{-3/4}&lt;\ln t&lt;t^{3/4}\) para \(t&gt;\ln10\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Escreva \(u\) sem \(Y\)</summary>
+      <p>De \(\ln Y=c\sqrt{(\ln X)(\ln\ln X)}\), obtenha \(u=c^{-1}\sqrt{(\ln X)/(\ln\ln X)}\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Calcule \(-u\ln u\)</summary>
+      <p>O termo dominante de \(\ln u\) é \(\tfrac12\ln\ln X\). Multiplicá-lo por \(u\) reconstrói \(\tfrac1{2c}\ln L(X)\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Escolheremos explicitamente \(\epsilon=1/8\). Ponha \(t=\ln X\); como \(X&gt;10\), temos \(t&gt;\ln10&gt;2\). A desigualdade desejada equivale a</p>
+        <div class="display-math">
+          \[
+            t^{1/8}&lt;\sqrt{t\ln t}&lt;t^{7/8},
+          \]
+        </div>
+        <p>ou, depois de elevar ao quadrado e dividir por \(t&gt;0\),</p>
+        <div class="display-math">
+          \[
+            t^{-3/4}&lt;\ln t&lt;t^{3/4}.
+          \]
+        </div>
+        <p>Para \(t&gt;1\), vale a estimativa elementar</p>
+        <div class="display-math">
+          \[
+            \ln t\ge\frac{2(t-1)}{t+1},
+          \]
+        </div>
+        <p>pois a diferença entre os lados é zero em \(t=1\) e sua derivada é \((t-1)^2/(t(t+1)^2)\ge0\). Assim, para \(t&gt;2\), temos \(\ln t&gt;2/3\). Também \(t^{-3/4}&lt;2^{-3/4}&lt;2/3\), de modo que \(t^{-3/4}&lt;\ln t\).</p>
+        <p>Para a desigualdade superior, defina \(g(t)=t^{3/4}-\ln t\). Em \(t\ge2\),</p>
+        <div class="display-math">
+          \[
+            g'(t)=\frac1t\left(\frac34t^{3/4}-1\right)&gt;0,
+          \]
+        </div>
+        <p>e \(g(2)&gt;1-\ln2&gt;0\). Logo \(\ln t&lt;t^{3/4}\). Portanto ambas as desigualdades valem para todo \(t&gt;\ln10\), e \(\epsilon=1/8\) serve para todo \(X&gt;10\).</p>
+      </li>
+      <li>
+        <p>Abrevie \(t=\ln X\) e \(q=\ln t=\ln\ln X\). Como \(\ln L(X)=\sqrt{tq}\), temos</p>
+        <div class="display-math">
+          \[
+            \ln Y=c\sqrt{tq},
+            \qquad
+            u=\frac{t}{c\sqrt{tq}}=\frac1c\sqrt{\frac tq}.
+          \]
+        </div>
+        <p>Além disso,</p>
+        <div class="display-math">
+          \[
+            \ln u=-\ln c+\frac12(\ln t-\ln q)
+            =\frac12q\,(1+o(1)),
+          \]
+        </div>
+        <p>pois \(\ln q/q\to0\) e a constante \(\ln c\) também é \(o(q)\). Assim,</p>
+        <div class="display-math">
+          \[
+            u\ln u
+            =\frac1c\sqrt{\frac tq}\cdot\frac12q\,(1+o(1))
+            =\frac1{2c}\sqrt{tq}\,(1+o(1))
+            =\frac1{2c}\ln L(X)\,(1+o(1)).
+          \]
+        </div>
+        <p>Exponenciando o negativo dessa igualdade, obtemos</p>
+        <div class="display-math">
+          \[
+            u^{-u}=\exp(-u\ln u)
+            =\exp\left(-\frac1{2c}\ln L(X)(1+o(1))\right)
+            =L(X)^{-\frac1{2c}(1+o(1))}.
+          \]
+        </div>
+      </li>
+    </ol>
+  </details>
+</div>

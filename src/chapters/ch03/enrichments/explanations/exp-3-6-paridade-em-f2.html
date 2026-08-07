@@ -1,0 +1,7 @@
+<p class="supplement-lead">Para que um produto de inteiros positivos seja quadrado, cada expoente primo deve ser par. Reduzir expoentes módulo 2 converte essa condição multiplicativa em soma vetorial.</p>
+<ol class="slow-steps">
+  <li><strong>Vetorize.</strong> Para \(a=\prod p_i^{e_i}\), registre \((e_1,\ldots,e_t)\bmod2\).</li>
+  <li><strong>Combine.</strong> Multiplicar números soma seus vetores de expoentes; o produto é quadrado exatamente quando a soma é o vetor zero.</li>
+  <li><strong>Encontre dependência.</strong> Com mais relações que dimensões, a eliminação gaussiana em \(\mathbb F_2\) encontra um subconjunto de produto quadrado.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> A álgebra linear escolhe relações; ela não garante que a congruência final seja não trivial. Algoritmos reais coletam relações excedentes para tentar de novo.</div>

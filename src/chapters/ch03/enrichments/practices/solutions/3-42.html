@@ -1,0 +1,102 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.42">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Um único fator primo secreto basta para decifrar</summary>
+      <p>Para cada bloco \(c\), calcule \(\left(\frac cp\right)\). O bit é \(0\) quando o símbolo vale \(1\) e \(1\) quando vale \(-1\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — O módulo pequeno do item (b) tem fator perto da raiz</summary>
+      <p>\(\sqrt{3149}\approx56{,}1\). A divisão por \(47\) produz o outro primo \(67\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Separe quadratura e multiplicação no item (c)</summary>
+      <p>Primeiro calcule \(r^2\bmod N\). Para os bits \(1\), multiplique o resultado por \(a\) e reduza novamente; para o bit \(0\), pare após a quadratura.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>No sistema Goldwasser–Micali, \(a\) foi escolhido como não resíduo módulo os dois fatores primos. Assim, para um fator secreto \(p\),</p>
+    <div class="display-math">
+      \[
+        m=
+        \begin{cases}
+          0,&\left(\dfrac cp\right)=1,\\
+          1,&\left(\dfrac cp\right)=-1.
+        \end{cases}
+      \]
+    </div>
+    <ol type="a">
+      <li>
+        <p>Use \(p=32411\) da fatoração fornecida \(N=32411\cdot56843\). O critério de Euler dá:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>bloco \(c\)</th><th>\(c^{(p-1)/2}\bmod p\)</th><th>\(\left(\frac cp\right)\)</th><th>bit</th></tr></thead>
+            <tbody>
+              <tr><td>1794677960</td><td>32410</td><td>-1</td><td>1</td></tr>
+              <tr><td>525734818</td><td>1</td><td>1</td><td>0</td></tr>
+              <tr><td>420526487</td><td>32410</td><td>-1</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Como \(32410\equiv-1\pmod{32411}\), a mensagem é</p>
+        <div class="display-math">
+          \[
+            \boxed{101}.
+          \]
+        </div>
+        <p>Usar \(q=56843\) confirma os mesmos sinais: os resíduos de Euler são, respectivamente, \(56842,1,56842\).</p>
+      </li>
+      <li>
+        <p>Divisão por tentativas até \(\sqrt{3149}\) revela</p>
+        <div class="display-math">
+          \[
+            3149=47\cdot67.
+          \]
+        </div>
+        <p>Tomando \(p=47\), obtemos:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>bloco \(c\)</th><th>\(c^{23}\bmod47\)</th><th>\(\left(\frac c{47}\right)\)</th><th>bit</th></tr></thead>
+            <tbody>
+              <tr><td>2322</td><td>46</td><td>-1</td><td>1</td></tr>
+              <tr><td>719</td><td>1</td><td>1</td><td>0</td></tr>
+              <tr><td>202</td><td>1</td><td>1</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Portanto a mensagem decifrada é</p>
+        <div class="display-math">
+          \[
+            \boxed{100}.
+          \]
+        </div>
+        <p>O fator \(67\) fornece, como conferência, os resíduos de Euler \(66,1,1\).</p>
+      </li>
+      <li>
+        <p>Para \(N=781044643\) e \(a=568980706\), calculamos cada quadrado e então aplicamos</p>
+        <div class="display-math">
+          \[
+            c\equiv a^m r^2\pmod N.
+          \]
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>\(m\)</th><th>\(r\)</th><th>\(r^2\bmod N\)</th><th>\(c\bmod N\)</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>705130839</td><td>543249922</td><td>517254876</td></tr>
+              <tr><td>1</td><td>631364468</td><td>111914931</td><td>4308279</td></tr>
+              <tr><td>0</td><td>67651321</td><td>660699010</td><td>660699010</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Os três blocos de texto cifrado, na ordem, são</p>
+        <div class="display-math">
+          \[
+            \boxed{517254876,\qquad4308279,\qquad660699010}.
+          \]
+        </div>
+      </li>
+    </ol>
+  </details>
+</div>

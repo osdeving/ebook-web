@@ -1,0 +1,7 @@
+<p class="supplement-lead">A igualdade inteira é forte demais para grandes módulos. Basta encontrar quadrados congruentes, pois N então divide uma diferença de produtos.</p>
+<ol class="slow-steps">
+  <li><strong>Fatore a diferença.</strong> De \(x^2\equiv y^2\pmod N\), obtemos \(N\mid(x-y)(x+y)\).</li>
+  <li><strong>Divida os fatores de N.</strong> Um primo divisor de N pode cair em x−y e outro em x+y.</li>
+  <li><strong>Extraia.</strong> Calcule \(d=\gcd(x-y,N)\). Se \(1\lt d\lt N\), encontramos um fator próprio.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Se \(x\equiv y\) ou \(x\equiv-y\pmod N\) e x é uma unidade módulo N, com N ímpar, o mdc devolve N ou 1. Sem essa coprimalidade, um divisor comum de x e N já pode revelar um fator próprio.</div>

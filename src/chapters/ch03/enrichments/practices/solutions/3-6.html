@@ -1,0 +1,68 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.6">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Construa o expoente inverso</summary>
+      <p>Use o algoritmo de Euclides estendido para obter \(d\) com \(ed\equiv1\pmod{\varphi(N)}\), e proponha \(x\equiv c^d\pmod N\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Fatore os três módulos</summary>
+      <p>As fatorações úteis são \(1463=7\cdot11\cdot19\), \(1625=5^3\cdot13\) e \(2134440=2^3\cdot3^2\cdot5\cdot7^2\cdot11^2\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Verifique voltando à equação</summary>
+      <p>Depois de calcular cada raiz por exponenciação modular, eleve-a novamente ao expoente original e confira o resíduo módulo \(N\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Como \(\gcd(e,\varphi(N))=1\), existe \(d\) tal que</p>
+        <p>\[ed=1+k\varphi(N)\]</p>
+        <p>para algum inteiro \(k\). Defina \(x\equiv c^d\pmod N\). A hipótese \(\gcd(c,N)=1\) e a fórmula de Euler fornecem</p>
+        <p>\[
+          x^e\equiv c^{de}
+          =c^{1+k\varphi(N)}
+          =c\bigl(c^{\varphi(N)}\bigr)^k
+          \equiv c\pmod N.
+        \]</p>
+        <p>Portanto, conhecer \(\varphi(N)\) permite calcular a raiz: basta inverter \(e\) módulo \(\varphi(N)\) e usar quadratura e multiplicação para obter \(c^d\bmod N\).</p>
+      </li>
+      <li>
+        <ol type="i">
+          <li>
+            <p>Como \(1463=7\cdot11\cdot19\),</p>
+            <p>\[\varphi(1463)=6\cdot10\cdot18=1080.\]</p>
+            <p>Temos \(577\cdot73=42121=1+39\cdot1080\), logo</p>
+            <p>\[x\equiv60^{73}\equiv1390\pmod{1463}.\]</p>
+            <p>A checagem direta dá \(1390^{577}\equiv60\pmod{1463}\).</p>
+          </li>
+          <li>
+            <p>A fatoração \(1625=5^3\cdot13\) dá</p>
+            <p>\[\varphi(1625)=5^2(5-1)(13-1)=1200.\]</p>
+            <p>Como \(959\cdot239=229201=1+191\cdot1200\),</p>
+            <p>\[x\equiv1583^{239}\equiv147\pmod{1625},\qquad147^{959}\equiv1583\pmod{1625}.\]</p>
+          </li>
+          <li>
+            <p>Para \(N=2^3\cdot3^2\cdot5\cdot7^2\cdot11^2\), a fórmula multiplicativa produz</p>
+            <p>\[
+              \varphi(N)
+              =N\left(1-\frac12\right)\left(1-\frac13\right)
+              \left(1-\frac15\right)\left(1-\frac17\right)
+              \left(1-\frac1{11}\right)
+              =443520.
+            \]</p>
+            <p>O inverso é \(d=326413\), pois</p>
+            <p>\[133957\cdot326413=43725306241=1+98587\cdot443520.\]</p>
+            <p>Portanto</p>
+            <p>\[
+              x\equiv224689^{326413}\equiv1892929\pmod{2134440},
+            \]</p>
+            <p>e \(1892929^{133957}\equiv224689\pmod{2134440}\), confirmando o resultado.</p>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </details>
+</div>

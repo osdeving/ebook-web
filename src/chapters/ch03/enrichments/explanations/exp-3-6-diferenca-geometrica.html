@@ -1,0 +1,7 @@
+<p class="supplement-lead">Escrever \(N=a^2-b^2=(a-b)(a+b)\) transforma a proximidade entre fatores numa proximidade entre quadrados.</p>
+<ol class="slow-steps">
+  <li><strong>Dois fatores.</strong> Se \(N=uv\) com u e v ímpares, tome \(a=(u+v)/2\) e \(b=(v-u)/2\).</li>
+  <li><strong>Busca.</strong> Comece em \(a=\lceil\sqrt N\rceil\) e verifique se \(a^2-N\) é quadrado.</li>
+  <li><strong>Custo.</strong> Quanto mais próximos u e v, menor b e menos passos; fatores muito desequilibrados tornam a caminhada longa.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> O método de Fermat é excelente para fatores próximos, mas não é um algoritmo geral competitivo só porque usa raízes quadradas rápidas.</div>

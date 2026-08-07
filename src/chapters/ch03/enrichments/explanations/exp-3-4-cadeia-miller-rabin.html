@@ -1,0 +1,7 @@
+<p class="supplement-lead">Miller–Rabin decompõe \(N-1=2^s q\), com q ímpar, e acompanha quadrados sucessivos. Em um corpo primo, a única forma de chegar a 1 por quadramento é passar por ±1 de modo controlado.</p>
+<ol class="slow-steps">
+  <li><strong>Comece.</strong> Calcule \(x=a^q\bmod N\). Se \(x=1\) ou \(x=N-1\), a base passa.</li>
+  <li><strong>Quadrados.</strong> Substitua x por \(x^2\bmod N\) até s−1 vezes. Encontrar N−1 faz a base passar.</li>
+  <li><strong>Testemunha forte.</strong> Chegar a 1 sem ter visto −1, ou terminar sem −1, expõe uma raiz não trivial ou uma cadeia impossível para um primo.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> “Passou” significa que a base não testemunhou composição. O número recebe o nome de primo provável forte para aquela base, não de primo demonstrado.</div>

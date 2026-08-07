@@ -1,0 +1,7 @@
+<p class="supplement-lead">O método p−1 não procura diretamente o valor de p. Ele constrói um expoente M que provavelmente é múltiplo da ordem de uma base módulo p, mas não módulo de todos os fatores de N.</p>
+<ol class="slow-steps">
+  <li><strong>Escolha a base.</strong> Tome a coprima com N; se a escolha já compartilha divisor, o mdc entrega um fator imediatamente.</li>
+  <li><strong>Acumule expoentes.</strong> Faça M divisível por muitas potências de primos pequenas. Se \(p-1\mid M\), Fermat dá \(a^M\equiv1\pmod p\).</li>
+  <li><strong>Separe.</strong> Se o mesmo não ocorre módulo q, então \(\gcd(a^M-1,N)\) contém p, mas não q.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> O método depende da fatoração de p−1, não apenas do tamanho de p. Um fator pequeno pode ser difícil para p−1 se p−1 possuir um fator primo grande.</div>

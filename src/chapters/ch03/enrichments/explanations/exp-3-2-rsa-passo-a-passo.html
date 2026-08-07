@@ -1,0 +1,7 @@
+<p class="supplement-lead">O RSA combina uma parte estrutural, feita uma vez, com operações de potência que podem ser repetidas. Acompanhar as dependências evita tratar as fórmulas como uma receita sem justificativa.</p>
+<ol class="slow-steps">
+  <li><strong>Estrutura secreta.</strong> Escolha primos distintos \(p,q\), forme \(N=pq\) e calcule \(\varphi(N)=(p-1)(q-1)\).</li>
+  <li><strong>Par de expoentes.</strong> Escolha \(e\) coprimo com \(\varphi(N)\) e calcule \(d\equiv e^{-1}\pmod{\varphi(N)}\). Publique \((N,e)\); proteja \(d\) e, na prática, também os fatores.</li>
+  <li><strong>Ida e volta.</strong> Aplique \(c\equiv m^e\pmod N\) e \(m\equiv c^d\pmod N\). Como \(ed=1+k\varphi(N)\), a aritmética modular fecha o ciclo.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Essas potências descrevem a primitiva matemática. Mensagens reais precisam de codificação, aleatorização e validações definidas por um esquema, como RSA-OAEP ou RSA-PSS.</div>

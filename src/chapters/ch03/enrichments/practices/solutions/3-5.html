@@ -1,0 +1,77 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.5">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Conte os múltiplos proibidos</summary>
+      <p>Módulo \(p^j\), as únicas classes não invertíveis são os múltiplos de \(p\). Módulo \(pq\), use inclusão–exclusão.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use o teorema chinês dos restos</summary>
+      <p>Quando \(\gcd(M,N)=1\), uma classe módulo \(MN\) é invertível exatamente quando suas duas projeções módulo \(M\) e módulo \(N\) são invertíveis.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Fatore antes de substituir</summary>
+      <p>Escreva \(1728=2^6 3^3\) e \(1575=3^2 5^2 7\), e então aplique um fator \((1-1/p)\) por primo distinto.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Entre as \(pq\) classes módulo \(pq\), há \(q\) múltiplos de \(p\), \(p\) múltiplos de \(q\) e uma classe, a classe \(0\), contada nas duas listas. Por inclusão–exclusão,</p>
+        <p>\[
+          \varphi(pq)=pq-p-q+1=(p-1)(q-1)=\varphi(p)\varphi(q).
+        \]</p>
+      </li>
+      <li>
+        <p>Entre \(0,1,\ldots,p^j-1\), exatamente</p>
+        <p>\[0,p,2p,\ldots,(p^{j-1}-1)p\]</p>
+        <p>são múltiplos de \(p\); são \(p^{j-1}\) classes. Todas as demais são coprimas com \(p^j\). Logo</p>
+        <p>\[\varphi(p^j)=p^j-p^{j-1}=p^{j-1}(p-1).\]</p>
+        <p>Em particular, \(\varphi(p^2)=p^2-p=p(p-1)\).</p>
+      </li>
+      <li>
+        <p>O teorema chinês dos restos fornece uma bijeção</p>
+        <p>\[
+          \mathbb Z/(MN)\mathbb Z\longrightarrow
+          \mathbb Z/M\mathbb Z\times\mathbb Z/N\mathbb Z,
+          \qquad[x]_{MN}\longmapsto([x]_M,[x]_N).
+        \]</p>
+        <p>Se \(\gcd(M,N)=1\), a classe \([x]_{MN}\) é invertível se, e somente se, \([x]_M\) e \([x]_N\) são invertíveis. Restringindo a bijeção aos grupos de unidades e contando seus elementos, obtemos</p>
+        <p>\[\varphi(MN)=\varphi(M)\varphi(N).\]</p>
+      </li>
+      <li>
+        <p>Escreva \(N=\prod_{i=1}^r p_i^{\alpha_i}\). Aplicando repetidamente os itens (b) e (c),</p>
+        <p>\[
+          \begin{aligned}
+          \varphi(N)
+          &=\prod_{i=1}^r\varphi(p_i^{\alpha_i})
+          =\prod_{i=1}^r p_i^{\alpha_i-1}(p_i-1)\\
+          &=\prod_{i=1}^r p_i^{\alpha_i}\left(1-\frac1{p_i}\right)
+          =N\prod_{i=1}^r\left(1-\frac1{p_i}\right).
+          \end{aligned}
+        \]</p>
+      </li>
+      <li>
+        <ol type="i">
+          <li>
+            <p>Como \(1728=2^6\cdot3^3\),</p>
+            <p>\[\varphi(1728)=1728\left(1-\frac12\right)\left(1-\frac13\right)=576.\]</p>
+          </li>
+          <li>
+            <p>Como \(1575=3^2\cdot5^2\cdot7\),</p>
+            <p>\[\varphi(1575)=1575\left(1-\frac13\right)\left(1-\frac15\right)\left(1-\frac17\right)=720.\]</p>
+          </li>
+          <li>
+            <p>Usando a fatoração dada,</p>
+            <p>\[
+              \varphi(889056)
+              =889056\left(1-\frac12\right)\left(1-\frac13\right)\left(1-\frac17\right)
+              =254016.
+            \]</p>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </details>
+</div>

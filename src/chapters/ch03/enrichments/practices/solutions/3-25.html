@@ -1,0 +1,80 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.25">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Registre cada soma</summary>
+      <p>Comece exatamente em \(b_{\mathrm{inic}}\) e calcule \(kN+b^2\) até obter um quadrado \(a^2\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — O produto encontrado é \(kN\)</summary>
+      <p>Da igualdade \(kN+b^2=a^2\), deduza \(kN=(a-b)(a+b)\). Os fatores de \(N\) aparecem por MDC, não necessariamente como \(a-b\) e \(a+b\) inteiros completos.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Calcule os dois MDCs</summary>
+      <p>Use \(\gcd(N,a-b)\) e \(\gcd(N,a+b)\). Neste exercício eles devolvem diretamente os dois fatores primos.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Com \(N=143041\) e \(k=247\),</p>
+        <p>\[
+          \begin{array}{c|r}
+          b&247N+b^2\\ \hline
+          1&35331128\\
+          2&35331131\\
+          3&35331136=5944^2
+          \end{array}
+        \]</p>
+        <p>Assim \(a=5944\), \(b=3\). Embora</p>
+        <p>\[247N=(5944-3)(5944+3)=5941\cdot5947,\]</p>
+        <p>os MDCs retiram o fator \(k\):</p>
+        <p>\[
+          \gcd(143041,5941)=457,\qquad
+          \gcd(143041,5947)=313.
+        \]</p>
+        <p>Portanto \(\boxed{143041=313\cdot457}\).</p>
+      </li>
+      <li>
+        <p>Para \(N=1226987\), \(k=3\) e \(b_{\mathrm{inic}}=36\),</p>
+        <p>\[
+          \begin{array}{c|r}
+          b&3N+b^2\\ \hline
+          36&3682257\\
+          37&3682330\\
+          38&3682405\\
+          39&3682482\\
+          40&3682561=1919^2
+          \end{array}
+        \]</p>
+        <p>Logo \(a=1919\), \(b=40\), e</p>
+        <p>\[
+          \gcd(1226987,1919-40)=1879,\qquad
+          \gcd(1226987,1919+40)=653.
+        \]</p>
+        <p>Concluímos que \(\boxed{1226987=653\cdot1879}\).</p>
+      </li>
+      <li>
+        <p>Finalmente,</p>
+        <p>\[
+          \begin{array}{c|r}
+          b&21N+b^2\\ \hline
+          90&52735719\\
+          91&52735900\\
+          92&52736083\\
+          93&52736268\\
+          94&52736455\\
+          95&52736644=7262^2
+          \end{array}
+        \]</p>
+        <p>Tomando \(a=7262\), \(b=95\),</p>
+        <p>\[
+          \gcd(2510839,7262-95)=2389,\qquad
+          \gcd(2510839,7262+95)=1051.
+        \]</p>
+        <p>Logo \(\boxed{2510839=1051\cdot2389}\).</p>
+      </li>
+    </ol>
+  </details>
+</div>

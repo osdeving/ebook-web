@@ -1,0 +1,222 @@
+<section class="chapter-section subsection" id="sec-3-7-3">
+  <div class="section-heading">
+    <span class="section-number">3.7.3</span>
+    <h2>O crivo do corpo de números</h2>
+  </div>
+
+  <p>O <em>crivo do corpo de números</em> é um método de fatoração que trabalha em um anel maior que o dos inteiros comuns. Os detalhes completos são muito complicados, por isso, nesta seção, vamos nos contentar em explicar brevemente algumas das ideias que fazem do crivo do corpo de números o método mais rápido conhecido para fatorar números grandes da forma \(N=pq\), em que \(p\) e \(q\) são primos de aproximadamente a mesma ordem de grandeza.</p>
+
+  <p>Para fatorar \(N\), começamos encontrando um inteiro não nulo \(m\) e um polinômio mônico irredutível \(f(x)\in\mathbb Z[x]\), de grau pequeno, que satisfaçam</p>
+
+  <div class="display-math">
+    \[
+      f(m)\equiv0\pmod N.
+    \]
+  </div>
+
+  <div class="semantic example" id="exemplo-3-54">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.54</span></div>
+    <p>Suponha que queiramos fatorar o número \(N=2^{2^9}+1\). Poderíamos tomar \(m=2^{103}\) e \(f(x)=x^5+8\), pois</p>
+    <div class="display-math">
+      \[
+        f(m)=f(2^{103})=2^{515}+8=8(2^{512}+1)\equiv0\pmod{2^{2^9}+1}.
+      \]
+    </div>
+  </div>
+
+  <p>Seja \(d\) o grau de \(f(x)\) e seja \(\beta\) uma raiz de \(f(x)\). (Observe que \(\beta\) pode ser um número complexo.) Trabalharemos no anel</p>
+
+  <div class="display-math">
+    \[
+      \mathbb Z[\beta]
+      =\{c_0+c_1\beta+c_2\beta^2+\cdots+c_{d-1}\beta^{d-1}\in\mathbb C:
+      c_0,c_1,\ldots,c_{d-1}\in\mathbb Z\}.
+    \]
+  </div>
+
+  <p>Observe que, embora tenhamos escrito \(\mathbb Z[\beta]\) como um subanel dos números complexos, na verdade não é necessário lidar com números reais ou complexos. Podemos trabalhar com \(\mathbb Z[\beta]\) de modo puramente algébrico, pois ele é igual ao anel quociente \(\mathbb Z[x]/(f(x))\). (Veja a <a href="../ch02/#sec-2-10-2" data-source-xref>Seção 2.10.2</a> para informações sobre anéis quocientes.)</p>
+
+  <div class="semantic example" id="exemplo-3-55">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.55</span></div>
+    <p>Damos um exemplo para ilustrar como se realizam a adição e a multiplicação no anel \(\mathbb Z[\beta]\). Seja \(f(x)=1+3x-2x^3+x^4\), seja \(\beta\) uma raiz de \(f(x)\) e considere o anel \(\mathbb Z[\beta]\). Para somar os elementos</p>
+    <div class="display-math">
+      \[
+        u=2-4\beta+7\beta^2+3\beta^3
+        \qquad\text{e}\qquad
+        v=1+2\beta-4\beta^2-2\beta^3,
+      \]
+    </div>
+    <p>simplesmente somamos seus coeficientes,</p>
+    <div class="display-math">
+      \[
+        u+v=3-2\beta+3\beta^2+\beta^3.
+      \]
+    </div>
+    <p>A multiplicação é um pouco mais complicada. Primeiro multiplicamos \(u\) e \(v\), tratando \(\beta\) como se fosse uma variável,</p>
+    <div class="display-math">
+      \[
+        uv=2-9\beta^2+29\beta^3-14\beta^4-26\beta^5-6\beta^6.
+      \]
+    </div>
+    <p>Em seguida, dividimos por \(f(\beta)=1+3\beta-2\beta^3+\beta^4\), ainda tratando \(\beta\) como uma variável, e conservamos o resto,</p>
+    <div class="display-math">
+      \[
+        uv=92+308\beta+111\beta^2-133\beta^3\in\mathbb Z[\beta].
+      \]
+    </div>
+  </div>
+
+  <p>O passo seguinte do crivo do corpo de números consiste em encontrar um grande número de pares de inteiros \((a_1,b_1),\ldots,(a_k,b_k)\) que satisfaçam simultaneamente</p>
+
+  <div class="display-math">
+    \[
+      \prod_{i=1}^{k}(a_i-b_i m)\text{ é um quadrado em }\mathbb Z
+      \qquad\text{e}\qquad
+      \prod_{i=1}^{k}(a_i-b_i\beta)\text{ é um quadrado em }\mathbb Z[\beta].
+    \]
+  </div>
+
+  <p>Assim, existe um inteiro \(A\in\mathbb Z\) e um elemento \(\alpha\in\mathbb Z[\beta]\) tais que</p>
+
+  <div class="equation" id="eq-3-24">
+    <span class="equation-number">(3.24)</span>
+    \[
+      \prod_{i=1}^{k}(a_i-b_i m)=A^2
+      \qquad\text{e}\qquad
+      \prod_{i=1}^{k}(a_i-b_i\beta)=\alpha^2.
+    \]
+  </div>
+
+  <p>Pela definição de \(\mathbb Z[\beta]\), podemos encontrar uma expressão para \(\alpha\) da forma</p>
+
+  <div class="equation" id="eq-3-25">
+    <span class="equation-number">(3.25)</span>
+    \[
+      \alpha=c_0+c_1\beta+c_2\beta^2+\cdots+c_{d-1}\beta^{d-1}
+      \qquad\text{com }c_0,c_1,\ldots,c_{d-1}\in\mathbb Z.
+    \]
+  </div>
+
+  <p>Recorde nossa hipótese inicial \(f(m)\equiv0\pmod N\). Isso significa que temos</p>
+
+  <div class="display-math">
+    \[
+      m\equiv\beta\pmod N\qquad\text{no anel }\mathbb Z[\beta].
+    \]
+  </div>
+
+  <p>Portanto, por um lado, <a href="#eq-3-24" data-source-xref>(3.24)</a> se torna</p>
+
+  <div class="display-math">
+    \[
+      A^2\equiv\alpha^2\pmod N\qquad\text{no anel }\mathbb Z[\beta],
+    \]
+  </div>
+
+  <p>enquanto, por outro lado, <a href="#eq-3-25" data-source-xref>(3.25)</a> se torna</p>
+
+  <div class="display-math">
+    \[
+      \alpha\equiv c_0+c_1m+c_2m^2+\cdots+c_{d-1}m^{d-1}\pmod N
+      \qquad\text{no anel }\mathbb Z[\beta].
+    \]
+  </div>
+
+  <p>Logo,</p>
+
+  <div class="display-math">
+    \[
+      A^2\equiv(c_0+c_1m+c_2m^2+\cdots+c_{d-1}m^{d-1})^2\pmod N.
+    \]
+  </div>
+
+  <p>Assim, criamos uma congruência \(A^2\equiv B^2\pmod N\) válida no anel dos inteiros \(\mathbb Z\) e, como de costume, há então uma boa chance de que \(\gcd(A-B,N)\) forneça um fator não trivial de \(N\).</p>
+
+  <p>Como encontramos os pares \((a_i,b_i)\) que transformam em quadrados ambos os produtos de <a href="#eq-3-24" data-source-xref>(3.24)</a>? Para o primeiro produto, podemos usar um algoritmo do tipo crivo, semelhante ao método usado no crivo quadrático, para encontrar valores lisos de \(a-bm\), e então usar álgebra linear para encontrar um subconjunto com a propriedade desejada.</p>
+
+  <p>A ideia de Pollard é fazer simultaneamente algo parecido para o segundo produto, trabalhando no anel \(\mathbb Z[\beta]\). Assim, procuramos pares de inteiros \((a,b)\) tais que a quantidade \(a-b\beta\) seja “lisa” em \(\mathbb Z[\beta]\). Surgem muitas questões sérias quando tentamos fazer isso, entre elas as seguintes:</p>
+
+  <ol>
+    <li>O anel \(\mathbb Z[\beta]\) em geral não possui fatoração única de elementos em primos ou elementos irredutíveis. Por isso, em vez disso, fatoramos o ideal \((a-b\beta)\) como produto de ideais primos. Dizemos que \(a-b\beta\) é liso se os ideais primos que aparecem na fatoração forem pequenos.</li>
+    <li>Infelizmente, mesmo os ideais no anel \(\mathbb Z[\beta]\) podem não possuir fatoração única como produto de ideais primos. Entretanto, existe um anel ligeiramente maior, chamado <em>anel de inteiros de \(\mathbb Q(\beta)\)</em>, no qual é verdadeira a fatoração única de ideais.</li>
+    <li>Suponha que tenhamos conseguido transformar o ideal \(\left(\prod(a_i-b_i\beta)\right)\) no quadrado de um ideal em \(\mathbb Z[\beta]\). Há mais dois problemas. Primeiro, ele não precisa ser o quadrado de um ideal gerado por um único elemento. Segundo, mesmo que seja igual a um ideal da forma \((\gamma)^2\), só podemos concluir que \(\prod(a_i-b_i\beta)=u\gamma^2\) para alguma unidade \(u\in\mathbb Z[\beta]^*\), e em geral o anel \(\mathbb Z[\beta]\) possui infinitas unidades.</li>
+  </ol>
+
+  <p>Explicar como lidar com essas dificuldades potenciais nos levaria longe demais. Basta dizer que, por meio de várias ideias engenhosas devidas a Adleman, Buhler, H. Lenstra, Pomerance e outros, os obstáculos foram superados, conduzindo a um método prático de fatoração. (Veja <a href="../../references/#ref-105" data-source-xref>[105]</a> para uma boa visão geral do crivo do corpo de números e de algumas das ideias usadas para transformá-lo de uma construção teórica em um algoritmo funcional.)</p>
+
+  <p>Entretanto, comentaremos um pouco mais sobre o primeiro passo do algoritmo. Para começar, precisamos de um inteiro \(m\) e de um polinômio mônico irredutível \(f(x)\), de grau pequeno, tais que \(f(m)\equiv0\pmod N\). O truque consiste primeiro em escolher o grau desejado \(d\) de \(f\), depois escolher um inteiro \(m\) que satisfaça</p>
+
+  <div class="display-math">
+    \[
+      (N/2)^{1/d}&lt;m&lt;N^{1/d},
+    \]
+  </div>
+
+  <p>e então escrever \(N\) como um número na base \(m\),</p>
+
+  <div class="display-math">
+    \[
+      N=c_0+c_1m+c_2m^2+\cdots+c_{d-1}m^{d-1}+c_dm^d
+      \qquad\text{com }0\le c_i&lt;m.
+    \]
+  </div>
+
+  <p>A condição sobre \(m\) garante que \(c_d=1\), de modo que podemos tomar \(f\) como o polinômio mônico</p>
+
+  <div class="display-math">
+    \[
+      f(x)=c_0+c_1x+c_2x^2+\cdots+c_{d-1}x^{d-1}+x^d.
+    \]
+  </div>
+
+  <p>Também precisamos que \(f(x)\) seja irredutível, mas, se \(f(x)\) se fatora em \(\mathbb Z[x]\), digamos \(f(x)=g(x)h(x)\), então \(N=f(m)=g(m)h(m)\) fornece uma fatoração de \(N\), e terminamos. Agora temos, portanto, um \(f(x)\) e um \(m\), o que nos permite começar a usar o crivo do corpo de números.</p>
+
+  <p>Não se pode negar que o crivo do corpo de números é muito mais complicado que o crivo quadrático. Então por que ele é útil? A razão tem a ver com o tamanho dos números que precisam ser considerados. Recorde que, no crivo quadrático, crivamos para encontrar números lisos da forma</p>
+
+  <div class="display-math">
+    \[
+      (\lfloor\sqrt N\rfloor+k)^2-N\qquad\text{para }k=1,2,3,\ldots.
+    \]
+  </div>
+
+  <p>Assim, precisávamos selecionar os números lisos em um conjunto de números cujo tamanho era um pouco maior que \(\sqrt N\). No crivo do corpo de números, termina-se procurando números lisos da forma</p>
+
+  <div class="equation" id="eq-3-26">
+    <span class="equation-number">(3.26)</span>
+    \[
+      (a-mb)\cdot b^d f(a/b),
+    \]
+  </div>
+
+  <p>e verifica-se que, mediante uma escolha criteriosa de \(m\) e \(f\), esses números são muito menores que \(\sqrt N\). Para descrever quanto menores, usamos uma generalização da função subexponencial \(L(N)\), que foi tão útil para descrever o tempo de execução do crivo quadrático.</p>
+
+  <div class="semantic definition" id="def-funcao-l-epsilon">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Para todo \(0&lt;\epsilon&lt;1\), definimos a função</p>
+    <div class="display-math">
+      \[
+        L_\epsilon(X)=e^{(\ln X)^\epsilon(\ln\ln X)^{1-\epsilon}}.
+      \]
+    </div>
+  </div>
+
+  <p>Observe que, com essa notação, a função \(L(X)\) definida na <a href="#sec-3-7-1" data-source-xref>Seção 3.7.1</a> é \(L_{1/2}(X)\).</p>
+
+  <p>Pode-se então mostrar que os números de <a href="#eq-3-26" data-source-xref>(3.26)</a> usados pelo crivo do corpo de números têm tamanho igual a uma pequena potência de \(L_{2/3}(N)\). Para colocar isso em perspectiva, o crivo quadrático trabalha com números que possuem aproximadamente metade da quantidade de algarismos de \(N\), enquanto o crivo do corpo de números usa números \(K\) que satisfazem</p>
+
+  <div class="display-math">
+    \[
+      (\text{número de algarismos de }K)
+      \approx(\text{número de algarismos de }N)^{2/3}.
+    \]
+  </div>
+
+  <p>Isso conduz a um tempo de execução imensamente melhor para valores suficientemente grandes de \(N\).</p>
+
+  <div class="semantic theorem" id="teorema-3-56">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">3.56</span></div>
+    <p>Sob algumas hipóteses razoáveis, o tempo de execução esperado do crivo do corpo de números para fatorar o número \(N\) é \(L_{1/3}(N)^c\), para um valor pequeno de \(c\).</p>
+  </div>
+
+  <p>Para números gerais, o melhor valor conhecido de \(c\) no <a href="#teorema-3-56" data-source-xref>Teorema 3.56</a> é um pouco menor que \(2\), ao passo que, para números especiais como \(2^{2^9}+1\), ele está mais próximo de \(1{,}5\). Naturalmente, o crivo do corpo de números é complicado o bastante para só se tornar mais rápido que outros métodos quando \(N\) é suficientemente grande. Na prática, o crivo quadrático é mais rápido para números menores que \(10^{100}\), enquanto o crivo do corpo de números é mais rápido para números maiores que \(10^{130}\).</p>
+</section>

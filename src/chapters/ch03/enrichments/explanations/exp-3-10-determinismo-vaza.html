@@ -1,0 +1,7 @@
+<p class="supplement-lead">Uma cifra determinística fornece ao adversário um teste público de igualdade entre um palpite e o texto claro. Aleatorizar a cifragem faz cada mensagem corresponder a uma distribuição de criptogramas.</p>
+<ol class="slow-steps">
+  <li><strong>Mesmo texto, muitas saídas.</strong> Um valor aleatório fresco r entra no cálculo e altera c.</li>
+  <li><strong>Decifragem estável.</strong> Apesar das saídas diferentes, a chave privada reconhece a classe relevante e devolve o mesmo bit.</li>
+  <li><strong>Comparação difícil.</strong> O adversário não pode cifrar um palpite uma única vez e comparar por igualdade; precisa distinguir distribuições.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Aleatoriedade só ajuda se for imprevisível, independente e usada conforme a construção. Reutilizar r pode recriar relações determinísticas.</div>

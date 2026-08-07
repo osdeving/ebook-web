@@ -1,0 +1,48 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.12">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Ataque a identidade, não a aritmética</summary>
+      <p>Eva não precisa descobrir a chave privada de Alice: basta substituir a chave pública de Alice por uma chave pública que pertença à própria Eva.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — No Elgamal, escreva a decifração de Eva</summary>
+      <p>Se Bob usa \(E=g^e\) no lugar de \(A=g^a\), seu texto cifrado é \((g^k,mE^k)\). Eva conhece \(e\) e consegue cancelar \((g^k)^e\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Reencifre para esconder a interceptação</summary>
+      <p>Depois de ler \(m\), Eva cifra novamente a mesma mensagem com a chave pública autêntica de Alice e encaminha um texto cifrado válido.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>O ataque pressupõe que Bob obtém a chave pública por um canal que Eva consegue modificar. O ponto vulnerável é a falta de autenticação da chave.</p>
+    <ol type="a">
+      <li>
+        <p><strong>Elgamal.</strong> Alice possui chave privada \(a\) e chave pública autêntica \(A=g^a\pmod p\). Eva escolhe \(e\), calcula \(E=g^e\pmod p\) e entrega \(E\) a Bob como se fosse a chave de Alice.</p>
+        <p>Bob escolhe \(k\) e envia</p>
+        <p>\[c_1=g^k,qquad c_2=mE^k=mg^{ek}\pmod p.\]</p>
+        <p>Eva intercepta o par e calcula</p>
+        <p>\[
+          c_2(c_1^e)^{-1}
+          \equiv mg^{ek}(g^{ke})^{-1}
+          \equiv m\pmod p.
+        \]</p>
+        <p>Para não ser percebida, escolhe um novo elemento aleatório \(\ell\), forma</p>
+        <p>\[(g^\ell,mA^\ell)\]</p>
+        <p>com a chave verdadeira de Alice e o encaminha. Alice o decifra normalmente. Para comunicações no sentido inverso, Eva faz a substituição simétrica da chave pública de Bob. Em nenhum momento ela calcula um logaritmo discreto.</p>
+      </li>
+      <li>
+        <p><strong>RSA.</strong> Alice possui a chave pública autêntica \((N_A,e_A)\). Eva gera seu próprio par RSA, publica ou entrega a Bob \((N_E,e_E)\) no lugar da chave de Alice e guarda \(d_E\).</p>
+        <p>Bob envia</p>
+        <p>\[c_E\equiv m^{e_E}\pmod{N_E}.\]</p>
+        <p>Eva intercepta e recupera</p>
+        <p>\[m\equiv c_E^{d_E}\pmod{N_E}.\]</p>
+        <p>Depois usa a chave pública verdadeira de Alice para formar</p>
+        <p>\[c_A\equiv m^{e_A}\pmod{N_A}\]</p>
+        <p>e o encaminha. Alice recebe um texto cifrado RSA perfeitamente válido e não detecta a troca. O mesmo procedimento permite intermediar respostas de Alice para Bob.</p>
+      </li>
+    </ol>
+    <p>Certificados ou outro mecanismo que autentique a associação entre identidade e chave pública impedem essa substituição; apenas a correção algébrica do Elgamal ou do RSA não a impede.</p>
+  </details>
+</div>

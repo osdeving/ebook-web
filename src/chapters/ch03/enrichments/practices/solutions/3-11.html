@@ -1,0 +1,42 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.11">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Reduza cada componente no primo certo</summary>
+      <p>Módulo \(p\), use \(g_1\equiv(g^{p-1})^{r_1}\equiv1\); módulo \(q\), faça o mesmo com \(g_2\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Inspecione o que a chave pública revela</summary>
+      <p>O fato público \(g_1\equiv1\pmod p\) significa que \(p\mid g_1-1\). Calcule mentalmente o que \(\gcd(g_1-1,N)\) tende a devolver.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Trate também os casos degenerados</summary>
+      <p>Se \(g\) não for uma unidade, seu mdc com \(N\) já revela um fator. Se algum \(g_i\equiv1\pmod N\), o componente correspondente expõe \(m\) sem decifração.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Para que a descrição funcione como pretendido, é necessário escolher \(g\in(\mathbb Z/N\mathbb Z)^*\). Se \(\gcd(g,N)\gt1\), a própria chave já fornece um fator de \(N\).</p>
+    <ol type="a">
+      <li>
+        <p>Como \(g\) é uma unidade, Fermat dá</p>
+        <p>\[g_1=g^{r_1(p-1)}=(g^{p-1})^{r_1}\equiv1\pmod p.\]</p>
+        <p>Portanto</p>
+        <p>\[c_1=mg_1^{s_1}\equiv m\pmod p.\]</p>
+        <p>De modo análogo,</p>
+        <p>\[g_2=g^{r_2(q-1)}\equiv1\pmod q\qquad\Longrightarrow\qquad c_2\equiv m\pmod q.\]</p>
+        <p>Alice resolve</p>
+        <p>\[x\equiv c_1\equiv m\pmod p,\qquad x\equiv c_2\equiv m\pmod q.\]</p>
+        <p>Como \(p\) e \(q\) são coprimos, o teorema chinês dos restos assegura uma única solução módulo \(N=pq\). A classe de \(m\) é uma solução, logo \(x\equiv m\pmod N\).</p>
+      </li>
+      <li>
+        <p>O mesmo mecanismo que torna a decifração rápida revela a chave privada. Como \(g_1\equiv1\pmod p\),</p>
+        <p>\[p\mid g_1-1,\qquad D_1=\gcd(g_1-1,N).\]</p>
+        <p>Em uma chave não degenerada, \(g_1\not\equiv1\pmod q\), e então \(D_1=p\). Analogamente,</p>
+        <p>\[D_2=\gcd(g_2-1,N)=q\]</p>
+        <p>quando \(g_2\not\equiv1\pmod p\). Assim qualquer pessoa pode fatorar \(N\) usando apenas a chave pública.</p>
+        <p>Os casos excepcionais também não salvam o sistema. Se, por exemplo, \(g_1\equiv1\pmod N\), então \(c_1\equiv m\pmod N\), de modo que o primeiro componente já é o texto simples. Portanto a construção é insegura em todos os casos, sem necessidade de resolver um problema matemático difícil.</p>
+      </li>
+    </ol>
+  </details>
+</div>

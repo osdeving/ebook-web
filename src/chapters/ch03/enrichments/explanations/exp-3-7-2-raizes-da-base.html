@@ -1,0 +1,7 @@
+<p class="supplement-lead">Um primo entra naturalmente na base do crivo quadrático quando N possui raiz quadrada módulo p. Essa condição faz os múltiplos de p aparecerem em progressões previsíveis.</p>
+<ol class="slow-steps">
+  <li><strong>Condição.</strong> \(p\mid x^2-N\) equivale a \(x^2\equiv N\pmod p\).</li>
+  <li><strong>Duas progressões.</strong> Para p ímpar e raiz não nula r, as soluções são \(x\equiv r\) e \(x\equiv-r\pmod p\).</li>
+  <li><strong>Crivo.</strong> Partindo de cada primeira posição no intervalo, avance de p em p e atualize o acumulador.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Se o símbolo de Legendre de N módulo p vale −1, nenhuma posição será divisível por p; incluir esse primo só desperdiçaria uma coluna.</div>

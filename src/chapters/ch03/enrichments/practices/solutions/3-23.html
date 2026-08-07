@@ -1,0 +1,94 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.23">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Use diferença de potências</summary>
+      <p>Se \(n=rs\), escreva \(2^n-1=(2^r)^s-1\) e aplique \(x^s-1=(x-1)(x^{s-1}+\cdots+1)\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Primeiro teste expoentes primos</summary>
+      <p>Os itens (c)–(e) mostram que só vale procurar \(2^p-1\) com \(p\) primo. Isso é necessário, mas não suficiente.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Separe história de recorde atual</summary>
+      <p>Para os itens de pesquisa, registre a data da consulta e confira tanto a lista oficial do GIMPS quanto uma base independente de recordes de primos.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>As fatorações são</p>
+        <p>\[
+          \begin{array}{c|c|l}
+          n&2^n-1&\text{fatoração}\\ \hline
+          2&3&3\\
+          3&7&7\\
+          4&15&3\cdot5\\
+          5&31&31\\
+          6&63&3^2\cdot7\\
+          7&127&127\\
+          8&255&3\cdot5\cdot17\\
+          9&511&7\cdot73\\
+          10&1023&3\cdot11\cdot31
+          \end{array}
+        \]</p>
+        <p>Portanto, nessa faixa, os primos de Mersenne são</p>
+        <p>\[\boxed{3,\ 7,\ 31,\ 127}.\]</p>
+      </li>
+      <li>
+        <p>Os sete primeiros correspondem aos expoentes primos \(2,3,5,7,13,17,19\):</p>
+        <p>\[
+          \boxed{
+          3,\ 7,\ 31,\ 127,\ 8191,\ 131071,\ 524287}.
+        \]</p>
+      </li>
+      <li>
+        <p>Se \(n=2m\), com \(m>1\), então</p>
+        <p>\[
+          2^n-1=2^{2m}-1=(2^m-1)(2^m+1).
+        \]</p>
+        <p>Os dois fatores são maiores que \(1\), portanto \(2^n-1\) é composto.</p>
+      </li>
+      <li>
+        <p>Se \(n=3m\), com \(m>1\), então</p>
+        <p>\[
+          2^n-1=(2^m)^3-1
+          =(2^m-1)(2^{2m}+2^m+1).
+        \]</p>
+        <p>Novamente os dois fatores são próprios, logo o número não é primo.</p>
+      </li>
+      <li>
+        <p>Se \(n\) é composto, escreva \(n=rs\), com \(r,s>1\). A identidade geral fornece</p>
+        <p>\[
+          \begin{aligned}
+          2^n-1
+          &=(2^r)^s-1\\
+          &=(2^r-1)
+            \left(2^{r(s-1)}+2^{r(s-2)}+\cdots+2^r+1\right).
+          \end{aligned}
+        \]</p>
+        <p>Ambos os fatores são maiores que \(1\), então \(2^n-1\) é composto. Consequentemente,</p>
+        <p>\[2^n-1\text{ primo}\quad\Longrightarrow\quad n\text{ primo}.\]</p>
+        <p>A recíproca é falsa: por exemplo, \(11\) é primo, mas \(2^{11}-1=2047=23\cdot89\).</p>
+      </li>
+      <li>
+        <p><strong>Estado verificado em 7 de agosto de 2026.</strong> O maior primo de Mersenne conhecido é</p>
+        <p>\[
+          \boxed{M_{136279841}=2^{136279841}-1},
+        \]</p>
+        <p>que possui \(41\,024\,320\) algarismos decimais. Luke Durant o encontrou em 12 de outubro de 2024 no projeto GIMPS; ele é chamado de 52.º primo de Mersenne conhecido. Essa posição ordinal ainda é provisória, pois nem todos os expoentes entre os recordistas anteriores e \(136279841\) foram eliminados; isso não afeta a primalidade nem o recorde de tamanho. Não há primo comprovado maior conhecido nessa data: a <a href="https://t5k.org/primes/page.php?rank=1">PrimePages o mantém na posição 1</a> de sua lista, e o <a href="https://www.mersenne.org/primes/?press=M136279841">comunicado oficial do GIMPS</a> registra tanto o tamanho quanto a descoberta. Isso é um recorde atual, não uma afirmação de que o número seja o maior primo existente — não existe maior primo, pois há infinitos primos.</p>
+      </li>
+      <li>
+        <p><strong>Dos cálculos de Mersenne à computação distribuída.</strong></p>
+        <p>Os números \(2^p-1\) já estavam ligados a outra tradição antiga antes de receberem o nome atual. A construção de Euclides associa um primo dessa forma ao número perfeito par \(2^{p-1}(2^p-1)\); muito mais tarde, Euler demonstrou que todo número perfeito par nasce assim. Essa ligação ajudou a manter o problema vivo: encontrar um novo primo de Mersenne também produz um novo número perfeito par.</p>
+        <p>Marin Mersenne, frade e estudioso francês, publicou em 1644 uma lista dos expoentes \(p\le257\) que, segundo ele, tornariam \(2^p-1\) primo. A lista incluía \(2,3,5,7,13,17,19,31,67,127,257\). Era um feito notável para cálculo manual, mas continha cinco erros: \(67\) e \(257\) não funcionam, enquanto \(61,89,107\) foram omitidos. A importância histórica não está em uma lista infalível, e sim em ter formulado uma busca concreta que atravessaria séculos. A <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Mersenne/">biografia de Mersenne no MacTutor</a> documenta a afirmação de 1644 e seu contexto.</p>
+        <p>Nos séculos XVIII e XIX, métodos mais fortes ampliaram a fronteira. Euler estabeleceu a primalidade de \(2^{31}-1\) em 1772; Édouard Lucas provou em 1876 que \(2^{127}-1\), com 39 algarismos, era primo; e Ivan Pervushin encontrou \(2^{61}-1\) em 1883. O trabalho de Lucas deu origem ao teste que Derrick Lehmer aperfeiçoou no século XX. No teste de Lucas–Lehmer, uma recorrência modular decide a primalidade de \(M_p\) sem tentar dividir o número por todos os primos menores que sua raiz. Essa estrutura especial explica por que os recordes de primalidade frequentemente pertencem à família de Mersenne.</p>
+        <p>A chegada dos computadores mudou a escala, mas não a matemática central. Máquinas eletrônicas passaram a executar milhões de iterações modulares e a verificar resultados em hardware independente. Ainda assim, cada candidato cresce depressa: acrescentar apenas uma unidade ao expoente praticamente dobra o número. A busca moderna elimina primeiro candidatos com fatores encontrados por divisão experimental e pelo método \(p-1\), aplica testes de provável primalidade e só então confirma os raros sobreviventes com Lucas–Lehmer. O próprio GIMPS descreve esse fluxo em <a href="https://www.mersenne.org/various/works.php">“How GIMPS Works”</a>.</p>
+        <p>Em 1996, George Woltman fundou o Great Internet Mersenne Prime Search. Em vez de depender de um único supercomputador, o GIMPS distribuiu intervalos de expoentes entre computadores voluntários. A infraestrutura PrimeNet, criada por Scott Kurowski, automatizou a entrega de trabalho e a conferência dos resultados. A <a href="https://www.mersenne.org/various/history.php">cronologia oficial do GIMPS</a> registra dezoito descobertas do projeto entre 1996 e 2024. O recorde de Luke Durant mostra a evolução seguinte: GPUs em centros de dados participaram tanto da descoberta quanto das verificações independentes.</p>
+        <p>O arco histórico termina, por enquanto, em \(M_{136279841}\), mas a pergunta essencial permanece aberta: ninguém sabe se existem infinitos primos de Mersenne. O GIMPS continua testando e verificando expoentes, e sua <a href="https://www.mersenne.org/report_milestones/">página de marcos</a> torna visível o que já foi coberto e o que ainda falta. Assim, uma questão formulada com aritmética elementar no século XVII tornou-se um experimento coletivo de matemática, algoritmos e engenharia computacional.</p>
+        <p class="solution-sources"><strong>Fontes consultadas em 7 de agosto de 2026:</strong> GIMPS/Mersenne Research, <a href="https://www.mersenne.org/primes/">lista oficial de primos conhecidos</a>, <a href="https://www.mersenne.org/various/history.php">história do projeto</a>, <a href="https://www.mersenne.org/various/works.php">método de busca</a> e <a href="https://www.mersenne.org/primes/?press=M136279841">comunicado de \(M_{136279841}\)</a>; PrimePages, <a href="https://t5k.org/primes/page.php?rank=1">registro independente do primeiro colocado</a>; MacTutor History of Mathematics, <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Mersenne/">Marin Mersenne</a> e <a href="https://mathshistory.st-andrews.ac.uk/HistTopics/Perfect_numbers/">história dos números perfeitos</a>.</p>
+      </li>
+    </ol>
+  </details>
+</div>

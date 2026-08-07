@@ -1,0 +1,204 @@
+<section class="chapter-section" id="sec-3-8">
+  <div class="section-heading">
+    <span class="section-number">3.8</span>
+    <h2>O método do cálculo de índices para logaritmos discretos</h2>
+  </div>
+
+  <p>O <em>cálculo de índices</em> é um método para resolver o problema do logaritmo discreto em um corpo finito \(\mathbb F_p\). O algoritmo usa números lisos e apresenta alguma semelhança com os métodos de crivo que estudamos neste capítulo, razão pela qual o abordamos aqui, e não no <a href="../ch02/#sec-2-2" data-source-xref>Capítulo 2</a>, no qual discutimos originalmente os logaritmos discretos.</p>
+
+  <p>A ideia por trás do cálculo de índices é bastante simples. Queremos resolver o problema do logaritmo discreto</p>
+
+  <div class="equation" id="eq-3-27">
+    <span class="equation-number">(3.27)</span>
+    \[
+      g^x\equiv h\pmod p,
+    \]
+  </div>
+
+  <p>em que são dados o primo \(p\) e os inteiros \(g\) e \(h\). Para simplificar, suporemos que \(g\) é uma raiz primitiva módulo \(p\), de modo que suas potências forneçam todos os elementos de \(\mathbb F_p^*\).</p>
+
+  <p>Em vez de resolver <a href="#eq-3-27" data-source-xref>(3.27)</a> diretamente, escolhemos um valor \(B\) e resolvemos o problema do logaritmo discreto</p>
+
+  <div class="display-math">
+    \[
+      g^x\equiv\ell\pmod p
+      \qquad\text{para todos os primos }\ell\le B.
+    \]
+  </div>
+
+  <p>Em outras palavras, calculamos o logaritmo discreto \(\log_g(\ell)\) para todo primo \(\ell\) que satisfaça \(\ell\le B\).</p>
+
+  <p>Feito isso, examinamos em seguida as quantidades</p>
+
+  <div class="display-math">
+    \[
+      h\cdot g^{-k}\pmod p\qquad\text{para }k=1,2,\ldots
+    \]
+  </div>
+
+  <p>até encontrarmos um valor de \(k\) tal que \(h\cdot g^{-k}\pmod p\) seja \(B\)-liso. Para esse valor de \(k\), temos</p>
+
+  <div class="equation" id="eq-3-28">
+    <span class="equation-number">(3.28)</span>
+    \[
+      h\cdot g^{-k}\equiv\prod_{\ell\le B}\ell^{e_\ell}\pmod p
+    \]
+  </div>
+
+  <p>para certos expoentes \(e_\ell\). Reescrevemos <a href="#eq-3-28" data-source-xref>(3.28)</a> em termos de logaritmos discretos como</p>
+
+  <div class="equation" id="eq-3-29">
+    <span class="equation-number">(3.29)</span>
+    \[
+      \log_g(h)\equiv k+\sum_{\ell\le B}e_\ell\cdot\log_g(\ell)\pmod{p-1},
+    \]
+  </div>
+
+  <p>recordando que os logaritmos discretos são definidos apenas módulo \(p-1\). Mas estamos supondo que já calculamos \(\log_g(\ell)\) para todos os primos \(\ell\le B\). Portanto, <a href="#eq-3-29" data-source-xref>(3.29)</a> fornece o valor de \(\log_g(h)\).</p>
+
+  <p>Resta explicar como encontrar \(\log_g(\ell)\) para primos pequenos \(\ell\). Mais uma vez, a ideia é simples. Para uma seleção aleatória de expoentes \(i\), calculamos</p>
+
+  <div class="display-math">
+    \[
+      g_i\equiv g^i\pmod p\qquad\text{com }0&lt;g_i&lt;p.
+    \]
+  </div>
+
+  <p>Se \(g_i\) não for \(B\)-liso, nós o descartamos; se \(g_i\) for \(B\)-liso, podemos fatorá-lo como</p>
+
+  <div class="display-math">
+    \[
+      g_i=\prod_{\ell\le B}\ell^{u_\ell(i)}.
+    \]
+  </div>
+
+  <p>Em termos de logaritmos discretos, isso fornece a relação</p>
+
+  <div class="equation" id="eq-3-30">
+    <span class="equation-number">(3.30)</span>
+    \[
+      i\equiv\log_g(g_i)\equiv
+      \sum_{\ell\le B}u_\ell(i)\cdot\log_g(\ell)\pmod{p-1}.
+    \]
+  </div>
+
+  <p>Observe que as únicas quantidades desconhecidas na fórmula <a href="#eq-3-30" data-source-xref>(3.30)</a> são os valores dos logaritmos discretos \(\log_g(\ell)\). Assim, se conseguirmos encontrar mais de \(\pi(B)\) equações como <a href="#eq-3-30" data-source-xref>(3.30)</a>, poderemos usar álgebra linear para resolver as “variáveis” \(\log_g(\ell)\).</p>
+
+  <p>Esse método para resolver o problema do logaritmo discreto em \(\mathbb F_p\) é chamado <em>cálculo de índices</em>; recorde, da <a href="../ch02/#sec-2-2" data-source-xref>Seção 2.2</a>, que <em>índice</em> é um nome antigo para <em>logaritmo discreto</em>. O cálculo de índices aparece pela primeira vez em um trabalho de Western e Miller <a href="../../references/#ref-148" data-source-xref>[148]</a>, de 1968, e portanto antecede em alguns anos a invenção da criptografia de chave pública. O método foi redescoberto de modo independente por vários criptógrafos na década de 1970, depois da publicação do artigo de Diffie–Hellman <a href="../../references/#ref-38" data-source-xref>[38]</a>.</p>
+
+  <div class="semantic remark" id="obs-3-57">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.57</span></div>
+    <p>Uma questão menor que ignoramos é o fato de que as equações lineares <a href="#eq-3-30" data-source-xref>(3.30)</a> são congruências módulo \(p-1\). Métodos usuais de álgebra linear, como a eliminação gaussiana, não funcionam bem módulo números compostos, pois há números que não possuem inversos multiplicativos. O teorema chinês dos restos, o <a href="../ch02/#teorema-2-24" data-source-xref>Teorema 2.24</a>, resolve esse problema. Primeiro resolvemos as congruências <a href="#eq-3-30" data-source-xref>(3.30)</a> módulo \(q\) para cada primo \(q\) que divide \(p-1\). Em seguida, se \(q\) aparece na fatoração de \(p-1\) elevado a uma potência \(q^e\), levantamos a solução de \(\mathbb Z/q\mathbb Z\) para \(\mathbb Z/q^e\mathbb Z\). Por fim, usamos o teorema chinês dos restos para combinar soluções módulo potências de primos e obter uma solução módulo \(p-1\). Em aplicações criptográficas, deve-se escolher \(p\) de modo que \(p-1\) seja divisível por um primo grande; caso contrário, o algoritmo de Pohlig–Hellman, da <a href="../ch02/#sec-2-9" data-source-xref>Seção 2.9</a>, resolve o problema do logaritmo discreto. Por exemplo, se escolhermos \(p=2q+1\), com \(q\) primo, então o cálculo de índices exige que resolvamos as congruências simultâneas <a href="#eq-3-30" data-source-xref>(3.30)</a> módulo \(q\) e módulo \(2\).</p>
+  </div>
+
+  <p>Surgem muitas questões de implementação, e vários artifícios foram desenvolvidos em aplicações práticas do cálculo de índices. Não prosseguiremos com essas questões aqui; vamos nos contentar em apresentar um pequeno exemplo numérico que ilustra como funciona o cálculo de índices.</p>
+
+  <div class="semantic example" id="exemplo-3-58">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.58</span></div>
+    <p>Seja \(p\) o primo \(p=18443\). Usaremos o cálculo de índices para resolver o problema do logaritmo discreto</p>
+    <div class="display-math">
+      \[
+        37^x\equiv211\pmod{18443}.
+      \]
+    </div>
+    <p>Observamos que \(g=37\) é uma raiz primitiva módulo \(p=18443\). Tomamos \(B=5\), de modo que nossa base de fatores é o conjunto de primos \(\{2,3,5\}\). Começamos tomando potências aleatórias de \(g=37\) módulo \(18443\) e selecionando aquelas que são \(B\)-lisas. Cerca de duzentas tentativas fornecem quatro equações:</p>
+    <div class="equation" id="eq-3-31">
+      <span class="equation-number">(3.31)</span>
+      \[
+        \begin{aligned}
+          g^{12708}&\equiv2^3\cdot3^4\cdot5&&\pmod{18443},
+          &g^{11311}&\equiv2^3\cdot5^2&&\pmod{18443},\\
+          g^{15400}&\equiv2^3\cdot3^3\cdot5&&\pmod{18443},
+          &g^{2731}&\equiv2^3\cdot3\cdot5^4&&\pmod{18443}.
+        \end{aligned}
+      \]
+    </div>
+    <p>Estas, por sua vez, fornecem relações lineares para os logaritmos discretos de \(2\), \(3\) e \(5\) na base \(g\). Por exemplo, a primeira diz que</p>
+    <div class="display-math">
+      \[
+        12708=3\cdot\log_g(2)+4\cdot\log_g(3)+\log_g(5).
+      \]
+    </div>
+    <p>Para simplificar a notação, definimos</p>
+    <div class="display-math">
+      \[
+        x_2=\log_g(2),\qquad x_3=\log_g(3)\qquad\text{e}\qquad x_5=\log_g(5).
+      \]
+    </div>
+    <p>Então as quatro congruências de <a href="#eq-3-31" data-source-xref>(3.31)</a> se tornam as quatro relações lineares a seguir:</p>
+    <div class="equation" id="eq-3-32">
+      <span class="equation-number">(3.32)</span>
+      \[
+        \begin{aligned}
+          12708&=3x_2+4x_3+x_5&&\pmod{18442},\\
+          11311&=3x_2+2x_5&&\pmod{18442},\\
+          15400&=3x_2+3x_3+x_5&&\pmod{18442},\\
+          2731&=3x_2+x_3+4x_5&&\pmod{18442}.
+        \end{aligned}
+      \]
+    </div>
+    <p>Observe que as fórmulas de <a href="#eq-3-32" data-source-xref>(3.32)</a> são congruências módulo</p>
+    <div class="display-math">
+      \[
+        p-1=18442=2\cdot9221,
+      \]
+    </div>
+    <p>pois os logaritmos discretos são definidos apenas módulo \(p-1\). O número \(9221\) é primo, portanto precisamos resolver o sistema de equações lineares <a href="#eq-3-32" data-source-xref>(3.32)</a> módulo \(2\) e módulo \(9221\). Isso se faz facilmente por eliminação gaussiana, isto é, somando múltiplos de uma equação a outra para eliminar variáveis. As soluções são</p>
+    <div class="display-math">
+      \[
+        \begin{aligned}
+          (x_2,x_3,x_5)&\equiv(1,0,1)&&\pmod2,\\
+          (x_2,x_3,x_5)&\equiv(5733,6529,6277)&&\pmod{9221}.
+        \end{aligned}
+      \]
+    </div>
+    <p>Combinando essas soluções, obtemos</p>
+    <div class="display-math">
+      \[
+        (x_2,x_3,x_5)\equiv(5733,15750,6277)\pmod{18442}.
+      \]
+    </div>
+    <p>Verificamos as soluções calculando</p>
+    <div class="display-math">
+      \[
+        37^{5733}\equiv2\pmod{18443},\qquad
+        37^{15750}\equiv3\pmod{18443},\qquad
+        37^{6277}\equiv5\pmod{18443}.
+      \]
+    </div>
+    <p>Recorde que nosso objetivo final é resolver o problema do logaritmo discreto</p>
+    <div class="display-math">
+      \[
+        37^x\equiv211\pmod{18443}.
+      \]
+    </div>
+    <p>Calculamos o valor de \(211\cdot37^{-k}\pmod{18443}\) para valores aleatórios de \(k\), até encontrarmos um valor que seja \(B\)-liso. Depois de algumas tentativas, encontramos</p>
+    <div class="display-math">
+      \[
+        211\cdot37^{-9549}\equiv2^5\cdot3^2\cdot5^2\pmod{18443}.
+      \]
+    </div>
+    <p>Usando os valores acima dos logaritmos discretos de \(2\), \(3\) e \(5\), obtemos</p>
+    <div class="display-math">
+      \[
+        \begin{aligned}
+          \log_g(211)
+          &=9549+5\log_g(2)+2\log_g(3)+2\log_g(5)\\
+          &=9549+5\cdot5733+2\cdot15750+2\cdot6277
+          \equiv8500\pmod{18442}.
+        \end{aligned}
+      \]
+    </div>
+    <p>Por fim, verificamos nossa resposta \(\log_g(211)=8500\) calculando</p>
+    <div class="display-math">
+      \[
+        37^{8500}\equiv211\pmod{18443}.
+      \]
+    </div>
+  </div>
+
+  <div class="semantic remark" id="obs-3-59">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.59</span></div>
+    <p>Podemos estimar aproximadamente o tempo de execução do cálculo de índices da seguinte maneira. Usando uma base de fatores formada pelos primos menores que \(B\), precisamos encontrar aproximadamente \(\pi(B)\) números da forma \(g^i\pmod p\) que sejam \(B\)-lisos. A <a href="#prop-3-48" data-source-xref>Proposição 3.48</a> sugere que devemos tomar \(B=L(p)^{1/\sqrt2}\), e então teremos de verificar aproximadamente \(L(p)^{\sqrt2}\) valores de \(i\). Há também a questão de verificar cada valor para saber se ele é \(B\)-liso, mas métodos do tipo crivo podem ser usados para acelerar o processo. Além disso, usando ideias baseadas no crivo do corpo de números, o tempo de execução pode ser reduzido ainda mais, para uma pequena potência de \(L_{1/3}(p)\). De todo modo, o cálculo de índices é um algoritmo subexponencial para resolver o problema do logaritmo discreto em \(\mathbb F_p^*\). Isso contrasta nitidamente com o problema do logaritmo discreto em grupos de curvas elípticas, que estudaremos no Capítulo 6. Atualmente, os melhores algoritmos conhecidos para resolver o problema geral do logaritmo discreto em grupos de curvas elípticas são inteiramente exponenciais.</p>
+  </div>
+</section>

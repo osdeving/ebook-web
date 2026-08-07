@@ -1,0 +1,7 @@
+<p class="supplement-lead">Se a transformação pública não usa aleatoriedade, a mesma entrada produz sempre a mesma saída. Um observador pode testar palpites sem descobrir a chave.</p>
+<ol class="slow-steps">
+  <li><strong>Observe o alvo.</strong> O adversário vê c e conhece \((N,e)\).</li>
+  <li><strong>Enumere um palpite.</strong> Para cada mensagem provável \(m'\), ele calcula publicamente \((m')^e\bmod N\).</li>
+  <li><strong>Compare.</strong> Igualdade com c confirma o palpite. O ataque é devastador para domínios pequenos, como respostas “sim/não”, códigos ou valores previsíveis.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Aumentar N não remove esse vazamento: o custo do ataque depende do tamanho do espaço de mensagens plausíveis, não do custo de fatorar o módulo.</div>

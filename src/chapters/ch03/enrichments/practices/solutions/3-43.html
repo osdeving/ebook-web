@@ -1,0 +1,59 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.43">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — A decifração original devolve dois blocos</summary>
+      <p>Depois de calcular \(d_k(c)\), separe os primeiros \(b\) bits \(r\) dos últimos \(b\) bits \(s=r\oplus m'\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use que XOR desfaz a si mesmo</summary>
+      <p>\(r\oplus s=r\oplus(r\oplus m')=(r\oplus r)\oplus m'=m'\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Compare o texto cifrado com a mensagem útil</summary>
+      <p>O criptossistema original recebe \(2b\) bits, mas a mensagem útil tem somente \(b\). Se o original expande por \(\mu\), o novo texto cifrado tem \(2\mu b\) bits.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Bob aplica a decifração do criptossistema original:</p>
+        <div class="display-math">
+          \[
+            m=d_k(c)=r\mathbin{\Vert}s,
+            \qquad s=r\oplus m'.
+          \]
+        </div>
+        <p>Como os dois blocos têm comprimento \(b\), a separação é inequívoca. Bob recupera a mensagem útil calculando</p>
+        <div class="display-math">
+          \[
+            r\oplus s
+            =r\oplus(r\oplus m')
+            =(r\oplus r)\oplus m'
+            =0^b\oplus m'
+            =m'.
+          \]
+        </div>
+        <p>Portanto o procedimento de decifração é: calcular \(d_k(c)\), dividir o resultado ao meio e fazer XOR entre as duas metades.</p>
+      </li>
+      <li>
+        <p>Se o criptossistema original preserva comprimento, ele transforma o bloco \(m\) de \(2b\) bits em um texto cifrado de \(2b\) bits. O novo sistema, contudo, transporta apenas \(b\) bits úteis em \(m'\). Sua razão de expansão é, portanto,</p>
+        <div class="display-math">
+          \[
+            \frac{2b}{b}=\boxed{2}.
+          \]
+        </div>
+      </li>
+      <li>
+        <p>Se o sistema original tem razão de expansão \(\mu\), cifrar seu texto simples de \(2b\) bits produz \(2\mu b\) bits. Comparando novamente com os \(b\) bits da mensagem útil, a nova razão é</p>
+        <div class="display-math">
+          \[
+            \frac{2\mu b}{b}=\boxed{2\mu}.
+          \]
+        </div>
+      </li>
+    </ol>
+    <p>A aleatoriedade de \(r\) faz com que uma mesma mensagem \(m'\) admita muitas entradas \(m=r\mathbin{\Vert}(r\oplus m')\), enquanto a identidade do XOR garante que Bob sempre recupere o mesmo \(m'\).</p>
+  </details>
+</div>

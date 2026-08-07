@@ -1,0 +1,7 @@
+<p class="supplement-lead">As duas funções descrevem o mesmo sistema modular por perspectivas diferentes. \(\varphi(N)\) conta quantas classes são invertíveis; \(\lambda(N)\), a função de Carmichael, mede um expoente comum que faz todas essas unidades voltarem a 1.</p>
+<ol class="slow-steps">
+  <li><strong>Contagem.</strong> Para \(N=pq\) com primos distintos, \(\varphi(N)=(p-1)(q-1)\). Esse número é a ordem do grupo \((\mathbb Z/N\mathbb Z)^*\).</li>
+  <li><strong>Ciclos.</strong> Pelo teorema de Lagrange, elevar uma unidade a \(\varphi(N)\) dá 1. Mas o menor expoente que funciona para todas é \(\lambda(N)=\operatorname{mmc}(p-1,q-1)\), que pode ser menor.</li>
+  <li><strong>RSA.</strong> Basta escolher \(ed\equiv1\pmod{\lambda(N)}\) para inverter potências sobre as unidades. Usar \(\varphi(N)\) é uma condição simples e suficiente, não a única possível.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Não confunda “número de elementos” com “comprimento do maior ciclo”. Eles coincidem em grupos cíclicos, mas o grupo de unidades módulo um composto não precisa ser cíclico.</div>

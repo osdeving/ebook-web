@@ -1,0 +1,84 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.14">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Reduza módulo de cada fator primo</summary>
+      <p>Para um primo \(p\mid n\), se \(p\mid a\) a congruência é imediata; se \(p\nmid a\), use Fermat e verifique se \(p-1\mid n-1\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Escolha bases que forçam contradições</summary>
+      <p>Para excluir \(n\) par, experimente \(a=-1\). Para excluir \(p^2\mid n\), experimente \(a=p\) e reduza a congruência módulo \(p^2\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Korselt transforma infinitos testes em divisibilidades</summary>
+      <p>Depois de confirmar que a fatoração é sem quadrados, basta verificar \((p-1)\mid(n-1)\) para cada fator primo \(p\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Temos \(561-1=560\), e</p>
+        <p>\[2\mid560,\qquad10\mid560,\qquad16\mid560.\]</p>
+        <p>Considere primeiro o fator \(3\). Se \(3\mid a\), então \(a^{561}\equiv a\equiv0\pmod3\). Se \(3\nmid a\), Fermat dá \(a^2\equiv1\pmod3\), e</p>
+        <p>\[a^{561}=a(a^2)^{280}\equiv a\pmod3.\]</p>
+        <p>O mesmo raciocínio usa</p>
+        <p>\[
+          a^{561}=a(a^{10})^{56}\equiv a\pmod{11}
+          \quad\text{e}\quad
+          a^{561}=a(a^{16})^{35}\equiv a\pmod{17}
+        \]</p>
+        <p>quando \(a\) não é divisível pelo primo correspondente; se for divisível, ambos os lados são \(0\). Logo \(a^{561}-a\) é divisível por \(3\), \(11\) e \(17\). Como esses primos são distintos, seu produto \(561\) divide \(a^{561}-a\), isto é,</p>
+        <p>\[a^{561}\equiv a\pmod{561}\]</p>
+        <p>para todo inteiro \(a\).</p>
+      </li>
+      <li>
+        <p>Usaremos o mesmo lema: se \(n\) é produto de primos distintos e \(p-1\mid n-1\) para todo primo \(p\mid n\), então \(a^n\equiv a\pmod p\) para cada fator \(p\), por Fermat ou pelo caso \(p\mid a\); o teorema chinês dos restos então dá \(a^n\equiv a\pmod n\).</p>
+        <p>As divisibilidades necessárias são:</p>
+        <p>\[
+          \begin{array}{c|c|c}
+          n&amp;p-1\text{ para }p\mid n&amp;(n-1)/(p-1)\\ \hline
+          1729&amp;6,12,18&amp;288,144,96\\
+          10585&amp;4,28,72&amp;2646,378,147\\
+          75361&amp;10,12,16,30&amp;7536,6280,4710,2512\\
+          1024651&amp;18,198,270&amp;56925,5175,3795
+          \end{array}
+        \]</p>
+        <p>Todos os quocientes são inteiros, e as fatorações dadas contêm apenas primos distintos. Pelo lema, os quatro números são números de Carmichael.</p>
+      </li>
+      <li>
+        <p>Se um número de Carmichael composto \(n\) fosse par, a propriedade aplicada a \(a=-1\) daria</p>
+        <p>\[(-1)^n\equiv-1\pmod n.\]</p>
+        <p>Mas \(n\) par implica \((-1)^n=1\), de modo que \(n\mid2\). Isso só permite \(n=1\) ou \(n=2\), nenhum dos quais é composto. Portanto todo número de Carmichael é ímpar.</p>
+      </li>
+      <li>
+        <p>Suponha, por contradição, que \(p^2\mid n\) para algum primo \(p\). Aplique a propriedade de Carmichael a \(a=p\). Como \(n\ge2\), temos \(p^n\equiv0\pmod{p^2}\), enquanto</p>
+        <p>\[p\not\equiv0\pmod{p^2}.\]</p>
+        <p>Logo \(p^n\not\equiv p\pmod{p^2}\), contradizendo \(p^n\equiv p\pmod n\). Assim nenhum quadrado de primo divide \(n\): todo número de Carmichael é produto de primos distintos.</p>
+      </li>
+      <li>
+        <p><strong>Critério de Korselt.</strong> Um inteiro composto \(n\gt1\) é um número de Carmichael se, e somente se:</p>
+        <ol>
+          <li>\(n\) é livre de quadrados; e</li>
+          <li>para todo primo \(p\mid n\), vale \(p-1\mid n-1\).</li>
+        </ol>
+        <p>A suficiência é exatamente o argumento do item (b): Fermat resolve a congruência módulo de cada primo e a ausência de quadrados permite reuni-las pelo teorema chinês dos restos. Para a necessidade da segunda condição, escolhe-se uma raiz primitiva módulo \(p\) e, pelo teorema chinês dos restos, uma unidade módulo \(n\) que coincida com ela módulo \(p\); sua ordem \(p-1\) precisa dividir \(n-1\). A necessidade de \(n\) ser livre de quadrados também foi demonstrada no item (d).</p>
+        <p>Para \(29341=13\cdot37\cdot61\), os fatores são primos distintos e</p>
+        <p>\[
+          29340=12\cdot2445=36\cdot815=60\cdot489.
+        \]</p>
+        <p>Assim \(12,36,60\), isto é, \(p-1\) para cada fator primo, dividem \(29341-1\). Korselt prova que \(29341\) é Carmichael.</p>
+        <p>Para \(172947529=307\cdot613\cdot919\), divisão por todos os primos até as respectivas raízes quadradas confirma que \(307\), \(613\) e \(919\) são primos distintos. Além disso,</p>
+        <p>\[
+          \begin{aligned}
+          172947528&=306\cdot565188\\
+                   &=612\cdot282594\\
+                   &=918\cdot188396.
+          \end{aligned}
+        \]</p>
+        <p>Logo \(p-1\mid172947528\) para cada fator \(p\in\{307,613,919\}\), e o critério mostra que \(172947529\) também é Carmichael.</p>
+        <p class="solution-sources"><strong>Fontes consultadas em 7 de agosto de 2026:</strong> A. Korselt, <a href="https://oeis.org/w/images/3/3b/Probl%C3%A8me_chinois.pdf"><cite>Problème chinois</cite></a>, <cite>L’Intermédiaire des mathématiciens</cite> 6 (1899), pp. 142–144, digitalização do texto original; e Keith Conrad, University of Connecticut, <a href="https://kconrad.math.uconn.edu/blurbs/ugradnumthy/carmichaelkorselt.pdf"><cite>Carmichael Numbers and Korselt’s Criterion</cite></a>, exposição institucional com demonstração completa.</p>
+      </li>
+    </ol>
+  </details>
+</div>

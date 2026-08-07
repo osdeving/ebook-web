@@ -1,0 +1,96 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.35">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Transforme \(f(\beta)=0\) em uma regra de redução</summary>
+      <p>A identidade fundamental é \(\beta^4=-1-3\beta+2\beta^3\). Multiplique-a por \(\beta\) para reduzir \(\beta^5\) e \(\beta^6\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Some coeficientes termo a termo</summary>
+      <p>As somas já têm grau no máximo \(3\); somente os produtos precisam ser reduzidos módulo \(f(x)\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Confira o produto como resto polinomial</summary>
+      <p>Depois de expandir \(u(x)v(x)\), a resposta é o resto da divisão por \(x^4-2x^3+3x+1\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Como \(f(\beta)=0\), temos as regras</p>
+    <div class="display-math">
+      \[
+        \begin{aligned}
+          \beta^4&=-1-3\beta+2\beta^3,\\
+          \beta^5&=-2-7\beta-3\beta^2+4\beta^3,\\
+          \beta^6&=-4-14\beta-7\beta^2+5\beta^3.
+        \end{aligned}
+      \]
+    </div>
+    <p>Usaremos essas identidades após cada expansão.</p>
+    <ol type="a">
+      <li>
+        <p>A soma é imediata:</p>
+        <div class="display-math">
+          \[
+            u+v=-3+7\beta+2\beta^2-2\beta^3.
+          \]
+        </div>
+        <p>Antes da redução, o produto é</p>
+        <div class="display-math">
+          \[
+            uv=-10-49\beta+35\beta^2+42\beta^3
+            -158\beta^4+126\beta^5-63\beta^6.
+          \]
+        </div>
+        <p>Substituindo as três potências altas e reunindo coeficientes,</p>
+        <div class="display-math">
+          \[
+            \boxed{uv=148+425\beta+98\beta^2-85\beta^3}.
+          \]
+        </div>
+      </li>
+      <li>
+        <p>Neste caso,</p>
+        <div class="display-math">
+          \[
+            u+v=5+3\beta+4\beta^2-10\beta^3,
+          \]
+        </div>
+        <p>e a expansão do produto é</p>
+        <div class="display-math">
+          \[
+            uv=-36-90\beta-96\beta^2-79\beta^3
+            -27\beta^4-20\beta^5+25\beta^6.
+          \]
+        </div>
+        <p>Reduzindo módulo \(f(\beta)\), obtemos</p>
+        <div class="display-math">
+          \[
+            \boxed{uv=-69-219\beta-211\beta^2-88\beta^3}.
+          \]
+        </div>
+      </li>
+      <li>
+        <p>A soma vale</p>
+        <div class="display-math">
+          \[
+            u+v=4+2\beta+9\beta^2+3\beta^3.
+          \]
+        </div>
+        <p>O produto expandido é</p>
+        <div class="display-math">
+          \[
+            uv=-12+52\beta-5\beta^2-15\beta^3+39\beta^4+18\beta^5.
+          \]
+        </div>
+        <p>As regras de redução fornecem</p>
+        <div class="display-math">
+          \[
+            \boxed{uv=-87-191\beta-59\beta^2+135\beta^3}.
+          \]
+        </div>
+      </li>
+    </ol>
+    <p>Em cada item, substituir formalmente \(\beta\) por \(x\) mostra que o produto apresentado é exatamente o resto de \(u(x)v(x)\) na divisão pelo polinômio mônico \(x^4-2x^3+3x+1\), o que também confirma a unicidade da forma de grau no máximo \(3\).</p>
+  </details>
+</div>

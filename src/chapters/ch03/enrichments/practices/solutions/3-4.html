@@ -1,0 +1,51 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.4">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Liste apenas as unidades</summary>
+      <p>Para os módulos pequenos, risque os resíduos que compartilham algum fator primo com o módulo.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Multiplicar por uma unidade permuta</summary>
+      <p>Se \(r_1,\ldots,r_{\varphi(N)}\) são as classes invertíveis, mostre que \(ar_1,\ldots,ar_{\varphi(N)}\) são as mesmas classes em outra ordem.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Cancele o produto</summary>
+      <p>Compare os produtos das duas listas. O produto \(r_1\cdots r_{\varphi(N)}\) também é uma unidade módulo \(N\), portanto pode ser cancelado.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>As classes invertíveis em cada caso são</p>
+        <p>\[
+          \begin{aligned}
+          (\mathbb Z/6\mathbb Z)^*&amp;=\{1,5\}, &amp;\varphi(6)&=2,\\
+          (\mathbb Z/9\mathbb Z)^*&amp;=\{1,2,4,5,7,8\}, &amp;\varphi(9)&=6,\\
+          (\mathbb Z/15\mathbb Z)^*&amp;=\{1,2,4,7,8,11,13,14\}, &amp;\varphi(15)&=8.
+          \end{aligned}
+        \]</p>
+        <p>Como \(17\) é primo, todos os resíduos \(1,2,\ldots,16\) são invertíveis, de modo que \(\varphi(17)=16\).</p>
+      </li>
+      <li>
+        <p>Se \(p\) é primo, somente a classe \(0\) entre as \(p\) classes não possui inverso. Portanto</p>
+        <p>\[\varphi(p)=p-1.\]</p>
+      </li>
+      <li>
+        <p>Sejam \(r_1,\ldots,r_{\varphi(N)}\) representantes de todas as classes invertíveis módulo \(N\), e suponha \(\gcd(a,N)=1\). Cada \(ar_i\) é invertível. Além disso, se</p>
+        <p>\[ar_i\equiv ar_j\pmod N,\]</p>
+        <p>podemos cancelar \(a\) e concluir \(r_i\equiv r_j\pmod N\). Logo multiplicar por \(a\) apenas permuta a lista das unidades. Comparando os produtos antes e depois da permutação,</p>
+        <p>\[
+          (ar_1)(ar_2)\cdots(ar_{\varphi(N)})
+          \equiv r_1r_2\cdots r_{\varphi(N)}\pmod N.
+        \]</p>
+        <p>Assim,</p>
+        <p>\[a^{\varphi(N)}R\equiv R\pmod N,\qquad R=r_1r_2\cdots r_{\varphi(N)}.\]</p>
+        <p>Como \(R\) é produto de unidades, também é uma unidade e pode ser cancelado. Portanto</p>
+        <p>\[a^{\varphi(N)}\equiv1\pmod N,\]</p>
+        <p>que é a fórmula de Euler.</p>
+      </li>
+    </ol>
+  </details>
+</div>

@@ -1,0 +1,82 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.28">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Compare as duas condições primo a primo</summary>
+      <p>Ser \(B\)-suave limita apenas cada primo \(p\). Ser \(B\)-suave em potências limita a potência completa \(p^{v_p(M)}\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Procure uma potência repetida</summary>
+      <p>Para refutar a recíproca, escolha um número com fator primo pequeno, mas elevado a uma potência que ultrapasse \(B\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Fatore o mínimo múltiplo comum</summary>
+      <p>Em \(\operatorname{mmc}(1,\ldots,B)\), o expoente de \(p\) é o maior \(e\) para o qual \(p^e\le B\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Se \(p\mid M\), então a potência \(p^1\) divide \(M\). Pela hipótese de suavidade em potências, \(p\le B\). Isso vale para todo fator primo de \(M\), portanto \(M\) é \(B\)-suave.</p>
+      </li>
+      <li>
+        <p>A recíproca é falsa. Tome \(B=2\) e \(M=4\). O único fator primo de \(4\) é \(2\), logo \(4\) é \(2\)-suave. Contudo, \(2^2=4\) divide \(M\) e \(4>2\); assim \(M\) não é \(2\)-suave em potências.</p>
+      </li>
+      <li>
+        <p>As fatorações e classificações são:</p>
+        <p>\[
+          \begin{array}{r|l|c|c}
+          M&\text{fatoração}&10\text{-suave em potências}&10\text{-suave}\\ \hline
+          84&2^2\cdot3\cdot7&\text{sim}&\text{sim}\\
+          141&3\cdot47&\text{não}&\text{não}\\
+          171&3^2\cdot19&\text{não}&\text{não}\\
+          208&2^4\cdot13&\text{não}&\text{não}\\
+          224&2^5\cdot7&\text{não}&\text{sim}\\
+          318&2\cdot3\cdot53&\text{não}&\text{não}\\
+          325&5^2\cdot13&\text{não}&\text{não}\\
+          366&2\cdot3\cdot61&\text{não}&\text{não}\\
+          378&2\cdot3^3\cdot7&\text{não}&\text{sim}\\
+          390&2\cdot3\cdot5\cdot13&\text{não}&\text{não}\\
+          420&2^2\cdot3\cdot5\cdot7&\text{sim}&\text{sim}\\
+          440&2^3\cdot5\cdot11&\text{não}&\text{não}\\
+          504&2^3\cdot3^2\cdot7&\text{sim}&\text{sim}\\
+          530&2\cdot5\cdot53&\text{não}&\text{não}\\
+          707&7\cdot101&\text{não}&\text{não}\\
+          726&2\cdot3\cdot11^2&\text{não}&\text{não}\\
+          758&2\cdot379&\text{não}&\text{não}\\
+          765&3^2\cdot5\cdot17&\text{não}&\text{não}\\
+          792&2^3\cdot3^2\cdot11&\text{não}&\text{não}\\
+          817&19\cdot43&\text{não}&\text{não}
+          \end{array}
+        \]</p>
+        <p>Consequentemente, os \(10\)-suaves em potências são</p>
+        <p>\[\boxed{\{84,420,504\}},\]</p>
+        <p>enquanto os \(10\)-suaves são</p>
+        <p>\[\boxed{\{84,224,378,420,504\}}.\]</p>
+      </li>
+      <li>
+        <p>Seja</p>
+        <p>\[K=\operatorname{mmc}(1,2,\ldots,B).\]</p>
+        <p>Para cada primo \(p\le B\), o maior expoente de \(p\) presente em algum inteiro da lista é</p>
+        <p>\[
+          E_p=\max\{e:p^e\le B\}=\lfloor\log_p B\rfloor.
+        \]</p>
+        <p>Logo a fatoração de \(K\) é</p>
+        <p>\[
+          K=\prod_{p\le B}p^{E_p}.
+        \]</p>
+        <p>Agora,</p>
+        <p>\[
+          \begin{aligned}
+          M\mid K
+          &\iff v_p(M)\le E_p\quad\text{para todo primo }p\\
+          &\iff p^{v_p(M)}\le B\quad\text{para todo }p\mid M\\
+          &\iff M\text{ é \(B\)-suave em potências}.
+          \end{aligned}
+        \]</p>
+        <p>Isso demonstra as duas implicações.</p>
+      </li>
+    </ol>
+  </details>
+</div>

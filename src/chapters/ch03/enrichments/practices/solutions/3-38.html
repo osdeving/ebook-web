@@ -1,0 +1,71 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.38">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Em (a), basta controlar uma paridade módulo \(4\)</summary>
+      <p>O inteiro \((p-1)/2\) é par para \(p\equiv1\pmod4\) e ímpar para \(p\equiv3\pmod4\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Em (b), faça uma tabela das quatro classes ímpares módulo \(8\)</summary>
+      <p>Verifique a paridade de \((p^2-1)/8\) para \(p\equiv1,3,5,7\pmod8\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Em (c), o produto troca de sinal em um único caso</summary>
+      <p>O expoente \(\frac{p-1}{2}\frac{q-1}{2}\) é ímpar exatamente quando \(p\equiv q\equiv3\pmod4\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p class="solution-warning"><strong>Hipótese implícita no item (c).</strong> A lei de reciprocidade entre \(p\) e \(q\) pressupõe \(p\ne q\), como é padrão: se \(p=q\), ambos os símbolos \(\left(\frac pq\right)\) e \(\left(\frac qp\right)\) seriam zero, e não sinais \(\pm1\).</p>
+    <ol type="a">
+      <li>
+        <p>Todo primo ímpar satisfaz \(p\equiv1\) ou \(3\pmod4\). Temos</p>
+        <div class="display-math">
+          \[
+            (-1)^{(p-1)/2}=
+            \begin{cases}
+              1,&p\equiv1\pmod4,\\
+              -1,&p\equiv3\pmod4.
+            \end{cases}
+          \]
+        </div>
+        <p>Esse é precisamente o item (a) da reciprocidade quadrática. A leitura dos dois casos no sentido inverso prova a equivalência.</p>
+      </li>
+      <li>
+        <p>Para as quatro classes ímpares módulo \(8\), escreva \(p=8k+r\). A paridade de \((p^2-1)/8\) é:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>\(p\bmod8\)</th><th>\((p^2-1)/8\bmod2\)</th><th>\((-1)^{(p^2-1)/8}\)</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>0</td><td>1</td></tr>
+              <tr><td>3</td><td>1</td><td>-1</td></tr>
+              <tr><td>5</td><td>1</td><td>-1</td></tr>
+              <tr><td>7</td><td>0</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Logo \((-1)^{(p^2-1)/8}\) vale \(1\) para \(p\equiv1,7\pmod8\) e \(-1\) para \(p\equiv3,5\pmod8\), exatamente as duas linhas do item (b) do teorema.</p>
+      </li>
+      <li>
+        <p>O expoente</p>
+        <div class="display-math">
+          \[
+            \frac{p-1}{2}\cdot\frac{q-1}{2}
+          \]
+        </div>
+        <p>é ímpar se, e somente se, os dois fatores são ímpares, isto é, se, e somente se, \(p\equiv q\equiv3\pmod4\). Assim, o lado direito da fórmula proposta vale \(-1\) exatamente nesse caso e vale \(1\) nos demais.</p>
+        <p>Como cada símbolo de Legendre vale \(\pm1\),</p>
+        <div class="display-math">
+          \[
+            \left(\frac pq\right)\left(\frac qp\right)=
+            \begin{cases}
+              1,&\left(\frac pq\right)=\left(\frac qp\right),\\
+              -1,&\left(\frac pq\right)=-\left(\frac qp\right).
+            \end{cases}
+          \]
+        </div>
+        <p>Portanto a fórmula compacta afirma que os símbolos têm sinais opostos somente quando ambos os primos são \(3\pmod4\), e são iguais em todos os outros casos. Isso é exatamente o item (c) da reciprocidade quadrática, nos dois sentidos.</p>
+      </li>
+    </ol>
+  </details>
+</div>

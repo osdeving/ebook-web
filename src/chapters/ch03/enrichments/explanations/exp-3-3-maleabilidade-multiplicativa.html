@@ -1,0 +1,7 @@
+<p class="supplement-lead">O RSA cru preserva multiplicação: transformar dois textos claros e multiplicar seus criptogramas equivale a transformar o produto das mensagens.</p>
+<ol class="slow-steps">
+  <li><strong>Homomorfismo.</strong> \(E(m_1)E(m_2)\equiv m_1^e m_2^e\equiv(m_1m_2)^e\pmod N\).</li>
+  <li><strong>Manipulação.</strong> De um criptograma c, um atacante forma \(c'=c\,r^e\). A decifragem correspondente é \(mr\), não uma mensagem independente.</li>
+  <li><strong>Oráculo.</strong> Se algum sistema revela a decifragem ou até diferenças de erro para c', o atacante pode tentar remover r e aprender sobre m.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Maleabilidade pode ser um recurso em esquemas projetados para computação homomórfica. No RSA cru ela surge sem autenticação nem política, portanto é uma superfície de ataque.</div>

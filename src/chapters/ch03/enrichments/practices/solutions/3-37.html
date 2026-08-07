@@ -1,0 +1,91 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.37">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Fatore \(z^2-1\) no corpo \(\mathbb F_p\)</summary>
+      <p>Para \(z=a^{(p-1)/2}\), o pequeno teorema de Fermat dá \(z^2=1\). Como não há divisores de zero em \(\mathbb F_p\), \(z=1\) ou \(z=-1\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Escreva \(a=g^m\)</summary>
+      <p>Uma potência de uma raiz primitiva é quadrado exatamente quando seu expoente é par. Calcule \(g^{m(p-1)/2}\) separando os casos \(m\) par e ímpar.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — O item (d) pede o critério de Euler</summary>
+      <p>A identidade necessária é \(\left(\frac ap\right)\equiv a^{(p-1)/2}\pmod p\). Aplique-a a \(a=-1\) e examine a paridade de \((p-1)/2\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p class="solution-warning"><strong>Nota editorial sobre o item (c).</strong> O enunciado textual atual exibe \(a^{(p-1)/2}\equiv a^p\pmod p\), afirmação falsa: para \(p=5\) e \(a=2\), os lados são \(4\) e \(2\). A identidade coerente com os itens (b) e (d), conhecida como critério de Euler, é
+      \[
+        a^{(p-1)/2}\equiv\left(\frac ap\right)\pmod p.
+      \]
+      Ela também vale quando \(p\mid a\). É essa fórmula matematicamente necessária que demonstramos no item (c).</p>
+    <ol type="a">
+      <li>
+        <p>Defina \(z=a^{(p-1)/2}\). Como \(p\nmid a\), o pequeno teorema de Fermat dá</p>
+        <div class="display-math">
+          \[
+            z^2=a^{p-1}\equiv1\pmod p.
+          \]
+        </div>
+        <p>Logo \((z-1)(z+1)\equiv0\pmod p\). Como \(p\) é primo, \(z-1\equiv0\) ou \(z+1\equiv0\), isto é,</p>
+        <div class="display-math">
+          \[
+            a^{(p-1)/2}\equiv1\quad\text{ou}\quad-1\pmod p.
+          \]
+        </div>
+      </li>
+      <li>
+        <p>Seja \(g\) uma raiz primitiva módulo \(p\), e escreva \(a\equiv g^m\), com \(0\le m\le p-2\). Se \(m=2k\), então</p>
+        <div class="display-math">
+          \[
+            a^{(p-1)/2}\equiv g^{k(p-1)}\equiv1\pmod p,
+          \]
+        </div>
+        <p>e \(a=(g^k)^2\) é resíduo quadrático.</p>
+        <p>Se \(m=2k+1\), então</p>
+        <div class="display-math">
+          \[
+            a^{(p-1)/2}\equiv g^{k(p-1)}g^{(p-1)/2}
+            \equiv g^{(p-1)/2}\pmod p.
+          \]
+        </div>
+        <p>Esse valor não pode ser \(1\), pois \(g\) tem ordem \(p-1\); pelo item (a), ele é \(-1\). Além disso, uma potência ímpar de \(g\) não é quadrado. Portanto \(a^{(p-1)/2}\equiv1\pmod p\) se, e somente se, \(a\) é resíduo quadrático.</p>
+      </li>
+      <li>
+        <p>Se \(p\nmid a\), o item (b) diz exatamente que</p>
+        <div class="display-math">
+          \[
+            a^{(p-1)/2}\equiv
+            \begin{cases}
+              1,&a\text{ é resíduo quadrático},\\
+              -1,&a\text{ é não resíduo quadrático},
+            \end{cases}
+            \equiv\left(\frac ap\right)\pmod p.
+          \]
+        </div>
+        <p>Se \(p\mid a\), o lado esquerdo é \(0\), porque \((p-1)/2\ge1\), e o símbolo de Legendre também é \(0\) por definição. Assim, a fórmula vale em todos os casos.</p>
+      </li>
+      <li>
+        <p>Aplique o item (c) a \(a=-1\):</p>
+        <div class="display-math">
+          \[
+            \left(\frac{-1}{p}\right)\equiv(-1)^{(p-1)/2}\pmod p.
+          \]
+        </div>
+        <p>Ambos os lados são \(1\) ou \(-1\), portanto a congruência é uma igualdade. Se \(p\equiv1\pmod4\), então \((p-1)/2\) é par; se \(p\equiv3\pmod4\), ele é ímpar. Consequentemente,</p>
+        <div class="display-math">
+          \[
+            \boxed{
+            \left(\frac{-1}{p}\right)=
+            \begin{cases}
+              1,&p\equiv1\pmod4,\\
+              -1,&p\equiv3\pmod4.
+            \end{cases}}
+          \]
+        </div>
+      </li>
+    </ol>
+  </details>
+</div>

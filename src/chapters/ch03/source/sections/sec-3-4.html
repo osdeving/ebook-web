@@ -1,0 +1,161 @@
+<section class="chapter-section" id="sec-3-4">
+  <div class="section-heading">
+    <span class="section-number">3.4</span>
+    <h2>Testes de primalidade</h2>
+  </div>
+
+  <p>Bob terminou de ler as <a href="#sec-3-2" data-source-xref>Seções 3.2</a> e <a href="#sec-3-3" data-source-xref>3.3</a> e agora está pronto para se comunicar com Alice usando seu par de chaves pública/privada RSA. Ou será que está? Para criar um par de chaves RSA, Bob precisa escolher dois primos muito grandes, \(p\) e \(q\). Não basta escolher dois números muito grandes, mas possivelmente compostos, \(p\) e \(q\). Em primeiro lugar, se \(p\) e \(q\) não forem primos, Bob precisará saber fatorá-los para decifrar a mensagem de Alice. Pior ainda, se \(p\) e \(q\) tiverem fatores primos pequenos, Eva poderá conseguir fatorar \(pq\) e quebrar o sistema de Bob.</p>
+
+  <p>Bob se vê, portanto, diante da tarefa de encontrar números primos grandes. Mais precisamente, precisa de uma maneira de distinguir números primos de números compostos, pois, se souber fazer isso, poderá escolher números grandes ao acaso até encontrar um primo. Discutiremos mais adiante, na <a href="#sec-3-4-1" data-source-xref>Seção 3.4.1</a>, a probabilidade de um número escolhido ao acaso ser primo, mas, por enquanto, basta saber que ele tem uma chance razoavelmente boa de sucesso. Assim, o que Bob realmente precisa é de uma maneira eficiente de dizer se um número muito grande é primo.</p>
+
+  <p>Por exemplo, suponha que Bob escolha o número bastante grande</p>
+  <div class="equation">\[n=31987937737479355332620068643713101490952335301\]</div>
+  <p>e queira saber se \(n\) é primo. Primeiro, Bob procura fatores pequenos, mas constata que \(n\) não é divisível por nenhum primo menor que \(1000000\). Assim, começa a suspeitar que talvez \(n\) seja primo. Em seguida, calcula a quantidade \(2^{n-1}\bmod n\) e encontra</p>
+  <div class="equation" id="eq-3-6"><span class="equation-number">(3.6)</span>\[2^{n-1}\equiv1281265953551359064133601216247151836053160074\pmod n.\]</div>
+
+  <p>A congruência <a href="#eq-3-6" data-source-xref>(3.6)</a> diz imediatamente a Bob que \(n\) é um número composto, embora não lhe dê nenhuma indicação de como fatorar \(n\). Por quê? Lembre-se do pequeno teorema de Fermat, que diz que, se \(p\) é primo, então \(a^{p-1}\equiv1\pmod p\) — a menos que \(p\) divida \(a\). Portanto, se \(n\) fosse primo, o lado direito de <a href="#eq-3-6" data-source-xref>(3.6)</a> seria igual a \(1\); como não é igual a \(1\), Bob conclui que \(n\) não é primo.</p>
+
+  <p>Antes de continuar a saga da busca de Bob por primos grandes, enunciamos uma versão conveniente do pequeno teorema de Fermat que não impõe restrições a \(a\).</p>
+
+  <div class="semantic theorem" id="teorema-3-16">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">3.16 — Pequeno teorema de Fermat, versão 2</span></div>
+    <p>Seja \(p\) um número primo. Então</p>
+    <div class="equation" id="eq-3-7"><span class="equation-number">(3.7)</span>\[a^p\equiv a\pmod p\qquad\text{para todo inteiro }a.\]</div>
+  </div>
+
+  <div class="semantic proof" id="proof-3-16">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Se \(p\nmid a\), então a primeira versão do pequeno teorema de Fermat (<a href="../ch01/#theorem-1-24" data-source-xref>Teorema 1.24</a>) implica que \(a^{p-1}\equiv1\pmod p\). Multiplicar ambos os lados por \(a\) prova que <a href="#eq-3-7" data-source-xref>(3.7)</a> é verdadeira. Por outro lado, se \(p\mid a\), então ambos os lados de <a href="#eq-3-7" data-source-xref>(3.7)</a> são \(0\) módulo \(p\). <span class="proof-end">□</span></p>
+  </div>
+
+  <p>Retornando à busca de Bob, encontramo-lo destemido ao escolher ao acaso outro número grande,</p>
+  <div class="equation" id="eq-3-8"><span class="equation-number">(3.8)</span>\[n=2967952985951692762820418740138329004315165131.\]</div>
+  <p>Depois de verificar a divisibilidade por primos pequenos, Bob calcula \(2^n\bmod n\) e descobre que</p>
+  <div class="equation" id="eq-3-9"><span class="equation-number">(3.9)</span>\[2^n\equiv2\pmod n.\]</div>
+  <p><a href="#eq-3-9" data-source-xref>(3.9)</a>, combinada com o <a href="#teorema-3-16" data-source-xref>pequeno teorema de Fermat 3.16</a>, prova que \(n\) é primo? A resposta é NÃO! O teorema de Fermat funciona em apenas uma direção:</p>
+  <div class="equation">\[\text{Se }p\text{ é primo, então }a^p\equiv a\pmod p.\]</div>
+  <p>Nada impede que uma igualdade como <a href="#eq-3-9" data-source-xref>(3.9)</a> seja verdadeira para valores compostos de \(n\), e de fato uma busca breve revela exemplos como</p>
+  <div class="equation">\[2^{341}\equiv2\pmod{341}\qquad\text{com}\qquad341=11\cdot31.\]</div>
+  <p>Entretanto, em algum sentido filosófico vago, o fato de que \(2^n\equiv2\pmod n\) torna mais provável que \(n\) seja primo, pois, se o valor de \(2^n\bmod n\) tivesse sido diferente, saberíamos que \(n\) era composto. Isso nos leva <a href="#def-testemunha-composicao" data-source-xref>à definição a seguir</a>.</p>
+
+  <div class="semantic definition" id="def-testemunha-composicao">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Fixe um inteiro \(n\). Dizemos que um inteiro \(a\) é uma <strong>testemunha da composição de \(n\)</strong> se</p>
+    <div class="equation">\[a^n\not\equiv a\pmod n.\]</div>
+  </div>
+
+  <p>Como observamos antes, uma única testemunha para \(n\), combinada com o pequeno teorema de Fermat (<a href="#teorema-3-16" data-source-xref>Teorema 3.16</a>), basta para provar, sem sombra de dúvida, que \(n\) é composto.<sup id="fnref-3-4-1"><a href="#fn-3-4-1" data-source-xref>1</a></sup> Assim, uma maneira de avaliar a probabilidade de \(n\) ser primo é testar muitos números \(a_1,a_2,a_3,\ldots\). Se algum deles for testemunha para \(n\), Bob saberá que \(n\) é composto; se nenhum deles for testemunha para \(n\), Bob suspeitará, mas não saberá com certeza, que \(n\) é primo.</p>
+
+  <p>Infelizmente, invadem essa cena idílica números bárbaros como \(561\). O número \(561\) é composto, \(561=3\cdot11\cdot17\), mas \(561\) não possui testemunha alguma! Em outras palavras,</p>
+  <div class="equation">\[a^{561}\equiv a\pmod{561}\qquad\text{para todo inteiro }a.\]</div>
+  <p>Números compostos sem testemunhas são chamados de <strong>números de Carmichael</strong>, em homenagem a R. D. Carmichael, que, em 1910, publicou um artigo listando quinze números desse tipo. O fato de \(561\) ser um número de Carmichael pode ser verificado testando cada valor \(a=0,1,2,\ldots,560\), mas veja o <a href="#exercicio-3-14" data-source-xref>Exercício 3.14</a> para um método mais fácil e mais exemplos de números de Carmichael. Embora os números de Carmichael sejam bastante raros, Alford, Granville e Pomerance <a href="../../references/#ref-5" data-source-xref>[5]</a> provaram, em 1994, que existem infinitos deles. Portanto, Bob precisa de algo mais forte que o pequeno teorema de Fermat para testar se um número é — provavelmente — primo. O que se requer é um teste de composição melhor. <a href="#prop-3-17" data-source-xref>A propriedade de números primos a seguir</a> é usada para formular o <em>teste de Miller–Rabin</em>, que possui a agradável propriedade de todo número composto ter um grande número de testemunhas.</p>
+
+  <div class="semantic proposition" id="prop-3-17">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">3.17</span></div>
+    <p>Seja \(p\) um primo ímpar e escreva</p>
+    <div class="equation">\[p-1=2^kq\qquad\text{com }q\text{ ímpar}.\]</div>
+    <p>Seja \(a\) qualquer número não divisível por \(p\). Então uma das duas condições a seguir é verdadeira:</p>
+    <ol type="i">
+      <li>\(a^q\) é congruente a \(1\) módulo \(p\).</li>
+      <li>Um dos números \(a^q,a^{2q},a^{4q},\ldots,a^{2^{k-1}q}\) é congruente a \(-1\) módulo \(p\).</li>
+    </ol>
+  </div>
+
+  <div class="semantic proof" id="proof-3-17">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>O pequeno teorema de Fermat (<a href="../ch01/#theorem-1-24" data-source-xref>Teorema 1.24</a>) nos diz que \(a^{p-1}\equiv1\pmod p\). Isso significa que, ao examinar a lista de números</p>
+    <div class="equation">\[a^q,a^{2q},a^{4q},\ldots,a^{2^{k-1}q},a^{2^kq},\]</div>
+    <p>sabemos que o último número da lista, que é igual a \(a^{p-1}\), é congruente a \(1\) módulo \(p\). Além disso, cada número da lista é o quadrado do número anterior. Portanto, deve ocorrer uma das duas possibilidades a seguir:</p>
+    <ol type="i">
+      <li>O primeiro número da lista é congruente a \(1\) módulo \(p\).</li>
+      <li><p>Algum número da lista não é congruente a \(1\) módulo \(p\), mas, quando elevado ao quadrado, torna-se congruente a \(1\) módulo \(p\). Contudo, o único número que satisfaz simultaneamente</p>
+        <div class="equation">\[b\not\equiv1\pmod p\qquad\text{e}\qquad b^2\equiv1\pmod p\]</div>
+        <p>é \(-1\), de modo que um dos números da lista é congruente a \(-1\) módulo \(p\).</p>
+      </li>
+    </ol>
+    <p>Isso conclui a demonstração da <a href="#prop-3-17" data-source-xref>Proposição 3.17</a>. <span class="proof-end">□</span></p>
+  </div>
+
+  <div class="table-wrap" id="tab-3-2">
+    <table class="algorithm-table">
+      <caption><span class="label">Tabela 3.2.</span> Teste de Miller–Rabin para números compostos.</caption>
+      <tbody>
+        <tr><th colspan="2"><strong>Entrada.</strong> Inteiro \(n\) a ser testado, inteiro \(a\) como testemunha potencial.</th></tr>
+        <tr><th scope="row">1.</th><td>Se \(n\) for par ou \(1&lt;\gcd(a,n)&lt;n\), devolva <strong>Composto</strong>.</td></tr>
+        <tr><th scope="row">2.</th><td>Escreva \(n-1=2^kq\), com \(q\) ímpar.</td></tr>
+        <tr><th scope="row">3.</th><td>Defina \(a=a^q\pmod n\).</td></tr>
+        <tr><th scope="row">4.</th><td>Se \(a\equiv1\pmod n\), devolva <strong>Teste falhou</strong>.</td></tr>
+        <tr><th scope="row">5.</th><td>Faça um laço para \(i=0,1,2,\ldots,k-1\).</td></tr>
+        <tr><th scope="row">6.</th><td>Se \(a\equiv-1\pmod n\), devolva <strong>Teste falhou</strong>.</td></tr>
+        <tr><th scope="row">7.</th><td>Defina \(a=a^2\bmod n\).</td></tr>
+        <tr><th scope="row">8.</th><td>Encerre o laço em \(i\).</td></tr>
+        <tr><th scope="row">9.</th><td>Devolva <strong>Composto</strong>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="semantic definition" id="def-testemunha-miller-rabin">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Seja \(n\) um número ímpar e escreva \(n-1=2^kq\), com \(q\) ímpar. Um inteiro \(a\) que satisfaz \(\gcd(a,n)=1\) é chamado de <strong>testemunha de Miller–Rabin da composição de \(n\)</strong> se ambas as condições a seguir são verdadeiras:</p>
+    <ol type="a">
+      <li>\(a^q\not\equiv1\pmod n\).</li>
+      <li>\(a^{2^iq}\not\equiv-1\pmod n\) para todo \(i=0,1,2,\ldots,k-1\).</li>
+    </ol>
+  </div>
+
+  <p>Segue da <a href="#prop-3-17" data-source-xref>Proposição 3.17</a> que, se existir um \(a\) que seja testemunha de Miller–Rabin para \(n\), então \(n\) é definitivamente um número composto. Isso leva ao teste de Miller–Rabin para números compostos descrito na <a href="#tab-3-2" data-source-xref>Tabela 3.2</a>.</p>
+
+  <p>Suponha agora que Bob queira verificar se um número grande \(n\) é provavelmente primo. Para isso, executa o teste de Miller–Rabin usando vários valores de \(a\) escolhidos ao acaso. Por que isso é melhor do que usar o teste do pequeno teorema de Fermat? A resposta é que não existem números análogos aos de Carmichael para o teste de Miller–Rabin e, de fato, todo número composto possui muitas testemunhas de Miller–Rabin, como descreve <a href="#prop-3-18" data-source-xref>a proposição a seguir</a>.</p>
+
+  <div class="semantic proposition" id="prop-3-18">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">3.18</span></div>
+    <p>Seja \(n\) um número composto ímpar. Então pelo menos \(75\%\) dos números \(a\) entre \(1\) e \(n-1\) são testemunhas de Miller–Rabin para \(n\).</p>
+  </div>
+
+  <div class="semantic proof" id="proof-3-18">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>A demonstração não é difícil, mas não a apresentaremos aqui. Veja, por exemplo, <a href="../../references/#ref-132" data-source-xref>[132, Teorema 10.6]</a>. <span class="proof-end">□</span></p>
+  </div>
+
+  <p>Considere agora a busca de Bob por identificar números primos grandes. Ele toma seu número potencialmente primo \(n\) e executa o teste de Miller–Rabin em \(n\) para, digamos, dez valores diferentes de \(a\). Se algum valor de \(a\) for uma testemunha de Miller–Rabin para \(n\), Bob saberá que \(n\) é composto. Suponha, porém, que nenhum de seus valores de \(a\) seja uma testemunha de Miller–Rabin para \(n\). A <a href="#prop-3-18" data-source-xref>Proposição 3.18</a> diz que, se \(n\) fosse composto, toda vez que Bob testasse um valor de \(a\), teria pelo menos \(75\%\) de chance de obter uma testemunha. Como Bob não encontrou testemunhas em dez tentativas, é razoável<sup id="fnref-3-4-2"><a href="#fn-3-4-2" data-source-xref>2</a></sup> concluir que a probabilidade de \(n\) ser composto é, no máximo, \((25\%)^{10}\), aproximadamente \(10^{-6}\). E, se isso não for suficiente, Bob pode usar cem valores diferentes de \(a\); se nenhum deles provar que \(n\) é composto, então a probabilidade de \(n\) ser realmente composto é menor que \((25\%)^{100}\approx10^{-60}\).</p>
+
+  <div class="semantic example" id="exemplo-3-19">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.19</span></div>
+    <p>Ilustramos o teste de Miller–Rabin com \(a=2\) e o número \(n=561\), que, como você talvez se lembre, é um número de Carmichael. Fatoramos</p>
+    <div class="equation">\[n-1=560=2^4\cdot35\]</div>
+    <p>e então calculamos</p>
+    <div class="equation">\[
+      \begin{aligned}
+        2^{35}&amp;\equiv263\pmod{561},\\
+        2^{2\cdot35}&amp;\equiv263^2\equiv166\pmod{561},\\
+        2^{4\cdot35}&amp;\equiv166^2\equiv67\pmod{561},\\
+        2^{8\cdot35}&amp;\equiv67^2\equiv1\pmod{561}.
+      \end{aligned}
+    \]</div>
+    <p>O primeiro número, \(2^{35}\bmod561\), não é \(1\) nem \(-1\), e os demais números da lista não são iguais a \(-1\); portanto, \(2\) é uma testemunha de Miller–Rabin do fato de que \(561\) é composto.</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-3-20">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.20</span></div>
+    <p>Fazemos um segundo exemplo, tomando \(n=172947529\) e</p>
+    <div class="equation">\[n-1=172947528=2^3\cdot21618441.\]</div>
+    <p>Aplicamos o teste de Miller–Rabin com \(a=17\) e descobrimos que</p>
+    <div class="equation">\[17^{21618441}\equiv1\pmod{172947529}.\]</div>
+    <p>Portanto, \(17\) não é uma testemunha de Miller–Rabin para \(n\). Em seguida, tentamos \(a=3\), mas, infelizmente,</p>
+    <div class="equation">\[3^{21618441}\equiv-1\pmod{172947529},\]</div>
+    <p>de modo que \(3\) também não é uma testemunha de Miller–Rabin. A essa altura, poderíamos suspeitar que \(n\) é primo, mas, se tentarmos outro valor, digamos \(a=23\), descobrimos que</p>
+    <div class="equation">\[
+      \begin{aligned}
+        23^{21618441}&amp;\equiv40063806\pmod{172947529},\\
+        23^{2\cdot21618441}&amp;\equiv2257065\pmod{172947529},\\
+        23^{4\cdot21618441}&amp;\equiv1\pmod{172947529}.
+      \end{aligned}
+    \]</div>
+    <p>Assim, \(23\) é uma testemunha de Miller–Rabin e \(n\) é, de fato, composto. Na realidade, \(n\) é um número de Carmichael, mas não é tão fácil fatorá-lo à mão.</p>
+  </div>
+
+  <ol class="footnotes" start="1">
+    <li id="fn-3-4-1">No grande tribunal da matemática, as testemunhas nunca mentem! <a href="#fnref-3-4-1" data-source-xref aria-label="Voltar à chamada da nota 1">↩</a></li>
+    <li id="fn-3-4-2">Infelizmente, embora essa dedução pareça razoável, ela não é inteiramente correta. Na linguagem da teoria da probabilidade, precisamos calcular a probabilidade condicional de \(n\) ser composto dado que o teste de Miller–Rabin falha dez vezes; e conhecemos a probabilidade condicional de que o teste de Miller–Rabin seja bem-sucedido pelo menos \(75\%\) das vezes se \(n\) for composto. Veja a Seção 5.3.2 para uma discussão de probabilidades condicionais e o Exercício 5.30 para uma dedução da fórmula correta, segundo a qual a probabilidade \((25\%)^{10}\) deve ser multiplicada aproximadamente por \(\ln(n)\). <a href="#fnref-3-4-2" data-source-xref aria-label="Voltar à chamada da nota 2">↩</a></li>
+  </ol>
+</section>

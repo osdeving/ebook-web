@@ -1,0 +1,75 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.19">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Escreva a probabilidade como quociente</summary>
+      <p>O numerador é uma diferença de valores de \(\pi\); o denominador é o comprimento do intervalo, salvo um erro limitado causado por pisos e tetos.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Reescale o teorema dos números primos</summary>
+      <p>Para toda constante fixa \(c>0\), mostre que \(\pi(cN)=cN/\ln N+o(N/\ln N)\), pois \(\ln(cN)/\ln N\to1\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — As constantes do intervalo se cancelam</summary>
+      <p>Entre \(c_1N\) e \(c_2N\), tanto a quantidade de inteiros quanto o termo principal da quantidade de primos contêm o fator \((c_2-c_1)N\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Usaremos a consequência seguinte do teorema dos números primos. Para qualquer constante fixa \(c>0\),</p>
+    <p>\[
+      \pi(cN)
+      =\frac{cN}{\ln(cN)}\bigl(1+o(1)\bigr)
+      =\frac{cN}{\ln N}+o\!\left(\frac{N}{\ln N}\right),
+    \]</p>
+    <p>porque \(\ln(cN)=\ln N+\ln c\) e, portanto, \(\ln(cN)/\ln N\to1\).</p>
+    <ol type="a">
+      <li>
+        <p>Seja \(A_N\) a quantidade de primos no intervalo e \(D_N\) a quantidade de inteiros. Alterar ou não os extremos quando eles não são inteiros produz apenas um erro \(O(1)\). Assim,</p>
+        <p>\[
+          \begin{aligned}
+          A_N
+          &=\pi\!\left(\frac{3N}{2}\right)-\pi\!\left(\frac N2\right)+O(1)\\
+          &=\frac{3N/2}{\ln N}-\frac{N/2}{\ln N}
+            +o\!\left(\frac N{\ln N}\right)\\
+          &=\frac N{\ln N}+o\!\left(\frac N{\ln N}\right),
+          \end{aligned}
+        \]</p>
+        <p>enquanto</p>
+        <p>\[
+          D_N=
+          \left\lfloor\frac{3N}{2}\right\rfloor
+          -\left\lceil\frac N2\right\rceil+1
+          =N+O(1).
+        \]</p>
+        <p>Como \(P(N)=A_N/D_N\), segue que</p>
+        <p>\[
+          P(N)
+          =\frac{1}{\ln N}\bigl(1+o(1)\bigr),
+          \qquad
+          \lim_{N\to\infty}\frac{P(N)}{1/\ln N}=1.
+        \]</p>
+        <p>A “probabilidade” agora se refere a um experimento aleatório bem definido: escolher uniformemente um inteiro em um intervalo que cresce com \(N\).</p>
+      </li>
+      <li>
+        <p>Da mesma forma, para \(0&lt;c_1&lt;c_2\) fixos,</p>
+        <p>\[
+          \begin{aligned}
+          \pi(c_2N)-\pi(c_1N)
+          &=(c_2-c_1)\frac N{\ln N}
+            +o\!\left(\frac N{\ln N}\right),\\
+          \#\{n\in\mathbb Z:c_1N\le n\le c_2N\}
+          &=(c_2-c_1)N+O(1).
+          \end{aligned}
+        \]</p>
+        <p>Dividindo, obtemos</p>
+        <p>\[
+          P(c_1,c_2;N)
+          =\frac1{\ln N}\bigl(1+o(1)\bigr).
+        \]</p>
+        <p>Logo a caixa deve conter</p>
+        <p>\[\boxed{\frac1{\ln N}}.\]</p>
+      </li>
+    </ol>
+  </details>
+</div>

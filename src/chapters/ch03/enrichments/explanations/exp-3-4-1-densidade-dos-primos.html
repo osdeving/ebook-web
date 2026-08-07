@@ -1,0 +1,7 @@
+<p class="supplement-lead">Perto de X, a proporção de inteiros primos é aproximadamente \(1/\ln X\). Essa afirmação assintótica vira uma estimativa prática de quantos candidatos testar.</p>
+<ol class="slow-steps">
+  <li><strong>Amostra bruta.</strong> Um inteiro uniforme próximo de X precisa, em média heurística, de cerca de \(\ln X\) tentativas.</li>
+  <li><strong>Elimine pares.</strong> Se só sorteamos ímpares, dobramos aproximadamente a densidade e reduzimos o número esperado de testes pela metade.</li>
+  <li><strong>Pré-crive.</strong> Evitar múltiplos de pequenos primos melhora outra vez a taxa, sem alterar a necessidade de um teste de primalidade completo.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> O teorema é assintótico e descreve médias, não garante um primo em cada intervalo curto escolhido pela aplicação.</div>

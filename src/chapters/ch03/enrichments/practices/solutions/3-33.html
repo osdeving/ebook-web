@@ -1,0 +1,106 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.33">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Majorize \(a\) antes de elevar ao quadrado</summary>
+      <p>De \(k\le K\) e \(\lfloor\sqrt N\rfloor\le\sqrt N\), segue \(a\le\sqrt N+K\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Compare os logaritmos de \(L\)</summary>
+      <p>Para \(N^{1/r}\), cancele o fator \(1/\sqrt r\) e observe que \(\ln(\ln N/r)/\ln\ln N\to1\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Refaça a otimização com números de tamanho \(\sqrt N\)</summary>
+      <p>Com \(B=L(N)^c\approx L(\sqrt N)^{c\sqrt2}\), a probabilidade de suavidade passa a ser \(L(N)^{-1/(4c)}\). Minimize \(c+1/(4c)\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Como \(1\le k\le K\),</p>
+        <div class="display-math">
+          \[
+            a=\lfloor\sqrt N\rfloor+k\le\sqrt N+K.
+          \]
+        </div>
+        <p>Portanto</p>
+        <div class="display-math">
+          \[
+            a^2-N\le(\sqrt N+K)^2-N=2K\sqrt N+K^2.
+          \]
+        </div>
+        <p>Para \(K\) fixo, isso é \(O(\sqrt N)\). Além disso \(a&gt;\sqrt N\); para \(N\) suficientemente grande, o limite acima é menor que \(N\), e então \(a^2\bmod N=a^2-N=O(\sqrt N)\).</p>
+      </li>
+      <li>
+        <p>Usando logaritmos naturais — qualquer outra base daria o mesmo quociente —, calculamos</p>
+        <div class="display-math">
+          \[
+            \frac{\log L(\sqrt N)}{\log L(N)^{1/\sqrt2}}
+            =\frac{\sqrt{\frac12\ln N\,\ln(\frac12\ln N)}}
+              {\frac1{\sqrt2}\sqrt{\ln N\,\ln\ln N}}
+            =\sqrt{\frac{\ln(\frac12\ln N)}{\ln\ln N}}
+            \longrightarrow1.
+          \]
+        </div>
+        <p>Mais geralmente, para \(r&gt;0\) fixo,</p>
+        <div class="display-math">
+          \[
+            \frac{\log L(N^{1/r})}{\log L(N)^{1/\sqrt r}}
+            =\sqrt{\frac{\ln(\frac1r\ln N)}{\ln\ln N}}
+            =\sqrt{1-\frac{\ln r}{\ln\ln N}}
+            \longrightarrow1.
+          \]
+        </div>
+        <p>Isso prova \(L(N^{1/r})\approx L(N)^{1/\sqrt r}\) no sentido solicitado.</p>
+      </li>
+      <li>
+        <p>Os valores \(a^2-N\) têm tamanho \(O(\sqrt N)\). Defina \(B=L(N)^c\). Pelo item (b),</p>
+        <div class="display-math">
+          \[
+            L(\sqrt N)\approx L(N)^{1/\sqrt2},
+            \qquad
+            B=L(N)^c\approx L(\sqrt N)^{c\sqrt2}.
+          \]
+        </div>
+        <p>Aplicando a estimativa de suavidade do <a href="#cor-3-45" data-source-xref>Corolário 3.45</a> com \(X=\sqrt N\) e parâmetro \(c\sqrt2\), a probabilidade de um candidato ser \(B\)-suave é</p>
+        <div class="display-math">
+          \[
+            \frac{\psi(\sqrt N,B)}{\sqrt N}
+            \approx L(\sqrt N)^{-1/(2c\sqrt2)}
+            \approx L(N)^{-1/(4c)}.
+          \]
+        </div>
+        <p>Precisamos de aproximadamente \(\pi(B)\sim B/\ln B\) relações. Logo o número esperado de candidatos examinados é</p>
+        <div class="display-math">
+          \[
+            \frac{\pi(B)}{\psi(\sqrt N,B)/\sqrt N}
+            \approx
+            \frac{L(N)^{c+1/(4c)}}{c\ln L(N)}.
+          \]
+        </div>
+        <p>Na escala dominante, minimizamos \(f(c)=c+1/(4c)\). Como</p>
+        <div class="display-math">
+          \[
+            f'(c)=1-\frac1{4c^2},
+          \]
+        </div>
+        <p>o mínimo ocorre em \(c=1/2\), e \(f(1/2)=1\). Portanto a escolha ótima é</p>
+        <div class="display-math">
+          \[
+            B=L(N)^{1/2},
+          \]
+        </div>
+        <p>e examinamos \(L(N)^{1+o(1)}\) candidatos. O número de relações requerido é</p>
+        <div class="display-math">
+          \[
+            \pi(B)\sim\frac{L(N)^{1/2}}{\frac12\ln L(N)}
+            =\frac{2L(N)^{1/2}}{\ln L(N)}
+            =L(N)^{1/2+o(1)}.
+          \]
+        </div>
+        <p>O enunciado trata \(K\) como fixo apenas para simplificar o limite do item (a). Para realmente examinar \(L(N)^{1+o(1)}\) candidatos, amplia-se a janela por uma potência de \(L(N)\); isso altera apenas fatores subdominantes e não o expoente ótimo acima.</p>
+      </li>
+    </ol>
+  </details>
+</div>

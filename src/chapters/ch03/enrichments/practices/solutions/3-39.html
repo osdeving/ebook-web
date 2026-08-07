@@ -1,0 +1,86 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.39">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Eleve \(b\) ao quadrado antes de reduzir</summary>
+      <p>Temos \(b^2=a^{(p+1)/2}=a\cdot a^{(p-1)/2}\). Para um resíduo quadrático, o último fator é \(1\) pelo critério de Euler.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — As duas raízes são opostas</summary>
+      <p>Depois de calcular \(b=a^{(p+1)/4}\bmod p\), a outra raiz é \(p-b\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Teste a hipótese antes de confiar na fórmula</summary>
+      <p>No terceiro caso, calcule \(a^{(p-1)/2}\bmod p\). Se o resultado for \(-1\), não existe raiz quadrada.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Como \(p\equiv3\pmod4\), o número \((p+1)/4\) é inteiro. Se \(b\equiv a^{(p+1)/4}\pmod p\), então</p>
+        <div class="display-math">
+          \[
+            b^2\equiv a^{(p+1)/2}
+            =a^{1+(p-1)/2}
+            =a\cdot a^{(p-1)/2}\pmod p.
+          \]
+        </div>
+        <p>Como \(a\) é resíduo quadrático e não nulo, o critério de Euler, demonstrado no <a href="#exercicio-3-37" data-source-xref>Exercício 3.37</a>, dá \(a^{(p-1)/2}\equiv1\pmod p\). Portanto \(b^2\equiv a\pmod p\).</p>
+      </li>
+      <li>
+        <ol type="i">
+          <li>
+            <p>Para \(p=587\), o expoente é \((587+1)/4=147\). Exponenciação modular dá</p>
+            <div class="display-math">
+              \[
+                116^{147}\equiv65\pmod{587}.
+              \]
+            </div>
+            <p>Logo as duas soluções são</p>
+            <div class="display-math">
+              \[
+                \boxed{b\equiv65,\ 522\pmod{587}},
+                \qquad
+                65^2\equiv522^2\equiv116\pmod{587}.
+              \]
+            </div>
+          </li>
+          <li>
+            <p>Para \(p=8627\), o expoente é \(2157\), e</p>
+            <div class="display-math">
+              \[
+                3217^{2157}\equiv2980\pmod{8627}.
+              \]
+            </div>
+            <p>Portanto</p>
+            <div class="display-math">
+              \[
+                \boxed{b\equiv2980,\ 5647\pmod{8627}},
+                \qquad
+                2980^2\equiv5647^2\equiv3217\pmod{8627}.
+              \]
+            </div>
+          </li>
+          <li>
+            <p>A hipótese do item (a) falha aqui. De fato,</p>
+            <div class="display-math">
+              \[
+                9109^{(10663-1)/2}=9109^{5331}
+                \equiv10662\equiv-1\pmod{10663}.
+              \]
+            </div>
+            <p>Pelo critério de Euler, \(9109\) é um não resíduo quadrático módulo \(10663\), portanto a congruência não possui solução. Como conferência, aplicar mecanicamente o expoente do item (a) produz</p>
+            <div class="display-math">
+              \[
+                9109^{2666}\equiv3502,\qquad
+                3502^2\equiv1554\equiv-9109\pmod{10663},
+              \]
+            </div>
+            <p>e não uma raiz de \(9109\). Assim, a resposta do terceiro subitem é: <strong>não existem raízes quadradas</strong>.</p>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </details>
+</div>

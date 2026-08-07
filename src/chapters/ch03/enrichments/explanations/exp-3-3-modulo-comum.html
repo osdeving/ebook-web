@@ -1,0 +1,7 @@
+<p class="supplement-lead">Dar a usuários diferentes expoentes diferentes sobre o mesmo N preserva uma estrutura secreta comum. Se a mesma mensagem for usada e os expoentes forem coprimos, Bézout pode recuperar o texto claro.</p>
+<ol class="slow-steps">
+  <li><strong>Duas observações.</strong> O atacante recebe \(c_1=m^{e_1}\) e \(c_2=m^{e_2}\) módulo N.</li>
+  <li><strong>Combine expoentes.</strong> Se \(\gcd(e_1,e_2)=1\), existem u,v com \(ue_1+ve_2=1\).</li>
+  <li><strong>Combine criptogramas.</strong> Quando os inversos necessários existem, \(c_1^u c_2^v\equiv m\pmod N\). Nenhuma fatoração foi usada.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> O ataque requer a mesma mensagem sob o módulo comum e as condições algébricas indicadas. A conclusão de engenharia é mais ampla: gere módulos independentes, não compartilhe os fatores.</div>

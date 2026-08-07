@@ -1,0 +1,7 @@
+<p class="supplement-lead">Uma roda de candidatos codifica os resíduos coprimos a um produto pequeno, como \(2\cdot3\cdot5\cdot7\). Assim, a busca nunca propõe números obviamente divisíveis.</p>
+<ol class="slow-steps">
+  <li><strong>Construa o período.</strong> Liste as classes coprimas com o produto M dos pequenos primos.</li>
+  <li><strong>Repita deslocamentos.</strong> Percorra candidatos somando as diferenças cíclicas entre essas classes.</li>
+  <li><strong>Teste de verdade.</strong> A roda é apenas um filtro barato: todos os primos grandes sobrevivem, mas muitos compostos também.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Aumentar demais a roda custa memória e preparação para ganhos decrescentes. Na prática, uma divisão experimental limitada ou um crivo pequeno antecede Miller–Rabin.</div>

@@ -1,0 +1,7 @@
+<p class="supplement-lead">Nem toda dependência de paridades separa os fatores. O teste final por mdc é parte do algoritmo, não um detalhe posterior.</p>
+<ol class="slow-steps">
+  <li><strong>Construa x e y.</strong> A relação garante \(x^2\equiv y^2\pmod N\).</li>
+  <li><strong>Teste sinais globais.</strong> Se x e y coincidem até sinal módulo N, os fatores de N não foram distribuídos entre x−y e x+y.</li>
+  <li><strong>Recicle.</strong> Escolha outra dependência linear ou colete mais relações; uma base do núcleo oferece várias combinações.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Descartar um resultado trivial não invalida as relações individuais. Elas podem participar de outra combinação que revele um fator.</div>

@@ -1,5 +1,7 @@
 const PERMALINK_TARGETS = [
   ".semantic[id]",
+  ".algorithm[id]",
+  ".proof[id]",
   ".exercise[id]",
   ".equation[id]",
   ".numbered-equation[id]",
@@ -50,7 +52,7 @@ function describeTarget(target: HTMLElement): string {
   const semanticTitle = target.querySelector<HTMLElement>(".semantic-title")?.textContent?.trim();
   const visibleLabel = [semanticLabel, semanticTitle].filter(Boolean).join(" ")
     || target.querySelector<HTMLElement>(
-      ".exercise-number, .equation-number, figcaption, caption",
+      ".exercise-number, .equation-number, figcaption, caption, h3, h4",
     )?.textContent?.replace(/\s+/gu, " ").trim();
   return visibleLabel || target.id;
 }

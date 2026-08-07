@@ -1,0 +1,187 @@
+<section class="chapter-section subsection" id="sec-3-7-1">
+  <div class="section-heading">
+    <span class="section-number">3.7.1</span>
+    <h2>Números suaves</h2>
+  </div>
+
+  <p>A etapa de construção de relações no procedimento de fatoração em três etapas descrito na <a href="#tab-3-4" data-source-xref>Tabela 3.4</a> exige que encontremos muitos inteiros com a propriedade de que \(a^2\bmod N\) se fatore como produto de primos pequenos. Como observado ao final da <a href="#sec-3-5" data-source-xref>Seção 3.5</a>, esses números altamente fatoráveis têm um nome.</p>
+
+  <aside class="semantic definition" id="def-numero-b-suave">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Um inteiro \(n\) é chamado de <strong>\(B\)-suave</strong> se todos os seus fatores primos são menores ou iguais a \(B\).</p>
+  </aside>
+
+  <aside class="semantic example" id="exemplo-3-42">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.42</span></div>
+    <p>Aqui estão os primeiros números \(5\)-suaves e os primeiros números que não são \(5\)-suaves:</p>
+    <div class="equation">\[
+      \begin{array}{rl}
+        5\text{-suaves:}&2,3,4,5,6,8,9,10,12,15,16,18,20,24,25,27,30,32,36,\ldots\\
+        \text{Não }5\text{-suaves:}&7,11,13,14,17,19,21,22,23,26,28,29,31,33,34,35,37,\ldots
+      \end{array}
+    \]</div>
+  </aside>
+
+  <aside class="semantic definition" id="def-funcao-psi">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>A função \(\psi(X,B)\) conta os números \(B\)-suaves,</p>
+    <div class="equation">\[\psi(X,B)=\#\{n:1&lt;n\le X\text{ e }n\text{ é }B\text{-suave}\}.\]</div>
+  </aside>
+
+  <p>Por exemplo,</p>
+  <div class="equation">\[\psi(25,5)=15,\]</div>
+  <p>pois os números \(5\)-suaves entre \(1\) e \(25\) são os \(15\) números</p>
+  <div class="equation">\[2,3,4,5,6,8,9,10,12,15,16,18,20,24,25.\]</div>
+
+  <p>Para avaliar a eficiência do método de fatoração em três etapas, precisamos compreender como \(\psi(X,B)\) se comporta para valores grandes de \(X\) e \(B\). Acontece que, para obter resultados úteis, as quantidades \(B\) e \(X\) devem crescer juntas exatamente da maneira certa. Um teorema importante nessa direção foi demonstrado por Canfield, Erdős e Pomerance <a href="../../references/#ref-24" data-source-xref>[24]</a>.</p>
+
+  <aside class="semantic theorem" id="teorema-3-43">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">3.43 — Canfield, Erdős, Pomerance</span></div>
+    <p>Fixe um número \(0&lt;\epsilon&lt;\tfrac12\), e faça \(X\) e \(B\) crescerem juntos satisfazendo</p>
+    <div class="equation">\[(\ln X)^\epsilon&lt;\ln B&lt;(\ln X)^{1-\epsilon}.\]</div>
+    <p>Por conveniência notacional, defina</p>
+    <div class="equation">\[u=\frac{\ln X}{\ln B}.\]</div>
+    <p>Então o número de números \(B\)-suaves menores que \(X\) satisfaz</p>
+    <div class="equation">\[\psi(X,B)=X\cdot u^{-u(1+o(1))}.\]</div>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-44">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.44</span></div>
+    <p>Usamos aqui, pela primeira vez, a notação de \(o\) pequeno. A expressão \(o(1)\) denota uma função que tende a \(0\) quando \(X\) tende ao infinito. Mais geralmente, escrevemos</p>
+    <div class="equation">\[f(X)=o\bigl(g(X)\bigr)\]</div>
+    <p>se a razão \(f(X)/g(X)\) tende a \(0\) quando \(X\) tende ao infinito. Observe que isso é diferente da notação de \(O\) grande introduzida na <a href="../ch02/#sec-2-6" data-source-xref>Seção 2.6</a>, na qual, recordemos, \(f(X)=O\bigl(g(X)\bigr)\) significa que \(f(X)\) é menor que um múltiplo de \(g(X)\).</p>
+  </aside>
+
+  <p>Resta saber como devemos escolher \(B\) em termos de \(X\). Acontece que a seguinte função \(L(X)\), de aparência curiosa, é aquela de que precisaremos:</p>
+
+  <div class="equation" id="eq-3-18"><span class="equation-number">(3.18)</span>\[L(X)=e^{\sqrt{(\ln X)(\ln\ln X)}}.\]</div>
+
+  <p>Então, como consequência imediata do <a href="#teorema-3-43" data-source-xref>Teorema 3.43</a>, obtemos uma estimativa fundamental para \(\psi\).</p>
+
+  <aside class="semantic corollary" id="cor-3-45">
+    <div class="semantic-header"><span class="semantic-label">Corolário</span><span class="semantic-title">3.45</span></div>
+    <p>Para qualquer valor fixo de \(c\) com \(0&lt;c&lt;1\),</p>
+    <div class="equation">\[\psi\bigl(X,L(X)^c\bigr)=X\cdot L(X)^{-\frac1{2c}(1+o(1))}\qquad\text{quando }X\to\infty.\]</div>
+  </aside>
+
+  <div class="semantic proof" id="proof-3-45">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Observe que, se \(B=L(X)^c\) e tomarmos qualquer \(\epsilon&lt;\tfrac12\), então</p>
+    <div class="equation">\[\ln B=c\ln L(X)=c\sqrt{(\ln X)(\ln\ln X)}\]</div>
+    <p>satisfaz \((\ln X)^\epsilon&lt;\ln B&lt;(\ln X)^{1-\epsilon}\). Portanto, podemos aplicar o <a href="#teorema-3-43" data-source-xref>Teorema 3.43</a> com</p>
+    <div class="equation">\[u=\frac{\ln X}{\ln B}=\frac1c\sqrt{\frac{\ln X}{\ln\ln X}}\]</div>
+    <p>para deduzir que \(\psi\bigl(X,L(X)^c\bigr)=X\cdot u^{-u(1+o(1))}\). Verifica-se facilmente (veja o Exercício 3.32) que esse valor de \(u\) satisfaz</p>
+    <div class="equation">\[u^{-u(1+o(1))}=L(X)^{-\frac1{2c}(1+o(1))},\]</div>
+    <p>o que conclui a demonstração do corolário.<span class="proof-end">□</span></p>
+  </div>
+
+  <p>A função \(L(X)=e^{\sqrt{(\ln X)(\ln\ln X)}}\) e outras funções semelhantes aparecem com destaque na teoria da fatoração por causa de sua estreita relação com a distribuição dos números suaves. Portanto, é importante compreender quão rapidamente \(L(X)\) cresce como função de \(X\).</p>
+
+  <p>Lembre-se de que, na <a href="../ch02/#sec-2-6" data-source-xref>Seção 2.6</a>, definimos a notação de \(O\) grande e a usamos para discutir as noções de tempos de execução polinomial, exponencial e subexponencial. Isso significava que o número de etapas necessárias para resolver um problema era, respectivamente, polinomial, exponencial e subexponencial no número de bits necessários para descrever o problema. Como complemento à notação de \(O\) grande, convém introduzir duas outras maneiras de comparar a taxa de crescimento de funções.</p>
+
+  <aside class="semantic definition" id="def-notacao-de-ordem">
+    <div class="semantic-header"><span class="semantic-label">Definição</span><span class="semantic-title">Notação de ordem</span></div>
+    <p>Sejam \(f(X)\) e \(g(X)\) funções de \(X\) cujos valores são positivos. Recorde que escrevemos</p>
+    <div class="equation">\[f(X)=O\bigl(g(X)\bigr)\]</div>
+    <p>se existem constantes positivas \(c\) e \(C\) tais que</p>
+    <div class="equation">\[f(X)\le cg(X)\qquad\text{para todo }X\ge C.\]</div>
+    <p>Do mesmo modo, dizemos que \(f\) é \(\Omega\) grande de \(g\) e escrevemos</p>
+    <div class="equation">\[f(X)=\Omega\bigl(g(X)\bigr)\]</div>
+    <p>se existem constantes positivas \(c\) e \(C\) tais que<sup id="fnref-3-7-1-7"><a href="#fn-3-7-1-7" data-source-xref>7</a></sup></p>
+    <div class="equation">\[f(X)\ge cg(X)\qquad\text{para todo }X\ge C.\]</div>
+    <p>Por fim, se \(f\) é tanto \(O\) grande quanto \(\Omega\) grande de \(g\), dizemos que \(f\) é \(\Theta\) grande de \(g\) e escrevemos \(f(X)=\Theta\bigl(g(X)\bigr)\).</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-46">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.46</span></div>
+    <p>Na teoria analítica dos números, existe uma versão alternativa e bastante intuitiva da notação de ordem. Para funções \(f(X)\) e \(g(X)\), escrevemos</p>
+    <div class="equation">\[
+      \begin{aligned}
+        f(X)&\ll g(X)&&\text{se }f(X)=O\bigl(g(X)\bigr),\\
+        f(X)&\gg g(X)&&\text{se }f(X)=\Omega\bigl(g(X)\bigr),\\
+        f(X)&\gg\ll g(X)&&\text{se }f(X)=\Theta\bigl(g(X)\bigr).
+      \end{aligned}
+    \]</div>
+    <p>A vantagem dessa notação é que ela é transitiva, assim como as relações usuais “maior que” e “menor que” são transitivas. Por exemplo, se \(f\gg g\) e \(g\gg h\), então \(f\gg h\).</p>
+  </aside>
+
+  <aside class="semantic definition" id="def-crescimento-exponencial-polinomial-subexponencial">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Com essa notação estabelecida, diz-se que uma função \(f(X)\) cresce <strong>exponencialmente</strong> se existem constantes positivas \(\alpha\) e \(\beta\) tais que</p>
+    <div class="equation">\[\Omega(X^\alpha)=f(X)=O(X^\beta),\]</div>
+    <p>e diz-se que ela cresce <strong>polinomialmente</strong> se existem constantes positivas \(\alpha\) e \(\beta\) tais que</p>
+    <div class="equation">\[\Omega\bigl((\ln X)^\alpha\bigr)=f(X)=O\bigl((\ln X)^\beta\bigr).\]</div>
+    <p>Na notação alternativa da <a href="#obs-3-46" data-source-xref>Observação 3.46</a>, os crescimentos exponencial e polinomial são escritos, respectivamente, como</p>
+    <div class="equation">\[X^\alpha\ll f(X)\ll X^\beta\qquad\text{e}\qquad(\ln X)^\alpha\ll f(X)\ll(\ln X)^\beta.\]</div>
+    <p>Uma função que fica entre essas duas categorias é chamada de <strong>subexponencial</strong>. Assim, \(f(X)\) é subexponencial se, para toda constante positiva \(\alpha\), por maior que seja, e para toda constante positiva \(\beta\), por menor que seja,</p>
+    <div class="equation" id="eq-3-19"><span class="equation-number">(3.19)</span>\[\Omega\bigl((\ln X)^\alpha\bigr)=f(X)=O(X^\beta).\]</div>
+    <p>Na notação alternativa, isso se torna \((\ln X)^\alpha\ll f(X)\ll X^\beta\).</p>
+  </aside>
+
+  <p>Observe que há uma possibilidade de confusão, pois essas definições não correspondem aos significados usuais de crescimento exponencial e polinomial encontrados no cálculo. O que realmente acontece é que “exponencial” e “polinomial” se referem a taxas de crescimento no número de bits necessários para escrever \(X\), isto é, a funções exponenciais ou polinomiais de \(\log_2(X)\).</p>
+
+  <aside class="semantic remark" id="obs-3-47">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.47</span></div>
+    <p>A função \(L(X)\) pertence à categoria subexponencial. Deixamos para você demonstrar isso no Exercício 3.30. Veja a <a href="#tab-3-7" data-source-xref>Tabela 3.7</a> para ter uma ideia aproximada de quão rapidamente \(L(X)\) cresce à medida que \(X\) aumenta.</p>
+  </aside>
+
+  <div class="table-wrap" id="tab-3-7">
+    <table>
+      <caption>Tabela 3.7: O crescimento de \(L(X)=e^{\sqrt{(\ln X)(\ln\ln X)}}\)</caption>
+      <thead><tr><th>\(X\)</th><th>\(\ln L(X)\)</th><th>\(L(X)\)</th></tr></thead>
+      <tbody>
+        <tr><td>\(2^{100}\)</td><td>\(17{,}141\)</td><td>\(2^{24{,}73}\)</td></tr>
+        <tr><td>\(2^{250}\)</td><td>\(29{,}888\)</td><td>\(2^{43{,}12}\)</td></tr>
+        <tr><td>\(2^{500}\)</td><td>\(45{,}020\)</td><td>\(2^{64{,}95}\)</td></tr>
+        <tr><td>\(2^{1000}\)</td><td>\(67{,}335\)</td><td>\(2^{97{,}14}\)</td></tr>
+        <tr><td>\(2^{2000}\)</td><td>\(100{,}145\)</td><td>\(2^{144{,}48}\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Suponha que tentemos fatorar \(N\) procurando valores de \(a^2\bmod N\) que sejam \(B\)-suaves. Para executar a etapa de eliminação das equações lineares, precisamos de pelo menos tantos números \(B\)-suaves quantos são os primos menores que \(B\). Precisamos dessa quantidade porque, na etapa de eliminação, os números suaves correspondem às variáveis, enquanto os primos menores que \(B\) correspondem às equações, e precisamos de mais variáveis que equações. Para garantir que isso aconteça, precisamos, portanto, de pelo menos \(\pi(B)\) números \(B\)-suaves, em que \(\pi(B)\) é o número de primos até \(B\). Veremos que podemos tomar \(B=L(N)^c\) para um valor adequado de \(c\). Na próxima proposição, usamos o teorema dos números primos (Teorema 3.21) e a fórmula para \(\psi\bigl(X,L(X)^c\bigr)\) dada no <a href="#cor-3-45" data-source-xref>Corolário 3.45</a> para escolher o menor valor de \(c\) que nos dê alguma chance de fatorar \(N\) por esse método.</p>
+
+  <aside class="semantic proposition" id="prop-3-48">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">3.48</span></div>
+    <p>Seja \(L(X)=e^{\sqrt{(\ln X)(\ln\ln X)}}\), como no <a href="#cor-3-45" data-source-xref>Corolário 3.45</a>; seja \(N\) um inteiro grande e defina \(B=L(N)^{1/\sqrt2}\).</p>
+    <ol type="a">
+      <li>Esperamos verificar aproximadamente \(L(N)^{\sqrt2}\) números aleatórios módulo \(N\) para encontrar \(\pi(B)\) números que sejam \(B\)-suaves.</li>
+      <li>Esperamos verificar aproximadamente \(L(N)^{\sqrt2}\) números aleatórios da forma \(a^2\bmod N\) para encontrar números \(B\)-suaves suficientes para fatorar \(N\).</li>
+    </ol>
+    <p>Portanto, o procedimento de fatoração descrito na <a href="#tab-3-4" data-source-xref>Tabela 3.4</a> deve ter tempo de execução subexponencial.</p>
+  </aside>
+
+  <div class="semantic proof" id="proof-3-48">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Já explicamos por que (a) e (b) são equivalentes, supondo que os números \(a^2\bmod N\) sejam suficientemente aleatórios. Agora demonstramos (a).</p>
+    <p>A probabilidade de um número escolhido aleatoriamente módulo \(N\) ser \(B\)-suave é \(\psi(N,B)/N\). Para encontrar \(\pi(B)\) números que sejam \(B\)-suaves, precisamos verificar aproximadamente</p>
+    <div class="equation" id="eq-3-20"><span class="equation-number">(3.20)</span>\[\frac{\pi(B)}{\psi(N,B)/N}\qquad\text{números}.\]</div>
+    <p>Queremos escolher \(B\) de modo a minimizar essa função, pois verificar a suavidade de números é um processo demorado.</p>
+    <p>O <a href="#cor-3-45" data-source-xref>Corolário 3.45</a> diz que</p>
+    <div class="equation">\[\psi\bigl(N,L(N)^c\bigr)/N\approx L(N)^{-1/(2c)},\]</div>
+    <p>portanto definimos \(B=L(N)^c\) e procuramos o valor de \(c\) que minimiza <a href="#eq-3-20" data-source-xref>(3.20)</a>. O teorema dos números primos (Teorema 3.21) nos diz que \(\pi(B)\approx B/\ln(B)\), de modo que <a href="#eq-3-20" data-source-xref>(3.20)</a> é igual a</p>
+    <div class="equation">\[
+      \frac{\pi\bigl(L(N)^c\bigr)}{\psi\bigl(N,L(N)^c\bigr)/N}
+      \approx\frac{L(N)^c}{c\ln L(N)}\cdot\frac1{L(N)^{-1/(2c)}}
+      =L(N)^{c+1/(2c)}\cdot\frac1{c\ln L(N)}.
+    \]</div>
+    <p>O fator \(L(N)^{c+1/(2c)}\) domina essa última expressão, portanto escolhemos o valor de \(c\) que minimiza a quantidade \(c+\tfrac1{2c}\). Esse é um problema elementar de cálculo. O mínimo ocorre quando \(c=1/\sqrt2\), e o valor mínimo é \(\sqrt2\). Assim, se escolhermos \(B\approx L(N)^{1/\sqrt2}\), precisaremos verificar aproximadamente \(L(N)^{\sqrt2}\) valores para encontrar \(\pi(B)\) números que sejam \(B\)-suaves e, portanto, relações suficientes para fatorar \(N\).<span class="proof-end">□</span></p>
+  </div>
+
+  <aside class="semantic remark" id="obs-3-49">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.49</span></div>
+    <p>A <a href="#prop-3-48" data-source-xref>Proposição 3.48</a> sugere que precisamos verificar aproximadamente \(L(N)^{\sqrt2}\) números escolhidos aleatoriamente módulo \(N\) para encontrar números suaves suficientes para fatorar \(N\). Há várias maneiras de diminuir o tempo de busca. Em particular, em vez de usar valores aleatórios de \(a\) para calcular números da forma \(a^2\bmod N\), podemos escolher números \(a\) apenas um pouco maiores que \(\sqrt N\). Então \(a^2\bmod N\) é \(O(\sqrt N)\), portanto tem maior probabilidade de ser \(B\)-suave que um número que seja \(O(N)\). Refazendo o cálculo da <a href="#prop-3-48" data-source-xref>Proposição 3.48</a>, verifica-se que basta examinar aproximadamente \(L(N)\) números aleatórios da forma \(a^2\bmod N\), com \(a\) próximo de \(\sqrt N\). Essa é uma economia significativa em relação a \(L(N)^{\sqrt2}\). Veja o Exercício 3.33 para mais detalhes.</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-50">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.50</span></div>
+    <p>Ao estimar o esforço necessário para fatorar \(N\), ignoramos por completo o trabalho exigido para verificar se determinado número é \(B\)-suave. Por exemplo, se verificarmos a \(B\)-suavidade por divisão por tentativas, isto é, dividindo por cada primo menor que \(B\), então são necessárias aproximadamente \(\pi(B)\) divisões por tentativas para verificar a \(B\)-suavidade. Levando esse esforço adicional em conta na demonstração da <a href="#prop-3-48" data-source-xref>Proposição 3.48</a>, verifica-se que são necessárias aproximadamente \(L(N)^{\sqrt2}\) divisões por tentativas para encontrar números suaves suficientes para fatorar \(N\), mesmo usando valores de \(a\approx\sqrt N\), como na <a href="#obs-3-49" data-source-xref>Observação 3.49</a>.</p>
+    <p>O crivo quadrático, que descrevemos na <a href="#sec-3-7-2" data-source-xref>Seção 3.7.2</a>, usa um método mais eficiente para gerar números \(B\)-suaves e, com isso, reduz o tempo de execução a \(L(N)\). Veja a <a href="#tab-3-7" data-source-xref>Tabela 3.7</a> para recordar como \(L(N)\) cresce e por que um tempo de execução \(L(N)\) é muito melhor que um tempo de execução \(L(N)^{\sqrt2}\). No Exercício 3.29, pedimos que você estime quanto tempo leva para realizar \(L(N)\) operações em um computador moderadamente rápido. Durante alguns anos, pensou-se que nenhum algoritmo de fatoração pudesse usar menos que uma potência fixa de \(L(N)\) etapas, mas a invenção do crivo de corpos de números (<a href="#sec-3-7-3" data-source-xref>Seção 3.7.3</a>) mostrou que isso era incorreto. O crivo de corpos de números, cujo tempo de execução é</p>
+    <div class="equation">\[e^{c\sqrt[3]{(\ln N)(\ln\ln N)^2}},\]</div>
+    <p>mais rápido que \(L(N)^\epsilon\) para todo \(\epsilon&gt;0\), alcança sua velocidade avançando para além do domínio dos inteiros ordinários.</p>
+  </aside>
+
+  <ol class="footnotes" start="7">
+    <li id="fn-3-7-1-7">Observação: a notação de \(\Omega\) grande usada por cientistas da computação e criptógrafos não significa o mesmo que a notação de \(\Omega\) grande dos matemáticos. Na matemática, especialmente na teoria analítica dos números, a expressão \(f(n)=\Omega\bigl(g(n)\bigr)\) significa que existe uma constante \(c\) tal que há infinitos inteiros \(n\) para os quais \(f(n)\ge cg(n)\). Neste livro, usamos a definição da ciência da computação. <a href="#fnref-3-7-1-7" data-source-xref aria-label="Voltar à chamada da nota 7">↩</a></li>
+  </ol>
+</section>

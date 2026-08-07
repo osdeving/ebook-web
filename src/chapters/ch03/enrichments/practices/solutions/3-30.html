@@ -1,0 +1,59 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.30">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Compare logaritmos, não as funções originais</summary>
+      <p>Escreva \(t=\ln X\). Então \(\ln L(X)=\sqrt{t\ln t}\), enquanto \(\ln((\ln X)^\alpha)=\alpha\ln t\) e \(\ln(X^\beta)=\beta t\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Isole os quocientes que tendem a zero ou ao infinito</summary>
+      <p>Use \(\sqrt{t/\ln t}\to\infty\) na comparação com potências de \(\ln X\) e \(\sqrt{(\ln t)/t}\to0\) na comparação com potências de \(X\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Coloque \(t=\ln X\). Quando \(X\to\infty\), também \(t\to\infty\), e</p>
+    <div class="display-math">
+      \[
+        \ln L(X)=\sqrt{t\ln t}.
+      \]
+    </div>
+    <ol type="a">
+      <li>
+        <p>Fixe \(\alpha&gt;0\). O logaritmo do quociente entre \(L(X)\) e \((\ln X)^\alpha=t^\alpha\) é</p>
+        <div class="display-math">
+          \[
+            \ln\frac{L(X)}{(\ln X)^\alpha}
+            =\sqrt{t\ln t}-\alpha\ln t
+            =\ln t\left(\sqrt{\frac{t}{\ln t}}-\alpha\right).
+          \]
+        </div>
+        <p>Como \(t/\ln t\to\infty\), a última expressão tende a \(+\infty\). Logo</p>
+        <div class="display-math">
+          \[
+            \frac{L(X)}{(\ln X)^\alpha}\longrightarrow\infty.
+          \]
+        </div>
+        <p>Em particular, o quociente é maior que uma constante positiva para todo \(X\) suficientemente grande, isto é, \(L(X)=\Omega((\ln X)^\alpha)\).</p>
+      </li>
+      <li>
+        <p>Fixe \(\beta&gt;0\). Agora</p>
+        <div class="display-math">
+          \[
+            \ln\frac{L(X)}{X^\beta}
+            =\sqrt{t\ln t}-\beta t
+            =t\left(\sqrt{\frac{\ln t}{t}}-\beta\right).
+          \]
+        </div>
+        <p>Como \((\ln t)/t\to0\), o fator entre parênteses tende a \(-\beta\); portanto a expressão tende a \(-\infty\). Assim,</p>
+        <div class="display-math">
+          \[
+            \frac{L(X)}{X^\beta}\longrightarrow0,
+          \]
+        </div>
+        <p>o que implica \(L(X)=\mathcal O(X^\beta)\).</p>
+      </li>
+    </ol>
+    <p>As duas conclusões valem para todo \(\alpha&gt;0\) e todo \(\beta&gt;0\), exatamente a definição de crescimento subexponencial usada no capítulo.</p>
+  </details>
+</div>

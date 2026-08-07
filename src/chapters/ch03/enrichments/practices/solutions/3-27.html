@@ -1,0 +1,67 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.27">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Restrinja os primos permitidos</summary>
+      <p>Um número \(B\)-suave só pode usar primos \(p\le B\). Para \(B=5\), por exemplo, ele tem a forma \(2^a3^b5^c\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Gere produtos em ordem</summary>
+      <p>Liste as potências possíveis de cada primo e forme produtos que não ultrapassem \(X\). Exclua \(1\), pois \(\psi(X,B)\) conta de \(2\) até \(X\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Confira cada lista por fatoração</summary>
+      <p>Ao terminar, verifique que todo número listado tem apenas fatores permitidos e que todo número omitido possui algum fator primo maior que \(B\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Usando apenas \(2\) e \(3\), obtemos</p>
+        <p>\[
+          \{2,3,4,6,8,9,12,16,18,24\}.
+        \]</p>
+        <p>Logo \(\boxed{\psi(25,3)=10}\).</p>
+      </li>
+      <li>
+        <p>Com fatores primos em \(\{2,3,5\}\), a lista até \(35\) é</p>
+        <p>\[
+          \{2,3,4,5,6,8,9,10,12,15,16,18,20,24,25,27,30,32\}.
+        \]</p>
+        <p>Portanto \(\boxed{\psi(35,5)=18}\).</p>
+      </li>
+      <li>
+        <p>Com fatores em \(\{2,3,5,7\}\),</p>
+        <p>\[
+          \begin{aligned}
+          \{&2,3,4,5,6,7,8,9,10,12,14,15,16,18,20,21,24,25,\\
+            &27,28,30,32,35,36,40,42,45,48,49,50\}.
+          \end{aligned}
+        \]</p>
+        <p>Há \(30\) elementos, logo \(\boxed{\psi(50,7)=30}\).</p>
+      </li>
+      <li>
+        <p>Os números \(5\)-suaves até \(100\) são</p>
+        <p>\[
+          \begin{aligned}
+          \{&2,3,4,5,6,8,9,10,12,15,16,18,20,24,25,27,30,32,\\
+            &36,40,45,48,50,54,60,64,72,75,80,81,90,96,100\}.
+          \end{aligned}
+        \]</p>
+        <p>Assim \(\boxed{\psi(100,5)=33}\).</p>
+      </li>
+      <li>
+        <p>Acrescentando o primo \(7\), a lista completa torna-se</p>
+        <p>\[
+          \begin{aligned}
+          \{&2,3,4,5,6,7,8,9,10,12,14,15,16,18,20,21,24,25,27,28,\\
+            &30,32,35,36,40,42,45,48,49,50,54,56,60,63,64,70,72,75,\\
+            &80,81,84,90,96,98,100\}.
+          \end{aligned}
+        \]</p>
+        <p>Portanto \(\boxed{\psi(100,7)=45}\).</p>
+      </li>
+    </ol>
+  </details>
+</div>

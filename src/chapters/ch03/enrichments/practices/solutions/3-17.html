@@ -1,0 +1,54 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.17">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Liste os primos pequenos</summary>
+      <p>Para o item (a), conte \(2,3,5,7,11,13,17,19,\ldots\) sem incluir números maiores que o limite.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use um crivo</summary>
+      <p>No item (b), marque os múltiplos de cada primo \(p\le\sqrt X\). Os índices ainda não marcados são exatamente os primos até \(X\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — A razão deve tender a \(1\)</summary>
+      <p>Calcule \(\pi(X)\ln X/X\). O teorema dos números primos prevê que esses valores se aproximem de \(1\), sem exigir monotonicidade.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Os primos até \(20\) são</p>
+        <p>\[2,3,5,7,11,13,17,19,\]</p>
+        <p>de modo que \(\pi(20)=8\). Acrescentando \(23,29\), obtemos \(\pi(30)=10\). A lista completa até \(100\) contém \(25\) primos, logo</p>
+        <p>\[\boxed{\pi(20)=8,\qquad\pi(30)=10,\qquad\pi(100)=25.}\]</p>
+      </li>
+      <li>
+        <p>Uma implementação direta do crivo de Eratóstenes é:</p>
+        <pre><code>function pi(X) {
+  const prime = Array(X + 1).fill(true);
+  prime[0] = prime[1] = false;
+  for (let p = 2; p * p &lt;= X; p++) {
+    if (prime[p]) {
+      for (let m = p * p; m &lt;= X; m += p) prime[m] = false;
+    }
+  }
+  return prime.reduce((total, value) =&gt; total + Number(value), 0);
+}</code></pre>
+        <p>O programa dá:</p>
+        <p>\[
+          \begin{array}{c|r|c}
+          X&\pi(X)&\pi(X)/(X/\ln X)\\ \hline
+          100&25&1{,}151293\\
+          1000&168&1{,}160503\\
+          10000&1229&1{,}131951\\
+          100000&9592&1{,}104320
+          \end{array}
+        \]</p>
+        <p>As razões ainda oscilam e, nesse trecho, descem lentamente em direção a \(1\). Isso é plenamente compatível com</p>
+        <p>\[\lim_{X\to\infty}\frac{\pi(X)}{X/\ln X}=1,\]</p>
+        <p>portanto os dados tornam o teorema dos números primos plausível, embora naturalmente não constituam uma demonstração.</p>
+      </li>
+    </ol>
+  </details>
+</div>

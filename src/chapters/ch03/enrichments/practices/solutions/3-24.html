@@ -1,0 +1,75 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.24">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Procure \(a^2-N=b^2\)</summary>
+      <p>Testar se \(N+b^2\) é quadrado equivale a procurar um quadrado \(a^2\) para o qual \(a^2-N\) também seja quadrado.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Fatore a diferença de quadrados</summary>
+      <p>Quando \(N+b^2=a^2\), use \(N=a^2-b^2=(a-b)(a+b)\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Para a lista longa, teste só candidatos a \(a\)</summary>
+      <p>Em vez de imprimir \(126\) somas, liste \(a^2-N\) para todos os inteiros \(a\) possíveis e verifique qual dessas diferenças é um quadrado.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Calculando desde \(b=1\),</p>
+        <p>\[
+          53357+1^2=53358,\qquad
+          53357+2^2=53361=231^2.
+        \]</p>
+        <p>Logo \(a=231\), \(b=2\), e</p>
+        <p>\[\boxed{53357=(231-2)(231+2)=229\cdot233}.\]</p>
+      </li>
+      <li>
+        <p>A lista completa até o primeiro quadrado é</p>
+        <p>\[
+          \begin{array}{c|ccccc}
+          b&1&2&3&4&5\\ \hline
+          34571+b^2&34572&34575&34580&34587&34596=186^2
+          \end{array}
+        \]</p>
+        <p>Assim, \(a=186\), \(b=5\), e</p>
+        <p>\[\boxed{34571=181\cdot191}.\]</p>
+      </li>
+      <li>
+        <p>Temos</p>
+        <p>\[
+          \begin{array}{c|rrrrrr}
+          b&1&2&3&4&5&6\\ \hline
+          25777+b^2&25778&25781&25786&25793&25802&25813\\[2pt]
+          b&7&8&9&10&11&12\\ \hline
+          25777+b^2&25826&25841&25858&25877&25898&25921=161^2
+          \end{array}
+        \]</p>
+        <p>Portanto, \(a=161\), \(b=12\), e</p>
+        <p>\[\boxed{25777=149\cdot173}.\]</p>
+      </li>
+      <li>
+        <p>Aqui a busca por \(b\) é mais longa. Ela pode ser verificada integralmente com menos linhas observando que \(N+b^2=a^2\) se, e somente se, \(a^2-N=b^2\). Para \(1\le b\le126\), os únicos inteiros \(a\) possíveis vão de \(254\) a \(283\). Todas as diferenças são:</p>
+        <p>\[
+          \begin{array}{c|r|c|r|c|r}
+          a&a^2-N&a&a^2-N&a&a^2-N\\ \hline
+          254&303&264&5483&274&10863\\
+          255&812&265&6012&275&11412\\
+          256&1323&266&6543&276&11963\\
+          257&1836&267&7076&277&12516\\
+          258&2351&268&7611&278&13071\\
+          259&2868&269&8148&279&13628\\
+          260&3387&270&8687&280&14187\\
+          261&3908&271&9228&281&14748\\
+          262&4431&272&9771&282&15311\\
+          263&4956&273&10316&283&15876=126^2
+          \end{array}
+        \]</p>
+        <p>Cada diferença anterior à última está estritamente entre dois quadrados consecutivos; a primeira diferença quadrada é \(15876=126^2\). Logo \(a=283\), \(b=126\), e</p>
+        <p>\[\boxed{64213=(283-126)(283+126)=157\cdot409}.\]</p>
+      </li>
+    </ol>
+  </details>
+</div>

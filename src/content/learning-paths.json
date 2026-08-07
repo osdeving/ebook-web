@@ -96,7 +96,7 @@
     "id": "maratona-exercicios",
     "title": "Maratona de exercícios",
     "tagline": "Pratique em blocos, com dicas antes da solução",
-    "description": "Seleção crescente de problemas textuais dos dois capítulos, organizada por objetivo e não apenas por numeração.",
+    "description": "Seleção crescente de problemas textuais dos três capítulos, organizada por objetivo e não apenas por numeração.",
     "level": "Todos os níveis",
     "duration": "Flexível",
     "goal": "exercicios",
@@ -107,7 +107,66 @@
       { "title": "Sistemas criptográficos", "why": "Integre aritmética, codificação e chaves.", "href": "chapters/ch01/#exercicio-1-40", "type": "Exercícios 1.40–1.50" },
       { "title": "PLD, DH e Elgamal", "why": "Aplique os problemas computacionais aos protocolos.", "href": "chapters/ch02/#exercicio-2-3", "type": "Exercícios 2.3–2.14" },
       { "title": "Grupos e complexidade", "why": "Passe da conta à demonstração estrutural.", "href": "chapters/ch02/#exercicio-2-15", "type": "Exercícios 2.15–2.29" },
-      { "title": "Anéis, polinômios e corpos", "why": "Feche com as estruturas de maior abstração.", "href": "chapters/ch02/#exercicio-2-30", "type": "Exercícios 2.30–2.41" }
+      { "title": "Anéis, polinômios e corpos", "why": "Consolide as estruturas algébricas de maior abstração.", "href": "chapters/ch02/#exercicio-2-30", "type": "Exercícios 2.30–2.41" },
+      { "title": "RSA e primalidade", "why": "Conecte potências modulares, geração de chaves e testes de primos.", "href": "chapters/ch03/#exercicio-3-1", "type": "Exercícios 3.1–3.21" },
+      { "title": "Fatoração e crivos", "why": "Passe de métodos elementares à coleta de relações suaves.", "href": "chapters/ch03/#exercicio-3-22", "type": "Exercícios 3.22–3.33" },
+      { "title": "Resíduos e cifragem probabilística", "why": "Feche com reciprocidade quadrática e Goldwasser–Micali.", "href": "chapters/ch03/#exercicio-3-34", "type": "Exercícios 3.34–3.43" }
+    ]
+  },
+  {
+    "id": "entender-rsa",
+    "title": "Quero entender RSA",
+    "tagline": "Da aritmética modular ao uso seguro",
+    "description": "Uma rota que constrói a correção do RSA, mostra sua ligação com fatoração e separa a operação matemática de um esquema de cifragem seguro.",
+    "level": "Intermediário",
+    "duration": "4–6 horas",
+    "goal": "rsa",
+    "steps": [
+      { "title": "Recupere inversos com Bézout", "why": "A geração da chave privada exige inverter o expoente público.", "href": "chapters/ch01/#theorem-1-11", "type": "Teorema e laboratório" },
+      { "title": "Use a fórmula de Euler módulo pq", "why": "Entenda por que uma potência pode desfazer a outra.", "href": "chapters/ch03/#sec-3-1", "type": "Leitura" },
+      { "title": "Monte as chaves RSA", "why": "Acompanhe cada escolha, congruência e verificação.", "href": "chapters/ch03/#sec-3-2", "type": "Leitura e laboratório" },
+      { "title": "Relacione φ(N) e os fatores", "why": "Veja por que conhecer a função totiente quebra a armadilha.", "href": "chapters/ch03/#lab-3-2-phi-fatora", "type": "Explicação e laboratório" },
+      { "title": "Examine a maleabilidade", "why": "Descubra por que RSA cru não oferece segurança sem uma construção adequada.", "href": "chapters/ch03/#sec-3-3", "type": "Leitura e laboratório" },
+      { "title": "Gere primos com confiança", "why": "Teste candidatos e quantifique a chance residual de erro.", "href": "chapters/ch03/#sec-3-4", "type": "Leitura e laboratório" },
+      { "title": "Compare com a especificação moderna", "why": "Confronte o modelo didático com codificação e padding padronizados.", "href": "chapters/ch03/#reading-3-rsa-padroes", "type": "Leitura externa" },
+      { "title": "Resolva um ciclo completo", "why": "Consolide geração, cifragem, decifragem e justificativa.", "href": "chapters/ch03/#exercicio-3-5", "type": "Exercício" }
+    ]
+  },
+  {
+    "id": "primos-e-fatoracao",
+    "title": "Primos, fatoração e crivos",
+    "tagline": "Do teste de uma base ao crivo do corpo de números",
+    "description": "Percurso algorítmico para distinguir provar primalidade de encontrar fatores e comparar as hipóteses que fazem cada método funcionar.",
+    "level": "Intermediário–avançado",
+    "duration": "8–11 horas",
+    "goal": "fatoracao",
+    "steps": [
+      { "title": "Teste a congruência de Fermat", "why": "Estabeleça a ideia de testemunha e seus falsos positivos.", "href": "chapters/ch03/#sec-3-4", "type": "Leitura" },
+      { "title": "Execute Miller–Rabin", "why": "Observe a cadeia de quadrados e o erro unilateral.", "href": "chapters/ch03/#lab-3-4-miller-rabin", "type": "Algoritmo e laboratório" },
+      { "title": "Compare provável e provado", "why": "Separe confiança probabilística, certificado e decisão determinística.", "href": "chapters/ch03/#sec-3-4-2", "type": "Leitura" },
+      { "title": "Explore Pollard p − 1", "why": "Veja como a estrutura de um fator, e não só seu tamanho, muda o custo.", "href": "chapters/ch03/#sec-3-5", "type": "Algoritmo e laboratório" },
+      { "title": "Construa uma congruência de quadrados", "why": "Aprenda o mecanismo comum aos crivos modernos.", "href": "chapters/ch03/#sec-3-6", "type": "Leitura e laboratório" },
+      { "title": "Meça a suavidade", "why": "Entenda o recurso probabilístico que alimenta a coleta de relações.", "href": "chapters/ch03/#sec-3-7-1", "type": "Leitura e laboratório" },
+      { "title": "Crive uma base de fatores", "why": "Transforme valores suaves em álgebra linear módulo 2.", "href": "chapters/ch03/#sec-3-7-2", "type": "Algoritmo e laboratório" },
+      { "title": "Conheça os dois lados do NFS", "why": "Enxergue como o corpo de números reduz o tamanho das relações.", "href": "chapters/ch03/#sec-3-7-3", "type": "Leitura avançada" }
+    ]
+  },
+  {
+    "id": "residuos-e-probabilidade",
+    "title": "Resíduos quadráticos e cifragem probabilística",
+    "tagline": "Uma ponte entre teoria dos números e segurança semântica",
+    "description": "Rota para dominar Legendre e Jacobi, aplicar reciprocidade quadrática e entender por que aleatorizar muda a segurança de uma cifra.",
+    "level": "Avançado",
+    "duration": "5–7 horas",
+    "goal": "residuos",
+    "steps": [
+      { "title": "Reconheça quadrados módulo p", "why": "Comece pelo subgrupo de resíduos e pelo critério de Euler.", "href": "chapters/ch03/#sec-3-9", "type": "Leitura" },
+      { "title": "Calcule símbolos de Legendre", "why": "Converta uma pergunta sobre raízes numa quantidade multiplicativa.", "href": "chapters/ch03/#teorema-3-62", "type": "Teorema" },
+      { "title": "Aplique reciprocidade quadrática", "why": "Reduza símbolos grandes por trocas e restos, como em Euclides.", "href": "chapters/ch03/#teorema-3-66", "type": "Teorema e laboratório" },
+      { "title": "Não confunda Jacobi 1 com quadrado", "why": "Identifique a ambiguidade que sustenta uma hipótese criptográfica.", "href": "chapters/ch03/#sec-3-9", "type": "Explicação" },
+      { "title": "Compare cifragem determinística e aleatória", "why": "Veja por que repetir a mensagem não precisa repetir o criptograma.", "href": "chapters/ch03/#sec-3-10", "type": "Leitura" },
+      { "title": "Execute Goldwasser–Micali", "why": "Acompanhe resíduos, não resíduos e decifragem bit a bit.", "href": "chapters/ch03/#exemplo-3-70", "type": "Exemplo e laboratório" },
+      { "title": "Teste a distribuição", "why": "Experimente muitas aleatoriedades para a mesma mensagem.", "href": "chapters/ch03/#lab-3-10-goldwasser-micali", "type": "Laboratório" }
     ]
   }
 ]

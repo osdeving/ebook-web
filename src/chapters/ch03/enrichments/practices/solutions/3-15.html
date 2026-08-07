@@ -1,0 +1,87 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.15">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Separe a potência de \(2\)</summary>
+      <p>Em cada item, escreva \(n-1=2^kq\), com \(q\) ímpar. Comece por \(x_0=a^q\bmod n\) e eleve ao quadrado para obter \(x_1,\ldots,x_{k-1}\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Saiba quando a base passa</summary>
+      <p>A base \(a\) não é testemunha se \(x_0=1\) ou se algum \(x_i=-1\pmod n\). Se nenhuma dessas condições ocorrer, \(a\) prova que \(n\) é composto.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Dez falhas são uma conclusão probabilística</summary>
+      <p>Para um candidato a primo, teste dez bases distintas. Não encontrar uma testemunha não é uma prova de primalidade, mas é exatamente a conclusão “provavelmente primo” pedida.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Usaremos as bases \(2,3,5,7,11,13,17,19,23,29\) quando forem necessários dez testes. Em cada lista abaixo, os termos são</p>
+    <p>\[x_i=a^{2^iq}\bmod n,\qquad 0\le i\le k-1.\]</p>
+    <ol type="a">
+      <li>
+        <p>\(1104=2^4\cdot69\). Para \(a=2\), a cadeia é</p>
+        <p>\[
+          2^{69}\equiv967,\quad
+          2^{138}\equiv259,\quad
+          2^{276}\equiv781,\quad
+          2^{552}\equiv1\pmod{1105}.
+        \]</p>
+        <p>O primeiro termo não é \(1\), e nenhum termo é \(-1\equiv1104\). Portanto \(2\) é testemunha de Miller–Rabin e \(1105\) é composto. De fato, \(1105=5\cdot13\cdot17\).</p>
+      </li>
+      <li>
+        <p>\(294408=2^3\cdot36801\). Com \(a=2\),</p>
+        <p>\[
+          2^{36801}\equiv512,\qquad
+          2^{73602}\equiv262144,\qquad
+          2^{147204}\equiv1\pmod{294409}.
+        \]</p>
+        <p>Como não aparece \(1\) no primeiro termo nem \(-1\equiv294408\) na cadeia, \(2\) é testemunha. Logo \(294409\) é composto; a fatoração é \(37\cdot73\cdot109\).</p>
+      </li>
+      <li>
+        <p>\(294438=2\cdot147219\), de modo que basta calcular \(a^{147219}\). Para as dez bases:</p>
+        <p>\[
+          \begin{array}{c|rrrrrrrrrr}
+          a&2&3&5&7&11&13&17&19&23&29\\ \hline
+          a^{147219}\bmod n&1&-1&1&1&1&-1&1&1&-1&-1
+          \end{array}
+        \]</p>
+        <p>Todas as dez bases passam; portanto o teste conclui que \(294439\) é provavelmente primo.</p>
+      </li>
+      <li>
+        <p>\(118901508=2^2\cdot29725377\). Os pares \((x_0,x_1)\), escritos com \(-1\) no lugar de \(118901508\), são</p>
+        <p>\[
+          \begin{array}{c|cccccccccc}
+          a&2&3&5&7&11&13&17&19&23&29\\ \hline
+          x_0&7906806&-1&-1&7906806&-1&1&7906806&110994703&110994703&1\\
+          x_1&-1&1&1&-1&1&1&-1&-1&-1&1
+          \end{array}
+        \]</p>
+        <p>Cada coluna contém \(x_0=1\) ou algum \(x_i=-1\). Assim as dez bases falham em testemunhar a composição, e \(118901509\) é provavelmente primo.</p>
+      </li>
+      <li>
+        <p>\(118901520=2^4\cdot7431345\). Para \(a=2\),</p>
+        <p>\[
+          (x_0,x_1,x_2,x_3)\equiv
+          (45274074,1758249,1,1)\pmod{118901521}.
+        \]</p>
+        <p>O primeiro termo não é \(1\) e nenhum termo é \(-1\equiv118901520\). Logo \(2\) é testemunha e o número é composto. A verificação independente é \(118901521=271\cdot541\cdot811\).</p>
+      </li>
+      <li>
+        <p>\(118901526=2\cdot59450763\). Os dez resíduos são</p>
+        <p>\[
+          \begin{array}{c|rrrrrrrrrr}
+          a&2&3&5&7&11&13&17&19&23&29\\ \hline
+          a^{59450763}\bmod n&1&-1&-1&1&1&1&1&1&1&-1
+          \end{array}
+        \]</p>
+        <p>Todos são \(1\) ou \(-1\); portanto \(118901527\) é provavelmente primo.</p>
+      </li>
+      <li>
+        <p>\(118915386=2\cdot59457693\). Já a base \(a=2\) fornece</p>
+        <p>\[2^{59457693}\equiv113834375\not\equiv\pm1\pmod{118915387}.\]</p>
+        <p>Assim \(2\) é testemunha de Miller–Rabin, e \(118915387\) é composto. De fato, \(118915387=6571\cdot18097\).</p>
+      </li>
+    </ol>
+  </details>
+</div>

@@ -1,7 +1,10 @@
 [
   {
     "number": 1,
-    "citation": "M. Agrawal, N. Kayal, N. Saxena, PRIMES is in P. Ann. Math. (2) 160(2), 781–793 (2004)"
+    "citation": "M. Agrawal, N. Kayal, N. Saxena, PRIMES is in P. Ann. Math. (2) 160(2), 781–793 (2004)",
+    "url": "https://doi.org/10.4007/annals.2004.160.781",
+    "doi": "10.4007/annals.2004.160.781",
+    "linkSource": "crossref"
   },
   {
     "number": 2,
@@ -52,7 +55,9 @@
   },
   {
     "number": 10,
-    "citation": "E. Bach, J. Shallit, Algorithmic Number Theory: Efficient Algorithms. Foundations of Computing Series, vol. 1 (MIT, Cambridge, 1996)."
+    "citation": "E. Bach, J. Shallit, Algorithmic Number Theory: Efficient Algorithms. Foundations of Computing Series, vol. 1 (MIT, Cambridge, 1996).",
+    "url": "https://mitpress.mit.edu/9780262526296/algorithmic-number-theory-volume-1/",
+    "linkSource": "book"
   },
   {
     "number": 11,
@@ -208,7 +213,10 @@
   },
   {
     "number": 34,
-    "citation": "R. Crandall, C. Pomerance, Prime Numbers (Springer, New York, 2001)"
+    "citation": "R. Crandall, C. Pomerance, Prime Numbers (Springer, New York, 2001)",
+    "url": "https://doi.org/10.1007/978-1-4684-9316-0",
+    "doi": "10.1007/978-1-4684-9316-0",
+    "linkSource": "book"
   },
   {
     "number": 35,
@@ -218,7 +226,10 @@
   },
   {
     "number": 36,
-    "citation": "M. Dietzfelbinger, Primality Testing in Polynomial Time: From Randomized Algorithms to “PRIMES is in P”. Volume 3000 of Lecture Notes in Computer Science (Springer, Berlin, 2004)"
+    "citation": "M. Dietzfelbinger, Primality Testing in Polynomial Time: From Randomized Algorithms to “PRIMES is in P”. Volume 3000 of Lecture Notes in Computer Science (Springer, Berlin, 2004)",
+    "url": "https://doi.org/10.1007/b12334",
+    "doi": "10.1007/b12334",
+    "linkSource": "book"
   },
   {
     "number": 37,
@@ -617,7 +628,9 @@
   },
   {
     "number": 105,
-    "citation": "C. Pomerance, A tale of two sieves. Not. Am. Math. Soc. 43(12), 1473–1485 (1996)"
+    "citation": "C. Pomerance, A tale of two sieves. Not. Am. Math. Soc. 43(12), 1473–1485 (1996)",
+    "url": "https://www.ams.org/notices/199612/pomerance.pdf",
+    "linkSource": "curated"
   },
   {
     "number": 106,
@@ -639,7 +652,10 @@
   },
   {
     "number": 109,
-    "citation": "H. Riesel, Prime Numbers and Computer Methods for Factorization. Volume 126 of Progress in Mathematics (Birkhäuser, Boston, 1994)"
+    "citation": "H. Riesel, Prime Numbers and Computer Methods for Factorization. Volume 126 of Progress in Mathematics (Birkhäuser, Boston, 1994)",
+    "url": "https://doi.org/10.1007/978-1-4612-0251-6",
+    "doi": "10.1007/978-1-4612-0251-6",
+    "linkSource": "book"
   },
   {
     "number": 110,
@@ -879,7 +895,9 @@
   },
   {
     "number": 148,
-    "citation": "A.E. Western, J.C.P. Miller, Tables of Indices and Primitive Roots. Royal Society Mathematical Tables, vol. 9 (Published for the Royal Society at the Cambridge University Press, London, 1968)"
+    "citation": "A.E. Western, J.C.P. Miller, Tables of Indices and Primitive Roots. Royal Society Mathematical Tables, vol. 9 (Published for the Royal Society at the Cambridge University Press, London, 1968)",
+    "url": "https://ci.nii.ac.jp/ncid/BA12275112",
+    "linkSource": "curated"
   },
   {
     "number": 149,

@@ -1,0 +1,50 @@
+<section class="chapter-section" id="sec-3-3">
+  <div class="section-heading">
+    <span class="section-number">3.3</span>
+    <h2>Questões de implementação e segurança</h2>
+  </div>
+
+  <p>Nosso foco principal neste livro é a matemática dos problemas difíceis subjacentes à criptografia moderna, mas seria negligência nossa não mencionar, ao menos brevemente, algumas das questões de segurança relacionadas à implementação. O leitor deve estar ciente de que nem sequer arranhamos a superfície desse assunto vasto e fascinante; apenas descrevemos alguns exemplos para mostrar que criar um sistema de comunicação seguro envolve muito mais do que simplesmente usar um criptossistema baseado em um problema matemático intratável.</p>
+
+  <div class="semantic example" id="exemplo-3-13">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.13 — Ataque da mulher no meio</span></div>
+    <p>Suponha que Eva não seja apenas uma espiã passiva, mas que tenha controle total sobre a rede de comunicação de Alice e Bob. Nesse caso, ela pode executar o que é conhecido como <em>ataque do homem no meio</em>. Descrevemos esse ataque para a troca de chaves Diffie–Hellman, mas ele existe para a maioria das construções de chave pública. (Veja o <a href="#exercicio-3-12" data-source-xref>Exercício 3.12</a>.)</p>
+
+    <p>Lembre-se de que, na troca de chaves Diffie–Hellman (<a href="../ch02/#tab-2-2" data-source-xref>Tabela 2.2</a>), Alice envia a Bob o valor \(A=g^a\), e Bob envia a Alice o valor \(B=g^b\), sendo os cálculos realizados no corpo finito \(\mathbb F_p\). O que Eva faz é escolher seu próprio expoente secreto \(e\) e calcular o valor \(E=g^e\). Ela então intercepta as comunicações de Alice e Bob e, em vez de enviar \(A\) a Bob e \(B\) a Alice, envia a ambos o número \(E\). Observe que Eva trocou o valor \(A^e\) com Alice e o valor \(B^e\) com Bob, enquanto Alice e Bob acreditam ter trocado valores um com o outro. O ataque do homem no meio é ilustrado na <a href="#fig-3-1" data-source-xref>Figura 3.1</a>.</p>
+
+    <figure class="figure" id="fig-3-1">
+      <div class="display-math" role="img" aria-label="Alice envia A igual a g elevado a a, mas Eva intercepta; Bob envia B igual a g elevado a b, mas Eva intercepta. Eva envia E igual a g elevado a e tanto para Alice quanto para Bob.">\[
+        \begin{array}{ccccc}
+          \boxed{\text{Alice}} &amp; \xrightarrow{\ A=g^a\ } &amp; \boxed{\text{Eva}} &amp; \xleftarrow{\ B=g^b\ } &amp; \boxed{\text{Bob}}\\[1.2em]
+          &amp; \xleftarrow{\ E=g^e\ } &amp; &amp; \xrightarrow{\ E=g^e\ } &amp;
+        \end{array}
+      \]</div>
+      <figcaption><span class="label">Figura 3.1.</span> Ataque do “homem no meio” à troca de chaves Diffie–Hellman.</figcaption>
+    </figure>
+
+    <p>Suponha que Alice e Bob usem posteriormente seu suposto valor secreto compartilhado como chave de uma cifra simétrica e enviem mensagens um ao outro. Por exemplo, Alice cifra uma mensagem de texto claro \(m\) usando \(E^a\) como chave da cifra simétrica. Eva intercepta essa mensagem e consegue decifrá-la usando \(A^e\) como chave da cifra simétrica, de modo que pode ler a mensagem de Alice. Em seguida, cifra-a novamente usando \(B^e\) como chave da cifra simétrica e a envia a Bob. Como Bob consegue então decifrá-la usando \(E^b\) como chave da cifra simétrica, ele não percebe que houve uma violação de segurança.</p>
+    <p>Observe a natureza insidiosa desse ataque. Eva não resolve o problema difícil subjacente — neste caso, o problema do logaritmo discreto ou o problema de Diffie–Hellman —, mas ainda assim consegue ler as comunicações de Alice e Bob, que não percebem seu sucesso.</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-3-14">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.14</span></div>
+    <p>Suponha que Eva consiga convencer Alice a decifrar mensagens RSA “aleatórias” usando sua chave privada — a de Alice. Esse é um cenário plausível, pois uma maneira de Alice autenticar sua identidade como proprietária da chave pública \((N,e)\) é mostrar que sabe decifrar mensagens. (Diz-se que Eva tem acesso a um <em>oráculo RSA</em>.)</p>
+    <p>Eva pode explorar a generosidade de Alice da seguinte forma. Suponha que Eva tenha interceptado um texto cifrado \(c\) que Bob enviou a Alice. Eva escolhe um valor aleatório \(k\) e envia a Alice a “mensagem”</p>
+    <div class="equation">\[c'\equiv k^e\cdot c\pmod N.\]</div>
+    <p>Alice decifra \(c'\) e devolve a Eva o valor resultante \(m'\), em que</p>
+    <div class="equation">\[m'\equiv(c')^d\equiv(k^e\cdot c)^d\equiv(k^e\cdot m^e)^d\equiv k\cdot m\pmod N.\]</div>
+    <p>Assim, Eva conhece a quantidade \(k\cdot m\pmod N\) e, como conhece \(k\), recupera imediatamente o texto claro \(m\) de Bob.</p>
+    <p>Há duas observações importantes a fazer. Primeiro, Eva decifrou a mensagem de Bob sem saber nem descobrir como fatorar \(N\), de modo que a dificuldade do problema matemático subjacente é irrelevante. Segundo, como Eva usou \(k\) para mascarar o texto cifrado de Bob, Alice não tem como perceber que a mensagem de Eva possui qualquer relação com a mensagem de Bob. Portanto, Alice vê apenas os valores \(k^e\cdot c\pmod N\) e \(k\cdot m\pmod N\), que lhe parecem aleatórios quando comparados com \(c\) e \(m\).</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-3-15">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.15</span></div>
+    <p>Suponha que Alice publique dois expoentes diferentes, \(e_1\) e \(e_2\), para uso com seu módulo público \(N\), e que Bob cifre um único texto claro \(m\) usando ambos os expoentes de Alice. Se Eva interceptar os textos cifrados</p>
+    <div class="equation">\[c_1\equiv m^{e_1}\pmod N\qquad\text{e}\qquad c_2\equiv m^{e_2}\pmod N,\]</div>
+    <p>ela poderá tomar uma solução da equação</p>
+    <div class="equation">\[e_1u+e_2v=\gcd(e_1,e_2)\]</div>
+    <p>e usá-la para calcular</p>
+    <div class="equation">\[c_1^u\cdot c_2^v\equiv(m^{e_1})^u\cdot(m^{e_2})^v\equiv m^{e_1u+e_2v}\equiv m^{\gcd(e_1,e_2)}\pmod N.\]</div>
+    <p>Se acontecer de \(\gcd(e_1,e_2)=1\), Eva terá recuperado o texto claro. (Veja o <a href="#exercicio-3-13" data-source-xref>Exercício 3.13</a> para um exemplo numérico.) Mais geralmente, se Bob cifrar uma única mensagem usando vários expoentes \(e_1,e_2,\ldots,e_r\), Eva poderá recuperar o texto claro se \(\gcd(e_1,e_2,\ldots,e_r)=1\). A moral é que Alice deve usar no máximo um expoente de cifração para determinado módulo.</p>
+  </div>
+</section>

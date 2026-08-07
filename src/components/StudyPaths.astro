@@ -87,13 +87,19 @@ const base = import.meta.env.BASE_URL;
       return parsed?.value?.progress && typeof parsed.value.progress === "object" ? parsed.value.progress : {};
     } catch { return {}; }
   };
-  const progress = { ch01: loadProgress("ch01"), ch02: loadProgress("ch02") };
+  const chapterSlugs = [...new Set(cards.flatMap((card) =>
+    Array.from(card.querySelectorAll<HTMLElement>("[data-path-step]"))
+      .flatMap((step) => step.dataset.stepHref?.match(/chapters\/(ch\d+)\/#/)?.[1] ?? []),
+  ))];
+  const progress: Record<string, Record<string, string>> = Object.fromEntries(
+    chapterSlugs.map((slug) => [slug, loadProgress(slug)]),
+  );
   for (const card of cards) {
     const steps = Array.from(card.querySelectorAll<HTMLElement>("[data-path-step]"));
     let completed = 0;
     for (const step of steps) {
       const match = step.dataset.stepHref?.match(/chapters\/(ch\d+)\/#(.+)$/);
-      const done = Boolean(match?.[1] && match[2] && progress[match[1] as keyof typeof progress]?.[match[2]] === "completed");
+      const done = Boolean(match?.[1] && match[2] && progress[match[1]]?.[match[2]] === "completed");
       step.classList.toggle("is-completed", done);
       if (done) completed += 1;
     }

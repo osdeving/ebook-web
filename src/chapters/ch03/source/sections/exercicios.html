@@ -1,0 +1,776 @@
+<section class="chapter-section exercises-section" id="exercicios-ch03">
+  <div class="section-heading"><span class="section-number">EX</span><h2>Exercícios</h2></div>
+
+  <h3>Seção 3.1 — Fórmula de Euler e raízes módulo \(pq\)</h3>
+
+  <div class="exercise" id="exercicio-3-1">
+    <p><span class="exercise-number">3.1.</span> Resolva as congruências a seguir.</p>
+    <ol type="a">
+      <li>\(x^{19}\equiv36\pmod{97}\).</li>
+      <li>\(x^{137}\equiv428\pmod{541}\).</li>
+      <li>\(x^{73}\equiv614\pmod{1159}\).</li>
+      <li>\(x^{751}\equiv677\pmod{8023}\).</li>
+      <li>\(x^{38993}\equiv328047\pmod{401227}\). (Dica: \(401227=607\cdot661\).)</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-2">
+    <p><span class="exercise-number">3.2.</span> Este exercício investiga o que acontece quando retiramos a hipótese \(\gcd(e,p-1)=1\) da <a href="#prop-3-2" data-source-xref>Proposição 3.2</a>. Portanto, seja \(p\) um primo, seja \(c\not\equiv0\pmod p\), seja \(e\ge1\) e considere a congruência</p>
+    <div class="numbered-equation" id="eq-3-36">
+      <span class="math">\[x^e\equiv c\pmod p.\]</span>
+      <span class="equation-number">(3.36)</span>
+    </div>
+    <ol type="a">
+      <li>Prove que, se <a href="#eq-3-36" data-source-xref>(3.36)</a> possui uma solução, então possui exatamente \(\gcd(e,p-1)\) soluções distintas. (Dica: use o teorema da raiz primitiva, o <a href="../ch01/#theorem-1-30" data-source-xref>Teorema 1.30</a>, combinado com o algoritmo de Euclides estendido, o <a href="../ch01/#theorem-1-11" data-source-xref>Teorema 1.11</a>, ou com o <a href="../ch01/#exercicio-1-27" data-source-xref>Exercício 1.27</a>.)</li>
+      <li>Para quantos valores não nulos de \(c\pmod p\) a congruência <a href="#eq-3-36" data-source-xref>(3.36)</a> possui solução?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-3">
+    <p><span class="exercise-number">3.3.</span> Sejam \(p\) e \(q\) primos distintos e sejam \(e\) e \(d\) inteiros positivos que satisfazem</p>
+    <div class="display-math">\[de\equiv1\pmod{(p-1)(q-1)}.\]</div>
+    <p>Suponha ainda que \(c\) seja um inteiro com \(\gcd(c,pq)&gt;1\). Prove que</p>
+    <div class="display-math">
+      \[
+        x\equiv c^d\pmod{pq}
+        \qquad\text{é uma solução da congruência}\qquad
+        x^e\equiv c\pmod{pq},
+      \]
+    </div>
+    <p>completando assim a demonstração da <a href="#prop-3-5" data-source-xref>Proposição 3.5</a>.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-3-4">
+    <p><span class="exercise-number">3.4.</span> Recorde, da <a href="../ch01/#sec-1-3" data-source-xref>Seção 1.3</a>, que a função phi de Euler \(\varphi(N)\) é definida por</p>
+    <div class="display-math">
+      \[
+        \varphi(N)=\#\{0\le k&lt;N:\gcd(k,N)=1\}.
+      \]
+    </div>
+    <p>Em outras palavras, \(\varphi(N)\) é o número de inteiros entre \(0\) e \(N-1\) relativamente primos a \(N\), ou, de modo equivalente, o número de elementos de \(\mathbb Z/N\mathbb Z\) que possuem inversos módulo \(N\).</p>
+    <ol type="a">
+      <li>Calcule \(\varphi(6)\), \(\varphi(9)\), \(\varphi(15)\) e \(\varphi(17)\).</li>
+      <li>Se \(p\) é primo, qual é o valor de \(\varphi(p)\)?</li>
+      <li>Prove a fórmula de Euler
+        \[
+          a^{\varphi(N)}\equiv1\pmod N
+          \qquad\text{para todo inteiro \(a\) que satisfaz }\gcd(a,N)=1.
+        \]
+        (Dica: imite a demonstração do pequeno teorema de Fermat, o <a href="../ch01/#theorem-1-24" data-source-xref>Teorema 1.24</a>, mas, em vez de considerar todos os múltiplos de \(a\), como foi feito em <a href="../ch01/#eq-1-8" data-source-xref>(1.8)</a>, considere apenas os múltiplos \(ka\) de \(a\) para os valores de \(k\) que satisfazem \(\gcd(k,N)=1\).)</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-5">
+    <p><span class="exercise-number">3.5.</span> A função phi de Euler possui muitas propriedades belas.</p>
+    <ol type="a">
+      <li>Se \(p\) e \(q\) são primos distintos, como \(\varphi(pq)\) se relaciona com \(\varphi(p)\) e \(\varphi(q)\)?</li>
+      <li>Se \(p\) é primo, qual é o valor de \(\varphi(p^2)\)? E de \(\varphi(p^j)\)? Prove que sua fórmula para \(\varphi(p^j)\) está correta. (Dica: entre os números de \(0\) a \(p^j-1\), retire aqueles que possuem um fator \(p\). Os números restantes são relativamente primos a \(p\).)</li>
+      <li>Sejam \(M\) e \(N\) inteiros que satisfazem \(\gcd(M,N)=1\). Prove a fórmula multiplicativa
+        \[
+          \varphi(MN)=\varphi(M)\varphi(N).
+        \]
+      </li>
+      <li>Sejam \(p_1,p_2,\ldots,p_r\) os primos distintos que dividem \(N\). Use os resultados dos itens (b) e (c) para provar a fórmula
+        \[
+          \varphi(N)=N\prod_{i=1}^{r}\left(1-\frac1{p_i}\right).
+        \]
+      </li>
+      <li>Use a fórmula do item (d) para calcular:
+        <ol type="i">
+          <li>\(\varphi(1728)\);</li>
+          <li>\(\varphi(1575)\);</li>
+          <li>\(\varphi(889056)\). (Dica: \(889056=2^5\cdot3^4\cdot7^3\).)</li>
+        </ol>
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-6">
+    <p><span class="exercise-number">3.6.</span> Sejam \(N,c,e\) inteiros positivos que satisfazem \(\gcd(N,c)=1\) e \(\gcd(e,\varphi(N))=1\).</p>
+    <ol type="a">
+      <li>Explique como resolver a congruência
+        \[
+          x^e\equiv c\pmod N,
+        \]
+        supondo conhecido o valor de \(\varphi(N)\). (Dica: use a fórmula do <a href="#exercicio-3-4" data-source-xref>Exercício 3.4(c)</a>.)
+      </li>
+      <li>Resolva as congruências a seguir. A fórmula do <a href="#exercicio-3-5" data-source-xref>Exercício 3.5(d)</a> pode ser útil para calcular \(\varphi(N)\).
+        <ol type="i">
+          <li>\(x^{577}\equiv60\pmod{1463}\);</li>
+          <li>\(x^{959}\equiv1583\pmod{1625}\);</li>
+          <li>\(x^{133957}\equiv224689\pmod{2134440}\).</li>
+        </ol>
+      </li>
+    </ol>
+  </div>
+
+  <h3>Seção 3.2 — O criptossistema de chave pública RSA</h3>
+
+  <div class="exercise" id="exercicio-3-7">
+    <p><span class="exercise-number">3.7.</span> Alice publica sua chave pública RSA: módulo \(N=2038667\) e expoente \(e=103\).</p>
+    <ol type="a">
+      <li>Bob quer enviar a Alice a mensagem \(m=892383\). Que texto cifrado Bob envia a Alice?</li>
+      <li>Alice sabe que seu módulo se fatora como produto de dois primos, um dos quais é \(p=1301\). Encontre um expoente de decifração \(d\) para Alice.</li>
+      <li>Alice recebe de Bob o texto cifrado \(c=317730\). Decifre a mensagem.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-8">
+    <p><span class="exercise-number">3.8.</span> A chave pública RSA de Bob tem módulo \(N=12191\) e expoente \(e=37\). Alice envia a Bob o texto cifrado \(c=587\). Infelizmente, Bob escolheu um módulo pequeno demais. Ajude Eva fatorando \(N\) e decifrando a mensagem de Alice. (Dica: \(N\) possui um fator menor que \(100\).)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-3-9">
+    <p><span class="exercise-number">3.9.</span> Para cada par de valores dados de \(N=pq\) e \((p-1)(q-1)\), use o método descrito na <a href="#obs-3-11" data-source-xref>Observação 3.11</a> para determinar \(p\) e \(q\).</p>
+    <ol type="a">
+      <li>\(N=pq=352717\) e \((p-1)(q-1)=351520\).</li>
+      <li>\(N=pq=77083921\) e \((p-1)(q-1)=77066212\).</li>
+      <li>\(N=pq=109404161\) e \((p-1)(q-1)=109380612\).</li>
+      <li>\(N=pq=172205490419\) e \((p-1)(q-1)=172204660344\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-10">
+    <p><span class="exercise-number">3.10.</span> Um expoente de decifração para uma chave pública RSA \((N,e)\) é um inteiro \(d\) com a propriedade de que \(a^{de}\equiv a\pmod N\) para todo inteiro \(a\) relativamente primo a \(N\).</p>
+    <ol type="a">
+      <li>Suponha que Eva possua uma caixa mágica que cria expoentes de decifração para \((N,e)\), para um módulo fixo \(N\) e para um grande número de expoentes de cifração \(e\) distintos. Explique como Eva pode usar sua caixa mágica para tentar fatorar \(N\).</li>
+      <li>Seja \(N=38749709\). A caixa mágica de Eva informa que o expoente de cifração \(e=10988423\) possui expoente de decifração \(d=16784693\), e que o expoente de cifração \(e=25910155\) possui expoente de decifração \(d=11514115\). Use essas informações para fatorar \(N\).</li>
+      <li>Seja \(N=225022969\). A caixa mágica de Eva fornece os três pares cifração/decifração:
+        \[
+          (70583995,4911157),\quad
+          (173111957,7346999),\quad
+          (180311381,29597249).
+        \]
+        Use essas informações para fatorar \(N\).
+      </li>
+      <li>Seja \(N=1291233941\). A caixa mágica de Eva fornece os três pares cifração/decifração:
+        \[
+          (1103927639,76923209),\quad
+          (1022313977,106791263),\quad
+          (387632407,7764043).
+        \]
+        Use essas informações para fatorar \(N\).
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-11">
+    <p><span class="exercise-number">3.11.</span> Eis um exemplo de sistema de chave pública que foi proposto em uma conferência de criptografia. Ele foi projetado para ser mais eficiente que o RSA.</p>
+    <p>Alice escolhe dois primos grandes \(p\) e \(q\) e publica \(N=pq\). Supõe-se que seja difícil fatorar \(N\). Alice também escolhe três números aleatórios \(g,r_1,r_2\) módulo \(N\) e calcula</p>
+    <div class="display-math">
+      \[
+        g_1\equiv g^{r_1(p-1)}\pmod N
+        \qquad\text{e}\qquad
+        g_2\equiv g^{r_2(q-1)}\pmod N.
+      \]
+    </div>
+    <p>Sua chave pública é a tripla \((N,g_1,g_2)\), e sua chave privada é o par de primos \((p,q)\).</p>
+    <p>Agora Bob quer enviar a Alice a mensagem \(m\), em que \(m\) é um número módulo \(N\). Ele escolhe dois inteiros aleatórios \(s_1,s_2\) módulo \(N\) e calcula</p>
+    <div class="display-math">
+      \[
+        c_1\equiv mg_1^{s_1}\pmod N
+        \qquad\text{e}\qquad
+        c_2\equiv mg_2^{s_2}\pmod N.
+      \]
+    </div>
+    <p>Bob envia o texto cifrado \((c_1,c_2)\) a Alice. A decifração é extremamente rápida e fácil. Alice usa o teorema chinês dos restos para resolver o par de congruências</p>
+    <div class="display-math">
+      \[
+        x\equiv c_1\pmod p
+        \qquad\text{e}\qquad
+        x\equiv c_2\pmod q.
+      \]
+    </div>
+    <ol type="a">
+      <li>Prove que a solução \(x\) de Alice é igual ao texto simples \(m\) de Bob.</li>
+      <li>Explique por que esse criptossistema não é seguro.</li>
+    </ol>
+  </div>
+
+  <h3>Seção 3.3 — Questões de implementação e segurança</h3>
+
+  <div class="exercise" id="exercicio-3-12">
+    <p><span class="exercise-number">3.12.</span> Formule um ataque da pessoa no meio, semelhante ao ataque descrito no <a href="#exemplo-3-13" data-source-xref>Exemplo 3.13</a>, para os seguintes criptossistemas de chave pública.</p>
+    <ol type="a">
+      <li>O criptossistema de chave pública Elgamal, apresentado na <a href="../ch02/#tab-2-3" data-source-xref>Tabela 2.3</a>.</li>
+      <li>O criptossistema de chave pública RSA, apresentado na <a href="#tab-3-1" data-source-xref>Tabela 3.1</a>.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-13">
+    <p><span class="exercise-number">3.13.</span> Alice decide usar RSA com a chave pública \(N=1889570071\). Para se proteger contra erros de transmissão, Alice pede que Bob cifre sua mensagem duas vezes: uma com o expoente de cifração \(e_1=1021763679\) e outra com o expoente \(e_2=519424709\). Eva intercepta as duas mensagens cifradas</p>
+    <div class="display-math">
+      \[
+        c_1=1244183534
+        \qquad\text{e}\qquad
+        c_2=732959706.
+      \]
+    </div>
+    <p>Supondo que Eva também conheça \(N\) e os dois expoentes \(e_1,e_2\), use o método descrito no <a href="#exemplo-3-15" data-source-xref>Exemplo 3.15</a> para ajudá-la a recuperar o texto simples de Bob sem encontrar uma fatoração de \(N\).</p>
+  </div>
+
+  <h3>Seção 3.4 — Testes de primalidade</h3>
+
+  <div class="exercise" id="exercicio-3-14">
+    <p><span class="exercise-number">3.14.</span> Afirmamos que o número \(561\) é um número de Carmichael, mas não verificamos que \(a^{561}\equiv a\pmod{561}\) para todo valor de \(a\).</p>
+    <ol type="a">
+      <li>O número \(561\) se fatora como \(3\cdot11\cdot17\). Primeiro use o pequeno teorema de Fermat para provar que
+        \[
+          a^{561}\equiv a\pmod3,\qquad
+          a^{561}\equiv a\pmod{11},\qquad
+          a^{561}\equiv a\pmod{17}
+        \]
+        para todo valor de \(a\). Em seguida, explique por que essas três congruências implicam \(a^{561}\equiv a\pmod{561}\) para todo valor de \(a\).
+      </li>
+      <li>Imite a ideia usada no item (a) para provar que cada número a seguir é um número de Carmichael. Para ajudá-lo, cada número já está fatorado em primos.
+        <ol type="i">
+          <li>\(1729=7\cdot13\cdot19\);</li>
+          <li>\(10585=5\cdot29\cdot73\);</li>
+          <li>\(75361=11\cdot13\cdot17\cdot31\);</li>
+          <li>\(1024651=19\cdot199\cdot271\).</li>
+        </ol>
+      </li>
+      <li>Prove que um número de Carmichael deve ser ímpar.</li>
+      <li>Prove que um número de Carmichael deve ser produto de primos distintos.</li>
+      <li>Pesquise o critério de Korselt em um livro ou na internet, escreva uma descrição breve de seu funcionamento e use-o para mostrar que \(29341=13\cdot37\cdot61\) e \(172947529=307\cdot613\cdot919\) são números de Carmichael.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-15">
+    <p><span class="exercise-number">3.15.</span> Aplique o teste de Miller–Rabin a cada um dos números a seguir. Em cada caso, forneça uma testemunha de Miller–Rabin para a compositividade de \(n\), ou conclua que \(n\) é provavelmente primo fornecendo \(10\) números que não sejam testemunhas de Miller–Rabin para \(n\).</p>
+    <ol type="a">
+      <li>\(n=1105\). (Sim, \(5\) divide \(n\), mas este é apenas um exercício de aquecimento!)</li>
+      <li>\(n=294409\).</li>
+      <li>\(n=294439\).</li>
+      <li>\(n=118901509\).</li>
+      <li>\(n=118901521\).</li>
+      <li>\(n=118901527\).</li>
+      <li>\(n=118915387\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-16">
+    <p><span class="exercise-number">3.16.</span> Retomando o <a href="#exercicio-3-10" data-source-xref>Exercício 3.10</a>, suponha que, para um dado \(N\), a caixa mágica seja capaz de produzir apenas um expoente de decifração. De modo equivalente, suponha que um par de chaves RSA tenha sido comprometido e que o expoente privado de decifração correspondente ao expoente público de cifração tenha sido descoberto. Mostre como a ideia básica do teste de primalidade de Miller–Rabin pode ser aplicada para usar essa informação na fatoração de \(N\).</p>
+  </div>
+
+  <div class="exercise" id="exercicio-3-17">
+    <p><span class="exercise-number">3.17.</span> A função \(\pi(X)\) conta o número de primos entre \(2\) e \(X\).</p>
+    <ol type="a">
+      <li>Calcule \(\pi(20)\), \(\pi(30)\) e \(\pi(100)\).</li>
+      <li>Escreva um programa para calcular \(\pi(X)\) e use-o para obter \(\pi(X)\) e a razão
+        \[
+          \frac{\pi(X)}{X/\ln X}
+        \]
+        para \(X=100\), \(X=1000\), \(X=10000\) e \(X=100000\). Sua lista de razões torna plausível o teorema dos números primos?
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-18">
+    <p><span class="exercise-number">3.18.</span> Defina</p>
+    <div class="display-math">
+      \[
+      \begin{aligned}
+        \pi_1(X)&=\#\{\text{primos \(p\) entre \(2\) e \(X\) que satisfazem }p\equiv1\pmod4\},\\
+        \pi_3(X)&=\#\{\text{primos \(p\) entre \(2\) e \(X\) que satisfazem }p\equiv3\pmod4\}.
+      \end{aligned}
+      \]
+    </div>
+    <p>Assim, todo primo diferente de \(2\) é contado por \(\pi_1(X)\) ou por \(\pi_3(X)\).</p>
+    <ol type="a">
+      <li>Calcule \(\pi_1(X)\) e \(\pi_3(X)\) para cada valor de \(X\):
+        <ol type="i">
+          <li>\(X=10\);</li>
+          <li>\(X=25\);</li>
+          <li>\(X=100\).</li>
+        </ol>
+      </li>
+      <li>Escreva um programa para calcular \(\pi_1(X)\) e \(\pi_3(X)\) e use-o para obter seus valores e a razão \(\pi_3(X)/\pi_1(X)\) para \(X=100\), \(X=1000\), \(X=10000\) e \(X=100000\).</li>
+      <li>Com base nos dados do item (b), formule uma conjectura sobre os tamanhos relativos de \(\pi_1(X)\) e \(\pi_3(X)\). Qual deles você acredita ser maior? Qual você acredita ser o limite da razão \(\pi_3(X)/\pi_1(X)\) quando \(X\to\infty\)?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-19">
+    <p><span class="exercise-number">3.19.</span> Observamos na <a href="#sec-3-4" data-source-xref>Seção 3.4</a> que, a rigor, não faz sentido dizer que um número \(n\) tem probabilidade \(1/\ln n\) de ser primo. Qualquer número específico escolhido ou é primo ou não é; não existem números que sejam \(35\%\) primos e \(65\%\) compostos! Neste exercício, você provará um resultado que dá um significado mais sensato à afirmação de que um número possui certa probabilidade de ser primo. Você pode usar o teorema dos números primos, o <a href="#teorema-3-21" data-source-xref>Teorema 3.21</a>.</p>
+    <ol type="a">
+      <li>Fixe um número grande \(N\) e suponha que Bob escolha aleatoriamente um número \(n\) no intervalo
+        \[
+          \frac12N\le n\le\frac32N.
+        \]
+        Se ele repetir o processo muitas vezes, prove que aproximadamente \(1/\ln N\) dos números escolhidos serão primos. Mais precisamente, defina
+        \[
+          \begin{aligned}
+          P(N)
+          &=
+          \frac{\text{número de primos entre \(\frac12N\) e \(\frac32N\)}}
+               {\text{número de inteiros entre \(\frac12N\) e \(\frac32N\)}}\\
+          &=\Pr\left(\text{um inteiro \(n\) em \(\frac12N\le n\le\frac32N\) é primo}\right)
+          \end{aligned}
+        \]
+        e prove que
+        \[
+          \lim_{N\to\infty}\frac{P(N)}{1/\ln N}=1.
+        \]
+        Isso mostra que, quando \(N\) é grande, \(P(N)\) é aproximadamente \(1/\ln N\).
+      </li>
+      <li>Mais geralmente, fixe dois números \(c_1,c_2\) que satisfaçam \(c_2&gt;c_1&gt;0\). Bob escolhe números aleatórios \(n\) no intervalo \(c_1N\le n\le c_2N\). Mantendo \(c_1,c_2\) fixos, defina
+        \[
+          P(c_1,c_2;N)=
+          \Pr\left(\text{um inteiro \(n\) em \(c_1N\le n\le c_2N\) é primo}\right).
+        \]
+        Na fórmula a seguir, preencha a caixa com uma função simples de \(N\) para que a afirmação seja verdadeira:
+        \[
+          \lim_{N\to\infty}
+          \frac{P(c_1,c_2;N)}{\boxed{\phantom{1/\ln N}}}=1.
+        \]
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-20">
+    <p><span class="exercise-number">3.20.</span> Continuando o exercício anterior, explique como dar sentido matemático às afirmações a seguir.</p>
+    <ol type="a">
+      <li>Um número ímpar \(N\), escolhido aleatoriamente, tem probabilidade \(2/\ln N\) de ser primo. Qual é a probabilidade de um número par escolhido aleatoriamente ser primo?</li>
+      <li>Um número \(N\), escolhido aleatoriamente entre os que satisfazem \(N\equiv1\pmod3\), tem probabilidade \(3/(2\ln N)\) de ser primo.</li>
+      <li>Um número \(N\), escolhido aleatoriamente entre os que satisfazem \(N\equiv1\pmod6\), tem probabilidade \(3/\ln N\) de ser primo.</li>
+      <li>Seja \(m=p_1p_2\cdots p_r\) um produto de primos distintos e seja \(k\) um número que satisfaz \(\gcd(k,m)=1\). Que número deve ocupar a caixa para tornar correta a afirmação
+        <div class="numbered-equation" id="eq-3-37">
+          <span class="math">\[
+            \begin{gathered}
+              \text{Um número \(N\), escolhido aleatoriamente entre os que satisfazem}\\
+              N\equiv k\pmod m,\text{ tem probabilidade }
+              \frac{\boxed{\phantom{m/\varphi(m)}}}{\ln N}
+              \text{ de ser primo.}
+            \end{gathered}
+          \]</span>
+          <span class="equation-number">(3.37)</span>
+        </div>
+        Por quê?
+      </li>
+      <li>A mesma pergunta, mas para um \(m\) arbitrário, não apenas para \(m\) que seja produto de primos distintos.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-21">
+    <p><span class="exercise-number">3.21.</span> A função integral logarítmica \(\operatorname{Li}(X)\) é definida por</p>
+    <div class="display-math">
+      \[
+        \operatorname{Li}(X)=\int_2^X\frac{dt}{\ln t}.
+      \]
+    </div>
+    <ol type="a">
+      <li>Prove que
+        \[
+          \operatorname{Li}(X)=
+          \frac{X}{\ln X}+
+          \int_2^X\frac{dt}{(\ln t)^2}+
+          \mathcal O(1).
+        \]
+        (Dica: integração por partes.)
+      </li>
+      <li>Calcule o limite
+        \[
+          \lim_{X\to\infty}\frac{\operatorname{Li}(X)}{X/\ln X}.
+        \]
+        (Dica: divida a integral do item (a) em duas partes, \(2\le t\le\sqrt X\) e \(\sqrt X\le t\le X\), e estime cada uma separadamente.)
+      </li>
+      <li>Use o item (b) para mostrar que a fórmula <a href="#eq-3-12" data-source-xref>(3.12)</a> implica o teorema dos números primos, o <a href="#teorema-3-21" data-source-xref>Teorema 3.21</a>.</li>
+    </ol>
+  </div>
+
+  <h3>Seção 3.5 — Algoritmo de fatoração \(p-1\) de Pollard</h3>
+
+  <div class="exercise" id="exercicio-3-22">
+    <p><span class="exercise-number">3.22.</span> Use o método \(p-1\) de Pollard para fatorar cada um dos números a seguir.</p>
+    <ol type="a">
+      <li>\(n=1739\);</li>
+      <li>\(n=220459\);</li>
+      <li>\(n=48356747\).</li>
+    </ol>
+    <p>Não deixe de mostrar seus cálculos e de indicar qual fator primo \(p\) de \(n\) possui a propriedade de que \(p-1\) é produto de primos pequenos.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-3-23">
+    <p><span class="exercise-number">3.23.</span> Um primo da forma \(2^n-1\) é chamado de primo de Mersenne.</p>
+    <ol type="a">
+      <li>Fatorem-se os números \(2^n-1\) para \(n=2,3,\ldots,10\). Quais deles são primos de Mersenne?</li>
+      <li>Encontre os sete primeiros primos de Mersenne. Talvez seja necessário usar um computador.</li>
+      <li>Se \(n\) é par e \(n&gt;2\), prove que \(2^n-1\) não é primo.</li>
+      <li>Se \(3\mid n\) e \(n&gt;3\), prove que \(2^n-1\) não é primo.</li>
+      <li>Mais geralmente, prove que, se \(n\) é composto, então \(2^n-1\) não é primo. Portanto, todo primo de Mersenne tem a forma \(2^p-1\), com \(p\) primo.</li>
+      <li>Qual é o maior primo de Mersenne conhecido? Há primos conhecidos maiores que ele? Você pode descobrir isso no site “Great Internet Mersenne Prime Search”, www.mersenne.org/prime.htm.</li>
+      <li>Escreva um ensaio de uma página sobre os primos de Mersenne, começando pelas descobertas do padre Mersenne e terminando no GIMPS.</li>
+    </ol>
+  </div>
+
+  <h3>Seção 3.6 — Fatoração por diferença de quadrados</h3>
+
+  <div class="exercise" id="exercicio-3-24">
+    <p><span class="exercise-number">3.24.</span> Para cada número \(N\) a seguir, calcule os valores</p>
+    <div class="display-math">
+      \[
+        N+1^2,\quad N+2^2,\quad N+3^2,\quad N+4^2,\quad\ldots
+      \]
+    </div>
+    <p>como fizemos no <a href="#exemplo-3-34" data-source-xref>Exemplo 3.34</a>, até encontrar um valor \(N+b^2\) que seja um quadrado perfeito \(a^2\). Então use \(a\) e \(b\) para fatorar \(N\).</p>
+    <ol type="a">
+      <li>\(N=53357\);</li>
+      <li>\(N=34571\);</li>
+      <li>\(N=25777\);</li>
+      <li>\(N=64213\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-25">
+    <p><span class="exercise-number">3.25.</span> Para cada trio \(N,k,b_{\mathrm{inic}}\) listado, fatore \(N\) construindo uma lista dos valores de \(kN+b^2\), começando em \(b=b_{\mathrm{inic}}\) e incrementando \(b\) até que \(kN+b^2\) seja um quadrado perfeito. Em seguida, calcule máximos divisores comuns como fizemos no <a href="#exemplo-3-35" data-source-xref>Exemplo 3.35</a>.</p>
+    <ol type="a">
+      <li>\(N=143041,\quad k=247,\quad b_{\mathrm{inic}}=1\);</li>
+      <li>\(N=1226987,\quad k=3,\quad b_{\mathrm{inic}}=36\);</li>
+      <li>\(N=2510839,\quad k=21,\quad b_{\mathrm{inic}}=90\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-26">
+    <p><span class="exercise-number">3.26.</span> Em cada item, use os dados fornecidos para encontrar \(a\) e \(b\) que satisfaçam \(a^2\equiv b^2\pmod N\), e então calcule \(\gcd(N,a-b)\) para encontrar um fator não trivial de \(N\), como fizemos nos <a href="#exemplo-3-37" data-source-xref>Exemplos 3.37</a> e <a href="#exemplo-3-38" data-source-xref>3.38</a>.</p>
+    <ol type="a">
+      <li>\(N=61063\):
+        \[
+        \begin{aligned}
+          1882^2&\equiv270\pmod{61063},&270&=2\cdot3^3\cdot5,\\
+          1898^2&\equiv60750\pmod{61063},&60750&=2\cdot3^5\cdot5^3.
+        \end{aligned}
+        \]
+      </li>
+      <li>\(N=52907\):
+        \[
+        \begin{aligned}
+          399^2&\equiv480\pmod{52907},&480&=2^5\cdot3\cdot5,\\
+          763^2&\equiv192\pmod{52907},&192&=2^6\cdot3,\\
+          773^2&\equiv15552\pmod{52907},&15552&=2^6\cdot3^5,\\
+          976^2&\equiv250\pmod{52907},&250&=2\cdot5^3.
+        \end{aligned}
+        \]
+      </li>
+      <li>\(N=198103\):
+        \[
+        \begin{aligned}
+          1189^2&\equiv27000\pmod{198103},&27000&=2^3\cdot3^3\cdot5^3,\\
+          1605^2&\equiv686\pmod{198103},&686&=2\cdot7^3,\\
+          2378^2&\equiv108000\pmod{198103},&108000&=2^5\cdot3^3\cdot5^3,\\
+          2815^2&\equiv105\pmod{198103},&105&=3\cdot5\cdot7.
+        \end{aligned}
+        \]
+      </li>
+      <li>\(N=2525891\):
+        \[
+        \begin{aligned}
+          1591^2&\equiv5390\pmod{2525891},&5390&=2\cdot5\cdot7^2\cdot11,\\
+          3182^2&\equiv21560\pmod{2525891},&21560&=2^3\cdot5\cdot7^2\cdot11,\\
+          4773^2&\equiv48510\pmod{2525891},&48510&=2\cdot3^2\cdot5\cdot7^2\cdot11,\\
+          5275^2&\equiv40824\pmod{2525891},&40824&=2^3\cdot3^6\cdot7,\\
+          5401^2&\equiv1386000\pmod{2525891},&1386000&=2^4\cdot3^2\cdot5^3\cdot7\cdot11.
+        \end{aligned}
+        \]
+      </li>
+    </ol>
+  </div>
+
+  <h3>Seção 3.7 — Números suaves, crivos e construção de relações para fatoração</h3>
+
+  <div class="exercise" id="exercicio-3-27">
+    <p><span class="exercise-number">3.27.</span> Calcule os seguintes valores de \(\psi(X,B)\), o número de inteiros \(B\)-suaves entre \(2\) e \(X\).</p>
+    <ol type="a">
+      <li>\(\psi(25,3)\);</li>
+      <li>\(\psi(35,5)\);</li>
+      <li>\(\psi(50,7)\);</li>
+      <li>\(\psi(100,5)\);</li>
+      <li>\(\psi(100,7)\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-28">
+    <p><span class="exercise-number">3.28.</span> Um inteiro \(M\) é chamado de <strong>\(B\)-suave em potências</strong> se toda potência de primo \(p^e\) que divide \(M\) satisfaz \(p^e\le B\). Por exemplo, \(180=2^2\cdot3^2\cdot5\) é \(10\)-suave em potências, pois a maior potência de primo que divide \(180\) é \(9\), menor que \(10\).</p>
+    <ol type="a">
+      <li>Suponha que \(M\) seja \(B\)-suave em potências. Prove que \(M\) também é \(B\)-suave.</li>
+      <li>Suponha que \(M\) seja \(B\)-suave. É sempre verdade que \(M\) também é \(B\)-suave em potências? Prove a afirmação ou dê um contraexemplo.</li>
+      <li>A seguir está uma lista de \(20\) números escolhidos aleatoriamente entre \(1\) e \(1000\), ordenados do menor para o maior. Quais deles são \(10\)-suaves em potências? Quais são \(10\)-suaves?
+        \[
+          \{84,141,171,208,224,318,325,366,378,390,420,440,
+          504,530,707,726,758,765,792,817\}.
+        \]
+      </li>
+      <li>Prove que \(M\) é \(B\)-suave em potências se, e somente se, \(M\) divide o mínimo múltiplo comum de \([1,2,\ldots,B]\). O mínimo múltiplo comum de uma lista \(k_1,\ldots,k_r\) é o menor número \(K\) divisível por todos os números da lista.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-29">
+    <p><span class="exercise-number">3.29.</span> Seja</p>
+    <div class="display-math">
+      \[
+        L(N)=e^{\sqrt{(\ln N)(\ln\ln N)}}
+      \]
+    </div>
+    <p>como de costume. Suponha que um computador execute um bilhão de operações por segundo.</p>
+    <ol type="a">
+      <li>Quantos segundos são necessários para executar \(L(2^{100})\) operações?</li>
+      <li>Quantas horas são necessárias para executar \(L(2^{250})\) operações?</li>
+      <li>Quantos dias são necessários para executar \(L(2^{350})\) operações?</li>
+      <li>Quantos anos são necessários para executar \(L(2^{500})\) operações?</li>
+      <li>Quantos anos são necessários para executar \(L(2^{750})\) operações?</li>
+      <li>Quantos anos são necessários para executar \(L(2^{1000})\) operações?</li>
+      <li>Quantos anos são necessários para executar \(L(2^{2000})\) operações?</li>
+    </ol>
+    <p>Para simplificar, você pode supor que um ano possui \(365{,}25\) dias.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-3-30">
+    <p><span class="exercise-number">3.30.</span> Prove que a função</p>
+    <div class="display-math">
+      \[
+        L(X)=e^{\sqrt{(\ln X)(\ln\ln X)}}
+      \]
+    </div>
+    <p>é subexponencial. Isto é, prove as duas afirmações a seguir.</p>
+    <ol type="a">
+      <li>Para toda constante positiva \(\alpha\), por maior que seja,
+        \[
+          L(X)=\Omega\bigl((\ln X)^\alpha\bigr).
+        \]
+      </li>
+      <li>Para toda constante positiva \(\beta\), por menor que seja,
+        \[
+          L(X)=\mathcal O(X^\beta).
+        \]
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-31">
+    <p><span class="exercise-number">3.31.</span> Para constantes positivas fixas \(a,b\), defina</p>
+    <div class="display-math">
+      \[
+        F_{a,b}(X)=e^{(\ln X)^{1/a}(\ln\ln X)^{1/b}}.
+      \]
+    </div>
+    <p>Prove as propriedades a seguir.</p>
+    <ol type="a">
+      <li>Se \(a&gt;1\), prove que \(F_{a,b}(X)\) é subexponencial.</li>
+      <li>Se \(a=1\), prove que \(F_{a,b}(X)=\Omega(X^\alpha)\) para todo \(\alpha&gt;0\). Assim, \(F_{a,b}(X)\) cresce mais rapidamente que toda função exponencial, e dizemos que \(F_{a,b}(X)\) possui crescimento superexponencial.</li>
+      <li>O que acontece se \(a&lt;1\)?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-32">
+    <p><span class="exercise-number">3.32.</span> Este exercício pede que você verifique uma afirmação feita na demonstração do <a href="#cor-3-45" data-source-xref>Corolário 3.45</a>. Seja</p>
+    <div class="display-math">
+      \[
+        L(X)=e^{\sqrt{(\ln X)(\ln\ln X)}}.
+      \]
+    </div>
+    <ol type="a">
+      <li>Prove que existe \(\epsilon&gt;0\) tal que
+        \[
+          (\ln X)^\epsilon&lt;\ln L(X)&lt;(\ln X)^{1-\epsilon}
+          \qquad\text{para todo }X&gt;10.
+        \]
+      </li>
+      <li>Sejam \(c&gt;0\), \(Y=L(X)^c\) e \(u=(\ln X)/(\ln Y)\). Prove que
+        \[
+          u^{-u}=L(X)^{-\frac1{2c}(1+o(1))}.
+        \]
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-33">
+    <p><span class="exercise-number">3.33.</span> A <a href="#prop-3-48" data-source-xref>Proposição 3.48</a> supõe que escolhemos números aleatórios \(a\) módulo \(N\), calculamos \(a^2\bmod N\) e verificamos se o resultado é \(B\)-suave. Podemos obter resultados melhores tomando valores de \(a\) da forma</p>
+    <div class="display-math">
+      \[
+        a=\lfloor\sqrt N\rfloor+k
+        \qquad\text{para }1\le k\le K.
+      \]
+    </div>
+    <p>Para simplificar, você pode tratar \(K\) como um inteiro fixo, independente de \(N\). Mais rigorosamente, é necessário tomar \(K\) igual a uma potência de \(L(N)\), o que produz um pequeno efeito na resposta final.</p>
+    <ol type="a">
+      <li>Prove que
+        \[
+          a^2-N\le2K\sqrt N+K^2,
+        \]
+        de modo que, em particular, \(a^2\bmod N\) é menor que um múltiplo de \(\sqrt N\).
+      </li>
+      <li>Prove que
+        \[
+          L(\sqrt N)\approx L(N)^{1/\sqrt2}
+        \]
+        mostrando que
+        \[
+          \lim_{N\to\infty}
+          \frac{\log L(\sqrt N)}{\log L(N)^{1/\sqrt2}}=1.
+        \]
+        Mais geralmente, prove que, no mesmo sentido,
+        \[
+          L(N^{1/r})\approx L(N)^{1/\sqrt r}
+        \]
+        para todo \(r&gt;0\) fixo.
+      </li>
+      <li>Demonstre novamente a <a href="#prop-3-48" data-source-xref>Proposição 3.48</a> usando essa escolha melhor de valores de \(a\). Defina \(B=L(N)^c\) e encontre o valor ótimo de \(c\). Aproximadamente quantas relações são necessárias para fatorar \(N\)?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-34">
+    <p><span class="exercise-number">3.34.</span> Ilustre o crivo quadrático, como foi feito na <a href="#fig-3-3" data-source-xref>Figura 3.3</a>, crivando potências de primos até \(B\) nos valores de \(F(T)=T^2-N\) no intervalo indicado.</p>
+    <ol type="a">
+      <li>Crive \(N=493\) usando potências de primos até \(B=11\) nos valores de \(F(23)\) a \(F(38)\). Use a relação ou as relações encontradas para fatorar \(N\).</li>
+      <li>Amplie os cálculos do item (a) usando potências de primos até \(B=16\) e crivando os valores de \(F(23)\) a \(F(50)\). Que valores adicionais são reduzidos a \(1\) pelo crivo e que relações adicionais eles produzem?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-35">
+    <p><span class="exercise-number">3.35.</span> Seja \(\mathbb Z[\beta]\) o anel descrito no <a href="#exemplo-3-55" data-source-xref>Exemplo 3.55</a>, isto é, \(\beta\) é uma raiz de</p>
+    <div class="display-math">
+      \[
+        f(x)=1+3x-2x^3+x^4.
+      \]
+    </div>
+    <p>Para cada par \(u,v\in\mathbb Z[\beta]\), calcule \(u+v\) e \(uv\). As respostas devem envolver apenas potências de \(\beta\) até \(\beta^3\).</p>
+    <ol type="a">
+      <li>\(u=-5-2\beta+9\beta^2-9\beta^3\) e \(v=2+9\beta-7\beta^2+7\beta^3\).</li>
+      <li>\(u=9+9\beta+6\beta^2-5\beta^3\) e \(v=-4-6\beta-2\beta^2-5\beta^3\).</li>
+      <li>\(u=6-5\beta+3\beta^2+3\beta^3\) e \(v=-2+7\beta+6\beta^2\).</li>
+    </ol>
+  </div>
+
+  <h3>Seção 3.8 — O método do cálculo de índices e os logaritmos discretos</h3>
+
+  <div class="exercise" id="exercicio-3-36">
+    <p><span class="exercise-number">3.36.</span> Este exercício pede que você use o cálculo de índices para resolver um problema de logaritmo discreto. Sejam \(p=19079\) e \(g=17\).</p>
+    <ol type="a">
+      <li>Verifique que \(g^i\bmod p\) é \(5\)-suave para cada um dos valores \(i=3030\), \(i=6892\) e \(i=18312\).</li>
+      <li>Use os cálculos do item (a) e álgebra linear para obter os logaritmos discretos \(\log_g(2)\), \(\log_g(3)\) e \(\log_g(5)\). Observe que \(19078=2\cdot9539\) e que \(9539\) é primo.</li>
+      <li>Verifique que \(19\cdot17^{-12400}\bmod p\) é \(5\)-suave.</li>
+      <li>Use os valores do item (b) e o cálculo do item (c) para resolver o problema de logaritmo discreto
+        \[
+          17^x\equiv19\pmod{19079}.
+        \]
+      </li>
+    </ol>
+  </div>
+
+  <h3>Seção 3.9 — Resíduos quadráticos e reciprocidade quadrática</h3>
+
+  <div class="exercise" id="exercicio-3-37">
+    <p><span class="exercise-number">3.37.</span> Seja \(p\) um primo ímpar e seja \(a\) um inteiro com \(p\nmid a\).</p>
+    <ol type="a">
+      <li>Prove que \(a^{(p-1)/2}\) é congruente a \(1\) ou a \(-1\) módulo \(p\).</li>
+      <li>Prove que \(a^{(p-1)/2}\) é congruente a \(1\) módulo \(p\) se, e somente se, \(a\) é um resíduo quadrático módulo \(p\). (Dica: seja \(g\) uma raiz primitiva módulo \(p\) e use o fato, provado durante a demonstração da <a href="#prop-3-61" data-source-xref>Proposição 3.61</a>, de que \(g^m\) é um resíduo quadrático se, e somente se, \(m\) é par.)</li>
+      <li>Prove que \(a^{(p-1)/2}\equiv a^p\pmod p\). Isso também vale quando \(p\mid a\).</li>
+      <li>Use o item (c) para provar a parte (a) do teorema da reciprocidade quadrática, o <a href="#teorema-3-62" data-source-xref>Teorema 3.62</a>; isto é, prove que
+        \[
+          \left(\frac{-1}{p}\right)=
+          \begin{cases}
+            1,&\text{se }p\equiv1\pmod4,\\
+            -1,&\text{se }p\equiv3\pmod4.
+          \end{cases}
+        \]
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-38">
+    <p><span class="exercise-number">3.38.</span> Prove que as três partes do teorema da reciprocidade quadrática, o <a href="#teorema-3-62" data-source-xref>Teorema 3.62</a>, são equivalentes às três fórmulas concisas a seguir, nas quais \(p\) e \(q\) são primos ímpares.</p>
+    <ol type="a">
+      <li>\(\displaystyle\left(\frac{-1}{p}\right)=(-1)^{(p-1)/2}\).</li>
+      <li>\(\displaystyle\left(\frac2p\right)=(-1)^{(p^2-1)/8}\).</li>
+      <li>\(\displaystyle\left(\frac pq\right)\left(\frac qp\right)=(-1)^{\frac{p-1}{2}\cdot\frac{q-1}{2}}\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-39">
+    <p><span class="exercise-number">3.39.</span> Seja \(p\) um primo que satisfaz \(p\equiv3\pmod4\).</p>
+    <ol type="a">
+      <li>Seja \(a\) um resíduo quadrático módulo \(p\). Prove que
+        \[
+          b\equiv a^{(p+1)/4}\pmod p
+        \]
+        possui a propriedade \(b^2\equiv a\pmod p\). (Dica: escreva \((p+1)/2\) como \(1+(p-1)/2\) e use o <a href="#exercicio-3-37" data-source-xref>Exercício 3.37</a>.) Isso fornece uma maneira simples de extrair raízes quadradas módulo \(p\) para primos congruentes a \(3\) módulo \(4\).
+      </li>
+      <li>Use o item (a) para calcular as raízes quadradas a seguir módulo \(p\). Não deixe de conferir suas respostas.
+        <ol type="i">
+          <li>Resolva \(b^2\equiv116\pmod{587}\).</li>
+          <li>Resolva \(b^2\equiv3217\pmod{8627}\).</li>
+          <li>Resolva \(b^2\equiv9109\pmod{10663}\).</li>
+        </ol>
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-40">
+    <p><span class="exercise-number">3.40.</span> Seja \(p\) um primo ímpar, seja \(g\in\mathbb F_p^*\) uma raiz primitiva e seja \(h\in\mathbb F_p^*\). Escreva \(p-1=2^sm\), com \(m\) ímpar e \(s\ge1\), e escreva a expansão binária de \(\log_g(h)\) como</p>
+    <div class="display-math">
+      \[
+        \log_g(h)=
+        \epsilon_0+2\epsilon_2+4\epsilon_2+8\epsilon_3+\cdots,
+        \qquad
+        \epsilon_0,\epsilon_1,\ldots\in\{0,1\}.
+      \]
+    </div>
+    <p>Forneça um algoritmo que generalize o <a href="#exemplo-3-69" data-source-xref>Exemplo 3.69</a> e permita calcular rapidamente \(\epsilon_0,\epsilon_1,\ldots,\epsilon_{s-1}\), provando assim que os primeiros \(s\) bits do logaritmo discreto são inseguros. Você pode supor que dispõe de um algoritmo rápido para calcular raízes quadradas em \(\mathbb F_p^*\), como o fornecido pelo <a href="#exercicio-3-39" data-source-xref>Exercício 3.39(a)</a> quando \(p\equiv3\pmod4\). (Dica: use o <a href="#exemplo-3-69" data-source-xref>Exemplo 3.69</a> para calcular o bit de ordem \(0\), extraia a raiz quadrada de \(h\) ou de \(g^{-1}h\) e repita.)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-3-41">
+    <p><span class="exercise-number">3.41.</span> Seja \(p\) um primo que satisfaz \(p\equiv1\pmod3\). Dizemos que \(a\) é um <strong>resíduo cúbico módulo \(p\)</strong> se \(p\nmid a\) e existe um inteiro \(c\) que satisfaz \(a\equiv c^3\pmod p\).</p>
+    <ol type="a">
+      <li>Sejam \(a\) e \(b\) resíduos cúbicos módulo \(p\). Prove que \(ab\) é um resíduo cúbico módulo \(p\).</li>
+      <li>Dê um exemplo que mostre que, ao contrário do que acontece com resíduos quadráticos, é possível que nenhum dos números \(a\), \(b\) e \(ab\) seja um resíduo cúbico módulo \(p\).</li>
+      <li>Seja \(g\) uma raiz primitiva módulo \(p\). Prove que \(a\) é um resíduo cúbico módulo \(p\) se, e somente se, \(3\mid\log_g(a)\), em que \(\log_g(a)\) é o logaritmo discreto de \(a\) na base \(g\).</li>
+      <li>Suponha, em vez disso, que \(p\equiv2\pmod3\). Prove que, para todo inteiro \(a\), existe um inteiro \(c\) que satisfaz \(a\equiv c^3\pmod p\). Em outras palavras, mostre que, quando \(p\equiv2\pmod3\), todo número é um cubo módulo \(p\).</li>
+    </ol>
+  </div>
+
+  <h3>Seção 3.10 — Cifragem probabilística e o criptossistema Goldwasser–Micali</h3>
+
+  <div class="exercise" id="exercicio-3-42">
+    <p><span class="exercise-number">3.42.</span> Efetue as cifragens e decifragens a seguir usando o criptossistema de chave pública Goldwasser–Micali da <a href="#tab-3-9" data-source-xref>Tabela 3.9</a>.</p>
+    <ol type="a">
+      <li>A chave pública de Bob é o par \(N=1842338473\) e \(a=1532411781\). Alice cifra \(3\) bits e envia a Bob os blocos de texto cifrado
+        \[
+          1794677960,\qquad525734818,\qquad420526487.
+        \]
+        Decifre a mensagem de Alice usando a fatoração
+        \[
+          N=pq=32411\cdot56843.
+        \]
+      </li>
+      <li>A chave pública de Bob é \(N=3149\) e \(a=2013\). Alice cifra \(3\) bits e envia a Bob os blocos de texto cifrado \(2322\), \(719\) e \(202\). Infelizmente, Bob usou primos pequenos demais. Fatore \(N\) e decifre a mensagem de Alice.</li>
+      <li>A chave pública de Bob é \(N=781044643\) e \(a=568980706\). Cifre os \(3\) bits \(1,1,0\) usando, respectivamente, os três valores aleatórios
+        \[
+          r=705130839,\qquad r=631364468,\qquad r=67651321.
+        \]
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-3-43">
+    <p><span class="exercise-number">3.43.</span> Suponha que o espaço de textos simples \(\mathcal M\) de certo criptossistema seja o conjunto das sequências de bits de comprimento \(2b\). Sejam \(e_k\) e \(d_k\) as funções de cifração e decifração associadas a uma chave \(k\in\mathcal K\). Este exercício descreve uma maneira de transformar o criptossistema original em um criptossistema probabilístico. A maioria dos criptossistemas práticos atualmente em uso emprega variantes mais complicadas dessa ideia para frustrar certos tipos de ataque. Consulte a Seção 8.6 para mais detalhes.</p>
+    <p>Alice envia a Bob uma mensagem cifrada realizando as etapas a seguir.</p>
+    <ol class="steps">
+      <li>Alice escolhe uma mensagem \(m'\) de \(b\) bits para cifrar.</li>
+      <li>Alice escolhe uma sequência \(r\) formada por \(b\) bits aleatórios.</li>
+      <li>Alice define
+        \[
+          m=r\mathbin{\Vert}(r\oplus m'),
+        \]
+        em que \(\mathbin{\Vert}\) denota concatenação<sup id="fnref-3-ex-13"><a href="#fn-3-ex-13">13</a></sup> e \(\oplus\) denota ou exclusivo. Observe que \(m\) possui \(2b\) bits.
+      </li>
+      <li>Alice calcula \(c=e_k(m)\) e envia a Bob o texto cifrado \(c\).</li>
+    </ol>
+    <ol type="a">
+      <li>Explique como Bob decifra a mensagem de Alice e recupera o texto simples \(m'\). Supomos, naturalmente, que Bob conheça a função de decifração \(d_k\).</li>
+      <li>Se os textos simples e os textos cifrados do criptossistema original possuem o mesmo comprimento, qual é a razão de expansão de mensagem do novo criptossistema probabilístico?</li>
+      <li>Mais geralmente, se o criptossistema original possui razão de expansão de mensagem \(\mu\), qual é a razão de expansão de mensagem do novo criptossistema probabilístico?</li>
+    </ol>
+  </div>
+
+  <ol class="footnotes">
+    <li id="fn-3-ex-13">A concatenação de duas sequências de bits é formada colocando a primeira antes da segunda. Por exemplo, \(1101\mathbin{\Vert}1001\) é a sequência de bits \(11011001\). <a href="#fnref-3-ex-13" aria-label="Voltar à chamada da nota 13">↩</a></li>
+  </ol>
+</section>

@@ -1,0 +1,471 @@
+<section class="chapter-section" id="sec-3-9">
+  <div class="section-heading">
+    <span class="section-number">3.9</span>
+    <h2>Resíduos quadráticos e reciprocidade quadrática</h2>
+  </div>
+
+  <p>Seja \(p\) um número primo. Eis uma questão matemática simples:</p>
+
+  <blockquote>
+    <p>Como Bob pode determinar se um número dado \(a\) é igual a um quadrado módulo \(p\)?</p>
+  </blockquote>
+
+  <p>Por exemplo, suponha que Alice pergunte a Bob se \(181\) é um quadrado módulo \(1223\). Uma maneira de Bob responder à pergunta de Alice é construir uma tabela de quadrados módulo \(1223\), como ilustra a <a href="#tab-3-8" data-source-xref>Tabela 3.8</a>, mas isso dá muito trabalho, e por isso ele desistiu depois de calcular \(96^2\bmod1223\). Alice retomou o cálculo no ponto em que Bob parou e acabou descobrindo que \(437^2\equiv181\pmod{1223}\). Portanto, a resposta à pergunta dela é que \(181\) é, de fato, um quadrado módulo \(1223\). De modo semelhante, se Alice estiver motivada o bastante para continuar a tabela até \(1222^2\bmod1223\), poderá verificar que o número \(385\) não é um quadrado módulo \(1223\), pois ele não aparece em sua tabela. (Na verdade, Alice pode economizar metade do tempo calculando apenas até \(611^2\bmod1223\), pois \(a^2\) e \((p-a)^2\) têm o mesmo valor módulo \(p\).)</p>
+
+  <p>Nosso objetivo nesta seção é descrever uma maneira muito mais eficiente de verificar se um número é um quadrado módulo um primo. Começamos com uma definição.</p>
+
+  <div class="semantic definition" id="def-residuo-quadratico">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Seja \(p\) um número primo ímpar e seja \(a\) um número tal que \(p\nmid a\). Dizemos que \(a\) é um <em>resíduo quadrático módulo \(p\)</em> se \(a\) for um quadrado módulo \(p\), isto é, se existir um número \(c\) tal que \(c^2\equiv a\pmod p\). Se \(a\) não for um quadrado módulo \(p\), isto é, se não existir tal \(c\), então \(a\) é chamado <em>não resíduo quadrático módulo \(p\)</em>.</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-3-60">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.60</span></div>
+    <p>Os números \(968\) e \(1203\) são ambos resíduos quadráticos módulo \(1223\), pois</p>
+    <div class="display-math">
+      \[
+        453^2\equiv968\pmod{1223}
+        \qquad\text{e}\qquad
+        375^2\equiv1203\pmod{1223}.
+      \]
+    </div>
+
+    <div class="table-wrap" id="tab-3-8">
+      <table>
+        <caption><span class="label">Tabela 3.8.</span> Tabela de quadrados módulo \(1223\) de Bob</caption>
+        <tbody>
+        <tr><td>\(1^2\equiv1\)</td><td>\(2^2\equiv4\)</td><td>\(3^2\equiv9\)</td><td>\(4^2\equiv16\)</td><td>\(5^2\equiv25\)</td><td>\(6^2\equiv36\)</td><td>\(7^2\equiv49\)</td><td>\(8^2\equiv64\)</td><td>\(9^2\equiv81\)</td></tr>
+        <tr><td>\(10^2\equiv100\)</td><td>\(11^2\equiv121\)</td><td>\(12^2\equiv144\)</td><td>\(13^2\equiv169\)</td><td>\(14^2\equiv196\)</td><td>\(15^2\equiv225\)</td><td>\(16^2\equiv256\)</td><td>\(17^2\equiv289\)</td><td>\(18^2\equiv324\)</td></tr>
+        <tr><td>\(19^2\equiv361\)</td><td>\(20^2\equiv400\)</td><td>\(21^2\equiv441\)</td><td>\(22^2\equiv484\)</td><td>\(23^2\equiv529\)</td><td>\(24^2\equiv576\)</td><td>\(25^2\equiv625\)</td><td>\(26^2\equiv676\)</td><td>\(27^2\equiv729\)</td></tr>
+        <tr><td>\(28^2\equiv784\)</td><td>\(29^2\equiv841\)</td><td>\(30^2\equiv900\)</td><td>\(31^2\equiv961\)</td><td>\(32^2\equiv1024\)</td><td>\(33^2\equiv1089\)</td><td>\(34^2\equiv1156\)</td><td>\(35^2\equiv2\)</td><td>\(36^2\equiv73\)</td></tr>
+        <tr><td>\(37^2\equiv146\)</td><td>\(38^2\equiv221\)</td><td>\(39^2\equiv298\)</td><td>\(40^2\equiv377\)</td><td>\(41^2\equiv458\)</td><td>\(42^2\equiv541\)</td><td>\(43^2\equiv626\)</td><td>\(44^2\equiv713\)</td><td>\(45^2\equiv802\)</td></tr>
+        <tr><td>\(46^2\equiv893\)</td><td>\(47^2\equiv986\)</td><td>\(48^2\equiv1081\)</td><td>\(49^2\equiv1178\)</td><td>\(50^2\equiv54\)</td><td>\(51^2\equiv155\)</td><td>\(52^2\equiv258\)</td><td>\(53^2\equiv363\)</td><td>\(54^2\equiv470\)</td></tr>
+        <tr><td>\(55^2\equiv579\)</td><td>\(56^2\equiv690\)</td><td>\(57^2\equiv803\)</td><td>\(58^2\equiv918\)</td><td>\(59^2\equiv1035\)</td><td>\(60^2\equiv1154\)</td><td>\(61^2\equiv52\)</td><td>\(62^2\equiv175\)</td><td>\(63^2\equiv300\)</td></tr>
+        <tr><td>\(64^2\equiv427\)</td><td>\(65^2\equiv556\)</td><td>\(66^2\equiv687\)</td><td>\(67^2\equiv820\)</td><td>\(68^2\equiv955\)</td><td>\(69^2\equiv1092\)</td><td>\(70^2\equiv8\)</td><td>\(71^2\equiv149\)</td><td>\(72^2\equiv292\)</td></tr>
+        <tr><td>\(73^2\equiv437\)</td><td>\(74^2\equiv584\)</td><td>\(75^2\equiv733\)</td><td>\(76^2\equiv884\)</td><td>\(77^2\equiv1037\)</td><td>\(78^2\equiv1192\)</td><td>\(79^2\equiv126\)</td><td>\(80^2\equiv285\)</td><td>\(81^2\equiv446\)</td></tr>
+        <tr><td>\(82^2\equiv609\)</td><td>\(83^2\equiv774\)</td><td>\(84^2\equiv941\)</td><td>\(85^2\equiv1110\)</td><td>\(86^2\equiv58\)</td><td>\(87^2\equiv231\)</td><td>\(88^2\equiv406\)</td><td>\(89^2\equiv583\)</td><td>\(90^2\equiv762\)</td></tr>
+        <tr><td>\(91^2\equiv943\)</td><td>\(92^2\equiv1126\)</td><td>\(93^2\equiv88\)</td><td>\(94^2\equiv275\)</td><td>\(95^2\equiv464\)</td><td>\(96^2\equiv655\)</td><td colspan="3">\(\ldots\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Por outro lado, os números \(209\) e \(888\) são não resíduos quadráticos módulo \(1223\), pois as congruências</p>
+
+    <div class="display-math">
+      \[
+        c^2\equiv209\pmod{1223}
+        \qquad\text{e}\qquad
+        c^2\equiv888\pmod{1223}
+      \]
+    </div>
+
+    <p>não possuem soluções.</p>
+  </div>
+
+  <p>A <a href="#prop-3-61" data-source-xref>proposição seguinte</a> descreve o que acontece quando resíduos quadráticos e não resíduos são multiplicados.</p>
+
+  <div class="semantic proposition" id="prop-3-61">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">3.61</span></div>
+    <p>Seja \(p\) um número primo ímpar.</p>
+    <ol type="a">
+      <li>O produto de dois resíduos quadráticos módulo \(p\) é um resíduo quadrático módulo \(p\).</li>
+      <li>O produto de um resíduo quadrático e um não resíduo quadrático módulo \(p\) é um não resíduo quadrático módulo \(p\).</li>
+      <li>O produto de dois não resíduos quadráticos módulo \(p\) é um resíduo quadrático módulo \(p\).</li>
+    </ol>
+  </div>
+
+  <div class="semantic proof" id="proof-3-61">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>É fácil demonstrar (a) e (b) diretamente a partir da definição de resíduo quadrático, mas usaremos uma abordagem diferente que fornece simultaneamente os três itens. Seja \(g\) uma raiz primitiva módulo \(p\), como descrito no <a href="../ch01/#theorem-1-30" data-source-xref>Teorema 1.30</a>. Isso significa que as potências \(1,g,g^2,\ldots,g^{p-2}\) são todas distintas módulo \(p\).</p>
+    <p>Quais potências de \(g\) são resíduos quadráticos módulo \(p\)? Certamente, se \(m=2k\) é par, então \(g^m=g^{2k}=(g^k)^2\) é um quadrado.</p>
+    <p>Por outro lado, seja \(m\) ímpar, digamos \(m=2k+1\), e suponha que \(g^m\) seja um resíduo quadrático, digamos \(g^m\equiv c^2\pmod p\). O pequeno teorema de Fermat, o <a href="../ch01/#theorem-1-24" data-source-xref>Teorema 1.24</a>, nos diz que</p>
+    <div class="display-math">
+      \[
+        c^{p-1}\equiv1\pmod p.
+      \]
+    </div>
+    <p>Entretanto, \(c^{p-1}\pmod p\) também é igual a</p>
+    <div class="display-math">
+      \[
+        c^{p-1}\equiv(c^2)^{(p-1)/2}
+        \equiv(g^m)^{(p-1)/2}
+        \equiv(g^{2k+1})^{(p-1)/2}
+        \equiv g^{k(p-1)}\cdot g^{(p-1)/2}\pmod p.
+      \]
+    </div>
+    <p>Outra aplicação do pequeno teorema de Fermat nos diz que</p>
+    <div class="display-math">
+      \[
+        g^{k(p-1)}\equiv(g^{p-1})^k\equiv1^k\equiv1\pmod p,
+      \]
+    </div>
+    <p>de modo que encontramos</p>
+    <div class="display-math">
+      \[
+        g^{(p-1)/2}\equiv1\pmod p.
+      \]
+    </div>
+    <p>Isso contradiz o fato de que \(g\) é uma raiz primitiva, o que prova que toda potência ímpar de \(g\) é um não resíduo quadrático.</p>
+    <p>Provamos uma dicotomia importante. Se \(g\) é uma raiz primitiva módulo \(p\), então</p>
+    <div class="display-math">
+      \[
+        g^m\text{ é }\begin{cases}
+          \text{um resíduo quadrático},&\text{se }m\text{ é par},\\
+          \text{um não resíduo quadrático},&\text{se }m\text{ é ímpar}.
+        \end{cases}
+      \]
+    </div>
+    <p>Agora é simples demonstrar a <a href="#prop-3-61" data-source-xref>Proposição 3.61</a>. Em cada caso, escrevemos \(a\) e \(b\) como potências de \(g\), multiplicamos \(a\) e \(b\) somando seus expoentes e lemos o resultado.</p>
+    <ol type="a">
+      <li>Suponha que \(a\) e \(b\) sejam resíduos quadráticos. Então \(a=g^{2i}\) e \(b=g^{2j}\), logo \(ab=g^{2(i+j)}\) tem expoente par e, portanto, \(ab\) é um resíduo quadrático.</li>
+      <li>Seja \(a\) um resíduo quadrático e seja \(b\) um não resíduo. Então \(a=g^{2i}\) e \(b=g^{2j+1}\), logo \(ab=g^{2(i+j)+1}\) tem expoente ímpar e, portanto, \(ab\) é um não resíduo quadrático.</li>
+      <li>Por fim, sejam \(a\) e \(b\) ambos não resíduos. Então \(a=g^{2i+1}\) e \(b=g^{2j+1}\), logo \(ab=g^{2(i+j+1)}\) tem expoente par e, portanto, \(ab\) é um resíduo quadrático.</li>
+    </ol>
+    <span class="proof-end">□</span>
+  </div>
+
+  <p>Se escrevermos RQ para denotar um resíduo quadrático e NR para denotar um não resíduo quadrático, então a <a href="#prop-3-61" data-source-xref>Proposição 3.61</a> pode ser resumida de maneira concisa pelas três equações</p>
+
+  <div class="display-math">
+    \[
+      \mathrm{RQ}\cdot\mathrm{RQ}=\mathrm{RQ},\qquad
+      \mathrm{RQ}\cdot\mathrm{NR}=\mathrm{NR},\qquad
+      \mathrm{NR}\cdot\mathrm{NR}=\mathrm{RQ}.
+    \]
+  </div>
+
+  <p>Essas equações lhe parecem familiares? Elas se assemelham às regras de multiplicação de \(1\) e \(-1\). Essa observação conduz à definição a seguir.</p>
+
+  <div class="semantic definition" id="def-simbolo-legendre">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Seja \(p\) um primo ímpar. O <em>símbolo de Legendre de \(a\)</em> é a quantidade \(\left(\frac ap\right)\) definida pelas regras</p>
+    <div class="display-math">
+      \[
+        \left(\frac ap\right)=
+        \begin{cases}
+          1,&\text{se }a\text{ é um resíduo quadrático módulo }p,\\
+          -1,&\text{se }a\text{ é um não resíduo quadrático módulo }p,\\
+          0,&\text{se }p\mid a.
+        \end{cases}
+      \]
+    </div>
+  </div>
+
+  <p>Com essa definição, a <a href="#prop-3-61" data-source-xref>Proposição 3.61</a> é resumida pela regra simples de multiplicação<sup id="fnref-3-9-10"><a href="#fn-3-9-10">10</a></sup></p>
+
+  <div class="equation" id="eq-3-33">
+    <span class="equation-number">(3.33)</span>
+    \[
+      \left(\frac ap\right)\left(\frac bp\right)=\left(\frac{ab}{p}\right).
+    \]
+  </div>
+
+  <p>Também fazemos a observação óbvia, mas útil, de que</p>
+
+  <div class="equation" id="eq-3-34">
+    <span class="equation-number">(3.34)</span>
+    \[
+      \text{Se }a\equiv b\pmod p,\qquad\text{então}\qquad
+      \left(\frac ap\right)=\left(\frac bp\right).
+    \]
+  </div>
+
+  <p>Assim, ao calcular \(\left(\frac ap\right)\), podemos reduzir \(a\) módulo \(p\) ao intervalo de \(0\) a \(p-1\). Vale acrescentar uma advertência: a notação do símbolo de Legendre se parece com uma fração, mas não é uma fração!</p>
+
+  <p>Retornando à nossa pergunta original, sobre como determinar se um número dado é um quadrado módulo \(p\), o belo e poderoso teorema a seguir fornece um método para obter a resposta.</p>
+
+  <div class="semantic theorem" id="teorema-3-62">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">3.62 — Reciprocidade quadrática</span></div>
+    <p>Sejam \(p\) e \(q\) primos ímpares.</p>
+    <ol type="a">
+      <li>
+        \[
+          \left(\frac{-1}{p}\right)=
+          \begin{cases}
+            1,&\text{se }p\equiv1\pmod4,\\
+            -1,&\text{se }p\equiv3\pmod4.
+          \end{cases}
+        \]
+      </li>
+      <li>
+        \[
+          \left(\frac2p\right)=
+          \begin{cases}
+            1,&\text{se }p\equiv1\text{ ou }7\pmod8,\\
+            -1,&\text{se }p\equiv3\text{ ou }5\pmod8.
+          \end{cases}
+        \]
+      </li>
+      <li>
+        \[
+          \left(\frac pq\right)=
+          \begin{cases}
+            \left(\dfrac qp\right),&\text{se }p\equiv1\pmod4\text{ ou }q\equiv1\pmod4,\\[4pt]
+            -\left(\dfrac qp\right),&\text{se }p\equiv3\pmod4\text{ e }q\equiv3\pmod4.
+          \end{cases}
+        \]
+      </li>
+    </ol>
+  </div>
+
+  <div class="semantic proof" id="proof-3-62">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Não apresentaremos uma demonstração da reciprocidade quadrática, mas você encontrará uma demonstração em qualquer livro introdutório de teoria dos números, como [<a href="../../references/#ref-35" data-source-xref>35</a>, <a href="../../references/#ref-52" data-source-xref>52</a>, <a href="../../references/#ref-59" data-source-xref>59</a>, <a href="../../references/#ref-100" data-source-xref>100</a>, <a href="../../references/#ref-111" data-source-xref>111</a>]. <span class="proof-end">□</span></p>
+  </div>
+
+  <p>O nome “reciprocidade quadrática” vem da propriedade (c), que nos diz como \(\left(\frac pq\right)\) se relaciona com seu “recíproco” \(\left(\frac qp\right)\). Vale a pena dedicar algum tempo a refletir sobre o <a href="#teorema-3-62" data-source-xref>Teorema 3.62</a>, pois, apesar da simplicidade de seu enunciado, a reciprocidade quadrática está dizendo algo bastante inesperado e profundo. O valor de \(\left(\frac pq\right)\) nos diz se \(p\) é um quadrado módulo \(q\). De modo semelhante, \(\left(\frac qp\right)\) nos diz se \(q\) é um quadrado módulo \(p\). Não há razão <em>a priori</em> para suspeitar que essas perguntas tenham alguma relação entre si. A reciprocidade quadrática nos diz que elas estão intimamente relacionadas e, de fato, relacionadas por uma regra muito simples.</p>
+
+  <p>Do mesmo modo, os itens (a) e (b) da reciprocidade quadrática nos dão algumas informações surpreendentes. O primeiro diz que a pergunta sobre \(-1\) ser ou não um quadrado módulo \(p\) é respondida pela classe de congruência de \(p\) módulo \(4\), e o segundo diz que a pergunta sobre \(2\) ser ou não um quadrado módulo \(p\) é respondida pela classe de congruência de \(p\) módulo \(8\).</p>
+
+  <p>Indicamos anteriormente que a reciprocidade quadrática pode ser usada para determinar se \(a\) é um quadrado módulo \(p\). Para aplicá-la, usamos repetidamente o item (c) para inverter o símbolo de Legendre; a cada inversão, podemos reduzir o número de cima módulo o número de baixo. Isso conduz a uma redução rápida do tamanho dos números, como ilustra o exemplo a seguir.</p>
+
+  <div class="semantic example" id="exemplo-3-63">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.63</span></div>
+    <p>Verificaremos se \(-15750\) é um resíduo quadrático módulo \(37907\), usando a reciprocidade quadrática para calcular o símbolo de Legendre \(\left(\frac{-15750}{37907}\right)\).</p>
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr><td>\(\displaystyle\left(\frac{-15750}{37907}\right)=\left(\frac{-1}{37907}\right)\left(\frac{15750}{37907}\right)\)</td><td>Regra de multiplicação <a href="#eq-3-33" data-source-xref>(3.33)</a></td></tr>
+          <tr><td>\(\displaystyle{}=-\left(\frac{15750}{37907}\right)\)</td><td>Reciprocidade quadrática, <a href="#teorema-3-62" data-source-xref>3.62(a)</a></td></tr>
+          <tr><td>\(\displaystyle{}=-\left(\frac{2\cdot3^2\cdot5^3\cdot7}{37907}\right)\)</td><td>Fatoração de \(15750\)</td></tr>
+          <tr><td>\(\displaystyle{}=-\left(\frac2{37907}\right)\left(\frac3{37907}\right)^2\left(\frac5{37907}\right)^3\left(\frac7{37907}\right)\)</td><td>Regra de multiplicação <a href="#eq-3-33" data-source-xref>(3.33)</a></td></tr>
+          <tr><td>\(\displaystyle{}=-\left(\frac2{37907}\right)\left(\frac5{37907}\right)\left(\frac7{37907}\right)\)</td><td>pois \((-1)^2=1\)</td></tr>
+          <tr><td>\(\displaystyle{}=\left(\frac5{37907}\right)\left(\frac7{37907}\right)\)</td><td>Reciprocidade quadrática, <a href="#teorema-3-62" data-source-xref>3.62(b)</a></td></tr>
+          <tr><td>\(\displaystyle{}=\left(\frac{37907}{5}\right)\times-\left(\frac{37907}{7}\right)\)</td><td>Reciprocidade quadrática, <a href="#teorema-3-62" data-source-xref>3.62(c)</a></td></tr>
+          <tr><td>\(\displaystyle{}=-\left(\frac25\right)\left(\frac27\right)\)</td><td>pois \(37907\equiv2\pmod5\) e \(37907\equiv2\pmod7\)</td></tr>
+          <tr><td>\(=-(-1)\times1\)</td><td>Reciprocidade quadrática, <a href="#teorema-3-62" data-source-xref>3.62(b)</a></td></tr>
+          <tr><td>\(=1\)</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Assim, \(\left(\frac{-15750}{37907}\right)=1\), e concluímos que \(-15750\) é um quadrado módulo \(37907\). Observe que nosso cálculo com símbolos de Legendre não nos diz como resolver \(c^2\equiv-15750\pmod{37907}\); ele nos diz apenas que existe uma solução. Para quem tiver curiosidade, mencionamos que \(c=10982\) é uma solução.</p>
+  </div>
+
+  <p>O <a href="#exemplo-3-63" data-source-xref>Exemplo 3.63</a> mostra como a reciprocidade quadrática pode ser usada para calcular o símbolo de Legendre. Entretanto, talvez você tenha percebido que, no meio de nosso cálculo, precisamos fatorar o número \(15750\). Tivemos sorte por \(15750\) ser fácil de fatorar, mas suponha que nos deparemos com um problema de fatoração mais difícil. Por exemplo, suponha que queiramos determinar se \(p=228530738017\) é um quadrado módulo \(q=9365449244297\). Acontece que tanto \(p\) quanto \(q\) são primos.<sup id="fnref-3-9-11"><a href="#fn-3-9-11">11</a></sup> Portanto, podemos usar a reciprocidade quadrática para calcular</p>
+
+  <div class="table-wrap">
+    <table>
+      <tbody>
+        <tr><td>\(\displaystyle\left(\frac{228530738017}{9365449244297}\right)=\left(\frac{9365449244297}{228530738017}\right)\)</td><td>pois \(228530738017\equiv1\pmod4\)</td></tr>
+        <tr><td>\(\displaystyle{}=\left(\frac{224219723617}{228530738017}\right)\)</td><td>reduzindo \(9365449244297\) módulo \(228530738017\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Infelizmente, o número \(224219723617\) não é primo, portanto não podemos aplicar diretamente a reciprocidade quadrática; pior ainda, não é um número fácil de fatorar à mão. Assim, parece que a reciprocidade quadrática só é útil quando os cálculos intermediários conduzem a números que conseguimos fatorar.</p>
+
+  <p>Felizmente, existe uma versão mais sofisticada da reciprocidade quadrática que elimina por completo essa dificuldade. Para enunciá-la, precisamos generalizar a definição do símbolo de Legendre.</p>
+
+  <div class="semantic definition" id="def-simbolo-jacobi">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Sejam \(a\) e \(b\) inteiros e seja \(b\) ímpar e positivo. Suponha que a fatoração de \(b\) em primos seja</p>
+    <div class="display-math">
+      \[
+        b=p_1^{e_1}p_2^{e_2}p_3^{e_3}\cdots p_t^{e_t}.
+      \]
+    </div>
+    <p>O <em>símbolo de Jacobi</em> \(\left(\frac ab\right)\) é definido pela fórmula</p>
+    <div class="display-math">
+      \[
+        \left(\frac ab\right)=
+        \left(\frac a{p_1}\right)^{e_1}
+        \left(\frac a{p_2}\right)^{e_2}
+        \left(\frac a{p_3}\right)^{e_3}
+        \cdots
+        \left(\frac a{p_t}\right)^{e_t}.
+      \]
+    </div>
+    <p>Observe que, se \(b\) for primo, então \(\left(\frac ab\right)\) é o símbolo de Legendre original; logo, o símbolo de Jacobi é uma generalização do símbolo de Legendre. Observe também que definimos o símbolo de Jacobi apenas para valores ímpares e positivos de \(b\).</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-3-64">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.64</span></div>
+    <p>Eis um exemplo simples de um símbolo de Jacobi, calculado diretamente a partir da definição:</p>
+    <div class="display-math">
+      \[
+        \left(\frac{123}{323}\right)
+        =\left(\frac{123}{17\cdot19}\right)
+        =\left(\frac{123}{17}\right)\left(\frac{123}{19}\right)
+        =\left(\frac4{17}\right)\left(\frac9{19}\right)=1.
+      \]
+    </div>
+    <p>Eis um exemplo mais complicado:</p>
+    <div class="display-math">
+      \[
+        \begin{aligned}
+          \left(\frac{171337608}{536134436237}\right)
+          &=\left(\frac{171337608}{29^3\cdot59\cdot67^2\cdot83}\right)\\
+          &=\left(\frac{171337608}{29}\right)^3
+            \left(\frac{171337608}{59}\right)
+            \left(\frac{171337608}{67}\right)^2
+            \left(\frac{171337608}{83}\right)\\
+          &=\left(\frac{171337608}{29}\right)
+            \left(\frac{171337608}{59}\right)
+            \left(\frac{171337608}{83}\right)\\
+          &=\left(\frac{11}{29}\right)
+            \left(\frac{15}{59}\right)
+            \left(\frac{44}{83}\right)
+          =(-1)\cdot1\cdot1=-1.
+        \end{aligned}
+      \]
+    </div>
+  </div>
+
+  <p>A partir da definição, parece que precisamos saber fatorar \(b\) para calcular o símbolo de Jacobi \(\left(\frac ab\right)\), de modo que não ganhamos coisa alguma. Entretanto, acontece que o símbolo de Jacobi herda a maior parte das propriedades do símbolo de Legendre, o que nos permitirá calcular \(\left(\frac ab\right)\) com extrema rapidez sem fazer fatoração alguma. Começamos pelas propriedades básicas de multiplicação e redução.</p>
+
+  <div class="semantic proposition" id="prop-3-65">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">3.65</span></div>
+    <p>Sejam \(a,a_1,a_2,b,b_1,b_2\) inteiros, com \(b,b_1,b_2\) positivos e ímpares.</p>
+    <ol type="a">
+      <li>
+        \[
+          \left(\frac{a_1a_2}{b}\right)
+          =\left(\frac{a_1}{b}\right)\left(\frac{a_2}{b}\right)
+          \qquad\text{e}\qquad
+          \left(\frac a{b_1b_2}\right)
+          =\left(\frac a{b_1}\right)\left(\frac a{b_2}\right).
+        \]
+      </li>
+      <li>Se \(a_1\equiv a_2\pmod b\), então
+        \[
+          \left(\frac{a_1}{b}\right)=\left(\frac{a_2}{b}\right).
+        \]
+      </li>
+    </ol>
+  </div>
+
+  <div class="semantic proof" id="proof-3-65">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Ambos os itens da <a href="#prop-3-65" data-source-xref>Proposição 3.65</a> decorrem facilmente da definição do símbolo de Jacobi e das propriedades correspondentes <a href="#eq-3-33" data-source-xref>(3.33)</a> e <a href="#eq-3-34" data-source-xref>(3.34)</a> do símbolo de Legendre. <span class="proof-end">□</span></p>
+  </div>
+
+  <p>Chegamos agora ao fato surpreendente de que o símbolo de Jacobi satisfaz exatamente a mesma lei de reciprocidade que o símbolo de Legendre.</p>
+
+  <div class="semantic theorem" id="teorema-3-66">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">3.66 — Reciprocidade quadrática: versão II</span></div>
+    <p>Sejam \(a\) e \(b\) inteiros ímpares e positivos.</p>
+    <ol type="a">
+      <li>
+        \[
+          \left(\frac{-1}{b}\right)=
+          \begin{cases}
+            1,&\text{se }b\equiv1\pmod4,\\
+            -1,&\text{se }b\equiv3\pmod4.
+          \end{cases}
+        \]
+      </li>
+      <li>
+        \[
+          \left(\frac2b\right)=
+          \begin{cases}
+            1,&\text{se }b\equiv1\text{ ou }7\pmod8,\\
+            -1,&\text{se }b\equiv3\text{ ou }5\pmod8.
+          \end{cases}
+        \]
+      </li>
+      <li>
+        \[
+          \left(\frac ab\right)=
+          \begin{cases}
+            \left(\dfrac ba\right),&\text{se }a\equiv1\pmod4\text{ ou }b\equiv1\pmod4,\\[4pt]
+            -\left(\dfrac ba\right),&\text{se }a\equiv3\pmod4\text{ e }b\equiv3\pmod4.
+          \end{cases}
+        \]
+      </li>
+    </ol>
+  </div>
+
+  <div class="semantic proof" id="proof-3-66">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Não é difícil usar a versão original da reciprocidade quadrática para o símbolo de Legendre, o <a href="#teorema-3-62" data-source-xref>Teorema 3.62</a>, para demonstrar a versão mais geral para o símbolo de Jacobi. Veja, por exemplo, <a href="../../references/#ref-59" data-source-xref>[59, Proposição 5.2.2]</a> ou <a href="../../references/#ref-137" data-source-xref>[137, Teorema 22.2]</a>. <span class="proof-end">□</span></p>
+  </div>
+
+  <div class="semantic example" id="exemplo-3-67">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.67</span></div>
+    <p>Quando tentamos usar a versão original da reciprocidade quadrática, o <a href="#teorema-3-62" data-source-xref>Teorema 3.62</a>, para calcular \(\left(\frac{228530738017}{9365449244297}\right)\), encontramos o problema de precisar fatorar o número \(224219723617\). Usando a nova e aperfeiçoada versão da reciprocidade quadrática, o <a href="#teorema-3-66" data-source-xref>Teorema 3.66</a>, podemos realizar o cálculo sem fazer fatoração alguma:</p>
+    <div class="display-math">
+      \[
+        \begin{aligned}
+          \left(\frac{228530738017}{9365449244297}\right)
+          &=\left(\frac{9365449244297}{228530738017}\right)
+          =\left(\frac{224219723617}{228530738017}\right)
+          =\left(\frac{228530738017}{224219723617}\right)\\
+          &=\left(\frac{4311014400}{224219723617}\right)
+          =\left(\frac{2^{10}\cdot4209975}{224219723617}\right)
+          =\left(\frac{224219723617}{4209975}\right)
+          =\left(\frac{665092}{4209975}\right)\\
+          &=\left(\frac{2^2\cdot166273}{4209975}\right)
+          =\left(\frac{4209975}{166273}\right)
+          =\left(\frac{53150}{166273}\right)
+          =\left(\frac{2\cdot26575}{166273}\right)
+          =\left(\frac{26575}{166273}\right)\\
+          &=\left(\frac{166273}{26575}\right)
+          =\left(\frac{6823}{26575}\right)
+          =-\left(\frac{26575}{6823}\right)
+          =-\left(\frac{6106}{6823}\right)
+          =-\left(\frac{2\cdot3053}{6823}\right)\\
+          &=-\left(\frac{3053}{6823}\right)
+          =-\left(\frac{6823}{3053}\right)
+          =-\left(\frac{717}{3053}\right)
+          =-\left(\frac{3053}{717}\right)
+          =-\left(\frac{185}{717}\right)
+          =-\left(\frac{717}{185}\right)\\
+          &=-\left(\frac{162}{185}\right)
+          =-\left(\frac{2\cdot81}{185}\right)
+          =-\left(\frac{81}{185}\right)
+          =-\left(\frac{185}{81}\right)
+          =-\left(\frac{23}{81}\right)
+          =-\left(\frac{81}{23}\right)\\
+          &=-\left(\frac{12}{23}\right)
+          =-\left(\frac{2^2\cdot3}{23}\right)
+          =\left(\frac{23}{3}\right)
+          =\left(\frac23\right)
+          =-1.
+        \end{aligned}
+      \]
+    </div>
+    <p>Portanto, \(228530738017\) não é um quadrado módulo \(9365449244297\).</p>
+  </div>
+
+  <div class="semantic remark" id="obs-3-68">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.68</span></div>
+    <p>Suponha que \(\left(\frac ab\right)=1\), em que \(b\) é algum número ímpar positivo. O fato de que \(\left(\frac ab\right)=1\) nos diz que \(a\) é um quadrado módulo \(b\)? Diz, se \(b\) for primo, pois foi assim que definimos o símbolo de Legendre; mas o que acontece se \(b\) for composto? Por exemplo, suponha que \(b=pq\) seja o produto de dois primos. Então, pela definição,</p>
+    <div class="display-math">
+      \[
+        \left(\frac ab\right)=\left(\frac a{pq}\right)
+        =\left(\frac ap\right)\left(\frac aq\right).
+      \]
+    </div>
+    <p>Vemos que há duas maneiras de \(\left(\frac ab\right)\) ser igual a \(1\), a saber, \(1=1\cdot1\) e \(1=(-1)\cdot(-1)\). Isso conduz a dois casos distintos:</p>
+    <div class="display-math">
+      \[
+        \begin{array}{llll}
+          \text{Caso 1:}&\left(\dfrac ap\right)=\left(\dfrac aq\right)=1,
+          &&\text{logo }a\text{ é um quadrado módulo }pq.\\[5pt]
+          \text{Caso 2:}&\left(\dfrac ap\right)=\left(\dfrac aq\right)=-1,
+          &&\text{logo }a\text{ não é um quadrado módulo }pq.
+        \end{array}
+      \]
+    </div>
+    <p>Devemos justificar nossa afirmação de que \(a\) é um quadrado módulo \(pq\) no Caso 1. Observe que, no Caso 1, existem soluções para \(c_1^2\equiv a\pmod p\) e \(c_2^2\equiv a\pmod q\). Usamos o teorema chinês dos restos, o <a href="../ch02/#teorema-2-24" data-source-xref>Teorema 2.24</a>, para encontrar um inteiro \(c\) que satisfaça \(c\equiv c_1\pmod p\) e \(c\equiv c_2\pmod q\); então \(c^2\equiv a\pmod{pq}\).</p>
+    <p>Nossa conclusão é que, se \(b=pq\) é o produto de dois primos, embora seja fácil calcular o valor do símbolo de Jacobi \(\left(\frac a{pq}\right)\), esse valor não nos diz se \(a\) é um quadrado módulo \(pq\). Essa dicotomia pode ser explorada para fins criptográficos, como será explicado na <a href="#sec-3-10" data-source-xref>seção seguinte</a>.</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-3-69">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.69 — Uma aplicação da reciprocidade quadrática ao problema do logaritmo discreto</span></div>
+    <p>Seja \(p\) um primo ímpar, seja \(g\in\mathbb F_p^*\) uma raiz primitiva e seja \(h\in\mathbb F_p^*\). Como discutimos, em geral é difícil calcular o logaritmo discreto \(\log_g(h)\), isto é, resolver \(g^x=h\). Mas podemos perguntar se é possível extrair facilmente alguma informação sobre \(\log_g(h)\). A resposta é afirmativa, pois alegamos que</p>
+    <div class="equation" id="eq-3-35">
+      <span class="equation-number">(3.35)</span>
+      \[
+        (-1)^{\log_g(h)}=\left(\frac hp\right).
+      \]
+    </div>
+    <p>Assim, o símbolo de Legendre \(\left(\frac hp\right)\) determina se \(\log_g(h)\) é ímpar ou par, e a reciprocidade quadrática fornece um algoritmo rápido para calcular o valor de \(\left(\frac hp\right)\).</p>
+    <p>Para demonstrar <a href="#eq-3-35" data-source-xref>(3.35)</a>, observamos que, ao demonstrar a <a href="#prop-3-61" data-source-xref>Proposição 3.61</a>, mostramos que \(g^r\) é um resíduo quadrático se \(r\) for par e que \(g^r\) é um não resíduo quadrático se \(r\) for ímpar. Tomando \(r=\log_g(h)\), obtemos <a href="#eq-3-35" data-source-xref>(3.35)</a>. Em terminologia mais sofisticada, diz-se que o bit de ordem \(0\) do logaritmo discreto é inseguro. Veja o <a href="#exercicio-3-40" data-source-xref>Exercício 3.40</a> para uma generalização.</p>
+  </div>
+
+  <ol class="footnotes" start="10">
+    <li id="fn-3-9-10">A <a href="#prop-3-61" data-source-xref>Proposição 3.61</a> trata apenas do caso em que \(p\nmid a\) e \(p\nmid b\). Mas, se \(p\) divide \(a\) ou \(b\), então \(p\) também divide \(ab\), de modo que ambos os lados de <a href="#eq-3-33" data-source-xref>(3.33)</a> são zero. <a href="#fnref-3-9-10" aria-label="Voltar à chamada da nota 10">↩</a></li>
+    <li id="fn-3-9-11">Se você não acredita que \(p\) e \(q\) sejam primos, use Miller–Rabin, a <a href="#tab-3-2" data-source-xref>Tabela 3.2</a>, para verificar. <a href="#fnref-3-9-11" aria-label="Voltar à chamada da nota 11">↩</a></li>
+  </ol>
+</section>

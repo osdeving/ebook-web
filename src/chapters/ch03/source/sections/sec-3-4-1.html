@@ -1,0 +1,87 @@
+<section class="chapter-section subsection" id="sec-3-4-1">
+  <div class="section-heading">
+    <span class="section-number">3.4.1</span>
+    <h2>A distribuição do conjunto dos primos</h2>
+  </div>
+
+  <p>Se Bob escolher um número ao acaso, qual é a probabilidade de ele ser primo? A resposta é fornecida por um dos teoremas mais famosos da teoria dos números. Para enunciar o teorema, precisamos <a href="#def-funcao-contagem-primos" data-source-xref>de uma definição</a>.</p>
+
+  <div class="semantic definition" id="def-funcao-contagem-primos">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Para qualquer número \(X\), seja</p>
+    <div class="equation">\[\pi(X)=\bigl(\#\text{ de primos }p\text{ que satisfazem }2\le p\le X\bigr).\]</div>
+    <p>Por exemplo, \(\pi(10)=4\), pois os primos entre \(2\) e \(10\) são \(2,3,5\) e \(7\).</p>
+  </div>
+
+  <div class="semantic theorem" id="teorema-3-21">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">3.21 — Teorema dos números primos</span></div>
+    <div class="equation">\[\lim_{X\to\infty}\frac{\pi(X)}{X/\ln(X)}=1.\]</div>
+  </div>
+
+  <div class="semantic proof" id="proof-3-21">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>O teorema dos números primos foi demonstrado independentemente por Hadamard e de la Vallée Poussin em 1896. Infelizmente, a demonstração está muito além do escopo deste livro. A demonstração mais direta usa análise complexa; veja, por exemplo, <a href="../../references/#ref-7" data-source-xref>[7, Capítulo 13]</a>. <span class="proof-end">□</span></p>
+  </div>
+
+  <div class="semantic example" id="exemplo-3-22">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.22</span></div>
+    <p>Quantos primos esperaríamos encontrar entre \(900000\) e \(1000000\)? O teorema dos números primos diz que</p>
+    <div class="equation">\[
+      \begin{aligned}
+        &amp;\bigl(\text{número de primos entre }900000\text{ e }1000000\bigr)\\
+        &amp;\quad=\pi(1000000)-\pi(900000)
+        \approx\frac{1000000}{\ln1000000}-\frac{900000}{\ln900000}
+        =6737{,}62\ldots.
+      \end{aligned}
+    \]</div>
+    <p>Na verdade, há exatamente \(7224\) primos entre \(900000\) e \(1000000\).</p>
+  </div>
+
+  <p>Para fins criptográficos, precisamos de primos ainda maiores. Por exemplo, talvez queiramos usar primos com aproximadamente \(300\) algarismos decimais ou, quase equivalentemente, primos com \(1024\) bits de comprimento, pois \(2^{1024}\approx10^{308{,}25}\). Quantos primos \(p\) satisfazem \(2^{1023}&lt;p&lt;2^{1024}\)? O teorema dos números primos nos dá uma resposta:</p>
+  <div class="equation">\[
+    \begin{aligned}
+      \#\text{ de primos de 1024 bits}
+      &amp;=\pi(2^{1024})-\pi(2^{1023})\\
+      &amp;\approx\frac{2^{1024}}{\ln2^{1024}}-\frac{2^{1023}}{\ln2^{1023}}
+      \approx2^{1013{,}53}.
+    \end{aligned}
+  \]</div>
+  <p>Portanto, deve haver muitos primos nesse intervalo.</p>
+
+  <p>Intuitivamente, o teorema dos números primos diz que, se examinarmos todos os números entre \(1\) e \(X\), a proporção deles que são primos é aproximadamente \(1/\ln(X)\). Invertendo essa afirmação, o teorema dos números primos diz:</p>
+  <div class="equation" id="eq-3-10"><span class="equation-number">(3.10)</span>\[\boxed{\begin{gathered}\text{Um número }N\text{ escolhido ao acaso tem}\\\text{probabilidade }1/\ln(N)\text{ de ser primo.}\end{gathered}}\]</div>
+  <p>Naturalmente, tomada ao pé da letra, a afirmação <a href="#eq-3-10" data-source-xref>(3.10)</a> é um completo absurdo. Um número escolhido ou é primo ou não é; ele não pode ser parcialmente primo e parcialmente composto! Uma interpretação melhor de <a href="#eq-3-10" data-source-xref>(3.10)</a> é que ela descreve quantos primos se espera encontrar em um intervalo ao redor de \(N\). Veja o <a href="#exercicio-3-19" data-source-xref>Exercício 3.19</a> para uma formulação mais precisa de <a href="#eq-3-10" data-source-xref>(3.10)</a> que seja ao mesmo tempo significativa e matematicamente correta.</p>
+
+  <div class="semantic example" id="exemplo-3-23">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.23</span></div>
+    <p>Ilustramos a afirmação <a href="#eq-3-10" data-source-xref>(3.10)</a> e o teorema dos números primos procurando primos de \(1024\) bits, isto é, primos que são aproximadamente \(2^{1024}\). A afirmação <a href="#eq-3-10" data-source-xref>(3.10)</a> diz que a probabilidade de um número aleatório \(N\approx2^{1024}\) ser primo é de aproximadamente \(0{,}14\%\). Assim, em média, Bob testa cerca de \(700\) números desse tamanho escolhidos ao acaso antes de encontrar um primo.</p>
+    <p>Se for esperto, Bob pode fazer melhor. Ele sabe que não quer um número par, nem um número divisível por \(3\), nem divisível por \(5\), e assim por diante. Portanto, em vez de escolher números completamente ao acaso, Bob poderia restringir sua atenção, digamos, a números primos com \(2,3,5,7\) e \(11\). Para fazer isso, primeiro escolhe um número aleatório que seja primo com \(2\cdot3\cdot5\cdot7\cdot11=2310\), digamos \(1139\). Depois, considera apenas números \(N\) da forma</p>
+    <div class="equation" id="eq-3-11"><span class="equation-number">(3.11)</span>\[N=2\cdot3\cdot5\cdot7\cdot11\cdot K+1139=2310K+1139.\]</div>
+    <p>A probabilidade de um \(N\) dessa forma ser primo é aproximadamente — veja o <a href="#exercicio-3-20" data-source-xref>Exercício 3.20</a> —</p>
+    <div class="equation">\[\frac21\cdot\frac32\cdot\frac54\cdot\frac76\cdot\frac{11}{10}\cdot\frac1{\ln(N)}\approx\frac{4{,}8}{\ln(N)}.\]</div>
+    <p>Assim, se Bob escolher um número aleatório \(N\) da forma <a href="#eq-3-11" data-source-xref>(3.11)</a> com \(N\approx2^{1024}\), a probabilidade de ele ser primo será de aproximadamente \(0{,}67\%\). Portanto, Bob precisa testar apenas \(150\) números para ter uma boa chance de encontrar um primo.</p>
+    <p>Usamos o teste de Miller–Rabin com \(100\) valores de \(a\) escolhidos ao acaso para verificar a primalidade de</p>
+    <div class="equation">\[2310K+1139\qquad\text{para cada}\qquad2^{1013}\le K\le2^{1013}+1000.\]</div>
+    <p>Descobrimos que \(2310(2^{1013}+J)+1139\) é provavelmente primo para os doze valores de \(J\) a seguir:</p>
+    <div class="equation">\[J\in\{41,148,193,251,471,585,606,821,851,865,910,911\}.\]</div>
+    <p>Isso é um pouco melhor que os sete valores previstos pelo teorema dos números primos. O menor primo provável que encontramos é \(2310\cdot(2^{1013}+41)+1139\), que é igual ao número de \(308\) algarismos a seguir:</p>
+    <div class="equation long-number"><code>20276714558261473373313940384387925462194955182405899331133959349334105522983<br>75121272248938548639688519470034484877532500936544755670421865031628734263599742737518719<br>78241831537235413710389881550750303525056818030281312537212445925881220354174468221605146<br>327969430834440565497127875070636801598203824198219369</code></div>
+  </div>
+
+  <aside class="semantic remark" id="obs-3-24">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.24</span></div>
+    <p>Há muitas questões abertas profundas sobre a distribuição dos números primos, das quais a mais importante e famosa é certamente a <strong>hipótese de Riemann</strong>.<sup id="fnref-3-4-1-3"><a href="#fn-3-4-1-3" data-source-xref>3</a></sup> A maneira usual de enunciar a hipótese de Riemann requer alguma análise complexa. A função zeta de Riemann \(\zeta(s)\) é definida pela série</p>
+    <div class="equation">\[\zeta(s)=\sum_{n=1}^{\infty}\frac1{n^s},\]</div>
+    <p>que converge quando \(s\) é um número complexo com parte real maior que \(1\). Ela possui uma continuação analítica para todo o plano complexo, com um polo simples em \(s=1\) e nenhum outro polo. A hipótese de Riemann diz que, se \(\zeta(\sigma+it)=0\), com \(\sigma\) e \(t\) reais e \(0\le\sigma\le1\), então, na verdade, \(\sigma=\tfrac12\).</p>
+    <p>À primeira vista, essa afirmação um tanto bizarra parece ter pouca relação com os números primos. Contudo, não é difícil mostrar que \(\zeta(s)\) também é igual ao produto</p>
+    <div class="equation">\[\zeta(s)=\prod_{p\text{ primo}}\left(1-\frac1{p^s}\right)^{-1},\]</div>
+    <p>de modo que \(\zeta(s)\) incorpora informações sobre o conjunto dos números primos.</p>
+    <p>Há muitas afirmações sobre números primos equivalentes à hipótese de Riemann. Por exemplo, lembre-se de que o teorema dos números primos (<a href="#teorema-3-21" data-source-xref>Teorema 3.21</a>) diz que \(\pi(X)\) é aproximadamente igual a \(X/\ln(X)\) para valores grandes de \(X\). A hipótese de Riemann é equivalente à afirmação mais precisa a seguir:</p>
+    <div class="equation" id="eq-3-12"><span class="equation-number">(3.12)</span>\[\pi(X)=\int_2^X\frac{dt}{\ln t}+O\!\left(\sqrt X\cdot\ln(X)\right).\]</div>
+    <p>Essa fórmula conjectural é mais forte que o teorema dos números primos, pois a integral é aproximadamente igual a \(X/\ln(X)\). (Veja o <a href="#exercicio-3-21" data-source-xref>Exercício 3.21</a>.)</p>
+  </aside>
+
+  <ol class="footnotes" start="3">
+    <li id="fn-3-4-1-3">A hipótese de Riemann é outro dos problemas do Prêmio do Milênio de US$ 1.000.000. <a href="#fnref-3-4-1-3" data-source-xref aria-label="Voltar à chamada da nota 3">↩</a></li>
+  </ol>
+</section>

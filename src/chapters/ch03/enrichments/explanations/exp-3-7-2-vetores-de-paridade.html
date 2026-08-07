@@ -1,0 +1,7 @@
+<p class="supplement-lead">Cada relação suave produz uma linha ou coluna binária: um bit por fator da base. O objetivo é achar uma combinação cuja soma seja zero.</p>
+<ol class="slow-steps">
+  <li><strong>Codifique.</strong> Guarde apenas a paridade de cada expoente, pois expoentes pares já formam quadrados.</li>
+  <li><strong>Elimine.</strong> Use eliminação gaussiana esparsa ou métodos adequados a matrizes grandes para encontrar dependências.</li>
+  <li><strong>Reconstrua.</strong> Volte às relações inteiras originais para formar x e y; o vetor binário sozinho não contém os valores necessários ao mdc.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Descartar os expoentes completos cedo demais impede reconstruir a raiz do produto. Implementações mantêm metadados de cada relação além da matriz de paridade.</div>

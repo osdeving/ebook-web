@@ -1,0 +1,7 @@
+<p class="supplement-lead">Uma implementação segura envolve camadas com responsabilidades diferentes. A exponenciação modular é apenas a primitiva no centro do processo.</p>
+<ol class="slow-steps">
+  <li><strong>Encoding.</strong> O esquema converte a mensagem num bloco com estrutura, aleatoriedade e limites de tamanho claros.</li>
+  <li><strong>Primitiva.</strong> Só então aplica a operação RSA ao representante inteiro no intervalo permitido.</li>
+  <li><strong>Validação.</strong> A decodificação deve rejeitar blocos inválidos sem transformar tempo, mensagens de erro ou comportamento num oráculo.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Não invente padding nem reproduza exemplos pequenos em produção. Use bibliotecas auditadas e um esquema padronizado adequado ao objetivo.</div>

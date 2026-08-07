@@ -1,0 +1,249 @@
+<section class="chapter-section subsection" id="sec-3-7-2">
+  <div class="section-heading">
+    <span class="section-number">3.7.2</span>
+    <h2>O crivo quadrático</h2>
+  </div>
+
+  <p>Nesta seção, abordamos a última peça do quebra-cabeça que precisa ser resolvida para fatorar números grandes pelo método da diferença de quadrados descrito na <a href="#sec-3-6" data-source-xref>Seção 3.6</a>:</p>
+
+  <blockquote>Como podemos encontrar eficientemente muitos números \(a&gt;\sqrt N\) tais que cada \(a^2\bmod N\) seja \(B\)-suave?</blockquote>
+
+  <p>Pela discussão da <a href="#sec-3-7-1" data-source-xref>Seção 3.7.1</a> e pela demonstração da <a href="#prop-3-48" data-source-xref>Proposição 3.48</a>, sabemos que precisamos tomar \(B\approx L(N)^{1/\sqrt2}\) para ter uma chance razoável de fatorar \(N\).</p>
+
+  <p>Uma abordagem antiga para encontrar quadrados \(B\)-suaves módulo \(N\) consistia em procurar frações \(a/b\) tão próximas quanto possível de \(\sqrt{kN}\), para \(k=1,2,3,\ldots\). Então</p>
+
+  <div class="equation">\[a^2\approx b^2kN,\]</div>
+
+  <p>de modo que \(a^2\bmod N\) é razoavelmente pequeno e, portanto, tem maior probabilidade de ser \(B\)-suave. A teoria das frações contínuas fornece um algoritmo para encontrar tais valores de \(a/b\). Veja <a href="../../references/#ref-28" data-source-xref>[28, §10.1]</a> para mais detalhes.</p>
+
+  <p>Uma abordagem alternativa, que na prática se mostra muito mais rápida, consiste em permitir valores um pouco maiores de \(a\) e usar um processo eficiente de cancelamento, chamado <em>crivo</em>, para criar simultaneamente grande quantidade de valores \(a^2\bmod N\) que sejam \(B\)-suaves. Descrevemos a seguir o crivo quadrático de Pomerance, que ainda é o método mais rápido conhecido para fatorar números grandes \(N=pq\) até cerca de \(2^{350}\). Para números consideravelmente maiores, digamos maiores que \(2^{450}\), o mais complicado crivo de corpos de números detém o recorde de fatoração mais rápida. No restante desta seção, descrevemos a versão mais simples do crivo quadrático como ilustração dos métodos modernos de fatoração. Para uma descrição da história dos métodos de crivo e uma visão geral de como funcionam, veja o encantador ensaio de Pomerance “A Tale of Two Sieves” <a href="../../references/#ref-105" data-source-xref>[105]</a>.</p>
+
+  <p>Começamos com o problema mais simples de encontrar rapidamente muitos números \(B\)-suaves menores que certo limite \(X\), sem nos preocuparmos se os números têm a forma \(a^2\bmod N\). Para isso, adaptamos o crivo de Eratóstenes, um método da Grécia Antiga para produzir listas de números primos. A ideia de Eratóstenes para encontrar primos é a seguinte. Comece contornando o primeiro primo, \(2\), e riscando todo múltiplo maior de \(2\). Em seguida, contorne o próximo número, \(3\), que deve ser primo, e risque todo múltiplo maior de \(3\). O menor número que ainda não foi contornado é \(5\); portanto, contorne \(5\) e risque todos os múltiplos maiores de \(5\), e assim por diante. Ao final, os números contornados são os primos.</p>
+
+  <p>Esse processo de crivagem é ilustrado na <a href="#fig-3-2" data-source-xref>Figura 3.2</a>, na qual crivamos todos os primos menores que \(10\). Esses são os primos emoldurados na figura. Os números que restam sem ser riscados na lista são todos os demais primos menores que \(100\).</p>
+
+  <figure class="figure" id="fig-3-2">
+    <div class="table-wrap">
+      <table aria-label="Crivo de Eratóstenes para os números de 2 a 99">
+        <tbody>
+          <tr>
+            <td>\(\boxed{2}\)</td><td>\(\boxed{3}\)</td><td><s>4</s></td><td>\(\boxed{5}\)</td><td><s>6</s></td><td>\(\boxed{7}\)</td><td><s>8</s></td><td><s>9</s></td><td><s>10</s></td><td>11</td><td><s>12</s></td><td>13</td><td><s>14</s></td><td><s>15</s></td><td><s>16</s></td><td>17</td><td><s>18</s></td><td>19</td><td><s>20</s></td>
+          </tr>
+          <tr>
+            <td><s>21</s></td><td><s>22</s></td><td>23</td><td><s>24</s></td><td><s>25</s></td><td><s>26</s></td><td><s>27</s></td><td><s>28</s></td><td>29</td><td><s>30</s></td><td>31</td><td><s>32</s></td><td><s>33</s></td><td><s>34</s></td><td><s>35</s></td><td><s>36</s></td><td>37</td><td><s>38</s></td><td><s>39</s></td><td><s>40</s></td>
+          </tr>
+          <tr>
+            <td>41</td><td><s>42</s></td><td>43</td><td><s>44</s></td><td><s>45</s></td><td><s>46</s></td><td>47</td><td><s>48</s></td><td><s>49</s></td><td><s>50</s></td><td><s>51</s></td><td><s>52</s></td><td>53</td><td><s>54</s></td><td><s>55</s></td><td><s>56</s></td><td><s>57</s></td><td><s>58</s></td><td>59</td><td><s>60</s></td>
+          </tr>
+          <tr>
+            <td>61</td><td><s>62</s></td><td><s>63</s></td><td><s>64</s></td><td><s>65</s></td><td><s>66</s></td><td>67</td><td><s>68</s></td><td><s>69</s></td><td><s>70</s></td><td>71</td><td><s>72</s></td><td>73</td><td><s>74</s></td><td><s>75</s></td><td><s>76</s></td><td><s>77</s></td><td><s>78</s></td><td>79</td><td><s>80</s></td>
+          </tr>
+          <tr>
+            <td><s>81</s></td><td><s>82</s></td><td>83</td><td><s>84</s></td><td><s>85</s></td><td><s>86</s></td><td><s>87</s></td><td><s>88</s></td><td>89</td><td><s>90</s></td><td><s>91</s></td><td><s>92</s></td><td><s>93</s></td><td><s>94</s></td><td><s>95</s></td><td><s>96</s></td><td>97</td><td><s>98</s></td><td><s>99</s></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Figura 3.2: O crivo de Eratóstenes</figcaption>
+  </figure>
+
+  <p>Observe que alguns números são riscados várias vezes. Por exemplo, \(6\), \(12\) e \(18\) são riscados duas vezes, uma por serem múltiplos de \(2\) e outra por serem múltiplos de \(3\). Do mesmo modo, números como \(30\) e \(42\) são riscados três vezes. Suponha que, em vez de riscar os números, nós os dividamos. Isto é, começamos dividindo todo número par por \(2\), depois dividimos todo múltiplo de \(3\) por \(3\), depois todo múltiplo de \(5\) por \(5\), e assim por diante. Se fizermos isso para todos os primos menores que \(B\), quais números acabam sendo divididos até chegar a \(1\)? A resposta é: aqueles que são produto de primos distintos menores que \(B\); em particular, eles são \(B\)-suaves! Assim, terminamos com uma lista de muitos números \(B\)-suaves.</p>
+
+  <p>Infelizmente, perdemos alguns números \(B\)-suaves, a saber, aqueles divisíveis por potências de primos pequenos, mas é fácil corrigir esse problema crivando com potências de primos. Assim, depois de crivar por \(3\), em vez de passar a \(5\), primeiro crivamos por \(4\). Para isso, cancelamos um fator adicional de \(2\) de todo múltiplo de \(4\). Observe que já cancelamos \(2\) desses números, pois eles são pares, de modo que podemos cancelar apenas mais um fator de \(2\). Se fizermos isso, então, ao final, os números \(B\)-suaves menores que \(X\) serão precisamente aqueles reduzidos a \(1\). Pode-se demonstrar que o número total de divisões necessárias é aproximadamente \(X\ln(\ln(B))\). A função logaritmo duplo \(\ln(\ln(B))\) cresce de modo extremamente lento, portanto o número médio de divisões necessárias para verificar a suavidade de cada número é aproximadamente constante.</p>
+
+  <p>Nosso objetivo, porém, não é produzir uma lista dos números de \(1\) a \(X\) que são \(B\)-suaves. Precisamos de uma lista de números da forma \(a^2\bmod N\) que sejam \(B\)-suaves. Nossa estratégia usa o polinômio</p>
+
+  <div class="equation">\[F(T)=T^2-N.\]</div>
+
+  <p>Queremos começar com um valor de \(a\) ligeiramente maior que \(\sqrt N\), por isso definimos</p>
+
+  <div class="equation">\[a=\lfloor\sqrt N\rfloor+1,\]</div>
+
+  <p>em que \(\lfloor x\rfloor\) denota, como de costume, o maior inteiro menor ou igual a \(x\). Em seguida, consideramos a lista de números</p>
+
+  <div class="equation" id="eq-3-21"><span class="equation-number">(3.21)</span>\[F(a),F(a+1),F(a+2),\ldots,F(b).\]</div>
+
+  <p>A ideia é encontrar os números \(B\)-suaves dessa lista crivando os primos menores que \(B\) e verificando quais números da lista são crivados até chegar a \(1\). Escolhemos \(B\) grande o suficiente para que, ao final do processo de crivagem, seja provável que tenhamos encontrado números \(B\)-suaves suficientes para fatorar \(N\). A definição a seguir é útil para descrever esse processo.</p>
+
+  <aside class="semantic definition" id="def-base-de-fatores">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>O conjunto dos primos menores que \(B\), ou às vezes o conjunto das potências de primos menores que \(B\), é chamado de <strong>base de fatores</strong>.</p>
+  </aside>
+
+  <p>Suponha que \(p\) seja um primo de nossa base de fatores. Quais dos números da lista <a href="#eq-3-21" data-source-xref>(3.21)</a> são divisíveis por \(p\)? Equivalentemente, quais números \(t\) entre \(a\) e \(b\) satisfazem</p>
+
+  <div class="equation" id="eq-3-22"><span class="equation-number">(3.22)</span>\[t^2\equiv N\pmod p?\]</div>
+
+  <p>Se a congruência <a href="#eq-3-22" data-source-xref>(3.22)</a> não tem soluções, descartamos o primo \(p\), pois ele não divide nenhum dos números da lista <a href="#eq-3-21" data-source-xref>(3.21)</a>. Caso contrário, a congruência <a href="#eq-3-22" data-source-xref>(3.22)</a> tem duas soluções (veja o <a href="../ch01/#exercicio-1-36" data-source-xref>Exercício 1.36</a>, na página 55), que denotamos por</p>
+
+  <div class="equation">\[t=\alpha_p\qquad\text{e}\qquad t=\beta_p.\]</div>
+
+  <p>Se \(p=2\), há apenas uma solução \(\alpha_p\). Segue que cada um dos números</p>
+
+  <div class="equation">\[F(\alpha_p),F(\alpha_p+p),F(\alpha_p+2p),F(\alpha_p+3p),\ldots\]</div>
+
+  <p>e cada um dos números</p>
+
+  <div class="equation">\[F(\beta_p),F(\beta_p+p),F(\beta_p+2p),F(\beta_p+3p),\ldots\]</div>
+
+  <p>é divisível por \(p\). Assim, podemos crivar um fator \(p\) de cada \(p\)-ésima entrada da lista <a href="#eq-3-21" data-source-xref>(3.21)</a>, começando com o menor valor de \(a\) que satisfaça \(a\equiv\alpha_p\pmod p\); de modo semelhante, podemos crivar um fator \(p\) de cada \(p\)-ésima entrada da lista <a href="#eq-3-21" data-source-xref>(3.21)</a>, começando com o menor valor de \(a\) que satisfaça \(a\equiv\beta_p\pmod p\).</p>
+
+  <aside class="semantic example" id="exemplo-3-51">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">3.51</span></div>
+    <p>Ilustramos o crivo quadrático aplicado ao número composto \(N=221\). O menor número cujo quadrado é maior que \(N\) é \(a=\lfloor\sqrt{221}\rfloor+1=15\). Definimos</p>
+    <div class="equation">\[F(T)=T^2-221\]</div>
+    <p>e crivamos os números de \(F(15)=4\) a \(F(30)=679\), usando sucessivamente as potências de primos de \(2\) a \(7\). A lista inicial dos números \(T^2-N\) é<sup id="fnref-3-7-2-8"><a href="#fn-3-7-2-8" data-source-xref>8</a></sup></p>
+    <div class="table-wrap">
+      <table aria-label="Lista inicial do crivo quadrático para N igual a 221"><tbody><tr><td>4</td><td>35</td><td>68</td><td>103</td><td>140</td><td>179</td><td>220</td><td>263</td><td>308</td><td>355</td><td>404</td><td>455</td><td>508</td><td>563</td><td>620</td><td>679</td></tr></tbody></table>
+    </div>
+
+    <p>Primeiro crivamos por \(p=2\), o que significa cancelar \(2\) de cada segunda entrada da lista. Isso dá</p>
+    <div class="table-wrap">
+      <table aria-label="Etapa de crivagem por 2">
+        <tbody>
+          <tr><td>4</td><td>35</td><td>68</td><td>103</td><td>140</td><td>179</td><td>220</td><td>263</td><td>308</td><td>355</td><td>404</td><td>455</td><td>508</td><td>563</td><td>620</td><td>679</td></tr>
+          <tr><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td></tr>
+          <tr><td>2</td><td>35</td><td>34</td><td>103</td><td>70</td><td>179</td><td>110</td><td>263</td><td>154</td><td>355</td><td>202</td><td>455</td><td>254</td><td>563</td><td>310</td><td>679</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Em seguida, crivamos por \(p=3\). Contudo, a congruência</p>
+    <div class="equation">\[t^2\equiv221\equiv2\pmod3\]</div>
+    <p>não tem soluções, portanto nenhuma das entradas de nossa lista é divisível por \(3\).</p>
+
+    <p>Passamos à potência de primo \(2^2\). Todo número ímpar é solução da congruência</p>
+    <div class="equation">\[t^2\equiv221\equiv1\pmod4,\]</div>
+    <p>o que significa que podemos crivar outro fator \(2\) de cada segunda entrada de nossa lista. Colocamos um pequeno \(4\) ao lado das setas de crivagem para indicar que, nesta etapa, estamos crivando por \(4\), embora cancelemos apenas um fator \(2\) de cada entrada.</p>
+    <div class="table-wrap">
+      <table aria-label="Etapa de crivagem por 4">
+        <tbody>
+          <tr><td>2</td><td>35</td><td>34</td><td>103</td><td>70</td><td>179</td><td>110</td><td>263</td><td>154</td><td>355</td><td>202</td><td>455</td><td>254</td><td>563</td><td>310</td><td>679</td></tr>
+          <tr><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td></tr>
+          <tr><td>1</td><td>35</td><td>17</td><td>103</td><td>35</td><td>179</td><td>55</td><td>263</td><td>77</td><td>355</td><td>101</td><td>455</td><td>127</td><td>563</td><td>155</td><td>679</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Em seguida, passamos a \(p=5\). A congruência</p>
+    <div class="equation">\[t^2\equiv221\equiv1\pmod5\]</div>
+    <p>tem duas soluções, \(\alpha_5=1\) e \(\beta_5=4\) módulo \(5\). O primeiro valor de \(t\) em nossa lista congruente a \(1\) módulo \(5\) é \(t=16\); assim, começando com \(F(16)\), vemos que cada quinta entrada é divisível por \(5\). Crivar esses fatores de \(5\) dá</p>
+    <div class="table-wrap">
+      <table aria-label="Primeira etapa de crivagem por 5">
+        <tbody>
+          <tr><td>1</td><td>35</td><td>17</td><td>103</td><td>35</td><td>179</td><td>55</td><td>263</td><td>77</td><td>355</td><td>101</td><td>455</td><td>127</td><td>563</td><td>155</td><td>679</td></tr>
+          <tr><td></td><td>\(\downarrow_5\)</td><td></td><td></td><td></td><td></td><td>\(\downarrow_5\)</td><td></td><td></td><td></td><td></td><td>\(\downarrow_5\)</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>1</td><td>7</td><td>17</td><td>103</td><td>35</td><td>179</td><td>11</td><td>263</td><td>77</td><td>355</td><td>101</td><td>91</td><td>127</td><td>563</td><td>155</td><td>679</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>De modo semelhante, cada quinta entrada a partir de \(F(19)\) é divisível por \(5\), de modo que crivamos esses fatores:</p>
+    <div class="table-wrap">
+      <table aria-label="Segunda etapa de crivagem por 5">
+        <tbody>
+          <tr><td>1</td><td>7</td><td>17</td><td>103</td><td>35</td><td>179</td><td>11</td><td>263</td><td>77</td><td>355</td><td>101</td><td>91</td><td>127</td><td>563</td><td>155</td><td>679</td></tr>
+          <tr><td></td><td></td><td></td><td></td><td>\(\downarrow_5\)</td><td></td><td></td><td></td><td></td><td>\(\downarrow_5\)</td><td></td><td></td><td></td><td></td><td>\(\downarrow_5\)</td><td></td></tr>
+          <tr><td>1</td><td>7</td><td>17</td><td>103</td><td>7</td><td>179</td><td>11</td><td>263</td><td>77</td><td>71</td><td>101</td><td>91</td><td>127</td><td>563</td><td>31</td><td>679</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Para concluir o exemplo, crivamos pelo primo \(p=7\). A congruência</p>
+    <div class="equation">\[t^2\equiv221\equiv4\pmod7\]</div>
+    <p>tem as duas soluções \(\alpha_7=2\) e \(\beta_7=5\). Podemos, portanto, crivar \(7\) de cada sétima entrada a partir de \(F(16)\), e também de cada sétima entrada a partir de \(F(19)\). Isso produz</p>
+    <div class="table-wrap">
+      <table aria-label="Etapas de crivagem por 7">
+        <tbody>
+          <tr><td>1</td><td>7</td><td>17</td><td>103</td><td>7</td><td>179</td><td>11</td><td>263</td><td>77</td><td>71</td><td>101</td><td>91</td><td>127</td><td>563</td><td>31</td><td>679</td></tr>
+          <tr><td></td><td>\(\downarrow_7\)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>\(\downarrow_7\)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>\(\downarrow_7\)</td></tr>
+          <tr><td>1</td><td>1</td><td>17</td><td>103</td><td>7</td><td>179</td><td>11</td><td>263</td><td>11</td><td>71</td><td>101</td><td>91</td><td>127</td><td>563</td><td>31</td><td>97</td></tr>
+          <tr><td></td><td></td><td></td><td></td><td>\(\downarrow_7\)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>\(\downarrow_7\)</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>1</td><td>1</td><td>17</td><td>103</td><td>1</td><td>179</td><td>11</td><td>263</td><td>11</td><td>71</td><td>101</td><td>13</td><td>127</td><td>563</td><td>31</td><td>97</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Observe que as entradas originais</p>
+    <div class="equation">\[F(15)=4,\qquad F(16)=35,\qquad\text{e}\qquad F(19)=140\]</div>
+    <p>foram crivadas até chegar a \(1\). Isso nos diz que</p>
+    <div class="equation">\[F(15)=15^2-221,\qquad F(16)=16^2-221,\qquad\text{e}\qquad F(19)=19^2-221\]</div>
+    <p>são, cada uma, produto de primos pequenos. Portanto, descobrimos vários quadrados módulo \(221\) que são produtos de primos pequenos:</p>
+    <div class="equation" id="eq-3-23"><span class="equation-number">(3.23)</span>\[
+      \begin{aligned}
+        15^2&\equiv2^2&&\pmod{221},\\
+        16^2&\equiv5\cdot7&&\pmod{221},\\
+        19^2&\equiv2^2\cdot5\cdot7&&\pmod{221}.
+      \end{aligned}
+    \]</div>
+    <p>Podemos usar as congruências <a href="#eq-3-23" data-source-xref>(3.23)</a> para obter várias relações entre quadrados. Por exemplo,</p>
+    <div class="equation">\[(16\cdot19)^2\equiv(2\cdot5\cdot7)^2\pmod{221}.\]</div>
+    <p>Calcular</p>
+    <div class="equation">\[\gcd(221,16\cdot19-2\cdot5\cdot7)=\gcd(221,234)=13\]</div>
+    <p>fornece um fator não trivial de \(221\).<sup id="fnref-3-7-2-9"><a href="#fn-3-7-2-9" data-source-xref>9</a></sup></p>
+
+    <p>Fatoramos com sucesso \(N=221\), mas, para ilustrar melhor o processo de crivagem, continuamos crivando até \(B=11\). A próxima potência de primo a crivar é \(3^2\). Contudo, o fato de \(t^2\equiv221\pmod3\) não ter soluções significa que \(t^2\equiv221\pmod9\) também não tem soluções, de modo que passamos ao primo \(p=11\).</p>
+    <p>A congruência \(t^2\equiv221\equiv1\pmod{11}\) tem as soluções \(\alpha_{11}=1\) e \(\beta_{11}=10\), o que nos permite crivar um fator de \(11\) de \(F(23)\) e de \(F(21)\). Recapitulamos todo o processo de crivagem na <a href="#fig-3-3" data-source-xref>Figura 3.3</a>, na qual a primeira linha apresenta valores de \(t\), e as linhas seguintes crivam os valores de \(F(t)=t^2-221\) usando potências de primos até \(11\).</p>
+
+    <p>Observe que mais duas entradas, \(F(21)\) e \(F(23)\), foram crivadas até chegar a \(1\), o que nos dá duas relações adicionais:</p>
+    <div class="equation">\[F(21)\equiv21^2\equiv2^2\cdot5\cdot11\pmod{221}\qquad\text{e}\qquad F(23)\equiv23^2\equiv2^2\cdot7\cdot11\pmod{221}.\]</div>
+    <p>Podemos combinar essas relações com as relações anteriores <a href="#eq-3-23" data-source-xref>(3.23)</a> para obter novas igualdades entre quadrados; por exemplo,</p>
+    <div class="equation">\[(19\cdot21\cdot23)^2\equiv(2^3\cdot5\cdot7\cdot11)^2\pmod{221}.\]</div>
+    <p>Isso oferece outra maneira de fatorar \(221\):</p>
+    <div class="equation">\[\gcd(221,19\cdot21\cdot23-2^3\cdot5\cdot7)=\gcd(221,6097)=13.\]</div>
+  </aside>
+
+  <figure class="figure" id="fig-3-3">
+    <div class="table-wrap">
+      <table aria-label="Crivagem de N igual a 221 com potências de primos até B igual a 11">
+        <tbody>
+          <tr><th scope="row">\(t\)</th><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td></tr>
+          <tr><th scope="row">\(F(t)\)</th><td>4</td><td>35</td><td>68</td><td>103</td><td>140</td><td>179</td><td>220</td><td>263</td><td>308</td><td>355</td><td>404</td><td>455</td><td>508</td><td>563</td><td>620</td><td>679</td></tr>
+          <tr><th scope="row"></th><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td><td>\(\downarrow_2\)</td><td></td></tr>
+          <tr><th scope="row"></th><td>2</td><td>35</td><td>34</td><td>103</td><td>70</td><td>179</td><td>110</td><td>263</td><td>154</td><td>355</td><td>202</td><td>455</td><td>254</td><td>563</td><td>310</td><td>679</td></tr>
+          <tr><th scope="row"></th><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td><td>\(\downarrow_4\)</td><td></td></tr>
+          <tr><th scope="row"></th><td>1</td><td>35</td><td>17</td><td>103</td><td>35</td><td>179</td><td>55</td><td>263</td><td>77</td><td>355</td><td>101</td><td>455</td><td>127</td><td>563</td><td>155</td><td>679</td></tr>
+          <tr><th scope="row"></th><td></td><td>\(\downarrow_5\)</td><td></td><td></td><td></td><td></td><td>\(\downarrow_5\)</td><td></td><td></td><td></td><td></td><td>\(\downarrow_5\)</td><td></td><td></td><td></td><td></td></tr>
+          <tr><th scope="row"></th><td>1</td><td>7</td><td>17</td><td>103</td><td>35</td><td>179</td><td>11</td><td>263</td><td>77</td><td>355</td><td>101</td><td>91</td><td>127</td><td>563</td><td>155</td><td>679</td></tr>
+          <tr><th scope="row"></th><td></td><td></td><td></td><td></td><td>\(\downarrow_5\)</td><td></td><td></td><td></td><td></td><td>\(\downarrow_5\)</td><td></td><td></td><td></td><td></td><td>\(\downarrow_5\)</td><td></td></tr>
+          <tr><th scope="row"></th><td>1</td><td>7</td><td>17</td><td>103</td><td>7</td><td>179</td><td>11</td><td>263</td><td>77</td><td>71</td><td>101</td><td>91</td><td>127</td><td>563</td><td>31</td><td>679</td></tr>
+          <tr><th scope="row"></th><td></td><td>\(\downarrow_7\)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>\(\downarrow_7\)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>\(\downarrow_7\)</td></tr>
+          <tr><th scope="row"></th><td>1</td><td>1</td><td>17</td><td>103</td><td>7</td><td>179</td><td>11</td><td>263</td><td>11</td><td>71</td><td>101</td><td>91</td><td>127</td><td>563</td><td>31</td><td>97</td></tr>
+          <tr><th scope="row"></th><td></td><td></td><td></td><td></td><td>\(\downarrow_7\)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>\(\downarrow_7\)</td><td></td><td></td><td></td><td></td></tr>
+          <tr><th scope="row"></th><td>1</td><td>1</td><td>17</td><td>103</td><td>1</td><td>179</td><td>11</td><td>263</td><td>11</td><td>71</td><td>101</td><td>13</td><td>127</td><td>563</td><td>31</td><td>97</td></tr>
+          <tr><th scope="row"></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>\(\downarrow_{11}\)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th scope="row"></th><td>1</td><td>1</td><td>17</td><td>103</td><td>1</td><td>179</td><td>11</td><td>263</td><td>1</td><td>71</td><td>101</td><td>13</td><td>127</td><td>563</td><td>31</td><td>97</td></tr>
+          <tr><th scope="row"></th><td></td><td></td><td></td><td></td><td></td><td></td><td>\(\downarrow_{11}\)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><th scope="row"></th><td>1</td><td>1</td><td>17</td><td>103</td><td>1</td><td>179</td><td>1</td><td>263</td><td>1</td><td>71</td><td>101</td><td>13</td><td>127</td><td>563</td><td>31</td><td>97</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Figura 3.3: Crivagem de \(N=221\) usando potências de primos até \(B=11\)</figcaption>
+  </figure>
+
+  <aside class="semantic remark" id="obs-3-52">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.52</span></div>
+    <p>Se \(p\) é um primo ímpar, então a congruência \(t^2\equiv N\pmod p\) tem \(0\) ou \(2\) soluções módulo \(p\). Mais geralmente, congruências</p>
+    <div class="equation">\[t^2\equiv N\pmod{p^e}\]</div>
+    <p>módulo potências de \(p\) têm \(0\) ou \(2\) soluções. Veja os <a href="../ch01/#exercicio-1-36" data-source-xref>Exercícios 1.36</a> e <a href="../ch01/#exercicio-1-37" data-source-xref>1.37</a>. Isso torna relativamente simples crivar potências de primos ímpares. Crivar com potências de \(2\) é um pouco mais delicado, pois o número de soluções pode ser diferente módulo \(2\), módulo \(4\) e módulo potências maiores de \(2\). Além disso, pode haver mais de duas soluções. Por exemplo, \(t^2\equiv N\pmod8\) tem quatro soluções distintas módulo \(8\) se \(N\equiv1\pmod8\). Portanto, embora crivar potências de \(2\) não seja intrinsecamente difícil, isso deve ser tratado como um caso especial.</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-3-53">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">3.53</span></div>
+    <p>Há muitas ideias de implementação que podem ser usadas para aumentar consideravelmente a velocidade prática do crivo quadrático. Embora o tempo de execução do crivo permaneça um múltiplo constante de \(L(N)\), esse múltiplo pode ser reduzido de modo significativo.</p>
+    <p>Uma parte demorada do crivo é a necessidade de dividir cada \(p\)-ésima entrada por \(p\), pois, se os números forem grandes, a divisão por \(p\) é moderadamente complicada. É claro que computadores realizam divisões com bastante rapidez, mas o processo de crivagem exige aproximadamente \(L(N)\) divisões, de modo que qualquer redução desse tempo terá efeito imediato. Uma ideia fundamental para acelerar essa etapa é usar logaritmos aproximados, o que permite substituir as operações de divisão, mais lentas, por operações de subtração, mais rápidas.</p>
+    <p>Explicamos a ideia básica. Em vez de usar a lista de valores</p>
+    <div class="equation">\[F(a),F(a+1),F(a+2),\ldots,\]</div>
+    <p>usamos uma lista de valores inteiros aproximadamente iguais a</p>
+    <div class="equation">\[\log F(a),\log F(a+1),\log F(a+2),\log F(a+3),\ldots.\]</div>
+    <p>Para crivar \(p\) de \(F(t)\), subtraímos uma aproximação inteira de \(\log p\) da aproximação inteira de \(\log F(t)\), pois, pela regra dos logaritmos,</p>
+    <div class="equation">\[\log F(t)-\log p=\log\frac{F(t)}p.\]</div>
+    <p>Se usássemos valores exatos para os logaritmos, então, ao final do processo de crivagem, as entradas reduzidas a \(0\) seriam precisamente os valores de \(F(t)\) que são \(B\)-suaves. Contudo, como usamos apenas valores aproximados dos logaritmos, ao final procuramos entradas reduzidas a um número pequeno. Em seguida, usamos divisão somente nessas poucas entradas para encontrar aquelas que são de fato \(B\)-suaves.</p>
+    <p>Uma segunda ideia que pode ser usada para acelerar o crivo quadrático é empregar o polinômio \(F(t)=t^2-N\) somente até \(t\) atingir certo tamanho e, depois, substituí-lo por um novo polinômio. Para detalhes sobre essas duas ideias de implementação e muitas outras, veja, por exemplo, <a href="../../references/#ref-28" data-source-xref>[28, §10.4]</a>, <a href="../../references/#ref-34" data-source-xref>[34]</a> ou <a href="../../references/#ref-109" data-source-xref>[109]</a> e as referências ali listadas.</p>
+  </aside>
+
+  <ol class="footnotes" start="8">
+    <li id="fn-3-7-2-8">Na prática, quando \(N\) é grande, os valores de \(t\) usados no crivo quadrático estão suficientemente próximos de \(\sqrt N\) para que o valor de \(t^2-N\) esteja entre \(1\) e \(N\). Em nosso pequeno exemplo numérico, isso não acontece, de modo que seria mais eficiente reduzir os valores de \(t^2\) módulo \(N\), em vez de apenas subtrair \(N\) de \(t^2\). Contudo, como nosso objetivo é esclarecer, e não obter eficiência, fingiremos que não há vantagem em subtrair múltiplos adicionais de \(N\) de \(t^2-N\). <a href="#fnref-3-7-2-8" data-source-xref aria-label="Voltar à chamada da nota 8">↩</a></li>
+    <li id="fn-3-7-2-9">Olhando novamente para as congruências <a href="#eq-3-23" data-source-xref>(3.23)</a>, você talvez tenha notado que é ainda mais fácil usar o fato de que \(15^2\) já é congruente a um quadrado módulo \(221\), o que fornece \(\gcd(15-2,221)=13\). Na prática, o verdadeiro poder do crivo quadrático só aparece quando ele é aplicado a números grandes demais para serem usados em um exemplo de livro-texto. <a href="#fnref-3-7-2-9" data-source-xref aria-label="Voltar à chamada da nota 9">↩</a></li>
+  </ol>
+</section>

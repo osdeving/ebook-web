@@ -1,0 +1,7 @@
+<p class="supplement-lead">Goldwasser–Micali escolhe um módulo N=pq e um elemento a de Jacobi 1 que não é quadrado. O bit seleciona entre quadrados aleatórios e a vezes quadrados aleatórios.</p>
+<ol class="slow-steps">
+  <li><strong>Bit 0.</strong> Escolha r invertível e publique \(c=r^2\bmod N\), sempre um resíduo quadrático.</li>
+  <li><strong>Bit 1.</strong> Publique \(c=ar^2\bmod N\); multiplicar por a move para a classe de não resíduos de Jacobi 1.</li>
+  <li><strong>Decifre com fatores.</strong> Os fatores permitem testar residuacidade módulo p ou q e distinguir as classes.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> Exigir Jacobi(a,N)=1 não basta; a deve ser escolhida como não resíduo nos dois fatores para a construção padrão funcionar como descrita.</div>

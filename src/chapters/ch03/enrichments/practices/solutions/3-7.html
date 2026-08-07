@@ -1,0 +1,45 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.7">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Cifre por exponenciação modular</summary>
+      <p>No item (a), calcule diretamente \(m^{103}\bmod N\) por quadratura e multiplicação.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Recupere o segundo primo</summary>
+      <p>Divida \(N\) por \(1301\), calcule \((p-1)(q-1)\) e inverta \(103\) nesse módulo.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Decifre e recifre</summary>
+      <p>Use \(m\equiv c^d\pmod N\) e confirme a resposta verificando \(m^{103}\equiv c\pmod N\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <ol type="a">
+      <li>
+        <p>Bob aplica a chave pública:</p>
+        <p>\[
+          c\equiv892383^{103}\equiv45293\pmod{2038667}.
+        \]</p>
+        <p>Portanto ele envia \(c=45293\).</p>
+      </li>
+      <li>
+        <p>O outro primo é</p>
+        <p>\[q=\frac{2038667}{1301}=1567.\]</p>
+        <p>Assim,</p>
+        <p>\[\varphi(N)=(1301-1)(1567-1)=1300\cdot1566=2035800.\]</p>
+        <p>O algoritmo de Euclides estendido dá \(d=810367\), porque</p>
+        <p>\[103\cdot810367=83467801=1+41\cdot2035800.\]</p>
+        <p>Logo \(d=810367\) é um expoente de decifração.</p>
+      </li>
+      <li>
+        <p>Alice calcula</p>
+        <p>\[m\equiv317730^{810367}\equiv514407\pmod{2038667}.\]</p>
+        <p>A verificação independente é</p>
+        <p>\[514407^{103}\equiv317730\pmod{2038667}.\]</p>
+        <p>Portanto a mensagem é \(m=514407\).</p>
+      </li>
+    </ol>
+  </details>
+</div>

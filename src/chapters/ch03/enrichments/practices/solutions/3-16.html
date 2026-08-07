@@ -1,0 +1,46 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.16">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — O expoente vazado produz um múltiplo conhecido</summary>
+      <p>Se \(e\) e \(d\) são os expoentes RSA correspondentes, então \(K=ed-1\) é múltiplo de \(\varphi(N)\), embora \(\varphi(N)\) ainda seja desconhecida.</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Refaça a cadeia de Miller–Rabin</summary>
+      <p>Escreva \(K=2^st\), com \(t\) ímpar, escolha uma base \(a\) e calcule \(a^t,a^{2t},a^{4t},\ldots,a^{2^st}\pmod N\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Pare antes do primeiro \(1\)</summary>
+      <p>Se o termo anterior ao primeiro \(1\) não for \(-1\), ele é uma raiz quadrada não trivial de \(1\) módulo \(N\). Um MDC separa os dois fatores.</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Escreva \(N=pq\), com \(p\) e \(q\) primos ímpares distintos. Como \(d\) decifra o expoente público \(e\), existe um inteiro \(r\) tal que</p>
+    <p>\[ed=1+r\varphi(N).\]</p>
+    <p>Portanto conhecemos o inteiro</p>
+    <p>\[K=ed-1=r\varphi(N),\]</p>
+    <p>mesmo sem conhecer \(p,q\) ou \(\varphi(N)\). Fatore apenas a potência de \(2\) de \(K\):</p>
+    <p>\[K=2^st,\qquad t\text{ ímpar}.\]</p>
+    <p>Agora repita o procedimento a seguir.</p>
+    <ol>
+      <li>Escolha \(a\) ao acaso com \(2\le a\le N-2\). Calcule \(g=\gcd(a,N)\). Se \(1&lt;g&lt;N\), a fatoração já foi encontrada.</li>
+      <li>Supondo \(\gcd(a,N)=1\), calcule \(x_0=a^t\bmod N\) e depois \(x_{i+1}=x_i^2\bmod N\), para \(0\le i&lt;s\).</li>
+      <li>Como \(\varphi(N)\mid K\), o teorema de Euler garante
+        \[
+          x_s\equiv a^{2^st}=a^K\equiv1\pmod N.
+        \]
+        Se \(x_0\equiv\pm1\), descarte a base e tente outra. Caso contrário, localize o primeiro \(j\) para o qual \(x_j=1\).</li>
+      <li>Defina \(y=x_{j-1}\). Então \(y^2\equiv1\pmod N\) e \(y\not\equiv1\pmod N\). Se \(y\equiv-1\pmod N\), tente outra base. Nos demais casos, calcule
+        \[
+          g=\gcd(y-1,N).
+        \]
+      </li>
+    </ol>
+    <p>Resta justificar por que o último MDC é um fator próprio. Da congruência \(y^2\equiv1\pmod{pq}\), temos</p>
+    <p>\[(y-1)(y+1)\equiv0\pmod p\qquad\text{e}\qquad(y-1)(y+1)\equiv0\pmod q.\]</p>
+    <p>Logo \(y\equiv\pm1\pmod p\) e \(y\equiv\pm1\pmod q\). Como \(y\not\equiv\pm1\pmod N\), os sinais são diferentes: por exemplo, \(y\equiv1\pmod p\) e \(y\equiv-1\pmod q\). Nesse caso</p>
+    <p>\[\gcd(y-1,N)=p,\qquad \gcd(y+1,N)=q.\]</p>
+    <p>Algumas bases produzem apenas as raízes triviais e precisam ser descartadas, exatamente como algumas bases fazem um teste de Miller–Rabin falhar. Pelo teorema chinês dos restos, para um semiprimo RSA ao menos metade das classes invertíveis separa os componentes \(p\) e \(q\) em algum ponto da cadeia; portanto tentativas aleatórias repetidas encontram um fator com alta probabilidade. Cada resultado é confirmado imediatamente pela divisão \(N/g\).</p>
+  </details>
+</div>

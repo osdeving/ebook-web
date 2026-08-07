@@ -1,0 +1,7 @@
+<p class="supplement-lead">Em vez de dividir cada valor por todas as potências da base, pode-se subtrair aproximações de log p. Um acumulador quase zerado sugere que os fatores pequenos explicam todo o valor.</p>
+<ol class="slow-steps">
+  <li><strong>Inicialize.</strong> Atribua a cada posição uma aproximação de \(\log|Q(x)|\).</li>
+  <li><strong>Marque.</strong> Para cada potência de primo que divide Q(x), subtraia a contribuição correspondente ao longo das progressões.</li>
+  <li><strong>Selecione.</strong> Posições com resíduo logarítmico pequeno são verificadas exatamente; erros de arredondamento apenas afetam o filtro, não a validade final.</li>
+</ol>
+<div class="watch-out-inline"><strong>Cuidado.</strong> O crivo logarítmico aceita alguns falsos candidatos e pode perder valores se o limiar for mal escolhido. Toda relação deve ser refatorada e conferida exatamente.</div>

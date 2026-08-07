@@ -1,0 +1,101 @@
+<div class="exercise-solution">
+  <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 3.22">
+    <p class="graduated-help__intro">Abra uma pista de cada vez e tente continuar antes de revelar a próxima.</p>
+    <details class="solution-hint">
+      <summary>Dica 1 — Atualize sem calcular o fatorial</summary>
+      <p>Comece com \(A_1=2\) e use \(A_j=A_{j-1}^j\bmod N\). Então \(A_j\equiv2^{j!}\pmod N\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Calcule o MDC em cada etapa</summary>
+      <p>Depois de obter \(A_j\), calcule \(d_j=\gcd(A_j-1,N)\). Pare assim que \(1&lt;d_j&lt;N\).</p>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Explique por que o fatorial separa os fatores</summary>
+      <p>Verifique que \(p-1\mid j!\) para o fator encontrado, enquanto o outro fator \(q\) possui em \(q-1\) uma potência de primo ou um primo que ainda não divide \(j!\).</p>
+    </details>
+  </div>
+  <details class="solution-reveal">
+    <summary>Ver solução completa</summary>
+    <p>Aplicamos exatamente a recorrência da Tabela 3.3:</p>
+    <p>\[
+      A_1=2,\qquad
+      A_j\equiv A_{j-1}^{\,j}\equiv2^{j!}\pmod N,\qquad
+      d_j=\gcd(A_j-1,N).
+    \]</p>
+    <ol type="a">
+      <li>
+        <p>Para \(N=1739\), as etapas são</p>
+        <p>\[
+          \begin{array}{c|r|r}
+          j&A_j&d_j\\ \hline
+          2&4&1\\
+          3&64&1\\
+          4&1083&1\\
+          5&1395&1\\
+          6&1444&37
+          \end{array}
+        \]</p>
+        <p>Logo \(37\mid1739\), e</p>
+        <p>\[\boxed{1739=37\cdot47}.\]</p>
+        <p>O sucesso em \(j=6\) é explicado por</p>
+        <p>\[
+          37-1=36=2^2\cdot3^2\mid6!,
+          \qquad
+          47-1=46=2\cdot23\nmid6!.
+        \]</p>
+      </li>
+      <li>
+        <p>Para \(N=220459\),</p>
+        <p>\[
+          \begin{array}{c|r|r}
+          j&A_j&d_j\\ \hline
+          2&4&1\\
+          3&64&1\\
+          4&22332&1\\
+          5&85054&1\\
+          6&4046&1\\
+          7&43103&1\\
+          8&179601&449
+          \end{array}
+        \]</p>
+        <p>Portanto</p>
+        <p>\[\boxed{220459=449\cdot491}.\]</p>
+        <p>Aqui</p>
+        <p>\[
+          449-1=448=2^6\cdot7\mid8!,
+          \qquad
+          491-1=490=2\cdot5\cdot7^2\nmid8!,
+        \]</p>
+        <p>pois \(8!\) contém apenas uma cópia do fator \(7\).</p>
+      </li>
+      <li>
+        <p>Para \(N=48356747\), a busca completa até o sucesso é</p>
+        <p>\[
+          \begin{array}{c|r|r|c|r|r}
+          j&A_j&d_j&j&A_j&d_j\\ \hline
+          2&4&1&11&4931912&1\\
+          3&64&1&12&35410324&1\\
+          4&16777216&1&13&46845551&1\\
+          5&29007256&1&14&45774461&1\\
+          6&6497326&1&15&46983891&1\\
+          7&11540770&1&16&8398521&1\\
+          8&13320680&1&17&9367160&1\\
+          9&2119447&1&18&17907956&1\\
+          10&32129514&1&19&13944673&6917
+          \end{array}
+        \]</p>
+        <p>Assim,</p>
+        <p>\[\boxed{48356747=6917\cdot6991}.\]</p>
+        <p>Finalmente,</p>
+        <p>\[
+          6917-1=6916=2^2\cdot7\cdot13\cdot19\mid19!,
+        \]</p>
+        <p>enquanto</p>
+        <p>\[
+          6991-1=6990=2\cdot3\cdot5\cdot233\nmid19!.
+        \]</p>
+        <p>O fator \(233\) impede que o segundo fator seja absorvido pelo mesmo expoente, de modo que o MDC isola \(6917\).</p>
+      </li>
+    </ol>
+  </details>
+</div>
