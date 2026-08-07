@@ -1,0 +1,10 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>Uma raiz \(r\) módulo \(n=pq\) determina raízes não nulas \(r_p\) módulo \(p\) e \(r_q\) módulo \(q\). Em cada corpo há exatamente duas raízes, \(\pm r_p\) e \(\pm r_q\). As quatro escolhas independentes de sinais produzem, pelo teorema chinês dos restos, quatro classes distintas módulo \(pq\).</li>
+    <li>Escolha \(y\) aleatório com \(\gcd(y,n)=1\), ponha \(a\equiv y^2\pmod n\) e peça à máquina as quatro raízes. Escolha uma raiz \(z\) que não seja congruente a \(\pm y\pmod n\). Então
+      \[
+      z^2-y^2=(z-y)(z+y)\equiv0\pmod n.
+      \]
+      As escolhas de sinais de \(z\) e \(y\) coincidem em um fator primo e divergem no outro; por isso \(\gcd(z-y,n)\) (ou \(\gcd(z+y,n)\)) é \(p\) ou \(q\), uma fatoração não trivial de \(n\).</li>
+  </ol>
+</div>

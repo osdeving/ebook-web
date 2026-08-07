@@ -79,12 +79,18 @@ function resolveAnchor(root: HTMLElement, anchor: string): HTMLElement | null {
 }
 
 function createHost(definition: EnrichmentDefinition): HTMLElement {
+  if (definition.presentation === "inline") {
+    const host = document.createElement("span");
+    decorateHost(host, definition, `enrichment-inline enrichment-inline--${definition.layer}`);
+    const body = document.createElement("span");
+    body.className = "enrichment-inline__body";
+    body.dataset.enrichmentBody = "";
+    host.append(body);
+    return host;
+  }
+
   const host = document.createElement("aside");
-  host.id = definition.id;
-  host.className = `supplement supplement--${definition.layer}`;
-  host.dataset.enrichmentId = definition.id;
-  host.dataset.layer = definition.layer;
-  host.dataset.origin = "editorial";
+  decorateHost(host, definition, `supplement supplement--${definition.layer}`);
 
   if (definition.collapsible === false) {
     host.innerHTML = headerMarkup(definition, false) + '<div class="supplement__body" data-enrichment-body></div>';
@@ -97,6 +103,19 @@ function createHost(definition: EnrichmentDefinition): HTMLElement {
   panel.innerHTML = headerMarkup(definition, true) + '<div class="supplement__body" data-enrichment-body></div>';
   host.append(panel);
   return host;
+}
+
+function decorateHost(
+  host: HTMLElement,
+  definition: EnrichmentDefinition,
+  className: string,
+): void {
+  host.id = definition.id;
+  host.className = className;
+  host.dataset.enrichmentId = definition.id;
+  host.dataset.enrichmentTitle = definition.title;
+  host.dataset.layer = definition.layer;
+  host.dataset.origin = "editorial";
 }
 
 function headerMarkup(definition: EnrichmentDefinition, summary: boolean): string {

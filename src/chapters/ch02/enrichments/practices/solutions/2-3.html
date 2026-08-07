@@ -1,0 +1,19 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>
+      <p>Se \(g^a\equiv h\equiv g^b\pmod p\), então \(g^{a-b}\equiv1\pmod p\). Como \(g\) é raiz primitiva, sua ordem em \(\mathbb F_p^*\) é \(p-1\). Logo \(p-1\mid a-b\), isto é,</p>
+      <p>\[a\equiv b\pmod{p-1}.\]</p>
+      <p>Portanto todas as soluções inteiras de \(g^x\equiv h\pmod p\) representam a mesma classe em \(\mathbb Z/(p-1)\mathbb Z\). É justamente essa classe, e não um representante inteiro particular, que a aplicação logaritmo discreto associa a \(h\); por isso ela está bem definida.</p>
+    </li>
+    <li>
+      <p>Escreva \(r=\log_g(h_1)\) e \(s=\log_g(h_2)\). Então \(h_1\equiv g^r\) e \(h_2\equiv g^s\), de modo que</p>
+      <p>\[h_1h_2\equiv g^r g^s\equiv g^{r+s}\pmod p.\]</p>
+      <p>Pela unicidade módulo \(p-1\) demonstrada no item anterior,</p>
+      <p>\[\log_g(h_1h_2)=\log_g(h_1)+\log_g(h_2)\quad\text{em }\mathbb Z/(p-1)\mathbb Z.\]</p>
+    </li>
+    <li>
+      <p>Se \(r=\log_g(h)\), então \(h\equiv g^r\pmod p\). Para \(n\geq0\), elevar os dois lados a \(n\) dá \(h^n\equiv g^{nr}\). Para \(n&lt;0\), a mesma conta vale porque \(h\) e \(g\) são invertíveis e \(h^{-1}\equiv g^{-r}\). Assim, para todo \(n\in\mathbb Z\),</p>
+      <p>\[\log_g(h^n)=n\log_g(h)\quad\text{em }\mathbb Z/(p-1)\mathbb Z.\]</p>
+    </li>
+  </ol>
+</div>

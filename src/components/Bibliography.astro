@@ -1,0 +1,78 @@
+---
+interface ReferenceEntry {
+  number: number;
+  citation: string;
+  url?: string;
+  doi?: string;
+}
+
+interface Props {
+  entries: readonly ReferenceEntry[];
+}
+
+const { entries } = Astro.props;
+const linkedCount = entries.filter(({ url }) => url).length;
+---
+
+<section class="bibliography" aria-labelledby="bibliography-title" data-bibliography>
+  <div class="bibliography__heading">
+    <div>
+      <p class="library-kicker">Bibliografia do livro</p>
+      <h1 id="bibliography-title">Referências</h1>
+    </div>
+    <p><strong>{entries.length}</strong> entradas · <strong>{linkedCount}</strong> com acesso on-line localizado</p>
+  </div>
+
+  <label class="bibliography-search">
+    <span>Buscar por autor, título ou número</span>
+    <input type="search" inputmode="search" autocomplete="off" placeholder="Ex.: Diffie, teoria dos números ou 38" data-reference-search />
+  </label>
+  <p class="bibliography-status" role="status" aria-live="polite" data-reference-status>
+    {entries.length} referências
+  </p>
+
+  <ol class="bibliography-list" data-reference-list>
+    {entries.map((entry) => (
+      <li id={`ref-${entry.number}`} data-reference-entry data-reference-number={entry.number} tabindex="-1">
+        <a
+          class="bibliography-number"
+          href={`#ref-${entry.number}`}
+          aria-label={`Link permanente para a referência ${entry.number}`}
+        >[{entry.number}]</a>
+        <p>{entry.citation}</p>
+        {entry.url ? (
+          <a class="bibliography-link" href={entry.url} target="_blank" rel="noopener noreferrer">
+            {entry.doi ? `DOI ${entry.doi}` : "Abrir referência"}<span aria-hidden="true">↗</span>
+          </a>
+        ) : (
+          <span class="bibliography-unlinked">Sem link verificado</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-bibliography]");
+  const input = root?.querySelector<HTMLInputElement>("[data-reference-search]");
+  const status = root?.querySelector<HTMLElement>("[data-reference-status]");
+  const entries = Array.from(root?.querySelectorAll<HTMLElement>("[data-reference-entry]") ?? []);
+
+  const normalize = (value: string) => value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("pt-BR");
+
+  const filter = () => {
+    const query = normalize(input?.value.trim() ?? "");
+    let visible = 0;
+    for (const entry of entries) {
+      const matches = !query || normalize(entry.textContent ?? "").includes(query);
+      entry.hidden = !matches;
+      if (matches) visible += 1;
+    }
+    if (status) status.textContent = `${visible} ${visible === 1 ? "referência" : "referências"}`;
+  };
+
+  input?.addEventListener("input", filter);
+</script>

@@ -5,8 +5,8 @@
   "shortTitle": "Logaritmos discretos",
   "eyebrow": "Capítulo 2 · tradução para português",
   "description": "Da ideia de chave pública aos grupos, algoritmos de logaritmo discreto, anéis de polinômios e corpos finitos.",
-  "sourceHash": "9549dad63a65f11aaf9684c4054eee392aca59f4de1c6c9a634c601e9f0db653",
-  "textLength": 118229,
+  "sourceHash": "edcbb6db451e1bfce00264e02b41f1597f760d1d06290f05bbe8d662257b8b91",
+  "textLength": 137928,
   "toc": [
     {
       "id": "sec-2-1",
@@ -101,7 +101,7 @@
     {
       "id": "exercicios",
       "number": "EX",
-      "title": "Exercícios presentes no PDF",
+      "title": "Exercícios",
       "depth": 1
     }
   ],

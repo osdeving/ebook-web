@@ -1,0 +1,26 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>\(\sqrt{11}=3{,}316624790\ldots\), portanto \(\alpha=316624\). Logo
+      \[
+      c\equiv328973+316624\equiv645597\pmod{10^6}.
+      \]</li>
+    <li>\(\sqrt{23}=4{,}795831523\ldots\), então \(\alpha=79583152\). A mensagem é
+      \[
+      m\equiv78183903-79583152\equiv98600751\pmod{10^8}.
+      \]</li>
+    <li>Se \(q=\lfloor\sqrt{k}\rfloor\), a parte fracionária é \(\sqrt{k}-q\). Manter seus \(d\) primeiros algarismos significa multiplicá-la por \(10^d\) e tomar a parte inteira:
+      \[
+      \alpha=\left\lfloor10^d\left(\sqrt{k}-\lfloor\sqrt{k}\rfloor\right)\right\rfloor.
+      \]</li>
+    <li>Sim, quando há um limite conhecido \(k\le K\) e \(10^d\) é muito maior que \(K\). Eva conhece
+      \[
+      \beta=\frac{\alpha}{10^d}
+      \le\{\sqrt{k}\}&lt;\beta+\frac1{10^d}.
+      \]
+      Ponha \(q=\lfloor\sqrt{k}\rfloor\) e \(j=k-q^2\). Eles satisfazem
+      \[
+      j=2q\{\sqrt{k}\}+\{\sqrt{k}\}^2.
+      \]
+      Portanto Eva procura \(0\le q\le\sqrt K\) para o qual \(2q\beta+\beta^2\) esteja, dentro do pequeno erro \((2q+2)/10^d\), de um inteiro \(j\). Cada candidato fornece \(k=q^2+j\), que é verificado recalculando os \(d\) algarismos. Quando \(10^d\gg K\), a tolerância é minúscula e em geral resta um único candidato. Essa busca também pode ser acelerada como um problema de aproximação racional, mas a verificação final é sempre direta.</li>
+  </ol>
+</div>

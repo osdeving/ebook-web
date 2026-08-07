@@ -1,0 +1,107 @@
+<section class="section" id="sec-1-4" data-layer="source">
+  <h2><span class="section-number">1.4</span> Números primos, fatoração única e corpos finitos</h2>
+
+  <p>Na <a href="#sec-1-3" data-source-xref>Seção 1.3</a>, estudamos a aritmética modular e vimos que faz sentido somar, subtrair e multiplicar inteiros módulo \(m\). A divisão, porém, pode ser problemática, pois só podemos dividir por \(a\) em \(\mathbb Z/m\mathbb Z\) se \(\gcd(a,m)=1\). Mas observe que, se o inteiro \(m\) é primo, podemos dividir por todo elemento não nulo de \(\mathbb Z/m\mathbb Z\). Começamos com uma breve discussão sobre números primos antes de retornar ao anel \(\mathbb Z/p\mathbb Z\), com \(p\) primo.</p>
+
+  <aside class="semantic definition" id="def-1-prime">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Um inteiro \(p\) é chamado de <strong>primo</strong> se \(p\ge 2\) e se os únicos inteiros positivos que dividem \(p\) são \(1\) e \(p\).</p>
+  </aside>
+
+  <p>Por exemplo, os dez primeiros primos são \(2,3,5,7,11,13,17,19,23,29\), enquanto o centésimo milésimo primo é \(1299709\) e o milionésimo é \(15485863\). Existem infinitos primos, fato conhecido na Grécia antiga e que aparece como teorema nos <em>Elementos</em> de Euclides. (Veja o <a href="#exercicio-1-28" data-source-xref>Exercício 1.28</a>.)</p>
+
+  <p>Um primo \(p\) é definido em termos dos números que dividem \(p\). Portanto, a proposição a seguir, que descreve uma propriedade útil dos números divisíveis por \(p\), não é óbvia e precisa ser demonstrada com cuidado. Observe que a proposição é falsa para números compostos. Por exemplo, \(6\) divide \(3\cdot10\), mas \(6\) não divide nem \(3\) nem \(10\).</p>
+
+  <aside class="semantic proposition" id="prop-1-19">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">1.19</span></div>
+    <p>Seja \(p\) um número primo e suponha que \(p\) divida o produto \(ab\) de dois inteiros \(a\) e \(b\). Então \(p\) divide pelo menos um entre \(a\) e \(b\).</p>
+    <p>Mais geralmente, se \(p\) divide um produto de inteiros, digamos</p>
+    <div class="display-math">\[p\mid a_1a_2\cdots a_n,\]</div>
+    <p>então \(p\) divide pelo menos um dos \(a_i\) individualmente.</p>
+  </aside>
+
+  <div class="semantic proof" id="proof-prop-1-19">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Seja \(g=\gcd(a,p)\). Então \(g\mid p\), de modo que ou \(g=1\) ou \(g=p\). Se \(g=p\), então \(p\mid a\) (pois \(g\mid a\)), e terminamos. Caso contrário, \(g=1\), e o <a href="#theorem-1-11" data-source-xref>Teorema 1.11</a> nos diz que podemos encontrar inteiros \(u\) e \(v\) que satisfazem \(au+pv=1\). Multiplicamos os dois lados da equação por \(b\) para obter</p>
+    <div class="equation" id="eq-1-5"><span class="equation-number">(1.5)</span>\[abu+pbv=b.\]</div>
+    <p>Por hipótese, \(p\) divide o produto \(ab\), e certamente \(p\) divide \(pbv\); portanto, \(p\) divide os dois termos do lado esquerdo de <a href="#eq-1-5" data-source-xref>(1.5)</a>. Logo, divide o lado direito, o que mostra que \(p\) divide \(b\) e conclui a demonstração da <a href="#prop-1-19" data-source-xref>Proposição 1.19</a>.</p>
+    <p>Para demonstrar a afirmação mais geral, escrevemos o produto como \(a_1(a_2\cdots a_n)\) e aplicamos a primeira afirmação com \(a=a_1\) e \(b=a_2\cdots a_n\). Se \(p\mid a_1\), terminamos. Caso contrário, \(p\mid a_2\cdots a_n\); escrevendo esse produto como \(a_2(a_3\cdots a_n)\), a primeira afirmação nos diz que ou \(p\mid a_2\) ou \(p\mid a_3\cdots a_n\). Continuando dessa maneira, acabaremos necessariamente encontrando algum \(a_i\) divisível por \(p\).</p>
+  </div>
+
+  <p>Como aplicação da <a href="#prop-1-19" data-source-xref>Proposição 1.19</a>, demonstramos que todo inteiro positivo possui uma fatoração essencialmente única como produto de primos.</p>
+
+  <aside class="semantic theorem" id="theorem-1-20">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">1.20 — Teorema fundamental da aritmética</span></div>
+    <p>Seja \(a\ge2\) um inteiro. Então \(a\) pode ser fatorado como produto de números primos</p>
+    <div class="display-math">\[a=p_1^{e_1}p_2^{e_2}p_3^{e_3}\cdots p_r^{e_r}.\]</div>
+    <p>Além disso, exceto por uma reorganização da ordem dos primos, essa fatoração em potências de primos é única.</p>
+  </aside>
+
+  <div class="semantic proof" id="proof-theorem-1-20">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Não é difícil demonstrar que todo \(a\ge2\) pode ser fatorado como produto de primos. É tentador supor que a unicidade da fatoração também seja óbvia. Contudo, não é esse o caso; a fatoração única é uma propriedade um tanto sutil dos inteiros. Vamos demonstrá-la usando a forma geral da <a href="#prop-1-19" data-source-xref>Proposição 1.19</a>. (Para um exemplo de situação em que a fatoração única não é válida, veja a zona E descrita em <a href="../../references/#ref-137" data-source-xref>[137, Capítulo 7]</a>.)</p>
+    <p>Suponha que \(a\) tenha duas fatorações como produtos de primos,</p>
+    <div class="equation" id="eq-1-6"><span class="equation-number">(1.6)</span>\[a=p_1p_2\cdots p_s=q_1q_2\cdots q_t,\]</div>
+    <p>em que todos os \(p_i\) e \(q_j\) são primos, não necessariamente distintos, e \(s\) não é necessariamente igual a \(t\). Como \(p_1\mid a\), vemos que \(p_1\) divide o produto \(q_1q_2q_3\cdots q_t\). Assim, pela forma geral da <a href="#prop-1-19" data-source-xref>Proposição 1.19</a>, concluímos que \(p_1\) divide algum dos \(q_i\). Reorganizando a ordem dos \(q_i\), se necessário, podemos supor que \(p_1\mid q_1\). Mas \(p_1\) e \(q_1\) são ambos primos, de modo que devemos ter \(p_1=q_1\). Isso nos permite cancelá-los dos dois lados de <a href="#eq-1-6" data-source-xref>(1.6)</a>, obtendo</p>
+    <div class="display-math">\[p_2p_3\cdots p_s=q_2q_3\cdots q_t.\]</div>
+    <p>Repetindo esse processo \(s\) vezes, chegamos por fim a uma equação da forma</p>
+    <div class="display-math">\[1=q_{t-s}q_{t-s+1}\cdots q_t.\]</div>
+    <p>Segue imediatamente que \(t=s\) e que as fatorações originais de \(a\) eram idênticas, a menos de uma reorganização da ordem dos fatores. (Para uma demonstração mais detalhada do teorema fundamental da aritmética, consulte qualquer livro-texto básico de teoria dos números, por exemplo [<a href="../../references/#ref-35" data-source-xref>35</a>, <a href="../../references/#ref-52" data-source-xref>52</a>, <a href="../../references/#ref-59" data-source-xref>59</a>, <a href="../../references/#ref-100" data-source-xref>100</a>, <a href="../../references/#ref-111" data-source-xref>111</a>, <a href="../../references/#ref-137" data-source-xref>137</a>].)</p>
+  </div>
+
+  <aside class="semantic definition" id="def-1-ordp">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>O teorema fundamental da aritmética (<a href="#theorem-1-20" data-source-xref>Teorema 1.20</a>) diz que, na fatoração de um inteiro positivo \(a\) em primos, cada primo \(p\) aparece elevado a uma potência específica. Denotamos essa potência por \(\operatorname{ord}_p(a)\) e a chamamos de <strong>ordem</strong> (ou <strong>expoente</strong>) de \(p\) em \(a\). (Por conveniência, definimos \(\operatorname{ord}_p(1)=0\) para todos os primos.)</p>
+  </aside>
+
+  <p>Por exemplo, a fatoração de \(1728\) é \(1728=2^6\cdot3^3\), portanto</p>
+  <div class="display-math">\[\operatorname{ord}_2(1728)=6,\qquad \operatorname{ord}_3(1728)=3,\qquad\text{e}\qquad \operatorname{ord}_p(1728)=0\quad\text{para todos os primos }p\ge5.\]</div>
+
+  <p>Usando a notação \(\operatorname{ord}_p\), a fatoração de \(a\) pode ser escrita de forma sucinta como</p>
+  <div class="display-math">\[a=\prod_{\substack{p\\\text{primo}}}p^{\operatorname{ord}_p(a)}.\]</div>
+  <p>Observe que esse produto faz sentido, pois \(\operatorname{ord}_p(a)\) é zero para todos, exceto um número finito de primos.</p>
+
+  <p>É útil ver \(\operatorname{ord}_p\) como uma função</p>
+  <div class="equation" id="eq-1-7"><span class="equation-number">(1.7)</span>\[\operatorname{ord}_p:\{1,2,3,\ldots\}\longrightarrow\{0,1,2,3,\ldots\}.\]</div>
+  <p>Essa função tem várias propriedades interessantes, algumas das quais são descritas no <a href="#exercicio-1-31" data-source-xref>Exercício 1.31</a>.</p>
+
+  <p>Observamos agora que, se \(p\) é primo, então todo número não nulo módulo \(p\) possui um inverso multiplicativo módulo \(p\). Isso significa que, quando fazemos aritmética módulo um primo \(p\), não apenas podemos somar, subtrair e multiplicar, mas também podemos dividir por números não nulos, assim como fazemos com números reais. Essa propriedade dos primos é suficientemente importante para que a enunciemos formalmente como uma proposição.</p>
+
+  <aside class="semantic proposition" id="prop-1-21">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">1.21</span></div>
+    <p>Seja \(p\) um primo. Então todo elemento não nulo \(a\) de \(\mathbb Z/p\mathbb Z\) possui um inverso multiplicativo, isto é, existe um número \(b\) que satisfaz</p>
+    <div class="display-math">\[ab\equiv1\pmod p.\]</div>
+    <p>Denotamos esse valor de \(b\) por \(a^{-1}\bmod p\), ou, se \(p\) já tiver sido especificado, simplesmente por \(a^{-1}\).</p>
+  </aside>
+
+  <div class="semantic proof" id="proof-prop-1-21">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Esta proposição é um caso particular da <a href="#prop-1-13" data-source-xref>Proposição 1.13(b)</a> com o módulo primo \(p\), pois, se \(a\in\mathbb Z/p\mathbb Z\) não é zero, então \(\gcd(a,p)=1\).</p>
+  </div>
+
+  <aside class="semantic remark" id="remark-1-22">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">1.22</span></div>
+    <p>O algoritmo de Euclides estendido (<a href="#theorem-1-11" data-source-xref>Teorema 1.11</a>) nos fornece um método computacional eficiente para calcular \(a^{-1}\bmod p\). Basta resolver a equação</p>
+    <div class="display-math">\[au+pv=1\qquad\text{em inteiros }u\text{ e }v,\]</div>
+    <p>e então \(u=a^{-1}\bmod p\). Para um método alternativo de cálculo de \(a^{-1}\bmod p\), veja a <a href="#remark-1-26" data-source-xref>Observação 1.26</a>.</p>
+  </aside>
+
+  <p>A <a href="#prop-1-21" data-source-xref>Proposição 1.21</a> pode ser reformulada dizendo-se que, se \(p\) é primo, então</p>
+  <div class="display-math">\[(\mathbb Z/p\mathbb Z)^*=\{1,2,3,4,\ldots,p-1\}.\]</div>
+  <p>Em outras palavras, quando o elemento \(0\) é removido de \(\mathbb Z/p\mathbb Z\), os elementos restantes são unidades e são fechados sob multiplicação.</p>
+
+  <aside class="semantic definition" id="def-1-field">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Se \(p\) é primo, então o conjunto \(\mathbb Z/p\mathbb Z\) dos inteiros módulo \(p\), com suas regras de adição, subtração, multiplicação e divisão, é um exemplo de <strong>corpo</strong>. Se você estudou álgebra abstrata (ou consultou a <a href="../ch02/#sec-2-10" data-source-xref>Seção 2.10</a>), sabe que corpo é o nome geral de um anel (comutativo) no qual todo elemento não nulo possui um inverso multiplicativo. Você já conhece alguns outros corpos, por exemplo, o corpo dos números reais \(\mathbb R\), o corpo dos números racionais (frações) \(\mathbb Q\) e o corpo dos números complexos \(\mathbb C\).</p>
+    <p>O corpo \(\mathbb Z/p\mathbb Z\) dos inteiros módulo \(p\) tem apenas um número finito de elementos. Ele é um <strong>corpo finito</strong> e costuma ser denotado por \(\mathbb F_p\). Portanto, \(\mathbb F_p\) e \(\mathbb Z/p\mathbb Z\) são, na verdade, apenas duas notações diferentes para o mesmo objeto.<sup id="fnref-1-4-10"><a href="#fn-1-4-10" data-source-xref>10</a></sup> De modo semelhante, escrevemos \(\mathbb F_p^*\) de forma intercambiável para o grupo de unidades \((\mathbb Z/p\mathbb Z)^*\). Os corpos finitos têm importância fundamental em toda a criptografia e, de fato, em toda a matemática.</p>
+  </aside>
+
+  <aside class="semantic remark" id="remark-1-23">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">1.23</span></div>
+    <p>Embora \(\mathbb Z/p\mathbb Z\) e \(\mathbb F_p\) sejam usados para denotar o mesmo conceito, a igualdade de elementos é expressa de maneira um pouco diferente nos dois contextos. Para \(a,b\in\mathbb F_p\), a igualdade entre \(a\) e \(b\) é denotada por \(a=b\), enquanto, para \(a,b\in\mathbb Z/p\mathbb Z\), a igualdade entre \(a\) e \(b\) é denotada por equivalência módulo \(p\), isto é, \(a\equiv b\pmod p\).</p>
+  </aside>
+
+  <ol class="footnotes" start="10">
+    <li id="fn-1-4-10">Os corpos finitos também são às vezes chamados de corpos de Galois, em homenagem a Évariste Galois, que os estudou no século XIX. Outra notação para \(\mathbb F_p\) é \(\operatorname{GF}(p)\), em homenagem a Galois. E ainda outra notação para \(\mathbb F_p\) que você poderá encontrar é \(\mathbb Z_p\), embora, em teoria dos números, a notação \(\mathbb Z_p\) seja mais comumente reservada ao anel dos inteiros \(p\)-ádicos. <a href="#fnref-1-4-10" data-source-xref aria-label="Voltar à chamada da nota 10">↩</a></li>
+  </ol>
+</section>

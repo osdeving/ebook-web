@@ -1,0 +1,13 @@
+<div class="exercise-solution">
+  <p>No caso considerado, \(g\) tem ordem \(p-1=q_1q_2\), com \(q_1\ne q_2\) primos. Escreva \(g^x=a\). Elevando a igualdade à potência \((p-1)/q_i\), obtemos</p>
+  \[
+  \left(g^{(p-1)/q_i}\right)^x=a^{(p-1)/q_i}.
+  \]
+  <p>O elemento \(g_i=g^{(p-1)/q_i}\) tem ordem \(q_i\). Portanto o pequeno logaritmo discreto nessa igualdade determina \(x_i\equiv x\pmod{q_i}\). Fazemos isso para \(i=1,2\), resolvendo dois PLDs em grupos de ordens \(q_1\) e \(q_2\), em vez de um PLD de ordem \(q_1q_2\).</p>
+  <p>Por fim, o teorema chinês dos restos produz a única classe \(x\pmod{q_1q_2}=\pmod{p-1}\) que satisfaz</p>
+  \[
+  x\equiv x_1\pmod{q_1},\qquad x\equiv x_2\pmod{q_2}.
+  \]
+  <p>Como os expoentes de \(g\) são definidos módulo \(p-1\), essa classe é exatamente o logaritmo procurado.</p>
+  <p class="solution-note">A hipótese \(\operatorname{ord}(g)=p-1\) é necessária para esta formulação. Se \(g\) não for raiz primitiva, deve-se substituir \(p-1\) por \(N=\operatorname{ord}(g)\) e fatorar \(N\); a mera fatoração de \(p-1\) não garante que os elementos auxiliares tenham ordens \(q_1\) e \(q_2\).</p>
+</div>

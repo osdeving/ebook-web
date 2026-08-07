@@ -1,0 +1,20 @@
+<div class="exercise-solution">
+  <p>A construção física consiste em recortar dois alfabetos circulares, prender o disco menor pelo centro e girá-lo até que \(A\) do alfabeto claro corresponda a \(L\) no alfabeto cifrado. Isso realiza uma rotação de \(11\) posições. Não há como registrar aqui o artefato manual, mas todas as leituras que ele produziria são obtidas pela regra</p>
+  <p>\[E(p)\equiv p+11\pmod{26},\]</p>
+  <p>identificando \(A=0,B=1,\ldots,Z=25\).</p>
+  <ol type="a">
+    <li>
+      <p>Aplicando a rotação a cada letra e preservando apenas as letras na cifra, obtemos</p>
+      <pre class="ciphertext">LALRPZQSTDEZCJTDHZCESLGZWFXPZQWZRTN</pre>
+      <p>Por exemplo, \(A\mapsto L\), \(P\mapsto A\) e \(G\mapsto R\); ao completar uma volta, os valores são reduzidos módulo \(26\).</p>
+    </li>
+    <li>
+      <p>Para desfazer a rotação de \(7\) posições, subtraímos \(7\) de cada letra módulo \(26\). O início \(AOLYL\) torna-se <span lang="en">THERE</span>, e a mensagem completa é:</p>
+      <blockquote lang="en">There are no secrets better than the secrets that everybody guesses.</blockquote>
+    </li>
+    <li>
+      <p>Na posição \(i\), numerada a partir de \(1\), a rotação usada foi \(i\). Portanto a letra clara é dada por \(p_i\equiv c_i-i\pmod{26}\). As primeiras letras são \(X-1=W\), \(J-2=H\), \(H-3=E\) e \(R-4=N\), confirmando o começo da frase. O texto completo é:</p>
+      <blockquote lang="en">When angry, count ten before you speak; if very angry, an hundred.</blockquote>
+    </li>
+  </ol>
+</div>

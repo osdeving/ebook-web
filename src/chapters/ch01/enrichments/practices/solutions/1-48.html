@@ -1,0 +1,16 @@
+<div class="exercise-solution">
+  <p>Conhecendo \(m\) e \(c=k\oplus m\), Eva usa que XOR é sua própria inversa:</p>
+  \[
+  k=c\oplus m.
+  \]
+  <p>Neste caso,</p>
+  \[
+  \begin{aligned}
+  k&amp;=1001010001010111\\
+   &amp;\phantom{={}}\oplus0010010000101100\\
+   &amp;=1011000001111011.
+  \end{aligned}
+  \]
+  <p class="solution-result">A chave privada é <code>1011000001111011</code>.</p>
+  <p>Assim um único par conhecido revela toda a chave, exatamente a falha exigida por um ataque de texto claro conhecido.</p>
+</div>

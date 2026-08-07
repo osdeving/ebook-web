@@ -3,7 +3,7 @@
 
           <p>O algoritmo de troca de chaves Diffie–Hellman resolve o seguinte dilema. Alice e Bob querem compartilhar uma chave secreta para usar numa cifra simétrica, mas o único meio de comunicação entre eles é inseguro. Toda informação que trocam é observada por sua adversária, Eva. Como Alice e Bob podem compartilhar uma chave sem torná-la disponível para Eva? À primeira vista, os dois parecem enfrentar uma tarefa impossível. A percepção brilhante de Diffie e Hellman foi que a dificuldade do problema do logaritmo discreto em \(\mathbb F_p^*\) oferece uma possível solução.</p>
 
-          <p>O primeiro passo é Alice e Bob concordarem quanto a um primo grande \(p\) e a um inteiro não nulo \(g\) módulo \(p\). Eles tornam públicos os valores de \(p\) e \(g\); poderiam, por exemplo, publicá-los em seus sites, de modo que Eva também os conhece. Por razões que serão discutidas mais adiante, é melhor escolher \(g\) de modo que sua ordem em \(\mathbb F_p^*\) seja um primo grande. Veja no Exercício 1.33 uma maneira de encontrar tal \(g\).</p>
+          <p>O primeiro passo é Alice e Bob concordarem quanto a um primo grande \(p\) e a um inteiro não nulo \(g\) módulo \(p\). Eles tornam públicos os valores de \(p\) e \(g\); poderiam, por exemplo, publicá-los em seus sites, de modo que Eva também os conhece. Por razões que serão discutidas mais adiante, é melhor escolher \(g\) de modo que sua ordem em \(\mathbb F_p^*\) seja um primo grande. Veja no <a href="../ch01/#exercicio-1-33" data-source-xref>Exercício 1.33</a> uma maneira de encontrar tal \(g\).</p>
 
           <p>Em seguida, Alice escolhe um inteiro secreto \(a\), que não revela a ninguém, enquanto Bob escolhe um inteiro \(b\), que também mantém em segredo. Alice e Bob usam seus inteiros secretos para calcular</p>
 
@@ -27,7 +27,7 @@
 
           <div class="display-math">\[A'\equiv B^a\equiv(g^b)^a\equiv g^{ab}\equiv(g^a)^b\equiv A^b\equiv B'\pmod p.\]</div>
 
-          <p>Esse valor comum é a chave trocada entre eles. O algoritmo de troca de chaves Diffie–Hellman está resumido na Tabela 2.2.</p>
+          <p>Esse valor comum é a chave trocada entre eles. O algoritmo de troca de chaves Diffie–Hellman está resumido na <a href="#tab-2-2" data-source-xref>Tabela 2.2</a>.</p>
 
           <span id="slot-exp-2-3-dh-step-by-step" data-enrichment-slot="exp-2-3-dh-step-by-step"></span>
 

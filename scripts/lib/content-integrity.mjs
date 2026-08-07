@@ -14,7 +14,15 @@ export function decodeHtmlEntities(value) {
 }
 
 export function normalizeHtmlText(html) {
-  const withoutComments = html.replace(/<!--[\s\S]*?-->/g, "");
+  // Links cruzados sao estrutura de navegacao, nao texto editorial. Remover
+  // somente o invólucro marcado antes da normalizacao permite tornar uma
+  // mencao existente clicavel sem deslocar pontuacao no hash legado. Links
+  // comuns continuam seguindo exatamente o comportamento anterior.
+  const withoutSourceCrossReferenceWrappers = html.replace(
+    /<a\b(?=[^>]*\bdata-source-xref(?:\s|=|>))[^>]*>([\s\S]*?)<\/a\s*>/gi,
+    "$1",
+  );
+  const withoutComments = withoutSourceCrossReferenceWrappers.replace(/<!--[\s\S]*?-->/g, "");
   const tagBoundary = "\u0000";
   const withoutTags = withoutComments.replace(
     /<(?:[A-Za-z][^>]*|\/[A-Za-z][^>]*|![^>]*|\?[^>]*)>/g,

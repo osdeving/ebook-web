@@ -31,6 +31,48 @@ html[data-theme="dark"] .semantic-label { color: #101817; }
 .semantic > h3 { margin: 0 0 .8rem; color: var(--semantic-color); font-size: 1.08rem; font-weight: 750; }
 .proof-end { float: right; font-size: 1.2rem; }
 
+.reader a[data-source-xref] { font-weight: 680; text-decoration-style: dotted; text-decoration-thickness: .08em; }
+.reader a[data-source-xref]:hover { text-decoration-style: solid; }
+:where(.semantic, .exercise, .equation, .numbered-equation, .figure, figure,
+  .table-wrap, table, .footnote, .footnotes > li,
+  [data-reference-entry], [data-cross-reference-target])[id] { scroll-margin-block-start: 6rem; }
+:where(.semantic, .exercise, .equation, .numbered-equation, .figure, figure,
+  .table-wrap, table, .footnote, .footnotes > li,
+  [data-reference-entry], [data-cross-reference-target]):target {
+  outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: .3rem;
+}
+.has-source-permalink { position: relative; }
+.source-permalink {
+  position: absolute;
+  top: .55rem;
+  right: .55rem;
+  z-index: 1;
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: .48rem;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: .82rem;
+  font-weight: 850;
+  line-height: 1;
+  text-decoration: none;
+  opacity: .5;
+}
+.source-permalink::before { content: "#"; }
+.has-source-permalink:hover > .source-permalink,
+.source-permalink:focus-visible { border-color: var(--accent); color: var(--accent-strong); opacity: 1; }
+.semantic.has-source-permalink, .exercise.has-source-permalink,
+.figure.has-source-permalink, figure.has-source-permalink { padding-inline-end: 3.1rem; }
+.table-wrap.has-source-permalink { padding-top: 2.4rem; }
+.equation.has-source-permalink, .numbered-equation.has-source-permalink { padding-inline-end: 4.9rem; }
+.equation.has-source-permalink > .source-permalink,
+.numbered-equation.has-source-permalink > .source-permalink { right: 2.7rem; }
+
 .equation, .numbered-equation { position: relative; margin: 1.6rem 0; padding: 1.15rem 2.7rem 1.15rem 1.15rem; overflow-x: auto; border: 1px solid var(--line); border-radius: .75rem; background: var(--surface-raised); text-align: center; }
 .equation-number { float: right; margin-left: 1rem; color: var(--muted); font-size: .78rem; }
 .display-math, .aligned-equations { margin: 1.4rem 0; overflow-x: auto; overflow-y: hidden; text-align: center; }

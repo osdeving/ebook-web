@@ -1,0 +1,29 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>
+      <p>A chave pública de Alice é</p>
+      <p>\[A\equiv2^{947}\equiv177\pmod{1373}.\]</p>
+    </li>
+    <li>
+      <p>No Elgamal, \(c_1=g^k\) e \(c_2=mB^k\). Aqui,</p>
+      <p>\[c_1\equiv2^{877}\equiv719\pmod{1373},\qquad B^k\equiv469^{877}\equiv644\pmod{1373}.\]</p>
+      <p>Logo</p>
+      <p>\[c_2\equiv583\cdot644\equiv623\pmod{1373},\]</p>
+      <p>e o texto cifrado é \((c_1,c_2)=(719,623)\).</p>
+    </li>
+    <li>
+      <p>Alice recompõe o fator compartilhado com sua chave privada:</p>
+      <p>\[s\equiv c_1^a\equiv661^{299}\equiv645\pmod{1373}.\]</p>
+      <p>O algoritmo de Euclides estendido dá \(645^{-1}\equiv794\pmod{1373}\). Portanto</p>
+      <p>\[m\equiv c_2s^{-1}\equiv1325\cdot794\equiv332\pmod{1373}.\]</p>
+    </li>
+    <li>
+      <p>Primeiro Eva resolve o logaritmo discreto:</p>
+      <p>\[2^{219}\equiv893\pmod{1373},\]</p>
+      <p>logo a chave privada de Bob é \(b=219\) módulo \(1372\). O fator compartilhado e seu inverso são</p>
+      <p>\[s\equiv693^{219}\equiv431,\qquad431^{-1}\equiv532\pmod{1373}.\]</p>
+      <p>Assim, a mensagem interceptada é</p>
+      <p>\[m\equiv793\cdot532\equiv365\pmod{1373}.\]</p>
+    </li>
+  </ol>
+</div>

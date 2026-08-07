@@ -26,15 +26,23 @@ export function createFocusTrap(root: HTMLElement): (event: KeyboardEvent) => vo
  * Abre um complemento apontado por hash, inclusive quando o alvo esta dentro
  * de mais de um `details`. Todos os ancestrais sao abertos de fora para dentro.
  */
-export function revealHash(root: ParentNode = document, focus = false): void {
-  if (!location.hash) return;
+export function resolveHashTarget(root: ParentNode = document): HTMLElement | null {
+  if (!location.hash) return null;
   let id = location.hash.slice(1);
   try { id = decodeURIComponent(id); } catch { /* Mantem o hash literal. */ }
-  const target = root.querySelector<HTMLElement>(`#${CSS.escape(id)}`);
+  return root.querySelector<HTMLElement>(`#${CSS.escape(id)}`);
+}
+
+export function revealHash(root: ParentNode = document, focus = false): void {
+  const target = resolveHashTarget(root);
   if (!target) return;
   const ancestors = queryAll<HTMLDetailsElement>("details", root)
-    .filter((details) => details.contains(target))
-    .sort((a, b) => Number(a.contains(b)) - Number(b.contains(a)));
+    .filter((details) => (
+      details === target
+      || details.contains(target)
+      || details.parentElement === target
+    ))
+    .sort((a, b) => a.contains(b) ? -1 : b.contains(a) ? 1 : 0);
   ancestors.forEach((details) => { details.open = true; });
   target.scrollIntoView({ block: "start", behavior: prefersReducedMotion() ? "auto" : "smooth" });
   if (focus) {

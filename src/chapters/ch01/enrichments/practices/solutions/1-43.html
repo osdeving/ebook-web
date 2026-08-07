@@ -1,0 +1,30 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>A cifragem é
+      \[
+      c\equiv34\cdot204+71\equiv515\pmod{541}.
+      \]
+      Como \(34^{-1}\equiv366\pmod{541}\), a decifragem pedida é
+      \[
+      m\equiv366(431-71)\equiv297\pmod{541}.
+      \]</li>
+    <li>Dois pares \((m_1,c_1)\), \((m_2,c_2)\) dão
+      \[
+      k_1(m_2-m_1)\equiv c_2-c_1\pmod p.
+      \]
+      Se \(m_2-m_1\) for não nulo — portanto invertível no corpo — recuperamos \(k_1\), e então \(k_2\equiv c_1-k_1m_1\). Assim dois pares costumam bastar; escolhe-se outro par no caso degenerado \(m_1=m_2\).</li>
+    <li>Para os dados,
+      \[
+      k_1\equiv(381-324)(491-387)^{-1}\equiv41\pmod{601},
+      \]
+      e \(k_2\equiv324-41\cdot387\equiv83\pmod{601}\). A chave é \((41,83)\), e
+      \[
+      e_k(173)\equiv41\cdot173+83\equiv565\pmod{601}.
+      \]</li>
+    <li>Com três pares, elimine \(k_1,k_2\): o número
+      \[
+      D=(c_2-c_1)(m_3-m_1)-(c_3-c_1)(m_2-m_1)
+      \]
+      é divisível pelo primo desconhecido \(p\). Um único \(D\) pode conter fatores extras. Um quarto par fornece outro múltiplo \(D'\), e tipicamente \(\gcd(D,D')=p\) (ou um pequeno múltiplo fácil de testar). Depois disso, dois pares recuperam \(k_1,k_2\). Portanto, em geral, quatro pares conhecidos bastam.</li>
+  </ol>
+</div>

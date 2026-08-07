@@ -1,32 +1,391 @@
 <section class="chapter-section" id="exercicios">
-          <div class="section-heading">
-            <span class="section-number">EX</span>
-            <h2>Exercícios</h2>
-          </div>
+  <div class="section-heading">
+    <span class="section-number">EX</span>
+    <h2>Exercícios</h2>
+  </div>
 
-          <h3>Seção 2.1 — Diffie–Hellman e RSA</h3>
+  <h3>Seção 2.1 — Diffie–Hellman e RSA</h3>
 
-          <div class="exercise" id="exercicio-2-1">
-            <p><span class="exercise-number">2.1.</span> Escreva um ensaio de uma página apresentando argumentos favoráveis e contrários à seguinte afirmação:</p>
-            <blockquote class="historical-quote">Se o governo conseguir convencer um tribunal de que existe uma razão válida para seu pedido, então deve ter acesso às chaves privadas de uma pessoa, mesmo sem o conhecimento dela, da mesma forma que o governo tem permissão para realizar interceptações telefônicas secretas autorizadas judicialmente em casos de suspeita de atividade criminosa ou de ameaças à segurança nacional.</blockquote>
-            <p>Com base em seus argumentos, você apoiaria ou se oporia à concessão desse poder ao governo? E se não houvesse supervisão judicial? A ideia de que todas as chaves privadas devem ser armazenadas num local central seguro e ficar acessíveis a órgãos governamentais, com ou sem condições jurídicas suficientemente rigorosas, é chamada de <strong>custódia de chaves</strong> (<em>key escrow</em>).</p>
-          </div>
+  <div class="exercise" id="exercicio-2-1">
+    <p><span class="exercise-number">2.1.</span> Escreva um ensaio de uma página apresentando argumentos favoráveis e contrários à seguinte afirmação:</p>
+    <blockquote class="historical-quote">Se o governo conseguir convencer um tribunal de que existe uma razão válida para seu pedido, então deve ter acesso às chaves privadas de uma pessoa, mesmo sem o conhecimento dela, da mesma forma que o governo tem permissão para realizar interceptações telefônicas secretas autorizadas judicialmente em casos de suspeita de atividade criminosa ou de ameaças à segurança nacional.</blockquote>
+    <p>Com base em seus argumentos, você apoiaria ou se oporia à concessão desse poder ao governo? E se não houvesse supervisão judicial? A ideia de que todas as chaves privadas devem ser armazenadas num local central seguro e ficar acessíveis a órgãos governamentais, com ou sem condições jurídicas suficientemente rigorosas, é chamada de <strong>custódia de chaves</strong> (<em>key escrow</em>).</p>
+  </div>
 
-          <div class="exercise" id="exercicio-2-2">
-            <p><span class="exercise-number">2.2.</span> Pesquise e escreva um ensaio de uma a duas páginas sobre a classificação de algoritmos criptográficos como munições segundo o ITAR (<em>International Traffic in Arms Regulations</em>, Regulamento Internacional de Tráfico de Armas). Como esse regulamento define “exportação”? Quais são as possíveis multas e penas de prisão para pessoas condenadas por violar o <em>Arms Export Control Act</em> (Lei de Controle de Exportação de Armas)? Ensinar algoritmos criptográficos não sigilosos a uma turma universitária que inclua pessoas sem cidadania dos Estados Unidos seria considerado uma forma de exportação? Como a política do governo dos Estados Unidos mudou do início da década de 1990 até o presente?</p>
-          </div>
+  <div class="exercise" id="exercicio-2-2">
+    <p><span class="exercise-number">2.2.</span> Pesquise e escreva um ensaio de uma a duas páginas sobre a classificação de algoritmos criptográficos como munições segundo o ITAR (<em>International Traffic in Arms Regulations</em>, Regulamento Internacional de Tráfico de Armas). Como esse regulamento define “exportação”? Quais são as possíveis multas e penas de prisão para pessoas condenadas por violar o <em>Arms Export Control Act</em> (Lei de Controle de Exportação de Armas)? Ensinar algoritmos criptográficos não sigilosos a uma turma universitária que inclua pessoas sem cidadania dos Estados Unidos seria considerado uma forma de exportação? Como a política do governo dos Estados Unidos mudou do início da década de 1990 até o presente?</p>
+  </div>
 
-          <h3>Seção 2.2 — O problema do logaritmo discreto</h3>
+  <h3>Seção 2.2 — O problema do logaritmo discreto</h3>
 
-          <div class="exercise" id="exercicio-2-3-a">
-            <p><span class="exercise-number">2.3.</span> Seja \(g\) uma raiz primitiva de \(\mathbb F_p\).</p>
-            <ol type="a">
-              <li>Suponha que \(x=a\) e \(x=b\) sejam ambas soluções inteiras da congruência \(g^x\equiv h\pmod p\). Prove que \(a\equiv b\pmod{p-1}\). Explique por que isso implica que a aplicação (2.1), na página 65, está bem definida.</li>
-            </ol>
-          </div>
+  <div class="exercise" id="exercicio-2-3">
+    <p><span class="exercise-number">2.3.</span> Seja \(g\) uma raiz primitiva de \(\mathbb F_p\).</p>
+    <ol type="a">
+      <li>Suponha que \(x=a\) e \(x=b\) sejam ambas soluções inteiras da congruência \(g^x\equiv h\pmod p\). Prove que \(a\equiv b\pmod{p-1}\). Explique por que isso implica que a aplicação <a href="#eq-2-1" data-source-xref>(2.1)</a>, na página 65, está bem definida.</li>
+      <li>Prove que \[\log_g(h_1h_2)=\log_g(h_1)+\log_g(h_2)\qquad\text{para todos }h_1,h_2\in\mathbb F_p^*.\]</li>
+      <li>Prove que \[\log_g(h^n)=n\log_g(h)\qquad\text{para todo }h\in\mathbb F_p^*\text{ e todo }n\in\mathbb Z.\]</li>
+    </ol>
+  </div>
 
-          <div class="end-marker">
-            <strong>Fim do conteúdo disponível no PDF.</strong>
-            <span>O arquivo termina depois da frase completa do subitem 2.3(a). Esse subitem está completo; os demais subitens do Exercício 2.3 e os exercícios seguintes não estão presentes no PDF fornecido e, por isso, não foram acrescentados.</span>
-          </div>
-        </section>
+  <div class="exercise" id="exercicio-2-4">
+    <p><span class="exercise-number">2.4.</span> Calcule os seguintes logaritmos discretos.</p>
+    <ol type="a">
+      <li>\(\log_2(13)\) para o primo \(23\); isto é, \(p=23\), \(g=2\), e você deve resolver a congruência \(2^x\equiv13\pmod{23}\).</li>
+      <li>\(\log_{10}(22)\) para o primo \(p=47\).</li>
+      <li>\(\log_{627}(608)\) para o primo \(p=941\). (Dica: veja a segunda coluna da <a href="#tab-2-1" data-source-xref>Tabela 2.1</a>, na página 66.)</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-5">
+    <p><span class="exercise-number">2.5.</span> Seja \(p\) um primo ímpar e seja \(g\) uma raiz primitiva módulo \(p\). Prove que \(a\) possui uma raiz quadrada módulo \(p\) se, e somente se, seu logaritmo discreto \(\log_g(a)\) módulo \(p-1\) for par.</p>
+  </div>
+
+  <h3>Seção 2.3 — Troca de chaves Diffie–Hellman</h3>
+
+  <div class="exercise" id="exercicio-2-6">
+    <p><span class="exercise-number">2.6.</span> Alice e Bob concordam em usar o primo \(p=1373\) e a base \(g=2\) para uma troca de chaves Diffie–Hellman. Alice envia a Bob o valor \(A=974\). Bob pede sua ajuda, e você lhe diz para usar o expoente secreto \(b=871\). Que valor \(B\) Bob deve enviar a Alice e qual é o valor secreto compartilhado por eles? Você consegue descobrir o expoente secreto de Alice?</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-7">
+    <p><span class="exercise-number">2.7.</span> Seja \(p\) um primo e seja \(g\) um inteiro. O <strong>problema de decisão de Diffie–Hellman</strong> é o seguinte. Suponha que sejam dados três números \(A\), \(B\) e \(C\), e suponha que \(A\) e \(B\) sejam iguais a</p>
+    <div class="display-math">\[A\equiv g^a\pmod p\qquad\text{e}\qquad B\equiv g^b\pmod p,\]</div>
+    <p>mas que os valores dos expoentes \(a\) e \(b\) não sejam necessariamente conhecidos. Determine se \(C\) é igual a \(g^{ab}\pmod p\). Observe que esse problema é diferente do <a href="#sec-2-3" data-source-xref>problema de Diffie–Hellman descrito na página 69</a>. O problema de Diffie–Hellman pede que se calcule efetivamente o valor de \(g^{ab}\).</p>
+    <ol type="a">
+      <li>Prove que um algoritmo que resolve o problema de Diffie–Hellman pode ser usado para resolver o problema de decisão de Diffie–Hellman.</li>
+      <li>Você acha que o problema de decisão de Diffie–Hellman é difícil ou fácil? Por quê?</li>
+    </ol>
+    <p>Veja o Exercício 6.40 para um exemplo relacionado em que o problema de decisão é fácil, mas se acredita que o problema computacional associado seja difícil.</p>
+  </div>
+
+  <h3>Seção 2.4 — O criptossistema de chave pública Elgamal</h3>
+
+  <div class="exercise" id="exercicio-2-8">
+    <p><span class="exercise-number">2.8.</span> Alice e Bob concordam em usar o primo \(p=1373\) e a base \(g=2\) para se comunicar usando o criptossistema de chave pública Elgamal.</p>
+    <ol type="a">
+      <li>Alice escolhe \(a=947\) como chave privada. Qual é o valor de sua chave pública \(A\)?</li>
+      <li>Bob escolhe \(b=716\) como chave privada, de modo que sua chave pública é \[B\equiv2^{716}\equiv469\pmod{1373}.\] Alice cifra a mensagem \(m=583\) usando o elemento aleatório \(k=877\). Qual é o texto cifrado \((c_1,c_2)\) que Alice envia a Bob?</li>
+      <li>Alice decide escolher uma nova chave privada \(a=299\), com a chave pública associada \(A\equiv2^{299}\equiv34\pmod{1373}\). Bob cifra uma mensagem usando a chave pública de Alice e lhe envia o texto cifrado \((c_1,c_2)=(661,1325)\). Decifre a mensagem.</li>
+      <li>Agora Bob escolhe uma nova chave privada e publica a chave pública associada \(B=893\). Alice cifra uma mensagem usando essa chave pública e envia a Bob o texto cifrado \((c_1,c_2)=(693,793)\). Eva intercepta a transmissão. Ajude Eva resolvendo o problema do logaritmo discreto \(2^b\equiv893\pmod{1373}\) e usando o valor de \(b\) para decifrar a mensagem.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-9">
+    <p><span class="exercise-number">2.9.</span> Suponha que Eva seja capaz de resolver o <a href="#sec-2-3" data-source-xref>problema de Diffie–Hellman descrito na página 69</a>. Mais precisamente, suponha que, se forem dadas a Eva duas potências \(g^u\) e \(g^v\) módulo \(p\), ela seja capaz de calcular \(g^{uv}\pmod p\). Mostre que Eva consegue quebrar o PKC Elgamal.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-10">
+    <p><span class="exercise-number">2.10.</span> Este exercício descreve um criptossistema de chave pública que exige que Bob e Alice troquem várias mensagens. Ilustramos o sistema com um exemplo.</p>
+    <p>Bob e Alice fixam um primo publicamente conhecido \(p=32611\), e todos os outros números usados são privados. Alice toma sua mensagem \(m=11111\), escolhe um expoente aleatório \(a=3589\) e envia a Bob o número \(u=m^a\pmod p=15950\). Bob escolhe um expoente aleatório \(b=4037\) e devolve a Alice \(v=u^b\pmod p=15422\). Alice então calcula \(w=v^{15619}\equiv27257\pmod{32611}\) e envia \(w=27257\) a Bob. Por fim, Bob calcula \(w^{31883}\pmod{32611}\) e recupera o valor \(11111\) da mensagem de Alice.</p>
+    <ol type="a">
+      <li>Explique por que esse algoritmo funciona. Em particular, Alice usa como expoentes os números \(a=3589\) e \(15619\). Como eles estão relacionados? Do mesmo modo, como estão relacionados os expoentes \(b=4037\) e \(31883\) de Bob?</li>
+      <li>Formule uma versão geral desse criptossistema, isto é, usando variáveis, e mostre que ele funciona em geral.</li>
+      <li>Qual é a desvantagem desse criptossistema em comparação com o Elgamal? (Dica: quantas vezes Alice e Bob precisam trocar dados?)</li>
+      <li>Há alguma vantagem desse criptossistema em relação ao Elgamal? Em particular, Eva consegue quebrá-lo se souber resolver o problema do logaritmo discreto? Eva consegue quebrá-lo se souber resolver o problema de Diffie–Hellman?</li>
+    </ol>
+  </div>
+
+  <h3>Seção 2.5 — Um panorama da teoria de grupos</h3>
+
+  <div class="exercise" id="exercicio-2-11">
+    <p><span class="exercise-number">2.11.</span> O grupo \(S_3\) é formado pelos seis elementos distintos</p>
+    <div class="display-math">\[e,\ \sigma,\ \sigma^2,\ \tau,\ \sigma\tau,\ \sigma^2\tau,\]</div>
+    <p>em que \(e\) é o elemento identidade e a multiplicação é realizada segundo as regras</p>
+    <div class="display-math">\[\sigma^3=e,\qquad\tau^2=e,\qquad\tau\sigma=\sigma^2\tau.\]</div>
+    <p>Calcule os seguintes valores no grupo \(S_3\):</p>
+    <ol type="a">
+      <li>\(\tau\sigma^2\)</li>
+      <li>\(\tau(\sigma\tau)\)</li>
+      <li>\((\sigma\tau)(\sigma\tau)\)</li>
+      <li>\((\sigma\tau)(\sigma^2\tau)\)</li>
+    </ol>
+    <p>\(S_3\) é um grupo comutativo?</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-12">
+    <p><span class="exercise-number">2.12.</span> Seja \(G\) um grupo, seja \(d\ge1\) um inteiro e defina um subconjunto de \(G\) por</p>
+    <div class="display-math">\[G[d]=\{g\in G:g^d=e\}.\]</div>
+    <ol type="a">
+      <li>Prove que, se \(g\) pertence a \(G[d]\), então \(g^{-1}\) pertence a \(G[d]\).</li>
+      <li>Suponha que \(G\) seja comutativo. Prove que, se \(g_1\) e \(g_2\) pertencem a \(G[d]\), então seu produto \(g_1\star g_2\) pertence a \(G[d]\).</li>
+      <li>Conclua que, se \(G\) for comutativo, então \(G[d]\) será um grupo.</li>
+      <li>Mostre, por meio de um exemplo, que, se \(G\) não for um grupo comutativo, então \(G[d]\) não precisa ser um grupo. (Dica: use o <a href="#exercicio-2-11" data-source-xref>Exercício 2.11</a>.)</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-13">
+    <p><span class="exercise-number">2.13.</span> Sejam \(G\) e \(H\) grupos. Uma função \(\phi:G\to H\) é chamada de <strong>homomorfismo (de grupos)</strong> se satisfaz</p>
+    <div class="display-math">\[\phi(g_1\star g_2)=\phi(g_1)\star\phi(g_2)\qquad\text{para todos }g_1,g_2\in G.\]</div>
+    <p>(Observe que o produto \(g_1\star g_2\) usa a lei de grupo de \(G\), enquanto o produto \(\phi(g_1)\star\phi(g_2)\) usa a lei de grupo de \(H\).)</p>
+    <ol type="a">
+      <li>Seja \(e_G\) o elemento identidade de \(G\), seja \(e_H\) o elemento identidade de \(H\) e seja \(g\in G\). Prove que \[\phi(e_G)=e_H\qquad\text{e}\qquad\phi(g^{-1})=\phi(g)^{-1}.\]</li>
+      <li>Seja \(G\) um grupo comutativo. Prove que a aplicação \(\phi:G\to G\) definida por \(\phi(g)=g^2\) é um homomorfismo. Dê um exemplo de grupo não comutativo para o qual essa aplicação não seja um homomorfismo.</li>
+      <li>A mesma pergunta do item (b) para a aplicação \(\phi(g)=g^{-1}\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-14">
+    <p><span class="exercise-number">2.14.</span> Prove que cada uma das aplicações a seguir é um homomorfismo de grupos.</p>
+    <ol type="a">
+      <li>A aplicação \(\phi:\mathbb Z\to\mathbb Z/N\mathbb Z\) que envia \(a\in\mathbb Z\) para \(a\bmod N\) em \(\mathbb Z/N\mathbb Z\).</li>
+      <li>A aplicação \(\phi:\mathbb R^*\to\operatorname{GL}_2(\mathbb R)\) definida por \[\phi(a)=\begin{pmatrix}a&amp;0\\0&amp;a^{-1}\end{pmatrix}.\]</li>
+      <li>A aplicação do logaritmo discreto \(\log_g:\mathbb F_p^*\to\mathbb Z/(p-1)\mathbb Z\), em que \(g\) é uma raiz primitiva módulo \(p\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-15">
+    <p><span class="exercise-number">2.15.</span></p>
+    <ol type="a">
+      <li>Prove que \(\operatorname{GL}_2(\mathbb F_p)\) é um grupo.</li>
+      <li>Mostre que \(\operatorname{GL}_2(\mathbb F_p)\) é um grupo não comutativo para todo primo \(p\).</li>
+      <li>Descreva \(\operatorname{GL}_2(\mathbb F_2)\) completamente. Isto é, liste seus elementos e descreva a tabela de multiplicação.</li>
+      <li>Quantos elementos há no grupo \(\operatorname{GL}_2(\mathbb F_p)\)?</li>
+      <li>Quantos elementos há no grupo \(\operatorname{GL}_n(\mathbb F_p)\)?</li>
+    </ol>
+  </div>
+
+  <h3>Seção 2.6 — Quão difícil é o problema do logaritmo discreto?</h3>
+
+  <div class="exercise" id="exercicio-2-16">
+    <p><span class="exercise-number">2.16.</span> Verifique as seguintes afirmações do <a href="#exemplo-2-16" data-source-xref>Exemplo 2.16</a>.</p>
+    <ol type="a">
+      <li>\(x^2+\sqrt{x}=\mathcal O(x^2)\).</li>
+      <li>\(5+6x^2-37x^5=\mathcal O(x^5)\).</li>
+      <li>\(k^{300}=\mathcal O(2^k)\).</li>
+      <li>\((\ln k)^{375}=\mathcal O(k^{0.001})\).</li>
+      <li>\(k^2 2^k=\mathcal O(e^{2k})\).</li>
+      <li>\(N^{10}2^N=\mathcal O(e^N)\).</li>
+    </ol>
+  </div>
+
+  <h3>Seção 2.7 — Um algoritmo de colisão para o PLD</h3>
+
+  <div class="exercise" id="exercicio-2-17">
+    <p><span class="exercise-number">2.17.</span> Use o <a href="#sec-2-7" data-source-xref>método passo de bebê–passo de gigante de Shanks</a> para resolver os seguintes problemas de logaritmo discreto. (Para os itens (b) e (c), talvez seja conveniente escrever um programa de computador que implemente o algoritmo de Shanks.)</p>
+    <ol type="a">
+      <li>\(11^x=21\) em \(\mathbb F_{71}\).</li>
+      <li>\(156^x=116\) em \(\mathbb F_{593}\).</li>
+      <li>\(650^x=2213\) em \(\mathbb F_{3571}\).</li>
+    </ol>
+  </div>
+
+  <h3>Seção 2.8 — O teorema chinês dos restos</h3>
+
+  <div class="exercise" id="exercicio-2-18">
+    <p><span class="exercise-number">2.18.</span> Resolva cada um dos seguintes sistemas de congruências simultâneas, ou explique por que não existe solução.</p>
+    <ol type="a">
+      <li>\(x\equiv3\pmod7\) e \(x\equiv4\pmod9\).</li>
+      <li>\(x\equiv137\pmod{423}\) e \(x\equiv87\pmod{191}\).</li>
+      <li>\(x\equiv133\pmod{451}\) e \(x\equiv237\pmod{697}\).</li>
+      <li>\(x\equiv5\pmod9\), \(x\equiv6\pmod{10}\) e \(x\equiv7\pmod{11}\).</li>
+      <li>\(x\equiv37\pmod{43}\), \(x\equiv22\pmod{49}\) e \(x\equiv18\pmod{71}\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-19">
+    <p><span class="exercise-number">2.19.</span> Resolva o <a href="#sec-2-8" data-source-xref>problema chinês dos restos, com 1.700 anos de idade, do <em>Sun Tzu Suan Ching</em>, enunciado na página 84</a>.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-20">
+    <p><span class="exercise-number">2.20.</span> Sejam \(a,b,m,n\) inteiros com \(\gcd(m,n)=1\). Seja</p>
+    <div class="display-math">\[c\equiv(b-a)m^{-1}\pmod n.\]</div>
+    <p>Prove que \(x=a+cm\) é uma solução de</p>
+    <div class="numbered-equation" id="eq-2-24"><span class="math">\[x\equiv a\pmod m\qquad\text{e}\qquad x\equiv b\pmod n,\]</span><span class="equation-number">(2.24)</span></div>
+    <p>e que toda solução de <a href="#eq-2-24" data-source-xref>(2.24)</a> tem a forma \(x=a+cm+ymn\) para algum \(y\in\mathbb Z\).</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-21">
+    <p><span class="exercise-number">2.21.</span></p>
+    <ol type="a">
+      <li>Sejam \(a,b,c\) inteiros positivos e suponha que \[a\mid c,\qquad b\mid c\qquad\text{e}\qquad\gcd(a,b)=1.\] Prove que \(ab\mid c\).</li>
+      <li>Sejam \(x=c\) e \(x=c'\) duas soluções do sistema de congruências simultâneas <a href="#eq-2-7" data-source-xref>(2.7)</a> do teorema chinês dos restos, o <a href="#teorema-2-24" data-source-xref>Teorema 2.24</a>. Prove que \[c\equiv c'\pmod{m_1m_2\cdots m_k}.\]</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-22">
+    <p><span class="exercise-number">2.22.</span> Para quem já estudou teoria dos anéis, este exercício esboça uma demonstração curta do teorema chinês dos restos. Sejam \(m_1,\ldots,m_k\) inteiros e seja \(m=m_1m_2\cdots m_k\) seu produto.</p>
+    <ol type="a">
+      <li>Prove que a aplicação
+        <div class="numbered-equation" id="eq-2-25"><span class="math">\[
+          \begin{aligned}
+          \frac{\mathbb Z}{m\mathbb Z}&amp;\longrightarrow
+          \frac{\mathbb Z}{m_1\mathbb Z}\times\frac{\mathbb Z}{m_2\mathbb Z}\times\cdots\times\frac{\mathbb Z}{m_k\mathbb Z},\\
+          a\bmod m&amp;\longmapsto(a\bmod m_1,a\bmod m_2,\ldots,a\bmod m_k)
+          \end{aligned}
+        \]</span><span class="equation-number">(2.25)</span></div>
+        é um homomorfismo de anéis bem definido. (Dica: primeiro defina um homomorfismo de \(\mathbb Z\) para o lado direito de <a href="#eq-2-25" data-source-xref>(2.25)</a> e, em seguida, mostre que \(m\mathbb Z\) está no núcleo.)</li>
+      <li>Suponha que \(m_1,\ldots,m_k\) sejam dois a dois relativamente primos. Prove que a aplicação dada por <a href="#eq-2-25" data-source-xref>(2.25)</a> é injetiva. (Dica: qual é o núcleo?)</li>
+      <li>Mantendo a hipótese de que os números \(m_1,\ldots,m_k\) são dois a dois relativamente primos, prove que a aplicação <a href="#eq-2-25" data-source-xref>(2.25)</a> é sobrejetiva. (Dica: use o item (b) e conte o tamanho dos dois lados.)</li>
+      <li>Explique por que o teorema chinês dos restos, o <a href="#teorema-2-24" data-source-xref>Teorema 2.24</a>, é equivalente à afirmação de que os itens (b) e (c) são verdadeiros.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-23">
+    <p><span class="exercise-number">2.23.</span> Use o método descrito na <a href="#sec-2-8-1" data-source-xref>Seção 2.8.1</a> para encontrar raízes quadradas módulo os seguintes números compostos.</p>
+    <ol type="a">
+      <li>Encontre uma raiz quadrada de \(340\) módulo \(437\). (Observe que \(437=19\cdot23\).)</li>
+      <li>Encontre uma raiz quadrada de \(253\) módulo \(3143\).</li>
+      <li>Encontre quatro raízes quadradas de \(2833\) módulo \(4189\). (O módulo se fatora como \(4189=59\cdot71\). Observe que suas quatro raízes quadradas devem ser distintas módulo \(4189\).)</li>
+      <li>Encontre oito raízes quadradas de \(813\) módulo \(868\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-24">
+    <p><span class="exercise-number">2.24.</span> Seja \(p\) um primo ímpar, seja \(a\) um inteiro não divisível por \(p\) e seja \(b\) uma raiz quadrada de \(a\) módulo \(p\). Este exercício investiga a raiz quadrada de \(a\) módulo potências de \(p\).</p>
+    <ol type="a">
+      <li>Prove que, para alguma escolha de \(k\), o número \(b+kp\) é uma raiz quadrada de \(a\) módulo \(p^2\); isto é, \((b+kp)^2\equiv a\pmod{p^2}\).</li>
+      <li>O número \(b=537\) é uma raiz quadrada de \(a=476\) módulo o primo \(p=1291\). Use a ideia do item (a) para calcular uma raiz quadrada de \(476\) módulo \(p^2\).</li>
+      <li>Suponha que \(b\) seja uma raiz quadrada de \(a\) módulo \(p^n\). Prove que, para alguma escolha de \(j\), o número \(b+jp^n\) é uma raiz quadrada de \(a\) módulo \(p^{n+1}\).</li>
+      <li>Explique por que o item (c) implica a seguinte afirmação: se \(p\) é um primo ímpar e \(a\) possui uma raiz quadrada módulo \(p\), então \(a\) possui uma raiz quadrada módulo \(p^n\) para toda potência de \(p\). Isso é verdade se \(p=2\)?</li>
+      <li>Use o método do item (c) para calcular a raiz quadrada de \(3\) módulo \(13^3\), sabendo que \(9^2\equiv3\pmod{13}\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-25">
+    <p><span class="exercise-number">2.25.</span> Suponha que \(n=pq\), com \(p\) e \(q\) primos ímpares distintos.</p>
+    <ol type="a">
+      <li>Suponha que \(\gcd(a,pq)=1\). Prove que, se a equação \(x^2\equiv a\pmod n\) possui alguma solução, então possui quatro soluções.</li>
+      <li>Suponha que você dispusesse de uma máquina capaz de encontrar as quatro soluções para um dado \(a\). Como essa máquina poderia ser usada para fatorar \(n\)?</li>
+    </ol>
+  </div>
+
+  <h3>Seção 2.9 — O algoritmo de Pohlig–Hellman</h3>
+
+  <div class="exercise" id="exercicio-2-26">
+    <p><span class="exercise-number">2.26.</span> Seja \(\mathbb F_p\) um corpo finito e seja \(N\mid p-1\). Prove que \(\mathbb F_p^*\) possui um elemento de ordem \(N\). Isso vale, em particular, para toda potência de primo que divide \(p-1\). (Dica: use o fato de que \(\mathbb F_p^*\) possui uma raiz primitiva.)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-27">
+    <p><span class="exercise-number">2.27.</span> Escreva sua própria demonstração de que o <a href="#sec-2-9" data-source-xref>algoritmo de Pohlig–Hellman</a> funciona no caso particular em que \(p-1=q_1q_2\) é o produto de dois primos distintos. Esta é uma boa oportunidade para compreender como a demonstração funciona e ter uma ideia de como ela foi descoberta.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-28">
+    <p><span class="exercise-number">2.28.</span> Use o algoritmo de Pohlig–Hellman, o <a href="#teorema-2-31" data-source-xref>Teorema 2.31</a>, para resolver o problema do logaritmo discreto</p>
+    <div class="display-math">\[g^x=a\qquad\text{em }\mathbb F_p\]</div>
+    <p>em cada um dos casos a seguir.</p>
+    <ol type="a">
+      <li>\(p=433\), \(g=7\), \(a=166\).</li>
+      <li>\(p=746497\), \(g=10\), \(a=243278\).</li>
+      <li>\(p=41022299\), \(g=2\), \(a=39183497\). (Dica: \(p=2\cdot29^5+1\).)</li>
+      <li>\(p=1291799\), \(g=17\), \(a=192988\). (Dica: \(p-1\) possui um fator \(709\).)</li>
+    </ol>
+  </div>
+
+  <h3>Seção 2.10 — Anéis, anéis quociente, anéis de polinômios e corpos finitos</h3>
+
+  <div class="exercise" id="exercicio-2-29">
+    <p><span class="exercise-number">2.29.</span> Seja \(R\) um anel com a propriedade de que um produto \(a\cdot b\) só pode ser \(0\) se \(a=0\) ou \(b=0\). (Na terminologia do <a href="#ex-2-55" data-source-xref>Exemplo 2.55</a>, o anel \(R\) não possui divisores de zero.) Suponha, além disso, que \(R\) possua apenas um número finito de elementos. Prove que \(R\) é um corpo. (Dica: seja \(a\in R\), com \(a\ne0\). O que se pode dizer sobre a aplicação \(R\to R\) definida por \(b\mapsto a\cdot b\)?)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-30">
+    <p><span class="exercise-number">2.30.</span> Seja \(R\) um anel. Prove as seguintes propriedades de \(R\) diretamente a partir dos axiomas de anel descritos na <a href="#sec-2-10-1" data-source-xref>Seção 2.10.1</a>.</p>
+    <ol type="a">
+      <li>Prove que o elemento identidade aditivo \(0\in R\) é único; isto é, prove que existe apenas um elemento de \(R\) que satisfaz \(0+a=a+0=0\) para todo \(a\in R\).</li>
+      <li>Prove que o elemento identidade multiplicativo \(1\in R\) é único.</li>
+      <li>Prove que todo elemento de \(R\) possui um único inverso aditivo.</li>
+      <li>Prove que \(0\star a=a\star0=0\) para todo \(a\in R\).</li>
+      <li>Denotamos o inverso aditivo de \(a\) por \(-a\). Prove que \(-(-a)=a\).</li>
+      <li>Seja \(-1\) o inverso aditivo do elemento identidade multiplicativo \(1\in R\). Prove que \((-1)\star(-1)=1\).</li>
+      <li>Prove que \(b\mid0\) para todo \(b\ne0\) em \(R\).</li>
+      <li>Prove que um elemento de \(R\) possui, no máximo, um inverso multiplicativo.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-31">
+    <p><span class="exercise-number">2.31.</span> Sejam \(R\) e \(S\) anéis. Uma função \(\phi:R\to S\) é chamada de <strong>homomorfismo (de anéis)</strong> se satisfaz</p>
+    <div class="display-math">\[\phi(a+b)=\phi(a)+\phi(b)\qquad\text{e}\qquad\phi(a\star a)=\phi(a)\star\phi(a)\qquad\text{para todos }a,b\in R.\]</div>
+    <ol type="a">
+      <li>Sejam \(0_R,0_S,1_R\) e \(1_S\) as identidades aditivas e multiplicativas de \(R\) e \(S\), respectivamente. Prove que \[\phi(0_R)=0_S,\qquad\phi(1_R)=1_S,\qquad\phi(-a)=-\phi(a),\qquad\phi(a^{-1})=\phi(a)^{-1},\] em que a última igualdade vale para os \(a\in R\) que possuem inverso multiplicativo.</li>
+      <li>Seja \(p\) um primo e seja \(R\) um anel com a propriedade de que \(pa=0\) para todo \(a\in R\). (Aqui \(pa\) significa somar \(a\) a si mesmo \(p\) vezes.) Prove que a aplicação \[\phi:R\longrightarrow R,\qquad\phi(a)=a^p\] é um homomorfismo de anéis. Ela é chamada de <strong>homomorfismo de Frobenius</strong>.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-32">
+    <p><span class="exercise-number">2.32.</span> Prove a <a href="#prop-2-41" data-source-xref>Proposição 2.41</a>.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-33">
+    <p><span class="exercise-number">2.33.</span> Prove a <a href="#prop-2-43" data-source-xref>Proposição 2.43</a>. (Dica: primeiro use o <a href="#exercicio-2-32" data-source-xref>Exercício 2.32</a> para provar que as classes de congruência de \(a+b\) e \(a\star b\) dependem apenas das classes de congruência de \(a\) e \(b\).)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-34">
+    <p><span class="exercise-number">2.34.</span> Seja \(F\) um corpo e sejam \(a\) e \(b\) polinômios não nulos em \(F[x]\).</p>
+    <ol type="a">
+      <li>Prove que \(\deg(a\cdot b)=\deg(a)+\deg(b)\).</li>
+      <li>Prove que \(a\) possui um inverso multiplicativo em \(F[x]\) se, e somente se, \(a\) pertence a \(F\); isto é, se, e somente se, \(a\) é um polinômio constante.</li>
+      <li>Prove que todo elemento não nulo de \(F[x]\) pode ser fatorado como um produto de polinômios irredutíveis. (Dica: use os itens (a) e (b) e indução sobre o grau do polinômio.)</li>
+      <li>Seja \(R\) o anel \(\mathbb Z/6\mathbb Z\). Dê um exemplo que mostre que o item (a) é falso para alguns polinômios \(a\) e \(b\) em \(R[x]\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-35">
+    <p><span class="exercise-number">2.35.</span> Sejam \(a\) e \(b\) os polinômios</p>
+    <div class="display-math">\[
+      \begin{aligned}
+      a&amp;=x^5+3x^4-5x^3-3x^2+2x+2,\\
+      b&amp;=x^5+x^4-2x^3+4x^2+x+5.
+      \end{aligned}
+    \]</div>
+    <p>Use o algoritmo de Euclides para calcular \(\gcd(a,b)\) em cada um dos anéis a seguir.</p>
+    <ol type="a">
+      <li>\(\mathbb F_2[x]\)</li>
+      <li>\(\mathbb F_3[x]\)</li>
+      <li>\(\mathbb F_5[x]\)</li>
+      <li>\(\mathbb F_7[x]\)</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-2-36">
+    <p><span class="exercise-number">2.36.</span> Continuando com os mesmos polinômios \(a\) e \(b\) do <a href="#exercicio-2-35" data-source-xref>Exercício 2.35</a>, para cada um dos anéis de polinômios dos itens (a)–(d) do <a href="#exercicio-2-35" data-source-xref>Exercício 2.35</a>, encontre polinômios \(u\) e \(v\) que satisfaçam</p>
+    <div class="display-math">\[a\cdot u+b\cdot v=\gcd(a,b).\]</div>
+  </div>
+
+  <div class="exercise" id="exercicio-2-37">
+    <p><span class="exercise-number">2.37.</span> Prove que o polinômio \(x^3+x+1\) é irredutível em \(\mathbb F_2[x]\). (Dica: pense em como uma fatoração teria de ser.)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-38">
+    <p><span class="exercise-number">2.38.</span> A tabela de multiplicação do corpo \(\mathbb F_2[x]/(x^3+x+1)\) é apresentada na <a href="#tab-2-5" data-source-xref>Tabela 2.5</a>, mas omitimos catorze entradas. Preencha as entradas que faltam. (Este é o corpo descrito no <a href="#ex-2-57" data-source-xref>Exemplo 2.57</a>. Você pode baixar e imprimir uma cópia da <a href="#tab-2-5" data-source-xref>Tabela 2.5</a> em <a href="https://www.math.brown.edu/~jhs/MathCrypto/Table2.5.pdf">www.math.brown.edu/~jhs/MathCrypto/Table2.5.pdf</a>.)</p>
+    <div class="table-wrap" id="tab-2-5">
+      <table>
+        <caption><span class="label">Tabela 2.5.</span> Tabela de multiplicação do corpo \(\mathbb F_2[x]/(x^3+x+1)\).</caption>
+        <thead>
+          <tr><th></th><th>\(0\)</th><th>\(1\)</th><th>\(x\)</th><th>\(x^2\)</th><th>\(1+x\)</th><th>\(1+x^2\)</th><th>\(x+x^2\)</th><th>\(1+x+x^2\)</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>\(0\)</th><td>\(0\)</td><td>\(0\)</td><td>\(0\)</td><td>\(0\)</td><td>\(0\)</td><td>\(0\)</td><td>\(0\)</td><td>\(0\)</td></tr>
+          <tr><th>\(1\)</th><td>\(0\)</td><td>\(1\)</td><td>\(x\)</td><td></td><td></td><td>\(1+x^2\)</td><td>\(x+x^2\)</td><td>\(1+x+x^2\)</td></tr>
+          <tr><th>\(x\)</th><td>\(0\)</td><td>\(x\)</td><td>\(x^2\)</td><td></td><td>\(x+x^2\)</td><td>\(1\)</td><td></td><td>\(1+x^2\)</td></tr>
+          <tr><th>\(x^2\)</th><td>\(0\)</td><td></td><td></td><td>\(x+x^2\)</td><td>\(1+x+x^2\)</td><td>\(x\)</td><td>\(1+x^2\)</td><td>\(1\)</td></tr>
+          <tr><th>\(1+x\)</th><td>\(0\)</td><td></td><td>\(x+x^2\)</td><td>\(1+x+x^2\)</td><td>\(1+x^2\)</td><td></td><td>\(1\)</td><td>\(x\)</td></tr>
+          <tr><th>\(1+x^2\)</th><td>\(0\)</td><td>\(1+x^2\)</td><td>\(1\)</td><td>\(x\)</td><td></td><td>\(1+x+x^2\)</td><td>\(1+x\)</td><td></td></tr>
+          <tr><th>\(x+x^2\)</th><td>\(0\)</td><td>\(x+x^2\)</td><td></td><td>\(1+x^2\)</td><td>\(1\)</td><td>\(1+x\)</td><td>\(x\)</td><td></td></tr>
+          <tr><th>\(1+x+x^2\)</th><td>\(0\)</td><td>\(1+x+x^2\)</td><td>\(1+x^2\)</td><td>\(1\)</td><td>\(x\)</td><td></td><td></td><td>\(1+x\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="exercise" id="exercicio-2-39">
+    <p><span class="exercise-number">2.39.</span> O corpo \(\mathbb F_7[x]/(x^2+1)\) é um corpo com \(49\) elementos, que por enquanto denotamos por \(\mathbb F_{49}\). (Veja o <a href="#ex-2-58" data-source-xref>Exemplo 2.58</a> para uma maneira conveniente de trabalhar com \(\mathbb F_{49}\).)</p>
+    <ol type="a">
+      <li>\(2+5x\) é uma raiz primitiva em \(\mathbb F_{49}\)?</li>
+      <li>\(2+x\) é uma raiz primitiva em \(\mathbb F_{49}\)?</li>
+      <li>\(1+x\) é uma raiz primitiva em \(\mathbb F_{49}\)?</li>
+    </ol>
+    <p>(Dica: o teorema de Lagrange diz que a ordem de \(u\in\mathbb F_{49}\) deve dividir \(48\). Portanto, se \(u^k\ne1\) para todo divisor próprio \(k\) de \(48\), então \(u\) é uma raiz primitiva.)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-40">
+    <p><span class="exercise-number">2.40.</span> Seja \(p\) um número primo e seja \(e\ge2\). O anel quociente \(\mathbb Z/p^e\mathbb Z\) e o corpo finito \(\mathbb F_{p^e}\) são ambos anéis e possuem o mesmo número de elementos. Descreva algumas maneiras pelas quais eles são intrinsecamente diferentes.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-2-41">
+    <p><span class="exercise-number">2.41.</span> Seja \(F\) um corpo finito.</p>
+    <ol type="a">
+      <li>Prove que existe um inteiro \(m\ge1\) tal que, se somarmos \(1\) a si mesmo \(m\) vezes, \[\underbrace{1+1+\cdots+1}_{m\text{ uns}},\] obteremos \(0\). Observe que, aqui, \(1\) e \(0\) são os elementos identidade multiplicativo e aditivo do corpo \(F\). Se a notação for confusa, você pode denotar os elementos identidade multiplicativo e aditivo de \(F\) por \(u\) e \(z\), respectivamente, e então precisará provar que \(u+u+\cdots+u=z\). (Dica: como \(F\) é finito, os números \(1,1+1,1+1+1,\ldots\) não podem ser todos distintos.)</li>
+      <li>Seja \(m\) o menor inteiro positivo com a propriedade descrita no item (a). Prove que \(m\) é primo. (Dica: se \(m\) se fatora, mostre que há elementos não nulos em \(F\) cujo produto é zero, de modo que \(F\) não pode ser um corpo.) Esse primo é chamado de <strong>característica</strong> do corpo \(F\).</li>
+      <li>Seja \(p\) a característica de \(F\). Prove que \(F\) é um espaço vetorial de dimensão finita sobre o corpo \(\mathbb F_p\) de \(p\) elementos.</li>
+      <li>Use o item (c) para concluir que \(F\) possui \(p^d\) elementos para algum \(d\ge1\).</li>
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,7 @@
+<div class="exercise-solution">
+  <p>A chave pública de Bob é \(B\equiv g^b\pmod p\). Para cifrar com um expoente efêmero \(k\), Alice envia</p>
+  <p>\[(c_1,c_2)=\left(g^k,\,mB^k\right)=\left(g^k,\,m g^{bk}\right)\pmod p.\]</p>
+  <p>Eva conhece \(B=g^b\) e \(c_1=g^k\). Ao entregar esses dois valores ao algoritmo de Diffie–Hellman, obtém \(g^{bk}\). Como esse elemento é não nulo módulo \(p\), Eva calcula seu inverso e recupera</p>
+  <p>\[c_2\left(g^{bk}\right)^{-1}\equiv m g^{bk}\left(g^{bk}\right)^{-1}\equiv m\pmod p.\]</p>
+  <p>Portanto um algoritmo que resolve Diffie–Hellman quebra diretamente a confidencialidade do Elgamal.</p>
+</div>

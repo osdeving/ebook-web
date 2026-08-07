@@ -1,0 +1,332 @@
+<section class="section" id="sec-1-2" data-layer="source">
+  <h2><span class="section-number">1.2</span> Divisibilidade e máximos divisores comuns</h2>
+
+  <p>Grande parte da criptografia moderna é construída sobre os fundamentos da álgebra e da teoria dos números. Portanto, antes de explorar a criptografia, precisamos desenvolver algumas ferramentas importantes. Nas próximas quatro seções, iniciamos esse desenvolvimento descrevendo e demonstrando resultados fundamentais dessas áreas. Se você já estudou teoria dos números em outro curso, uma breve revisão deste material será suficiente. Mas, se o material for novo para você, é essencial estudá-lo com atenção e resolver os exercícios apresentados no fim do capítulo.</p>
+
+  <p>No nível mais básico, a teoria dos números é o estudo dos números naturais</p>
+  <div class="display-math">\[1,2,3,4,5,6,\ldots,\]</div>
+  <p>ou, de maneira um pouco mais geral, o estudo dos inteiros</p>
+  <div class="display-math">\[\ldots,-5,-4,-3,-2,-1,0,1,2,3,4,5,\ldots.\]</div>
+
+  <p>O conjunto dos inteiros é denotado pelo símbolo \(\mathbb Z\). Os inteiros podem ser somados, subtraídos e multiplicados da maneira usual e satisfazem todas as regras usuais da aritmética — lei comutativa, lei associativa, lei distributiva e assim por diante. O conjunto dos inteiros, com suas regras de adição e multiplicação, é um exemplo de anel. Veja a <a href="../ch02/#sec-2-10-1" data-source-xref>Seção 2.10.1</a> para saber mais sobre a teoria dos anéis.</p>
+
+  <p>Se \(a\) e \(b\) são inteiros, podemos somá-los, \(a+b\), subtraí-los, \(a-b\), e multiplicá-los, \(a\cdot b\). Em cada caso, obtemos um inteiro como resultado. Essa propriedade de permanecer dentro do conjunto original depois de aplicar operações a um par de elementos é característica de um anel.</p>
+
+  <p>Mas, se quisermos permanecer entre os inteiros, nem sempre poderemos dividir um inteiro por outro. Por exemplo, não podemos dividir \(3\) por \(2\), pois não existe inteiro igual a \(\frac32\). Isso conduz ao conceito fundamental de divisibilidade.</p>
+
+  <aside class="semantic definition" id="def-1-divisibility">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Sejam \(a\) e \(b\) inteiros, com \(b\ne0\). Dizemos que <strong>\(b\) divide \(a\)</strong>, ou que <strong>\(a\) é divisível por \(b\)</strong>, se existe um inteiro \(c\) tal que</p>
+    <div class="display-math">\[a=bc.\]</div>
+    <p>Escrevemos \(b\mid a\) para indicar que \(b\) divide \(a\). Se \(b\) não divide \(a\), escrevemos \(b\nmid a\).</p>
+  </aside>
+
+  <aside class="semantic example" id="example-1-2">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.2</span></div>
+    <p>Temos \(847\mid485331\), pois \(485331=847\cdot573\). Por outro lado, \(355\nmid259943\), pois, quando tentamos dividir \(259943\) por \(355\), obtemos resto \(83\). Mais precisamente, \(259943=355\cdot732+83\), portanto \(259943\) não é um múltiplo exato de \(355\).</p>
+  </aside>
+
+  <aside class="semantic remark" id="remark-1-3">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">1.3</span></div>
+    <p>Observe que todo inteiro é divisível por \(1\). Os inteiros divisíveis por \(2\) são os inteiros pares, e os inteiros que não são divisíveis por \(2\) são os inteiros ímpares.</p>
+  </aside>
+
+  <p>Há várias propriedades elementares da divisibilidade; listamos algumas delas na proposição a seguir.</p>
+
+  <aside class="semantic proposition" id="prop-1-4">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">1.4</span></div>
+    <p>Sejam \(a,b,c\in\mathbb Z\) inteiros.</p>
+    <ol type="a">
+      <li>Se \(a\mid b\) e \(b\mid c\), então \(a\mid c\).</li>
+      <li>Se \(a\mid b\) e \(b\mid a\), então \(a=\pm b\).</li>
+      <li>Se \(a\mid b\) e \(a\mid c\), então \(a\mid(b+c)\) e \(a\mid(b-c)\).</li>
+    </ol>
+  </aside>
+
+  <div class="semantic proof" id="proof-prop-1-4">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Deixamos a demonstração como exercício para o leitor; veja o <a href="#exercicio-1-6" data-source-xref>Exercício 1.6</a>.</p>
+  </div>
+
+  <aside class="semantic definition" id="def-1-gcd">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Um <strong>divisor comum</strong> de dois inteiros \(a\) e \(b\) é um inteiro positivo \(d\) que divide ambos. O <strong>máximo divisor comum</strong> de \(a\) e \(b\) é, como o nome sugere, o maior inteiro positivo \(d\) tal que \(d\mid a\) e \(d\mid b\). O máximo divisor comum de \(a\) e \(b\) é denotado por \(\gcd(a,b)\). Quando não houver possibilidade de confusão, ele também será às vezes denotado por \((a,b)\). Se \(a\) e \(b\) forem ambos \(0\), então \(\gcd(a,b)\) não estará definido.</p>
+  </aside>
+
+  <p>É curioso que um conceito tão simples quanto o máximo divisor comum tenha tantas aplicações. Veremos em breve que existe um método rápido e eficiente para calcular o máximo divisor comum de quaisquer dois inteiros, fato que tem consequências poderosas e de grande alcance.</p>
+
+  <aside class="semantic example" id="example-1-5">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.5</span></div>
+    <p>O máximo divisor comum de \(12\) e \(18\) é \(6\), pois \(6\mid12\), \(6\mid18\) e não há número maior com essa propriedade. De modo semelhante,</p>
+    <div class="display-math">\[\gcd(748,2024)=44.\]</div>
+    <p>Uma maneira de verificar que isso está correto é listar todos os divisores positivos de \(748\) e de \(2024\):</p>
+    <div class="display-math">\[
+      \begin{aligned}
+      \text{Divisores de }748&amp;=\{1,2,4,11,17,22,34,44,68,187,374,748\},\\
+      \text{Divisores de }2024&amp;=\{1,2,4,8,11,22,23,44,46,88,92,184,253,506,1012,2024\}.
+      \end{aligned}
+    \]</div>
+    <p>Examinando as duas listas, vemos que a maior entrada comum é \(44\). Mesmo nesse pequeno exemplo, fica claro que esse não é um método muito eficiente. Se algum dia precisarmos calcular máximos divisores comuns de números grandes, teremos de encontrar uma abordagem mais eficiente.</p>
+  </aside>
+
+  <p>A chave para um algoritmo eficiente de cálculo de máximos divisores comuns é a divisão com resto, que é simplesmente o método de “divisão longa” aprendido na escola. Assim, se \(a\) e \(b\) são inteiros positivos e tentamos dividir \(a\) por \(b\), obtemos um quociente \(q\) e um resto \(r\), sendo o resto \(r\) menor que \(b\). Por exemplo,</p>
+  <pre class="long-division" aria-label="230 dividido por 17 produz quociente 13 e resto 9">      13 R 9
+17 ) 230
+     17
+      60
+      51
+       9</pre>
+  <p>portanto \(230\) dividido por \(17\) produz quociente \(13\) e resto \(9\). O que essa última afirmação realmente significa? Significa que \(230\) pode ser escrito como</p>
+  <div class="display-math">\[230=17\cdot13+9,\]</div>
+  <p>em que o resto \(9\) é estritamente menor que o divisor \(17\).</p>
+
+  <aside class="semantic definition" id="def-1-division-with-remainder">
+    <div class="semantic-header"><span class="semantic-label">Definição</span><span class="semantic-title">Divisão com resto</span></div>
+    <p>Sejam \(a\) e \(b\) inteiros positivos. Dizemos que \(a\) dividido por \(b\) tem quociente \(q\) e resto \(r\) se</p>
+    <div class="display-math">\[a=bq+r\qquad\text{com}\qquad0\le r&lt;b.\]</div>
+    <p>Os valores de \(q\) e \(r\) são determinados de maneira única por \(a\) e \(b\); veja o <a href="#exercicio-1-14" data-source-xref>Exercício 1.14</a>.</p>
+  </aside>
+
+  <p>Suponha agora que queiramos encontrar o máximo divisor comum de \(a\) e \(b\). Primeiro dividimos \(a\) por \(b\) para obter</p>
+  <div class="equation" id="eq-1-1"><span class="equation-number">(1.1)</span>\[a=bq+r\qquad\text{com}\qquad0\le r&lt;b.\]</div>
+  <p>Se \(d\) é qualquer divisor comum de \(a\) e \(b\), fica claro por <a href="#eq-1-1" data-source-xref>(1.1)</a> que \(d\) também divide \(r\). Veja a <a href="#prop-1-4" data-source-xref>Proposição 1.4(c)</a>. Do mesmo modo, se \(e\) é um divisor comum de \(b\) e \(r\), então <a href="#eq-1-1" data-source-xref>(1.1)</a> mostra que \(e\) divide \(a\). Em outras palavras, os divisores comuns de \(a\) e \(b\) são os mesmos divisores comuns de \(b\) e \(r\); portanto,</p>
+  <div class="display-math">\[\gcd(a,b)=\gcd(b,r).\]</div>
+
+  <p>Repetimos o processo, dividindo \(b\) por \(r\) para obter outro quociente e outro resto, digamos</p>
+  <div class="display-math">\[b=rq'+r'\qquad\text{com}\qquad0\le r'&lt;r.\]</div>
+  <p>Então o mesmo raciocínio mostra que</p>
+  <div class="display-math">\[\gcd(b,r)=\gcd(r,r').\]</div>
+  <p>Continuando esse processo, os restos ficam cada vez menores até que, por fim, obtemos resto \(0\). Nesse ponto, o valor final \(\gcd(s,0)=s\) é igual ao máximo divisor comum de \(a\) e \(b\).</p>
+
+  <p>Ilustramos o processo com um exemplo e depois descrevemos o método geral, conhecido como <strong>algoritmo de Euclides</strong>.</p>
+
+  <aside class="semantic example" id="example-1-6">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.6</span></div>
+    <p>Calculamos \(\gcd(2024,748)\) usando o algoritmo de Euclides, que nada mais é que a divisão com resto repetida. Observe como os valores de \(b\) e \(r\) em cada linha tornam-se os novos valores de \(a\) e \(b\) na linha seguinte:</p>
+    <div class="aligned-equations">\[
+      \begin{aligned}
+      2024&amp;=748\cdot2+528,\\
+      748&amp;=528\cdot1+220,\\
+      528&amp;=220\cdot2+88,\\
+      220&amp;=88\cdot2+44 &&\longleftarrow\ \gcd=44,\\
+      88&amp;=44\cdot2+0.
+      \end{aligned}
+    \]</div>
+  </aside>
+
+  <aside class="semantic theorem" id="theorem-1-7">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">1.7 — Algoritmo de Euclides</span></div>
+    <p>Sejam \(a\) e \(b\) inteiros positivos, com \(a\ge b\). O algoritmo a seguir calcula \(\gcd(a,b)\) em um número finito de passos.</p>
+    <ol>
+      <li>Defina \(r_0=a\) e \(r_1=b\).</li>
+      <li>Defina \(i=1\).</li>
+      <li>Divida \(r_{i-1}\) por \(r_i\) para obter um quociente \(q_i\) e um resto \(r_{i+1}\): \[r_{i-1}=r_iq_i+r_{i+1}\qquad\text{com}\qquad0\le r_{i+1}&lt;r_i.\]</li>
+      <li>Se o resto \(r_{i+1}=0\), então \(r_i=\gcd(a,b)\), e o algoritmo termina.</li>
+      <li>Caso contrário, \(r_{i+1}>0\); defina \(i=i+1\) e volte ao Passo 3.</li>
+    </ol>
+    <p>O passo de divisão, o Passo 3, é executado no máximo</p>
+    <div class="display-math">\[2\log_2(b)+2\qquad\text{vezes}.\]</div>
+  </aside>
+
+  <div class="semantic proof" id="proof-theorem-1-7">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>O algoritmo de Euclides consiste em uma sequência de divisões com resto, como mostra a <a href="#fig-1-2" data-source-xref>Figura 1.2</a>; lembre-se de que definimos \(r_0=a\) e \(r_1=b\).</p>
+
+    <figure class="figure" id="fig-1-2">
+      <div class="aligned-equations">\[
+        \begin{aligned}
+        a&amp;=bq_1+r_2 &&\text{com }0\le r_2&lt;b,\\
+        b&amp;=r_2q_2+r_3 &&\text{com }0\le r_3&lt;r_2,\\
+        r_2&amp;=r_3q_3+r_4 &&\text{com }0\le r_4&lt;r_3,\\
+        r_3&amp;=r_4q_4+r_5 &&\text{com }0\le r_5&lt;r_4,\\
+        &\ \vdots &&\\
+        r_{t-2}&amp;=r_{t-1}q_{t-1}+r_t &&\text{com }0\le r_t&lt;r_{t-1},\\
+        r_{t-1}&amp;=r_tq_t. &&
+        \end{aligned}
+      \]</div>
+      <p class="figure-note">Então \(r_t=\gcd(a,b)\).</p>
+      <figcaption><span class="label">Figura 1.2.</span> O algoritmo de Euclides passo a passo.</figcaption>
+    </figure>
+
+    <p>Os valores \(r_i\) são estritamente decrescentes e, assim que chegam a zero, o algoritmo termina, o que demonstra que ele de fato termina em um número finito de passos. Além disso, em cada iteração do Passo 3 temos uma equação da forma</p>
+    <div class="display-math">\[r_{i-1}=r_iq_i+r_{i+1}.\]</div>
+    <p>Essa equação implica que qualquer divisor comum de \(r_{i-1}\) e \(r_i\) também divide \(r_{i+1}\); de modo semelhante, implica que qualquer divisor comum de \(r_i\) e \(r_{i+1}\) também divide \(r_{i-1}\). Portanto,</p>
+    <div class="equation" id="eq-1-2"><span class="equation-number">(1.2)</span>\[\gcd(r_{i-1},r_i)=\gcd(r_i,r_{i+1})\qquad\text{para todo }i=1,2,3,\ldots.\]</div>
+
+    <p>Entretanto, como observamos, acabamos chegando a um \(r_i\) igual a zero, digamos \(r_{t+1}=0\). Então \(r_{t-1}=r_tq_t\), de modo que</p>
+    <div class="display-math">\[\gcd(r_{t-1},r_t)=\gcd(r_tq_t,r_t)=r_t.\]</div>
+    <p>Mas <a href="#eq-1-2" data-source-xref>(1.2)</a> diz que isso é igual a \(\gcd(r_0,r_1)\), isto é, a \(\gcd(a,b)\), o que completa a demonstração de que o último resto não nulo no algoritmo de Euclides é igual ao máximo divisor comum de \(a\) e \(b\).</p>
+
+    <p>Resta estimar a eficiência do algoritmo. Observamos acima que, como os valores \(r_i\) são estritamente decrescentes, o algoritmo termina e, como \(r_1=b\), certamente termina em no máximo \(b\) passos. Contudo, esse limite superior está muito longe da realidade. Afirmamos que, depois de cada duas iterações do Passo 3, o valor de \(r_i\) é reduzido pelo menos à metade. Em outras palavras:</p>
+    <p><strong>Afirmação:</strong> \(r_{i+2}&lt;\frac12r_i\) para todo \(i=0,1,2,\ldots\).</p>
+    <p>Demonstramos a afirmação considerando dois casos.</p>
+    <p><strong>Caso I:</strong> \(r_{i+1}\le\frac12r_i\).</p>
+    <p>Sabemos que os valores \(r_i\) são estritamente decrescentes, portanto</p>
+    <div class="display-math">\[r_{i+2}&lt;r_{i+1}\le\frac12r_i.\]</div>
+    <p><strong>Caso II:</strong> \(r_{i+1}>\frac12r_i\).</p>
+    <p>Considere o que acontece quando dividimos \(r_i\) por \(r_{i+1}\). O valor de \(r_{i+1}\) é tão grande que obtemos</p>
+    <div class="display-math">\[r_i=r_{i+1}\cdot1+r_{i+2}\qquad\text{com}\qquad r_{i+2}=r_i-r_{i+1}&lt;r_i-\frac12r_i=\frac12r_i.\]</div>
+
+    <p>Demonstramos, assim, nossa afirmação de que \(r_{i+2}&lt;\frac12r_i\) para todo \(i\). Aplicando repetidamente essa desigualdade, encontramos</p>
+    <div class="display-math">\[r_{2k+1}&lt;\frac12r_{2k-1}&lt;\frac14r_{2k-3}&lt;\frac18r_{2k-5}&lt;\frac1{16}r_{2k-7}&lt;\cdots&lt;\frac1{2^k}r_1=\frac1{2^k}b.\]</div>
+    <p>Logo, se \(2^k\ge b\), então \(r_{2k+1}&lt;1\), o que força \(r_{2k+1}=0\) e faz o algoritmo terminar. Na notação da <a href="#fig-1-2" data-source-xref>Figura 1.2</a>, \(r_{t+1}=0\), portanto \(t+1\le2k+1\) e, assim, \(t\le2k\). Além disso, há exatamente \(t\) divisões na <a href="#fig-1-2" data-source-xref>Figura 1.2</a>, de modo que o algoritmo de Euclides termina em no máximo \(2k\) iterações. Escolha o menor \(k\) com essa propriedade, de modo que \(2^k\ge b>2^{k-1}\). Então</p>
+    <div class="display-math">\[\text{número de iterações}\le2k=2(k-1)+2&lt;2\log_2(b)+2,\]</div>
+    <p>o que completa a demonstração do <a href="#theorem-1-7" data-source-xref>Teorema 1.7</a>.</p>
+  </div>
+
+  <aside class="semantic remark" id="remark-1-8">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">1.8</span></div>
+    <p>Demonstramos que o algoritmo de Euclides aplicado a \(a\) e \(b\), com \(a\ge b\), exige no máximo \(2\log_2(b)+2\) iterações para calcular \(\gcd(a,b)\). Essa estimativa pode ser um pouco melhorada. Demonstrou-se que o algoritmo de Euclides leva no máximo \(1.45\log_2(b)+1.68\) iterações e que o número médio de iterações para \(a\) e \(b\) escolhidos ao acaso é aproximadamente \(0.85\log_2(b)+0.14\); veja <a href="../../references/#ref-66" data-source-xref>[66]</a>.</p>
+  </aside>
+
+  <aside class="semantic remark" id="remark-1-9">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">1.9</span></div>
+    <p>Uma maneira de calcular quocientes e restos é pela divisão longa, como fizemos na página 12. Você pode acelerar o processo usando uma calculadora simples. O primeiro passo é dividir \(a\) por \(b\) na calculadora, o que dará um número real. Descarte a parte depois da vírgula para obter o quociente \(q\). Em seguida, o resto \(r\) pode ser calculado como</p>
+    <div class="display-math">\[r=a-bq.\]</div>
+    <p>Por exemplo, sejam \(a=2387187\) e \(b=27573\). Então \(a/b\approx86.57697748\), portanto \(q=86\) e</p>
+    <div class="display-math">\[r=a-bq=2387187-27573\cdot86=15909.\]</div>
+    <p>Se você precisar apenas do resto, poderá tomar a parte decimal — também chamada de parte fracionária — de \(a/b\) e multiplicá-la por \(b\). Continuando nosso exemplo, a parte decimal de \(a/b\approx86.57697748\) é \(0.57697748\), e multiplicar por \(b=27573\) dá</p>
+    <div class="display-math">\[27573\cdot0.57697748=15909.00005604.\]</div>
+    <p>Arredondando, obtemos \(r=15909\).</p>
+  </aside>
+
+  <p>Depois de executar o algoritmo de Euclides em dois números, podemos percorrer o processo de trás para a frente e obter uma fórmula extremamente interessante. Antes de apresentar o resultado geral, ilustramos com um exemplo.</p>
+
+  <aside class="semantic example" id="example-1-10">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.10</span></div>
+    <p>Lembre-se de que, no <a href="#example-1-6" data-source-xref>Exemplo 1.6</a>, usamos o algoritmo de Euclides para calcular \(\gcd(2024,748)\) assim:</p>
+    <div class="aligned-equations">\[
+      \begin{aligned}
+      2024&amp;=748\cdot2+528,\\
+      748&amp;=528\cdot1+220,\\
+      528&amp;=220\cdot2+88,\\
+      220&amp;=88\cdot2+44 &&\longleftarrow\ \gcd=44,\\
+      88&amp;=44\cdot2+0.
+      \end{aligned}
+    \]</div>
+    <p>Definimos \(a=2024\) e \(b=748\), de modo que a primeira linha diz que</p>
+    <div class="display-math">\[528=a-2b.\]</div>
+    <p>Substituímos isso na segunda linha e obtemos</p>
+    <div class="display-math">\[b=(a-2b)\cdot1+220,\qquad\text{portanto}\qquad220=-a+3b.\]</div>
+    <p>Em seguida, substituímos as expressões \(528=a-2b\) e \(220=-a+3b\) na terceira linha para obter</p>
+    <div class="display-math">\[a-2b=(-a+3b)\cdot2+88,\qquad\text{portanto}\qquad88=3a-8b.\]</div>
+    <p>Por fim, substituímos as expressões \(220=-a+3b\) e \(88=3a-8b\) na penúltima linha para obter</p>
+    <div class="display-math">\[-a+3b=(3a-8b)\cdot2+44,\qquad\text{portanto}\qquad44=-7a+19b.\]</div>
+    <p>Em outras palavras,</p>
+    <div class="display-math">\[-7\cdot2024+19\cdot748=44=\gcd(2024,748),\]</div>
+    <p>portanto encontramos uma maneira de escrever \(\gcd(a,b)\) como uma combinação linear de \(a\) e \(b\) com coeficientes inteiros.</p>
+  </aside>
+
+  <p>Em geral, sempre é possível escrever \(\gcd(a,b)\) como uma combinação linear inteira de \(a\) e \(b\), um resultado de enunciado simples com muitas consequências importantes.</p>
+
+  <aside class="semantic theorem" id="theorem-1-11">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">1.11 — Algoritmo de Euclides estendido</span></div>
+    <p>Sejam \(a\) e \(b\) inteiros positivos. Então a equação</p>
+    <div class="display-math">\[au+bv=\gcd(a,b)\]</div>
+    <p>sempre possui uma solução em inteiros \(u\) e \(v\). Veja o <a href="#exercicio-1-12" data-source-xref>Exercício 1.12</a> para um algoritmo eficiente que encontra uma solução.</p>
+    <p>Se \((u_0,v_0)\) é uma solução qualquer, então toda solução tem a forma</p>
+    <div class="display-math">\[u=u_0+\frac{bk}{\gcd(a,b)}\qquad\text{e}\qquad v=v_0-\frac{ak}{\gcd(a,b)}\qquad\text{para algum }k\in\mathbb Z.\]</div>
+  </aside>
+
+  <div class="semantic proof" id="proof-theorem-1-11">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Volte à <a href="#fig-1-2" data-source-xref>Figura 1.2</a>, que ilustra o algoritmo de Euclides passo a passo. Podemos isolar \(r_2=a-bq_1\) na primeira linha e substituí-lo na segunda para obter</p>
+    <div class="display-math">\[b=(a-bq_1)q_2+r_3,\qquad\text{portanto}\qquad r_3=-aq_2+b(1+q_1q_2).\]</div>
+    <p>Em seguida, substituímos as expressões de \(r_2\) e \(r_3\) na terceira linha e obtemos</p>
+    <div class="display-math">\[a-bq_1=\bigl(-aq_2+b(1+q_1q_2)\bigr)q_3+r_4.\]</div>
+    <p>Depois de reorganizar os termos, isso dá</p>
+    <div class="display-math">\[r_4=a(1+q_2q_3)-b(q_1+q_3+q_1q_2q_3).\]</div>
+    <p>O ponto central é que \(r_4=au+bv\), em que \(u\) e \(v\) são inteiros. Não importa que as expressões de \(u\) e \(v\) em termos de \(q_1,q_2,q_3\) sejam um tanto complicadas. Continuando dessa maneira, em cada etapa descobrimos que \(r_i\) é a soma de um múltiplo inteiro de \(a\) com um múltiplo inteiro de \(b\). Por fim, chegamos a \(r_t=au+bv\) para alguns inteiros \(u\) e \(v\). Mas \(r_t=\gcd(a,b)\), o que completa a demonstração da primeira parte do teorema. Deixamos a segunda parte como exercício, o <a href="#exercicio-1-11" data-source-xref>Exercício 1.11</a>.</p>
+  </div>
+
+  <p>Um caso especialmente importante do algoritmo de Euclides estendido ocorre quando o máximo divisor comum de \(a\) e \(b\) é \(1\). Nesse caso, damos a \(a\) e \(b\) um nome especial.</p>
+
+  <aside class="semantic definition" id="def-1-relatively-prime">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Sejam \(a\) e \(b\) inteiros. Dizemos que \(a\) e \(b\) são <strong>primos entre si</strong>, ou <strong>relativamente primos</strong>, se \(\gcd(a,b)=1\).</p>
+  </aside>
+
+  <p>De forma mais geral, qualquer equação</p>
+  <div class="display-math">\[Au+Bv=\gcd(A,B)\]</div>
+  <p>pode ser reduzida ao caso de números primos entre si dividindo-se ambos os lados por \(\gcd(A,B)\). Assim,</p>
+  <div class="display-math">\[\frac{A}{\gcd(A,B)}u+\frac{B}{\gcd(A,B)}v=1,\]</div>
+  <p>em que \(a=A/\gcd(A,B)\) e \(b=B/\gcd(A,B)\) são primos entre si e satisfazem \(au+bv=1\). Por exemplo, descobrimos anteriormente que \(2024\) e \(748\) têm máximo divisor comum \(44\) e satisfazem</p>
+  <div class="display-math">\[-7\cdot2024+19\cdot748=44.\]</div>
+  <p>Dividindo os dois lados por \(44\), obtemos</p>
+  <div class="display-math">\[-7\cdot46+19\cdot17=1.\]</div>
+  <p>Portanto, \(2024/44=46\) e \(748/44=17\) são primos entre si, e \(u=-7\) e \(v=19\) são os coeficientes de uma combinação linear de \(46\) e \(17\) igual a \(1\).</p>
+
+  <p>No <a href="#example-1-10" data-source-xref>Exemplo 1.10</a>, explicamos como substituir os valores do algoritmo de Euclides para resolver \(au+bv=\gcd(a,b)\). O <a href="#exercicio-1-12" data-source-xref>Exercício 1.12</a> descreve um algoritmo eficiente, voltado para computadores, que calcula \(u\) e \(v\). Se \(a\) e \(b\) são primos entre si, descrevemos agora uma versão mais conceitual desse procedimento de substituição. Primeiro ilustramos com o exemplo \(a=73\) e \(b=25\). O algoritmo de Euclides fornece</p>
+  <div class="aligned-equations">\[
+    \begin{aligned}
+    73&amp;=25\cdot2+23,\\
+    25&amp;=23\cdot1+2,\\
+    23&amp;=2\cdot11+1,\\
+    2&amp;=1\cdot2+0.
+    \end{aligned}
+  \]</div>
+
+  <p>Montamos uma caixa usando a sequência de quocientes \(2,1,11,2\), da seguinte maneira:</p>
+  <div class="table-wrap">
+    <table class="algorithm-box">
+      <tbody>
+        <tr><th></th><th></th><th>2</th><th>1</th><th>11</th><th>2</th></tr>
+        <tr><td>0</td><td>1</td><td>*</td><td>*</td><td>*</td><td>*</td></tr>
+        <tr><td>1</td><td>0</td><td>*</td><td>*</td><td>*</td><td>*</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A regra para preencher as entradas restantes é:</p>
+  <div class="display-math">\[\text{nova entrada}=(\text{número no topo})(\text{número à esquerda})+(\text{número duas casas à esquerda}).\]</div>
+  <p>Assim, os dois asteriscos mais à esquerda são</p>
+  <div class="display-math">\[2\cdot1+0=2\qquad\text{e}\qquad2\cdot0+1=1,\]</div>
+  <p>de modo que nossa caixa passa a ser</p>
+  <div class="table-wrap">
+    <table class="algorithm-box">
+      <tbody>
+        <tr><th></th><th></th><th>2</th><th>1</th><th>11</th><th>2</th></tr>
+        <tr><td>0</td><td>1</td><td>2</td><td>*</td><td>*</td><td>*</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td><td>*</td><td>*</td><td>*</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Os dois asteriscos seguintes são</p>
+  <div class="display-math">\[1\cdot2+1=3\qquad\text{e}\qquad1\cdot1+0=1,\]</div>
+  <p>os próximos dois são</p>
+  <div class="display-math">\[11\cdot3+2=35\qquad\text{e}\qquad11\cdot1+1=12,\]</div>
+  <p>e as entradas finais são</p>
+  <div class="display-math">\[2\cdot35+3=73\qquad\text{e}\qquad2\cdot12+1=25.\]</div>
+
+  <p>A caixa completa é</p>
+  <div class="table-wrap">
+    <table class="algorithm-box">
+      <tbody>
+        <tr><th></th><th></th><th>2</th><th>1</th><th>11</th><th>2</th></tr>
+        <tr><td>0</td><td>1</td><td>2</td><td>3</td><td>35</td><td>73</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td><td>1</td><td>12</td><td>25</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Observe que a última coluna repete \(a\) e \(b\). Mais importante, a penúltima coluna fornece os valores de \(-v\) e \(u\), nessa ordem. Portanto, neste exemplo encontramos \(73\cdot12-25\cdot35=1\). O algoritmo geral é apresentado na <a href="#fig-1-3" data-source-xref>Figura 1.3</a>.</p>
+
+  <figure class="figure" id="fig-1-3">
+    <p>Em geral, se \(a\) e \(b\) são primos entre si e \(q_1,q_2,\ldots,q_t\) é a sequência de quocientes obtida pela aplicação do algoritmo de Euclides a \(a\) e \(b\), como na <a href="#fig-1-2" data-source-xref>Figura 1.2</a>, então a caixa tem a forma</p>
+    <div class="table-wrap">
+      <table class="algorithm-box">
+        <tbody>
+          <tr><th></th><th></th><th>\(q_1\)</th><th>\(q_2\)</th><th>\(\cdots\)</th><th>\(q_{t-1}\)</th><th>\(q_t\)</th></tr>
+          <tr><td>0</td><td>1</td><td>\(P_1\)</td><td>\(P_2\)</td><td>\(\cdots\)</td><td>\(P_{t-1}\)</td><td>\(a\)</td></tr>
+          <tr><td>1</td><td>0</td><td>\(Q_1\)</td><td>\(Q_2\)</td><td>\(\cdots\)</td><td>\(Q_{t-1}\)</td><td>\(b\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>As entradas da caixa são calculadas com os valores iniciais</p>
+    <div class="display-math">\[P_1=q_1,\qquad Q_1=1,\qquad P_2=q_2P_1+1,\qquad Q_2=q_2Q_1,\]</div>
+    <p>e então, para \(i\ge3\), com as fórmulas</p>
+    <div class="display-math">\[P_i=q_iP_{i-1}+P_{i-2}\qquad\text{e}\qquad Q_i=q_iQ_{i-1}+Q_{i-2}.\]</div>
+    <p>As quatro entradas finais da caixa satisfazem</p>
+    <div class="display-math">\[aQ_{t-1}-bP_{t-1}=(-1)^t.\]</div>
+    <p>Multiplicar os dois lados por \((-1)^t\) fornece a solução \(u=(-1)^tQ_{t-1}\) e \(v=(-1)^{t+1}P_{t-1}\) da equação \(au+bv=1\).</p>
+    <figcaption><span class="label">Figura 1.3.</span> Resolução de \(au+bv=1\) pelo algoritmo de Euclides.</figcaption>
+  </figure>
+</section>

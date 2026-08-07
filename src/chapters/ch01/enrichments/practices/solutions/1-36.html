@@ -1,0 +1,54 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>
+      <p>Suponha que exista uma raiz \(x\), isto é, \(x^2\equiv b\pmod p\). Como \(p\nmid b\), temos \(x\not\equiv0\pmod p\). O número \(-x\) também é raiz.</p>
+      <p>Se \(y\) é qualquer outra raiz, então</p>
+      <div class="display-math">\[
+        0\equiv y^2-x^2=(y-x)(y+x)\pmod p.
+      \]</div>
+      <p>Como \(p\) é primo, \(y\equiv x\) ou \(y\equiv-x\pmod p\). Além disso, essas duas soluções são distintas: se \(x\equiv-x\), então \(2x\equiv0\), o que, para \(p\) ímpar, implicaria \(x\equiv0\), uma contradição. Portanto, se há uma raiz, há exatamente duas; caso contrário, não há nenhuma.</p>
+      <p>Para \(p=2\) e \(2\nmid b\), existe uma única solução, \(X\equiv1\pmod2\), pois \(1=-1\) em \(\mathbb F_2\). Se \(p\mid b\), a congruência é \(X^2\equiv0\pmod p\), que possui a única solução \(X\equiv0\pmod p\).</p>
+    </li>
+    <li>
+      <ol type="i">
+        <li>\(3^2\equiv4^2\equiv2\pmod7\), logo as raízes são \(3\) e \(4\).</li>
+        <li>\(4^2\equiv7^2\equiv5\pmod{11}\), logo as raízes são \(4\) e \(7\).</li>
+        <li>Os quadrados módulo \(11\) são \(0,1,3,4,5,9\). Como \(7\) não aparece, não há raiz.</li>
+        <li>\(15^2=225\equiv3\pmod{37}\); a outra raiz é \(-15\equiv22\pmod{37}\). Logo as raízes são \(15\) e \(22\).</li>
+      </ol>
+    </li>
+    <li>
+      <p>Reduzindo primeiro módulo \(5\) e módulo \(7\),</p>
+      <div class="display-math">\[
+        29\equiv4\pmod5,\qquad29\equiv1\pmod7.
+      \]</div>
+      <p>Assim, uma raiz deve satisfazer \(X\equiv2\) ou \(3\pmod5\), e \(X\equiv1\) ou \(6\pmod7\). As quatro combinações, resolvidas pelo teorema chinês dos restos, são</p>
+      <div class="display-math">\[
+        \begin{array}{c|c|c}
+        X\bmod5&amp;X\bmod7&amp;X\bmod35\\ \hline
+        2&amp;1&amp;22\\
+        2&amp;6&amp;27\\
+        3&amp;1&amp;8\\
+        3&amp;6&amp;13
+        \end{array}
+      \]</div>
+      <p>Portanto \(29\) possui quatro raízes quadradas módulo \(35\):</p>
+      <div class="display-math">\[
+        X\equiv8,13,22,27\pmod{35}.
+      \]</div>
+      <p>Não há contradição com o item (a), porque \(35\) não é primo.</p>
+    </li>
+    <li>
+      <p>A afirmação é para \(a\in\mathbb F_p^*\), pois \(0\) não é potência de uma raiz primitiva. Se \(k\) é par, escreva \(k=2j\). Então</p>
+      <div class="display-math">\[
+        a\equiv g^k=g^{2j}=(g^j)^2\pmod p,
+      \]</div>
+      <p>logo \(a\) possui a raiz quadrada \(g^j\).</p>
+      <p>Reciprocamente, se \(x^2\equiv a\pmod p\), então \(x\ne0\) e, como \(g\) é primitiva, \(x\equiv g^j\) para algum \(j\). Portanto</p>
+      <div class="display-math">\[
+        g^{2j}\equiv x^2\equiv a\equiv g^k\pmod p.
+      \]</div>
+      <p>A ordem de \(g\) é \(p-1\), logo \(2j\equiv k\pmod{p-1}\). Como \(p-1\) é par, essa congruência força \(k\) a ser par. Assim, \(a\) possui raiz quadrada se, e somente se, \(k\) é par.</p>
+    </li>
+  </ol>
+</div>

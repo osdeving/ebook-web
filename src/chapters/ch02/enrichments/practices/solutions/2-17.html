@@ -1,0 +1,8 @@
+<div class="exercise-solution">
+  <p>No método de Shanks, tome \(m=\lceil\sqrt{p-1}\rceil\), armazene \(g^j\) para \(0\le j&lt;m\) e procure uma colisão com \(h(g^{-m})^i\). Uma colisão \(g^j=h(g^{-m})^i\) fornece \(x=im+j\).</p>
+  <ol type="a">
+    <li>Para \(p=71\), \(m=9\). A colisão ocorre em \(i=4\), \(j=1\), no valor \(11\). Assim \(x=4\cdot9+1=37\), e \(11^{37}\equiv21\pmod{71}\).</li>
+    <li>Para \(p=593\), \(m=25\). A colisão \(i=2\), \(j=9\), no valor \(315\), dá \(x=59\). De fato, \(156^{59}\equiv116\pmod{593}\).</li>
+    <li>Para \(p=3571\), \(m=60\). A colisão \(i=5\), \(j=19\), no valor \(2801\), dá \(x=319\). A verificação é \(650^{319}\equiv2213\pmod{3571}\).</li>
+  </ol>
+</div>

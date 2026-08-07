@@ -26,6 +26,7 @@
     "new:chapter": "node scripts/create-chapter.mjs",
     "new:enrichment": "node scripts/create-enrichment.mjs",
     "migrate:ch02": "node scripts/migrate-ch02.mjs",
+    "migrate:references": "node scripts/migrate-references.mjs",
     "source:hash": "node scripts/hash-source.mjs"
   },
   "dependencies": {

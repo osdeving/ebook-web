@@ -1,0 +1,15 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>
+      <p>Suponha disponível um algoritmo para o problema computacional de Diffie–Hellman. Dadas \(A\equiv g^a\), \(B\equiv g^b\) e a candidata \(C\), execute o algoritmo sobre \(A\) e \(B\). Ele devolve</p>
+      <p>\[D\equiv g^{ab}\pmod p.\]</p>
+      <p>Compare então \(D\) e \(C\) módulo \(p\): a resposta ao problema de decisão é “sim” exatamente quando \(D\equiv C\pmod p\). Portanto o problema de decisão não pode ser mais difícil que o problema computacional.</p>
+    </li>
+    <li>
+      <p>A dificuldade depende do grupo escolhido. Em subgrupos de grande ordem prima usados em criptografia, não se conhece em geral um teste eficiente e a dificuldade decisional é uma hipótese criptográfica própria. Ela, porém, não decorre automaticamente da dificuldade de calcular \(g^{ab}\).</p>
+      <p>Há estruturas que tornam a decisão mais fácil. Já no grupo completo \(\mathbb F_p^*\), quando \(g\) é primitivo, o símbolo de Legendre revela a paridade do expoente:</p>
+      <p>\[\left(\frac{g^a}{p}\right)=(-1)^a.\]</p>
+      <p>Assim, as paridades deduzidas de \(A\), \(B\) e \(C\) podem às vezes provar imediatamente que \(C\neq g^{ab}\). Isso não resolve todos os casos, mas mostra por que uma resposta uniforme seria enganosa: em grupos adequados o problema é considerado difícil; em grupos com informação auxiliar suficiente ele pode ser fácil.</p>
+    </li>
+  </ol>
+</div>

@@ -5,11 +5,10 @@
 - Jeffrey Hoffstein, Jill Pipher e Joseph H. Silverman. *An Introduction to
   Mathematical Cryptography*. 2ª edição. Springer, 2014. Undergraduate Texts
   in Mathematics. Capítulo 2, “Discrete Logarithms and Diffie–Hellman”,
-  páginas 61–107. DOI do livro:
+  páginas 61–115, incluindo os exercícios. DOI do livro:
   <https://doi.org/10.1007/978-1-4939-1711-2>.
-- O recorte de origem fornecido ao projeto contém 47 páginas e termina na
-  página impressa 107, após o item 2.3(a) da lista de exercícios; por isso esta
-  edição web não inventa nem completa os itens ausentes.
+- O livro integral fornecido ao projeto foi usado apenas como fonte de trabalho
+  local. O PDF e as extrações intermediárias em `sources/` não são versionados.
 
 ## Tradução
 
@@ -29,5 +28,6 @@ em sua jurisdição.
 
 Os retratos incorporados à camada histórica, suas páginas de origem,
 transformações e licenças abertas estão registrados em
-`public/assets/portraits/CREDITS.md`. Links bibliográficos e históricos são
-complementos editoriais independentes e não alteram a camada-fonte.
+`public/assets/portraits/CREDITS.md`. Links bibliográficos e históricos, bem
+como as soluções comentadas dos exercícios, são complementos editoriais
+independentes e não alteram a camada-fonte.

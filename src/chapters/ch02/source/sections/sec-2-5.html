@@ -21,7 +21,7 @@
             <li>A adição é comutativa: \(a+b=b+a\) para todos \(a,b\in\mathbb F_p\).</li>
           </ul>
 
-          <p>Conjuntos e operações que se comportam como a multiplicação ou a adição são tão comuns que vale a pena abstrair o conceito geral e falar de todos esses sistemas de uma só vez. Isso conduz à noção de grupo.</p>
+          <p>Conjuntos e operações que se comportam como a multiplicação ou a adição são tão comuns que vale a pena abstrair o conceito geral e falar de todos esses sistemas de uma só vez. Isso conduz à <a href="#def-grupo" data-source-xref>noção de grupo</a>.</p>
 
           <aside class="semantic definition" id="def-grupo">
             <div class="semantic-header"><span class="semantic-label">Definição</span></div>
@@ -45,7 +45,7 @@
             <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">2.11</span></div>
             <p>Os grupos estão por toda parte na matemática e nas ciências físicas. Eis alguns exemplos; os dois primeiros repetem casos mencionados anteriormente.</p>
             <ol class="alpha-list">
-              <li><p>\(G=\mathbb F_p^*\) e \(\star\) é a multiplicação. O elemento identidade é \(e=1\). A Proposição 1.21 nos diz que os inversos existem. Portanto, \(G\) é um grupo finito de ordem \(p-1\).</p></li>
+              <li><p>\(G=\mathbb F_p^*\) e \(\star\) é a multiplicação. O elemento identidade é \(e=1\). A <a href="../ch01/#prop-1-21" data-source-xref>Proposição 1.21</a> nos diz que os inversos existem. Portanto, \(G\) é um grupo finito de ordem \(p-1\).</p></li>
               <li><p>\(G=\mathbb Z/N\mathbb Z\) e \(\star\) é a adição. O elemento identidade é \(e=0\), e o inverso de \(a\) é \(-a\). Esse \(G\) é um grupo finito de ordem \(N\).</p></li>
               <li><p>\(G=\mathbb Z\) e \(\star\) é a adição. O elemento identidade é \(e=0\), e o inverso de \(a\) é \(-a\). Esse grupo \(G\) é infinito.</p></li>
               <li><p>Observe que \(G=\mathbb Z\) com \(\star\) igual à multiplicação não é um grupo, pois a maioria de seus elementos não possui inverso multiplicativo dentro de \(\mathbb Z\).</p></li>
@@ -75,7 +75,7 @@
               <li>
                 <p>De modo mais geral, podemos usar matrizes de qualquer tamanho. Isso produz o <em>grupo linear geral</em></p>
                 <div class="display-math">\[\operatorname{GL}_n(\mathbb R)=\{\text{matrizes }n\times n\text{ com coeficientes reais e }\det(A)\ne0\},\]</div>
-                <p>com \(\star\) igual à multiplicação de matrizes. Podemos formar outros grupos substituindo \(\mathbb R\) por outro corpo, como o corpo finito \(\mathbb F_p\). Veja o Exercício 2.15. O grupo \(\operatorname{GL}_n(\mathbb F_p)\) é claramente finito, mas calcular sua ordem é um exercício interessante.</p>
+                <p>com \(\star\) igual à multiplicação de matrizes. Podemos formar outros grupos substituindo \(\mathbb R\) por outro corpo, como o corpo finito \(\mathbb F_p\). Veja o <a href="#exercicio-2-15" data-source-xref>Exercício 2.15</a>. O grupo \(\operatorname{GL}_n(\mathbb F_p)\) é claramente finito, mas calcular sua ordem é um exercício interessante.</p>
               </li>
             </ol>
           </aside>
@@ -96,7 +96,7 @@
 
           <span id="slot-exp-2-5-element-order-cycle" data-enrichment-slot="exp-2-5-element-order-cycle"></span>
 
-          <p>Provaremos agora duas proposições que descrevem propriedades importantes das ordens dos elementos de um grupo. Elas generalizam o Teorema 1.24 — o pequeno teorema de Fermat — e a Proposição 1.29, que tratam do grupo \(G=\mathbb F_p^*\). As demonstrações são essencialmente as mesmas.</p>
+          <p>Provaremos agora <a href="#prop-2-12" data-source-xref>duas proposições</a> que descrevem propriedades importantes das ordens dos elementos de um grupo. Elas generalizam o <a href="../ch01/#theorem-1-24" data-source-xref>Teorema 1.24</a> — o pequeno teorema de Fermat — e a <a href="../ch01/#prop-1-29" data-source-xref>Proposição 1.29</a>, que tratam do grupo \(G=\mathbb F_p^*\). As demonstrações são essencialmente as mesmas.</p>
 
           <aside class="semantic proposition" id="prop-2-12">
             <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">2.12</span></div>
@@ -125,7 +125,7 @@
 
           <div class="semantic proof" id="proof-prop-2-13">
             <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
-            <p>Apresentaremos uma demonstração simples para o caso em que \(G\) é comutativo. Para uma demonstração no caso geral, consulte qualquer livro básico de álgebra, por exemplo [40, §3.2] ou [45, §2.3].</p>
+            <p>Apresentaremos uma demonstração simples para o caso em que \(G\) é comutativo. Para uma demonstração no caso geral, consulte qualquer livro básico de álgebra, por exemplo <a href="../../references/#ref-40" data-source-xref>[40, §3.2]</a> ou <a href="../../references/#ref-45" data-source-xref>[45, §2.3]</a>.</p>
 
             <p>Como \(G\) é finito, podemos listar seus elementos como</p>
             <div class="display-math">\[G=\{g_1,g_2,\ldots,g_n\}.\]</div>
@@ -137,7 +137,7 @@
 
             <p>Podemos reorganizar a ordem do produto no lado esquerdo — usando novamente a comutatividade — e obter</p>
             <div class="display-math">\[a^n\star g_1\star g_2\star\cdots\star g_n=g_1\star g_2\star\cdots\star g_n.\]</div>
-            <p>Agora, multiplicar por \((g_1\star g_2\star\cdots\star g_n)^{-1}\) produz \(a^n=e\), o que prova a primeira afirmação. A divisibilidade de \(n\) por \(d\) segue imediatamente da Proposição 2.12.</p>
+            <p>Agora, multiplicar por \((g_1\star g_2\star\cdots\star g_n)^{-1}\) produz \(a^n=e\), o que prova a primeira afirmação. A divisibilidade de \(n\) por \(d\) segue imediatamente da <a href="#prop-2-12" data-source-xref>Proposição 2.12</a>.</p>
           </div>
 
           <span id="slot-exp-2-5-lagrange-divisibility" data-enrichment-slot="exp-2-5-lagrange-divisibility"></span>

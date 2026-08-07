@@ -1,0 +1,33 @@
+<div class="exercise-solution">
+  <p>Escreva \(p-1=qn\), onde \(n=(p-1)/q\).</p>
+  <ol type="a">
+    <li>
+      <p>Para \(b=a^n\), o pequeno teorema de Fermat dá</p>
+      <div class="display-math">\[
+        b^q=a^{nq}=a^{p-1}=1
+        \qquad\text{em }\mathbb F_p^*.
+      \]</div>
+      <p>Logo a ordem de \(b\) divide \(q\). Como \(q\) é primo, seus únicos divisores positivos são \(1\) e \(q\). Se a ordem é \(1\), então \(b=1\); caso contrário, a ordem de \(b\) é \(q\).</p>
+    </li>
+    <li>
+      <p>Escolha uma raiz primitiva \(g\) módulo \(p\). Cada \(a\in\mathbb F_p^*\) possui representação única</p>
+      <div class="display-math">\[
+        a=g^i,\qquad 0\le i&lt;p-1.
+      \]</div>
+      <p>Então</p>
+      <div class="display-math">\[
+        a^n=1
+        \quad\Longleftrightarrow\quad
+        g^{in}=1
+        \quad\Longleftrightarrow\quad
+        qn\mid in
+        \quad\Longleftrightarrow\quad
+        q\mid i.
+      \]</div>
+      <p>Entre os \(qn=p-1\) valores possíveis de \(i\), exatamente \(n\) são múltiplos de \(q\). Portanto há \(n\) escolhas que dão \(a^n=1\) e \(n(q-1)\) escolhas que dão \(a^n\ne1\). A probabilidade de sucesso é</p>
+      <div class="display-math">\[
+        \frac{n(q-1)}{nq}=\frac{q-1}{q}=1-\frac1q.
+      \]</div>
+    </li>
+  </ol>
+</div>

@@ -1,0 +1,29 @@
+<div class="exercise-solution">
+  <p><strong>Precisão de notação.</strong> Como o algoritmo altera a variável \(A\), chamaremos de \(A_0\) o expoente fornecido na entrada. A afirmação correta é que o valor devolvido satisfaz \(b\equiv g^{A_0}\pmod N\).</p>
+  <p>No início de cada passagem pelo laço, vale o invariante</p>
+  <div class="display-math">\[
+    b\,a^A\equiv g^{A_0}\pmod N.
+  \]</div>
+  <p>Antes da primeira passagem, \(b=1\), \(a=g\) e \(A=A_0\), portanto o invariante é verdadeiro.</p>
+  <p>Suponha agora que ele seja verdadeiro no início de uma passagem.</p>
+  <ul>
+    <li>
+      <p>Se \(A=2k\) é par, o Passo 3 não altera \(b\), enquanto os passos seguintes fazem \(a'=a^2\) e \(A'=k\). Logo</p>
+      <div class="display-math">\[
+        b'(a')^{A'}=b(a^2)^k=ba^{2k}=ba^A.
+      \]</div>
+    </li>
+    <li>
+      <p>Se \(A=2k+1\) é ímpar, o Passo 3 faz \(b'=ba\), e depois \(a'=a^2\), \(A'=k\). Assim,</p>
+      <div class="display-math">\[
+        b'(a')^{A'}=ba(a^2)^k=ba^{2k+1}=ba^A.
+      \]</div>
+    </li>
+  </ul>
+  <p>Em ambos os casos o produto que aparece no invariante não muda módulo \(N\). Além disso, substituir \(A\) por \(\lfloor A/2\rfloor\) faz \(A\) diminuir até chegar a \(0\), portanto o algoritmo termina.</p>
+  <p>Ao terminar, \(A=0\). O invariante se reduz a</p>
+  <div class="display-math">\[
+    b=b\,a^0\equiv g^{A_0}\pmod N.
+  \]</div>
+  <p>Logo o algoritmo devolve exatamente a potência modular desejada.</p>
+</div>

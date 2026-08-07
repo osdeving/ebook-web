@@ -1,0 +1,118 @@
+<div class="exercise-solution">
+  <p>Em cada item, o algoritmo de Euclides estendido produz uma identidade \(au+pv=1\), logo \(u\) é o inverso de \(a\) módulo \(p\). Pelo pequeno teorema de Fermat, a segunda via é</p>
+  <div class="display-math">\[
+    a^{-1}\equiv a^{p-2}\pmod p,
+  \]</div>
+  <p>potência que calculamos por quadraturas sucessivas.</p>
+  <ol type="a">
+    <li>
+      <p>O algoritmo de Euclides dá</p>
+      <div class="display-math">\[
+        \begin{aligned}
+        47&amp;=4\cdot11+3,\\
+        11&amp;=3\cdot3+2,\\
+        3&amp;=1\cdot2+1,
+        \end{aligned}
+        \qquad
+        1=4\cdot47-17\cdot11.
+      \]</div>
+      <p>Assim, \(11^{-1}\equiv-17\equiv30\pmod{47}\).</p>
+      <p>Para a via de Fermat, \(45=32+8+4+1\), e as quadraturas fornecem</p>
+      <div class="display-math">\[
+        \begin{array}{c|rrrrrr}
+        2^i&amp;1&amp;2&amp;4&amp;8&amp;16&amp;32\\ \hline
+        11^{2^i}\bmod47&amp;11&amp;27&amp;24&amp;12&amp;3&amp;9
+        \end{array}
+      \]</div>
+      <p>Logo</p>
+      <div class="display-math">\[
+        11^{45}\equiv9\cdot12\cdot24\cdot11
+        \equiv30\pmod{47}.
+      \]</div>
+    </li>
+    <li>
+      <p>As divisões euclidianas são</p>
+      <div class="display-math">\[
+        \begin{aligned}
+        587&amp;=345+242,&amp;
+        345&amp;=242+103,\\
+        242&amp;=2\cdot103+36,&amp;
+        103&amp;=2\cdot36+31,\\
+        36&amp;=31+5,&amp;
+        31&amp;=6\cdot5+1.
+        \end{aligned}
+      \]</div>
+      <p>A substituição regressiva produz</p>
+      <div class="display-math">\[
+        1=114\cdot345-67\cdot587.
+      \]</div>
+      <p>Portanto \(345^{-1}\equiv114\pmod{587}\).</p>
+      <p>Agora \(585=512+64+8+1\), e</p>
+      <div class="display-math">\[
+        \begin{array}{c|rrrrrrrrrr}
+        2^i&amp;1&amp;2&amp;4&amp;8&amp;16&amp;32&amp;64&amp;128&amp;256&amp;512\\ \hline
+        345^{2^i}\bmod587
+        &amp;345&amp;451&amp;299&amp;177&amp;218&amp;564&amp;529&amp;429&amp;310&amp;419
+        \end{array}
+      \]</div>
+      <p>Assim,</p>
+      <div class="display-math">\[
+        345^{585}\equiv419\cdot529\cdot177\cdot345
+        \equiv114\pmod{587}.
+      \]</div>
+    </li>
+    <li>
+      <p>O algoritmo de Euclides fornece</p>
+      <div class="display-math">\[
+        \begin{aligned}
+        104801&amp;=78467+26334,\\
+        78467&amp;=2\cdot26334+25799,\\
+        26334&amp;=25799+535,\\
+        25799&amp;=48\cdot535+119,\\
+        535&amp;=4\cdot119+59,\\
+        119&amp;=2\cdot59+1,
+        \end{aligned}
+      \]</div>
+      <p>e a substituição regressiva resulta em</p>
+      <div class="display-math">\[
+        1=1763\cdot78467-1320\cdot104801.
+      \]</div>
+      <p>Logo \(78467^{-1}\equiv1763\pmod{104801}\).</p>
+      <p>Para conferir pela exponenciação rápida,</p>
+      <div class="display-math">\[
+        104799=65536+32768+4096+2048+256+64+16+8+4+2+1.
+      \]</div>
+      <p>As quadraturas sucessivas são:</p>
+      <div class="display-math">\[
+        \begin{array}{c|rrrrrrrrr}
+        2^i&amp;1&amp;2&amp;4&amp;8&amp;16&amp;32&amp;64&amp;128&amp;256\\ \hline
+        78467^{2^i}\bmod104801
+        &amp;78467&amp;11339&amp;86895&amp;38577&amp;10729&amp;39943&amp;57626&amp;31390&amp;97899
+        \end{array}
+      \]</div>
+      <div class="display-math">\[
+        \begin{array}{c|rrrrrrrr}
+        2^i&amp;512&amp;1024&amp;2048&amp;4096&amp;8192&amp;16384&amp;32768&amp;65536\\ \hline
+        78467^{2^i}\bmod104801
+        &amp;57950&amp;64057&amp;25696&amp;38116&amp;77994&amp;99593&amp;84606&amp;57334
+        \end{array}
+      \]</div>
+      <p>Multiplicando somente os resíduos correspondentes aos termos da expansão binária,</p>
+      <div class="display-math">\[
+        \begin{aligned}
+        78467^{104799}
+        &amp;\equiv
+        57334\cdot84606\cdot38116\cdot25696\cdot97899\\
+        &amp;\qquad{}\cdot57626\cdot10729\cdot38577\cdot86895\cdot11339\cdot78467\\
+        &amp;\equiv1763\pmod{104801}.
+        \end{aligned}
+      \]</div>
+    </li>
+  </ol>
+  <p>As verificações diretas finais são</p>
+  <div class="display-math">\[
+    11\cdot30=1+7\cdot47,\quad
+    345\cdot114=1+67\cdot587,\quad
+    78467\cdot1763=1+1320\cdot104801.
+  \]</div>
+</div>

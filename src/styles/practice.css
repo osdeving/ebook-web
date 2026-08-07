@@ -19,3 +19,14 @@
 .practice-save { display: flex; align-items: flex-start; gap: .45rem; color: var(--muted); font-size: .68rem; line-height: 1.4; }
 .practice-save input { margin-top: .18rem; accent-color: var(--layer-practice); }
 .seed-row { display: flex; flex-wrap: wrap; gap: .45rem; align-items: end; }
+.exercise-solution { display: grid; gap: .85rem; }
+.exercise-solution > :first-child { margin-top: 0; }
+.exercise-solution > :last-child { margin-bottom: 0; }
+.solution-part { padding: .85rem .95rem; border-left: 3px solid var(--layer-practice); border-radius: 0 .65rem .65rem 0; background: color-mix(in srgb, var(--layer-practice-soft) 50%, transparent); }
+.solution-part > :first-child { margin-top: 0; }
+.solution-part > :last-child { margin-bottom: 0; }
+.solution-part h4 { color: var(--layer-practice); font-size: .86rem; }
+.solution-result { padding: .65rem .8rem; border: 1px solid color-mix(in srgb, var(--layer-practice) 34%, var(--line)); border-radius: .62rem; background: var(--surface-raised); font-weight: 720; }
+.solution-code { padding: .85rem; overflow-x: auto; border-radius: .65rem; background: var(--paper); font-size: .76rem; line-height: 1.5; }
+.solution-note { color: var(--muted); font-size: .76rem; }
+.solution-warning { margin: 0; padding: .75rem .85rem; border-inline-start: 4px solid var(--gold); border-radius: .62rem; background: var(--gold-soft); font-size: .8rem; }

@@ -10,6 +10,7 @@ export type {
   EnrichmentDefinition,
   EnrichmentLayer,
   EnrichmentMountContext,
+  EnrichmentPresentation,
   TocItem,
   TrustedHtml,
 } from "./types";

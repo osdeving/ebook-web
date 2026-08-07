@@ -1,4 +1,4 @@
-import { mountExclusiveSupplementDetails, revealHash } from "./accessibility";
+import { mountExclusiveSupplementDetails, resolveHashTarget, revealHash } from "./accessibility";
 import { createAnnouncer } from "./announce";
 import { mountDrawer } from "./drawer";
 import { listen, queryOptional, queryRequired } from "./dom";
@@ -7,12 +7,19 @@ import { initializeMath } from "./math";
 import { mountEnrichments } from "./mount";
 import { mountNavigation } from "./navigation";
 import { mountNotesAndBookmarks } from "./notes-bookmarks";
+import { mountSourcePermalinks } from "./permalinks";
 import { mountPreferences } from "./preferences";
 import { mountPrint } from "./print";
 import { mountReadingProgress } from "./progress";
 import { mountSearch } from "./search";
 import { createSafeStorage, defaultPreferences, validatePreferences } from "./storage";
-import type { Disposable, EnrichmentDefinition, EnrichmentLayer, ReaderRuntimeOptions } from "./types";
+import {
+  ENRICHMENT_LAYERS,
+  type Disposable,
+  type EnrichmentDefinition,
+  type EnrichmentLayer,
+  type ReaderRuntimeOptions,
+} from "./types";
 
 export interface BootstrapReaderOptions extends ReaderRuntimeOptions {
   enrichments?: readonly EnrichmentDefinition[];
@@ -91,9 +98,13 @@ export async function bootstrapReader(options: BootstrapReaderOptions): Promise<
   })) : undefined;
   if (drawer) cleanups.push(() => drawer.destroy());
 
-  const layerCleanup = safeMount("layers", () => mountLayers({ root: article, preferences, persist, announce }));
-  if (layerCleanup) cleanups.push(layerCleanup);
+  const layerController = safeMount("layers", () => mountLayers({ root: article, preferences, persist, announce }));
+  if (layerController) cleanups.push(() => layerController.destroy());
   const ensureLayer = (layer: EnrichmentLayer) => {
+    if (layerController) {
+      layerController.ensure(layer);
+      return;
+    }
     if (!preferences.layers.includes(layer)) {
       preferences.layers.push(layer);
       article.querySelectorAll<HTMLElement>(`[data-layer="${layer}"]`).forEach((item) => { item.hidden = false; });
@@ -106,6 +117,7 @@ export async function bootstrapReader(options: BootstrapReaderOptions): Promise<
     safeMount("math", () => initializeMath({ root: article })),
     safeMount("details", () => mountExclusiveSupplementDetails(article)),
     safeMount("notes-bookmarks", () => mountNotesAndBookmarks({ article, preferences, persist, announce })),
+    safeMount("permalinks", () => mountSourcePermalinks(article)),
     safeMount("progress", () => mountReadingProgress({
       article,
       initialSection: preferences.lastSection,
@@ -117,8 +129,18 @@ export async function bootstrapReader(options: BootstrapReaderOptions): Promise<
     safeMount("search", () => mountSearch({ article, ensureLayer })),
     safeMount("print", () => mountPrint({ drawer })),
     safeMount("hash", () => {
-      const cleanup = listen(window, "hashchange", () => revealHash(article));
-      requestAnimationFrame(() => revealHash(article));
+      const revealCurrentHash = () => {
+        const target = resolveHashTarget(article);
+        const layer = target
+          ?.closest<HTMLElement>("[data-origin=\"editorial\"][data-layer]")
+          ?.dataset.layer;
+        if (layer && ENRICHMENT_LAYERS.includes(layer as EnrichmentLayer)) {
+          ensureLayer(layer as EnrichmentLayer);
+        }
+        revealHash(article);
+      };
+      const cleanup = listen(window, "hashchange", revealCurrentHash);
+      requestAnimationFrame(revealCurrentHash);
       return cleanup;
     }),
   ].filter((cleanup): cleanup is () => void => Boolean(cleanup));

@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 test("a biblioteca hidrata a ilha React e apresenta o catálogo", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "O rigor do texto. As possibilidades da web." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Explore o conteúdo de forma dinâmica." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Logaritmos discretos e Diffie–Hellman" })).toBeVisible();
   await expect(page.getByText("48 explicações")).toBeVisible();
   const total = await page.locator(".chapter-card").count();
@@ -12,7 +12,7 @@ test("a biblioteca hidrata a ilha React e apresenta o catálogo", async ({ page 
   await expect(page.getByRole("status")).toHaveText(`${filtered} de ${total}`);
 });
 
-test("o capítulo monta 81 recursos, KaTeX e âncoras únicas", async ({ page }) => {
+test("o capítulo monta 120 recursos, KaTeX e âncoras únicas", async ({ page }) => {
   const errors: Error[] = [];
   page.on("pageerror", (error) => errors.push(error));
   await page.goto("/chapters/ch02/");
@@ -20,7 +20,7 @@ test("o capítulo monta 81 recursos, KaTeX e âncoras únicas", async ({ page })
     () => page.locator("html").getAttribute("data-reader-ready"),
     { timeout: 20_000 },
   ).toBe("true");
-  await expect(page.locator("[data-enrichment-id]")).toHaveCount(81);
+  await expect(page.locator("[data-enrichment-id]")).toHaveCount(120);
   expect(await page.locator(".katex").count()).toBeGreaterThan(500);
   expect(await page.evaluate(() => {
     const ids = [...document.querySelectorAll<HTMLElement>("[id]")].map(({ id }) => id);
@@ -38,7 +38,7 @@ test("o capítulo monta 81 recursos, KaTeX e âncoras únicas", async ({ page })
 
 test("as camadas podem ser removidas sem remover a tradução", async ({ page }) => {
   await page.goto("/chapters/ch02/");
-  await expect(page.locator("[data-enrichment-id]")).toHaveCount(81);
+  await expect(page.locator("[data-enrichment-id]")).toHaveCount(120);
   const sourceText = await page.locator("#sec-2-1 > p").first().textContent();
   await page.getByRole("button", { name: "Só o texto" }).click();
   await expect(page.locator("[data-enrichment-id]:visible")).toHaveCount(0);
@@ -74,7 +74,7 @@ test("armazenamento bloqueado não impede matemática nem interatividade", async
     { timeout: 20_000 },
   ).toBe("true");
   expect(await page.locator(".katex").count()).toBeGreaterThan(500);
-  await expect(page.locator("[data-enrichment-id]")).toHaveCount(81);
+  await expect(page.locator("[data-enrichment-id]")).toHaveCount(120);
 });
 
 test("o menu móvel fica fora da navegação quando fechado", async ({ page }) => {

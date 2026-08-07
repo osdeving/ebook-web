@@ -4,7 +4,7 @@
             <h2>Anéis de polinômios e o algoritmo de Euclides</h2>
           </div>
 
-          <p>No Exemplo 2.38(f), observamos que, se \(R\) é qualquer anel, podemos criar um anel de polinômios com coeficientes em \(R\). Esse anel é denotado por</p>
+          <p>No <a href="#ex-2-38" data-source-xref>Exemplo 2.38(f)</a>, observamos que, se \(R\) é qualquer anel, podemos criar um anel de polinômios com coeficientes em \(R\). Esse anel é denotado por</p>
 
           <div class="equation" data-tex="R[x]=\{a_0+a_1x+a_2x^2+\cdots+a_nx^n:n\ge0\text{ e }a_0,a_1,\ldots,a_n\in R\}">
             \[
@@ -22,7 +22,7 @@
 
           <span id="slot-exp-2-10-3-grau-monico" data-enrichment-slot="exp-2-10-3-grau-monico"></span>
 
-          <p>São especialmente importantes os anéis de polinômios nos quais o anel \(R\) é um corpo; por exemplo, \(R\) pode ser \(\mathbb Q\), \(\mathbb R\), \(\mathbb C\) ou um corpo finito \(\mathbb F_p\). Para a criptografia, o último caso é, de longe, o mais importante. Uma razão pela qual é tão útil tomar \(R\) como um corpo \(F\) é que praticamente todas as propriedades de \(\mathbb Z\) que provamos na Seção 1.2 também valem para o anel de polinômios \(F[x]\). Esta seção é dedicada à discussão das propriedades de \(F[x]\).</p>
+          <p>São especialmente importantes os anéis de polinômios nos quais o anel \(R\) é um corpo; por exemplo, \(R\) pode ser \(\mathbb Q\), \(\mathbb R\), \(\mathbb C\) ou um corpo finito \(\mathbb F_p\). Para a criptografia, o último caso é, de longe, o mais importante. Uma razão pela qual é tão útil tomar \(R\) como um corpo \(F\) é que praticamente todas as propriedades de \(\mathbb Z\) que provamos na <a href="../ch01/#sec-1-2" data-source-xref>Seção 1.2</a> também valem para o anel de polinômios \(F[x]\). Esta seção é dedicada à discussão das propriedades de \(F[x]\).</p>
 
           <p>Sem dúvida, você aprendeu no ensino médio a dividir um polinômio por outro. Vamos recordar o processo com um exemplo. Eis como se divide \(x^5+2x^4+7\) por \(x^3-5\):</p>
 
@@ -97,7 +97,7 @@
             <p>Veremos a seguir que todo par de elementos de \(F[x]\) possui um máximo divisor comum,<sup><a href="#fn-2-10-12" id="fnref-2-10-12">12</a></sup> único a menos da multiplicação por um elemento não nulo de \(F\). Escrevemos \(\gcd(a,b)\) para designar o único polinômio mônico que é um máximo divisor comum de \(a\) e \(b\).</p>
           </div>
 
-          <p class="footnote" id="fn-2-10-12"><sup>12</sup> De acordo com nossa definição, mesmo quando \(a\) e \(b\) são ambos iguais a \(0\), eles possuem um máximo divisor comum, a saber, \(0\). Alguns autores, porém, preferem deixar \(\gcd(0,0)\) indefinido. <a href="#fnref-2-10-12" aria-label="Voltar à chamada da nota 12">↩</a></p>
+          <p class="footnote" id="fn-2-10-12"><sup>12</sup> De acordo com <a href="#def-mdc-polinomios" data-source-xref>nossa definição</a>, mesmo quando \(a\) e \(b\) são ambos iguais a \(0\), eles possuem um máximo divisor comum, a saber, \(0\). Alguns autores, porém, preferem deixar \(\gcd(0,0)\) indefinido. <a href="#fnref-2-10-12" aria-label="Voltar à chamada da nota 12">↩</a></p>
 
           <div class="semantic example" id="ex-2-45">
             <div class="semantic-header">
@@ -126,7 +126,7 @@
 
           <div class="semantic proof" id="proof-2-46">
             <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
-            <p>Assim como na demonstração do Teorema 1.7, o polinômio \(\gcd(a,b)\) pode ser calculado aplicando repetidamente a Proposição 2.44, como mostra a Figura 2.3. Do mesmo modo, os polinômios \(u\) e \(v\) podem ser calculados substituindo uma equação em outra na Figura 2.3, exatamente como foi descrito na demonstração do Teorema 1.11.<span class="proof-end">□</span></p>
+            <p>Assim como na demonstração do <a href="../ch01/#theorem-1-7" data-source-xref>Teorema 1.7</a>, o polinômio \(\gcd(a,b)\) pode ser calculado aplicando repetidamente a <a href="#prop-2-44" data-source-xref>Proposição 2.44</a>, como mostra a <a href="#fig-2-3" data-source-xref>Figura 2.3</a>. Do mesmo modo, os polinômios \(u\) e \(v\) podem ser calculados substituindo uma equação em outra na <a href="#fig-2-3" data-source-xref>Figura 2.3</a>, exatamente como foi descrito na demonstração do <a href="../ch01/#theorem-1-11" data-source-xref>Teorema 1.11</a>.<span class="proof-end">□</span></p>
           </div>
 
           <figure class="figure" id="fig-2-3">
@@ -186,7 +186,7 @@
             </div>
           </div>
 
-          <p>Recordamos da Seção 2.10.2 que um elemento \(u\) de um anel é uma unidade quando possui inverso multiplicativo \(u^{-1}\), e que um elemento \(a\) de um anel é irredutível quando não é uma unidade e a única maneira de fatorá-lo como \(a=bc\) exige que \(b\) ou \(c\) seja uma unidade. Não é difícil ver que as unidades de um anel de polinômios \(F[x]\) são precisamente os polinômios constantes não nulos, isto é, os elementos não nulos de \(F\); veja o Exercício 2.34. A questão da irredutibilidade é mais sutil, como mostram os exemplos a seguir.</p>
+          <p>Recordamos da <a href="#sec-2-10-2" data-source-xref>Seção 2.10.2</a> que um elemento \(u\) de um anel é uma unidade quando possui inverso multiplicativo \(u^{-1}\), e que um elemento \(a\) de um anel é irredutível quando não é uma unidade e a única maneira de fatorá-lo como \(a=bc\) exige que \(b\) ou \(c\) seja uma unidade. Não é difícil ver que as unidades de um anel de polinômios \(F[x]\) são precisamente os polinômios constantes não nulos, isto é, os elementos não nulos de \(F\); veja o <a href="#exercicio-2-34" data-source-xref>Exercício 2.34</a>. A questão da irredutibilidade é mais sutil, como mostram os <a href="#ex-2-47" data-source-xref>exemplos a seguir</a>.</p>
 
           <div class="semantic example" id="ex-2-48">
             <div class="semantic-header">
@@ -223,7 +223,7 @@
 
           <div class="semantic proof" id="proof-2-49">
             <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
-            <p>A existência de uma fatoração em irredutíveis decorre facilmente do fato de que, se \(a=b\cdot c\), então \(\deg a=\deg b+\deg c\). Veja o Exercício 2.34. A demonstração de que a fatoração é única é exatamente a mesma usada para os inteiros; compare com o Teorema 1.20. O passo-chave é a afirmação de que, se \(p\in F[x]\) é irredutível e divide o produto \(a\cdot b\), então \(p\mid a\), ou \(p\mid b\), ou ambos. Essa afirmação é a versão para polinômios da Proposição 1.19 e é demonstrada da mesma maneira, usando a versão polinomial do algoritmo de Euclides estendido, a Proposição 2.46.<span class="proof-end">□</span></p>
+            <p>A existência de uma fatoração em irredutíveis decorre facilmente do fato de que, se \(a=b\cdot c\), então \(\deg a=\deg b+\deg c\). Veja o <a href="#exercicio-2-34" data-source-xref>Exercício 2.34</a>. A demonstração de que a fatoração é única é exatamente a mesma usada para os inteiros; compare com o <a href="../ch01/#theorem-1-20" data-source-xref>Teorema 1.20</a>. O passo-chave é a afirmação de que, se \(p\in F[x]\) é irredutível e divide o produto \(a\cdot b\), então \(p\mid a\), ou \(p\mid b\), ou ambos. Essa afirmação é a versão para polinômios da <a href="../ch01/#prop-1-19" data-source-xref>Proposição 1.19</a> e é demonstrada da mesma maneira, usando a versão polinomial do algoritmo de Euclides estendido, a <a href="#prop-2-46" data-source-xref>Proposição 2.46</a>.<span class="proof-end">□</span></p>
           </div>
 
           <span id="slot-exp-2-10-3-irredutibilidade-contexto" data-enrichment-slot="exp-2-10-3-irredutibilidade-contexto"></span>

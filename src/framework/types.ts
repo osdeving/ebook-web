@@ -8,6 +8,7 @@ export const ENRICHMENT_LAYERS = [
 
 export type EnrichmentLayer = (typeof ENRICHMENT_LAYERS)[number];
 export type EnrichmentPosition = "before" | "after" | "append" | "prepend";
+export type EnrichmentPresentation = "panel" | "inline";
 
 export interface TocItem {
   id: string;
@@ -61,6 +62,7 @@ export interface EnrichmentDefinition {
   layer: EnrichmentLayer;
   anchor: string;
   position?: EnrichmentPosition;
+  presentation?: EnrichmentPresentation;
   title: string;
   kicker?: string;
   duration?: string;

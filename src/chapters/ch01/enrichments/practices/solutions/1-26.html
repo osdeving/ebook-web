@@ -1,0 +1,50 @@
+<div class="exercise-solution">
+  <p>Em cada item, quadramos sucessivamente a base e reduzimos após cada multiplicação. A linha inferior das tabelas contém \(g^{2^i}\) já reduzido módulo \(N\).</p>
+  <ol type="a">
+    <li>
+      <p>Temos \(183=128+32+16+4+2+1\), e os quadrados sucessivos são</p>
+      <div class="display-math">\[
+        \begin{array}{c|rrrrrrrr}
+        2^i &amp;1&amp;2&amp;4&amp;8&amp;16&amp;32&amp;64&amp;128\\ \hline
+        17^{2^i}\bmod256 &amp;17&amp;33&amp;65&amp;129&amp;1&amp;1&amp;1&amp;1
+        \end{array}
+      \]</div>
+      <p>Selecionando as colunas da expansão binária de \(183\),</p>
+      <div class="display-math">\[
+        17^{183}\equiv17\cdot33\cdot65\cdot1\cdot1\cdot1
+        \equiv113\pmod{256}.
+      \]</div>
+    </li>
+    <li>
+      <p>Agora \(477=256+128+64+16+8+4+1\). Obtemos</p>
+      <div class="display-math">\[
+        \begin{array}{c|rrrrrrrrr}
+        2^i &amp;1&amp;2&amp;4&amp;8&amp;16&amp;32&amp;64&amp;128&amp;256\\ \hline
+        2^{2^i}\bmod1000 &amp;2&amp;4&amp;16&amp;256&amp;536&amp;296&amp;616&amp;456&amp;936
+        \end{array}
+      \]</div>
+      <p>Portanto, reduzindo o produto a cada etapa,</p>
+      <div class="display-math">\[
+        2^{477}\equiv
+        2\cdot16\cdot256\cdot536\cdot616\cdot456\cdot936
+        \equiv272\pmod{1000}.
+      \]</div>
+    </li>
+    <li>
+      <p>Por fim, \(507=256+128+64+32+16+8+2+1\), e</p>
+      <div class="display-math">\[
+        \begin{array}{c|rrrrrrrrr}
+        2^i &amp;1&amp;2&amp;4&amp;8&amp;16&amp;32&amp;64&amp;128&amp;256\\ \hline
+        11^{2^i}\bmod1237
+        &amp;11&amp;121&amp;1034&amp;388&amp;867&amp;830&amp;1128&amp;748&amp;380
+        \end{array}
+      \]</div>
+      <p>Assim,</p>
+      <div class="display-math">\[
+        11^{507}\equiv
+        11\cdot121\cdot388\cdot867\cdot830\cdot1128\cdot748\cdot380
+        \equiv322\pmod{1237}.
+      \]</div>
+    </li>
+  </ol>
+</div>

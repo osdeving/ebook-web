@@ -1,0 +1,26 @@
+<div class="exercise-solution">
+  <p>Em cada caso, Pohlig–Hellman encontra o expoente módulo das potências de primos que compõem \(p-1\); o teorema chinês dos restos recompõe \(x\).</p>
+  <ol type="a">
+    <li>\(432=2^4\cdot3^3\). Os pequenos PLDs dão
+      \[
+      x\equiv15\pmod{16},\qquad x\equiv20\pmod{27},
+      \]
+      portanto \(x\equiv47\pmod{432}\).</li>
+    <li>\(746496=2^{10}3^6\). Obtemos
+      \[
+      x\equiv523\pmod{1024},\qquad x\equiv681\pmod{729},
+      \]
+      e assim \(x\equiv223755\pmod{746496}\).</li>
+    <li>\(41022298=2\cdot29^5\). Os resíduos são
+      \[
+      x\equiv0\pmod2,\qquad x\equiv13192165\pmod{29^5},
+      \]
+      o que fornece \(x\equiv33703314\pmod{41022298}\).</li>
+    <li>\(1291798=2\cdot709\cdot911\). Os pequenos logaritmos dão
+      \[
+      x\equiv0\pmod2,\quad x\equiv322\pmod{709},\quad x\equiv534\pmod{911}.
+      \]
+      Logo \(x\equiv984414\pmod{1291798}\).</li>
+  </ol>
+  <p>As verificações finais são, respectivamente, \(7^{47}\equiv166\pmod{433}\), \(10^{223755}\equiv243278\pmod{746497}\), \(2^{33703314}\equiv39183497\pmod{41022299}\) e \(17^{984414}\equiv192988\pmod{1291799}\).</p>
+</div>

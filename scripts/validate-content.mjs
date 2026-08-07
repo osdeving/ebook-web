@@ -3,6 +3,10 @@
 import { readFile, readdir } from "node:fs/promises";
 import { basename, resolve, relative } from "node:path";
 import { normalizeHtmlText, sha256 } from "./lib/content-integrity.mjs";
+import {
+  collectSourceCrossReferences,
+  resolveSourceCrossReference,
+} from "./lib/cross-references.mjs";
 
 const projectRoot = resolve(import.meta.dirname, "..");
 const chaptersRoot = resolve(projectRoot, "src", "chapters");
@@ -11,6 +15,9 @@ const reports = [];
 const globalSlugs = new Map();
 const globalNumbers = new Map();
 const globalEnrichmentIds = new Map();
+const chapterTargets = new Map();
+const sourceCrossReferences = [];
+const localPageTargets = await loadLocalPageTargets();
 
 for (const entry of await readdir(chaptersRoot, { withFileTypes: true })) {
   if (!entry.isDirectory()) continue;
@@ -170,8 +177,103 @@ for (const entry of await readdir(chaptersRoot, { withFileTypes: true })) {
       errors.push(`${manifest.slug}: índice ausente em enrichments/${kind}.`);
       continue;
     }
+    if (kind === "practices") {
+      let solutionCatalog = [];
+      const solutionCatalogPath = resolve(kindRoot, "solution-catalog.json");
+      let solutionCatalogSource;
+      try {
+        solutionCatalogSource = await readFile(solutionCatalogPath, "utf8");
+      } catch {
+        if (indexSource.includes("./solutions")) {
+          errors.push(`${manifest.slug}: practices/solution-catalog.json ausente.`);
+        }
+      }
+      if (solutionCatalogSource !== undefined) {
+        try {
+          solutionCatalog = JSON.parse(solutionCatalogSource);
+        } catch {
+          errors.push(`${manifest.slug}: practices/solution-catalog.json contém JSON inválido.`);
+        }
+        if (!Array.isArray(solutionCatalog)) {
+          errors.push(`${manifest.slug}: practices/solution-catalog.json precisa conter um array.`);
+          solutionCatalog = [];
+        }
+      }
+
+      const solutionFiles = new Set();
+      const solutionOrders = new Set();
+      const solutionsRoot = resolve(kindRoot, "solutions");
+      for (const item of solutionCatalog) {
+        if (!item || typeof item !== "object") {
+          errors.push(`${manifest.slug}: entrada inválida em practices/solution-catalog.json.`);
+          continue;
+        }
+        if (typeof item.id !== "string" || !item.id.startsWith("practice-")) {
+          errors.push(`${manifest.slug}: ID de solução inválido: ${String(item.id)}.`);
+        } else {
+          enrichmentIds.push(item.id);
+        }
+        if (item.layer !== "practice") {
+          errors.push(`${manifest.slug}: solução ${String(item.id)} deve usar layer practice.`);
+        }
+        if (typeof item.exercise !== "string" || !item.exercise.trim()) {
+          errors.push(`${manifest.slug}: exercício ausente na solução ${String(item.id)}.`);
+        }
+        if (typeof item.anchor !== "string" || !item.anchor.trim()) {
+          errors.push(`${manifest.slug}: âncora ausente na solução ${String(item.id)}.`);
+        } else {
+          anchors.push(item.anchor);
+        }
+        if (typeof item.title !== "string" || !item.title.trim()) {
+          errors.push(`${manifest.slug}: título ausente na solução ${String(item.id)}.`);
+        }
+        if (!Number.isSafeInteger(item.order) || item.order < 0) {
+          errors.push(`${manifest.slug}: ordem inválida na solução ${String(item.id)}.`);
+        } else if (solutionOrders.has(item.order)) {
+          errors.push(`${manifest.slug}: ordem de solução duplicada: ${item.order}.`);
+        } else {
+          solutionOrders.add(item.order);
+        }
+        if (
+          typeof item.file !== "string"
+          || !item.file.endsWith(".html")
+          || item.file.includes("/")
+          || item.file.includes("..")
+        ) {
+          errors.push(`${manifest.slug}: arquivo de solução inválido em ${String(item.id)}.`);
+          continue;
+        }
+        if (solutionFiles.has(item.file)) {
+          errors.push(`${manifest.slug}: arquivo de solução duplicado: ${item.file}.`);
+          continue;
+        }
+        solutionFiles.add(item.file);
+        try {
+          await readFile(resolve(solutionsRoot, item.file), "utf8");
+        } catch {
+          errors.push(`${manifest.slug}: HTML da solução ${String(item.id)} está ausente.`);
+        }
+      }
+      for (const htmlFile of await walk(solutionsRoot, ".html")) {
+        const catalogFile = relative(solutionsRoot, htmlFile).split("\\").join("/");
+        if (!solutionFiles.has(catalogFile)) {
+          errors.push(`${manifest.slug}: HTML de solução não registrado: ${catalogFile}.`);
+        }
+      }
+    }
+    const practiceInfrastructure = new Set([
+      resolve(kindRoot, "solution-catalog.ts"),
+      resolve(kindRoot, "solutions.ts"),
+    ]);
     const moduleFiles = (await walk(kindRoot, ".ts")).filter(
-      (file) => basename(file) !== "index.ts" && !file.endsWith(".test.ts"),
+      (file) => (
+        basename(file) !== "index.ts"
+        && !(
+          kind === "practices"
+          && practiceInfrastructure.has(file)
+        )
+        && !file.endsWith(".test.ts")
+      ),
     );
     for (const file of moduleFiles) {
       const source = await readFile(file, "utf8");
@@ -211,9 +313,19 @@ for (const entry of await readdir(chaptersRoot, { withFileTypes: true })) {
     registerGlobal(globalEnrichmentIds, id, manifest.slug, "ID global de enriquecimento");
   }
   const availableAnchors = new Set([...sourceIds, ...enrichmentIds]);
+  chapterTargets.set(manifest.slug, availableAnchors);
   for (const anchor of new Set(anchors)) {
     if (!availableAnchors.has(anchor)) {
       errors.push(`${manifest.slug}: enriquecimento aponta para âncora ausente #${anchor}.`);
+    }
+  }
+  for (const sourceFile of sourceFiles) {
+    for (const reference of collectSourceCrossReferences(sourceFile.html)) {
+      sourceCrossReferences.push({
+        ...reference,
+        fromSlug: manifest.slug,
+        sourcePath: sourceFile.path,
+      });
     }
   }
 
@@ -225,6 +337,40 @@ for (const entry of await readdir(chaptersRoot, { withFileTypes: true })) {
     explanations: explanations.length,
     enrichments: new Set(enrichmentIds).size,
   });
+}
+
+for (const reference of sourceCrossReferences) {
+  const location = `${reference.fromSlug}: ${reference.sourcePath}`;
+  if (!reference.label) {
+    errors.push(`${location}: link cruzado sem texto acessível (${reference.href || "href ausente"}).`);
+  }
+  const target = resolveSourceCrossReference(reference.fromSlug, reference.href);
+  if (target.kind === "invalid") {
+    errors.push(`${location}: link cruzado inválido (${target.reason}): ${reference.href || "<vazio>"}.`);
+    continue;
+  }
+  if (target.kind === "external") {
+    errors.push(
+      `${location}: data-source-xref aceita apenas navegação interna; ` +
+        `mova o link externo para um enriquecimento de leitura (${reference.href}).`,
+    );
+    continue;
+  }
+  if (target.kind === "local-page") {
+    const targets = localPageTargets.get(target.pathname);
+    if (!targets) {
+      errors.push(`${location}: link cruzado aponta para página local desconhecida ${target.pathname}.`);
+    } else if (!targets.has(target.id)) {
+      errors.push(`${location}: link cruzado aponta para alvo ausente ${target.pathname}#${target.id}.`);
+    }
+    continue;
+  }
+  const targets = chapterTargets.get(target.slug);
+  if (!targets) {
+    errors.push(`${location}: link cruzado aponta para capítulo inexistente ${target.slug}.`);
+  } else if (!targets.has(target.id)) {
+    errors.push(`${location}: link cruzado aponta para alvo ausente ${target.slug}#${target.id}.`);
+  }
 }
 
 if (errors.length > 0) {
@@ -267,6 +413,29 @@ function registerGlobal(registry, value, owner, label) {
     return;
   }
   registry.set(key, owner);
+}
+
+async function loadLocalPageTargets() {
+  const targets = new Map();
+  try {
+    const references = JSON.parse(
+      await readFile(resolve(projectRoot, "src", "content", "references.json"), "utf8"),
+    );
+    if (Array.isArray(references)) {
+      targets.set(
+        "/references/",
+        new Set([
+          "bibliography-title",
+          ...references
+            .filter(({ number }) => Number.isSafeInteger(number) && number > 0)
+            .map(({ number }) => `ref-${number}`),
+        ]),
+      );
+    }
+  } catch {
+    // A bibliografia global e opcional em instalações que usam apenas capítulos.
+  }
+  return targets;
 }
 
 async function walk(root, extension) {

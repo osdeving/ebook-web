@@ -1,0 +1,67 @@
+<section class="section subsection" id="sec-1-7-4" data-layer="source">
+  <h2><span class="section-number">1.7.4</span> Exemplos de cifras simétricas</h2>
+
+  <p>Antes de mergulhar ainda mais em um emaranhado de teoria e notação, fazemos uma pausa para apresentar uma descrição matemática de algumas cifras simétricas elementares.</p>
+
+  <p>Seja \(p\) um primo grande,<sup id="fnref-1-7-4-17"><a href="#fn-1-7-4-17" data-source-xref>17</a></sup> digamos \(2^{159}&lt;p&lt;2^{160}\). Alice e Bob tomam seus espaços de chaves \(\mathcal K\), de textos claros \(\mathcal M\) e de textos cifrados \(\mathcal C\) como o mesmo conjunto,</p>
+  <div class="display-math">\[\mathcal K=\mathcal M=\mathcal C=\{1,2,3,\ldots,p-1\}.\]</div>
+  <p>Em terminologia mais sofisticada, \(\mathcal K=\mathcal M=\mathcal C=\mathbb F_p^*\) são todos tomados como iguais ao grupo de unidades do corpo finito \(\mathbb F_p\).</p>
+
+  <p>Alice e Bob selecionam aleatoriamente uma chave \(k\in\mathcal K\), isto é, selecionam um inteiro \(k\) que satisfaz \(1\le k&lt;p\), e decidem usar a função de cifragem \(e_k\) definida por</p>
+  <div class="equation" id="eq-1-9"><span class="equation-number">(1.9)</span>\[e_k(m)\equiv k\cdot m\pmod p.\]</div>
+  <p>Aqui queremos dizer que \(e_k(m)\) é definido como o único inteiro positivo entre \(1\) e \(p\) congruente a \(k\cdot m\) módulo \(p\). A função de decifragem correspondente \(d_k\) é</p>
+  <div class="display-math">\[d_k(c)\equiv k'\cdot c\pmod p,\]</div>
+  <p>em que \(k'\) é o inverso de \(k\) módulo \(p\). É importante observar que, embora \(p\) seja muito grande, o algoritmo de Euclides estendido (<a href="#remark-1-15" data-source-xref>Observação 1.15</a>) nos permite calcular \(k'\) em menos de \(2\log_2p+2\) passos. Assim, encontrar \(k'\) a partir de \(k\) conta como “fácil” no mundo da criptografia.</p>
+
+  <p>É claro que Eva tem dificuldade para adivinhar \(k\), pois há aproximadamente \(2^{160}\) possibilidades entre as quais escolher. Também é difícil para Eva recuperar \(k\) se ela conhece o texto cifrado \(c\)? A resposta é sim, ainda é difícil. Observe que a função de cifragem</p>
+  <div class="display-math">\[e_k:\mathcal M\longrightarrow\mathcal C\]</div>
+  <p>é sobrejetiva para qualquer escolha da chave \(k\). Isso significa que, para todo \(c\in\mathcal C\) e qualquer \(k\in\mathcal K\), existe um \(m\in\mathcal M\) tal que \(e_k(m)=c\). Além disso, qualquer texto cifrado dado pode representar qualquer texto claro, desde que o texto claro seja cifrado por uma chave apropriada. Matematicamente, isso pode ser reformulado dizendo-se que, dados quaisquer texto cifrado \(c\in\mathcal C\) e texto claro \(m\in\mathcal M\), existe uma chave \(k\) tal que \(e_k(m)=c\). Especificamente, isso é verdadeiro para a chave</p>
+  <div class="equation" id="eq-1-10"><span class="equation-number">(1.10)</span>\[k\equiv m^{-1}\cdot c\pmod p.\]</div>
+
+  <p>Isso mostra que a cifra de Alice e Bob possui as <a href="#symmetric-cipher-property-1" data-source-xref>Propriedades 1</a>–<a href="#symmetric-cipher-property-3" data-source-xref>3</a> listadas na página 38, pois qualquer pessoa que conheça a chave \(k\) pode cifrar e decifrar facilmente, mas é difícil decifrar sem conhecer o valor de \(k\). Contudo, essa cifra não possui a <a href="#symmetric-cipher-property-4" data-source-xref>Propriedade 4</a>, pois até mesmo um único par texto claro/texto cifrado \((m,c)\) permite que Eva recupere a chave privada \(k\) usando a fórmula <a href="#eq-1-10" data-source-xref>(1.10)</a>.</p>
+
+  <p>Também é interessante observar que, se Alice e Bob definirem sua função de cifragem simplesmente como multiplicação de inteiros \(e_k(m)=k\cdot m\), sem redução módulo \(p\), então sua cifra ainda terá as <a href="#symmetric-cipher-property-1" data-source-xref>Propriedades 1</a> e <a href="#symmetric-cipher-property-2" data-source-xref>2</a>, mas a <a href="#symmetric-cipher-property-3" data-source-xref>Propriedade 3</a> falhará. Se Eva tentar decifrar um único texto cifrado \(c=k\cdot m\), ainda enfrentará a tarefa (moderadamente) difícil de fatorar um número grande. Entretanto, se conseguir obter vários textos cifrados \(c_1,c_2,\ldots,c_n\), haverá uma boa chance de que</p>
+  <div class="display-math">\[\begin{aligned}
+    \gcd(c_1,c_2,\ldots,c_n)
+      &amp;=\gcd(k\cdot m_1,k\cdot m_2,\ldots,k\cdot m_n)\\
+      &amp;=k\cdot\gcd(m_1,m_2,\ldots,m_n)
+  \end{aligned}\]</div>
+  <p>seja igual ao próprio \(k\) ou a um pequeno múltiplo de \(k\). Observe que calcular o máximo divisor comum é uma tarefa fácil.</p>
+
+  <p>Essa observação fornece nosso primeiro indício de como a redução módulo \(p\) tem um maravilhoso efeito de “mistura” que destrói propriedades como a divisibilidade. Contudo, a redução não é, por si só, a solução definitiva. Considere a vulnerabilidade da cifra <a href="#eq-1-9" data-source-xref>(1.9)</a> a um ataque de texto claro conhecido. Como observado acima, se Eva conseguir obter tanto um texto cifrado \(c\) quanto seu texto claro correspondente \(m\), ela recuperará facilmente a chave calculando</p>
+  <div class="display-math">\[k\equiv m^{-1}\cdot c\pmod p.\]</div>
+  <p>Assim, até mesmo um único par texto claro/texto cifrado basta para revelar a chave, de modo que a função de cifragem \(e_k\) dada por <a href="#eq-1-9" data-source-xref>(1.9)</a> não possui a <a href="#symmetric-cipher-property-4" data-source-xref>Propriedade 4</a> da página 38.</p>
+
+  <p>Há muitas variantes dessa cifra de “multiplicação módulo \(p\)”. Por exemplo, como a adição é mais eficiente que a multiplicação, existe uma cifra de “adição módulo \(p\)” dada por</p>
+  <div class="display-math">\[e_k(m)\equiv m+k\pmod p\qquad\text{e}\qquad d_k(c)\equiv c-k\pmod p,\]</div>
+  <p>que nada mais é que a cifra de deslocamento ou cifra de César que estudamos na <a href="#sec-1-1" data-source-xref>Seção 1.1</a>. Outra variante, chamada de <strong>cifra afim</strong>, é uma combinação da cifra de deslocamento com a cifra de multiplicação. A chave de uma cifra afim consiste em dois inteiros \(k=(k_1,k_2)\), e a cifragem e a decifragem são definidas por</p>
+  <div class="equation" id="eq-1-11"><span class="equation-number">(1.11)</span>\[\begin{aligned}
+    e_k(m)&amp;\equiv k_1\cdot m+k_2\pmod p,\\
+    d_k(c)&amp;\equiv k_1'\cdot(c-k_2)\pmod p,
+  \end{aligned}\]</div>
+  <p>em que \(k_1'\) é o inverso de \(k_1\) módulo \(p\).</p>
+
+  <p>A cifra afim tem uma generalização adicional chamada <strong>cifra de Hill</strong>, na qual o texto claro \(m\), o texto cifrado \(c\) e a segunda parte da chave \(k_2\) são substituídos por vetores coluna formados por \(n\) números módulo \(p\). A primeira parte da chave \(k_1\) é tomada como uma matriz \(n\times n\) com entradas inteiras módulo \(p\). A cifragem e a decifragem são novamente dadas por <a href="#eq-1-11" data-source-xref>(1.11)</a>, mas agora a multiplicação \(k_1\cdot m\) é o produto de uma matriz por um vetor, e \(k_1'\) é a matriz inversa de \(k_1\) módulo \(p\). Tanto a cifra afim quanto a cifra de Hill são vulneráveis a ataques de texto claro conhecido; veja os <a href="#exercicio-1-43" data-source-xref>Exercícios 1.43</a> e <a href="#exercicio-1-44" data-source-xref>1.44</a>.</p>
+
+  <aside class="semantic example" id="example-1-34">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.34</span></div>
+    <p>Como observado anteriormente, a adição geralmente é mais rápida que a multiplicação, mas há outra operação computacional básica que é ainda mais rápida que a adição. Ela é chamada de <em>ou exclusivo</em> e é denotada por XOR ou \(\oplus\). No nível mais baixo, XOR toma dois bits individuais \(\beta\in\{0,1\}\) e \(\beta'\in\{0,1\}\) e produz</p>
+    <div class="equation" id="eq-1-12"><span class="equation-number">(1.12)</span>\[\beta\oplus\beta'=
+      \begin{cases}
+        0,&amp;\text{se }\beta\text{ e }\beta'\text{ são iguais},\\
+        1,&amp;\text{se }\beta\text{ e }\beta'\text{ são diferentes}.
+      \end{cases}\]</div>
+    <p>Se você pensar em um bit como um número que é \(0\) ou \(1\), então XOR é o mesmo que adição módulo \(2\). Mais geralmente, o XOR de duas sequências de bits é o resultado de executar XOR em cada par de bits correspondente. Por exemplo,</p>
+    <div class="display-math">\[10110\oplus11010=[1\oplus1]\,[0\oplus1]\,[1\oplus0]\,[1\oplus1]\,[0\oplus0]=01100.\]</div>
+    <p>Usando essa nova operação, Alice e Bob têm à disposição mais uma cifra básica, definida por</p>
+    <div class="display-math">\[e_k(m)=k\oplus m\qquad\text{e}\qquad d_k(c)=k\oplus c.\]</div>
+    <p>Aqui, \(\mathcal K\), \(\mathcal M\) e \(\mathcal C\) são os conjuntos de todas as sequências binárias de comprimento \(B\), ou, de modo equivalente, o conjunto de todos os números entre \(0\) e \(2^B-1\).</p>
+    <p>Essa cifra tem a vantagem de ser extremamente eficiente e completamente simétrica, no sentido de que \(e_k\) e \(d_k\) são a mesma função. Se a chave \(k\) for escolhida aleatoriamente e usada apenas uma vez, essa cifra é conhecida como <strong>cifra de Vernam de uso único</strong>. Na Seção 5.57, mostramos que a cifra de uso único é comprovadamente segura. Infelizmente, ela exige uma chave tão longa quanto o texto claro, o que a torna incômoda demais para a maioria das aplicações práticas. E, se \(k\) for usada para cifrar mais de um texto claro, Eva poderá explorar o fato de que</p>
+    <div class="display-math">\[c\oplus c'=(k\oplus m)\oplus(k\oplus m')=m\oplus m'\]</div>
+    <p>para extrair informações sobre \(m\) ou \(m'\). Não é óbvio como Eva procederia para encontrar \(k\), \(m\) ou \(m'\), mas o simples fato de a chave \(k\) poder ser removida com tanta facilidade, revelando a quantidade potencialmente menos aleatória \(m\oplus m'\), deveria deixar um criptógrafo apreensivo. Além disso, esse método é vulnerável, em algumas situações, a um ataque de texto claro conhecido; veja o <a href="#exercicio-1-48" data-source-xref>Exercício 1.48</a>.</p>
+  </aside>
+
+  <ol class="footnotes" start="17">
+    <li id="fn-1-7-4-17">Na verdade, há muitos primos no intervalo \(2^{159}&lt;p&lt;2^{160}\). O teorema dos números primos implica que quase \(1\%\) dos números nesse intervalo são primos. Naturalmente, há também a questão de identificar um número como primo ou composto. Existem testes eficientes que fazem isso, mesmo para números muito grandes. Veja a Seção 3.4. <a href="#fnref-1-7-4-17" data-source-xref aria-label="Voltar à chamada da nota 17">↩</a></li>
+  </ol>
+</section>

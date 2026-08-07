@@ -1,0 +1,22 @@
+<div class="exercise-solution">
+  <p>Uma substituição simples preserva repetições: letras frequentes continuam frequentes e padrões como letras duplicadas e bigramas reaparecem nas mesmas posições. Em cada texto, começamos pelos grupos mais frequentes, testamos candidatos como <span lang="en">TH</span>, <span lang="en">HE</span> e <span lang="en">THE</span> e propagamos cada correspondência por toda a mensagem. As chaves finais abaixo permitem conferir a decifração letra por letra.</p>
+  <ol type="a">
+    <li>
+      <p>Com o alfabeto claro em ordem, o alfabeto cifrado obtido é</p>
+      <pre class="ciphertext">IEBHRWDNTPXUOQLMAGZJKVFCSY</pre>
+      <blockquote lang="en">These characters, as one might readily guess, form a cipher—that is to say, they convey a meaning; but then, from what is known of Captain Kidd, I could not suppose him capable of constructing any of the more abstruse cryptographs. I made up my mind, at once, that this was of a simple species—such, however, as would appear, to the crude intellect of the sailor, absolutely insoluble without the key.</blockquote>
+    </li>
+    <li>
+      <p>A chave, novamente na ordem \(a,b,\ldots,z\), é</p>
+      <pre class="ciphertext">RVCXBFSJKQPOEIAWDUNGLTZYMH</pre>
+      <blockquote lang="en">I was, I think, well educated for the standard of the day. My sister and I had a German governess. A very sentimental creature. She taught us the language of flowers—a forgotten study nowadays, but most charming. A yellow tulip, for instance, means Hopeless Love, while a China Aster means I die of Jealousy at your feet.</blockquote>
+    </li>
+    <li>
+      <p>A chave encontrada é</p>
+      <pre class="ciphertext">SDJWVEHCGLRUZAQPTNOXIMKYBF</pre>
+      <p>Respeitando a remoção deliberada de todas as ocorrências de <span lang="en">the</span>, o texto decifrado é:</p>
+      <blockquote lang="en">I am fairly familiar with all forms of secret writing, and am myself author of a trifling monograph upon subject, in which I analyze one hundred separate ciphers, but I confess that this is entirely new to me. Object of those who invented this system has apparently been to conceal that these characters convey a message, and to give idea that they are mere random sketches of children.</blockquote>
+      <p class="solution-note">Não se trata de falha da decifração: o enunciado suprimiu intencionalmente cinco ocorrências. Para restaurar a prosa original, inserimos <span lang="en">the</span> antes de <span lang="en">author</span>, <span lang="en">subject</span>, <span lang="en">object</span>, <span lang="en">idea</span> e <span lang="en">mere random sketches</span>.</p>
+    </li>
+  </ol>
+</div>

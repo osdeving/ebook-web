@@ -1,0 +1,28 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>Escreva \(b^2-a=tp\). Então
+      \[
+      (b+kp)^2-a=p(t+2bk+k^2p).
+      \]
+      Para que isso seja divisível por \(p^2\), basta escolher
+      \[
+      k\equiv-t(2b)^{-1}\pmod p.
+      \]
+      O inverso existe porque \(p\) é ímpar e \(p\nmid b\).</li>
+    <li>Aqui \(t=(537^2-476)/1291=223\). A congruência do item (a) dá \(k=239\), portanto
+      \[
+      b+kp=537+239\cdot1291=309086,
+      \]
+      e \(309086^2\equiv476\pmod{1291^2}\).</li>
+    <li>Agora escreva \(b^2-a=tp^n\). A expansão
+      \[
+      (b+jp^n)^2-a=p^n(t+2bj+j^2p^n)
+      \]
+      mostra que basta tomar \(j\equiv-t(2b)^{-1}\pmod p\). Novamente \(2b\) é invertível módulo \(p\).</li>
+    <li>O item (c) permite levantar uma raiz de \(p^n\) para \(p^{n+1}\); a indução começa em \(n=1\). A afirmação é falsa para \(p=2\): \(3\) possui a raiz \(1\) módulo \(2\), mas nenhum quadrado é \(3\) módulo \(4\).</li>
+    <li>Partindo de \(b=9\), o primeiro levantamento escolhe \(j=4\) e dá \(9+4\cdot13=61\), raiz módulo \(13^2\). No passo seguinte, \(j=6\), de modo que
+      \[
+      61+6\cdot13^2=1075,\qquad 1075^2\equiv3\pmod{13^3}.
+      \]</li>
+  </ol>
+</div>

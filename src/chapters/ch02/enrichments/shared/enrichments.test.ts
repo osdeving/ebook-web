@@ -13,12 +13,12 @@ const editorialText = (item: (typeof labs)[number]): string => {
 describe("catálogo modular do capítulo 2", () => {
   it("preserva todos os recursos e IDs únicos", () => {
     expect(labs).toHaveLength(14);
-    expect(practices).toHaveLength(10);
+    expect(practices).toHaveLength(49);
     expect(historyItems).toHaveLength(2);
     expect(readingItems).toHaveLength(7);
 
     const all = [...labs, ...practices, ...historyItems, ...readingItems];
-    expect(new Set(all.map(({ id }) => id)).size).toBe(33);
+    expect(new Set(all.map(({ id }) => id)).size).toBe(72);
     expect(all.every(({ anchor }) => anchor.length > 0)).toBe(true);
     expect(all.every(({ content }) => typeof content === "string")).toBe(true);
   });

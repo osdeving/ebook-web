@@ -1,0 +1,33 @@
+<section class="section subsection" id="sec-1-7-6" data-layer="source">
+  <h2><span class="section-number">1.7.6</span> A primeira aparição das cifras assimétricas</h2>
+
+  <p>Se Alice e Bob quiserem trocar mensagens usando uma cifra simétrica, precisarão primeiro chegar a um acordo mútuo sobre uma chave secreta \(k\). Isso funciona bem se tiverem a oportunidade de se encontrar em segredo ou se puderem se comunicar uma vez por um canal seguro. Mas e se não tiverem essa oportunidade e toda comunicação entre eles for monitorada por sua adversária Eva? É possível que Alice e Bob troquem uma chave secreta nessas condições?</p>
+
+  <p>A primeira reação da maioria das pessoas é dizer que isso não é possível, pois Eva vê cada informação trocada por Alice e Bob. A percepção brilhante de Diffie e Hellman<sup id="fnref-1-7-6-18"><a href="#fn-1-7-6-18" data-source-xref>18</a></sup> foi a de que, sob certas hipóteses, isso é possível. A busca por soluções eficientes (e demonstráveis) para esse problema, chamada de criptografia de chave pública (ou assimétrica), constitui uma das partes mais interessantes da criptografia matemática e é o foco principal deste livro.</p>
+
+  <p>Começamos descrevendo uma maneira não matemática de visualizar a criptografia de chave pública. Alice compra um cofre com uma fenda estreita na parte superior e coloca seu cofre em um local público. Todos no mundo podem examinar o cofre e constatar que ele foi construído de modo seguro. Bob escreve sua mensagem para Alice em uma folha de papel e a introduz pela fenda na parte superior do cofre. Agora, apenas uma pessoa com a chave do cofre — presumivelmente, apenas Alice — pode retirar e ler a mensagem de Bob. Nesse cenário, a chave pública de Alice é o cofre, o algoritmo de cifragem é o processo de colocar a mensagem na fenda, e o algoritmo de decifragem é o processo de abrir o cofre com a chave. Observe que essa configuração não é fantasiosa; ela é usada no mundo real. Por exemplo, a abertura para depósitos noturnos de um banco tem essa forma, embora, na prática, a “fenda” precise ser bem protegida para impedir que alguém introduza uma pinça longa e fina e retire os depósitos de outras pessoas!</p>
+
+  <p>Uma característica útil de nosso criptossistema do “cofre com fenda”, que ele compartilha com os criptossistemas reais de chave pública, é que Alice precisa colocar apenas um cofre em um local público, e então todos no mundo podem usá-lo repetidamente para enviar mensagens cifradas a Alice. Não é necessário que Alice forneça um cofre separado para cada pessoa com quem se corresponde. Também não é necessário que Alice abra o cofre e retire a mensagem de Bob antes que outra pessoa, como Carl ou Dave, o use para enviar uma mensagem a Alice.</p>
+
+  <p>Estamos agora prontos para dar uma formulação matemática de uma cifra assimétrica. Como de costume, há espaços de chaves \(\mathcal K\), de textos claros \(\mathcal M\) e de textos cifrados \(\mathcal C\). Contudo, um elemento \(k\) do espaço de chaves é, na verdade, um par de chaves,</p>
+  <div class="display-math">\[k=(k_{\mathrm{priv}},k_{\mathrm{pub}}),\]</div>
+  <p>chamadas, respectivamente, de <strong>chave privada</strong> e <strong>chave pública</strong>. Para cada chave pública \(k_{\mathrm{pub}}\), há uma função de cifragem correspondente</p>
+  <div class="display-math">\[e_{k_{\mathrm{pub}}}:\mathcal M\longrightarrow\mathcal C,\]</div>
+  <p>e, para cada chave privada \(k_{\mathrm{priv}}\), há uma função de decifragem correspondente</p>
+  <div class="display-math">\[d_{k_{\mathrm{priv}}}:\mathcal C\longrightarrow\mathcal M.\]</div>
+  <p>Elas têm a propriedade de que, se o par \((k_{\mathrm{priv}},k_{\mathrm{pub}})\) estiver no espaço de chaves \(\mathcal K\), então</p>
+  <div class="display-math">\[d_{k_{\mathrm{priv}}}\bigl(e_{k_{\mathrm{pub}}}(m)\bigr)=m\qquad\text{para todo }m\in\mathcal M.\]</div>
+
+  <p>Para que uma cifra assimétrica seja segura, deve ser difícil para Eva calcular a função de decifragem \(d_{k_{\mathrm{priv}}}(c)\), mesmo que ela conheça a chave pública \(k_{\mathrm{pub}}\). Observe que, sob essa hipótese, Alice pode enviar \(k_{\mathrm{pub}}\) a Bob usando um canal de comunicação inseguro, e Bob pode enviar de volta o texto cifrado \(e_{k_{\mathrm{pub}}}(m)\), sem se preocupar que Eva consiga decifrar a mensagem. Para decifrar com facilidade, é necessário conhecer a chave privada \(k_{\mathrm{priv}}\), e presumivelmente Alice é a única pessoa com essa informação. A chave privada é às vezes chamada de <strong>informação de alçapão</strong> de Alice, pois fornece um alçapão (isto é, um atalho) para calcular a função inversa de \(e_{k_{\mathrm{pub}}}\). O fato de as chaves de cifragem e decifragem \(k_{\mathrm{pub}}\) e \(k_{\mathrm{priv}}\) serem diferentes torna a cifra assimétrica, daí seu nome.</p>
+
+  <p>É bastante intrigante que Diffie e Hellman tenham criado esse conceito sem encontrar um candidato para um par real de funções, embora tenham proposto um método semelhante pelo qual Alice e Bob podem trocar com segurança uma informação aleatória cujo valor não é inicialmente conhecido por nenhum dos dois. Descrevemos o método de troca de chaves de Diffie e Hellman na <a href="../ch02/#sec-2-3" data-source-xref>Seção 2.3</a> e, em seguida, discutimos diversas cifras assimétricas, incluindo Elgamal (<a href="../ch02/#sec-2-4" data-source-xref>Seção 2.4</a>), RSA (Seção 3.2), Goldwassser–Micali (Seção 3.10), ECC (Seção 6.4), GGH (Seção 7.8) e NTRU (Seção 7.10), cuja segurança se baseia na suposta dificuldade de vários problemas matemáticos diferentes.</p>
+
+  <aside class="semantic remark" id="remark-1-35">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">1.35</span></div>
+    <p>Na prática, cifras assimétricas tendem a ser consideravelmente mais lentas que cifras simétricas como DES e AES. Por essa razão, se Bob precisar enviar um arquivo grande a Alice, poderá primeiro usar uma cifra assimétrica para enviar a Alice a chave de uma cifra simétrica, que então usará para transmitir o arquivo propriamente dito.</p>
+  </aside>
+
+  <ol class="footnotes" start="18">
+    <li id="fn-1-7-6-18">Na verdade, a história é um pouco mais complicada que isso; veja nossa breve discussão na <a href="../ch02/#sec-2-1" data-source-xref>Seção 2.1</a> e as referências ali listadas para leituras adicionais. <a href="#fnref-1-7-6-18" data-source-xref aria-label="Voltar à chamada da nota 18">↩</a></li>
+  </ol>
+</section>

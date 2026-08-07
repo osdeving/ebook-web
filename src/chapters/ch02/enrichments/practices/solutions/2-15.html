@@ -1,0 +1,55 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>
+      <p>A associatividade vem da multiplicação de matrizes. A identidade é \(I_2\). Se \(A\) e \(B\) são invertíveis, então \(AB\) também é, pois</p>
+      <p>\[(AB)^{-1}=B^{-1}A^{-1}.\]</p>
+      <p>Finalmente, por definição, cada \(A\in\operatorname{GL}_2(\mathbb F_p)\) possui \(A^{-1}\) no mesmo conjunto. Portanto identidade, fechamento, inversos e associatividade estão satisfeitos, e \(\operatorname{GL}_2(\mathbb F_p)\) é grupo.</p>
+    </li>
+    <li>
+      <p>Considere, sobre qualquer \(\mathbb F_p\), as matrizes</p>
+      <p>\[X=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},\qquad Y=\begin{pmatrix}1&amp;0\\1&amp;1\end{pmatrix}.\]</p>
+      <p>Ambas têm determinante \(1\), mas</p>
+      <p>\[XY=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix},\qquad YX=\begin{pmatrix}1&amp;1\\1&amp;2\end{pmatrix}.\]</p>
+      <p>Essas matrizes são distintas para todo primo \(p\), inclusive para \(p=2\). Logo o grupo não é comutativo.</p>
+    </li>
+    <li>
+      <p>Em \(\mathbb F_2^2\) há três vetores não nulos. A primeira coluna de uma matriz invertível pode ser qualquer um deles; a segunda pode ser qualquer um dos outros dois. Assim há seis matrizes. Uma lista conveniente é</p>
+      <p>\[
+        \begin{array}{lll}
+        e=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}, &amp;
+        r=\begin{pmatrix}0&amp;1\\1&amp;1\end{pmatrix}, &amp;
+        r^2=\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix},\\[6pt]
+        s=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}, &amp;
+        rs=\begin{pmatrix}1&amp;0\\1&amp;1\end{pmatrix}, &amp;
+        r^2s=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}.
+        \end{array}
+      \]</p>
+      <p>Elas satisfazem \(r^3=e\), \(s^2=e\) e \(sr=r^2s\). A tabela completa, com o elemento da linha multiplicando o elemento da coluna, é:</p>
+      <div class="table-wrap">
+        <table>
+          <caption>Multiplicação em \(\operatorname{GL}_2(\mathbb F_2)\)</caption>
+          <thead>
+            <tr><th scope="col">\(\cdot\)</th><th scope="col">\(e\)</th><th scope="col">\(r\)</th><th scope="col">\(r^2\)</th><th scope="col">\(s\)</th><th scope="col">\(rs\)</th><th scope="col">\(r^2s\)</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">\(e\)</th><td>\(e\)</td><td>\(r\)</td><td>\(r^2\)</td><td>\(s\)</td><td>\(rs\)</td><td>\(r^2s\)</td></tr>
+            <tr><th scope="row">\(r\)</th><td>\(r\)</td><td>\(r^2\)</td><td>\(e\)</td><td>\(rs\)</td><td>\(r^2s\)</td><td>\(s\)</td></tr>
+            <tr><th scope="row">\(r^2\)</th><td>\(r^2\)</td><td>\(e\)</td><td>\(r\)</td><td>\(r^2s\)</td><td>\(s\)</td><td>\(rs\)</td></tr>
+            <tr><th scope="row">\(s\)</th><td>\(s\)</td><td>\(r^2s\)</td><td>\(rs\)</td><td>\(e\)</td><td>\(r^2\)</td><td>\(r\)</td></tr>
+            <tr><th scope="row">\(rs\)</th><td>\(rs\)</td><td>\(s\)</td><td>\(r^2s\)</td><td>\(r\)</td><td>\(e\)</td><td>\(r^2\)</td></tr>
+            <tr><th scope="row">\(r^2s\)</th><td>\(r^2s\)</td><td>\(rs\)</td><td>\(s\)</td><td>\(r^2\)</td><td>\(r\)</td><td>\(e\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Essa apresentação também exibe o isomorfismo \(\operatorname{GL}_2(\mathbb F_2)\cong S_3\).</p>
+    </li>
+    <li>
+      <p>Escolha as colunas da matriz. A primeira pode ser qualquer vetor não nulo: \(p^2-1\) escolhas. A segunda não pode pertencer ao subespaço de \(p\) múltiplos da primeira: \(p^2-p\) escolhas. Portanto</p>
+      <p>\[\left|\operatorname{GL}_2(\mathbb F_p)\right|=(p^2-1)(p^2-p).\]</p>
+    </li>
+    <li>
+      <p>Em dimensão \(n\), depois de escolher \(k\) colunas linearmente independentes, seu espaço gerado possui \(p^k\) vetores; a próxima coluna pode ser qualquer um dos \(p^n-p^k\) vetores restantes. Logo</p>
+      <p>\[\left|\operatorname{GL}_n(\mathbb F_p)\right|=\prod_{k=0}^{n-1}(p^n-p^k)=(p^n-1)(p^n-p)\cdots(p^n-p^{n-1}).\]</p>
+    </li>
+  </ol>
+</div>

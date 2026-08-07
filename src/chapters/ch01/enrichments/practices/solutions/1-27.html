@@ -1,0 +1,35 @@
+<div class="exercise-solution">
+  <p>Defina \(d=\gcd(a,m)\) e escreva</p>
+  <div class="display-math">\[
+    a=da',\qquad m=dm',\qquad\gcd(a',m')=1.
+  \]</div>
+  <ol type="a">
+    <li>
+      <p>Se \(x\) é uma solução, então existe \(k\in\mathbb Z\) tal que \(ax-c=km\). Como \(d\mid a\) e \(d\mid m\), segue que \(d\mid c\).</p>
+      <p>Reciprocamente, suponha que \(d\mid c\). Pela identidade de Bézout existem \(u,v\in\mathbb Z\) tais que</p>
+      <div class="display-math">\[au+mv=d.\]</div>
+      <p>Multiplicando por \(c/d\), obtemos</p>
+      <div class="display-math">\[
+        a\left(u\frac cd\right)+m\left(v\frac cd\right)=c.
+      \]</div>
+      <p>Logo \(x_0=u(c/d)\) satisfaz \(ax_0\equiv c\pmod m\). Portanto existe solução se, e somente se, \(d\mid c\).</p>
+    </li>
+    <li>
+      <p>Suponha que \(x_0\) seja uma solução. Os \(d\) resíduos</p>
+      <div class="display-math">\[
+        x_k=x_0+km',
+        \qquad k=0,1,\ldots,d-1,
+      \]</div>
+      <p>são soluções, pois</p>
+      <div class="display-math">\[
+        a(x_k-x_0)=da'\,km'=a'k\,m
+      \]</div>
+      <p>é divisível por \(m\). Eles são distintos módulo \(m=dm'\): se \(x_k\equiv x_\ell\pmod m\), então \(dm'\mid(k-\ell)m'\), logo \(d\mid k-\ell\), o que, no intervalo \(0\le k,\ell&lt;d\), força \(k=\ell\).</p>
+      <p>Resta mostrar que não há outras soluções. Se \(x\) também é solução, então \(m\mid a(x-x_0)\), isto é,</p>
+      <div class="display-math">\[
+        dm'\mid da'(x-x_0).
+      \]</div>
+      <p>Portanto \(m'\mid a'(x-x_0)\). Como \(\gcd(a',m')=1\), segue que \(m'\mid x-x_0\), logo \(x\equiv x_0+km'\pmod m\) para exatamente um \(k\in\{0,\ldots,d-1\}\). Há, assim, exatamente \(d=\gcd(a,m)\) soluções distintas módulo \(m\).</p>
+    </li>
+  </ol>
+</div>

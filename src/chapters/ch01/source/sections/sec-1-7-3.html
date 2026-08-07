@@ -1,0 +1,24 @@
+<section class="section subsection" id="sec-1-7-3" data-layer="source">
+  <h2><span class="section-number">1.7.3</span> Cifragem simétrica de blocos codificados</h2>
+
+  <p>Ao usar um esquema de codificação como o descrito na <a href="#sec-1-7-2" data-source-xref>Seção 1.7.2</a>, é conveniente considerar os elementos do espaço de textos claros \(\mathcal M\) como sequências de bits de comprimento fixo \(B\), isto é, sequências de exatamente \(B\) uns e zeros. Chamamos \(B\) de <strong>tamanho de bloco</strong> da cifra. Uma mensagem geral em texto claro consiste, então, em uma lista de blocos de mensagem escolhidos em \(\mathcal M\), e a função de cifragem transforma os blocos da mensagem em uma lista de blocos de texto cifrado em \(\mathcal C\), na qual cada bloco é uma sequência de \(B\) bits. Se o texto claro terminar com um bloco de menos de \(B\) bits, completamos o final do bloco com zeros. Tenha em mente que esse processo de codificação, que converte a mensagem original em texto claro em uma sequência de blocos de bits em \(\mathcal M\), é de conhecimento público.</p>
+
+  <p>A cifragem e a decifragem são feitas um bloco por vez, de modo que basta estudar o processo para um único bloco de texto claro, isto é, para um único \(m\in\mathcal M\). Essa é, naturalmente, a razão pela qual é conveniente dividir uma mensagem em blocos. Uma mensagem pode ter comprimento arbitrário, por isso é bom poder concentrar o processo criptográfico em uma única parte de comprimento fixo. O bloco de texto claro \(m\) é uma sequência de \(B\) bits que, para sermos concretos, identificamos com o número correspondente em forma binária. Em outras palavras, identificamos \(\mathcal M\) com o conjunto dos inteiros \(m\) que satisfazem \(0\le m&lt;2^B\) por meio de</p>
+  <div class="display-math">\[\underbrace{m_{B-1}m_{B-2}\cdots m_2m_1m_0}_{\text{lista dos }B\text{ bits de }m}
+    \longleftrightarrow
+    \underbrace{m_{B-1}\cdot2^{B-1}+\cdots+m_2\cdot2^2+m_1\cdot2+m_0}_{\text{inteiro entre }0\text{ e }2^B-1}.\]</div>
+  <p>Aqui, cada um de \(m_0,m_1,\ldots,m_{B-1}\) é \(0\) ou \(1\).</p>
+
+  <p>De modo semelhante, identificamos o espaço de chaves \(\mathcal K\) e o espaço de textos cifrados \(\mathcal C\) com conjuntos de inteiros correspondentes a sequências de bits de certo tamanho de bloco. Por conveniência de notação, denotamos os tamanhos de bloco das chaves, dos textos claros e dos textos cifrados por \(B_k\), \(B_m\) e \(B_c\). Eles não precisam ser iguais. Assim, identificamos \(\mathcal K\), \(\mathcal M\) e \(\mathcal C\) com conjuntos de inteiros positivos</p>
+  <div class="display-math">\[\begin{aligned}
+    \mathcal K&amp;=\{k\in\mathbb Z:0\le k&lt;2^{B_k}\},\\
+    \mathcal M&amp;=\{m\in\mathbb Z:0\le m&lt;2^{B_m}\},\\
+    \mathcal C&amp;=\{c\in\mathbb Z:0\le c&lt;2^{B_c}\}.
+  \end{aligned}\]</div>
+
+  <p>Surge imediatamente uma questão importante: quão grande Alice e Bob devem tornar o conjunto \(\mathcal K\), ou, de modo equivalente, quão grande devem escolher o tamanho de bloco da chave \(B_k\)? Se \(B_k\) for pequeno demais, Eva poderá testar todos os números de \(0\) a \(2^{B_k}-1\) até encontrar a chave de Alice e Bob. Mais precisamente, como se supõe que Eva conheça o algoritmo de decifragem \(d\) (princípio de Kerckhoffs), ela toma cada \(k\in\mathcal K\) e o usa para calcular \(d_k(c)\). Supondo que Eva consiga distinguir entre textos claros válidos e inválidos, acabará recuperando a mensagem.</p>
+
+  <p>Esse ataque é conhecido como <strong>ataque de busca exaustiva</strong> (também chamado, às vezes, de <strong>ataque de força bruta</strong>), pois Eva pesquisa exaustivamente o espaço de chaves. Com a tecnologia atual, uma busca exaustiva é considerada inviável se o espaço tiver pelo menos \(2^{80}\) elementos. Portanto, Bob e Alice definitivamente devem escolher \(B_k\ge80\).</p>
+
+  <p>Para muitos criptossistemas, em especial os criptossistemas de chave pública que formam o núcleo deste livro, existem refinamentos do ataque de busca exaustiva que substituem, efetivamente, o tamanho do espaço por sua raiz quadrada. Esses métodos se baseiam no princípio de que é mais fácil encontrar objetos coincidentes (colisões) em um conjunto do que encontrar um objeto específico nesse conjunto. Descrevemos alguns desses ataques de encontro no meio ou de colisão nas <a href="../ch02/#sec-2-7" data-source-xref>Seções 2.7</a>, 5.4, 5.5, 7.2 e 7.10. Se houver ataques de encontro no meio disponíveis, Alice e Bob devem escolher \(B_k\ge160\).</p>
+</section>

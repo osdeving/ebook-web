@@ -1,0 +1,17 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>Sim. Para todo \(k\), a aplicação \(m\mapsto k-m\) é bijetiva e é sua própria inversa:
+      \[
+      d_k(c)\equiv k-c\pmod N.
+      \]</li>
+    <li>Não para todo \(k\in\mathbb Z/N\mathbb Z\): multiplicar por um não invertível não é uma permutação. Restrinja as chaves a
+      \[
+      \mathcal K=(\mathbb Z/N\mathbb Z)^*.
+      \]
+      Para essas chaves,
+      \[
+      d_k(c)\equiv k^{-1}c\pmod N.
+      \]</li>
+    <li>Não. Para \(N&gt;2\), os valores \(m\equiv-k+x\) e \(m'\equiv-k-x\) têm a mesma imagem \(x^2\), embora em geral sejam distintos. O problema ocorre para cada chave, portanto diminuir apenas o conjunto de chaves não torna a função uma cifra sobre o mesmo espaço de mensagens.</li>
+  </ol>
+</div>

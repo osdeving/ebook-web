@@ -1,0 +1,107 @@
+<section class="section subsection" id="sec-1-3-2" data-layer="source">
+  <h3><span class="section-number">1.3.2</span> O algoritmo de exponenciação rápida</h3>
+
+  <p>Em alguns dos criptossistemas que estudaremos, por exemplo, os criptossistemas RSA e Diffie–Hellman, Alice e Bob precisam calcular potências grandes de um número \(g\) módulo outro número \(N\), em que \(N\) pode ter centenas de algarismos. A maneira ingênua de calcular \(g^A\) é multiplicar repetidamente por \(g\). Assim,</p>
+  <div class="display-math">\[
+    \begin{aligned}
+    g_1&amp;\equiv g &&\pmod N,&
+    g_2&amp;\equiv g\cdot g_1 &&\pmod N,&
+    g_3&amp;\equiv g\cdot g_2 &&\pmod N,\\
+    g_4&amp;\equiv g\cdot g_3 &&\pmod N,&
+    g_5&amp;\equiv g\cdot g_4 &&\pmod N,&
+    &\ldots
+    \end{aligned}
+  \]</div>
+  <p>É claro que \(g_A\equiv g^A\pmod N\), mas, se \(A\) for grande, esse algoritmo será completamente impraticável. Por exemplo, se \(A\approx2^{1000}\), o algoritmo ingênuo levaria mais tempo do que a idade estimada do universo! É evidente que, para que o cálculo seja útil, precisamos encontrar uma maneira melhor de calcular \(g^A\pmod N\).</p>
+
+  <p>A ideia é usar a expansão binária do expoente \(A\) para converter o cálculo de \(g^A\) em uma sucessão de quadraturas e multiplicações. Um exemplo tornará a ideia clara; em seguida, apresentaremos uma descrição formal do método.</p>
+
+  <aside class="semantic example" id="example-1-18">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.18</span></div>
+    <p>Suponha que queiramos calcular \(3^{218}\pmod{1000}\). O primeiro passo é escrever \(218\) como soma de potências de \(2\):</p>
+    <div class="display-math">\[218=2+2^3+2^4+2^6+2^7.\]</div>
+    <p>Então \(3^{218}\) torna-se</p>
+    <div class="equation" id="eq-1-3"><span class="equation-number">(1.3)</span>\[
+      3^{218}=3^{\,2+2^3+2^4+2^6+2^7}
+      =3^2\cdot3^{2^3}\cdot3^{2^4}\cdot3^{2^6}\cdot3^{2^7}.
+    \]</div>
+
+    <p>Observe que é relativamente fácil calcular a sequência de valores</p>
+    <div class="display-math">\[3,\quad3^2,\quad3^{2^2},\quad3^{2^3},\quad3^{2^4},\quad\ldots,\]</div>
+    <p>pois cada número da sequência é o quadrado do anterior. Além disso, como precisamos desses valores apenas módulo \(1000\), nunca precisamos armazenar mais de três algarismos. A <a href="#tab-1-8" data-source-xref>Tabela 1.8</a> lista as potências de \(3\) módulo \(1000\) até \(3^{2^7}\). A construção da <a href="#tab-1-8" data-source-xref>Tabela 1.8</a> requer apenas \(7\) multiplicações, apesar de o número \(3^{2^7}=3^{128}\) ter um expoente bastante grande, porque cada entrada sucessiva da tabela é igual ao quadrado da entrada anterior.</p>
+
+    <div class="table-wrap" id="tab-1-8">
+      <table>
+        <caption><span class="label">Tabela 1.8.</span> Potências obtidas por quadraturas sucessivas de \(3\) módulo \(1000\).</caption>
+        <thead>
+          <tr><th scope="row">\(i\)</th><th scope="col">\(0\)</th><th scope="col">\(1\)</th><th scope="col">\(2\)</th><th scope="col">\(3\)</th><th scope="col">\(4\)</th><th scope="col">\(5\)</th><th scope="col">\(6\)</th><th scope="col">\(7\)</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">\(3^{2^i}\pmod{1000}\)</th><td>\(3\)</td><td>\(9\)</td><td>\(81\)</td><td>\(561\)</td><td>\(721\)</td><td>\(841\)</td><td>\(281\)</td><td>\(961\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Usamos <a href="#eq-1-3" data-source-xref>(1.3)</a> para decidir quais potências da <a href="#tab-1-8" data-source-xref>Tabela 1.8</a> são necessárias para calcular \(3^{218}\). Assim,</p>
+    <div class="display-math">\[
+      \begin{aligned}
+      3^{218}
+      &=3^2\cdot3^{2^3}\cdot3^{2^4}\cdot3^{2^6}\cdot3^{2^7}\\
+      &\equiv9\cdot561\cdot721\cdot281\cdot961 &&\pmod{1000}\\
+      &\equiv489 &&\pmod{1000}.
+      \end{aligned}
+    \]</div>
+    <p>Observamos que, ao calcular o produto \(9\cdot561\cdot721\cdot281\cdot961\), podemos reduzir módulo \(1000\) depois de cada multiplicação, de modo que nunca precisamos lidar com números muito grandes. Também observamos que foram necessárias apenas \(11\) multiplicações para calcular \(3^{218}\pmod{1000}\), uma economia enorme em comparação com a abordagem ingênua. E, para expoentes maiores, a economia seria ainda maior.</p>
+  </aside>
+
+  <p>A abordagem geral usada no <a href="#example-1-18" data-source-xref>Exemplo 1.18</a> recebe vários nomes, entre eles <em>algoritmo de exponenciação rápida</em> e <em>algoritmo de quadratura e multiplicação</em>.<sup id="fnref-1-3-2-8"><a href="#fn-1-3-2-8" data-source-xref>8</a></sup> Descrevemos agora o algoritmo mais formalmente.</p>
+
+  <div class="algorithm" id="algorithm-1-fast-powering">
+    <h4>O algoritmo de exponenciação rápida</h4>
+    <ol class="algorithm-steps">
+      <li>
+        <p><strong>Passo 1.</strong> Calcule a expansão binária de \(A\) como</p>
+        <div class="display-math">\[
+          A=A_0+A_1\cdot2+A_2\cdot2^2+A_3\cdot2^3+\cdots+A_r\cdot2^r,
+          \qquad A_0,\ldots,A_r\in\{0,1\},
+        \]</div>
+        <p>em que podemos supor que \(A_r=1\).</p>
+      </li>
+      <li>
+        <p><strong>Passo 2.</strong> Calcule as potências \(g^{2^i}\pmod N\), para \(0\le i\le r\), por quadraturas sucessivas:</p>
+        <div class="display-math">\[
+          \begin{aligned}
+          a_0&\equiv g &&\pmod N,\\
+          a_1&\equiv a_0^2\equiv g^2 &&\pmod N,\\
+          a_2&\equiv a_1^2\equiv g^{2^2} &&\pmod N,\\
+          a_3&\equiv a_2^2\equiv g^{2^3} &&\pmod N,\\
+          &\ \vdots &&\\
+          a_r&\equiv a_{r-1}^2\equiv g^{2^r} &&\pmod N.
+          \end{aligned}
+        \]</div>
+        <p>Cada termo é o quadrado do anterior, portanto isso requer \(r\) multiplicações.</p>
+      </li>
+      <li>
+        <p><strong>Passo 3.</strong> Calcule \(g^A\pmod N\) usando a fórmula</p>
+        <div class="equation" id="eq-1-4"><span class="equation-number">(1.4)</span>\[
+          \begin{aligned}
+          g^A
+          &=g^{A_0+A_1\cdot2+A_2\cdot2^2+A_3\cdot2^3+\cdots+A_r\cdot2^r}\\
+          &=g^{A_0}\cdot(g^2)^{A_1}\cdot(g^{2^2})^{A_2}\cdot(g^{2^3})^{A_3}\cdots(g^{2^r})^{A_r}\\
+          &\equiv a_0^{A_0}\cdot a_1^{A_1}\cdot a_2^{A_2}\cdot a_3^{A_3}\cdots a_r^{A_r}\pmod N.
+          \end{aligned}
+        \]</div>
+        <p>Observe que as quantidades \(a_0,a_1,\ldots,a_r\) foram calculadas no Passo 2. Assim, o produto <a href="#eq-1-4" data-source-xref>(1.4)</a> pode ser calculado consultando os valores dos \(a_i\) cujo expoente \(A_i\) é \(1\) e multiplicando-os. Isso requer, no máximo, outras \(r\) multiplicações.</p>
+      </li>
+    </ol>
+  </div>
+
+  <p><strong>Tempo de execução.</strong> São necessárias, no máximo, \(2r\) multiplicações módulo \(N\) para calcular \(g^A\). Como \(A\ge2^r\), vemos que são necessárias, no máximo, \(2\log_2(A)\) multiplicações<sup id="fnref-1-3-2-9"><a href="#fn-1-3-2-9" data-source-xref>9</a></sup> módulo \(N\) para calcular \(g^A\). Assim, mesmo que \(A\) seja muito grande, digamos \(A\approx2^{1000}\), é fácil para um computador executar as aproximadamente \(2000\) multiplicações necessárias para calcular \(2^A\) módulo \(N\).</p>
+
+  <p><strong>Questões de eficiência.</strong> Há várias maneiras de tornar o algoritmo de quadratura e multiplicação um pouco mais eficiente, em particular no que diz respeito à eliminação dos requisitos de armazenamento; veja o <a href="#exercicio-1-25" data-source-xref>Exercício 1.25</a> para um exemplo.</p>
+
+  <ol class="footnotes" start="8">
+    <li id="fn-1-3-2-8">A primeira descrição registrada conhecida do algoritmo de exponenciação rápida apareceu na Índia antes de 200 a.C., enquanto a primeira referência fora da Índia data de cerca de 950 d.C. Veja [<a href="../../references/#ref-66" data-source-xref>66, página 441</a>] para uma breve discussão e outras referências. <a href="#fnref-1-3-2-8" data-source-xref aria-label="Voltar à chamada da nota 8">↩</a></li>
+    <li id="fn-1-3-2-9">Observe que \(\log_2(A)\) significa o logaritmo usual de base \(2\), e não o chamado logaritmo discreto que será discutido no <a href="../ch02/#sec-2-2" data-source-xref>Capítulo 2</a>. <a href="#fnref-1-3-2-9" data-source-xref aria-label="Voltar à chamada da nota 9">↩</a></li>
+  </ol>
+</section>

@@ -1,0 +1,21 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>Se os termos líderes são \(\alpha x^r\) e \(\beta x^s\), então o termo líder do produto é \(\alpha\beta x^{r+s}\). Como \(F\) é corpo, \(\alpha\beta\ne0\). Logo \(\deg(ab)=r+s\).</li>
+    <li>Se \(ab=1\), o item (a) dá \(\deg a+\deg b=0\), de modo que ambos são constantes não nulas. Reciprocamente, toda constante não nula \(a\in F\) possui o inverso constante \(a^{-1}\).</li>
+    <li>Usamos a formulação precisa
+      \[
+      f=\alpha p_1p_2\cdots p_r,
+      \qquad \alpha\in F^*,
+      \]
+      em que os \(p_i\) são irredutíveis e o produto pode ser vazio. Se \(\deg f=0\), tome \(\alpha=f\) e \(r=0\). Para grau positivo, faça indução em \(\deg f\). Se \(f\) é irredutível, terminamos. Caso contrário, \(f=gh\) com \(g\) e \(h\) não unidades; pelos itens (a) e (b),
+      \[
+      0&lt;\deg g,\deg h&lt;\deg f.
+      \]
+      A hipótese de indução fatora \(g\) e \(h\), e o produto dessas fatorações fornece a de \(f\). Para um polinômio de grau positivo, o fator constante \(\alpha\) pode ainda ser absorvido em um dos fatores irredutíveis, se se desejar literalmente apenas um produto de irredutíveis.</li>
+    <li>Em \((\mathbb Z/6\mathbb Z)[x]\), tome \(a=2x+1\) e \(b=3x+1\). Ambos têm grau \(1\), mas
+      \[
+      ab=6x^2+5x+1=5x+1
+      \]
+      tem grau \(1\), e não \(2\). O coeficiente líder desaparece porque \(2\cdot3=0\) em \(\mathbb Z/6\mathbb Z\).</li>
+  </ol>
+</div>

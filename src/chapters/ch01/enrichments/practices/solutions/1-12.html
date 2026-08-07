@@ -1,0 +1,60 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>
+      <p>Além de serem restos consecutivos do algoritmo de Euclides, os valores mantêm os invariantes</p>
+      <p>\[g\equiv au\pmod b,\qquad y\equiv ax\pmod b.\]</p>
+      <p>Eles valem na inicialização: \(g=a\), \(u=1\), \(y=b\) e \(x=0\). Se \(g=qy+t\) e \(s=u-qx\), então</p>
+      <p>\[t=g-qy\equiv a(u-qx)=as\pmod b.\]</p>
+      <p>Depois das atribuições, os dois invariantes voltam a valer para os novos pares \((g,u)=(y,x)\) e \((y,x)=(t,s)\). Os restos diminuem estritamente, por isso o processo termina com \(y=0\). Nesse instante, o algoritmo de Euclides garante \(g=\gcd(a,b)\), e \(g\equiv au\pmod b\) mostra que</p>
+      <p>\[v=\frac{g-au}{b}\in\mathbb Z,\qquad au+bv=g.\]</p>
+    </li>
+    <li>
+      <p>Uma implementação com inteiros arbitrariamente grandes em JavaScript é:</p>
+      <pre><code>function mdcEstendido(a, b) {
+  if (a &lt;= 0n || b &lt; 0n) {
+    throw new RangeError("use a &gt; 0 e b ≥ 0");
+  }
+  if (b === 0n) return { g: a, u: 1n, v: 0n };
+
+  let u = 1n, g = a, x = 0n, y = b;
+  while (y !== 0n) {
+    const q = g / y;
+    const t = g - q * y;
+    const s = u - q * x;
+    [u, g, x, y] = [x, y, s, t];
+  }
+  return { g, u, v: (g - a * u) / b };
+}</code></pre>
+    </li>
+    <li>
+      <p>Executando o algoritmo, obtemos:</p>
+      <ol type="i">
+        <li>\(\gcd(527,1258)=17\), com \((u,v)=(-31,13)\), pois \(527(-31)+1258(13)=17\).</li>
+        <li>\(\gcd(228,1056)=12\), com \((u,v)=(-37,8)\), pois \(228(-37)+1056(8)=12\).</li>
+        <li>\(\gcd(163961,167181)=7\), com \((u,v)=(4517,-4430)\), pois \(163961(4517)+167181(-4430)=7\).</li>
+        <li>\(\gcd(3892394,239847)=1\), com \((u,v)=(59789,-970295)\), pois \(3892394(59789)+239847(-970295)=1\).</li>
+      </ol>
+    </li>
+    <li>
+      <p>Sem o teste especial, o algoritmo chega imediatamente a \(y=0\) e tenta calcular \((a-a)/0\), uma divisão indefinida. A saída antecipada mostrada no código corrige o caso: \(\gcd(a,0)=a\) e \(a\cdot1+0\cdot0=a\).</p>
+    </li>
+    <li>
+      <p>Se \(g=\gcd(a,b)\), todas as soluções têm \(u=u_0+k(b/g)\). Portanto reduzimos \(u_0\) módulo \(b/g\) ao menor representante estritamente positivo e ajustamos \(v\) pelo mesmo \(k\):</p>
+      <pre><code>function menorUPositivo(a, b, { g, u, v }) {
+  if (b === 0n) return { g, u: 1n, v: 0n };
+  const passoU = b / g;
+  let uMin = ((u % passoU) + passoU) % passoU;
+  if (uMin === 0n) uMin = passoU;
+  const k = (uMin - u) / passoU;
+  return { g, u: uMin, v: v - k * (a / g) };
+}</code></pre>
+      <p>Refazendo o item (c), os pares com \(u\) mínimo positivo são, na mesma ordem:</p>
+      <ol type="i">
+        <li>\((u,v)=(43,-18)\);</li>
+        <li>\((u,v)=(51,-11)\);</li>
+        <li>\((u,v)=(4517,-4430)\);</li>
+        <li>\((u,v)=(59789,-970295)\).</li>
+      </ol>
+    </li>
+  </ol>
+</div>

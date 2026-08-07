@@ -1,0 +1,25 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>
+      <p>Se \(d=\gcd(a,b)\), então \(d\mid a\) e \(d\mid b\); logo \(d\mid(au+bv)\). Pela hipótese, \(d\mid1\). Como \(d\) é positivo, \(d=1\).</p>
+    </li>
+    <li>
+      <p>Não. Por exemplo, \(a=b=1\), \(u=6\) e \(v=0\) satisfazem \(au+bv=6\), mas \(\gcd(a,b)=1\).</p>
+      <p>Em geral, \(d=\gcd(a,b)\) deve dividir \(au+bv=6\), portanto</p>
+      <p>\[d\in\{1,2,3,6\}.\]</p>
+      <p>Todos os quatro valores ocorrem: para qualquer divisor positivo \(d\mid6\), tome \(a=b=d\), \(u=6/d\) e \(v=0\).</p>
+    </li>
+    <li>
+      <p>Subtraindo as duas identidades,</p>
+      <p>\[a(u_2-u_1)+b(v_2-v_1)=0.\]</p>
+      <p>Logo \(a(u_2-u_1)=-b(v_2-v_1)\). Como a existência de \(au+bv=1\) implica \(\gcd(a,b)=1\), o lema de Euclides dá \(a\mid(v_2-v_1)\) e \(b\mid(u_2-u_1)\).</p>
+    </li>
+    <li>
+      <p>Ponha \(A=a/g\) e \(B=b/g\); então \(\gcd(A,B)=1\). Se \((u,v)\) é outra solução, a subtração de \(au_0+bv_0=g\) de \(au+bv=g\), seguida da divisão por \(g\), dá</p>
+      <p>\[A(u-u_0)+B(v-v_0)=0.\]</p>
+      <p>Assim \(A(u-u_0)=-B(v-v_0)\). Como \(A\) e \(B\) são coprimos, \(B\mid(u-u_0)\); escreva \(u-u_0=kB\). Substituindo, obtemos \(v-v_0=-kA\). Portanto</p>
+      <p>\[u=u_0+k\frac bg,\qquad v=v_0-k\frac ag,\qquad k\in\mathbb Z.\]</p>
+      <p>Reciprocamente, substituir qualquer par dessa forma em \(au+bv\) cancela os termos com \(k\), produzindo \(g\); logo a parametrização contém exatamente todas as soluções.</p>
+    </li>
+  </ol>
+</div>

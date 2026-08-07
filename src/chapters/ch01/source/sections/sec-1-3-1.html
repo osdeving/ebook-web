@@ -1,0 +1,29 @@
+<section class="section subsection" id="sec-1-3-1" data-layer="source">
+  <h3><span class="section-number">1.3.1</span> Aritmética modular e cifras de deslocamento</h3>
+
+  <p>Lembre-se de que a cifra de César (ou cifra de deslocamento) estudada na <a href="#sec-1-1" data-source-xref>Seção 1.1</a> funciona deslocando cada letra do alfabeto por um número fixo de letras. Podemos descrever matematicamente uma cifra de deslocamento atribuindo um número a cada letra, como na <a href="#tab-1-7" data-source-xref>Tabela 1.7</a>.</p>
+
+  <div class="table-wrap" id="tab-1-7">
+    <table class="cipher-table">
+      <caption><span class="label">Tabela 1.7.</span> Atribuição de números às letras.</caption>
+      <tbody>
+        <tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z</td></tr>
+        <tr><td>\(0\)</td><td>\(1\)</td><td>\(2\)</td><td>\(3\)</td><td>\(4\)</td><td>\(5\)</td><td>\(6\)</td><td>\(7\)</td><td>\(8\)</td><td>\(9\)</td><td>\(10\)</td><td>\(11\)</td><td>\(12\)</td><td>\(13\)</td><td>\(14\)</td><td>\(15\)</td><td>\(16\)</td><td>\(17\)</td><td>\(18\)</td><td>\(19\)</td><td>\(20\)</td><td>\(21\)</td><td>\(22\)</td><td>\(23\)</td><td>\(24\)</td><td>\(25\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Uma cifra de deslocamento com deslocamento \(k\) toma uma letra do texto claro correspondente ao número \(p\) e a associa à letra do texto cifrado correspondente ao número \(p+k\bmod26\). Observe como o uso da aritmética modular, neste caso módulo \(26\), simplifica a descrição da cifra de deslocamento. A quantidade deslocada serve tanto como chave de criptografia quanto como chave de descriptografia. A criptografia é dada pela fórmula</p>
+  <div class="display-math">\[(\text{letra do texto cifrado})\equiv(\text{letra do texto claro})+(\text{chave secreta})\pmod{26},\]</div>
+  <p>e a descriptografia funciona deslocando na direção oposta,</p>
+  <div class="display-math">\[(\text{letra do texto claro})\equiv(\text{letra do texto cifrado})-(\text{chave secreta})\pmod{26}.\]</div>
+
+  <p>Mais sucintamente, se definirmos</p>
+  <div class="display-math">\[p=\text{letra do texto claro},\qquad c=\text{letra do texto cifrado},\qquad k=\text{chave secreta},\]</div>
+  <p>então</p>
+  <div class="display-math">\[
+    \underbrace{c\equiv p+k\pmod{26}}_{\text{criptografia}}
+    \qquad\text{e}\qquad
+    \underbrace{p\equiv c-k\pmod{26}}_{\text{descriptografia}}.
+  \]</div>
+</section>

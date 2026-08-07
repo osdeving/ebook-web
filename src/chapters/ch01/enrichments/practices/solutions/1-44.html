@@ -1,0 +1,41 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>
+      <ol type="i">
+        <li>
+          \[
+          \begin{pmatrix}1&amp;3\\2&amp;2\end{pmatrix}
+          \begin{pmatrix}2\\1\end{pmatrix}
+          +\begin{pmatrix}5\\4\end{pmatrix}
+          \equiv\begin{pmatrix}3\\3\end{pmatrix}\pmod7.
+          \]
+        </li>
+        <li>O determinante é \(3\pmod7\), cujo inverso é \(5\). Portanto
+          \[
+          k_1^{-1}\equiv
+          5\begin{pmatrix}2&amp;-3\\-2&amp;1\end{pmatrix}
+          \equiv\begin{pmatrix}3&amp;6\\4&amp;5\end{pmatrix}\pmod7.
+          \]</li>
+        <li>
+          \[
+          m\equiv k_1^{-1}\left(
+          \begin{pmatrix}3\\5\end{pmatrix}-\begin{pmatrix}5\\4\end{pmatrix}\right)
+          \equiv\begin{pmatrix}0\\4\end{pmatrix}\pmod7.
+          \]</li>
+      </ol>
+    </li>
+    <li>Em dimensão \(n\), \(n+1\) pares adequados costumam bastar. Subtraia um par-base dos outros \(n\): isso elimina \(k_2\) e dá \(K M=C\), em que as colunas de \(M\) são diferenças de textos claros. Se \(M\) for invertível, \(k_1=CM^{-1}\), e então \(k_2=c_1-k_1m_1\).</li>
+    <li>Usando \(m_1\) como base,
+      \[
+      M=\begin{pmatrix}3&amp;2\\6&amp;8\end{pmatrix},\qquad
+      C=\begin{pmatrix}7&amp;7\\8&amp;10\end{pmatrix}\pmod{11}.
+      \]
+      Como \(k_1=CM^{-1}\), obtemos
+      \[
+      k_1=\begin{pmatrix}3&amp;7\\4&amp;3\end{pmatrix},\qquad
+      k_2=\begin{pmatrix}2\\9\end{pmatrix}\pmod{11}.
+      \]
+      A substituição nos três pares confirma a chave.</li>
+    <li>Codifique as \(q\) letras do alfabeto pelos vetores da base padrão de \(F^q\). Toda permutação das letras corresponde a uma matriz de permutação \(P\). A cifra \(m\mapsto Pm\), com \(k_2=0\), é uma cifra de Hill e realiza exatamente a substituição dada.</li>
+  </ol>
+</div>

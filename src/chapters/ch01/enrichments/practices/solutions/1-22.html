@@ -1,0 +1,27 @@
+<div class="exercise-solution">
+  <p>Assumimos que o módulo \(m\ge2\) e, no item (b), que \(b\) é positivo. Essas são as condições implícitas para que o intervalo pedido faça sentido.</p>
+  <ol type="a">
+    <li>
+      <p>Como \(m\) é ímpar, \((m+1)/2\) é inteiro. Além disso,</p>
+      <div class="display-math">\[
+        2\cdot\frac{m+1}{2}=m+1\equiv1\pmod m.
+      \]</div>
+      <p>Portanto</p>
+      <div class="display-math">\[
+        2^{-1}\bmod m=\frac{m+1}{2}.
+      \]</div>
+    </li>
+    <li>
+      <p>Escreva \(m=kb+1\), isto é, \(k=(m-1)/b\). O representante procurado é</p>
+      <div class="display-math">\[
+        x=m-k=m-\frac{m-1}{b}
+          =\frac{(b-1)m+1}{b}.
+      \]</div>
+      <p>De fato,</p>
+      <div class="display-math">\[
+        bx=bm-(m-1)=(b-1)m+1\equiv1\pmod m.
+      \]</div>
+      <p>Como \(1\le k\le m-1\), temos \(1\le x\le m-1\), portanto esse já é o representante no intervalo solicitado.</p>
+    </li>
+  </ol>
+</div>

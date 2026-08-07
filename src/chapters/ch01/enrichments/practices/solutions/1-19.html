@@ -1,0 +1,10 @@
+<div class="exercise-solution">
+  <p>Escreva \(d=\gcd(a,b)\). Como \(g^a\equiv1\pmod m\), o número \(g\) é uma unidade módulo \(m\): por exemplo, \(g^{a-1}\) é um inverso de \(g\). Portanto, também podemos usar expoentes negativos de \(g\) módulo \(m\).</p>
+  <p>Pela identidade de Bézout, existem \(u,v\in\mathbb Z\) tais que</p>
+  <div class="display-math">\[d=au+bv.\]</div>
+  <p>Elevando \(g\) a essa potência e usando as duas hipóteses, obtemos</p>
+  <div class="display-math">\[
+    g^d=g^{au+bv}=(g^a)^u(g^b)^v\equiv1^u1^v\equiv1\pmod m.
+  \]</div>
+  <p>Logo \(g^{\gcd(a,b)}\equiv1\pmod m\), como queríamos demonstrar.</p>
+</div>

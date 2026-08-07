@@ -72,7 +72,9 @@ function buildIndex(article: HTMLElement): SearchEntry[] {
   const entries: SearchEntry[] = [];
   article.querySelectorAll<HTMLElement>("section[id], [data-enrichment-id][id]").forEach((node) => {
     const text = node.textContent?.replace(/\s+/g, " ").trim() ?? "";
-    const title = node.querySelector("h2, h3, .supplement__title")?.textContent?.trim() ?? node.id;
+    const title = node.dataset.enrichmentTitle
+      ?? node.querySelector("h2, h3, .supplement__title")?.textContent?.trim()
+      ?? node.id;
     const layer = (node.dataset.layer as EnrichmentLayer | undefined) ?? "source";
     entries.push({ id: node.id, title, text, normalized: normalizeText(text), layer });
   });

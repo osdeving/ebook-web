@@ -1,0 +1,40 @@
+<div class="exercise-solution">
+  <p>Fixe um primo \(p\). Para inteiros positivos \(a,b\), escreva</p>
+  <div class="display-math">\[
+    a=p^r u,\qquad b=p^s v,
+    \qquad p\nmid u,\quad p\nmid v,
+  \]</div>
+  <p>onde \(r=\operatorname{ord}_p(a)\) e \(s=\operatorname{ord}_p(b)\).</p>
+  <ol type="a">
+    <li>
+      <p>Temos</p>
+      <div class="display-math">\[
+        ab=p^{r+s}uv.
+      \]</div>
+      <p>Como \(p\) é primo e não divide nem \(u\) nem \(v\), não divide \(uv\). Logo a potência exata de \(p\) que divide \(ab\) é \(p^{r+s}\), isto é,</p>
+      <div class="display-math">\[
+        \operatorname{ord}_p(ab)=r+s
+        =\operatorname{ord}_p(a)+\operatorname{ord}_p(b).
+      \]</div>
+    </li>
+    <li>
+      <p>Se \(t=\min\{r,s\}\), então \(p^t\mid a\) e \(p^t\mid b\). Consequentemente \(p^t\mid a+b\), e</p>
+      <div class="display-math">\[
+        \operatorname{ord}_p(a+b)\ge t
+        =\min\{\operatorname{ord}_p(a),\operatorname{ord}_p(b)\}.
+      \]</div>
+    </li>
+    <li>
+      <p>Suponha, sem perda de generalidade, que \(r&lt;s\). Então</p>
+      <div class="display-math">\[
+        a+b=p^r\left(u+p^{s-r}v\right).
+      \]</div>
+      <p>Como \(s-r\ge1\), o fator entre parênteses é congruente a \(u\) módulo \(p\), e \(p\nmid u\). Portanto esse fator não é divisível por \(p\), de modo que</p>
+      <div class="display-math">\[
+        \operatorname{ord}_p(a+b)=r
+        =\min\{\operatorname{ord}_p(a),\operatorname{ord}_p(b)\}.
+      \]</div>
+      <p>O caso \(s&lt;r\) é simétrico.</p>
+    </li>
+  </ol>
+</div>

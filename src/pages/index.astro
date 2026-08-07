@@ -32,13 +32,14 @@ const summaries = chapters.map((chapter) => ({
         <strong>Ebook Web</strong>
       </a>
       <div class="library-hero__copy">
-        <p class="library-kicker">Matemática em camadas</p>
-        <h1>O rigor do texto.<br /><em>As possibilidades da web.</em></h1>
-        <p>Leia a tradução sem interferências ou ative explicações lentas, experiências manipuláveis, práticas com feedback, história e fontes — cada recurso continua independente do texto.</p>
+        <p class="library-kicker">Ebook web dinâmico</p>
+        <h1>Explore o conteúdo<br /><em>de forma dinâmica.</em></h1>
+        <p>Leia a tradução, navegue entre definições, proposições, exercícios e referências e ative explicações, laboratórios e práticas conforme precisar.</p>
       </div>
       <div class="library-layer-map" aria-label="Camadas do framework">
         <span>Fonte preservada</span><span>Explicação</span><span>Laboratório</span><span>Prática</span><span>História</span><span>Leitura</span>
       </div>
+      <a class="library-reference-link" href={`${base}references/`}>Consultar as 150 referências <span aria-hidden="true">→</span></a>
     </header>
 
     <ChapterLibrary client:idle chapters={summaries} />

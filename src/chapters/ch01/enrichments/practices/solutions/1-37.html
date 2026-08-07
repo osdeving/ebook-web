@@ -1,0 +1,56 @@
+<div class="exercise-solution">
+  <p><strong>Correção necessária no enunciado.</strong> É preciso supor \(p\nmid b\), ou, de modo equivalente, que a raiz inicial \(\alpha\) seja não nula módulo \(p\). Sem essa hipótese, o item (a) é falso: para \(p=3\) e \(b=3\), \(X\equiv0\pmod3\) é solução, mas \(X^2\equiv3\pmod9\) não tem solução. A seguir resolvemos a versão corrigida.</p>
+  <ol type="a">
+    <li>
+      <p>Procedemos por indução. Escolha uma solução \(\beta_1=\alpha\) módulo \(p\). Suponha que \(\beta_e\) já satisfaça</p>
+      <div class="display-math">\[
+        \beta_e^2\equiv b\pmod{p^e}.
+      \]</div>
+      <p>Existe então \(c\in\mathbb Z\) tal que \(\beta_e^2-b=cp^e\). Procuramos uma solução no formato</p>
+      <div class="display-math">\[
+        \beta_{e+1}=\beta_e+tp^e,
+        \qquad t\in\{0,1,\ldots,p-1\}.
+      \]</div>
+      <p>Ao elevar ao quadrado,</p>
+      <div class="display-math">\[
+        \beta_{e+1}^2-b
+        =p^e\left(c+2\beta_e t+t^2p^e\right).
+      \]</div>
+      <p>Para que isso seja divisível por \(p^{e+1}\), basta escolher \(t\) de modo que</p>
+      <div class="display-math">\[
+        c+2\beta_e t\equiv0\pmod p.
+      \]</div>
+      <p>Como \(\beta_e\equiv\alpha\not\equiv0\pmod p\) e \(p\) é ímpar, \(2\beta_e\) é invertível módulo \(p\). Portanto existe uma única escolha</p>
+      <div class="display-math">\[
+        t\equiv-c(2\beta_e)^{-1}\pmod p.
+      \]</div>
+      <p>Essa escolha constrói uma solução módulo \(p^{e+1}\), completando a indução.</p>
+    </li>
+    <li>
+      <p>Começamos especificamente com \(\beta_1=\alpha\). Em cada passo da construção anterior,</p>
+      <div class="display-math">\[
+        \beta_{e+1}=\beta_e+tp^e\equiv\beta_e\pmod{p^e}.
+      \]</div>
+      <p>Em particular, todas as soluções construídas satisfazem \(\beta_e\equiv\alpha\pmod p\). Assim existe, para todo \(e\ge1\), um levantamento da raiz escolhida \(\alpha\).</p>
+    </li>
+    <li>
+      <p>Se \(\beta\) e \(\beta'\) são duas soluções que reduzem a \(\alpha\) módulo \(p\), então</p>
+      <div class="display-math">\[
+        p^e\mid\beta^2-\beta'^2
+        =(\beta-\beta')(\beta+\beta').
+      \]</div>
+      <p>Mas</p>
+      <div class="display-math">\[
+        \beta+\beta'\equiv2\alpha\not\equiv0\pmod p.
+      \]</div>
+      <p>Logo \(\beta+\beta'\) é coprimo com \(p^e\). Portanto todo o fator \(p^e\) deve dividir \(\beta-\beta'\), isto é,</p>
+      <div class="display-math">\[
+        \beta\equiv\beta'\pmod{p^e}.
+      \]</div>
+    </li>
+    <li>
+      <p>Qualquer solução módulo \(p^e\) se reduz a uma solução módulo \(p\). Se não houver raiz módulo \(p\), não poderá haver raiz módulo \(p^e\).</p>
+      <p>Se houver raiz módulo \(p\), o Exercício 1.36 fornece exatamente duas, \(\alpha\) e \(-\alpha\). O item (b) levanta cada uma delas a uma solução módulo \(p^e\), e o item (c) mostra que cada levantamento é único. Os dois levantamentos continuam distintos porque já são distintos módulo \(p\). Portanto \(X^2\equiv b\pmod{p^e}\) possui exatamente duas soluções ou nenhuma.</p>
+    </li>
+  </ol>
+</div>

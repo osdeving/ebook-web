@@ -49,6 +49,8 @@ npm run new:enrichment -- --chapter ch03 --type explanation \
 - componentes Astro para a página e ilhas React somente onde há estado;
 - runtime dividido em armazenamento, matemática, montagem, navegação,
   acessibilidade, progresso, notas e impressão;
+- referências cruzadas e permalinks estáveis para resultados, equações,
+  exercícios e bibliografia;
 - CSS por tokens, estrutura e tipo de recurso;
 - índice automático de capítulos e manifestos versionados;
 - build estático e publicação automática no GitHub Pages.

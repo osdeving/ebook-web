@@ -34,7 +34,7 @@
 
   body { background: #fff; font-size: 10.5pt; line-height: 1.55; }
   .skip-link, .sidebar, .mobile-bar, .menu-backdrop, .progress-track,
-  .back-top, .focus-exit, .copy-equation, .hero::after,
+  .back-top, .focus-exit, .copy-equation, .source-permalink, .hero::after,
   .enrichment-toolbar, .enrichment-backdrop, .enrichment-drawer,
   .enrichment-section-tools, .supplement__actions,
   [data-screen-only], [data-interactive-only] { display: none !important; }
@@ -46,6 +46,7 @@
   .reader { width: 100%; padding: 12mm 0 0; }
   .chapter-section { margin-top: 0; break-before: page; }
   .semantic, .figure, .table-wrap, .equation { box-shadow: none; break-inside: avoid; }
+  .table-wrap.has-source-permalink { padding-top: 0; }
 
   .trapdoor-diagram { grid-template-columns: 1fr; }
   .diagram-row { grid-template-columns: minmax(5rem, 1fr) minmax(11rem, 2fr) minmax(5rem, 1fr); }
@@ -63,7 +64,8 @@
   [data-print-static] { display: block !important; }
 
   a { color: inherit; text-decoration: none; }
-  .supplement a[href^="http"]::after, .reading-list__link[href^="http"]::after {
+  .supplement a[href^="http"]::after, .reading-list__link[href^="http"]::after,
+  .enrichment-inline a[href^="http"]::after {
     content: " (" attr(href) ")";
     color: var(--muted);
     font-size: .85em;

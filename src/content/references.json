@@ -1,0 +1,898 @@
+[
+  {
+    "number": 1,
+    "citation": "M. Agrawal, N. Kayal, N. Saxena, PRIMES is in P. Ann. Math. (2) 160(2), 781–793 (2004)"
+  },
+  {
+    "number": 2,
+    "citation": "L.V. Ahlfors, Complex Analysis: An Introduction to the Theory of Analytic Functions of One Complex Variable. International Series in Pure and Applied Mathematics, 3rd edn. (McGraw-Hill, New York, 1978)"
+  },
+  {
+    "number": 3,
+    "citation": "M. Ajtai, The shortest vector problem in L2 is NP-hard for randomized reductions (extended abstract), in STOC ’98: Proceedings of the Thirtieth Annual ACM Symposium on Theory of Computing, Dallas (ACM, New York, 1998), pp. 10–19",
+    "url": "https://doi.org/10.1145/276698.276705",
+    "doi": "10.1145/276698.276705",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 4,
+    "citation": "M. Ajtai, C. Dwork, A public-key cryptosystem with worst-case/average-case equivalence, in STOC ’97, El Paso (ACM, New York, 1999), pp. 284–293 (electronic)"
+  },
+  {
+    "number": 5,
+    "citation": "W.R. Alford, A. Granville, C. Pomerance, There are infinitely many Carmichael numbers. Ann. Math. (2) 139(3), 703–722 (1994)",
+    "url": "https://doi.org/10.2307/2118576",
+    "doi": "10.2307/2118576",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 6,
+    "citation": "ANSI-ECDSA, Public key cryptography for the financial services industry: the elliptic curve digital signature algorithm (ECDSA). ANSI Report X9.62, American National Standards Institute, 1998"
+  },
+  {
+    "number": 7,
+    "citation": "T.M. Apostol, Introduction to Analytic Number Theory. Undergraduate Texts in Mathematics (Springer, New York, 1976)",
+    "url": "https://doi.org/10.1007/978-1-4757-5579-4",
+    "doi": "10.1007/978-1-4757-5579-4",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 8,
+    "citation": "L. Babai, On Lovász’ lattice reduction and the nearest lattice point problem. Combinatorica 6(1), 1–13 (1986)",
+    "url": "https://doi.org/10.1007/bf02579403",
+    "doi": "10.1007/bf02579403",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 9,
+    "citation": "E. Bach, Explicit bounds for primality testing and related problems. Math. Comput. 55(191), 355–380 (1990)",
+    "url": "https://doi.org/10.1090/s0025-5718-1990-1023756-8",
+    "doi": "10.1090/s0025-5718-1990-1023756-8",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 10,
+    "citation": "E. Bach, J. Shallit, Algorithmic Number Theory: Efficient Algorithms. Foundations of Computing Series, vol. 1 (MIT, Cambridge, 1996)."
+  },
+  {
+    "number": 11,
+    "citation": "M. Bellare, Practice oriented provable-security, in Proceedings of the First International Workshop on Information Security—ISW ’97, Tatsunokuchi. Volume of 1396 Lecture Notes in Computer Science (Springer, Berlin, 1998)",
+    "url": "https://doi.org/10.1007/bfb0030423",
+    "doi": "10.1007/bfb0030423",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 12,
+    "citation": "M. Bellare, P. Rogaway, Random oracles are practical: a paradigm for designing efficient protocols, in Proceedings of the First Annual Conference on Computer and Communications Security, Fairfax, 1993, pp. 62–73",
+    "url": "https://doi.org/10.1145/168588.168596",
+    "doi": "10.1145/168588.168596",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 13,
+    "citation": "M. Bellare, P. Rogaway, Optimal asymmetric encryption, in Advances in Cryptology—EUROCRYPT ’94, Perugia. Volume 950 of Lecture Notes in Computer Science (Springer, Berlin, 1995), pp. 92–111",
+    "url": "https://doi.org/10.1007/bfb0053428",
+    "doi": "10.1007/bfb0053428",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 14,
+    "citation": "I.F. Blake, G. Seroussi, N.P. Smart, Elliptic Curves in Cryptography. Volume 265 of London Mathematical Society Lecture Note Series (Cambridge University Press, Cambridge, 2000)",
+    "url": "https://doi.org/10.1112/s0024609300247371",
+    "doi": "10.1112/s0024609300247371",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 15,
+    "citation": "G. Blakley, Safeguarding cryptographic keys, in Proceedings of AFIPS National Computer Conference, Zurich, vol. 48, 1979, pp. 313–317",
+    "url": "https://doi.org/10.1109/mark.1979.8817296",
+    "doi": "10.1109/mark.1979.8817296",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 16,
+    "citation": "D. Bleichenbacher, Chosen ciphertext attacks against protocols based on RSA encryption standard PKCS #1, in Advances in Cryptology—CRYPTO 1998, Santa Barbara. Volume 1462 of Lecture Notes in Computer Science (Springer, Berlin, 1998), pp. 1–12",
+    "url": "https://doi.org/10.1007/bfb0055716",
+    "doi": "10.1007/bfb0055716",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 17,
+    "citation": "J. Blömer, A. May, Low secret exponent RSA revisited, in Cryptography and Lattices, Providence, 2001. Volume 2146 of Lecture Notes in Computer Science (Springer, Berlin, 2001), pp. 4–19",
+    "url": "https://doi.org/10.1007/3-540-44670-2_2",
+    "doi": "10.1007/3-540-44670-2_2",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 18,
+    "citation": "D. Boneh, G. Durfee, Cryptanalysis of RSA with private key d less than N 0.292 , in Advances in Cryptology—EUROCRYPT ’99, Prague. Volume 1592 of Lecture Notes in Computer Science (Springer, Berlin, 1999), pp. 1–11",
+    "url": "https://doi.org/10.1007/3-540-48910-x_1",
+    "doi": "10.1007/3-540-48910-x_1",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 19,
+    "citation": "D. Boneh, G. Durfee, Cryptanalysis of RSA with private key d less than N 0.292 . IEEE Trans. Inf. Theory 46(4), 1339–1349 (2000)",
+    "url": "https://doi.org/10.1109/18.850673",
+    "doi": "10.1109/18.850673",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 20,
+    "citation": "D. Boneh, M. Franklin, Identity-based encryption from the Weil pairing, in Advances in Cryptology—CRYPTO 2001, Santa Barbara. Volume 2139 of Lecture Notes in Computer Science (Springer, Berlin, 2001), pp. 213–229",
+    "url": "https://doi.org/10.1007/3-540-44647-8_13",
+    "doi": "10.1007/3-540-44647-8_13",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 21,
+    "citation": "D. Boneh, M. Franklin, Identity-based encryption from the Weil pairing. SIAM J. Comput. 32(3), 586–615 (electronic) (2003)",
+    "url": "https://doi.org/10.1137/s0097539701398521",
+    "doi": "10.1137/s0097539701398521",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 22,
+    "citation": "D. Boneh, R. Venkatesan, Breaking RSA may not be equivalent to factoring (extended abstract), in Advances in Cryptology—EUROCRYPT ’98, Espoo. Volume 1403 of Lecture Notes in Computer Science (Springer, Berlin, 1998), pp. 59–71",
+    "url": "https://doi.org/10.1007/bfb0054117",
+    "doi": "10.1007/bfb0054117",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 23,
+    "citation": "R.P. Brent, An improved Monte Carlo factorization algorithm. BIT 20(2), 176–184 (1980)",
+    "url": "https://doi.org/10.1007/bf01933190",
+    "doi": "10.1007/bf01933190",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 24,
+    "citation": "E.R. Canfield, P. Erdős, C. Pomerance, On a problem of Oppenheim concerning “factorisatio numerorum”. J. Number Theory 17(1), 1–28 (1983)",
+    "url": "https://doi.org/10.1016/0022-314x(83)90002-1",
+    "doi": "10.1016/0022-314x(83)90002-1",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 25,
+    "citation": "J.W.S. Cassels, Lectures on Elliptic Curves. Volume 24 of London Mathematical Society Student Texts (Cambridge University Press, Cambridge, 1991)"
+  },
+  {
+    "number": 26,
+    "citation": "D. Chaum, Blind signatures for untraceable payments, in Advances in Cryptology—CRYPTO ’82, Santa Barbara. Lecture Notes in Computer Science (Plenum Press, New York/London, 1983), pp. 199–203",
+    "url": "https://doi.org/10.1007/978-1-4757-0602-4_18",
+    "doi": "10.1007/978-1-4757-0602-4_18",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 27,
+    "citation": "D. Chaum, A. Fiat, M. Naor, Untraceable electronic cash, in Advances in Cryptology—CRYPTO 1988, Santa Barbara. Volume 403 of Lecture Notes in Computer Science (Springer, 1988), pp. 319–327"
+  },
+  {
+    "number": 28,
+    "citation": "H. Cohen, A Course in Computational Algebraic Number Theory. Volume 138 of Graduate Texts in Mathematics (Springer, Berlin, 1993)",
+    "url": "https://doi.org/10.1007/978-3-662-02945-9",
+    "doi": "10.1007/978-3-662-02945-9",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 29,
+    "citation": "H. Cohen, G. Frey, R. Avanzi, C. Doche, T. Lange, K. Nguyen, F. Vercauteren (eds.), Handbook of Elliptic and Hyperelliptic Curve Cryptography. Discrete Mathematics and Its Applications (Boca Raton) (Chapman & Hall/CRC, Boca Raton, 2006)"
+  },
+  {
+    "number": 30,
+    "citation": "S.A. Cook, The complexity of theorem-proving procedures, in STOC ’71: Proceedings of the Third Annual ACM Symposium on Theory of Computing, Shaker Heights (ACM, New York, 1971), pp. 151–158",
+    "url": "https://doi.org/10.1145/800157.805047",
+    "doi": "10.1145/800157.805047",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 31,
+    "citation": "D. Coppersmith, Solving homogeneous linear equations over GF(2) via block Wiedemann algorithm. Math. Comput. 62(205), 333–350 (1994)",
+    "url": "https://doi.org/10.2307/2153413",
+    "doi": "10.2307/2153413",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 32,
+    "citation": "D. Coppersmith, Small solutions to polynomial equations, and low exponent RSA vulnerabilities. J. Cryptol. 10(4), 233–260 (1997)",
+    "url": "https://doi.org/10.1007/s001459900030",
+    "doi": "10.1007/s001459900030",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 33,
+    "citation": "D. Coppersmith, Finding small solutions to small degree polynomials, in Cryptography and Lattices, Providence, 2001. Volume 2146 of Lecture Notes in Computer Science (Springer, Berlin, 2001), pp. 20–31",
+    "url": "https://doi.org/10.1007/3-540-44670-2_3",
+    "doi": "10.1007/3-540-44670-2_3",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 34,
+    "citation": "R. Crandall, C. Pomerance, Prime Numbers (Springer, New York, 2001)"
+  },
+  {
+    "number": 35,
+    "citation": "H. Davenport, The Higher Arithmetic (Cambridge University Press, Cambridge, 1999)",
+    "url": "https://www.cambridge.org/core/books/the-higher-arithmetic/DDEFF69B28C5E3D66C228102D920F566",
+    "linkSource": "curated"
+  },
+  {
+    "number": 36,
+    "citation": "M. Dietzfelbinger, Primality Testing in Polynomial Time: From Randomized Algorithms to “PRIMES is in P”. Volume 3000 of Lecture Notes in Computer Science (Springer, Berlin, 2004)"
+  },
+  {
+    "number": 37,
+    "citation": "W. Diffie, The first ten years of public key cryptology, G.J. Simmons (ed.), in Contemporary Cryptology (IEEE, New York, 1992), pp. 135–175"
+  },
+  {
+    "number": 38,
+    "citation": "W. Diffie, M.E. Hellman, New directions in cryptography. IEEE Trans. Inf. Theory IT-22(6), 644–654 (1976)",
+    "url": "https://doi.org/10.1109/TIT.1976.1055638",
+    "linkSource": "curated"
+  },
+  {
+    "number": 39,
+    "citation": "L. Ducas, P.Q. Nguyen, Learning a zonotope and more: cryptanalysis of NTRUSign countermeasures, in Advances in Cryptology—ASIACRYPT 2012, Beijing. Volume 7658 of Lecture Notes in Computer Science (Springer, Berlin, 2012), pp. 433–450",
+    "url": "https://doi.org/10.1007/978-3-642-34961-4_27",
+    "doi": "10.1007/978-3-642-34961-4_27",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 40,
+    "citation": "D.S. Dummit, R.M. Foote, Abstract Algebra, 3rd edn. (Wiley, Hoboken, 2004)"
+  },
+  {
+    "number": 41,
+    "citation": "T. ElGamal, A public key cryptosystem and a signature scheme based on discrete logarithms. IEEE Trans. Inf. Theory 31(4), 469–472 (1985)",
+    "url": "https://doi.org/10.1109/tit.1985.1057074",
+    "doi": "10.1109/tit.1985.1057074",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 42,
+    "citation": "J. Ellis, The story of non-secret encryption, 1987 (released by CSEG in 1997).",
+    "url": "https://www.cs.miami.edu/home/burt/manuscripts/crypto_for_intelligence/ellis.pdf",
+    "linkSource": "curated"
+  },
+  {
+    "number": 43,
+    "citation": "W. Fleming, Functions of Several Variables. Undergraduate Texts in Mathematics, 2nd edn. (Springer, New York, 1977)"
+  },
+  {
+    "number": 44,
+    "citation": "M. Fouquet, P. Gaudry, R. Harley, An extension of Satoh’s algorithm and its implementation. J. Ramanujan Math. Soc. 15(4), 281–318 (2000)"
+  },
+  {
+    "number": 45,
+    "citation": "J. Fraleigh, A First Course in Abstract Algebra, 7th edn. (Addison Welsley, Boston/London, 2002)"
+  },
+  {
+    "number": 46,
+    "citation": "M.R. Garey, D.S. Johnson, Computers and Intractability: A Guide to the Theory of NP-Completeness. A Series of Books in the Mathematical Sciences (W. H. Freeman, San Francisco, 1979)"
+  },
+  {
+    "number": 47,
+    "citation": "C. Gentry, A Fully Homomorphic Encryption Scheme, PhD thesis, Stanford University, 2009.",
+    "url": "https://crypto.stanford.edu/craig",
+    "linkSource": "book"
+  },
+  {
+    "number": 48,
+    "citation": "C. Gentry, Fully homomorphic encryption using ideal lattices, in STOC’09— Proceedings of the 2009 ACM International Symposium on Theory of Computing, Bethesda (ACM, New York, 2009), pp. 169–178",
+    "url": "https://doi.org/10.1145/1536414.1536440",
+    "doi": "10.1145/1536414.1536440",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 49,
+    "citation": "O. Goldreich, S. Goldwasser, S. Halevi, Public-key cryptosystems from lattice reduction problems, in Advances in Cryptology—CRYPTO ’97, Santa Barbara, 1997. Volume 1294 of Lecture Notes in Computer Science (Springer, Berlin, 1997), pp. 112–131",
+    "url": "https://doi.org/10.1007/bfb0052231",
+    "doi": "10.1007/bfb0052231",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 50,
+    "citation": "O. Goldreich, D. Micciancio, S. Safra, J.-P. Seifert, Approximating shortest lattice vectors is not harder than approximating closest lattice vectors. Inf. Process. Lett. 71(2), 55–61 (1999)",
+    "url": "https://doi.org/10.1016/s0020-0190(99)00083-6",
+    "doi": "10.1016/s0020-0190(99)00083-6",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 51,
+    "citation": "G.R. Grimmett, D.R. Stirzaker, Probability and Random Processes, 3rd edn. (Oxford University Press, New York, 2001)"
+  },
+  {
+    "number": 52,
+    "citation": "G.H. Hardy, E.M. Wright, An Introduction to the Theory of Numbers, 5th edn. (The Clarendon Press/Oxford University Press, New York, 1979)",
+    "url": "https://global.oup.com/academic/product/an-introduction-to-the-theory-of-numbers-9780199219865",
+    "linkSource": "curated"
+  },
+  {
+    "number": 53,
+    "citation": "I.N. Herstein, Topics in Algebra, 2nd edn. (Xerox College Publishing, Lexington, 1975)"
+  },
+  {
+    "number": 54,
+    "citation": "J. Hoffstein, J. Pipher, J.H. Silverman, NTRU: a ring-based public key cryptosystem, in Algorithmic Number Theory, Portland, 1998. Volume 1423 of Lecture Notes in Computer Science (Springer, Berlin, 1998), pp. 267–288",
+    "url": "https://doi.org/10.1007/bfb0054868",
+    "doi": "10.1007/bfb0054868",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 55,
+    "citation": "J. Hoffstein, N. Howgrave-Graham, J. Pipher, J.H. Silverman, W. Whyte, NTRUSign: digital signatures using the NTRU lattice, in Topics in Cryptology—CT-RSA 2003. Volume 2612 of Lecture Notes in Computer Science (Springer, Berlin, 2003), pp. 122–140.",
+    "url": "https://doi.org/10.1007/3-540-36563-X_9",
+    "doi": "10.1007/3-540-36563-X_9",
+    "linkSource": "curated"
+  },
+  {
+    "number": 56,
+    "citation": "J. Hoffstein, N. Howgrave-Graham, J. Pipher, J.H. Silverman, W. Whyte, Performance improvements and a baseline parameter generation algorithm for NTRUSign. Presented at Workshop on Mathematical Problems and Techniques in Cryptology, Barcelona, 2005.",
+    "url": "https://eprint.iacr.org/2005/274.pdf",
+    "linkSource": "curated"
+  },
+  {
+    "number": 57,
+    "citation": "J. Hoffstein, J. Pipher, J. Schanck, J. Silverman, W. Whyte, Transcript secure signatures based on modular lattices. Cryptology ePrint archive, report 2014/457, 2014.",
+    "url": "https://eprint.iacr.org/2014/457",
+    "linkSource": "book"
+  },
+  {
+    "number": 58,
+    "citation": "N. Howgrave-Graham, Approximate integer common divisors, in Cryptography and Lattices, Providence, 2001. Volume 2146 of Lecture Notes in Computer Science (Springer, Berlin, 2001), pp. 51–66",
+    "url": "https://doi.org/10.1007/3-540-44670-2_6",
+    "doi": "10.1007/3-540-44670-2_6",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 59,
+    "citation": "K. Ireland, M. Rosen, A Classical Introduction to Modern Number Theory. Volume 84 of Graduate Texts in Mathematics (Springer, New York, 1990)",
+    "url": "https://doi.org/10.1007/978-1-4757-2103-4",
+    "linkSource": "curated"
+  },
+  {
+    "number": 60,
+    "citation": "E.T. Jaynes, Information theory and statistical mechanics. Phys. Rev. (2) 106, 620–630 (1957)",
+    "url": "https://doi.org/10.1103/physrev.106.620",
+    "doi": "10.1103/physrev.106.620",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 61,
+    "citation": "A. Joux, A one round protocol for tripartite Diffie-Hellman, in Algorithmic Number Theory, Leiden, 2000. Volume 1838 of Lecture Notes in Computer Science (Springer, Berlin, 2000), pp. 385–393",
+    "url": "https://doi.org/10.1007/10722028_23",
+    "doi": "10.1007/10722028_23",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 62,
+    "citation": "A. Joux, A one round protocol for tripartite Diffie-Hellman. J. Cryptol. 17(4), 263–276 (2004)",
+    "url": "https://doi.org/10.1007/s00145-004-0312-y",
+    "doi": "10.1007/s00145-004-0312-y",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 63,
+    "citation": "D. Kahn, The Codebreakers: The Story of Secret Writing (Scribner Book, New York, 1996)",
+    "url": "https://www.simonandschuster.com/books/The-Codebreakers/David-Kahn/9780684831305",
+    "linkSource": "curated"
+  },
+  {
+    "number": 64,
+    "citation": "P. Kaye, R. Laflamme, M. Mosca, An Introduction to Quantum Computing (Oxford University Press, Oxford, 2007)"
+  },
+  {
+    "number": 65,
+    "citation": "A.W. Knapp, Elliptic Curves. Volume 40 of Mathematical Notes (Princeton University Press, Princeton, 1992)"
+  },
+  {
+    "number": 66,
+    "citation": "D. Knuth, The Art of Computer Programming, Vol. 2: Seminumerical Algorithms, 2nd edn. (Addison-Wesley, Reading, 1981)",
+    "url": "https://www.informit.com/store/art-of-computer-programming-volume-2-seminumerical-9780133488807",
+    "linkSource": "curated"
+  },
+  {
+    "number": 67,
+    "citation": "N. Koblitz, Elliptic curve cryptosystems. Math. Comput. 48(177), 203–209 (1987)",
+    "url": "https://doi.org/10.1090/s0025-5718-1987-0866109-5",
+    "doi": "10.1090/s0025-5718-1987-0866109-5",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 68,
+    "citation": "N. Koblitz, Algebraic Aspects of Cryptography. Volume 3 of Algorithms and Computation in Mathematics (Springer, Berlin, 1998)"
+  },
+  {
+    "number": 69,
+    "citation": "N. Koblitz, The uneasy relationship between mathematics and cryptography. Not. Am. Math. Soc. 54, 972–979 (2007)"
+  },
+  {
+    "number": 70,
+    "citation": "N. Koblitz, A.J. Menezes, Another look at “provable security”. J. Cryptol. 20(1), 3–37 (2007)"
+  },
+  {
+    "number": 71,
+    "citation": "J.C. Lagarias, H.W. Lenstra Jr., C.-P. Schnorr, Korkin–Zolotarev bases and successive minima of a lattice and its reciprocal lattice. Combinatorica 10(4), 333–348 (1990)",
+    "url": "https://doi.org/10.1007/bf02128669",
+    "doi": "10.1007/bf02128669",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 72,
+    "citation": "B.A. LaMacchia, A.M. Odlyzko, Solving large sparse linear systems over finite fields, in Advances in Cryptology—CRYPTO ’90, Santa Barbara, 1990. Lecture Notes in Computer Science (Springer, Berlin, 1990)",
+    "url": "https://doi.org/10.1007/3-540-38424-3_8",
+    "doi": "10.1007/3-540-38424-3_8",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 73,
+    "citation": "S. Lang, Elliptic Curves: Diophantine Analysis. Volume 231 of Grundlehren der Mathematischen Wissenschaften (Fundamental Principles of Mathematical Sciences) (Springer, Berlin, 1978)"
+  },
+  {
+    "number": 74,
+    "citation": "S. Lang, Elliptic Functions. Volume 112 of Graduate Texts in Mathematics, 2nd edn. (Springer, New York, 1987). With an appendix by J. Tate"
+  },
+  {
+    "number": 75,
+    "citation": "H.W. Lenstra Jr., Factoring integers with elliptic curves. Ann. Math. (2) 126(3), 649–673 (1987)",
+    "url": "https://doi.org/10.2307/1971363",
+    "doi": "10.2307/1971363",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 76,
+    "citation": "H.W. Lenstra jr., C. Pomerance, Primality testing with Gaussian periods (2011).",
+    "url": "https://www.math.dartmouth.edu/~carlp/PDF/complexity12.pdf",
+    "linkSource": "book"
+  },
+  {
+    "number": 77,
+    "citation": "A.K. Lenstra, H.W. Lenstra Jr., L. Lovász, Factoring polynomials with rational coefficients. Math. Ann. 261(4), 515–534 (1982)",
+    "url": "https://doi.org/10.1007/bf01457454",
+    "doi": "10.1007/bf01457454",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 78,
+    "citation": "V. Lyubashevsky, Lattice-based identification schemes secure under active attacks, in Public Key Cryptography—PKC 2008, Barcelona. Volume 4939 of Lecture Notes in Computer Science (Springer, Berlin, 2008), pp. 162–179",
+    "url": "https://doi.org/10.1007/978-3-540-78440-1_10",
+    "doi": "10.1007/978-3-540-78440-1_10",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 79,
+    "citation": "V. Lyubashevsky, Fiat-Shamir with aborts: applications to lattice and factoring-based signatures, in Advances in Cryptology—ASIACRYPT 2009, Tokyo. Volume 5912 of Lecture Notes in Computer Science (Springer, Berlin, 2009), pp. 598–616",
+    "url": "https://doi.org/10.1007/978-3-642-10366-7_35",
+    "doi": "10.1007/978-3-642-10366-7_35",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 80,
+    "citation": "V. Lyubashevsky, Lattice signatures without trapdoors, in Advances in Cryptology—EUROCRYPT 2012, Cambridge. Volume 7237 of Lecture Notes in Computer Science (Springer, Heidelberg, 2012), pp. 738–755",
+    "url": "https://doi.org/10.1007/978-3-642-29011-4_43",
+    "doi": "10.1007/978-3-642-29011-4_43",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 81,
+    "citation": "A. Menezes, Elliptic Curve Public Key Cryptosystems. The Kluwer International Series in Engineering and Computer Science, 234 (Kluwer Academic, Boston, 1993)"
+  },
+  {
+    "number": 82,
+    "citation": "A.J. Menezes, T. Okamoto, S.A. Vanstone, Reducing elliptic curve logarithms to logarithms in a finite field. IEEE Trans. Inf. Theory 39(5), 1639–1646 (1993)",
+    "url": "https://doi.org/10.1109/18.259647",
+    "doi": "10.1109/18.259647",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 83,
+    "citation": "R.C. Merkle, Secure communications over insecure channels, in Secure Communications and Asymmetric Cryptosystems, ed. by G.J. Simmons. Volume 69 of AAAS Selected Symposium Series (Westview, Boulder, 1982), pp. 181–196"
+  },
+  {
+    "number": 84,
+    "citation": "R.C. Merkle, M.E. Hellman, Hiding information and signatures in trapdoor knapsacks, in Secure Communications and Asymmetric Cryptosystems, ed. by G.J. Simmons. Volume 69 of AAAS Selected Symposium Series (Westview, Boulder, 1982), pp. 197–215"
+  },
+  {
+    "number": 85,
+    "citation": "D. Micciancio, Improving lattice based cryptosystems using the Hermite normal form, in Cryptography and Lattices, Providence, 2001. Volume 2146 of Lecture Notes in Computer Science (Springer, Berlin, 2001), pp. 126–145",
+    "url": "https://doi.org/10.1007/3-540-44670-2_11",
+    "doi": "10.1007/3-540-44670-2_11",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 86,
+    "citation": "D. Micciancio, S. Goldwasser, Complexity of Lattice Problems: A Cryptographic Perspective. The Kluwer International Series in Engineering and Computer Science, 671 (Kluwer Academic, Boston, 2002)"
+  },
+  {
+    "number": 87,
+    "citation": "G.L. Miller, Riemann’s hypothesis and tests for primality. J. Comput. Syst. Sci. 13(3), 300–317 (1976). Working papers presented at the ACM-SIGACT Symposium on the Theory of Computing, Albuquerque, 1975",
+    "url": "https://doi.org/10.1145/800116.803773",
+    "doi": "10.1145/800116.803773",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 88,
+    "citation": "V.S. Miller, Use of elliptic curves in cryptography, in Advances in Cryptology— CRYPTO ’85, Santa Barbara, 1985. Volume 218 of Lecture Notes in Computer Science (Springer, Berlin, 1986), pp. 417–426",
+    "url": "https://doi.org/10.1007/3-540-39799-x_31",
+    "doi": "10.1007/3-540-39799-x_31",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 89,
+    "citation": "V.S. Miller, The Weil pairing, and its efficient calculation. J. Cryptol. 17(4), 235–261 (2004). Updated and expanded version of unpublished manuscript Short programs for functions on curves, 1986",
+    "url": "https://doi.org/10.1007/s00145-004-0315-8",
+    "doi": "10.1007/s00145-004-0315-8",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 90,
+    "citation": "P.L. Montgomery, Speeding the Pollard and elliptic curve methods of factorization. Math. Comput. 48(177), 243–264 (1987)",
+    "url": "https://doi.org/10.1090/s0025-5718-1987-0866113-7",
+    "doi": "10.1090/s0025-5718-1987-0866113-7",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 91,
+    "citation": "S.p. Nakamoto, Bitcoin: a peer-to-peer electronic cash system (2009).",
+    "url": "https://bitcoin.org/bitcoin.pdf",
+    "linkSource": "book"
+  },
+  {
+    "number": 92,
+    "citation": "P. Nguyen, Cryptanalysis of the Goldreich–Goldwasser–Halevi cryptosystem from crypto’97, in Advances in Cryptology—CRYPTO ’99, Santa Barbara, 1999. Volume 1666 of Lecture Notes in Computer Science (Springer, Berlin, 1999), pp. 288–304",
+    "url": "https://doi.org/10.1007/3-540-48405-1_18",
+    "doi": "10.1007/3-540-48405-1_18",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 93,
+    "citation": "P. Nguyen, O. Regev, Learning a parallelepiped: cryptanalysis of GGH and NTRU signatures, in Advances in Cryptology—EUROCRYPT ’06, St. Petersburg. Volume 4004 of Lecture Notes in Computer Science (Springer, Berlin, 2006)",
+    "url": "https://doi.org/10.1007/11761679_17",
+    "doi": "10.1007/11761679_17",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 94,
+    "citation": "P.Q. Nguyen, O. Regev, Learning a parallelepiped: cryptanalysis of GGH and NTRU signatures. J. Cryptol. 22(2), 139–160 (2009)"
+  },
+  {
+    "number": 95,
+    "citation": "P. Nguyen, J. Stern, Cryptanalysis of the Ajtai-Dwork cryptosystem, in Advances in Cryptology—CRYPTO ’98, Santa Barbara, 1998. Volume 1462 of Lecture Notes in Computer Science (Springer, Berlin, 1998), pp. 223–242",
+    "url": "https://doi.org/10.1007/bfb0055731",
+    "doi": "10.1007/bfb0055731",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 96,
+    "citation": "NIST–AES, Advanced Encryption Standard (AES). FIPS Publication 197, National Institue of Standards and Technology, 2001.",
+    "url": "https://csrc.nist.gov/publications/fips/fips197/fips-197.pdf",
+    "linkSource": "book"
+  },
+  {
+    "number": 97,
+    "citation": "NIST–DES, Data Encryption Standard (DES). FIPS Publication 46-3, National Institue of Standards and Technology, 1999.",
+    "url": "https://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf",
+    "linkSource": "book"
+  },
+  {
+    "number": 98,
+    "citation": "NIST–DSS, Digital Signature Standard (DSS). FIPS Publication 186-2, National Institue of Standards and Technology, 2004.",
+    "url": "https://csrc.nist.gov/publications/fips/fips180-2/fips180-2withchangenotice.pdf",
+    "linkSource": "book"
+  },
+  {
+    "number": 99,
+    "citation": "NIST–SHS, Secure Hash Standard (SHS). FIPS Publication 180-2, National Institue of Standards and Technology, 2003.",
+    "url": "https://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf",
+    "linkSource": "book"
+  },
+  {
+    "number": 100,
+    "citation": "I. Niven, H.S. Zuckerman, H.L. Montgomery, An Introduction to the Theory of Numbers (Wiley, New York, 1991)",
+    "url": "https://www.wiley-vch.de/en/areas-interest/mathematics-statistics/mathematics-16ma/number-theory-16mac/an-introduction-to-the-theory-of-numbers-978-0-471-62546-9",
+    "linkSource": "curated"
+  },
+  {
+    "number": 101,
+    "citation": "NTRU Cryptosystems, A meet-in-the-middle attack on an NTRU private key. Technical report, 1997, updated 2003. Tech. Note 004,",
+    "url": "https://ntru.org/f/tr/tr004v2.pdf",
+    "linkSource": "curated"
+  },
+  {
+    "number": 102,
+    "citation": "NTRU Cryptosystems, Estimated breaking times for NTRU lattices. Technical report, 1999, updated 2003. Tech. Note 012,",
+    "url": "https://ntru.org/f/tr/tr012v2.pdf",
+    "linkSource": "curated"
+  },
+  {
+    "number": 103,
+    "citation": "A.M. Odlyzko, The rise and fall of knapsack cryptosystems, in Cryptology and Computational Number Theory, Boulder, 1989. Volume 42 of Proceedings of Symposia in Applied Mathematics (American Mathematical Society, Providence, 1990), pp. 75–88"
+  },
+  {
+    "number": 104,
+    "citation": "J.M. Pollard, Monte Carlo methods for index computation (mod p). Math. Comput. 32(143), 918–924 (1978)",
+    "url": "https://doi.org/10.1090/s0025-5718-1978-0491431-9",
+    "doi": "10.1090/s0025-5718-1978-0491431-9",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 105,
+    "citation": "C. Pomerance, A tale of two sieves. Not. Am. Math. Soc. 43(12), 1473–1485 (1996)"
+  },
+  {
+    "number": 106,
+    "citation": "E.L. Post, A variant of a recursively unsolvable problem. Bull. Am. Math. Soc. 52, 264–268 (1946)",
+    "url": "https://doi.org/10.1090/s0002-9904-1946-08555-9",
+    "doi": "10.1090/s0002-9904-1946-08555-9",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 107,
+    "citation": "J. Proos, C. Zalka, Shor’s discrete logarithm quantum algorithm for elliptic curves. Quantum Inf. Comput. 3(4), 317–344 (2003)",
+    "url": "https://doi.org/10.26421/qic3.4-3",
+    "doi": "10.26421/qic3.4-3",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 108,
+    "citation": "M.O. Rabin, Digitized signatures and public-key functions as intractible as factorization. Technical report, MIT Laboratory for Computer Science, 1979. Technical Report LCS/TR-212"
+  },
+  {
+    "number": 109,
+    "citation": "H. Riesel, Prime Numbers and Computer Methods for Factorization. Volume 126 of Progress in Mathematics (Birkhäuser, Boston, 1994)"
+  },
+  {
+    "number": 110,
+    "citation": "R.L. Rivest, A. Shamir, L. Adleman, A method for obtaining digital signatures and public-key cryptosystems. Commun. ACM 21(2), 120–126 (1978)",
+    "url": "https://doi.org/10.1145/359340.359342",
+    "doi": "10.1145/359340.359342",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 111,
+    "citation": "K.H. Rosen, Elementary Number Theory and Its Applications, 4th edn. (Addison-Wesley, Reading, 2000)",
+    "url": "https://www.pearson.com/en-us/subject-catalog/p/elementary-number-theory-and-its-applications/P200000006235",
+    "linkSource": "curated"
+  },
+  {
+    "number": 112,
+    "citation": "S. Ross, A First Course in Probability, 9th edn. (Pearson, England, 2001)"
+  },
+  {
+    "number": 113,
+    "citation": "T. Satoh, The canonical lift of an ordinary elliptic curve over a finite field and its point counting. J. Ramanujan Math. Soc. 15(4), 247–270 (2000)"
+  },
+  {
+    "number": 114,
+    "citation": "T. Satoh, K. Araki, Fermat quotients and the polynomial time discrete log algorithm for anomalous elliptic curves. Comment. Math. Univ. St. Paul. 47(1), 81–92 (1998)"
+  },
+  {
+    "number": 115,
+    "citation": "C.-P. Schnorr, A hierarchy of polynomial time lattice basis reduction algorithms. Theor. Comput. Sci. 53(2–3), 201–224 (1987)",
+    "url": "https://doi.org/10.1016/0304-3975(87)90064-8",
+    "doi": "10.1016/0304-3975(87)90064-8",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 116,
+    "citation": "C.P. Schnorr, Fast LLL-type lattice reduction. Inf. Comput. 204(1), 1–25 (2006)",
+    "url": "https://doi.org/10.1016/j.ic.2005.04.004",
+    "doi": "10.1016/j.ic.2005.04.004",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 117,
+    "citation": "C.-P. Schnorr, M. Euchner, Lattice basis reduction: improved practical algorithms and solving subset sum problems, in Fundamentals of Computation Theory, Gosen, 1991. Volume 529 of Lecture Notes in Computer Science (Springer, Berlin, 1991), pp. 68–85",
+    "url": "https://doi.org/10.1007/3-540-54458-5_51",
+    "doi": "10.1007/3-540-54458-5_51",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 118,
+    "citation": "C.-P. Schnorr, M. Euchner, Lattice basis reduction: improved practical algorithms and solving subset sum problems. Math. Program. 66(2, Ser. A), 181–199 (1994)",
+    "url": "https://doi.org/10.1007/bf01581144",
+    "doi": "10.1007/bf01581144",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 119,
+    "citation": "C.P. Schnorr, H.H. Hörner, Attacking the Chor–Rivest cryptosystem by improved lattice reduction, in Advances in Cryptology—EUROCRYPT ’95, Saint-Malo, 1995. Volume 921 of Lecture Notes in Computer Science (Springer, Berlin, 1995), pp. 1–12",
+    "url": "https://doi.org/10.1007/3-540-49264-x_1",
+    "doi": "10.1007/3-540-49264-x_1",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 120,
+    "citation": "R. Schoof, Elliptic curves over finite fields and the computation of square roots mod p. Math. Comput. 44(170), 483–494 (1985)",
+    "url": "https://doi.org/10.1090/s0025-5718-1985-0777280-6",
+    "doi": "10.1090/s0025-5718-1985-0777280-6",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 121,
+    "citation": "R. Schoof, Counting points on elliptic curves over finite fields. J. Théor. Nombres Bordx. 7(1), 219–254 (1995). Les Dix-huitièmes Journées Arithmétiques, Bordeaux, 1993",
+    "url": "https://doi.org/10.5802/jtnb.142",
+    "doi": "10.5802/jtnb.142",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 122,
+    "citation": "I.A. Semaev, Evaluation of discrete logarithms in a group of p-torsion points of an elliptic curve in characteristic p. Math. Comput. 67(221), 353–356 (1998)",
+    "url": "https://doi.org/10.1090/s0025-5718-98-00887-4",
+    "doi": "10.1090/s0025-5718-98-00887-4",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 123,
+    "citation": "A. Shamir, How to share a secret. Commun. ACM 22(11), 612–613 (1979)",
+    "url": "https://doi.org/10.1145/359168.359176",
+    "doi": "10.1145/359168.359176",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 124,
+    "citation": "A. Shamir, A polynomial-time algorithm for breaking the basic MerkleHellman cryptosystem. IEEE Trans. Inf. Theory 30(5), 699–704 (1984)"
+  },
+  {
+    "number": 125,
+    "citation": "A. Shamir, Identity-based cryptosystems and signature schemes, in Advances in Cryptology, Santa Barbara, 1984. Volume 196 of Lecture Notes in Computer Science (Springer, Berlin, 1985), pp. 47–53",
+    "url": "https://doi.org/10.1007/3-540-39568-7_5",
+    "doi": "10.1007/3-540-39568-7_5",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 126,
+    "citation": "C.E. Shannon, A mathematical theory of communication. Bell Syst. Tech. J. 27, 379–423, 623–656 (1948)",
+    "url": "https://doi.org/10.1002/j.1538-7305.1948.tb00917.x",
+    "doi": "10.1002/j.1538-7305.1948.tb00917.x",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 127,
+    "citation": "C.E. Shannon, Communication theory of secrecy systems. Bell Syst. Tech. J. 28, 656–715 (1949)",
+    "url": "https://doi.org/10.1002/j.1538-7305.1949.tb00928.x",
+    "doi": "10.1002/j.1538-7305.1949.tb00928.x",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 128,
+    "citation": "P.W. Shor, Algorithms for quantum computation: discrete logarithms and factoring, in 35th Annual Symposium on Foundations of Computer Science, Santa Fe, 1994 (IEEE Computer Society, Los Alamitos, 1994), pp. 124–134",
+    "url": "https://doi.org/10.1109/sfcs.1994.365700",
+    "doi": "10.1109/sfcs.1994.365700",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 129,
+    "citation": "P.W. Shor, Polynomial-time algorithms for prime factorization and discrete logarithms on a quantum computer. SIAM J. Comput. 26(5), 1484–1509 (1997)",
+    "url": "https://doi.org/10.1137/s0097539795293172",
+    "doi": "10.1137/s0097539795293172",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 130,
+    "citation": "V. Shoup, Lower bounds for discrete logarithms and related problems, in Advances in Cryptology—EUROCRYPT ’97, Konstanz. Volume 1233 of Lecture Notes in Computer Science (Springer, Berlin, 1997), pp. 256–266",
+    "url": "https://doi.org/10.1007/3-540-69053-0_18",
+    "doi": "10.1007/3-540-69053-0_18",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 131,
+    "citation": "V. Shoup, OAEP reconsidered, in Advances in Cryptology—CRYPTO 2001, Santa Barbara. Volume 2139 of Lecture Notes in Computer Science (Springer, Berlin, 2001), pp. 239–259"
+  },
+  {
+    "number": 132,
+    "citation": "V. Shoup, A Computational Introduction to Number Theory and Algebra (Cambridge University Press, 2005).",
+    "url": "https://shoup.net/ntb/ntb-b5.pdf",
+    "linkSource": "book"
+  },
+  {
+    "number": 133,
+    "citation": "C.L. Siegel, A mean value theorem in geometry of numbers. Ann. Math. (2) 46, 340–347 (1945)",
+    "url": "https://doi.org/10.2307/1969027",
+    "doi": "10.2307/1969027",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 134,
+    "citation": "J.H. Silverman, Advanced Topics in the Arithmetic of Elliptic Curves. Volume 151 of Graduate Texts in Mathematics (Springer, New York, 1994)",
+    "url": "https://doi.org/10.1007/978-1-4612-0851-8",
+    "doi": "10.1007/978-1-4612-0851-8",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 135,
+    "citation": "J.H. Silverman, Elliptic curves and cryptography, in Public-Key Cryptography, Les Diablerets. Volume 62 of Proceedings of Symposia in Applied Mathematics (American Mathematical Society, Providence, 2005), pp. 91–112",
+    "url": "https://doi.org/10.1090/psapm/062/2211873",
+    "doi": "10.1090/psapm/062/2211873",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 136,
+    "citation": "J.H. Silverman, The Arithmetic of Elliptic Curves. Volume 106 of Graduate Texts in Mathematics, 2nd edn. (Springer, Dordrecht, 2009)",
+    "url": "https://doi.org/10.1007/978-0-387-09494-6",
+    "doi": "10.1007/978-0-387-09494-6",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 137,
+    "citation": "J.H. Silverman, A Friendly Introduction to Number Theory, 4th edn. (Pearson, Upper Saddle River, 2013)",
+    "url": "https://www.math.brown.edu/johsilve/frint.html",
+    "linkSource": "curated"
+  },
+  {
+    "number": 138,
+    "citation": "J.H. Silverman, J. Tate, Rational Points on Elliptic Curves. Undergraduate Texts in Mathematics (Springer, New York, 1992)",
+    "url": "https://doi.org/10.1007/978-1-4757-4252-7",
+    "doi": "10.1007/978-1-4757-4252-7",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 139,
+    "citation": "S. Singh, The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography Reprint edn. (Anchor, New York, 2000)",
+    "url": "https://www.penguinrandomhouse.com/books/168002/the-code-book-by-simon-singh/",
+    "linkSource": "curated"
+  },
+  {
+    "number": 140,
+    "citation": "B. Skjernaa, Satoh’s algorithm in characteristic 2. Math. Comput. 72(241), 477–487 (electronic) (2003)"
+  },
+  {
+    "number": 141,
+    "citation": "N.P. Smart, The discrete logarithm problem on elliptic curves of trace one. J. Cryptol. 12(3), 193–196 (1999)",
+    "url": "https://doi.org/10.1007/s001459900052",
+    "doi": "10.1007/s001459900052",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 142,
+    "citation": "Standards for Efficient Cryptography, SEC 2: recommended elliptic curve domain parameters (Version 1), 20 Sept 2000.",
+    "url": "https://www.secg.org/SEC2-Ver-1.0.pdf",
+    "linkSource": "curated"
+  },
+  {
+    "number": 143,
+    "citation": "J. Talbot, D. Welsh, Complexity and Cryptography: An Introduction (Cambridge University Press, Cambridge, 2006)"
+  },
+  {
+    "number": 144,
+    "citation": "E. Teske, Speeding up Pollard’s rho method for computing discrete logarithms, in Algorithmic Number Theory, Portland, 1998. Volume 1423 of Lecture Notes in Computer Science (Springer, Berlin, 1998), pp. 541–554",
+    "url": "https://doi.org/10.1007/bfb0054891",
+    "doi": "10.1007/bfb0054891",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 145,
+    "citation": "E. Teske, Square-root algorithms for the discrete logarithm problem (a survey), in Public-Key Cryptography and Computational Number Theory, Warsaw, 2000 (de Gruyter, Berlin, 2001), pp. 283–301",
+    "url": "https://doi.org/10.1515/9783110881035.283",
+    "doi": "10.1515/9783110881035.283",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 146,
+    "citation": "J. Von Neumann, Various techniques used in connection with random digits. Natl. Bur. Stand. Appl. Math. Ser. 12(36–38), 1 (1951). Reprinted in von Neumann’s Collected Works, 5 (1963), Pergamon Press, pp. 768–770.",
+    "url": "https://dornsifecms.usc.edu/assets/sites/520/docs/VonNeumann-ams12p36-38.pdf",
+    "linkSource": "book"
+  },
+  {
+    "number": 147,
+    "citation": "L.C. Washington, Elliptic Curves: Number Theory and Cryptography. Discrete Mathematics and Its Applications (Chapman & Hall/CRC, Boca Raton, 2003)"
+  },
+  {
+    "number": 148,
+    "citation": "A.E. Western, J.C.P. Miller, Tables of Indices and Primitive Roots. Royal Society Mathematical Tables, vol. 9 (Published for the Royal Society at the Cambridge University Press, London, 1968)"
+  },
+  {
+    "number": 149,
+    "citation": "M.J. Wiener, Cryptanalysis of short RSA secret exponents. IEEE Trans. Inf. Theory 36(3), 553–558 (1990)",
+    "url": "https://doi.org/10.1109/18.54902",
+    "doi": "10.1109/18.54902",
+    "linkSource": "crossref"
+  },
+  {
+    "number": 150,
+    "citation": "S.Y. Yan, Primality Testing and Integer Factorization in Public-Key Cryptography. Volume 11 of Advances in Information Security (Kluwer Academic, Boston, 2004)",
+    "url": "https://doi.org/10.1007/978-1-4757-3816-2",
+    "doi": "10.1007/978-1-4757-3816-2",
+    "linkSource": "crossref"
+  }
+]

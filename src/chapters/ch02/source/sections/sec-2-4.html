@@ -1,7 +1,7 @@
 <section class="section" id="sec-2-4">
           <h2><span class="section-number">2.4</span> O criptossistema de chave pública Elgamal</h2>
 
-          <p>Embora o algoritmo de troca de chaves Diffie–Hellman ofereça um método para compartilhar publicamente uma chave secreta aleatória, ele não alcança por completo o objetivo de ser um criptossistema de chave pública, pois um criptossistema permite trocar informações específicas, e não apenas uma sequência aleatória de bits. O primeiro criptossistema de chave pública foi o sistema RSA de Rivest, Shamir e Adleman [110], publicado em 1978. O RSA foi — e continua sendo — uma descoberta de importância fundamental, e o discutiremos em detalhes no Capítulo 3. Entretanto, embora o RSA tenha sido historicamente o primeiro, o desenvolvimento mais natural de um criptossistema de chave pública a partir do artigo de Diffie e Hellman [38] é um sistema descrito por Taher Elgamal em 1985 [41]. O algoritmo de cifração de chave pública Elgamal baseia-se no problema do logaritmo discreto e está intimamente relacionado à troca de chaves Diffie–Hellman da Seção 2.3. Nesta seção descrevemos a versão do PKC Elgamal baseada no problema do logaritmo discreto em \(\mathbb F_p^*\), mas a construção funciona, de maneira bastante geral, com o PLD em qualquer grupo. Em particular, na Seção 6.4.2 discutiremos uma versão do PKC Elgamal baseada em grupos de curvas elípticas.</p>
+          <p>Embora o algoritmo de troca de chaves Diffie–Hellman ofereça um método para compartilhar publicamente uma chave secreta aleatória, ele não alcança por completo o objetivo de ser um criptossistema de chave pública, pois um criptossistema permite trocar informações específicas, e não apenas uma sequência aleatória de bits. O primeiro criptossistema de chave pública foi o sistema RSA de Rivest, Shamir e Adleman <a href="../../references/#ref-110" data-source-xref>[110]</a>, publicado em 1978. O RSA foi — e continua sendo — uma descoberta de importância fundamental, e o discutiremos em detalhes no Capítulo 3. Entretanto, embora o RSA tenha sido historicamente o primeiro, o desenvolvimento mais natural de um criptossistema de chave pública a partir do artigo de Diffie e Hellman <a href="../../references/#ref-38" data-source-xref>[38]</a> é um sistema descrito por Taher Elgamal em 1985 <a href="../../references/#ref-41" data-source-xref>[41]</a>. O algoritmo de cifração de chave pública Elgamal baseia-se no problema do logaritmo discreto e está intimamente relacionado à troca de chaves Diffie–Hellman da <a href="#sec-2-3" data-source-xref>Seção 2.3</a>. Nesta seção descrevemos a versão do PKC Elgamal baseada no problema do logaritmo discreto em \(\mathbb F_p^*\), mas a construção funciona, de maneira bastante geral, com o PLD em qualquer grupo. Em particular, na Seção 6.4.2 discutiremos uma versão do PKC Elgamal baseada em grupos de curvas elípticas.</p>
 
           <p>O PKC Elgamal é nosso primeiro exemplo de criptossistema de chave pública, por isso avançaremos devagar e apresentaremos todos os detalhes. Alice começa publicando informações formadas por uma chave pública e um algoritmo. A chave pública é simplesmente um número; o algoritmo é o método pelo qual Bob cifra suas mensagens usando a chave pública de Alice. Alice não revela sua chave privada, que é outro número. A chave privada permite que Alice — e somente Alice — decifre mensagens cifradas com sua chave pública.</p>
 
@@ -11,7 +11,7 @@
           <div class="display-math">\[A\equiv g^a\pmod p.\]</div>
           <p>Observe a semelhança com a troca de chaves Diffie–Hellman. Alice publica a chave pública \(A\) e mantém em segredo a chave privada \(a\).</p>
 
-          <p>Suponha agora que Bob queira cifrar uma mensagem usando a chave pública \(A\) de Alice. Admitiremos que a mensagem \(m\) de Bob seja um inteiro entre \(2\) e \(p\). Lembre-se de que discutimos como converter mensagens em números na Seção 1.7.2. Para cifrar \(m\), Bob primeiro escolhe ao acaso outro número \(k\) módulo \(p\).<sup id="fnref-2-4-5"><a href="#fn-2-4-5">5</a></sup> Bob usa \(k\) para cifrar uma — e apenas uma — mensagem e depois o descarta. O número \(k\) é chamado de <em>elemento aleatório</em>; ele existe exclusivamente para cifrar uma única mensagem.</p>
+          <p>Suponha agora que Bob queira cifrar uma mensagem usando a chave pública \(A\) de Alice. Admitiremos que a mensagem \(m\) de Bob seja um inteiro entre \(2\) e \(p\). Lembre-se de que discutimos como converter mensagens em números na <a href="../ch01/#sec-1-7-2" data-source-xref>Seção 1.7.2</a>. Para cifrar \(m\), Bob primeiro escolhe ao acaso outro número \(k\) módulo \(p\).<sup id="fnref-2-4-5"><a href="#fn-2-4-5">5</a></sup> Bob usa \(k\) para cifrar uma — e apenas uma — mensagem e depois o descarta. O número \(k\) é chamado de <em>elemento aleatório</em>; ele existe exclusivamente para cifrar uma única mensagem.</p>
 
           <span id="slot-exp-2-4-fresh-random-k" data-enrichment-slot="exp-2-4-fresh-random-k"></span>
 
@@ -34,9 +34,9 @@
 
           <span id="slot-exp-2-4-elgamal-correctness" data-enrichment-slot="exp-2-4-elgamal-correctness"></span>
 
-          <p>O criptossistema de chave pública Elgamal está resumido na Tabela 2.3.</p>
+          <p>O criptossistema de chave pública Elgamal está resumido na <a href="#tab-2-3" data-source-xref>Tabela 2.3</a>.</p>
 
-          <p>Qual é a tarefa de Eva ao tentar decifrar a mensagem? Eva conhece os parâmetros públicos \(p\) e \(g\), e também conhece \(A\equiv g^a\pmod p\), pois a chave pública \(A\) de Alice é de conhecimento público. Se Eva conseguir resolver o problema do logaritmo discreto, poderá encontrar \(a\) e decifrar a mensagem. Mais precisamente, basta que Eva resolva o problema de Diffie–Hellman; veja o Exercício 2.9. Caso contrário, parece difícil que Eva encontre o texto claro, embora existam sutilezas, algumas das quais discutiremos depois de um exemplo com números pequenos.</p>
+          <p>Qual é a tarefa de Eva ao tentar decifrar a mensagem? Eva conhece os parâmetros públicos \(p\) e \(g\), e também conhece \(A\equiv g^a\pmod p\), pois a chave pública \(A\) de Alice é de conhecimento público. Se Eva conseguir resolver o problema do logaritmo discreto, poderá encontrar \(a\) e decifrar a mensagem. Mais precisamente, basta que Eva resolva o problema de Diffie–Hellman; veja o <a href="#exercicio-2-9" data-source-xref>Exercício 2.9</a>. Caso contrário, parece difícil que Eva encontre o texto claro, embora existam sutilezas, algumas das quais discutiremos depois de <a href="#ex-2-8" data-source-xref>um exemplo com números pequenos</a>.</p>
 
           <aside class="semantic example" id="ex-2-8">
             <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">2.8</span></div>
@@ -77,7 +77,7 @@
 
           <p>Chegou a hora de formular uma pergunta importante. Atacar o sistema Elgamal é tão difícil para Eva quanto resolver o problema de Diffie–Hellman? Ou será que, ao introduzirmos uma maneira engenhosa de cifrar mensagens, abrimos sem perceber uma porta dos fundos que facilita a decifração sem que seja necessário resolver o problema de Diffie–Hellman? Um dos objetivos da criptografia moderna é identificar um problema difícil subjacente, como o problema de Diffie–Hellman, e provar que atacar uma construção criptográfica como o Elgamal é pelo menos tão difícil quanto resolver esse problema subjacente.</p>
 
-          <p>Neste caso, gostaríamos de provar que qualquer pessoa capaz de decifrar textos cifrados arbitrários produzidos pelo Elgamal, conforme resumido na Tabela 2.3, também deve ser capaz de resolver o problema de Diffie–Hellman. Mais precisamente, queremos provar o seguinte resultado.</p>
+          <p>Neste caso, gostaríamos de provar que qualquer pessoa capaz de decifrar textos cifrados arbitrários produzidos pelo Elgamal, conforme resumido na <a href="#tab-2-3" data-source-xref>Tabela 2.3</a>, também deve ser capaz de resolver o problema de Diffie–Hellman. Mais precisamente, queremos provar o <a href="#prop-2-10" data-source-xref>seguinte resultado</a>.</p>
 
           <aside class="semantic proposition" id="prop-2-10">
             <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">2.10</span></div>
@@ -91,7 +91,7 @@
             <div class="display-math">\[A\equiv g^a\pmod p\qquad\text{e}\qquad B\equiv g^b\pmod p,\]</div>
             <p>e precisa calcular \(g^{ab}\bmod p\). Tenha em mente que ela conhece os valores de \(A\) e \(B\), mas não conhece nem \(a\) nem \(b\).</p>
 
-            <p>Suponha agora que Eva possa consultar um oráculo Elgamal. Isso significa que ela pode enviar ao oráculo um primo \(p\), uma base \(g\), uma suposta chave pública \(A\) e um suposto texto cifrado \((c_1,c_2)\). De acordo com a Tabela 2.3, o oráculo devolve a Eva</p>
+            <p>Suponha agora que Eva possa consultar um oráculo Elgamal. Isso significa que ela pode enviar ao oráculo um primo \(p\), uma base \(g\), uma suposta chave pública \(A\) e um suposto texto cifrado \((c_1,c_2)\). De acordo com a <a href="#tab-2-3" data-source-xref>Tabela 2.3</a>, o oráculo devolve a Eva</p>
             <div class="display-math">\[(c_1^a)^{-1}\cdot c_2\pmod p.\]</div>
             <p>Se Eva quer resolver o problema de Diffie–Hellman, que valores deve escolher para \(c_1\) e \(c_2\)? Uma breve reflexão mostra que \(c_1=B=g^b\) e \(c_2=1\) são boas escolhas, pois, com essa entrada, o oráculo devolve \((g^{ab})^{-1}\bmod p\). Eva pode então tomar o inverso módulo \(p\) e obter \(g^{ab}\bmod p\), resolvendo assim o problema de Diffie–Hellman.</p>
 
@@ -101,7 +101,7 @@
             <div class="display-math">\[m^{-1}\cdot c_2\equiv g^{ab}\pmod p\]</div>
             <p>para encontrar \(g^{ab}\bmod p\). Vale notar que, embora Eva tenha calculado \(g^{ab}\bmod p\) com a ajuda do oráculo, ela o fez sem conhecer \(a\) ou \(b\); portanto, resolveu apenas o problema de Diffie–Hellman, e não o problema do logaritmo discreto.</p>
 
-            <p>Deixamos como exercício a demonstração da recíproca — isto é, que um oráculo Diffie–Hellman quebra o PKC Elgamal. Veja o Exercício 2.9.</p>
+            <p>Deixamos como exercício a demonstração da recíproca — isto é, que um oráculo Diffie–Hellman quebra o PKC Elgamal. Veja o <a href="#exercicio-2-9" data-source-xref>Exercício 2.9</a>.</p>
           </div>
 
           <span id="slot-exp-2-4-oracle-reduction" data-enrichment-slot="exp-2-4-oracle-reduction"></span>

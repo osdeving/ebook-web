@@ -1,0 +1,31 @@
+<div class="exercise-solution">
+  <p>Os primos no intervalo são \(3,5,7,11,13,17,19\). Os cálculos dão</p>
+  <div class="display-math">\[
+    \begin{array}{c|c|c}
+    p&amp;(p-1)/2&amp;2^{(p-1)/2}\bmod p\\ \hline
+    3&amp;1&amp;2\equiv-1\\
+    5&amp;2&amp;4\equiv-1\\
+    7&amp;3&amp;8\equiv1\\
+    11&amp;5&amp;32\equiv10\equiv-1\\
+    13&amp;6&amp;64\equiv12\equiv-1\\
+    17&amp;8&amp;256\equiv1\\
+    19&amp;9&amp;512\equiv18\equiv-1
+    \end{array}
+  \]</div>
+  <p>A conjectura sugerida é que os únicos valores possíveis são \(1\) e \(-1\) módulo \(p\).</p>
+  <p>Para prová-la, defina \(x=2^{(p-1)/2}\). Como \(p\) é um primo ímpar, o pequeno teorema de Fermat fornece</p>
+  <div class="display-math">\[
+    x^2=2^{p-1}\equiv1\pmod p.
+  \]</div>
+  <p>Assim,</p>
+  <div class="display-math">\[
+    (x-1)(x+1)\equiv0\pmod p.
+  \]</div>
+  <p>Como \(p\) é primo, ele divide \(x-1\) ou \(x+1\). Portanto</p>
+  <div class="display-math">\[
+    2^{(p-1)/2}\equiv1\pmod p
+    \qquad\text{ou}\qquad
+    2^{(p-1)/2}\equiv-1\pmod p,
+  \]</div>
+  <p>confirmando a conjectura.</p>
+</div>

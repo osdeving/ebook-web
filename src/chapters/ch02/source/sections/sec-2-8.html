@@ -4,11 +4,11 @@
             <h2>O teorema chinês dos restos</h2>
           </div>
 
-          <p class="lead">O teorema chinês dos restos descreve as soluções de um sistema de congruências lineares simultâneas. A situação mais simples é um sistema de duas congruências,</p>
+          <p class="lead">O <a href="#teorema-2-24" data-source-xref>teorema chinês dos restos</a> descreve as soluções de um sistema de congruências lineares simultâneas. A situação mais simples é um sistema de duas congruências,</p>
 
           <div class="equation" id="eq-2-3"><span class="equation-number">(2.3)</span>\[x\equiv a\pmod m\qquad\text{e}\qquad x\equiv b\pmod n,\]</div>
 
-          <p>com \(\gcd(m,n)=1\). Nesse caso, o teorema chinês dos restos afirma que existe uma única solução módulo \(mn\).</p>
+          <p>com \(\gcd(m,n)=1\). Nesse caso, o <a href="#teorema-2-24" data-source-xref>teorema chinês dos restos</a> afirma que existe uma única solução módulo \(mn\).</p>
 
           <span id="slot-exp-2-8-relogios-coprimos" data-enrichment-slot="exp-2-8-relogios-coprimos"></span>
 
@@ -19,7 +19,7 @@
             <cite>Sun Tzu Suan Ching (<em>Manual Matemático do Mestre Sun</em>), cerca de 300 d.C., volume 3, problema 26.</cite>
           </blockquote>
 
-          <p>O teorema chinês dos restos e suas generalizações têm muitas aplicações na teoria dos números e em outras áreas da matemática. Na Seção 2.9, veremos como ele pode ser usado para resolver certas instâncias do problema do logaritmo discreto. Começaremos com um exemplo em que resolvemos duas congruências simultâneas. Ao lê-lo, observe que não se trata apenas de uma afirmação abstrata de que existe uma solução: o método descrito é, de fato, um algoritmo que nos permite encontrá-la.</p>
+          <p>O <a href="#teorema-2-24" data-source-xref>teorema chinês dos restos</a> e suas generalizações têm muitas aplicações na teoria dos números e em outras áreas da matemática. Na <a href="#sec-2-9" data-source-xref>Seção 2.9</a>, veremos como ele pode ser usado para resolver certas instâncias do problema do logaritmo discreto. Começaremos com <a href="#exemplo-2-23" data-source-xref>um exemplo em que resolvemos duas congruências simultâneas</a>. Ao lê-lo, observe que não se trata apenas de uma afirmação abstrata de que existe uma solução: o método descrito é, de fato, um algoritmo que nos permite encontrá-la.</p>
 
           <div class="semantic example" id="exemplo-2-23">
             <div class="semantic-header">
@@ -30,20 +30,20 @@
             <div class="equation" id="eq-2-4"><span class="equation-number">(2.4)</span>\[x\equiv1\pmod5\qquad\text{e}\qquad x\equiv9\pmod{11}.\]</div>
             <p>A primeira congruência diz que \(x\equiv1\pmod5\), portanto o conjunto completo de suas soluções é a coleção de inteiros</p>
             <div class="equation" id="eq-2-5"><span class="equation-number">(2.5)</span>\[x=1+5y,\qquad y\in\mathbb Z.\]</div>
-            <p>Substituindo (2.5) na segunda congruência de (2.4), obtemos</p>
+            <p>Substituindo <a href="#eq-2-5" data-source-xref>(2.5)</a> na segunda congruência de <a href="#eq-2-4" data-source-xref>(2.4)</a>, obtemos</p>
             <div class="equation" id="eq-2-6"><span class="equation-number">(2.6)</span>\[1+5y\equiv9\pmod{11},\qquad\text{e, portanto,}\qquad5y\equiv8\pmod{11}.\]</div>
-            <p>Resolvemos para \(y\) multiplicando os dois lados de (2.6) pelo inverso de \(5\) módulo \(11\). Esse inverso existe porque \(\gcd(5,11)=1\) e pode ser calculado pelo procedimento descrito na Proposição 1.13; veja também a Observação 1.15. Neste caso, porém, o módulo é tão pequeno que podemos encontrá-lo por tentativa e erro:</p>
+            <p>Resolvemos para \(y\) multiplicando os dois lados de <a href="#eq-2-6" data-source-xref>(2.6)</a> pelo inverso de \(5\) módulo \(11\). Esse inverso existe porque \(\gcd(5,11)=1\) e pode ser calculado pelo procedimento descrito na <a href="../ch01/#prop-1-13" data-source-xref>Proposição 1.13</a>; veja também a <a href="../ch01/#remark-1-15" data-source-xref>Observação 1.15</a>. Neste caso, porém, o módulo é tão pequeno que podemos encontrá-lo por tentativa e erro:</p>
             <div class="equation">\[5\cdot9=45\equiv1\pmod{11}.\]</div>
-            <p>Multiplicando os dois lados de (2.6) por \(9\), obtemos</p>
+            <p>Multiplicando os dois lados de <a href="#eq-2-6" data-source-xref>(2.6)</a> por \(9\), obtemos</p>
             <div class="equation">\[y\equiv9\cdot8\equiv72\equiv6\pmod{11}.\]</div>
-            <p>Por fim, substituindo esse valor de \(y\) em (2.5), encontramos a solução</p>
+            <p>Por fim, substituindo esse valor de \(y\) em <a href="#eq-2-5" data-source-xref>(2.5)</a>, encontramos a solução</p>
             <div class="equation">\[x=1+5\cdot6=31\]</div>
             <p>do problema original.</p>
           </div>
 
           <span id="slot-exp-2-8-construir-solucao" data-enrichment-slot="exp-2-8-construir-solucao"></span>
 
-          <p>O procedimento apresentado no Exemplo 2.23 pode ser usado para obter uma fórmula geral para a solução de duas congruências simultâneas; veja o Exercício 2.20. Entretanto, é muito melhor aprender o método do que decorar uma fórmula. Isso é especialmente verdadeiro porque o teorema chinês dos restos se aplica a sistemas com qualquer quantidade de congruências simultâneas.</p>
+          <p>O procedimento apresentado no <a href="#exemplo-2-23" data-source-xref>Exemplo 2.23</a> pode ser usado para obter uma fórmula geral para a solução de duas congruências simultâneas; veja o <a href="#exercicio-2-20" data-source-xref>Exercício 2.20</a>. Entretanto, é muito melhor aprender o método do que decorar uma fórmula. Isso é especialmente verdadeiro porque o <a href="#teorema-2-24" data-source-xref>teorema chinês dos restos</a> se aplica a sistemas com qualquer quantidade de congruências simultâneas.</p>
 
           <div class="semantic theorem" id="teorema-2-24">
             <div class="semantic-header">
@@ -66,14 +66,14 @@
             <div class="equation">\[x\equiv a_1\pmod{m_1},\quad x\equiv a_2\pmod{m_2},\quad\ldots,\quad x\equiv a_{i+1}\pmod{m_{i+1}}.\]</div>
             <p>A ideia é procurar uma solução da forma</p>
             <div class="equation">\[x=c_i+m_1m_2\cdots m_i y.\]</div>
-            <p>Observe que esse valor de \(x\) ainda satisfaz todas as congruências de (2.9). Precisamos apenas escolher \(y\) de modo que ele também satisfaça \(x\equiv a_{i+1}\pmod{m_{i+1}}\). Em outras palavras, precisamos encontrar \(y\) tal que</p>
+            <p>Observe que esse valor de \(x\) ainda satisfaz todas as congruências de <a href="#eq-2-9" data-source-xref>(2.9)</a>. Precisamos apenas escolher \(y\) de modo que ele também satisfaça \(x\equiv a_{i+1}\pmod{m_{i+1}}\). Em outras palavras, precisamos encontrar \(y\) tal que</p>
             <div class="equation">\[c_i+m_1m_2\cdots m_i y\equiv a_{i+1}\pmod{m_{i+1}}.\]</div>
-            <p>A Proposição 1.13(b), junto com o fato de que \(\gcd(m_{i+1},m_1m_2\cdots m_i)=1\), garante que sempre podemos fazer isso. Fica demonstrada a existência de uma solução. Deixamos para o leitor a tarefa de provar que soluções diferentes satisfazem (2.8); veja o Exercício 2.21. <span class="proof-end">□</span></p>
+            <p>A <a href="../ch01/#prop-1-13" data-source-xref>Proposição 1.13(b)</a>, junto com o fato de que \(\gcd(m_{i+1},m_1m_2\cdots m_i)=1\), garante que sempre podemos fazer isso. Fica demonstrada a existência de uma solução. Deixamos para o leitor a tarefa de provar que soluções diferentes satisfazem <a href="#eq-2-8" data-source-xref>(2.8)</a>; veja o <a href="#exercicio-2-21" data-source-xref>Exercício 2.21</a>. <span class="proof-end">□</span></p>
           </div>
 
           <span id="slot-exp-2-8-unicidade-modulo-produto" data-enrichment-slot="exp-2-8-unicidade-modulo-produto"></span>
 
-          <p>A demonstração do teorema chinês dos restos converte-se facilmente em um algoritmo para encontrar a solução de um sistema de congruências simultâneas. Um exemplo basta para ilustrar o método geral.</p>
+          <p>A demonstração do <a href="#teorema-2-24" data-source-xref>teorema chinês dos restos</a> converte-se facilmente em um algoritmo para encontrar a solução de um sistema de congruências simultâneas. <a href="#exemplo-2-25" data-source-xref>Um exemplo</a> basta para ilustrar o método geral.</p>
 
           <div class="semantic example" id="exemplo-2-25">
             <div class="semantic-header">
@@ -82,11 +82,11 @@
             </div>
             <p>Vamos resolver as três congruências simultâneas</p>
             <div class="equation" id="eq-2-10"><span class="equation-number">(2.10)</span>\[x\equiv2\pmod3,\qquad x\equiv3\pmod7,\qquad x\equiv4\pmod{16}.\]</div>
-            <p>O teorema chinês dos restos afirma que existe uma única solução módulo \(336\), pois \(336=3\cdot7\cdot16\). Começamos com a solução \(x=2\) da primeira congruência, \(x\equiv2\pmod3\). A partir dela, escrevemos a solução geral \(x=2+3y\) e a substituímos na segunda congruência:</p>
+            <p>O <a href="#teorema-2-24" data-source-xref>teorema chinês dos restos</a> afirma que existe uma única solução módulo \(336\), pois \(336=3\cdot7\cdot16\). Começamos com a solução \(x=2\) da primeira congruência, \(x\equiv2\pmod3\). A partir dela, escrevemos a solução geral \(x=2+3y\) e a substituímos na segunda congruência:</p>
             <div class="equation">\[2+3y\equiv3\pmod7.\]</div>
             <p>Isso se reduz a \(3y\equiv1\pmod7\). Multiplicando os dois lados por \(5\), que é o inverso de \(3\) módulo \(7\), obtemos \(y\equiv5\pmod7\). Portanto,</p>
             <div class="equation">\[x=2+3y=2+3\cdot5=17\]</div>
-            <p>é uma solução das duas primeiras congruências de (2.10).</p>
+            <p>é uma solução das duas primeiras congruências de <a href="#eq-2-10" data-source-xref>(2.10)</a>.</p>
             <p>A solução geral dessas duas congruências é, então, \(x=17+21z\). Substituindo-a na terceira congruência, obtemos</p>
             <div class="equation">\[17+21z\equiv4\pmod{16}.\]</div>
             <p>Isso se reduz a \(5z\equiv3\pmod{16}\). Multiplicamos por \(13\), o inverso de \(5\) módulo \(16\), e obtemos</p>

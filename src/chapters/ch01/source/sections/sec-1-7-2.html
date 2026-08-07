@@ -1,0 +1,50 @@
+<section class="section subsection" id="sec-1-7-2" data-layer="source">
+  <h2><span class="section-number">1.7.2</span> Esquemas de codificação</h2>
+
+  <p>É conveniente ver chaves, textos claros e textos cifrados como números e escrever esses números em forma binária. Por exemplo, poderíamos tomar sequências de \(8\) bits,<sup id="fnref-1-7-2-15"><a href="#fn-1-7-2-15" data-source-xref>15</a></sup> que fornecem números de \(0\) a \(255\), e usá-las para representar as letras do alfabeto por meio de</p>
+  <div class="display-math">\[\mathtt{a}=00000000,\qquad\mathtt{b}=00000001,\qquad\mathtt{c}=00000010,\qquad\ldots,\qquad\mathtt{z}=00011001.\]</div>
+  <p>Para distinguir letras minúsculas de maiúsculas, poderíamos definir \(\mathtt{A}=00011011\), \(\mathtt{B}=00011100\), e assim por diante. Esse método de codificação permite que até \(256\) símbolos distintos sejam traduzidos para a forma binária.</p>
+
+  <p>Seu computador pode usar um método desse tipo, chamado código ASCII,<sup id="fnref-1-7-2-16"><a href="#fn-1-7-2-16" data-source-xref>16</a></sup> para armazenar dados, embora, por razões históricas, os caracteres alfabéticos não recebam os menores valores binários. Parte do código ASCII está listada na <a href="#table-1-10" data-source-xref>Tabela 1.10</a>. Por exemplo, a frase “Bed bug.” (incluindo o espaço e a pontuação) é codificada em ASCII como</p>
+
+  <div class="table-wrap">
+    <table aria-label="Codificação ASCII da frase Bed bug ponto">
+      <tbody>
+        <tr><td>\(\mathtt{B}\)</td><td>\(\mathtt{e}\)</td><td>\(\mathtt{d}\)</td><td>&nbsp;</td><td>\(\mathtt{b}\)</td><td>\(\mathtt{u}\)</td><td>\(\mathtt{g}\)</td><td>\(\mathtt{.}\)</td></tr>
+        <tr><td>66</td><td>101</td><td>100</td><td>32</td><td>98</td><td>117</td><td>103</td><td>46</td></tr>
+        <tr><td>01000010</td><td>01100101</td><td>01100100</td><td>00100000</td><td>01100010</td><td>01110101</td><td>01100111</td><td>00101110</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Assim, onde você vê a frase “Bed bug.”, seu computador vê a lista de bits</p>
+  <div class="display-math">\[\mathtt{0100001001100101011001000010000001100010011101010110011100101110}.\]</div>
+
+  <aside class="semantic definition" id="def-1-encoding-scheme">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Um <strong>esquema de codificação</strong> é um método de converter um tipo de dado em outro, por exemplo, converter texto em números. A distinção entre um esquema de codificação e um esquema de cifragem é uma distinção de propósito. Supõe-se que um esquema de codificação seja inteiramente público e usado por todos para os mesmos fins. Um esquema de cifragem é projetado para ocultar informações de qualquer pessoa que não possua a chave secreta. Assim, um esquema de codificação, como um esquema de cifragem, consiste em uma função de codificação e em sua função inversa de decodificação; porém, em um esquema de codificação, ambas as funções são públicas e devem ser rápidas e fáceis de calcular.</p>
+  </aside>
+
+  <div class="table-wrap" id="table-1-10">
+    <table>
+      <caption><span class="label">Tabela 1.10.</span> O esquema de codificação ASCII.</caption>
+      <tbody>
+          <tr><td>&nbsp;</td><td>32</td><td>00100000</td><td>\(\mathtt{A}\)</td><td>65</td><td>01000001</td><td>\(\mathtt{a}\)</td><td>97</td><td>01100001</td></tr>
+          <tr><td>\(\mathtt{(}\)</td><td>40</td><td>00101000</td><td>\(\mathtt{B}\)</td><td>66</td><td>01000010</td><td>\(\mathtt{b}\)</td><td>98</td><td>01100010</td></tr>
+          <tr><td>\(\mathtt{)}\)</td><td>41</td><td>00101001</td><td>\(\mathtt{C}\)</td><td>67</td><td>01000011</td><td>\(\mathtt{c}\)</td><td>99</td><td>01100011</td></tr>
+          <tr><td>\(\mathtt{,}\)</td><td>44</td><td>00101100</td><td>\(\mathtt{D}\)</td><td>68</td><td>01000100</td><td>\(\mathtt{d}\)</td><td>100</td><td>01100100</td></tr>
+          <tr><td>\(\mathtt{.}\)</td><td>46</td><td>00101110</td><td>\(\vdots\)</td><td>\(\vdots\)</td><td>\(\vdots\)</td><td>\(\vdots\)</td><td>\(\vdots\)</td><td>\(\vdots\)</td></tr>
+          <tr><td></td><td></td><td></td><td>\(\mathtt{X}\)</td><td>88</td><td>01011000</td><td>\(\mathtt{x}\)</td><td>120</td><td>01111000</td></tr>
+          <tr><td></td><td></td><td></td><td>\(\mathtt{Y}\)</td><td>89</td><td>01011001</td><td>\(\mathtt{y}\)</td><td>121</td><td>01111001</td></tr>
+          <tr><td></td><td></td><td></td><td>\(\mathtt{Z}\)</td><td>90</td><td>01011010</td><td>\(\mathtt{z}\)</td><td>122</td><td>01111010</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Com o uso de um esquema de codificação, um texto claro ou texto cifrado pode ser visto como uma sequência de blocos binários, em que cada bloco consiste em \(8\) bits, isto é, uma sequência de oito uns e zeros. Um bloco de \(8\) bits é chamado de <strong>byte</strong>. Para facilitar a compreensão humana, um byte costuma ser escrito como um número decimal entre \(0\) e \(255\), ou como um número hexadecimal (base \(16\)) de dois algarismos entre \(00\) e \(\mathrm{FF}\). Os computadores frequentemente operam com mais de \(1\) byte por vez. Por exemplo, um processador de \(64\) bits opera com \(8\) bytes por vez.</p>
+
+  <ol class="footnotes" start="15">
+    <li id="fn-1-7-2-15">Um <em>bit</em> é um \(0\) ou um \(1\). A palavra “bit” é uma abreviação de <em>binary digit</em> (dígito binário). <a href="#fnref-1-7-2-15" data-source-xref aria-label="Voltar à chamada da nota 15">↩</a></li>
+    <li id="fn-1-7-2-16">ASCII é um acrônimo de <em>American Standard Code for Information Interchange</em> (Código-Padrão Americano para Intercâmbio de Informações). <a href="#fnref-1-7-2-16" data-source-xref aria-label="Voltar à chamada da nota 16">↩</a></li>
+  </ol>
+</section>

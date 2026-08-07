@@ -1,0 +1,32 @@
+<div class="exercise-solution">
+  <p>Uma cifra de substituição simples é uma permutação das \(26\) letras.</p>
+  <ol type="a">
+    <li>
+      <p>Há</p>
+      <p>\[26!=403\,291\,461\,126\,605\,635\,584\,000\,000\]</p>
+      <p>permutações possíveis.</p>
+    </li>
+    <li>
+      <p>Denote por \(D_n\) o número de desarranjos de \(n\) objetos, isto é, permutações sem pontos fixos. Pela inclusão-exclusão,</p>
+      <p>\[D_n=n!\sum_{j=0}^{n}\frac{(-1)^j}{j!}.\]</p>
+      <ol type="i">
+        <li>
+          <p>Nenhuma letra fixa:</p>
+          <p>\[D_{26}=148\,362\,637\,348\,470\,135\,821\,287\,825.\]</p>
+        </li>
+        <li>
+          <p>Pelo menos uma letra fixa é o complemento do caso anterior:</p>
+          <p>\[26!-D_{26}=254\,928\,823\,778\,135\,499\,762\,712\,175.\]</p>
+        </li>
+        <li>
+          <p>Para haver exatamente uma letra fixa, escolhemos essa letra de \(26\) maneiras e desarranjamos as outras \(25\):</p>
+          <p>\[26D_{25}=148\,362\,637\,348\,470\,135\,821\,287\,824.\]</p>
+        </li>
+        <li>
+          <p>Os casos “nenhuma”, “exatamente uma” e “pelo menos duas” formam uma partição. Logo o último número é</p>
+          <p>\[26!-D_{26}-26D_{25}=106\,566\,186\,429\,665\,363\,941\,424\,351.\]</p>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</div>

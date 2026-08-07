@@ -1,0 +1,180 @@
+<section class="section subsection" id="sec-1-1-1" data-layer="source">
+  <h3><span class="section-number">1.1.1</span> Criptoanálise de cifras de substituição simples</h3>
+
+  <p>Quantas cifras de substituição simples diferentes existem? Podemos contá-las enumerando os possíveis valores de texto cifrado para cada letra do texto claro. Primeiro associamos a letra <code>a</code> do texto claro a uma das 26 letras possíveis <code>A</code>–<code>Z</code> do texto cifrado. Portanto, há 26 possibilidades para <code>a</code>. Em seguida, como não podemos associar <code>b</code> à mesma letra que <code>a</code>, podemos associar <code>b</code> a qualquer uma das 25 letras restantes do texto cifrado. Assim, há \(26\cdot25=650\) maneiras possíveis de associar <code>a</code> e <code>b</code>. Já usamos duas letras do texto cifrado, portanto podemos associar <code>c</code> a qualquer uma das 24 letras restantes, e assim por diante. Logo, o número total de maneiras de associar as 26 letras do texto claro às 26 letras do texto cifrado, usando cada letra do texto cifrado uma única vez, é</p>
+  <div class="display-math">\[26\cdot25\cdot24\cdots4\cdot3\cdot2\cdot1=26!=403291461126605635584000000.\]</div>
+
+  <p>Existem, portanto, mais de \(10^{26}\) cifras de substituição simples diferentes. Cada tabela de cifração associada é chamada de <strong>chave</strong>.</p>
+
+  <p>Suponha que Eva intercepte uma das mensagens de Bob e tente decifrá-la experimentando todas as cifras de substituição simples possíveis. O processo de decifrar uma mensagem sem conhecer a chave subjacente é chamado de <strong>criptoanálise</strong>. Mesmo que Eva — ou seu computador — consiga verificar um milhão de alfabetos de cifra por segundo, ainda levaria mais de \(10^{13}\) anos para experimentar todos eles.<sup id="fnref-1-1-1-5"><a href="#fn-1-1-1-5" data-source-xref>5</a></sup> Mas estima-se que a idade do universo seja da ordem de \(10^{10}\) anos. Portanto, Eva quase não tem chance de decifrar a mensagem de Bob, o que significa que a mensagem é segura e Bob não tem com que se preocupar!<sup id="fnref-1-1-1-6"><a href="#fn-1-1-1-6" data-source-xref>6</a></sup> Ou será que tem?</p>
+
+  <p>Chegou a hora de uma lição importante sobre o lado prático da ciência da criptografia:</p>
+  <blockquote>
+    <p>Sua adversária sempre usa a melhor estratégia dela para derrotar você, não a estratégia que você gostaria que ela usasse. Portanto, a segurança de um sistema de cifração depende do melhor método conhecido para quebrá-lo. À medida que métodos novos e melhores são desenvolvidos, o nível de segurança só pode piorar, nunca melhorar.</p>
+  </blockquote>
+
+  <p>Apesar do grande número de cifras de substituição simples possíveis, elas são, na verdade, bastante fáceis de quebrar; de fato, muitos jornais e revistas as publicam como acompanhamento das palavras cruzadas diárias. Eva consegue criptoanalisar facilmente uma cifra de substituição simples porque as letras da língua inglesa — ou de qualquer outra língua humana — não são aleatórias. Para tomar um exemplo extremo, em inglês a letra <code>q</code> é quase sempre seguida da letra <code>u</code>. Mais útil é o fato de que certas letras, como <code>e</code> e <code>t</code>, aparecem com muito mais frequência que outras, como <code>f</code> e <code>c</code>. A <a href="#tab-1-3" data-source-xref>Tabela 1.3</a> lista as letras com suas frequências típicas em textos em inglês. Como se pode ver, a letra mais frequente é <code>e</code>, seguida por <code>t</code>, <code>a</code>, <code>o</code> e <code>n</code>.</p>
+
+  <p>Assim, se Eva contar as letras na mensagem cifrada de Bob e construir uma tabela de frequências, é provável que a letra mais frequente represente <code>e</code> e que <code>t</code>, <code>a</code>, <code>o</code> e <code>n</code> estejam entre as letras seguintes em frequência. Desse modo, Eva pode experimentar várias possibilidades e, depois de alguma tentativa e erro, decifrar a mensagem de Bob.</p>
+
+  <div class="table-wrap" id="tab-1-3">
+    <table>
+      <caption><span class="label">Tabela 1.3.</span> Frequência das letras em textos em inglês.</caption>
+      <thead>
+        <tr><th colspan="4">Por frequência decrescente</th><th colspan="4">Em ordem alfabética</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>E</th><td>13.11%</td><th>M</th><td>2.54%</td><th>A</th><td>8.15%</td><th>N</th><td>7.10%</td></tr>
+        <tr><th>T</th><td>10.47%</td><th>U</th><td>2.46%</td><th>B</th><td>1.44%</td><th>O</th><td>8.00%</td></tr>
+        <tr><th>A</th><td>8.15%</td><th>G</th><td>1.99%</td><th>C</th><td>2.76%</td><th>P</th><td>1.98%</td></tr>
+        <tr><th>O</th><td>8.00%</td><th>Y</th><td>1.98%</td><th>D</th><td>3.79%</td><th>Q</th><td>0.12%</td></tr>
+        <tr><th>N</th><td>7.10%</td><th>P</th><td>1.98%</td><th>E</th><td>13.11%</td><th>R</th><td>6.83%</td></tr>
+        <tr><th>R</th><td>6.83%</td><th>W</th><td>1.54%</td><th>F</th><td>2.92%</td><th>S</th><td>6.10%</td></tr>
+        <tr><th>I</th><td>6.35%</td><th>B</th><td>1.44%</td><th>G</th><td>1.99%</td><th>T</th><td>10.47%</td></tr>
+        <tr><th>S</th><td>6.10%</td><th>V</th><td>0.92%</td><th>H</th><td>5.26%</td><th>U</th><td>2.46%</td></tr>
+        <tr><th>H</th><td>5.26%</td><th>K</th><td>0.42%</td><th>I</th><td>6.35%</td><th>V</th><td>0.92%</td></tr>
+        <tr><th>D</th><td>3.79%</td><th>X</th><td>0.17%</td><th>J</th><td>0.13%</td><th>W</th><td>1.54%</td></tr>
+        <tr><th>L</th><td>3.39%</td><th>J</th><td>0.13%</td><th>K</th><td>0.42%</td><th>X</th><td>0.17%</td></tr>
+        <tr><th>F</th><td>2.92%</td><th>Q</th><td>0.12%</td><th>L</th><td>3.39%</td><th>Y</th><td>1.98%</td></tr>
+        <tr><th>C</th><td>2.76%</td><th>Z</th><td>0.08%</td><th>M</th><td>2.54%</td><th>Z</th><td>0.08%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-wrap" id="tab-1-4">
+    <table>
+      <caption><span class="label">Tabela 1.4.</span> Uma cifra de substituição simples para criptoanalisar.</caption>
+      <tbody>
+        <tr><td><pre class="ciphertext" lang="en">LOJUM YLJME PDYVJ QXTDV SVJNL DMTJZ WMJGG YSNDL UYLEO SKDVC
+GEPJS MDIPD NEJSK DNJTJ LSKDL OSVDV DNGYN VSGLL OSCIO LGOYG
+ESNEP CGYSN GUJMJ DGYNK DPPYX PJDGG SVDNT WMSWS GYLYS NGSKJ
+CEPYQ GSGLD MLPYN IUSCP QOYGM JGCPL GDWWJ DMLSL OJCNY NYLYD
+LJQLO DLCNL YPLOJ TPJDM NJQLO JWMSE JGGJG XTUOY EOOJO DQDMM
+YBJQD LLOJV LOJTV YIOLU JPPES NGYQJ MOYVD GDNJE MSVDN EJM</pre></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>No restante desta seção, ilustramos como criptoanalisar uma cifra de substituição simples decifrando a mensagem apresentada na <a href="#tab-1-4" data-source-xref>Tabela 1.4</a>. Naturalmente, o resultado final de derrotar uma cifra de substituição simples não é nosso principal objetivo. O ponto central é introduzir a ideia de análise estatística, que terá muitas aplicações em toda a criptografia. Embora forneçamos todos os detalhes para completar a exposição, o leitor talvez prefira passar rapidamente por este material.</p>
+
+  <p>Há 298 letras no texto cifrado. O primeiro passo é construir uma tabela de frequências que registre quantas vezes cada letra do texto cifrado aparece, como na <a href="#tab-1-5" data-source-xref>Tabela 1.5</a>.</p>
+
+  <div class="table-wrap" id="tab-1-5">
+    <table>
+      <caption><span class="label">Tabela 1.5.</span> Tabela de frequências da <a href="#tab-1-4" data-source-xref>Tabela 1.4</a> — comprimento do texto cifrado: 298.</caption>
+      <tbody>
+        <tr><th>Letra</th><td>J</td><td>L</td><td>D</td><td>G</td><td>Y</td><td>S</td><td>O</td><td>N</td><td>M</td><td>P</td><td>E</td><td>V</td><td>Q</td><td>C</td><td>T</td><td>W</td><td>U</td><td>K</td><td>I</td><td>X</td><td>Z</td><td>B</td><td>A</td><td>F</td><td>R</td><td>H</td></tr>
+        <tr><th>Freq.</th><td>32</td><td>28</td><td>27</td><td>24</td><td>23</td><td>22</td><td>19</td><td>18</td><td>17</td><td>15</td><td>12</td><td>12</td><td>8</td><td>8</td><td>7</td><td>6</td><td>6</td><td>5</td><td>4</td><td>3</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><th>%</th><td>11</td><td>9</td><td>9</td><td>8</td><td>8</td><td>7</td><td>6</td><td>6</td><td>6</td><td>5</td><td>4</td><td>4</td><td>3</td><td>3</td><td>2</td><td>2</td><td>2</td><td>2</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>A letra <code>J</code> do texto cifrado é a mais frequente, por isso fazemos a suposição provisória de que ela corresponde à letra <code>e</code> do texto claro. As letras seguintes em frequência no texto cifrado são <code>L</code>, com 28 ocorrências, e <code>D</code>, com 27, de modo que poderíamos supor, com base na <a href="#tab-1-3" data-source-xref>Tabela 1.3</a>, que elas representam <code>t</code> e <code>a</code>. Entretanto, em uma mensagem curta, é improvável que as frequências das letras coincidam exatamente com os percentuais da <a href="#tab-1-3" data-source-xref>Tabela 1.3</a>. Tudo o que podemos dizer é que, entre as letras <code>L</code>, <code>D</code>, <code>G</code>, <code>Y</code> e <code>S</code> do texto cifrado, provavelmente aparecem várias das letras <code>t</code>, <code>a</code>, <code>o</code>, <code>n</code> e <code>r</code> do texto claro.</p>
+
+  <div class="table-wrap" id="tab-1-6">
+    <table>
+      <caption><span class="label">Tabela 1.6.</span> Frequências de bigramas.</caption>
+      <tbody>
+        <tr><th>Bigramas mais comuns em inglês</th><td>th</td><td>he</td><td>an</td><td>re</td><td>er</td><td>in</td><td>on</td><td>at</td><td>nd</td><td>st</td><td>es</td><td>en</td><td>of</td><td>te</td><td>ed</td></tr>
+        <tr><th>Frequência por 1.000 palavras</th><td>168</td><td>132</td><td>92</td><td>91</td><td>88</td><td>86</td><td>71</td><td>68</td><td>61</td><td>53</td><td>52</td><td>51</td><td>49</td><td>46</td><td>46</td></tr>
+        <tr><th>Bigramas mais comuns no texto cifrado da <a href="#tab-1-4" data-source-xref>Tabela 1.4</a></th><td>LO<br>9</td><td>OJ<br>7</td><td colspan="2">GY, DN<br>6 cada</td><td colspan="4">VD, YL, DL, DM<br>5 cada</td><td colspan="7">SN, KD, LY, NG, OY, JD, SK, EP, JG, SV, JM, JQ<br>4 cada</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Há várias maneiras de prosseguir. Um método é examinar <strong>bigramas</strong>, isto é, pares de letras consecutivas. A parte (a) da <a href="#tab-1-6" data-source-xref>Tabela 1.6</a> lista os bigramas que aparecem com mais frequência em inglês, e a parte (b) lista os bigramas do texto cifrado que aparecem com maior frequência em nossa mensagem. Os bigramas <code>LO</code> e <code>OJ</code> aparecem com frequência. Já supusemos que \(J=e\) e, com base em sua frequência, suspeitamos que <code>L</code> provavelmente represente uma das letras <code>t</code>, <code>a</code>, <code>o</code>, <code>n</code> ou <code>r</code>. Como os dois bigramas mais frequentes em inglês são <code>th</code> e <code>he</code>, fazemos as identificações provisórias</p>
+  <div class="display-math">\[LO=th\qquad\text{e}\qquad OJ=he.\]</div>
+
+  <p>Substituímos as suposições \(J=e\), \(L=t\) e \(O=h\) no texto cifrado, escrevendo a possível letra do texto claro abaixo da letra correspondente do texto cifrado.</p>
+  <pre class="cipher-analysis" lang="en">LOJUM YLJME PDYVJ QXTDV SVJNL DMTJZ WMJGG YSNDL UYLEO SKDVC
+the-- -te-- ----e ----- --e-t ---e- --e-- ----t --t-h -----
+GEPJS MDIPD NEJSK DNJTJ LSKDL OSVDV DNGYN VSGLL OSCIO LGOYG
+---e- ----- --e-- --e-e t---t h---- ----- ---tt h---h t-h--
+ESNEP CGYSN GUJMJ DGYNK DPPYX PJDGG SVDNT WMSWS GYLYS NGSKJ
+----- ----- --e-e ----- ----- -e--- ----- ----- --t-- ----e
+CEPYQ GSGLD MLPYN IUSCP QOYGM JGCPL GDWWJ DMLSL OJCNY NYLYD
+----- ---t- -t--- ----- -h--- e---t ----e --t-t he--- --t--
+LJQLO DLCNL YPLOJ TPJDM NJQLO JWMSE JGGJG XTUOY EOOJO DQDMM
+te-th -t--t --the --e-- -e-th e---- e--e- ---h- -hheh -----
+YBJQD LLOJV LOJTV YIOLU JPPES NGYQJ MOYVD GDNJE MSVDN EJM
+--e-- tthe- the-- --ht- e---- ----e -h--- ---e- ----- -e-</pre>
+
+  <p>Nesse ponto, podemos examinar os fragmentos do texto claro e tentar adivinhar algumas palavras comuns do inglês. Por exemplo, na segunda linha vemos os três blocos</p>
+  <pre class="cipher-pair" lang="en">VSGLL OSCIO LGOYG
+---tt h---h t-h--</pre>
+  <p>Ao observar o fragmento <code>th---ht</code>, podemos supor que se trata da palavra <code>thought</code>, o que fornece mais três equivalências:</p>
+  <div class="display-math">\[S=o,\qquad C=u,\qquad I=g.\]</div>
+
+  <p>Isso produz</p>
+  <pre class="cipher-analysis" lang="en">LOJUM YLJME PDYVJ QXTDV SVJNL DMTJZ WMJGG YSNDL UYLEO SKDVC
+the-- -te-- ----e ----- o-e-t ---e- --e-- -o--t --t-h o---u
+GEPJS MDIPD NEJSK DNJTJ LSKDL OSVDV DNGYN VSGLL OSCIO LGOYG
+---eo --g-- --eo- --e-e to--t ho--- ----- -o-tt hough t-h--
+ESNEP CGYSN GUJMJ DGYNK DPPYX PJDGG SVDNT WMSWS GYLYS NGSKJ
+-o--- u--o- --e-e ----- ----- -e--- o---- --o-o --t-o --o-e
+CEPYQ GSGLD MLPYN IUSCP QOYGM JGCPL GDWWJ DMLSL OJCNY NYLYD
+u---- -o-t- -t--- g-ou- -h--- e-u-t ----e --tot heu-- --t--
+LJQLO DLCNL YPLOJ TPJDM NJQLO JWMSE JGGJG XTUOY EOOJO DQDMM
+te-th -tu-t --the --e-- -e-th e--o- e--e- ---h- -hheh -----
+YBJQD LLOJV LOJTV YIOLU JPPES NGYQJ MOYVD GDNJE MSVDN EJM
+--e-- tthe- the-- -ght- e---o ----e -h--- ---e- -o--- -e-</pre>
+
+  <p>Observe agora as três letras <code>ght</code> na última linha. Elas devem ser precedidas por uma vogal, e as únicas vogais restantes são <code>a</code> e <code>i</code>, por isso supomos que \(Y=i\). Em seguida, encontramos as letras <code>itio</code> na terceira linha e supomos que sejam seguidas por um <code>n</code>, o que fornece \(N=n\). Não há motivo para que uma letra não possa representar a si mesma, embora isso seja muitas vezes proibido nas cifras de passatempo publicadas em jornais. Temos agora</p>
+  <pre class="cipher-analysis" lang="en">LOJUM YLJME PDYVJ QXTDV SVJNL DMTJZ WMJGG YSNDL UYLEO SKDVC
+the-- ite-- --i-e ----- o-ent ---e- --e-- ion-t -it-h o---u
+GEPJS MDIPD NEJSK DNJTJ LSKDL OSVDV DNGYN VSGLL OSCIO LGOYG
+---eo --g-- n-eo- -ne-e to--t ho--- -n-in -o-tt hough t-hi-
+ESNEP CGYSN GUJMJ DGYNK DPPYX PJDGG SVDNT WMSWS GYLYS NGSKJ
+-on-- u-ion --e-e --in- ---i- -e--- o--n- --o-o -itio n-o-e
+CEPYQ GSGLD MLPYN IUSCP QOYGM JGCPL GDWWJ DMLSL OJCNY NYLYD
+u--i- -o-t- -t-in g-ou- -hi-- e-u-t ----e --tot heuni niti-
+LJQLO DLCNL YPLOJ TPJDM NJQLO JWMSE JGGJG XTUOY EOOJO DQDMM
+te-th -tunt i-the --e-- ne-th e--o- e--e- ---hi -hheh -----
+YBJQD LLOJV LOJTV YIOLU JPPES NGYQJ MOYVD GDNJE MSVDN EJM
+i-e-- tthe- the-- ight- e---o n-i-e -hi-- --ne- -o--n -e-</pre>
+
+  <p>Até aqui, reconstruímos os seguintes pares texto claro/texto cifrado:</p>
+  <pre class="cipher-analysis" lang="en">      J L D G Y S O N M P E V Q C T W U K I X Z B A F R H
+      e t - - i o h n - - - - - u - - - - g - - - - - - -
+Freq. 32 28 27 24 23 22 19 18 17 15 12 12 8 8 7 6 6 5 4 3 1 1 0 0 0 0</pre>
+
+  <p>Lembre-se de que as letras mais comuns do inglês, pela <a href="#tab-1-3" data-source-xref>Tabela 1.3</a>, são, em ordem decrescente de frequência,</p>
+  <div class="display-math">\[e,\ t,\ a,\ o,\ n,\ r,\ i,\ s,\ h.\]</div>
+  <p>Já atribuímos valores de texto cifrado a \(e,t,o,n,i,h\), portanto supomos que <code>D</code> e <code>G</code> representem duas das três letras \(a,r,s\). Na terceira linha, notamos que <code>GYLYSN</code> produz <code>-ition</code>, logo <code>G</code> deve ser <code>s</code>. De modo semelhante, na quinta linha temos <code>LJQLO DLCNL</code> igual a <code>te-th -tunt</code>, então <code>D</code> deve ser <code>a</code>, e não <code>r</code>. Substituir esses novos pares \(G=s\) e \(D=a\) produz</p>
+  <pre class="cipher-analysis" lang="en">LOJUM YLJME PDYVJ QXTDV SVJNL DMTJZ WMJGG YSNDL UYLEO SKDVC
+the-- ite-- -ai-e ---a- o-ent a--e- --ess ionat -it-h o-a-u
+GEPJS MDIPD NEJSK DNJTJ LSKDL OSVDV DNGYN VSGLL OSCIO LGOYG
+s--eo -ag-a n-eo- ane-e to-at ho-a- ansin -ostt hough tshis
+ESNEP CGYSN GUJMJ DGYNK DPPYX PJDGG SVDNT WMSWS GYLYS NGSKJ
+-on-- usion s-e-e asin- a--i- -eass o-an- --o-o -itio nso-e
+CEPYQ GSGLD MLPYN IUSCP QOYGM JGCPL GDWWJ DMLSL OJCNY NYLYD
+u--i- sosta -t-in g-ou- -his- esu-t sa--e a-tot heuni nitia
+LJQLO DLCNL YPLOJ TPJDM NJQLO JWMSE JGGJG XTUOY EOOJO DQDMM
+te-th atunt i-the --ea- ne-th e--o- esses ---hi -hheh a-a--
+YBJQD LLOJV LOJTV YIOLU JPPES NGYQJ MOYVD GDNJE MSVDN EJM
+i-e-a tthe- the-- ight- e---o nsi-e -hi-a sane- -o-an -e-</pre>
+
+  <p>Agora é fácil preencher pares adicionais por inspeção. Por exemplo, a letra ausente no fragmento <code>atunt i-the</code> da quinta linha deve ser <code>l</code>, o que fornece \(P=l\), e a letra ausente no fragmento <code>-osition</code> da terceira linha deve ser <code>p</code>, o que fornece \(W=p\). Ao substituí-las, encontramos o fragmento <code>e-p-ession</code> na primeira linha, que fornece \(Z=x\) e \(M=r\), e o fragmento <code>-on-lusion</code> na terceira linha, que fornece \(E=c\). Então <code>consi-er</code> na última linha fornece \(Q=d\), e as palavras iniciais <code>the-riterclai-e-</code> devem ser a expressão <code>the writer claimed</code>, produzindo \(U=w\) e \(V=m\). Isso dá</p>
+  <pre class="cipher-analysis" lang="en">LOJUM YLJME PDYVJ QXTDV SVJNL DMTJZ WMJGG YSNDL UYLEO SKDVC
+thewr iterc laime d--am oment ar-ex press ionat witch o-amu
+GEPJS MDIPD NEJSK DNJTJ LSKDL OSVDV DNGYN VSGLL OSCIO LGOYG
+scleo ragla nceo- ane-e to-at homam ansin mostt hough tshis
+ESNEP CGYSN GUJMJ DGYNK DPPYX PJDGG SVDNT WMSWS GYLYS NGSKJ
+concl usion swere asin- alli- leass oman- propo sitio nso-e
+CEPYQ GSGLD MLPYN IUSCP QOYGM JGCPL GDWWJ DMLSL OJCNY NYLYD
+uclid sosta rtlin gwoul dhisr esult sappe artot heuni nitia
+LJQLO DLCNL YPLOJ TPJDM NJQLO JWMSE JGGJG XTUOY EOOJO DQDMM
+tedth atunt ilthe -lear nedth eproc esses --whi chheh adarr
+YBJQD LLOJV LOJTV YIOLU JPPES NGYQJ MOYVD GDNJE MSVDN EJM
+i-eda tthem the-m ightw ellco nside rhima sanec roman cer</pre>
+
+  <p>Agora basta preencher as poucas letras restantes e inserir as separações adequadas entre palavras, as maiúsculas e a pontuação para recuperar o texto claro:</p>
+  <blockquote lang="en">The writer claimed by a momentary expression, a twitch of a muscle or a glance of an eye, to fathom a man’s inmost thoughts. His conclusions were as infallible as so many propositions of Euclid. So startling would his results appear to the uninitiated that until they learned the processes by which he had arrived at them they might well consider him as a necromancer.<sup id="fnref-1-1-1-7"><a href="#fn-1-1-1-7" data-source-xref>7</a></sup></blockquote>
+
+  <ol class="footnotes" start="5">
+    <li id="fn-1-1-1-5">Você percebe como obtivemos \(10^{13}\) anos? Há \(60\cdot60\cdot24\cdot365\) segundos em um ano, e \(26!\) dividido por \(10^6\cdot60\cdot60\cdot24\cdot365\) é aproximadamente \(10^{13.107}\). <a href="#fnref-1-1-1-5" data-source-xref aria-label="Voltar à chamada da nota 5">↩</a></li>
+    <li id="fn-1-1-1-6">A afirmação de que um grande número de chaves possíveis, por si só, torna um criptossistema seguro apareceu muitas vezes na história e, com igual frequência, mostrou-se falaciosa. <a href="#fnref-1-1-1-6" data-source-xref aria-label="Voltar à chamada da nota 6">↩</a></li>
+    <li id="fn-1-1-1-7"><em>A Study in Scarlet</em>, Capítulo 2, Sir Arthur Conan Doyle. <a href="#fnref-1-1-1-7" data-source-xref aria-label="Voltar à chamada da nota 7">↩</a></li>
+  </ol>
+</section>

@@ -33,7 +33,7 @@
             <p>Se trabalharmos em \(\mathbb F_p^*\), cada cálculo de \(g^x\pmod p\) exigirá \(\mathcal O((\log p)^k)\) operações do computador, em que a constante \(k\) e a constante implícita na notação de grande O dependem do computador e do algoritmo usado na multiplicação modular. Assim, o número total de passos do computador, ou tempo de execução, é \(\mathcal O(N(\log p)^k)\). Em geral, o fator \(\mathcal O((\log p)^k)\) é desprezível; por isso, vamos suprimi-lo e simplesmente dizer que o tempo de execução é \(\mathcal O(N)\).</p>
           </div>
 
-          <p>A ideia por trás de um algoritmo de colisão é construir duas listas e procurar um elemento que apareça em ambas. Para o problema do logaritmo discreto descrito na Proposição 2.19, o tempo de execução de um algoritmo de colisão é pouco maior que \(\mathcal O(\sqrt N)\) passos, uma economia enorme em relação a \(\mathcal O(N)\) quando \(N\) é grande.</p>
+          <p>A ideia por trás de um algoritmo de colisão é construir duas listas e procurar um elemento que apareça em ambas. Para o problema do logaritmo discreto descrito na <a href="#prop-2-19" data-source-xref>Proposição 2.19</a>, o tempo de execução de um algoritmo de colisão é pouco maior que \(\mathcal O(\sqrt N)\) passos, uma economia enorme em relação a \(\mathcal O(N)\) quando \(N\) é grande.</p>
 
           <span id="slot-exp-2-7-encontro-no-meio" data-enrichment-slot="exp-2-7-encontro-no-meio"></span>
 
@@ -82,9 +82,9 @@
             </div>
             <p>Vamos ilustrar o método passo de bebê–passo de gigante de Shanks usando-o para resolver o problema do logaritmo discreto</p>
             <div class="equation">\[g^x=h\quad\text{em}\quad\mathbb F_p^*,\qquad g=9704,\quad h=13896,\quad p=17389.\]</div>
-            <p>O número \(9704\) tem ordem \(1242\) em \(\mathbb F_{17389}^*\).<sup><a href="#nota-9">9</a></sup> Defina \(n=\lfloor\sqrt{1242}\rfloor+1=36\) e \(u=g^{-n}=9704^{-36}=2494\). A Tabela 2.4 apresenta os valores de \(g^k\) e \(h\,u^k\) para \(k=1,2,\ldots\).</p>
+            <p>O número \(9704\) tem ordem \(1242\) em \(\mathbb F_{17389}^*\).<sup><a href="#nota-9">9</a></sup> Defina \(n=\lfloor\sqrt{1242}\rfloor+1=36\) e \(u=g^{-n}=9704^{-36}=2494\). A <a href="#tab-2-4" data-source-xref>Tabela 2.4</a> apresenta os valores de \(g^k\) e \(h\,u^k\) para \(k=1,2,\ldots\).</p>
 
-            <div class="table-wrap">
+            <div class="table-wrap" id="tab-2-4">
               <table>
                 <caption>Tabela 2.4 — Passo de bebê–passo de gigante para resolver \(9704^x\equiv13896\pmod{17389}\).</caption>
                 <thead>
@@ -116,5 +116,5 @@
           </div>
 
           <p class="footnote" id="nota-8"><sup>8</sup> A multiplicação por \(g\) é um "passo de bebê", e a multiplicação por \(u=g^{-n}\) é um "passo de gigante"; daí vem o nome do algoritmo.</p>
-          <p class="footnote" id="nota-9"><sup>9</sup> O teorema de Lagrange (Proposição 2.13) afirma que a ordem de \(g\) divide \(17388=2^2\cdot3^3\cdot7\cdot23\). Assim, podemos determinar a ordem de \(g\) calculando \(g^n\) para os 48 divisores distintos de \(17388\), embora na prática existam métodos mais eficientes.</p>
+          <p class="footnote" id="nota-9"><sup>9</sup> O teorema de Lagrange (<a href="#prop-2-13" data-source-xref>Proposição 2.13</a>) afirma que a ordem de \(g\) divide \(17388=2^2\cdot3^3\cdot7\cdot23\). Assim, podemos determinar a ordem de \(g\) calculando \(g^n\) para os 48 divisores distintos de \(17388\), embora na prática existam métodos mais eficientes.</p>
         </section>

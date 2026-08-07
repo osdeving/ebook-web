@@ -1,0 +1,29 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>
+      <p>Os segundos expoentes são inversos multiplicativos dos primeiros módulo \(p-1=32610\):</p>
+      <p>\[3589\cdot15619\equiv1\pmod{32610},\qquad4037\cdot31883\equiv1\pmod{32610}.\]</p>
+      <p>Isso explica por que elevar a \(15619\) desfaz a potência \(3589\), e elevar a \(31883\) desfaz a potência \(4037\).</p>
+    </li>
+    <li>
+      <p>Em geral, fixe um primo \(p\) e uma mensagem \(m\in\mathbb F_p^*\). Alice escolhe \(a\) com \(\gcd(a,p-1)=1\), e Bob escolhe \(b\) com \(\gcd(b,p-1)=1\). Sejam \(a'\) e \(b'\) seus inversos módulo \(p-1\). As três transmissões são</p>
+      <p>\[u=m^a,\qquad v=u^b=m^{ab},\qquad w=v^{a'}=m^{aba'}=m^b\pmod p.\]</p>
+      <p>Bob finalmente calcula</p>
+      <p>\[w^{b'}\equiv m^{bb'}\equiv m\pmod p,\]</p>
+      <p>pois \(aa'\equiv bb'\equiv1\pmod{p-1}\) e os expoentes podem ser reduzidos módulo \(p-1\) pelo pequeno teorema de Fermat. A mensagem \(m=0\) também permanece \(0\), embora normalmente se trabalhe em \(\mathbb F_p^*\).</p>
+    </li>
+    <li>
+      <p>O protocolo é interativo: Alice envia \(u\), Bob devolve \(v\), e Alice envia \(w\). Assim são necessárias três transmissões e ambos precisam estar disponíveis durante a operação. No Elgamal, depois de publicada a chave de Bob, Alice envia um único par cifrado.</p>
+    </li>
+    <li>
+      <p>Uma vantagem potencial é dispensar uma chave pública permanente: os dois participantes usam expoentes efêmeros e o transcript expõe menos informação fixa que o Elgamal.</p>
+      <p>Se Eva resolve logaritmos discretos, pode encontrar um expoente \(r\) tal que \(w=v^r\). Como \(a\) e \(b\) são coprimos com \(p-1\), os elementos \(m\), \(u\) e \(v\) têm a mesma ordem; portanto \(r\equiv a'\) módulo essa ordem e</p>
+      <p>\[u^r=u^{a'}\equiv m^{aa'}\equiv m\pmod p.\]</p>
+      <p>Já um oráculo para o PDH nos parâmetros públicos fixados não fornece uma quebra direta. O transcript é</p>
+      <p>\[u=m^a,\qquad v=m^{ab},\qquad w=m^b,\]</p>
+      <p>e sua base comum é a própria mensagem desconhecida \(m\), não a base pública para a qual o oráculo recebe potências. Não se conhece, a partir desses três valores, uma chamada imediata ao oráculo de base fixa que devolva \(m\). Essa é a vantagem potencial pedida: se o PDH for mais fácil que o PLD, o Elgamal é quebrado pelo primeiro, enquanto esta construção não possui a mesma redução direta.</p>
+      <p class="solution-note">Um oráculo mais forte, definido para aceitar bases arbitrárias e seus subgrupos, mudaria a conclusão: usando \(v\) como base, \(w=v^{a'}\) e \(u=v^{b'}\), ele devolveria \(v^{a'b'}=m\). Esse não é o oráculo de base pública fixa considerado na comparação.</p>
+      <p>Como nos demais protocolos sem autenticação, a construção ainda está sujeita a ataques ativos de intermediário.</p>
+    </li>
+  </ol>
+</div>

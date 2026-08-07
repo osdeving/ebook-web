@@ -1,0 +1,105 @@
+<div class="exercise-solution">
+  <p>Usaremos o seguinte teste. Se \(p\) é primo, então \(g\) é uma raiz primitiva módulo \(p\) se, e somente se,</p>
+  <div class="display-math">\[
+    g^{(p-1)/q}\not\equiv1\pmod p
+    \qquad\text{para todo primo }q\mid p-1.
+  \]</div>
+  <p>De fato, essas verificações excluem todos os possíveis divisores próprios da ordem \(p-1\).</p>
+  <ol type="a">
+    <li>
+      <ul>
+        <li>\(p=7\): \(2^3\equiv1\pmod7\), portanto \(2\) não é primitiva.</li>
+        <li>\(p=13\): \(2^6\equiv12\) e \(2^4\equiv3\pmod{13}\); como \(12=2^2\cdot3\), \(2\) é primitiva.</li>
+        <li>\(p=19\): \(2^9\equiv18\) e \(2^6\equiv7\pmod{19}\); como \(18=2\cdot3^2\), \(2\) é primitiva.</li>
+        <li>\(p=23\): \(2^{11}\equiv1\pmod{23}\), portanto \(2\) não é primitiva.</li>
+      </ul>
+      <p>Logo \(2\) é raiz primitiva exatamente para \(p=13\) e \(p=19\).</p>
+    </li>
+    <li>
+      <ul>
+        <li>\(p=5\): \(3^2\equiv4\not\equiv1\pmod5\), portanto \(3\) é primitiva.</li>
+        <li>\(p=7\): \(3^3\equiv6\) e \(3^2\equiv2\pmod7\), portanto \(3\) é primitiva.</li>
+        <li>\(p=11\): \(3^5\equiv1\pmod{11}\), portanto \(3\) não é primitiva.</li>
+        <li>\(p=17\): \(3^8\equiv16\not\equiv1\pmod{17}\), portanto \(3\) é primitiva.</li>
+      </ul>
+      <p>Logo os primos pedidos são \(5,7,17\).</p>
+    </li>
+    <li>
+      <p>Uma escolha para cada primo, acompanhada das verificações exigidas pelo teste, é</p>
+      <div class="display-math">\[
+        \begin{array}{c|c|l}
+        p&amp;g&amp;\text{potências de teste}\\ \hline
+        23&amp;5&amp;5^{11}\equiv22,\quad5^2\equiv2\\
+        29&amp;2&amp;2^{14}\equiv28,\quad2^4\equiv16\\
+        41&amp;6&amp;6^{20}\equiv40,\quad6^8\equiv10\\
+        43&amp;3&amp;3^{21}\equiv42,\quad3^{14}\equiv36,\quad3^6\equiv41
+        \end{array}
+      \]</div>
+      <p>Todos os resíduos da última coluna são diferentes de \(1\) no módulo correspondente; assim, podemos tomar \(5,2,6,3\), respectivamente.</p>
+    </li>
+    <li>
+      <p>O número \(2\) é uma raiz primitiva módulo \(11\). Todo elemento não nulo é \(2^k\), e \(2^k\) é primitivo se, e somente se, \(\gcd(k,10)=1\). Os expoentes são \(k=1,3,7,9\), o que dá</p>
+      <div class="display-math">\[
+        2^1\equiv2,\quad
+        2^3\equiv8,\quad
+        2^7\equiv7,\quad
+        2^9\equiv6\pmod{11}.
+      \]</div>
+      <p>Portanto todas as raízes primitivas módulo \(11\) são \(\{2,6,7,8\}\). Há \(4=\phi(10)\) delas.</p>
+    </li>
+    <li>
+      <p>Um programa direto que implementa o teste acima é:</p>
+      <pre><code>def prime_divisors(n):
+    factors = []
+    d = 2
+    while d * d &lt;= n:
+        if n % d == 0:
+            factors.append(d)
+            while n % d == 0:
+                n //= d
+        d += 1
+    if n &gt; 1:
+        factors.append(n)
+    return factors
+
+def primitive_roots(p):
+    qs = prime_divisors(p - 1)
+    return [
+        g for g in range(1, p)
+        if all(pow(g, (p - 1) // q, p) != 1 for q in qs)
+    ]</code></pre>
+      <p>Para \(p=229\), o programa devolve \(72\) raízes:</p>
+      <pre class="solution-output">[6, 7, 10, 23, 24, 28, 29, 31, 35, 38, 39, 40,
+ 41, 47, 50, 59, 63, 65, 66, 67, 69, 72, 73, 74,
+ 77, 79, 87, 90, 92, 96, 98, 102, 105, 110, 112, 113,
+ 116, 117, 119, 124, 127, 131, 133, 137, 139, 142, 150,
+ 152, 155, 156, 157, 160, 162, 163, 164, 166, 170, 179,
+ 182, 188, 189, 190, 191, 194, 198, 200, 201, 205, 206,
+ 219, 222, 223]</pre>
+      <p>A contagem confere, pois \(228=2^2\cdot3\cdot19\) e</p>
+      <div class="display-math">\[
+        \phi(228)
+        =228\left(1-\frac12\right)\left(1-\frac13\right)\left(1-\frac1{19}\right)
+        =72.
+      \]</div>
+    </li>
+    <li>
+      <p>Os primos menores que \(100\) para os quais \(2\) é raiz primitiva são</p>
+      <div class="display-math">\[
+        \{3,5,11,13,19,29,37,53,59,61,67,83\}.
+      \]</div>
+    </li>
+    <li>
+      <p>Para a base \(3\), obtemos</p>
+      <div class="display-math">\[
+        \{2,5,7,17,19,29,31,43,53,79,89\}.
+      \]</div>
+      <p>A inclusão de \(p=2\) usa a convenção usual de que \(1\) gera o grupo trivial \(\mathbb F_2^*=\{1\}\); se forem considerados apenas primos ímpares, basta omitir \(2\).</p>
+      <p>Para a base \(4\), não há nenhum primo menor que \(100\). Para todo primo ímpar \(p\),</p>
+      <div class="display-math">\[
+        4^{(p-1)/2}=2^{p-1}\equiv1\pmod p,
+      \]</div>
+      <p>logo a ordem de \(4\) é menor que \(p-1\); para \(p=2\), \(4\equiv0\) nem sequer pertence a \(\mathbb F_2^*\).</p>
+    </li>
+  </ol>
+</div>

@@ -1,0 +1,160 @@
+<section class="section" id="sec-1-5" data-layer="source">
+  <h2><span class="section-number">1.5</span> Potências e raízes primitivas em corpos finitos</h2>
+
+  <p>A aplicação de corpos finitos à criptografia envolve com frequência elevar elementos de \(\mathbb F_p\) a potências altas. Do ponto de vista prático, sabemos fazer isso de modo eficiente usando o algoritmo de exponenciação descrito na <a href="#sec-1-3-2" data-source-xref>Seção 1.3.2</a>. Nesta seção, investigamos potências em \(\mathbb F_p\) de um ponto de vista puramente matemático, demonstramos um resultado fundamental devido a Fermat e enunciamos uma propriedade importante do grupo de unidades \(\mathbb F_p^*\).</p>
+
+  <p>Começamos com um exemplo simples. A <a href="#table-1-9" data-source-xref>Tabela 1.9</a> lista as potências de \(1,2,3,\ldots,6\) módulo o primo \(7\).</p>
+
+  <div class="table-wrap" id="table-1-9">
+    <table>
+      <caption><span class="label">Tabela 1.9.</span> Potências de números módulo 7.</caption>
+      <tbody>
+          <tr><td>\(1^1\equiv1\)</td><td>\(1^2\equiv1\)</td><td>\(1^3\equiv1\)</td><td>\(1^4\equiv1\)</td><td>\(1^5\equiv1\)</td><td>\(1^6\equiv1\)</td></tr>
+          <tr><td>\(2^1\equiv2\)</td><td>\(2^2\equiv4\)</td><td>\(2^3\equiv1\)</td><td>\(2^4\equiv2\)</td><td>\(2^5\equiv4\)</td><td>\(2^6\equiv1\)</td></tr>
+          <tr><td>\(3^1\equiv3\)</td><td>\(3^2\equiv2\)</td><td>\(3^3\equiv6\)</td><td>\(3^4\equiv4\)</td><td>\(3^5\equiv5\)</td><td>\(3^6\equiv1\)</td></tr>
+          <tr><td>\(4^1\equiv4\)</td><td>\(4^2\equiv2\)</td><td>\(4^3\equiv1\)</td><td>\(4^4\equiv4\)</td><td>\(4^5\equiv2\)</td><td>\(4^6\equiv1\)</td></tr>
+          <tr><td>\(5^1\equiv5\)</td><td>\(5^2\equiv4\)</td><td>\(5^3\equiv6\)</td><td>\(5^4\equiv2\)</td><td>\(5^5\equiv3\)</td><td>\(5^6\equiv1\)</td></tr>
+          <tr><td>\(6^1\equiv6\)</td><td>\(6^2\equiv1\)</td><td>\(6^3\equiv6\)</td><td>\(6^4\equiv1\)</td><td>\(6^5\equiv6\)</td><td>\(6^6\equiv1\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Há vários padrões interessantes visíveis na <a href="#table-1-9" data-source-xref>Tabela 1.9</a>, incluindo, em particular, o fato de que a coluna da direita é formada inteiramente por uns. Podemos reformular essa observação dizendo que</p>
+  <div class="display-math">\[a^6\equiv1\pmod7\qquad\text{para todo }a=1,2,3,\ldots,6.\]</div>
+  <p>É claro que isso não pode ser verdadeiro para todos os valores de \(a\), pois, se \(a\) é múltiplo de \(7\), então todas as suas potências também o são; nesse caso, \(a^n\equiv0\pmod7\). Por outro lado, se \(a\) não é divisível por \(7\), então \(a\) é congruente a um dos valores \(1,2,3,\ldots,6\) módulo \(7\). Portanto,</p>
+  <div class="display-math">\[a^6\equiv
+    \begin{cases}
+      1\pmod7,&amp;\text{se }7\nmid a,\\
+      0\pmod7,&amp;\text{se }7\mid a.
+    \end{cases}\]</div>
+  <p>Outros experimentos com outros primos sugerem que esse exemplo reflete um fato geral.</p>
+
+  <aside class="semantic theorem" id="theorem-1-24">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">1.24 — Pequeno teorema de Fermat</span></div>
+    <p>Seja \(p\) um número primo e seja \(a\) um inteiro qualquer. Então</p>
+    <div class="display-math">\[a^{p-1}\equiv
+      \begin{cases}
+        1\pmod p,&amp;\text{se }p\nmid a,\\
+        0\pmod p,&amp;\text{se }p\mid a.
+      \end{cases}\]</div>
+  </aside>
+
+  <div class="semantic proof" id="proof-theorem-1-24">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Há muitas demonstrações do pequeno teorema de Fermat. Se você estudou teoria de grupos, a demonstração mais rápida é observar que os elementos não nulos de \(\mathbb F_p\) formam um grupo \(\mathbb F_p^*\) de ordem \(p-1\); portanto, pelo <a href="../ch02/#prop-2-13" data-source-xref>teorema de Lagrange</a>, todo elemento de \(\mathbb F_p^*\) tem ordem que divide \(p-1\). Para quem ainda não fez um curso de teoria de grupos, apresentamos uma demonstração direta.</p>
+    <p>Se \(p\mid a\), então é claro que toda potência de \(a\) é divisível por \(p\). Assim, precisamos considerar apenas o caso \(p\nmid a\). Examinamos agora a lista de números</p>
+    <div class="equation" id="eq-1-8"><span class="equation-number">(1.8)</span>\[a,\quad2a,\quad3a,\quad\ldots,\quad(p-1)a\qquad\text{reduzidos módulo }p.\]</div>
+    <p>Há \(p-1\) números nessa lista, e afirmamos que todos são diferentes. Para entender por quê, tome quaisquer dois deles, digamos \(ja\bmod p\) e \(ka\bmod p\), e suponha que sejam iguais. Isso significa que</p>
+    <div class="display-math">\[ja\equiv ka\pmod p,\qquad\text{e, portanto,}\qquad(j-k)a\equiv0\pmod p.\]</div>
+    <p>Logo, \(p\) divide o produto \((j-k)a\). A <a href="#prop-1-19" data-source-xref>Proposição 1.19</a> nos diz que ou \(p\) divide \(j-k\) ou \(p\) divide \(a\). No entanto, supusemos que \(p\) não divide \(a\), e assim concluímos que \(p\) divide \(j-k\). Mas \(j\) e \(k\) estão ambos entre \(1\) e \(p-1\), de modo que sua diferença \(j-k\) está entre \(-(p-2)\) e \(p-2\). Há apenas um número entre \(-(p-2)\) e \(p-2\) que é divisível por \(p\), e esse número é zero! Isso demonstra que \(j-k=0\), o que significa que \(ja=ka\). Mostramos, portanto, que os \(p-1\) números da lista <a href="#eq-1-8" data-source-xref>(1.8)</a> são todos diferentes. Eles também são não nulos, pois \(1,2,3,\ldots,p-1\) e \(a\) não são divisíveis por \(p\).</p>
+    <p>Recapitulando, mostramos que a lista de números <a href="#eq-1-8" data-source-xref>(1.8)</a> é formada por \(p-1\) números distintos entre \(1\) e \(p-1\). Mas há apenas \(p-1\) números distintos entre \(1\) e \(p-1\), de modo que a lista de números <a href="#eq-1-8" data-source-xref>(1.8)</a> deve ser simplesmente a lista \(1,2,\ldots,p-1\) em alguma ordem embaralhada.</p>
+    <p>Considere agora o que acontece quando multiplicamos todos os números \(a,2a,3a,\ldots,(p-1)a\) da lista <a href="#eq-1-8" data-source-xref>(1.8)</a> e reduzimos o produto módulo \(p\). Isso é o mesmo que multiplicar todos os números \(1,2,3,\ldots,p-1\) módulo \(p\), e assim obtemos a congruência</p>
+    <div class="display-math">\[a\cdot2a\cdot3a\cdots(p-1)a\equiv1\cdot2\cdot3\cdots(p-1)\pmod p.\]</div>
+    <p>Há \(p-1\) cópias de \(a\) no lado esquerdo. Colocamos essas cópias em evidência e usamos a notação fatorial \((p-1)!=1\cdot2\cdots(p-1)\) para obter</p>
+    <div class="display-math">\[a^{p-1}\cdot(p-1)!\equiv(p-1)!\pmod p.\]</div>
+    <p>Por fim, podemos cancelar \((p-1)!\) dos dois lados, pois ele não é divisível por \(p\). (Estamos usando o fato de que \(\mathbb F_p\) é um corpo, portanto podemos dividir por qualquer número não nulo.) Isso resulta em</p>
+    <div class="display-math">\[a^{p-1}\equiv1\pmod p,\]</div>
+    <p>o que conclui a demonstração do “pequeno” teorema de Fermat.<sup id="fnref-1-5-11"><a href="#fn-1-5-11" data-source-xref>11</a></sup></p>
+  </div>
+
+  <aside class="semantic example" id="example-1-25">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.25</span></div>
+    <p>O número \(p=15485863\) é primo, portanto o pequeno teorema de Fermat (<a href="#theorem-1-24" data-source-xref>Teorema 1.24</a>) nos diz que</p>
+    <div class="display-math">\[2^{15485862}\equiv1\pmod{15485863}.\]</div>
+    <p>Assim, sem fazer cálculo algum, sabemos que o número \(2^{15485862}-1\), um número com mais de dois milhões de algarismos, é múltiplo de \(15485863\).</p>
+  </aside>
+
+  <aside class="semantic remark" id="remark-1-26">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">1.26</span></div>
+    <p>O pequeno teorema de Fermat (<a href="#theorem-1-24" data-source-xref>Teorema 1.24</a>) e o algoritmo de exponenciação rápida (<a href="#sec-1-3-2" data-source-xref>Seção 1.3.2</a>) nos fornecem um método razoavelmente eficiente para calcular inversos módulo \(p\), a saber,</p>
+    <div class="display-math">\[a^{-1}\equiv a^{p-2}\pmod p.\]</div>
+    <p>Essa congruência é verdadeira porque, se multiplicarmos \(a^{p-2}\) por \(a\), o teorema de Fermat nos diz que o produto é igual a \(1\) módulo \(p\). Isso fornece uma alternativa ao método do algoritmo de Euclides estendido descrito na <a href="#remark-1-22" data-source-xref>Observação 1.22</a>. Na prática, os dois algoritmos tendem a levar aproximadamente o mesmo tempo, embora existam variantes do algoritmo de Euclides que são um pouco mais rápidas na prática; veja, por exemplo, <a href="../../references/#ref-66" data-source-xref>[66, Capítulo 4.5.3, Teorema E]</a>.</p>
+  </aside>
+
+  <aside class="semantic example" id="example-1-27">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.27</span></div>
+    <p>Calculamos o inverso de \(7814\) módulo \(17449\) de duas maneiras. Primeiro,</p>
+    <div class="display-math">\[7814^{-1}\equiv7814^{17447}\equiv1284\pmod{17449}.\]</div>
+    <p>Em segundo lugar, usamos o algoritmo de Euclides estendido para resolver</p>
+    <div class="display-math">\[7814u+17449v=1.\]</div>
+    <p>A solução é \((u,v)=(1284,-575)\), portanto \(7814^{-1}\equiv1284\pmod{17449}\).</p>
+  </aside>
+
+  <aside class="semantic example" id="example-1-28">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.28</span></div>
+    <p>Considere o número \(m=15485207\). Usando o algoritmo de exponenciação, não é difícil calcular (em um computador)</p>
+    <div class="display-math">\[2^{m-1}=2^{15485206}\equiv4136685\pmod{15485207}.\]</div>
+    <p>Não obtivemos o valor \(1\), portanto parece que o pequeno teorema de Fermat não é verdadeiro para \(m\). O que isso nos diz? Se \(m\) fosse primo, o pequeno teorema de Fermat afirma que teríamos obtido \(1\). Logo, o fato de não termos obtido \(1\) demonstra que o número \(m=15485207\) não é primo.</p>
+    <p>Pense nisso por um instante, pois é realmente um pouco surpreendente. Por meio de um cálculo simples, demonstramos de maneira conclusiva que \(m\) não é primo, mas não conhecemos nenhum de seus fatores!<sup id="fnref-1-5-12"><a href="#fn-1-5-12" data-source-xref>12</a></sup></p>
+  </aside>
+
+  <p>O pequeno teorema de Fermat nos diz que, se \(a\) é um inteiro não divisível por \(p\), então \(a^{p-1}\equiv1\pmod p\). No entanto, para qualquer valor particular de \(a\), pode muito bem haver potências menores de \(a\) congruentes a \(1\).</p>
+
+  <aside class="semantic definition" id="def-1-order-mod-p">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Definimos a <strong>ordem de \(a\) módulo \(p\)</strong> como o menor expoente \(k\ge1\) tal que<sup id="fnref-1-5-13"><a href="#fn-1-5-13" data-source-xref>13</a></sup></p>
+    <div class="display-math">\[a^k\equiv1\pmod p.\]</div>
+  </aside>
+
+  <aside class="semantic proposition" id="prop-1-29">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">1.29</span></div>
+    <p>Seja \(p\) um primo e seja \(a\) um inteiro não divisível por \(p\). Suponha que \(a^n\equiv1\pmod p\). Então a ordem de \(a\) módulo \(p\) divide \(n\). Em particular, a ordem de \(a\) divide \(p-1\).</p>
+  </aside>
+
+  <div class="semantic proof" id="proof-prop-1-29">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Seja \(k\) a ordem de \(a\) módulo \(p\); portanto, por definição, \(a^k\equiv1\pmod p\), e \(k\) é o menor expoente positivo com essa propriedade. É dado que \(a^n\equiv1\pmod p\). Dividimos \(n\) por \(k\) para obter</p>
+    <div class="display-math">\[n=kq+r\qquad\text{com }0\le r&lt;k.\]</div>
+    <p>Então</p>
+    <div class="display-math">\[1\equiv a^n\equiv a^{kq+r}\equiv(a^k)^q\cdot a^r\equiv1^q\cdot a^r\equiv a^r\pmod p.\]</div>
+    <p>Mas \(r&lt;k\), de modo que o fato de \(k\) ser a menor potência positiva de \(a\) congruente a \(1\) nos diz que \(r\) deve ser igual a \(0\). Portanto, \(n=kq\), e assim \(k\) divide \(n\).</p>
+    <p>Por fim, o pequeno teorema de Fermat nos diz que \(a^{p-1}\equiv1\pmod p\), logo \(k\) divide \(p-1\).</p>
+  </div>
+
+  <p>O pequeno teorema de Fermat descreve uma propriedade especial das unidades (isto é, dos elementos não nulos) de um corpo finito. Concluímos esta seção com uma breve discussão de outra propriedade bastante importante, tanto do ponto de vista teórico quanto prático.</p>
+
+  <aside class="semantic theorem" id="theorem-1-30">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">1.30 — Teorema da raiz primitiva</span></div>
+    <p>Seja \(p\) um número primo. Então existe um elemento \(g\in\mathbb F_p^*\) cujas potências fornecem todos os elementos de \(\mathbb F_p^*\), isto é,</p>
+    <div class="display-math">\[\mathbb F_p^*=\{1,g,g^2,g^3,\ldots,g^{p-2}\}.\]</div>
+    <p>Elementos com essa propriedade são chamados de <strong>raízes primitivas</strong> de \(\mathbb F_p\) ou <strong>geradores</strong> de \(\mathbb F_p^*\). São os elementos de \(\mathbb F_p^*\) que têm ordem \(p-1\).</p>
+  </aside>
+
+  <div class="semantic proof" id="proof-theorem-1-30">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Veja <a href="../../references/#ref-137" data-source-xref>[137, Capítulo 20]</a> ou um dos textos [<a href="../../references/#ref-35" data-source-xref>35</a>, <a href="../../references/#ref-52" data-source-xref>52</a>, <a href="../../references/#ref-59" data-source-xref>59</a>, <a href="../../references/#ref-100" data-source-xref>100</a>, <a href="../../references/#ref-111" data-source-xref>111</a>].</p>
+  </div>
+
+  <aside class="semantic example" id="example-1-31">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.31</span></div>
+    <p>O corpo \(\mathbb F_{11}\) tem \(2\) como raiz primitiva, pois, em \(\mathbb F_{11}\),</p>
+    <div class="display-math">\[\begin{aligned}
+      2^0&amp;=1 &amp; 2^1&amp;=2 &amp; 2^2&amp;=4 &amp; 2^3&amp;=8 &amp; 2^4&amp;=5,\\
+      2^5&amp;=10 &amp; 2^6&amp;=9 &amp; 2^7&amp;=7 &amp; 2^8&amp;=3 &amp; 2^9&amp;=6.
+    \end{aligned}\]</div>
+    <p>Assim, todos os \(10\) elementos não nulos de \(\mathbb F_{11}\) foram gerados como potências de \(2\). Por outro lado, \(2\) não é uma raiz primitiva de \(\mathbb F_{17}\), pois, em \(\mathbb F_{17}\),</p>
+    <div class="display-math">\[\begin{aligned}
+      2^0&amp;=1 &amp; 2^1&amp;=2 &amp; 2^2&amp;=4 &amp; 2^3&amp;=8 &amp; 2^4&amp;=16,\\
+      2^5&amp;=15 &amp; 2^6&amp;=13 &amp; 2^7&amp;=9 &amp; 2^8&amp;=1,
+    \end{aligned}\]</div>
+    <p>e assim retornamos a \(1\) antes de obter todos os \(16\) valores não nulos módulo \(17\). Entretanto, verifica-se que \(3\) é uma raiz primitiva de \(17\), pois, em \(\mathbb F_{17}\),</p>
+    <div class="display-math">\[\begin{aligned}
+      3^0&amp;=1 &amp; 3^1&amp;=3 &amp; 3^2&amp;=9 &amp; 3^3&amp;=10 &amp; 3^4&amp;=13 &amp; 3^5&amp;=5,\\
+      3^6&amp;=15 &amp; 3^7&amp;=11 &amp; 3^8&amp;=16 &amp; 3^9&amp;=14 &amp; 3^{10}&amp;=8 &amp; 3^{11}&amp;=7,\\
+      3^{12}&amp;=4 &amp; 3^{13}&amp;=12 &amp; 3^{14}&amp;=2 &amp; 3^{15}&amp;=6.
+    \end{aligned}\]</div>
+  </aside>
+
+  <aside class="semantic remark" id="remark-1-32">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">1.32</span></div>
+    <p>Se \(p\) é grande, então o corpo finito \(\mathbb F_p\) tem muitas raízes primitivas. A fórmula exata diz que \(\mathbb F_p\) tem exatamente \(\phi(p-1)\) raízes primitivas, em que \(\phi\) é a <a href="#def-1-euler-phi" data-source-xref>função fi de Euler (veja a página 22)</a>. Por exemplo, você pode verificar que a lista a seguir contém todas as raízes primitivas de \(\mathbb F_{29}\):</p>
+    <div class="display-math">\[\{2,3,8,10,11,14,15,18,19,21,26,27\}.\]</div>
+    <p>Isso está de acordo com o valor \(\phi(28)=12\). Mais geralmente, se \(k\) divide \(p-1\), então existem exatamente \(\phi(k)\) elementos de \(\mathbb F_p^*\) de ordem \(k\).</p>
+  </aside>
+
+  <ol class="footnotes" start="11">
+    <li id="fn-1-5-11">Você pode se perguntar por que o <a href="#theorem-1-24" data-source-xref>Teorema 1.24</a> é chamado de teorema “pequeno”. A razão é distingui-lo do “grande” teorema de Fermat, que é a famosa afirmação de que \(x^n+y^n=z^n\) não possui soluções em inteiros positivos \(x,y,z\) se \(n\ge3\). É improvável que o próprio Fermat pudesse demonstrar esse grande teorema, mas, em 1996, mais de três séculos depois da época de Fermat, Andrew Wiles finalmente encontrou uma demonstração. <a href="#fnref-1-5-11" data-source-xref aria-label="Voltar à chamada da nota 11">↩</a></li>
+    <li id="fn-1-5-12">A fatoração em primos de \(m\) é \(m=15485207=3853\cdot4019\). <a href="#fnref-1-5-12" data-source-xref aria-label="Voltar à chamada da nota 12">↩</a></li>
+    <li id="fn-1-5-13">Definimos anteriormente a ordem de \(p\) em \(a\) como o expoente de \(p\) quando \(a\) é fatorado em primos. Assim, infelizmente, a palavra “ordem” tem dois significados diferentes. Você precisará julgar qual deles se pretende pelo contexto. <a href="#fnref-1-5-13" data-source-xref aria-label="Voltar à chamada da nota 13">↩</a></li>
+  </ol>
+</section>

@@ -8,6 +8,7 @@ import { practice210FieldTest } from "./2-10-field-test";
 import { practice22DiscreteLog } from "./2-2-discrete-log";
 import { practice23DhSecret } from "./2-3-dh-secret";
 import { practice28Crt } from "./2-8-crt";
+import { exerciseSolutions } from "./solutions";
 import type { EnrichmentItem } from "../shared/types";
 
 export { practice21PublicPrivate, practice24RandomK, practice25Axioms, practice26Growth, practice27Collision, practice29SmoothOrder, practice210FieldTest, practice22DiscreteLog, practice23DhSecret, practice28Crt };
@@ -23,4 +24,8 @@ export const practices: readonly EnrichmentItem[] = [
   practice22DiscreteLog,
   practice23DhSecret,
   practice28Crt,
+  ...exerciseSolutions,
 ];
+
+export { exerciseSolutions } from "./solutions";
+export { exerciseSolutionCatalog } from "./solution-catalog";

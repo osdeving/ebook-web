@@ -1,0 +1,58 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>
+      <p>Escreva \(x=3+7y\). A segunda congruência exige</p>
+      <div class="display-math">\[
+        3+7y\equiv4\pmod9,
+        \qquad 7y\equiv1\pmod9.
+      \]</div>
+      <p>Como \(7^{-1}\equiv4\pmod9\), temos \(y\equiv4\pmod9\). Tomando \(y=4\), obtemos</p>
+      <div class="display-math">\[x=3+7\cdot4=31.\]</div>
+      <p>A verificação é \(31\equiv3\pmod7\) e \(31\equiv4\pmod9\). Todas as soluções são \(x\equiv31\pmod{63}\).</p>
+    </li>
+    <li>
+      <p>Escreva \(x=13+71y\). Módulo \(97\), precisamos de</p>
+      <div class="display-math">\[
+        71y\equiv41-13\equiv28\pmod{97}.
+      \]</div>
+      <p>O algoritmo de Euclides estendido fornece \(71^{-1}\equiv41\pmod{97}\), pois \(71\cdot41=30\cdot97+1\). Assim,</p>
+      <div class="display-math">\[
+        y\equiv28\cdot41\equiv81\pmod{97}.
+      \]</div>
+      <p>Tomando \(y=81\),</p>
+      <div class="display-math">\[x=13+71\cdot81=5764.\]</div>
+      <p>De fato, \(5764\equiv13\pmod{71}\) e \(5764\equiv41\pmod{97}\). Todas as soluções são \(x\equiv5764\pmod{6887}\).</p>
+    </li>
+    <li>
+      <p>Primeiro combinamos as congruências módulo \(7\) e \(8\). Escrevendo \(x=5+8t\),</p>
+      <div class="display-math">\[
+        5+8t\equiv4\pmod7
+        \quad\Longrightarrow\quad
+        t\equiv6\pmod7.
+      \]</div>
+      <p>Logo \(x\equiv53\pmod{56}\). Agora escreva \(x=53+56s\). Módulo \(15\),</p>
+      <div class="display-math">\[
+        53+56s\equiv11\pmod{15}
+        \quad\Longrightarrow\quad
+        8+11s\equiv11\pmod{15}.
+      \]</div>
+      <p>Portanto \(11s\equiv3\pmod{15}\). Como \(11^{-1}\equiv11\pmod{15}\), segue que \(s\equiv3\pmod{15}\). Tomando \(s=3\),</p>
+      <div class="display-math">\[x=53+56\cdot3=221.\]</div>
+      <p>A verificação dá \(221\equiv4\pmod7\), \(221\equiv5\pmod8\) e \(221\equiv11\pmod{15}\). Todas as soluções são \(x\equiv221\pmod{840}\).</p>
+    </li>
+    <li>
+      <p>Como \(\gcd(m,n)=1\), existem \(u,v\in\mathbb Z\) tais que</p>
+      <div class="display-math">\[um+vn=1.\]</div>
+      <p>Defina</p>
+      <div class="display-math">\[x=bum+avn.\]</div>
+      <p>Módulo \(m\), temos \(um\equiv0\) e \(vn\equiv1\), de modo que \(x\equiv a\pmod m\). Módulo \(n\), temos \(um\equiv1\) e \(vn\equiv0\), logo \(x\equiv b\pmod n\). Isso constrói uma solução para quaisquer \(a,b\).</p>
+      <p>A coprimalidade não pode simplesmente ser descartada da afirmação universal. Por exemplo, as congruências</p>
+      <div class="display-math">\[
+        x\equiv0\pmod4
+        \qquad\text{e}\qquad
+        x\equiv1\pmod6
+      \]</div>
+      <p>não têm solução: a primeira exige \(x\) par e a segunda exige \(x\) ímpar. Aqui \(\gcd(4,6)=2\).</p>
+    </li>
+  </ol>
+</div>

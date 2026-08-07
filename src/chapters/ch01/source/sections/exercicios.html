@@ -1,0 +1,682 @@
+<section class="chapter-section" id="exercicios" data-layer="source">
+  <div class="section-heading">
+    <span class="section-number">EX</span>
+    <h2>Exercícios</h2>
+  </div>
+
+  <h3>Seção 1.1 — Cifras de substituição simples</h3>
+
+  <div class="exercise" id="exercicio-1-1">
+    <p><span class="exercise-number">1.1.</span> Construa uma roda de cifra como a ilustrada na <a href="#fig-1-1" data-source-xref>Figura 1.1</a>, mas com uma roda interna que gire, e use-a para realizar as tarefas a seguir. (Para sua conveniência, há uma roda de cifra que você pode imprimir e recortar em <a href="https://www.math.brown.edu/~jhs/MathCrypto/CipherWheel.pdf">www.math.brown.edu/~jhs/MathCrypto/CipherWheel.pdf</a>.)</p>
+    <ol type="a">
+      <li>Criptografe o texto claro a seguir usando uma rotação de \(11\) posições no sentido horário.
+        <blockquote class="plaintext">A page of history is worth a volume of logic.</blockquote>
+      </li>
+      <li>Descriptografe a mensagem a seguir, que foi criptografada com uma rotação de \(7\) posições no sentido horário.
+        <pre class="ciphertext">AOLYLHYLUVZLJYLAZILAALYAOHUAOLZLJYLAZAOHALCLYFIVKFNBLZZLZ</pre>
+      </li>
+      <li>Descriptografe a mensagem a seguir, que foi criptografada girando \(1\) posição no sentido horário para a primeira letra, depois \(2\) posições para a segunda letra, e assim por diante.
+        <pre class="ciphertext">XJHRFTNZHMZGAHIUETXZJNBWNUTRHEPOMDNBJMAUGORFAOIZOCC</pre>
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-2">
+    <p><span class="exercise-number">1.2.</span> Descriptografe cada uma das seguintes cifras de César, tentando os vários deslocamentos possíveis até obter um texto legível.</p>
+    <ol type="a">
+      <li><pre class="ciphertext">LWKLQNWKDWLVKDOOQHYHUVHHDELOOERDUGORYHOBDVDWUHH</pre></li>
+      <li><pre class="ciphertext">UXENRBWXCUXENFQRLQJUCNABFQNWRCJUCNAJCRXWORWMB</pre></li>
+      <li><pre class="ciphertext">BGUTBMBGZTFHNLXMKTIPBMAVAXXLXTEPTRLEXTOXKHHFYHKMAXFHNLX</pre></li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-3">
+    <p><span class="exercise-number">1.3.</span> Para este exercício, use a tabela de substituição simples apresentada na <a href="#table-1-11" data-source-xref>Tabela 1.11</a>.</p>
+    <div class="table-wrap" id="table-1-11">
+      <table class="cipher-table">
+        <caption><span class="label">Tabela 1.11.</span> Tabela de criptografia por substituição simples para o <a href="#exercicio-1-3" data-source-xref>Exercício 1.3</a>.</caption>
+        <tbody>
+          <tr><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z</td></tr>
+          <tr><td>S</td><td>C</td><td>J</td><td>A</td><td>X</td><td>U</td><td>F</td><td>B</td><td>Q</td><td>K</td><td>T</td><td>P</td><td>R</td><td>W</td><td>E</td><td>Z</td><td>H</td><td>V</td><td>L</td><td>I</td><td>G</td><td>Y</td><td>D</td><td>N</td><td>M</td><td>O</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ol type="a">
+      <li>Criptografe a mensagem em texto claro
+        <blockquote class="plaintext">The gold is hidden in the garden.</blockquote>
+      </li>
+      <li>Construa uma tabela de descriptografia, isto é, uma tabela na qual o alfabeto do texto cifrado esteja em ordem de A a Z e o alfabeto do texto claro esteja embaralhado.</li>
+      <li>Use a tabela de descriptografia do item (b) para descriptografar a mensagem a seguir.
+        <pre class="ciphertext">IBXLX JVXIZ SLLDE VAQLL DEVAU QLB</pre>
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-4">
+    <p><span class="exercise-number">1.4.</span> Cada uma das mensagens a seguir foi criptografada usando uma cifra de substituição simples. Descriptografe-as. Para sua conveniência, fornecemos uma tabela de frequências e uma lista dos bigramas mais comuns que aparecem no texto cifrado. (Se não quiser copiar os textos cifrados à mão, eles podem ser baixados ou impressos no site indicado no prefácio.)</p>
+    <ol type="a">
+      <li>
+        <p>“A Piratical Treasure”</p>
+        <pre class="ciphertext">JNRZR BNIGI BJRGZ IZLQR OTDNJ GRIHT USDKR ZZWLG OIBTM NRGJN
+IJTZJ LZISJ NRSBL QVRSI ORIQT QDEKJ JNRQW GLOFN IJTZX QLFQL
+WBIMJ ITQXT HHTBL KUHQL JZKMM LZRNT OBIMI EURLW BLQZJ GKBJT
+QDIQS LWJNR OLGRI EZJGK ZRBGS MJLDG IMNZT OIHRK MOSOT QHIJL
+QBRJN IJJNT ZFIZL WIZTO MURZM RBTRZ ZKBNN LFRVR GIZFL KUHIM
+MRIGJ LJNRB GKHRT QJRUU RBJLW JNRZI TULGI EZLUK JRUST QZLUK
+EURFT JNLKJ JNRXR S</pre>
+        <p>O texto cifrado contém \(316\) letras. Eis a tabela de frequências:</p>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th scope="row">Letra</th><td>R</td><td>J</td><td>I</td><td>L</td><td>Z</td><td>T</td><td>N</td><td>Q</td><td>B</td><td>G</td><td>K</td><td>U</td><td>M</td><td>O</td><td>S</td><td>H</td><td>W</td><td>F</td><td>E</td><td>D</td><td>X</td><td>V</td></tr>
+              <tr><th scope="row">Freq.</th><td>33</td><td>30</td><td>27</td><td>25</td><td>24</td><td>20</td><td>19</td><td>16</td><td>15</td><td>15</td><td>13</td><td>12</td><td>12</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>5</td><td>3</td><td>2</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Os bigramas mais frequentes são: JN (\(11\) vezes), NR (\(8\) vezes), TQ (\(6\) vezes) e LW, RB, RZ e JL (\(5\) vezes cada).</p>
+      </li>
+      <li>
+        <p>“A Botanical Code”</p>
+        <pre class="ciphertext">KZRNK GJKIP ZBOOB XLCRG BXFAU GJBNG RIXRU XAFGJ BXRME MNKNG
+BURIX KJRXR SBUER ISATB UIBNN RTBUM NBIGK EBIGR OCUBR GLUBN
+JBGRL SJGLN GJBOR ISLRS BAFFO AZBUN RFAUS AGGBI NGLXM IAZRX
+RMNVL GEANG CJRUE KISRM BOOAZ GLOKW FAUKI NGRIC BEBRI NJAWB
+OBNNO ATBZJ KOBRC JKIRR NGBUE BRINK XKBAF QBROA LNMRG MALUF
+BBG</pre>
+        <p>O texto cifrado contém \(253\) letras. Eis a tabela de frequências:</p>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th scope="row">Letra</th><td>B</td><td>R</td><td>G</td><td>N</td><td>A</td><td>I</td><td>U</td><td>K</td><td>O</td><td>J</td><td>L</td><td>X</td><td>M</td><td>F</td><td>S</td><td>E</td><td>Z</td><td>C</td><td>T</td><td>W</td><td>P</td><td>V</td><td>Q</td></tr>
+              <tr><th scope="row">Freq.</th><td>32</td><td>28</td><td>22</td><td>20</td><td>16</td><td>16</td><td>14</td><td>13</td><td>12</td><td>11</td><td>10</td><td>10</td><td>8</td><td>8</td><td>7</td><td>7</td><td>6</td><td>5</td><td>3</td><td>2</td><td>1</td><td>1</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Os bigramas mais frequentes são: NG e RI (\(7\) vezes cada), BU (\(6\) vezes) e BR (\(5\) vezes).</p>
+      </li>
+      <li>
+        <p>Para tornar este item um pouco mais desafiador, removemos do texto claro todas as ocorrências da palavra “the”.</p>
+        <p>“A Brilliant Detective”</p>
+        <pre class="ciphertext">GSZES GNUBE SZGUG SNKGX CSUUE QNZOQ EOVJN VXKNG XGAHS AWSZZ
+BOVUE SIXCQ NQESX NGEUG AHZQA QHNSP CIPQA OIDLV JXGAK CGJCG
+SASUB FVQAV CIAWN VWOVP SNSXV JGPCV NODIX GJQAE VOOXC SXXCG
+OGOVA XGNVU BAVKX QZVQD LVJXQ EXCQO VKCQG AMVAX VWXCG OOBOX
+VZCSO SPPSN VAXUB DVVAX QJQAJ VSUXC SXXCV OVJCS NSJXV NOJQA
+MVBSZ VOOSH VSAWX QHGMV GWVSX CSXXC VBSNV ZVNVN SAWQZ ORVXJ
+CVOQE JCGUW NVA</pre>
+        <p>O texto cifrado contém \(313\) letras. Eis a tabela de frequências:</p>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th scope="row">Letra</th><td>V</td><td>S</td><td>X</td><td>G</td><td>A</td><td>O</td><td>Q</td><td>C</td><td>N</td><td>J</td><td>U</td><td>Z</td><td>E</td><td>W</td><td>B</td><td>P</td><td>I</td><td>H</td><td>K</td><td>D</td><td>M</td><td>L</td><td>R</td><td>F</td></tr>
+              <tr><th scope="row">Freq.</th><td>39</td><td>29</td><td>29</td><td>22</td><td>21</td><td>21</td><td>20</td><td>20</td><td>19</td><td>13</td><td>11</td><td>11</td><td>10</td><td>8</td><td>8</td><td>6</td><td>5</td><td>5</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Os bigramas mais frequentes são: XC (\(10\) vezes), NV (\(7\) vezes) e CS, OV, QA e SX (\(6\) vezes cada).</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-5">
+    <p><span class="exercise-number">1.5.</span> Suponha que você tenha um alfabeto com \(26\) letras.</p>
+    <ol type="a">
+      <li>Quantas cifras de substituição simples são possíveis?</li>
+      <li>Uma letra do alfabeto é chamada de <em>fixa</em> se sua criptografia for a própria letra. Quantas cifras de substituição simples existem que deixam:
+        <ol type="i">
+          <li>nenhuma letra fixa?</li>
+          <li>pelo menos uma letra fixa?</li>
+          <li>exatamente uma letra fixa?</li>
+          <li>pelo menos duas letras fixas?</li>
+        </ol>
+      </li>
+    </ol>
+    <p>(O item (b) é bastante desafiador! Você pode tentar resolver primeiro o problema com um alfabeto de quatro ou cinco letras para compreender o que está acontecendo.)</p>
+  </div>
+
+  <h3>Seção 1.2 — Divisibilidade e máximos divisores comuns</h3>
+
+  <div class="exercise" id="exercicio-1-6">
+    <p><span class="exercise-number">1.6.</span> Sejam \(a,b,c\in\mathbb Z\). Use a definição de divisibilidade para demonstrar diretamente as propriedades de divisibilidade a seguir. (Esta é a <a href="#prop-1-4" data-source-xref>Proposição 1.4</a>.)</p>
+    <ol type="a">
+      <li>Se \(a\mid b\) e \(b\mid c\), então \(a\mid c\).</li>
+      <li>Se \(a\mid b\) e \(b\mid a\), então \(a=\pm b\).</li>
+      <li>Se \(a\mid b\) e \(a\mid c\), então \(a\mid(b+c)\) e \(a\mid(b-c)\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-7">
+    <p><span class="exercise-number">1.7.</span> Use uma calculadora e o método descrito na <a href="#remark-1-9" data-source-xref>Observação 1.9</a> para calcular os quocientes e restos a seguir.</p>
+    <ol type="a">
+      <li>\(34787\) dividido por \(353\).</li>
+      <li>\(238792\) dividido por \(7843\).</li>
+      <li>\(9829387493\) dividido por \(873485\).</li>
+      <li>\(1498387487\) dividido por \(76348\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-8">
+    <p><span class="exercise-number">1.8.</span> Use uma calculadora e o método descrito na <a href="#remark-1-9" data-source-xref>Observação 1.9</a> para calcular os restos a seguir, sem se preocupar em calcular os quocientes correspondentes.</p>
+    <ol type="a">
+      <li>O resto da divisão de \(78745\) por \(127\).</li>
+      <li>O resto da divisão de \(2837647\) por \(4387\).</li>
+      <li>O resto da divisão de \(8739287463\) por \(18754\).</li>
+      <li>O resto da divisão de \(4536782793\) por \(9784537\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-9">
+    <p><span class="exercise-number">1.9.</span> Use o algoritmo de Euclides para calcular os máximos divisores comuns a seguir.</p>
+    <ol type="a">
+      <li>\(\gcd(291,252)\).</li>
+      <li>\(\gcd(16261,85652)\).</li>
+      <li>\(\gcd(139024789,93278890)\).</li>
+      <li>\(\gcd(16534528044,8332745927)\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-10">
+    <p><span class="exercise-number">1.10.</span> Para cada um dos valores \(\gcd(a,b)\) do <a href="#exercicio-1-9" data-source-xref>Exercício 1.9</a>, use o algoritmo de Euclides estendido (<a href="#theorem-1-11" data-source-xref>Teorema 1.11</a>) para encontrar inteiros \(u\) e \(v\) tais que \(au+bv=\gcd(a,b)\).</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-11">
+    <p><span class="exercise-number">1.11.</span> Sejam \(a\) e \(b\) inteiros positivos.</p>
+    <ol type="a">
+      <li>Suponha que existam inteiros \(u\) e \(v\) que satisfaçam \(au+bv=1\). Prove que \(\gcd(a,b)=1\).</li>
+      <li>Suponha que existam inteiros \(u\) e \(v\) que satisfaçam \(au+bv=6\). É necessariamente verdade que \(\gcd(a,b)=6\)? Se não for, dê um contraexemplo específico e descreva, em geral, todos os valores possíveis de \(\gcd(a,b)\).</li>
+      <li>Suponha que \((u_1,v_1)\) e \((u_2,v_2)\) sejam duas soluções inteiras da equação \(au+bv=1\). Prove que \(a\) divide \(v_2-v_1\) e que \(b\) divide \(u_2-u_1\).</li>
+      <li>Mais geralmente, seja \(g=\gcd(a,b)\) e seja \((u_0,v_0)\) uma solução inteira de \(au+bv=g\). Prove que toda outra solução tem a forma \(u=u_0+kb/g\) e \(v=v_0-ka/g\) para algum inteiro \(k\). (Esta é a segunda parte do <a href="#theorem-1-11" data-source-xref>Teorema 1.11</a>.)</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-12">
+    <p><span class="exercise-number">1.12.</span> O método para resolver \(au+bv=\gcd(a,b)\) descrito na <a href="#sec-1-2" data-source-xref>Seção 1.2</a> é um tanto ineficiente. Este exercício descreve um método de cálculo de \(u\) e \(v\) adequado à implementação em computador. Em particular, ele usa muito pouco armazenamento.</p>
+    <ol type="a">
+      <li>Mostre que o algoritmo a seguir calcula o máximo divisor comum \(g\) dos inteiros positivos \(a\) e \(b\), juntamente com uma solução inteira \((u,v)\) da equação \(au+bv=\gcd(a,b)\).
+        <ol class="algorithm-steps">
+          <li>Defina \(u=1\), \(g=a\), \(x=0\) e \(y=b\).</li>
+          <li>Se \(y=0\), defina \(v=(g-au)/b\) e devolva os valores \((g,u,v)\).</li>
+          <li>Divida \(g\) por \(y\) com resto: \(g=qy+t\), com \(0\le t&lt;y\).</li>
+          <li>Defina \(s=u-qx\).</li>
+          <li>Defina \(u=x\) e \(g=y\).</li>
+          <li>Defina \(x=s\) e \(y=t\).</li>
+          <li>Volte ao Passo 2.</li>
+        </ol>
+      </li>
+      <li>Implemente o algoritmo acima em um computador usando a linguagem de programação de sua preferência.</li>
+      <li>Use seu programa para calcular \(g=\gcd(a,b)\) e soluções inteiras da equação \(au+bv=g\) para os pares \((a,b)\) a seguir.
+        <ol type="i">
+          <li>\((527,1258)\)</li>
+          <li>\((228,1056)\)</li>
+          <li>\((163961,167181)\)</li>
+          <li>\((3892394,239847)\)</li>
+        </ol>
+      </li>
+      <li>O que acontece com seu programa se \(b=0\)? Corrija-o para que trate esse caso corretamente.</li>
+      <li>Frequentemente é útil ter uma solução com \(u>0\). Modifique seu programa para que devolva uma solução com \(u>0\) e \(u\) tão pequeno quanto possível. [Dica: se \((u,v)\) é uma solução, então \((u+b/g,v-a/g)\) também é.] Refaça o item (c) usando o programa modificado.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-13">
+    <p><span class="exercise-number">1.13.</span> Sejam \(a_1,a_2,\ldots,a_k\) inteiros com \(\gcd(a_1,a_2,\ldots,a_k)=1\), isto é, o maior inteiro positivo que divide todos os números \(a_1,\ldots,a_k\) é \(1\). Prove que a equação</p>
+    <div class="display-math">\[a_1u_1+a_2u_2+\cdots+a_ku_k=1\]</div>
+    <p>possui uma solução inteira \(u_1,u_2,\ldots,u_k\). (Dica: aplique repetidamente o algoritmo de Euclides estendido, o <a href="#theorem-1-11" data-source-xref>Teorema 1.11</a>. Talvez seja mais fácil demonstrar uma afirmação mais geral em que \(\gcd(a_1,\ldots,a_k)\) possa ser maior que \(1\).)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-14">
+    <p><span class="exercise-number">1.14.</span> Sejam \(a\) e \(b\) inteiros, com \(b>0\). Temos usado o “fato óbvio” de que a divisão de \(a\) por \(b\) possui quociente e resto únicos. Neste exercício, você apresentará uma demonstração.</p>
+    <ol type="a">
+      <li>Prove que o conjunto
+        <div class="display-math">\[\{a-bq:q\in\mathbb Z\}\]</div>
+        contém pelo menos um inteiro não negativo.
+      </li>
+      <li>Seja \(r\) o menor inteiro não negativo no conjunto descrito no item (a). Prove que \(0\le r&lt;b\).</li>
+      <li>Prove que existem inteiros \(q\) e \(r\) que satisfazem
+        <div class="display-math">\[a=bq+r\qquad\text{e}\qquad0\le r&lt;b.\]</div>
+      </li>
+      <li>Suponha que
+        <div class="display-math">\[a=bq_1+r_1=bq_2+r_2\qquad\text{com}\qquad0\le r_1&lt;b\quad\text{e}\quad0\le r_2&lt;b.\]</div>
+        Prove que \(q_1=q_2\) e \(r_1=r_2\).
+      </li>
+    </ol>
+  </div>
+
+  <h3>Seção 1.3 — Aritmética modular</h3>
+
+  <div class="exercise" id="exercicio-1-15">
+    <p><span class="exercise-number">1.15.</span> Seja \(m\ge1\) um inteiro e suponha que</p>
+    <div class="display-math">\[a_1\equiv a_2\pmod m\qquad\text{e}\qquad b_1\equiv b_2\pmod m.\]</div>
+    <p>Prove que</p>
+    <div class="display-math">\[a_1\pm b_1\equiv a_2\pm b_2\pmod m\qquad\text{e}\qquad a_1b_1\equiv a_2b_2\pmod m.\]</div>
+    <p>(Esta é a <a href="#prop-1-13" data-source-xref>Proposição 1.13(a)</a>.)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-16">
+    <p><span class="exercise-number">1.16.</span> Escreva as tabelas a seguir para \(\mathbb Z/m\mathbb Z\) e \((\mathbb Z/m\mathbb Z)^*\), como fizemos nas <a href="#fig-1-4" data-source-xref>Figuras 1.4</a> e <a href="#fig-1-5" data-source-xref>1.5</a>.</p>
+    <ol type="a">
+      <li>Construa tabelas de adição e multiplicação para \(\mathbb Z/3\mathbb Z\).</li>
+      <li>Construa tabelas de adição e multiplicação para \(\mathbb Z/6\mathbb Z\).</li>
+      <li>Construa uma tabela de multiplicação para o grupo de unidades \((\mathbb Z/9\mathbb Z)^*\).</li>
+      <li>Construa uma tabela de multiplicação para o grupo de unidades \((\mathbb Z/16\mathbb Z)^*\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-17">
+    <p><span class="exercise-number">1.17.</span> Efetue os cálculos modulares a seguir. Em cada caso, preencha a caixa com um inteiro entre \(0\) e \(m-1\), em que \(m\) é o módulo.</p>
+    <ol type="a">
+      <li>\(347+513\equiv\boxed{\phantom{000}}\pmod{763}\).</li>
+      <li>\(3274+1238+7231+6437\equiv\boxed{\phantom{0000}}\pmod{9254}\).</li>
+      <li>\(153\cdot287\equiv\boxed{\phantom{000}}\pmod{353}\).</li>
+      <li>\(357\cdot862\cdot193\equiv\boxed{\phantom{000}}\pmod{943}\).</li>
+      <li>\(5327\cdot6135\cdot7139\cdot2187\cdot5219\cdot1873\equiv\boxed{\phantom{0000}}\pmod{8157}\).<br>(Dica: depois de cada multiplicação, reduza módulo \(8157\) antes de fazer a multiplicação seguinte.)</li>
+      <li>\(137^2\equiv\boxed{\phantom{000}}\pmod{327}\).</li>
+      <li>\(373^6\equiv\boxed{\phantom{000}}\pmod{581}\).</li>
+      <li>\(23^3\cdot19^5\cdot11^4\equiv\boxed{\phantom{00}}\pmod{97}\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-18">
+    <p><span class="exercise-number">1.18.</span> Encontre todos os valores de \(x\) entre \(0\) e \(m-1\) que são soluções das congruências a seguir. (Dica: se você não conseguir descobrir uma maneira engenhosa de encontrar a(s) solução(ões), poderá simplesmente substituir cada valor \(x=1,x=2,\ldots,x=m-1\) e verificar quais funcionam.)</p>
+    <ol type="a">
+      <li>\(x+17\equiv23\pmod{37}\).</li>
+      <li>\(x+42\equiv19\pmod{51}\).</li>
+      <li>\(x^2\equiv3\pmod{11}\).</li>
+      <li>\(x^2\equiv2\pmod{13}\).</li>
+      <li>\(x^2\equiv1\pmod8\).</li>
+      <li>\(x^3-x^2+2x-2\equiv0\pmod{11}\).</li>
+      <li>\(x\equiv1\pmod5\) e também \(x\equiv2\pmod7\). (Encontre todas as soluções módulo \(35\), isto é, as soluções que satisfazem \(0\le x\le34\).)</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-19">
+    <p><span class="exercise-number">1.19.</span> Suponha que \(g^a\equiv1\pmod m\) e \(g^b\equiv1\pmod m\). Prove que</p>
+    <div class="display-math">\[g^{\gcd(a,b)}\equiv1\pmod m.\]</div>
+  </div>
+
+  <div class="exercise" id="exercicio-1-20">
+    <p><span class="exercise-number">1.20.</span> Prove que, se \(a_1\) e \(a_2\) são unidades módulo \(m\), então \(a_1a_2\) é uma unidade módulo \(m\).</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-21">
+    <p><span class="exercise-number">1.21.</span> Prove que \(m\) é primo se, e somente se, \(\phi(m)=m-1\), em que \(\phi\) é a função fi de Euler.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-22">
+    <p><span class="exercise-number">1.22.</span> Seja \(m\in\mathbb Z\).</p>
+    <ol type="a">
+      <li>Suponha que \(m\) seja ímpar. Qual inteiro entre \(1\) e \(m-1\) é igual a \(2^{-1}\bmod m\)?</li>
+      <li>Mais geralmente, suponha que \(m\equiv1\pmod b\). Qual inteiro entre \(1\) e \(m-1\) é igual a \(b^{-1}\bmod m\)?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-23">
+    <p><span class="exercise-number">1.23.</span> Seja \(m\) um inteiro ímpar e seja \(a\) um inteiro qualquer. Prove que \(2m+a^2\) nunca pode ser um quadrado perfeito. (Dica: se um número é um quadrado perfeito, quais são seus possíveis valores módulo \(4\)?)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-24">
+    <p><span class="exercise-number">1.24.</span></p>
+    <ol type="a">
+      <li>Encontre um único valor \(x\) que resolva simultaneamente as duas congruências
+        <div class="display-math">\[x\equiv3\pmod7\qquad\text{e}\qquad x\equiv4\pmod9.\]</div>
+        <p>(Dica: observe que toda solução da primeira congruência tem a forma \(x=3+7y\) para algum \(y\). Substitua isso na segunda congruência e resolva para \(y\); então use esse valor para obter \(x\).)</p>
+      </li>
+      <li>Encontre um único valor \(x\) que resolva simultaneamente as duas congruências
+        <div class="display-math">\[x\equiv13\pmod{71}\qquad\text{e}\qquad x\equiv41\pmod{97}.\]</div>
+      </li>
+      <li>Encontre um único valor \(x\) que resolva simultaneamente as três congruências
+        <div class="display-math">\[x\equiv4\pmod7,\qquad x\equiv5\pmod8,\qquad\text{e}\qquad x\equiv11\pmod{15}.\]</div>
+      </li>
+      <li>Prove que, se \(\gcd(m,n)=1\), então o par de congruências
+        <div class="display-math">\[x\equiv a\pmod m\qquad\text{e}\qquad x\equiv b\pmod n\]</div>
+        possui uma solução para quaisquer escolhas de \(a\) e \(b\). Dê também um exemplo que mostre que a condição \(\gcd(m,n)=1\) é necessária.
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-25">
+    <p><span class="exercise-number">1.25.</span> Sejam \(N\), \(g\) e \(A\) inteiros positivos (observe que \(N\) não precisa ser primo). Prove que o algoritmo a seguir, uma variante de baixo armazenamento do algoritmo de quadratura e multiplicação descrito na <a href="#sec-1-3-2" data-source-xref>Seção 1.3.2</a>, devolve o valor \(g^A\pmod N\). (No Passo 4, usamos a notação \(\lfloor x\rfloor\) para denotar a função maior inteiro, isto é, arredondamos \(x\) para baixo até o inteiro mais próximo.)</p>
+    <div class="algorithm" id="algorithm-ex-1-25">
+      <p><strong>Entrada.</strong> Inteiros positivos \(N\), \(g\) e \(A\).</p>
+      <ol class="algorithm-steps">
+        <li>Defina \(a=g\) e \(b=1\).</li>
+        <li>Repita enquanto \(A>0\).</li>
+        <li>Se \(A\equiv1\pmod2\), defina \(b=b\cdot a\pmod N\).</li>
+        <li>Defina \(a=a^2\pmod N\) e \(A=\lfloor A/2\rfloor\).</li>
+        <li>Se \(A>0\), continue o laço no Passo 2.</li>
+        <li>Devolva o número \(b\), que é igual a \(g^A\pmod N\).</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="exercise" id="exercicio-1-26">
+    <p><span class="exercise-number">1.26.</span> Use o algoritmo de quadratura e multiplicação descrito na <a href="#sec-1-3-2" data-source-xref>Seção 1.3.2</a>, ou a versão mais eficiente do <a href="#exercicio-1-25" data-source-xref>Exercício 1.25</a>, para calcular as potências a seguir.</p>
+    <ol type="a">
+      <li>\(17^{183}\pmod{256}\).</li>
+      <li>\(2^{477}\pmod{1000}\).</li>
+      <li>\(11^{507}\pmod{1237}\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-27">
+    <p><span class="exercise-number">1.27.</span> Considere a congruência</p>
+    <div class="display-math">\[ax\equiv c\pmod m.\]</div>
+    <ol type="a">
+      <li>Prove que existe uma solução se, e somente se, \(\gcd(a,m)\) divide \(c\).</li>
+      <li>Se existir uma solução, prove que há exatamente \(\gcd(a,m)\) soluções distintas módulo \(m\).</li>
+    </ol>
+    <p>(Dica: use o algoritmo de Euclides estendido, o <a href="#theorem-1-11" data-source-xref>Teorema 1.11</a>.)</p>
+  </div>
+
+  <h3>Seção 1.4 — Números primos, fatoração única e corpos finitos</h3>
+
+  <div class="exercise" id="exercicio-1-28">
+    <p><span class="exercise-number">1.28.</span> Seja \(\{p_1,p_2,\ldots,p_r\}\) um conjunto de números primos e seja</p>
+    <div class="display-math">\[N=p_1p_2\cdots p_r+1.\]</div>
+    <p>Prove que \(N\) é divisível por algum primo que não pertence ao conjunto original. Use esse fato para deduzir que deve haver infinitos números primos. (Essa demonstração da infinitude dos primos aparece nos <em>Elementos</em> de Euclides. Os números primos são estudados há milhares de anos.)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-29">
+    <p><span class="exercise-number">1.29.</span> Sem usar o fato de que todo inteiro possui uma fatoração única em primos, prove que, se \(\gcd(a,b)=1\) e \(a\mid bc\), então \(a\mid c\). (Dica: use o fato de que é possível encontrar uma solução para \(au+bv=1\).)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-30">
+    <p><span class="exercise-number">1.30.</span> Calcule os valores de \(\operatorname{ord}_p\) a seguir:</p>
+    <ol type="a">
+      <li>\(\operatorname{ord}_2(2816)\).</li>
+      <li>\(\operatorname{ord}_7(2222574487)\).</li>
+      <li>\(\operatorname{ord}_p(46375)\) para cada \(p=3,5,7,11\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-31">
+    <p><span class="exercise-number">1.31.</span> Seja \(p\) um número primo. Prove que \(\operatorname{ord}_p\) possui as propriedades a seguir.</p>
+    <ol type="a">
+      <li>\(\operatorname{ord}_p(ab)=\operatorname{ord}_p(a)+\operatorname{ord}_p(b)\). (Assim, \(\operatorname{ord}_p\) se assemelha à função logaritmo, pois converte multiplicação em adição!)</li>
+      <li>\(\operatorname{ord}_p(a+b)\ge\min\{\operatorname{ord}_p(a),\operatorname{ord}_p(b)\}\).</li>
+      <li>Se \(\operatorname{ord}_p(a)\ne\operatorname{ord}_p(b)\), então \(\operatorname{ord}_p(a+b)=\min\{\operatorname{ord}_p(a),\operatorname{ord}_p(b)\}\).</li>
+    </ol>
+    <p>Uma função que satisfaz as propriedades (a) e (b) é chamada de <strong>valoração</strong>.</p>
+  </div>
+
+  <h3>Seção 1.5 — Potências e raízes primitivas em corpos finitos</h3>
+
+  <div class="exercise" id="exercicio-1-32">
+    <p><span class="exercise-number">1.32.</span> Para cada um dos primos \(p\) e números \(a\) a seguir, calcule \(a^{-1}\bmod p\) de duas maneiras: (i) use o algoritmo de Euclides estendido; (ii) use o algoritmo de exponenciação rápida e o pequeno teorema de Fermat. (Veja o <a href="#example-1-27" data-source-xref>Exemplo 1.27</a>.)</p>
+    <ol type="a">
+      <li>\(p=47\) e \(a=11\).</li>
+      <li>\(p=587\) e \(a=345\).</li>
+      <li>\(p=104801\) e \(a=78467\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-33">
+    <p><span class="exercise-number">1.33.</span> Seja \(p\) um primo e seja \(q\) um primo que divide \(p-1\).</p>
+    <ol type="a">
+      <li>Seja \(a\in\mathbb F_p^*\) e seja \(b=a^{(p-1)/q}\). Prove que ou \(b=1\), ou então \(b\) tem ordem \(q\). (Lembre-se de que a ordem de \(b\) é o menor \(k\ge1\) tal que \(b^k=1\) em \(\mathbb F_p^*\). Dica: use a <a href="#prop-1-29" data-source-xref>Proposição 1.29</a>.)</li>
+      <li>Suponha que queiramos encontrar um elemento de \(\mathbb F_p^*\) de ordem \(q\). Usando o item (a), podemos escolher aleatoriamente um valor \(a\in\mathbb F_p^*\) e verificar se \(b=a^{(p-1)/q}\) satisfaz \(b\ne1\). Qual é a probabilidade de sucesso? Em outras palavras, calcule o valor da razão
+        <div class="display-math">\[
+          \frac{\#\{a\in\mathbb F_p^*:a^{(p-1)/q}\ne1\}}{\#\mathbb F_p^*}.
+        \]</div>
+        <p>(Dica: use o <a href="#theorem-1-30" data-source-xref>Teorema 1.30</a>.)</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-34">
+    <p><span class="exercise-number">1.34.</span> Lembre-se de que \(g\) é chamado de raiz primitiva módulo \(p\) se as potências de \(g\) fornecem todos os elementos não nulos de \(\mathbb F_p\).</p>
+    <ol type="a">
+      <li>Para quais dos primos a seguir \(2\) é uma raiz primitiva módulo \(p\)?
+        <ol type="i">
+          <li>\(p=7\)</li><li>\(p=13\)</li><li>\(p=19\)</li><li>\(p=23\)</li>
+        </ol>
+      </li>
+      <li>Para quais dos primos a seguir \(3\) é uma raiz primitiva módulo \(p\)?
+        <ol type="i">
+          <li>\(p=5\)</li><li>\(p=7\)</li><li>\(p=11\)</li><li>\(p=17\)</li>
+        </ol>
+      </li>
+      <li>Encontre uma raiz primitiva para cada um dos primos a seguir.
+        <ol type="i">
+          <li>\(p=23\)</li><li>\(p=29\)</li><li>\(p=41\)</li><li>\(p=43\)</li>
+        </ol>
+      </li>
+      <li>Encontre todas as raízes primitivas módulo \(11\). Verifique que há exatamente \(\phi(10)\) delas, como afirmado na <a href="#remark-1-32" data-source-xref>Observação 1.32</a>.</li>
+      <li>Escreva um programa de computador para testar raízes primitivas e use-o para encontrar todas as raízes primitivas módulo \(229\). Verifique que há exatamente \(\phi(228)\) delas.</li>
+      <li>Use o programa do item (e) para encontrar todos os primos menores que \(100\) para os quais \(2\) é uma raiz primitiva.</li>
+      <li>Repita o exercício anterior para encontrar todos os primos menores que \(100\) para os quais \(3\) é uma raiz primitiva. Faça o mesmo para encontrar os primos para os quais \(4\) é uma raiz primitiva.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-35">
+    <p><span class="exercise-number">1.35.</span> Seja \(p\) um primo tal que \(q=\frac12(p-1)\) também seja primo. Suponha que \(g\) seja um inteiro que satisfaz</p>
+    <div class="display-math">\[g\not\equiv0\pmod p,\qquad g\not\equiv\pm1\pmod p,\qquad\text{e}\qquad g^q\not\equiv1\pmod p.\]</div>
+    <p>Prove que \(g\) é uma raiz primitiva módulo \(p\).</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-36">
+    <p><span class="exercise-number">1.36.</span> Este exercício inicia o estudo de quadrados e raízes quadradas módulo \(p\).</p>
+    <ol type="a">
+      <li>Seja \(p\) um número primo ímpar e seja \(b\) um inteiro com \(p\nmid b\). Prove que ou \(b\) possui duas raízes quadradas módulo \(p\), ou então \(b\) não possui raiz quadrada módulo \(p\). Em outras palavras, prove que a congruência
+        <div class="display-math">\[X^2\equiv b\pmod p\]</div>
+        possui duas soluções ou nenhuma solução em \(\mathbb Z/p\mathbb Z\). (O que acontece para \(p=2\)? O que acontece se \(p\mid b\)?)
+      </li>
+      <li>Para cada um dos valores de \(p\) e \(b\) a seguir, encontre todas as raízes quadradas de \(b\) módulo \(p\).
+        <ol type="i">
+          <li>\((p,b)=(7,2)\)</li>
+          <li>\((p,b)=(11,5)\)</li>
+          <li>\((p,b)=(11,7)\)</li>
+          <li>\((p,b)=(37,3)\)</li>
+        </ol>
+      </li>
+      <li>Quantas raízes quadradas \(29\) possui módulo \(35\)? Por que isso não contradiz a afirmação do item (a)?</li>
+      <li>Seja \(p\) um primo ímpar e seja \(g\) uma raiz primitiva módulo \(p\). Então todo número \(a\) é igual a alguma potência de \(g\) módulo \(p\), digamos \(a\equiv g^k\pmod p\). Prove que \(a\) possui uma raiz quadrada módulo \(p\) se, e somente se, \(k\) é par.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-37">
+    <p><span class="exercise-number">1.37.</span> Seja \(p\ge3\) um primo e suponha que a congruência</p>
+    <div class="display-math">\[X^2\equiv b\pmod p\]</div>
+    <p>possua uma solução.</p>
+    <ol type="a">
+      <li>Prove que, para todo expoente \(e\ge1\), a congruência
+        <div class="numbered-equation" id="eq-1-14"><span class="math">\[X^2\equiv b\pmod{p^e}\]</span><span class="equation-number">(1.14)</span></div>
+        possui uma solução. (Dica: use indução sobre \(e\). Construa uma solução módulo \(p^{e+1}\) modificando adequadamente uma solução módulo \(p^e\).)
+      </li>
+      <li>Seja \(X=\alpha\) uma solução de \(X^2\equiv b\pmod p\). Prove que, no item (a), podemos encontrar uma solução \(X=\beta\) de \(X^2\equiv b\pmod{p^e}\) que também satisfaça \(\beta\equiv\alpha\pmod p\).</li>
+      <li>Sejam \(\beta\) e \(\beta'\) duas soluções como no item (b). Prove que \(\beta\equiv\beta'\pmod{p^e}\).</li>
+      <li>Use o <a href="#exercicio-1-36" data-source-xref>Exercício 1.36</a> para deduzir que a congruência <a href="#eq-1-14" data-source-xref>(1.14)</a> possui duas soluções ou nenhuma solução módulo \(p^e\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-38">
+    <p><span class="exercise-number">1.38.</span> Calcule o valor de</p>
+    <div class="display-math">\[2^{(p-1)/2}\pmod p\]</div>
+    <p>para todo primo \(3\le p&lt;20\). Formule uma conjectura sobre os possíveis valores de \(2^{(p-1)/2}\pmod p\) quando \(p\) é primo e prove que sua conjectura está correta.</p>
+  </div>
+
+  <h3>Seção 1.6 — Criptografia à mão</h3>
+
+  <div class="exercise" id="exercicio-1-39">
+    <p><span class="exercise-number">1.39.</span> Escreva um trabalho de 2 a 5 páginas sobre um dos temas a seguir, incluindo informações criptográficas e situando os acontecimentos em seu contexto histórico:</p>
+    <ol type="a">
+      <li>A criptografia no mundo árabe até o século XV.</li>
+      <li>A criptografia europeia no século XV e no início do século XVI.</li>
+      <li>A criptografia e a criptoanálise na Inglaterra elisabetana.</li>
+      <li>A criptografia e a criptoanálise no século XIX.</li>
+      <li>A criptografia e a criptoanálise durante a Primeira Guerra Mundial.</li>
+      <li>A criptografia e a criptoanálise durante a Segunda Guerra Mundial.</li>
+    </ol>
+    <p>(A maioria desses temas é ampla demais para um trabalho curto, portanto você deve escolher um aspecto específico no qual se concentrar.)</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-40">
+    <p><span class="exercise-number">1.40.</span> Uma <em>cifra homofônica</em> é uma cifra de substituição na qual pode haver mais de um símbolo de texto cifrado para cada letra do texto claro. Eis um exemplo de cifra homofônica, em que as letras mais comuns têm várias substituições possíveis.</p>
+    <div class="table-wrap">
+      <table class="homophonic-cipher" aria-label="Alfabeto de uma cifra homofônica">
+        <thead>
+          <tr><th>a</th><th>b</th><th>c</th><th>d</th><th>e</th><th>f</th><th>g</th><th>h</th><th>i</th><th>j</th><th>k</th><th>l</th><th>m</th><th>n</th><th>o</th><th>p</th><th>q</th><th>r</th><th>s</th><th>t</th><th>u</th><th>v</th><th>w</th><th>x</th><th>y</th><th>z</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>!</td><td>4</td><td>#</td><td>$</td><td>1</td><td>%</td><td>&amp;</td><td>*</td><td>(</td><td>)</td><td>3</td><td>2</td><td>=</td><td>+</td><td>[</td><td>9</td><td>]</td><td>{</td><td>}</td><td>:</td><td>;</td><td>7</td><td>&lt;</td><td>&gt;</td><td>5</td><td>?</td></tr>
+          <tr><td>♡</td><td>○</td><td>⋆</td><td>ℵ</td><td>6</td><td>↗</td><td>▷</td><td>◇</td><td>∧</td><td></td><td></td><td>↘</td><td>Δ</td><td>∇</td><td>8</td><td>♣</td><td></td><td>Ω</td><td>∨</td><td>⊗</td><td>♠</td><td></td><td></td><td></td><td>♭</td><td></td></tr>
+          <tr><td>Θ</td><td></td><td></td><td></td><td>∞</td><td></td><td>⇑</td><td></td><td>♮</td><td></td><td></td><td></td><td></td><td>•</td><td>⊙</td><td></td><td></td><td></td><td>◁</td><td>⊕</td><td>⇐</td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>↙</td><td></td><td></td><td></td><td>⇓</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>⇒</td><td>↖</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Descriptografe a mensagem a seguir.</p>
+    <pre class="ciphertext symbols">( % Δ ♠ ⇒ ♮ # 4 ∞ : ◇ 6 ↗ ⊙ [ ℵ 8 % 2 [ 7 ⇓ ♣ ↘ ♡ 5 ⊙ ∇</pre>
+  </div>
+
+  <div class="exercise" id="exercicio-1-41">
+    <p><span class="exercise-number">1.41.</span> Uma <em>cifra de transposição</em> é uma cifra na qual as letras do texto claro permanecem as mesmas, mas sua ordem é rearranjada. Eis um exemplo simples no qual a mensagem é criptografada em blocos de \(25\) letras por vez.<sup id="fnref-ex-1-41-19"><a href="#fn-ex-1-41-19" data-source-xref>19</a></sup> Pegue as \(25\) letras dadas e disponha-as em um bloco \(5\) por \(5\), escrevendo a mensagem horizontalmente nas linhas. Por exemplo, as primeiras \(25\) letras da mensagem</p>
+    <pre class="plaintext">Now is the time for all good men to come to the aid...</pre>
+    <p>são escritas como</p>
+    <div class="table-wrap">
+      <table class="letter-grid" aria-label="Primeiras 25 letras da mensagem em uma grade 5 por 5">
+        <tbody>
+          <tr><td>N</td><td>O</td><td>W</td><td>I</td><td>S</td></tr>
+          <tr><td>T</td><td>H</td><td>E</td><td>T</td><td>I</td></tr>
+          <tr><td>M</td><td>E</td><td>F</td><td>O</td><td>R</td></tr>
+          <tr><td>A</td><td>L</td><td>L</td><td>G</td><td>O</td></tr>
+          <tr><td>O</td><td>D</td><td>M</td><td>E</td><td>N</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Agora o texto cifrado é formado lendo-se as letras de cima para baixo nas colunas, o que produz</p>
+    <pre class="ciphertext">NTMAO OHELD WEFLM ITOGE SIRON.</pre>
+    <ol type="a">
+      <li>Use essa cifra de transposição para criptografar as primeiras \(25\) letras da mensagem
+        <pre class="plaintext">Four score and seven years ago our fathers...</pre>
+      </li>
+      <li>A mensagem a seguir foi criptografada usando essa cifra de transposição. Descriptografe-a.
+        <pre class="ciphertext">WNOOA HTUFN EHRHE NESUV ICEME</pre>
+      </li>
+      <li>Há muitas variações desse tipo de cifra. Podemos dispor as letras em um retângulo, em vez de um quadrado, e usar vários padrões para colocar as letras no retângulo e lê-las de volta. Tente descriptografar o texto cifrado a seguir, no qual as letras foram colocadas horizontalmente em um retângulo de algum tamanho e depois lidas verticalmente por colunas.
+        <pre class="ciphertext">WHNCE STRHT TEOOH ALBAT DETET SADHE
+LEELL QSFMU EEEAT VNLRI ATUDR HTEEA</pre>
+        <p>(Para sua conveniência, escrevemos o texto cifrado em blocos de \(5\) letras, mas isso não significa necessariamente que o retângulo tenha um lado de comprimento \(5\).)</p>
+      </li>
+    </ol>
+    <ol class="footnotes" start="19">
+      <li id="fn-ex-1-41-19">Se o número de letras da mensagem não for um múltiplo exato de \(25\), letras aleatórias adicionais serão acrescentadas ao fim da mensagem. <a href="#fnref-ex-1-41-19" data-source-xref aria-label="Voltar à chamada da nota 19">↩</a></li>
+    </ol>
+  </div>
+
+  <h3>Seção 1.7 — Cifras simétricas e cifras assimétricas</h3>
+
+  <div class="exercise" id="exercicio-1-42">
+    <p><span class="exercise-number">1.42.</span> Codifique a frase a seguir (incluindo maiúsculas e minúsculas, espaços e pontuação) como uma sequência de bits, usando o esquema de codificação ASCII apresentado na <a href="#table-1-10" data-source-xref>Tabela 1.10</a>.</p>
+    <pre class="plaintext">Bad day, Dad.</pre>
+  </div>
+
+  <div class="exercise" id="exercicio-1-43">
+    <p><span class="exercise-number">1.43.</span> Considere a cifra afim com chave \(k=(k_1,k_2)\), cujas funções de criptografia e descriptografia são dadas por <a href="#eq-1-11" data-source-xref>(1.11)</a>, na página 43.</p>
+    <ol type="a">
+      <li>Seja \(p=541\) e seja a chave \(k=(34,71)\). Criptografe a mensagem \(m=204\). Descriptografe o texto cifrado \(c=431\).</li>
+      <li>Supondo que \(p\) seja de conhecimento público, explique por que a cifra afim é vulnerável a um ataque de texto claro conhecido. (Veja a <a href="#symmetric-cipher-property-4" data-source-xref>Propriedade 4</a>, na página 38.) Quantos pares de texto claro/texto cifrado provavelmente serão necessários para recuperar a chave privada?</li>
+      <li>Alice e Bob decidem usar o primo \(p=601\) em sua cifra afim. O valor de \(p\) é de conhecimento público, e Eva intercepta os textos cifrados \(c_1=324\) e \(c_2=381\), além de conseguir descobrir que os textos claros correspondentes são \(m_1=387\) e \(m_2=491\). Determine a chave privada e use-a para criptografar a mensagem \(m_3=173\).</li>
+      <li>Suponha agora que \(p\) não seja de conhecimento público. A cifra afim ainda é vulnerável a um ataque de texto claro conhecido? Em caso afirmativo, quantos pares de texto claro/texto cifrado provavelmente serão necessários para recuperar a chave privada?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-44">
+    <p><span class="exercise-number">1.44.</span> Considere a cifra de Hill definida por <a href="#eq-1-11" data-source-xref>(1.11)</a>,</p>
+    <div class="display-math">\[
+      e_k(m)\equiv k_1m+k_2\pmod p
+      \qquad\text{e}\qquad
+      d_k(c)\equiv k_1^{-1}(c-k_2)\pmod p,
+    \]</div>
+    <p>em que \(m\), \(c\) e \(k_2\) são vetores-coluna de dimensão \(n\), e \(k_1\) é uma matriz \(n\) por \(n\).</p>
+    <ol type="a">
+      <li>Usamos a cifra de Hill vetorial com \(p=7\) e a chave
+        <div class="display-math">\[k_1=\begin{pmatrix}1&amp;3\\2&amp;2\end{pmatrix}\qquad\text{e}\qquad k_2=\begin{pmatrix}5\\4\end{pmatrix}.\]</div>
+        <ol type="i">
+          <li>Criptografe a mensagem \(m=\begin{pmatrix}2\\1\end{pmatrix}\).</li>
+          <li>Qual é a matriz \(k_1^{-1}\) usada para a descriptografia?</li>
+          <li>Descriptografe a mensagem \(c=\begin{pmatrix}3\\5\end{pmatrix}\).</li>
+        </ol>
+      </li>
+      <li>Explique por que a cifra de Hill é vulnerável a um ataque de texto claro conhecido.</li>
+      <li>Os pares de texto claro/texto cifrado a seguir foram gerados usando uma cifra de Hill com o primo \(p=11\). Encontre as chaves \(k_1\) e \(k_2\).
+        <div class="display-math">\[
+          \begin{aligned}
+          m_1&amp;=\begin{pmatrix}5\\4\end{pmatrix},&
+          c_1&amp;=\begin{pmatrix}1\\8\end{pmatrix},&
+          m_2&amp;=\begin{pmatrix}8\\10\end{pmatrix},&
+          c_2&amp;=\begin{pmatrix}8\\5\end{pmatrix},&
+          m_3&amp;=\begin{pmatrix}7\\1\end{pmatrix},&
+          c_3&amp;=\begin{pmatrix}8\\7\end{pmatrix}.
+          \end{aligned}
+        \]</div>
+      </li>
+      <li>Explique como toda cifra de substituição simples que envolva uma permutação do alfabeto pode ser vista como um caso especial de uma cifra de Hill.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-45">
+    <p><span class="exercise-number">1.45.</span> Seja \(N\) um inteiro grande e sejam \(\mathcal K=\mathcal M=\mathcal C=\mathbb Z/N\mathbb Z\). Para cada uma das funções</p>
+    <div class="display-math">\[e:\mathcal K\times\mathcal M\longrightarrow\mathcal C\]</div>
+    <p>listadas nos itens (a)–(c), responda às perguntas a seguir:</p>
+    <ul>
+      <li>\(e\) é uma função de criptografia?</li>
+      <li>Se \(e\) for uma função de criptografia, qual é sua função de descriptografia \(d\) associada?</li>
+      <li>Se \(e\) não for uma função de criptografia, você pode transformá-la em uma função de criptografia usando algum conjunto de chaves menor, mas ainda razoavelmente grande?</li>
+    </ul>
+    <ol type="a">
+      <li>\(e_k(m)\equiv k-m\pmod N\).</li>
+      <li>\(e_k(m)\equiv km\pmod N\).</li>
+      <li>\(e_k(m)\equiv(k+m)^2\pmod N\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-46">
+    <p><span class="exercise-number">1.46.</span></p>
+    <ol type="a">
+      <li>Converta o número binário de \(12\) bits \(110101100101\) em um inteiro decimal entre \(0\) e \(2^{12}-1\).</li>
+      <li>Converta o inteiro decimal \(m=37853\) em um número binário.</li>
+      <li>Converta o inteiro decimal \(m=9487428\) em um número binário.</li>
+      <li>Use ou exclusivo (XOR) para “somar” as sequências de bits \(11001010\oplus10011010\).</li>
+      <li>Converta os números decimais \(8734\) e \(5177\) em números binários, combine-os usando XOR e converta o resultado novamente em um número decimal.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-47">
+    <p><span class="exercise-number">1.47.</span> Alice e Bob escolhem um espaço de chaves \(\mathcal K\) com \(2^{56}\) chaves. Eva constrói um computador especializado capaz de verificar \(10\,000\,000\,000\) chaves por segundo.</p>
+    <ol type="a">
+      <li>Quantos dias Eva leva para verificar metade das chaves de \(\mathcal K\)?</li>
+      <li>Alice e Bob substituem seu espaço de chaves por um conjunto maior, com \(2^B\) chaves diferentes. Que valor de \(B\) Alice e Bob devem escolher para obrigar o computador de Eva a passar \(100\) anos verificando metade das chaves? (Use a aproximação de que há \(365{,}25\) dias em um ano.)</li>
+    </ol>
+    <p>Durante muitos anos, o governo dos Estados Unidos recomendou uma cifra simétrica chamada DES, que usava chaves de \(56\) bits. Na década de 1990, foram construídos computadores especializados que demonstraram que \(56\) bits ofereciam segurança insuficiente. Uma nova cifra simétrica chamada AES, com chaves de \(128\) bits, foi desenvolvida para substituir o DES. Veja a Seção 8.12 para mais informações sobre DES e AES.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-48">
+    <p><span class="exercise-number">1.48.</span> Explique por que a cifra</p>
+    <div class="display-math">\[e_k(m)=k\oplus m\qquad\text{e}\qquad d_k(c)=k\oplus c\]</div>
+    <p>definida pelo XOR de sequências de bits não é segura contra um ataque de texto claro conhecido. Demonstre seu ataque encontrando a chave privada usada para criptografar o texto cifrado de \(16\) bits \(c=1001010001010111\), sabendo que o texto claro correspondente é \(m=0010010000101100\).</p>
+  </div>
+
+  <div class="exercise" id="exercicio-1-49">
+    <p><span class="exercise-number">1.49.</span> Alice e Bob criam uma cifra simétrica da seguinte maneira. Sua chave privada \(k\) é um inteiro grande, e suas mensagens (textos claros) são inteiros de \(d\) algarismos:</p>
+    <div class="display-math">\[\mathcal M=\{m\in\mathbb Z:0\le m&lt;10^d\}.\]</div>
+    <p>Para criptografar uma mensagem, Alice calcula \(\sqrt{k}\) com \(d\) casas decimais, descarta a parte à esquerda da vírgula e conserva os \(d\) algarismos restantes. Seja \(\alpha\) esse número de \(d\) algarismos. (Por exemplo, se \(k=87\) e \(d=6\), então \(\sqrt{87}=9{,}32737905\ldots\) e \(\alpha=327379\).)</p>
+    <p>Alice criptografa uma mensagem \(m\) como</p>
+    <div class="display-math">\[c\equiv m+\alpha\pmod{10^d}.\]</div>
+    <p>Como Bob conhece \(k\), ele também pode encontrar \(\alpha\); então descriptografa \(c\) calculando \(m\equiv c-\alpha\pmod{10^d}\).</p>
+    <ol type="a">
+      <li>Alice e Bob escolhem a chave secreta \(k=11\) e a usam para criptografar inteiros de \(6\) algarismos (isto é, \(d=6\)). Bob quer enviar a Alice a mensagem \(m=328973\). Qual é o texto cifrado que ele envia?</li>
+      <li>Alice e Bob usam a chave secreta \(k=23\) para criptografar inteiros de \(8\) algarismos. Alice recebe o texto cifrado \(c=78183903\). Qual é o texto claro \(m\)?</li>
+      <li>Mostre que o número \(\alpha\) usado na criptografia e descriptografia é dado pela fórmula
+        <div class="display-math">\[\alpha=\left\lfloor10^d\left(\sqrt{k}-\left\lfloor\sqrt{k}\right\rfloor\right)\right\rfloor,\]</div>
+        em que \(\lfloor t\rfloor\) denota o maior inteiro menor ou igual a \(t\).
+      </li>
+      <li><strong>(Problema-desafio)</strong> Se Eva roubar um par texto claro/texto cifrado \((m,c)\), ficará claro que ela poderá recuperar o número \(\alpha\), pois \(\alpha\equiv c-m\pmod{10^d}\). Se \(10^d\) for grande em comparação com \(k\), ela também poderá recuperar o número \(k\)? Isso poderia ser útil, por exemplo, se Alice e Bob usassem alguns dos outros algarismos de \(\sqrt{k}\) para criptografar mensagens posteriores.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-1-50">
+    <p><span class="exercise-number">1.50.</span> Bob e Alice usam um criptossistema no qual sua chave privada é um primo (grande) \(k\), e seus textos claros e textos cifrados são inteiros. Bob criptografa uma mensagem \(m\) calculando o produto \(c=km\). Eva intercepta os dois textos cifrados a seguir:</p>
+    <div class="display-math">\[c_1=12849217045006222,\qquad c_2=6485880443666222.\]</div>
+    <p>Use o método do máximo divisor comum descrito na <a href="#sec-1-7-4" data-source-xref>Seção 1.7.4</a> para encontrar a chave privada de Bob e Alice.</p>
+  </div>
+</section>

@@ -12,7 +12,37 @@
   caracteres. `npm run validate:content` deve falhar se houver desvio silencioso.
 
 Normalização significa: juntar as seções na ordem do manifesto, descartar nós
-editoriais, obter `textContent`, colapsar espaços Unicode e aparar as pontas.
+editoriais, remover a marcação HTML preservando as fronteiras de texto usadas
+pelos hashes já registrados, decodificar entidades, colapsar espaços Unicode e
+aparar as pontas. Trocar esse algoritmo exige uma migração explícita de todos os
+hashes, nunca uma atualização isolada para fazer a validação passar.
+
+## Referências cruzadas
+
+Alvos presentes no site usam IDs estáveis e links nativos. Ao tornar uma
+menção já existente clicável dentro de `source/`, preserve exatamente seu texto
+visível e marque o invólucro:
+
+```html
+<a data-source-xref href="#prop-2-41">Proposição 2.41</a>
+```
+
+No mesmo capítulo use `#id`. Entre capítulos, prefira caminhos relativos como
+`../ch01/#thm-1-24`, que continuam corretos sob o `base` do GitHub Pages. Uma
+menção cujo alvo ainda não foi publicado permanece como texto simples. O
+validador rejeita links marcados para capítulos ou IDs inexistentes e também
+rejeita URLs externas com `data-source-xref`.
+
+O normalizador ignora apenas o invólucro `a[data-source-xref]`, nunca seu
+conteúdo. Assim, adicionar navegação não justifica trocar o hash da fonte. Links
+externos continuam sendo material editorial e pertencem a um enriquecimento de
+leitura, não ao source.
+
+No navegador, o framework acrescenta um permalink vazio a todo alvo com ID que
+seja bloco semântico, exercício, equação, figura ou tabela. O símbolo é gerado
+por CSS e o nome vem de `aria-label`; portanto essa conveniência não acrescenta
+caracteres ao `textContent` da fonte. Não grave manualmente esse controle nos
+fragmentos HTML.
 
 ## Enriquecimentos
 
@@ -27,6 +57,11 @@ Todo item declara no mínimo:
   content: trustedHtml(fragmentoLocalRevisado)
 }
 ```
+
+Por padrão, o item é montado como painel. Links editoriais curtos, como uma
+versão online anexada a uma entrada bibliográfica, podem declarar
+`presentation: "inline"`; eles continuam pertencendo a uma camada, recebem
+`data-origin="editorial"` e desaparecem no preset “Só o texto”.
 
 Esse é o contrato `EnrichmentDefinition`. `type`, `section`, `slot`, `file` e
 `order` não são exigidos pelo runtime: são metadados do catálogo de

@@ -1,0 +1,28 @@
+<section class="section subsection" id="sec-1-7-5" data-layer="source">
+  <h2><span class="section-number">1.7.5</span> Sequências aleatórias de bits e cifras simétricas</h2>
+
+  <p>Chegamos, finalmente, à questão fundamental relativa à criação de cifras simétricas seguras e eficientes. É possível usar uma única chave \(k\) relativamente curta (digamos, formada por \(160\) bits aleatórios) para enviar, de maneira segura e eficiente, mensagens de comprimento arbitrário? Eis uma construção possível. Suponha que pudéssemos construir uma função</p>
+  <div class="display-math">\[R:\mathcal K\times\mathbb Z\longrightarrow\{0,1\}\]</div>
+  <p>com as seguintes propriedades:</p>
+  <ol>
+    <li>Para todos \(k\in\mathcal K\) e \(j\in\mathbb Z\), é fácil calcular \(R(k,j)\).</li>
+    <li>Dada uma sequência arbitrariamente longa de inteiros \(j_1,j_2,\ldots,j_n\) e dados todos os valores \(R(k,j_1),R(k,j_2),\ldots,R(k,j_n)\), é difícil determinar \(k\).</li>
+    <li>Dada qualquer lista de inteiros \(j_1,j_2,\ldots,j_n\) e dados todos os valores
+      <div class="display-math">\[R(k,j_1),R(k,j_2),\ldots,R(k,j_n),\]</div>
+      é difícil adivinhar o valor de \(R(k,j)\), com probabilidade de sucesso superior a \(50\%\), para qualquer valor de \(j\) que ainda não esteja na lista.</li>
+  </ol>
+
+  <p>Se pudéssemos encontrar uma função \(R\) com essas três propriedades, poderíamos usá-la para transformar uma chave inicial \(k\) em uma sequência de bits</p>
+  <div class="equation" id="eq-1-13"><span class="equation-number">(1.13)</span>\[R(k,1),R(k,2),R(k,3),R(k,4),\ldots,\]</div>
+  <p>e então poderíamos usar essa sequência de bits como a chave de uma cifra de uso único, conforme descrito no <a href="#example-1-34" data-source-xref>Exemplo 1.34</a>.</p>
+
+  <p>O problema fundamental dessa abordagem é que a sequência de bits <a href="#eq-1-13" data-source-xref>(1.13)</a> não é verdadeiramente aleatória, pois é gerada pela função \(R\). Em vez disso, dizemos que a sequência de bits <a href="#eq-1-13" data-source-xref>(1.13)</a> é uma <strong>sequência pseudoaleatória</strong> e chamamos \(R\) de <strong>gerador de números pseudoaleatórios</strong>.</p>
+
+  <p>Existem geradores de números pseudoaleatórios? Se existissem, forneceriam exemplos das funções unidirecionais definidas por Diffie e Hellman em seu artigo inovador <a href="../../references/#ref-38" data-source-xref>[38]</a>; mas, apesar de mais de um quarto de século de trabalho, ninguém ainda demonstrou a existência de sequer uma função desse tipo. Retornamos a esse assunto fascinante nas <a href="../ch02/#sec-2-1" data-source-xref>Seções 2.1</a> e 8.2. Por enquanto, contentamo-nos com algumas breves observações.</p>
+
+  <p>Embora ninguém ainda tenha demonstrado de forma conclusiva que geradores de números pseudoaleatórios existem, muitos candidatos foram sugeridos, e algumas dessas propostas resistiram ao teste do tempo. Há duas abordagens básicas para construir candidatos a \(R\), e esses dois métodos fornecem uma boa ilustração do conflito fundamental da criptografia entre segurança e eficiência.</p>
+
+  <p>A primeira abordagem consiste em aplicar repetidamente uma coleção <em>ad hoc</em> de operações de mistura, bem adequadas à computação eficiente e que parecem muito difíceis de desemaranhar. Esse método é, de modo desconcertante, a base da maioria das cifras simétricas práticas, incluindo o <em>Data Encryption Standard</em> (DES) e o <em>Advanced Encryption Standard</em> (AES), que são os dois sistemas mais amplamente usados atualmente. Veja a Seção 8.12 para uma breve descrição dessas cifras simétricas modernas.</p>
+
+  <p>A segunda abordagem consiste em construir \(R\) usando uma função cuja inversão eficiente seja um problema matemático conhecido e considerado difícil. Essa abordagem fornece uma fundamentação teórica muito mais satisfatória para uma cifra simétrica; infelizmente, porém, todas as construções conhecidas desse tipo são muito menos eficientes que as construções <em>ad hoc</em> e, portanto, menos atraentes para aplicações do mundo real.</p>
+</section>

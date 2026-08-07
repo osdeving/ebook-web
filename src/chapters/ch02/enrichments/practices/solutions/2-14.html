@@ -1,0 +1,27 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>
+      <p>Os grupos são aditivos. Para quaisquer \(a,b\in\mathbb Z\),</p>
+      <p>\[\phi(a+b)=[a+b]_N=[a]_N+[b]_N=\phi(a)+\phi(b).\]</p>
+      <p>A igualdade independe dos representantes porque a soma de classes módulo \(N\) é bem definida.</p>
+    </li>
+    <li>
+      <p>Os grupos agora são multiplicativos. Para \(a,b\in\mathbb R^*\),</p>
+      <p>\[
+        \phi(a)\phi(b)=
+        \begin{pmatrix}a&amp;0\\0&amp;a^{-1}\end{pmatrix}
+        \begin{pmatrix}b&amp;0\\0&amp;b^{-1}\end{pmatrix}
+        =\begin{pmatrix}ab&amp;0\\0&amp;(ab)^{-1}\end{pmatrix}
+        =\phi(ab).
+      \]</p>
+      <p>Cada matriz tem determinante \(1\), portanto pertence a \(\operatorname{GL}_2(\mathbb R)\).</p>
+    </li>
+    <li>
+      <p>A aplicação está bem definida pelo Exercício 2.3(a). Se \(r=\log_g(h_1)\) e \(s=\log_g(h_2)\), então</p>
+      <p>\[h_1h_2\equiv g^r g^s\equiv g^{r+s}\pmod p.\]</p>
+      <p>Logo</p>
+      <p>\[\log_g(h_1h_2)=r+s=\log_g(h_1)+\log_g(h_2)\quad\text{em }\mathbb Z/(p-1)\mathbb Z,\]</p>
+      <p>que é exatamente a propriedade de homomorfismo.</p>
+    </li>
+  </ol>
+</div>

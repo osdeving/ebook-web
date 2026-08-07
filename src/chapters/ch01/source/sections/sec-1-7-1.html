@@ -1,0 +1,45 @@
+<section class="section subsection" id="sec-1-7-1" data-layer="source">
+  <h2><span class="section-number">1.7.1</span> Cifras simétricas</h2>
+
+  <p>Voltando a Bob e Alice, observamos que eles precisam compartilhar o conhecimento da chave secreta \(k\). Usando essa chave secreta, ambos podem cifrar e decifrar mensagens, de modo que Bob e Alice têm conhecimentos e capacidades iguais (ou simétricos). Por essa razão, cifras desse tipo são conhecidas como <strong>cifras simétricas</strong>. Matematicamente, uma cifra simétrica usa uma chave \(k\), escolhida em um espaço (isto é, um conjunto) de chaves possíveis \(\mathcal K\), para cifrar uma mensagem em texto claro \(m\), escolhida em um espaço de mensagens possíveis \(\mathcal M\), e o resultado do processo de cifragem é um texto cifrado \(c\) pertencente a um espaço de textos cifrados possíveis \(\mathcal C\).</p>
+
+  <p>Assim, a cifragem pode ser vista como uma função</p>
+  <div class="display-math">\[e:\mathcal K\times\mathcal M\longrightarrow\mathcal C\]</div>
+  <p>cujo domínio \(\mathcal K\times\mathcal M\) é o conjunto dos pares \((k,m)\) formados por uma chave \(k\) e um texto claro \(m\), e cuja imagem é o espaço de textos cifrados \(\mathcal C\). De modo semelhante, a decifragem é uma função</p>
+  <div class="display-math">\[d:\mathcal K\times\mathcal C\longrightarrow\mathcal M.\]</div>
+  <p>Naturalmente, queremos que a função de decifragem “desfaça” os resultados da função de cifragem. Matematicamente, isso é expresso pela fórmula</p>
+  <div class="display-math">\[d\bigl(k,e(k,m)\bigr)=m\qquad\text{para todos }k\in\mathcal K\text{ e }m\in\mathcal M.\]</div>
+
+  <p>Às vezes é conveniente escrever a dependência de \(k\) como um subscrito. Então, para cada chave \(k\), obtemos um par de funções</p>
+  <div class="display-math">\[e_k:\mathcal M\longrightarrow\mathcal C\qquad\text{e}\qquad d_k:\mathcal C\longrightarrow\mathcal M\]</div>
+  <p>que satisfaz a propriedade de decifragem</p>
+  <div class="display-math">\[d_k\bigl(e_k(m)\bigr)=m\qquad\text{para todo }m\in\mathcal M.\]</div>
+  <p>Em outras palavras, para toda chave \(k\), a função \(d_k\) é a função inversa de \(e_k\). Em particular, isso significa que \(e_k\) precisa ser injetiva, pois, se \(e_k(m)=e_k(m')\), então</p>
+  <div class="display-math">\[m=d_k\bigl(e_k(m)\bigr)=d_k\bigl(e_k(m')\bigr)=m'.\]</div>
+
+  <p>É mais seguro que Alice e Bob suponham que Eva conhece o método de cifragem utilizado. Em termos matemáticos, isso significa que Eva conhece as funções \(e\) e \(d\). O que Eva não conhece é a chave específica \(k\) usada por Alice e Bob. Por exemplo, se Alice e Bob usam uma cifra simples de substituição, devem supor que Eva sabe desse fato. Isso ilustra uma premissa básica da criptografia moderna chamada <strong>princípio de Kerckhoffs</strong>, segundo o qual a segurança de um criptossistema deve depender apenas do sigilo da chave, e não do sigilo do próprio algoritmo de cifragem.</p>
+
+  <p>Para que \((\mathcal K,\mathcal M,\mathcal C,e,d)\) seja uma cifra bem-sucedida, ela precisa ter as seguintes propriedades:</p>
+  <ol>
+    <li id="symmetric-cipher-property-1">Para qualquer chave \(k\in\mathcal K\) e texto claro \(m\in\mathcal M\), deve ser fácil calcular o texto cifrado \(e_k(m)\).</li>
+    <li id="symmetric-cipher-property-2">Para qualquer chave \(k\in\mathcal K\) e texto cifrado \(c\in\mathcal C\), deve ser fácil calcular o texto claro \(d_k(c)\).</li>
+    <li id="symmetric-cipher-property-3">Dados um ou mais textos cifrados \(c_1,c_2,\ldots,c_n\in\mathcal C\), cifrados com a chave \(k\in\mathcal K\), deve ser muito difícil calcular qualquer um dos textos claros correspondentes \(d_k(c_1),\ldots,d_k(c_n)\) sem conhecer \(k\).</li>
+  </ol>
+
+  <p>Eis outra propriedade desejável, embora mais difícil de alcançar.</p>
+  <ol start="4">
+    <li id="symmetric-cipher-property-4">Dados um ou mais pares formados por textos claros e seus textos cifrados correspondentes, \((m_1,c_1),(m_2,c_2),\ldots,(m_n,c_n)\), deve ser muito difícil decifrar qualquer texto cifrado \(c\) que não esteja na lista dada sem conhecer \(k\). Essa propriedade é chamada de <strong>segurança contra um ataque de texto claro conhecido</strong>.</li>
+  </ol>
+
+  <p>Melhor ainda é alcançar segurança permitindo que o atacante escolha os textos claros conhecidos.</p>
+  <ol start="5">
+    <li id="symmetric-cipher-property-5">Para qualquer lista de textos claros \(m_1,\ldots,m_n\in\mathcal M\) escolhidos pelo adversário, mesmo com conhecimento dos textos cifrados correspondentes \(e_k(m_1),\ldots,e_k(m_n)\), é muito difícil decifrar qualquer texto cifrado \(c\) que não esteja na lista dada sem conhecer \(k\). Isso é conhecido como <strong>segurança contra um ataque de texto claro escolhido</strong>. N.B.: nesse ataque, o adversário pode escolher \(m_1,\ldots,m_n\), ao contrário do que ocorre em um ataque de texto claro conhecido, no qual o atacante recebe uma lista de pares texto claro/texto cifrado que não escolheu.</li>
+  </ol>
+
+  <aside class="semantic example" id="example-1-33">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.33</span></div>
+    <p>A cifra simples de substituição não possui a <a href="#symmetric-cipher-property-4" data-source-xref>Propriedade 4</a>, pois até mesmo um único par texto claro/texto cifrado \((m,c)\) revela a maior parte da tabela de cifragem. De modo semelhante, a cifra de Vigenère discutida na Seção 5.2 tem a propriedade de que um par texto claro/texto cifrado revela imediatamente a palavra-chave usada na cifragem. Assim, tanto a cifra simples de substituição quanto a cifra de Vigenère são vulneráveis a ataques de texto claro conhecido. Veja o <a href="#exercicio-1-43" data-source-xref>Exercício 1.43</a> para outro exemplo.</p>
+  </aside>
+
+  <p>Em nossa lista de propriedades desejáveis para um criptossistema, deixamos em aberto a questão do que significam exatamente as palavras “fácil” e “difícil”. Adiamos uma discussão formal dessa questão profunda para a Seção 5.7; veja também as <a href="../ch02/#sec-2-1" data-source-xref>Seções 2.1</a> e <a href="../ch02/#sec-2-6" data-source-xref>2.6</a>. Por enquanto, tomamos informalmente “fácil” como algo computável em menos de um segundo em um computador de mesa típico e “difícil” como algo para o qual todo o poder computacional do mundo exigiria vários anos (pelo menos) para realizar o cálculo.</p>
+</section>

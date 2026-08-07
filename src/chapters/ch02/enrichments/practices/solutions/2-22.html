@@ -1,0 +1,17 @@
+<div class="exercise-solution">
+  <ol type="a">
+    <li>Considere primeiro
+      \[
+      \psi:\mathbb Z\longrightarrow\prod_{i=1}^k\mathbb Z/m_i\mathbb Z,\qquad
+      a\longmapsto(a\bmod m_1,\ldots,a\bmod m_k).
+      \]
+      A redução modular preserva soma e produto, portanto \(\psi\) é homomorfismo. Como \(m=m_1\cdots m_k\) é múltiplo de cada \(m_i\), temos \(m\mathbb Z\subseteq\ker\psi\); logo a aplicação desce a \(\mathbb Z/m\mathbb Z\) e é bem definida.</li>
+    <li>Se os \(m_i\) são dois a dois coprimos, uma classe \(a\bmod m\) está no núcleo exatamente quando todos os \(m_i\mid a\). Pelo Exercício 2.21, isso equivale a \(m\mid a\). O núcleo é trivial, então a aplicação é injetiva.</li>
+    <li>O domínio tem \(m\) elementos. O contradomínio tem
+      \[
+      \prod_{i=1}^k m_i=m
+      \]
+      elementos. Uma aplicação injetiva entre dois conjuntos finitos do mesmo tamanho é sobrejetiva.</li>
+    <li>Ser bijetiva diz precisamente que toda lista de resíduos possui uma classe solução módulo \(m\) (existência) e que essa classe é única (unicidade). Esse é o teorema chinês dos restos.</li>
+  </ol>
+</div>

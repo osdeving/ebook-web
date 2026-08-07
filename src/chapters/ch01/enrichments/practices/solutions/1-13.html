@@ -1,0 +1,10 @@
+<div class="exercise-solution">
+  <p>Provaremos a afirmação mais forte: para quaisquer inteiros \(a_1,\ldots,a_k\), existem inteiros \(u_1,\ldots,u_k\) tais que</p>
+  <p>\[a_1u_1+\cdots+a_ku_k=\gcd(a_1,\ldots,a_k).\]</p>
+  <p>Defina \(d_j=\gcd(a_1,\ldots,a_j)\). Para \(j=1\), temos \(d_1=|a_1|\), que é \(a_1\) multiplicado por \(1\) ou por \(-1\) (o caso \(a_1=0\) é imediato).</p>
+  <p>Suponha indutivamente que \(d_{j-1}=a_1c_1+\cdots+a_{j-1}c_{j-1}\). Pelo algoritmo de Euclides estendido, existem \(r,s\in\mathbb Z\) tais que</p>
+  <p>\[rd_{j-1}+sa_j=\gcd(d_{j-1},a_j)=d_j.\]</p>
+  <p>Substituindo a combinação que representa \(d_{j-1}\), obtemos</p>
+  <p>\[d_j=a_1(rc_1)+\cdots+a_{j-1}(rc_{j-1})+a_js,\]</p>
+  <p>que completa a indução. Para \(j=k\), a hipótese do exercício diz \(d_k=1\); os coeficientes encontrados são os \(u_1,\ldots,u_k\) procurados.</p>
+</div>

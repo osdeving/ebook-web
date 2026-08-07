@@ -1,0 +1,180 @@
+<section class="section" id="sec-1-3" data-layer="source">
+  <h2><span class="section-number">1.3</span> Aritmética modular</h2>
+
+  <p>Talvez você tenha encontrado na escola a “aritmética do relógio”, na qual, depois de chegar a \(12\), o número seguinte é \(1\). Isso conduz a equações de aparência estranha, como</p>
+  <div class="display-math">\[6+9=3\qquad\text{e}\qquad2-3=11.\]</div>
+  <p>Elas parecem estranhas, mas são verdadeiras quando usamos a aritmética do relógio, pois, por exemplo, 11 horas está 3 horas antes de 2 horas. Assim, o que realmente fazemos é primeiro calcular \(2-3=-1\) e depois somar \(12\) à resposta. Do mesmo modo, 9 horas depois de 6 horas são 3 horas, pois \(6+9-12=3\).</p>
+
+  <p>A teoria das congruências é um método poderoso da teoria dos números baseado na ideia simples da aritmética do relógio.</p>
+
+  <aside class="semantic definition" id="def-1-congruence">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Seja \(m\ge1\) um inteiro. Dizemos que os inteiros \(a\) e \(b\) são <strong>congruentes módulo \(m\)</strong> se a diferença \(a-b\) é divisível por \(m\). Escrevemos</p>
+    <div class="display-math">\[a\equiv b\pmod m\]</div>
+    <p>para indicar que \(a\) e \(b\) são congruentes módulo \(m\). O número \(m\) é chamado de <strong>módulo</strong>.</p>
+  </aside>
+
+  <p>Nossos exemplos do relógio podem ser escritos como congruências usando o módulo \(m=12\):</p>
+  <div class="display-math">\[6+9=15\equiv3\pmod{12}\qquad\text{e}\qquad2-3=-1\equiv11\pmod{12}.\]</div>
+
+  <aside class="semantic example" id="example-1-12">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.12</span></div>
+    <p>Temos</p>
+    <div class="display-math">\[17\equiv7\pmod5,\qquad\text{pois }5\text{ divide }10=17-7.\]</div>
+    <p>Por outro lado,</p>
+    <div class="display-math">\[19\not\equiv6\pmod{11},\qquad\text{pois }11\text{ não divide }13=19-6.\]</div>
+    <p>Observe que os números que satisfazem</p>
+    <div class="display-math">\[a\equiv0\pmod m\]</div>
+    <p>são os números divisíveis por \(m\), isto é, os múltiplos de \(m\).</p>
+  </aside>
+
+  <p>A notação de congruência é tão útil porque as congruências se comportam de modo muito semelhante às igualdades, como indica a proposição a seguir.</p>
+
+  <aside class="semantic proposition" id="prop-1-13">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">1.13</span></div>
+    <p>Seja \(m\ge1\) um inteiro.</p>
+    <ol type="a">
+      <li>Se \(a_1\equiv a_2\pmod m\) e \(b_1\equiv b_2\pmod m\), então
+        <div class="display-math">\[a_1\pm b_1\equiv a_2\pm b_2\pmod m\qquad\text{e}\qquad a_1b_1\equiv a_2b_2\pmod m.\]</div>
+      </li>
+      <li>Seja \(a\) um inteiro. Então
+        <div class="display-math">\[ab\equiv1\pmod m\quad\text{para algum inteiro }b\quad\Longleftrightarrow\quad\gcd(a,m)=1.\]</div>
+        <p>Além disso, se \(ab_1\equiv ab_2\equiv1\pmod m\), então \(b_1\equiv b_2\pmod m\). Chamamos \(b\) de <strong>inverso (multiplicativo)</strong> de \(a\) módulo \(m\).</p>
+      </li>
+    </ol>
+  </aside>
+
+  <div class="semantic proof" id="proof-prop-1-13">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p><strong>(a)</strong> Deixamos esta parte como exercício; veja o <a href="#exercicio-1-15" data-source-xref>Exercício 1.15</a>.</p>
+    <p><strong>(b)</strong> Suponha primeiro que \(\gcd(a,m)=1\). Então o <a href="#theorem-1-11" data-source-xref>Teorema 1.11</a> nos diz que podemos encontrar inteiros \(u\) e \(v\) que satisfazem \(au+mv=1\). Isso significa que \(au-1=-mv\) é divisível por \(m\); portanto, por definição, \(au\equiv1\pmod m\). Em outras palavras, podemos tomar \(b=u\).</p>
+    <p>Na outra direção, suponha que \(a\) tenha um inverso módulo \(m\), digamos \(ab\equiv1\pmod m\). Isso significa que \(ab-1=cm\) para algum inteiro \(c\). Segue que \(\gcd(a,m)\) divide \(ab-cm=1\), de modo que \(\gcd(a,m)=1\). Isso completa a demonstração de que \(a\) tem um inverso módulo \(m\) se, e somente se, \(\gcd(a,m)=1\). Resta mostrar que o inverso é único módulo \(m\).</p>
+    <p>Suponha, portanto, que \(ab_1\equiv ab_2\equiv1\pmod m\). Então</p>
+    <div class="display-math">\[b_1\equiv b_1\cdot1\equiv b_1(ab_2)\equiv(b_1a)b_2\equiv1\cdot b_2\equiv b_2\pmod m,\]</div>
+    <p>o que completa a demonstração da <a href="#prop-1-13" data-source-xref>Proposição 1.13</a>.</p>
+  </div>
+
+  <p>A <a href="#prop-1-13" data-source-xref>Proposição 1.13(b)</a> diz que, se \(\gcd(a,m)=1\), então existe um inverso \(b\) de \(a\) módulo \(m\). Isso tem a curiosa consequência de que a fração \(a^{-1}=1/a\) possui uma interpretação significativa no mundo dos inteiros módulo \(m\): \(a^{-1}\) módulo \(m\) é o único número \(b\) módulo \(m\) que satisfaz a congruência \(ab\equiv1\pmod m\).</p>
+
+  <aside class="semantic example" id="example-1-14">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.14</span></div>
+    <p>Tomamos \(m=5\) e \(a=2\). Claramente, \(\gcd(2,5)=1\), portanto existe um inverso de \(2\) módulo \(5\). O inverso de \(2\) módulo \(5\) é \(3\), pois \(2\cdot3\equiv1\pmod5\); assim, \(2^{-1}\equiv3\pmod5\). De modo semelhante, \(\gcd(4,15)=1\), portanto \(4^{-1}\) existe módulo \(15\). De fato, \(4\cdot4\equiv1\pmod{15}\), de modo que \(4\) é seu próprio inverso módulo \(15\).</p>
+    <p>Podemos até trabalhar com frações \(a/d\) módulo \(m\), desde que o denominador seja relativamente primo a \(m\). Por exemplo, podemos calcular \(5/7\) módulo \(11\) observando primeiro que \(7\cdot8\equiv1\pmod{11}\), de modo que \(7^{-1}\equiv8\pmod{11}\). Então</p>
+    <div class="display-math">\[\frac57=5\cdot7^{-1}\equiv5\cdot8\equiv40\equiv7\pmod{11}.\]</div>
+  </aside>
+
+  <aside class="semantic remark" id="remark-1-15">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">1.15</span></div>
+    <p>Nos exemplos anteriores, foi fácil encontrar inversos módulo \(m\) por tentativa e erro. No entanto, quando \(m\) é grande, calcular \(a^{-1}\) módulo \(m\) torna-se mais desafiador. Observe que mostramos a existência de inversos usando o algoritmo de Euclides estendido (<a href="#theorem-1-11" data-source-xref>Teorema 1.11</a>). Para calcular efetivamente os \(u\) e \(v\) que aparecem na equação \(au+mv=\gcd(a,m)\), podemos aplicar diretamente o algoritmo de Euclides, como fizemos no <a href="#example-1-10" data-source-xref>Exemplo 1.10</a>, ou usar o método da caixa, um pouco mais eficiente, descrito no fim da seção anterior, ou ainda usar o algoritmo dado no <a href="#exercicio-1-12" data-source-xref>Exercício 1.12</a>. Em qualquer caso, como o algoritmo de Euclides precisa de no máximo \(2\log_2(b)+2\) iterações para calcular \(\gcd(a,b)\), são necessários apenas um pequeno múltiplo de \(\log_2(m)\) passos para calcular \(a^{-1}\) módulo \(m\).</p>
+  </aside>
+
+  <p>Continuamos agora o desenvolvimento da teoria da aritmética modular. Se a divisão de \(a\) por \(m\) tem quociente \(q\) e resto \(r\), ela pode ser escrita como</p>
+  <div class="display-math">\[a=mq+r\qquad\text{com}\qquad0\le r&lt;m.\]</div>
+  <p>Isso mostra que \(a\equiv r\pmod m\) para algum inteiro \(r\) entre \(0\) e \(m-1\); portanto, se quisermos trabalhar com inteiros módulo \(m\), basta usar os inteiros \(0\le r&lt;m\). Isso motiva a definição a seguir.</p>
+
+  <aside class="semantic definition" id="def-1-zmodm">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Escrevemos</p>
+    <div class="display-math">\[\mathbb Z/m\mathbb Z=\{0,1,2,\ldots,m-1\}\]</div>
+    <p>e chamamos \(\mathbb Z/m\mathbb Z\) de <strong>anel dos inteiros módulo \(m\)</strong>. Somamos e multiplicamos elementos de \(\mathbb Z/m\mathbb Z\) somando-os ou multiplicando-os como inteiros e, em seguida, dividindo o resultado por \(m\) e tomando o resto para obter um elemento de \(\mathbb Z/m\mathbb Z\).</p>
+  </aside>
+
+  <p>A <a href="#fig-1-4" data-source-xref>Figura 1.4</a> ilustra o anel \(\mathbb Z/5\mathbb Z\), fornecendo tabelas completas de adição e multiplicação módulo \(5\).</p>
+
+  <figure class="figure" id="fig-1-4">
+    <div class="table-wrap modular-tables">
+      <table aria-label="Tabela de adição módulo 5">
+        <thead><tr><th scope="col">\(+\)</th><th scope="col">\(0\)</th><th scope="col">\(1\)</th><th scope="col">\(2\)</th><th scope="col">\(3\)</th><th scope="col">\(4\)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">\(0\)</th><td>\(0\)</td><td>\(1\)</td><td>\(2\)</td><td>\(3\)</td><td>\(4\)</td></tr>
+          <tr><th scope="row">\(1\)</th><td>\(1\)</td><td>\(2\)</td><td>\(3\)</td><td>\(4\)</td><td>\(0\)</td></tr>
+          <tr><th scope="row">\(2\)</th><td>\(2\)</td><td>\(3\)</td><td>\(4\)</td><td>\(0\)</td><td>\(1\)</td></tr>
+          <tr><th scope="row">\(3\)</th><td>\(3\)</td><td>\(4\)</td><td>\(0\)</td><td>\(1\)</td><td>\(2\)</td></tr>
+          <tr><th scope="row">\(4\)</th><td>\(4\)</td><td>\(0\)</td><td>\(1\)</td><td>\(2\)</td><td>\(3\)</td></tr>
+        </tbody>
+      </table>
+      <table aria-label="Tabela de multiplicação módulo 5">
+        <thead><tr><th scope="col">\(\cdot\)</th><th scope="col">\(0\)</th><th scope="col">\(1\)</th><th scope="col">\(2\)</th><th scope="col">\(3\)</th><th scope="col">\(4\)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">\(0\)</th><td>\(0\)</td><td>\(0\)</td><td>\(0\)</td><td>\(0\)</td><td>\(0\)</td></tr>
+          <tr><th scope="row">\(1\)</th><td>\(0\)</td><td>\(1\)</td><td>\(2\)</td><td>\(3\)</td><td>\(4\)</td></tr>
+          <tr><th scope="row">\(2\)</th><td>\(0\)</td><td>\(2\)</td><td>\(4\)</td><td>\(1\)</td><td>\(3\)</td></tr>
+          <tr><th scope="row">\(3\)</th><td>\(0\)</td><td>\(3\)</td><td>\(1\)</td><td>\(4\)</td><td>\(2\)</td></tr>
+          <tr><th scope="row">\(4\)</th><td>\(0\)</td><td>\(4\)</td><td>\(3\)</td><td>\(2\)</td><td>\(1\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption><span class="label">Figura 1.4.</span> Tabelas de adição e multiplicação módulo \(5\).</figcaption>
+  </figure>
+
+  <aside class="semantic remark" id="remark-1-16">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">1.16</span></div>
+    <p>Se você estudou teoria dos anéis, reconhecerá que \(\mathbb Z/m\mathbb Z\) é o anel quociente de \(\mathbb Z\) pelo ideal principal \(m\mathbb Z\), e que os números \(0,1,\ldots,m-1\) são, na realidade, representantes das classes laterais das classes de congruência que constituem os elementos de \(\mathbb Z/m\mathbb Z\). Para uma discussão de classes de congruência e anéis quociente em geral, veja a <a href="../ch02/#sec-2-10-2" data-source-xref>Seção 2.10.2</a>.</p>
+  </aside>
+
+  <aside class="semantic definition" id="def-1-units">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>A <a href="#prop-1-13" data-source-xref>Proposição 1.13(b)</a> nos diz que \(a\) tem um inverso módulo \(m\) se, e somente se, \(\gcd(a,m)=1\). Os números que têm inversos são chamados de <strong>unidades</strong>. Denotamos o conjunto de todas as unidades por</p>
+    <div class="display-math">\[
+      \begin{aligned}
+      (\mathbb Z/m\mathbb Z)^*&amp;=\{a\in\mathbb Z/m\mathbb Z:\gcd(a,m)=1\}\\
+      &amp;=\{a\in\mathbb Z/m\mathbb Z:a\text{ tem um inverso módulo }m\}.
+      \end{aligned}
+    \]</div>
+    <p>O conjunto \((\mathbb Z/m\mathbb Z)^*\) é chamado de <strong>grupo de unidades módulo \(m\)</strong>.</p>
+  </aside>
+
+  <p>Observe que, se \(a_1\) e \(a_2\) são unidades módulo \(m\), então \(a_1a_2\) também é. (Você consegue ver por que isso é verdade?) Assim, quando multiplicamos duas unidades, sempre obtemos uma unidade. Por outro lado, quando somamos duas unidades, frequentemente não obtemos uma unidade.</p>
+
+  <aside class="semantic example" id="example-1-17">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.17</span></div>
+    <p>O grupo de unidades módulo \(24\) é</p>
+    <div class="display-math">\[(\mathbb Z/24\mathbb Z)^*=\{1,5,7,11,13,17,19,23\}.\]</div>
+    <p>De modo semelhante, o grupo de unidades módulo \(7\) é</p>
+    <div class="display-math">\[(\mathbb Z/7\mathbb Z)^*=\{1,2,3,4,5,6\},\]</div>
+    <p>pois todo número entre \(1\) e \(6\) é relativamente primo a \(7\). As tabelas de multiplicação de \((\mathbb Z/24\mathbb Z)^*\) e \((\mathbb Z/7\mathbb Z)^*\) são ilustradas na <a href="#fig-1-5" data-source-xref>Figura 1.5</a>.</p>
+  </aside>
+
+  <p>Em muitos dos criptossistemas que estudaremos, é importante saber quantos elementos há no grupo de unidades módulo \(m\). Essa quantidade aparece com tanta frequência que lhe damos um nome.</p>
+
+  <aside class="semantic definition" id="def-1-euler-phi">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>A <strong>função fi de Euler</strong> (também conhecida como função totiente de Euler) é a função \(\phi(m)\) definida pela regra</p>
+    <div class="display-math">\[\phi(m)=\#(\mathbb Z/m\mathbb Z)^*=\#\{0\le a&lt;m:\gcd(a,m)=1\}.\]</div>
+    <p>Por exemplo, vemos pelo <a href="#example-1-17" data-source-xref>Exemplo 1.17</a> que \(\phi(24)=8\) e \(\phi(7)=6\).</p>
+  </aside>
+
+  <figure class="figure" id="fig-1-5">
+    <div class="table-wrap">
+      <table aria-label="Tabela de multiplicação do grupo de unidades módulo 24">
+        <caption>Grupo de unidades módulo \(24\)</caption>
+        <thead><tr><th scope="col">\(\cdot\)</th><th scope="col">\(1\)</th><th scope="col">\(5\)</th><th scope="col">\(7\)</th><th scope="col">\(11\)</th><th scope="col">\(13\)</th><th scope="col">\(17\)</th><th scope="col">\(19\)</th><th scope="col">\(23\)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">\(1\)</th><td>\(1\)</td><td>\(5\)</td><td>\(7\)</td><td>\(11\)</td><td>\(13\)</td><td>\(17\)</td><td>\(19\)</td><td>\(23\)</td></tr>
+          <tr><th scope="row">\(5\)</th><td>\(5\)</td><td>\(1\)</td><td>\(11\)</td><td>\(7\)</td><td>\(17\)</td><td>\(13\)</td><td>\(23\)</td><td>\(19\)</td></tr>
+          <tr><th scope="row">\(7\)</th><td>\(7\)</td><td>\(11\)</td><td>\(1\)</td><td>\(5\)</td><td>\(19\)</td><td>\(23\)</td><td>\(13\)</td><td>\(17\)</td></tr>
+          <tr><th scope="row">\(11\)</th><td>\(11\)</td><td>\(7\)</td><td>\(5\)</td><td>\(1\)</td><td>\(23\)</td><td>\(19\)</td><td>\(17\)</td><td>\(13\)</td></tr>
+          <tr><th scope="row">\(13\)</th><td>\(13\)</td><td>\(17\)</td><td>\(19\)</td><td>\(23\)</td><td>\(1\)</td><td>\(5\)</td><td>\(7\)</td><td>\(11\)</td></tr>
+          <tr><th scope="row">\(17\)</th><td>\(17\)</td><td>\(13\)</td><td>\(23\)</td><td>\(19\)</td><td>\(5\)</td><td>\(1\)</td><td>\(11\)</td><td>\(7\)</td></tr>
+          <tr><th scope="row">\(19\)</th><td>\(19\)</td><td>\(23\)</td><td>\(13\)</td><td>\(17\)</td><td>\(7\)</td><td>\(11\)</td><td>\(1\)</td><td>\(5\)</td></tr>
+          <tr><th scope="row">\(23\)</th><td>\(23\)</td><td>\(19\)</td><td>\(17\)</td><td>\(13\)</td><td>\(11\)</td><td>\(7\)</td><td>\(5\)</td><td>\(1\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table aria-label="Tabela de multiplicação do grupo de unidades módulo 7">
+        <caption>Grupo de unidades módulo \(7\)</caption>
+        <thead><tr><th scope="col">\(\cdot\)</th><th scope="col">\(1\)</th><th scope="col">\(2\)</th><th scope="col">\(3\)</th><th scope="col">\(4\)</th><th scope="col">\(5\)</th><th scope="col">\(6\)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">\(1\)</th><td>\(1\)</td><td>\(2\)</td><td>\(3\)</td><td>\(4\)</td><td>\(5\)</td><td>\(6\)</td></tr>
+          <tr><th scope="row">\(2\)</th><td>\(2\)</td><td>\(4\)</td><td>\(6\)</td><td>\(1\)</td><td>\(3\)</td><td>\(5\)</td></tr>
+          <tr><th scope="row">\(3\)</th><td>\(3\)</td><td>\(6\)</td><td>\(2\)</td><td>\(5\)</td><td>\(1\)</td><td>\(4\)</td></tr>
+          <tr><th scope="row">\(4\)</th><td>\(4\)</td><td>\(1\)</td><td>\(5\)</td><td>\(2\)</td><td>\(6\)</td><td>\(3\)</td></tr>
+          <tr><th scope="row">\(5\)</th><td>\(5\)</td><td>\(3\)</td><td>\(1\)</td><td>\(6\)</td><td>\(4\)</td><td>\(2\)</td></tr>
+          <tr><th scope="row">\(6\)</th><td>\(6\)</td><td>\(5\)</td><td>\(4\)</td><td>\(3\)</td><td>\(2\)</td><td>\(1\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption><span class="label">Figura 1.5.</span> Os grupos de unidades \((\mathbb Z/24\mathbb Z)^*\) e \((\mathbb Z/7\mathbb Z)^*\).</figcaption>
+  </figure>
+</section>

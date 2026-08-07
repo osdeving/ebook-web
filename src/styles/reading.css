@@ -26,3 +26,8 @@
 .glossary-list dt { color: var(--accent-strong); font-weight: 820; }
 .glossary-list dd { margin: .25rem 0 0; color: var(--muted); font-size: .72rem; line-height: 1.45; }
 .empty-state, .enrichment-empty { padding: .85rem; border: 1px dashed var(--line-strong); border-radius: .65rem; color: var(--muted); font-size: .75rem; text-align: center; }
+
+.enrichment-inline { display: inline; margin-inline-start: .35em; scroll-margin-block-start: 6rem; }
+.enrichment-inline__body { display: inline; }
+.enrichment-inline--reading a { display: inline-flex; align-items: baseline; gap: .2em; font-size: .82em; font-weight: 760; white-space: nowrap; }
+.enrichment-inline:target { border-radius: .25rem; outline: 3px solid color-mix(in srgb, var(--layer-reading) 55%, transparent); outline-offset: .2rem; }

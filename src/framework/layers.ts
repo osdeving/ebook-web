@@ -14,7 +14,12 @@ export interface LayerOptions {
   announce(message: string): void;
 }
 
-export function mountLayers(options: LayerOptions): () => void {
+export interface LayerController {
+  ensure(layer: EnrichmentLayer): void;
+  destroy(): void;
+}
+
+export function mountLayers(options: LayerOptions): LayerController {
   const cleanups: Array<() => void> = [];
   const active = new Set(options.preferences.layers);
 
@@ -55,7 +60,16 @@ export function mountLayers(options: LayerOptions): () => void {
     }));
   });
   apply(false);
-  return () => cleanups.forEach((cleanup) => cleanup());
+  return {
+    ensure(layer) {
+      if (active.has(layer)) return;
+      active.add(layer);
+      apply();
+    },
+    destroy() {
+      cleanups.forEach((cleanup) => cleanup());
+    },
+  };
 }
 
 function syncPresets(active: ReadonlySet<EnrichmentLayer>): void {

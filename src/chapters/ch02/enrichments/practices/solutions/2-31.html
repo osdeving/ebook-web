@@ -1,0 +1,23 @@
+<div class="exercise-solution">
+  <p class="solution-warning"><strong>Nota editorial.</strong> A fórmula impressa \(\phi(a\star a)=\phi(a)\star\phi(a)\) deve envolver \(a\star b\). Além disso, \(\phi(1_R)=1_S\) não decorre apenas da preservação de soma e produto: o homomorfismo zero é um contraexemplo. A afirmação vale sob a convenção, usada aqui, de que homomorfismos de anéis com identidade também preservam \(1\).</p>
+  <ol type="a">
+    <li>Temos
+      \[
+      \phi(0_R)=\phi(0_R+0_R)=\phi(0_R)+\phi(0_R),
+      \]
+      e o cancelamento aditivo dá \(\phi(0_R)=0_S\). A igualdade \(\phi(1_R)=1_S\) faz parte da convenção unital. Como
+      \[
+      0_S=\phi(a-a)=\phi(a)+\phi(-a),
+      \]
+      resulta \(\phi(-a)=-\phi(a)\). Se \(a\) é invertível, então
+      \[
+      \phi(a)\phi(a^{-1})=\phi(aa^{-1})=\phi(1_R)=1_S,
+      \]
+      logo \(\phi(a^{-1})=\phi(a)^{-1}\).</li>
+    <li>O anel é comutativo, e a hipótese \(pa=0\) anula qualquer múltiplo de \(p\). Pelo teorema binomial,
+      \[
+      (a+b)^p=\sum_{j=0}^p\binom pj a^j b^{p-j}=a^p+b^p,
+      \]
+      pois \(p\mid\binom pj\) para \(0&lt;j&lt;p\). Além disso, \((ab)^p=a^pb^p\) e \(1^p=1\). Portanto \(a\mapsto a^p\) preserva soma, produto e identidade: é o homomorfismo de Frobenius.</li>
+  </ol>
+</div>

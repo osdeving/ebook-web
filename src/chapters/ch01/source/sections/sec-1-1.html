@@ -1,0 +1,98 @@
+<section class="section" id="sec-1-1" data-layer="source">
+  <h2><span class="section-number">1.1</span> Cifras de substituição simples</h2>
+
+  <p>Enquanto Júlio César observa de seu posto no alto de uma colina o desenrolar da batalha, um mensageiro exausto e desgrenhado irrompe em sua presença e lhe entrega um pedaço de pergaminho contendo algo sem sentido:</p>
+  <pre class="ciphertext" lang="en">jsjrdkfqqnslgfhpgwjfpymwtzlmnrrnsjsyqzhnzx</pre>
+
+  <p>Em poucos instantes, Júlio envia uma ordem para que uma unidade de reserva de condutores de bigas contorne rapidamente o flanco esquerdo e explore uma abertura momentânea na formação adversária.</p>
+
+  <p>Como essa sequência de letras aparentemente aleatórias transmitiu uma informação tão importante? O truque é simples depois que explicado. Basta tomar cada letra da mensagem e deslocá-la cinco posições para trás no alfabeto. Assim, <code>j</code> no texto cifrado se torna <code>e</code> no texto claro,<sup id="fnref-1-1-1"><a href="#fn-1-1-1" data-source-xref>1</a></sup> pois <code>e</code> é seguida no alfabeto por <code>f,g,h,i,j</code>. A aplicação desse procedimento a todo o texto cifrado produz</p>
+  <pre class="cipher-pair" lang="en">jsjrdkfqqnslgfhpgwjfpymwtzlmnrrnsjsyqzhnzx
+enemyfallingbackbreakthroughimminentlucius</pre>
+
+  <p>A segunda linha é o texto claro decifrado. Separando-o em palavras e acrescentando a pontuação apropriada, Júlio lê a mensagem</p>
+  <blockquote lang="en">Enemy falling back. Breakthrough imminent. Lucius.</blockquote>
+
+  <p>Resta uma pequena peculiaridade a resolver. O que acontece quando Júlio encontra uma letra como <code>d</code>? Não há uma letra que apareça cinco posições antes de <code>d</code> no alfabeto. A resposta é que ele precisa dar a volta até o fim do alfabeto. Assim, <code>d</code> é substituída por <code>y</code>, pois <code>y</code> é seguida por <code>z,a,b,c,d</code>.</p>
+
+  <p>Esse efeito de retorno ao início pode ser visualizado convenientemente dispondo o alfabeto <code>abcd...xyz</code> em torno de um círculo, em vez de uma linha. Se um segundo círculo alfabético for colocado dentro do primeiro e o círculo interno for girado cinco letras, como mostra a <a href="#fig-1-1" data-source-xref>Figura 1.1</a>, o arranjo resultante poderá ser usado facilmente para cifrar e decifrar as mensagens de César. Para decifrar uma letra, basta encontrá-la na roda interna e ler na roda externa a letra correspondente do texto claro. Para cifrar, inverte-se o processo: encontra-se a letra do texto claro na roda externa e lê-se a letra do texto cifrado na roda interna. Observe ainda que, se você construir uma roda de cifra cuja roda interna possa girar, deixará de estar restrito a deslocar sempre exatamente cinco letras. Rodas de cifra desse tipo são usadas há séculos.<sup id="fnref-1-1-2"><a href="#fn-1-1-2" data-source-xref>2</a></sup></p>
+
+  <figure class="figure" id="fig-1-1">
+    <svg viewBox="0 0 420 420" role="img" aria-labelledby="fig-1-1-title fig-1-1-desc">
+      <title id="fig-1-1-title">Roda de cifra com deslocamento de cinco letras</title>
+      <desc id="fig-1-1-desc">Dois alfabetos concêntricos. Cada letra minúscula da roda externa corresponde à letra maiúscula situada cinco posições adiante na roda interna.</desc>
+      <defs>
+        <path id="fig-1-1-outer-path" d="M210,24 a186,186 0 1,1 -0.1,0"></path>
+        <path id="fig-1-1-inner-path" d="M210,70 a140,140 0 1,1 -0.1,0"></path>
+      </defs>
+      <circle cx="210" cy="210" r="190" fill="none" stroke="currentColor" stroke-width="2"></circle>
+      <circle cx="210" cy="210" r="145" fill="none" stroke="currentColor" stroke-width="2"></circle>
+      <circle cx="210" cy="210" r="72" fill="none" stroke="currentColor" stroke-width="1"></circle>
+      <text font-size="15" letter-spacing="4"><textPath href="#fig-1-1-outer-path">a b c d e f g h i j k l m n o p q r s t u v w x y z</textPath></text>
+      <text font-size="15" letter-spacing="3"><textPath href="#fig-1-1-inner-path">F G H I J K L M N O P Q R S T U V W X Y Z A B C D E</textPath></text>
+      <text x="210" y="204" text-anchor="middle" font-size="18">deslocamento</text>
+      <text x="210" y="230" text-anchor="middle" font-size="24">5</text>
+    </svg>
+    <figcaption><span class="label">Figura 1.1.</span> Uma roda de cifra com deslocamento de cinco letras.</figcaption>
+  </figure>
+
+  <p>Embora os detalhes da cena anterior sejam inteiramente fictícios — e, de qualquer modo, seja improvável que uma mensagem dirigida a um general romano tivesse sido escrita em inglês moderno! —, há indícios de que César empregava esse antigo método de criptografia, às vezes chamado de <strong>cifra de César</strong> em sua homenagem. Ele também é chamado de <strong>cifra de deslocamento</strong>, pois cada letra do alfabeto é deslocada para a frente ou para trás. <strong>Criptografia</strong>, a metodologia de ocultar o conteúdo de mensagens, vem das raízes gregas <em>kryptos</em>, que significa oculto,<sup id="fnref-1-1-3"><a href="#fn-1-1-3" data-source-xref>3</a></sup> e <em>graphikos</em>, que significa escrita. O estudo científico moderno da criptografia às vezes é chamado de <strong>criptologia</strong>.</p>
+
+  <p>Na cifra de César, cada letra é substituída por uma letra específica. No entanto, se Bob cifra uma mensagem para Alice<sup id="fnref-1-1-4"><a href="#fn-1-1-4" data-source-xref>4</a></sup> usando uma cifra de César e deixa a mensagem cifrada cair nas mãos de Eva, ela levará muito pouco tempo para decifrá-la. Tudo o que precisa fazer é experimentar cada um dos 26 deslocamentos possíveis.</p>
+
+  <p>Bob pode tornar sua mensagem mais difícil de atacar usando um esquema de substituição mais complicado. Por exemplo, ele poderia substituir toda ocorrência de <code>a</code> por <code>z</code> e toda ocorrência de <code>z</code> por <code>a</code>, toda ocorrência de <code>b</code> por <code>y</code> e toda ocorrência de <code>y</code> por <code>b</code>, e assim por diante, trocando cada par de letras \(c\leftrightarrow x,\ldots,m\leftrightarrow n\).</p>
+
+  <p>Esse é um exemplo de <strong>cifra de substituição simples</strong>, isto é, uma cifra em que cada letra é substituída por outra letra ou por algum outro tipo de símbolo. A cifra de César é um exemplo de cifra de substituição simples, mas há muitas outras cifras de substituição simples. De fato, uma cifra de substituição simples pode ser vista como uma regra ou função</p>
+  <div class="display-math">\[\{a,b,c,d,e,\ldots,x,y,z\}\longrightarrow\{A,B,C,D,E,\ldots,X,Y,Z\}\]</div>
+  <p>que associa a cada letra do texto claro no domínio uma letra distinta do texto cifrado na imagem. Para facilitar a distinção entre texto claro e texto cifrado, escrevemos o texto claro com letras minúsculas e o texto cifrado com letras maiúsculas. Observe que, para a decifração funcionar, a função de cifração deve ter a propriedade de que duas letras distintas do texto claro nunca sejam levadas à mesma letra do texto cifrado. Uma função com essa propriedade é chamada de <strong>um a um</strong> ou <strong>injetiva</strong>.</p>
+
+  <p>Uma maneira conveniente de descrever a função de cifração é criar uma tabela, escrevendo o alfabeto do texto claro na linha superior e colocando cada letra do texto cifrado abaixo da letra correspondente do texto claro.</p>
+
+  <aside class="semantic example" id="example-1-1">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">1.1</span></div>
+    <p>Uma tabela de cifração por substituição simples é apresentada na <a href="#tab-1-1" data-source-xref>Tabela 1.1</a>. O alfabeto do texto cifrado — as letras maiúsculas da linha inferior — é uma permutação escolhida ao acaso das 26 letras do alfabeto. Para cifrar a mensagem em texto claro</p>
+    <blockquote lang="en">Four score and seven years ago,</blockquote>
+    <p>juntamos as palavras, procuramos cada letra do texto claro na tabela de cifração e escrevemos abaixo dela a letra correspondente do texto cifrado.</p>
+    <pre class="cipher-pair" lang="en">f o u r s c o r e a n d s e v e n y e a r s a g o
+N U R B K S U B V C G Q K V E V G Z V C B K C F U</pre>
+  </aside>
+
+  <div class="table-wrap" id="tab-1-1">
+    <table class="cipher-table">
+      <caption><span class="label">Tabela 1.1.</span> Tabela de cifração por substituição simples.</caption>
+      <tbody>
+        <tr><th scope="row">Texto claro</th><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z</td></tr>
+        <tr><th scope="row">Texto cifrado</th><td>C</td><td>I</td><td>S</td><td>Q</td><td>V</td><td>N</td><td>F</td><td>O</td><td>W</td><td>A</td><td>X</td><td>M</td><td>T</td><td>G</td><td>U</td><td>H</td><td>P</td><td>B</td><td>K</td><td>L</td><td>R</td><td>E</td><td>Y</td><td>D</td><td>Z</td><td>J</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-wrap" id="tab-1-2">
+    <table class="cipher-table">
+      <caption><span class="label">Tabela 1.2.</span> Tabela de decifração por substituição simples.</caption>
+      <tbody>
+        <tr><th scope="row">Texto claro</th><td>j</td><td>r</td><td>a</td><td>x</td><td>v</td><td>g</td><td>n</td><td>p</td><td>b</td><td>z</td><td>s</td><td>t</td><td>l</td><td>f</td><td>h</td><td>q</td><td>d</td><td>u</td><td>c</td><td>m</td><td>o</td><td>e</td><td>i</td><td>k</td><td>w</td><td>y</td></tr>
+        <tr><th scope="row">Texto cifrado</th><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>É costume escrever o texto cifrado em blocos de cinco letras:</p>
+  <pre class="ciphertext" lang="en">NURBK SUBVC GQKVE VGZVC BKCFU</pre>
+
+  <p>A decifração é um processo semelhante. Suponha que recebamos a mensagem</p>
+  <pre class="ciphertext" lang="en">GVVQG VYKCM CQQBV KKWGF SCVKC B</pre>
+  <p>e saibamos que ela foi cifrada com a <a href="#tab-1-1" data-source-xref>Tabela 1.1</a>. Podemos inverter o processo de cifração encontrando cada letra do texto cifrado na segunda linha da <a href="#tab-1-1" data-source-xref>Tabela 1.1</a> e escrevendo a letra correspondente da linha superior. Entretanto, como as letras da segunda linha da <a href="#tab-1-1" data-source-xref>Tabela 1.1</a> estão todas embaralhadas, esse processo é um tanto ineficiente. É melhor criar uma tabela de decifração na qual as letras do texto cifrado, na linha inferior, estejam em ordem alfabética e as letras correspondentes do texto claro, na linha superior, estejam embaralhadas. Fizemos isso na <a href="#tab-1-2" data-source-xref>Tabela 1.2</a>. Usando essa tabela, deciframos facilmente a mensagem.</p>
+  <pre class="cipher-pair" lang="en">G V V Q G V Y K C M C Q Q B V K K W G F S C V K C B
+n e e d n e w s a l a d d r e s s i n g c a e s a r</pre>
+
+  <p>Inserir as separações apropriadas entre as palavras e alguma pontuação revela um pedido urgente!</p>
+  <blockquote lang="en">Need new salad dressing. —Caesar</blockquote>
+
+  <ol class="footnotes">
+    <li id="fn-1-1-1">O <em>texto claro</em> é a mensagem original em forma legível, e o <em>texto cifrado</em> é a mensagem cifrada. <a href="#fnref-1-1-1" data-source-xref aria-label="Voltar à chamada da nota 1">↩</a></li>
+    <li id="fn-1-1-2">Uma roda de cifra com alfabetos embaralhados e com cifração realizada por deslocamentos diferentes em partes diferentes da mensagem aparece em um tratado do século XV de Leon Batista Alberti <a href="../../references/#ref-63" data-source-xref>[63]</a>. <a href="#fnref-1-1-2" data-source-xref aria-label="Voltar à chamada da nota 2">↩</a></li>
+    <li id="fn-1-1-3">A palavra inglesa <em>cryptic</em>, com o sentido de oculto ou misterioso, aparece em 1638, enquanto o prefixo <em>crypto-</em>, com o sentido de oculto ou secreto, surge em 1760. O termo <em>cryptogram</em> aparece muito mais tarde, com seu primeiro registro em 1880. <a href="#fnref-1-1-3" data-source-xref aria-label="Voltar à chamada da nota 3">↩</a></li>
+    <li id="fn-1-1-4">Na criptografia, é tradicional que Bob e Alice troquem mensagens confidenciais e que sua adversária Eva, a bisbilhoteira, intercepte e tente ler essas mensagens. Isso torna a área da criptografia muito mais pessoal que outras áreas da matemática e da ciência da computação, cujos habitantes costumam ser X e Y! <a href="#fnref-1-1-4" data-source-xref aria-label="Voltar à chamada da nota 4">↩</a></li>
+  </ol>
+</section>

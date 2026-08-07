@@ -1,0 +1,9 @@
+<div class="exercise-solution">
+  <p>Bob calcula sua mensagem pública por exponenciação modular:</p>
+  <p>\[B\equiv g^b\equiv2^{871}\equiv805\pmod{1373}.\]</p>
+  <p>Usando o valor \(A=974\) recebido de Alice, o segredo compartilhado calculado por Bob é</p>
+  <p>\[A^b\equiv974^{871}\equiv397\pmod{1373}.\]</p>
+  <p>Para descobrir a chave de Alice é preciso resolver \(2^a\equiv974\pmod{1373}\). Uma busca de logaritmo discreto, por exemplo com passos de bebê e de gigante, fornece</p>
+  <p>\[a=587,\qquad 2^{587}\equiv974\pmod{1373}.\]</p>
+  <p>A conferência pelo outro lado é \(B^a\equiv805^{587}\equiv397\pmod{1373}\). Como \(2\) é a base geradora usada no protocolo, \(a\) fica determinado módulo \(1372\).</p>
+</div>
