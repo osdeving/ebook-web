@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.7">
+          <p class="graduated-help__intro">A identidade de Pascal pode ser vista como álgebra de fatoriais, coeficientes de polinômios ou uma partição de escolhas.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Denominador comum</summary>
+      <div>Nos fatoriais, use \(j!(n-j)!\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Objeto especial</summary>
+      <div>Na prova combinatória, fixe um dos n objetos e separe os subconjuntos que o contêm.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Faça as provas coincidirem</summary>
+      <div>Identifique em cada argumento os dois casos: o objeto destacado entra ou não entra no subconjunto.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <h4>(a) Fatoriais</h4><p>\[\binom{n-1}{j-1}+\binom{n-1}{j}=\frac{(n-1)!j+(n-1)!(n-j)}{j!(n-j)!}=\frac{n!}{j!(n-j)!}=\binom nj.\]</p><h4>(b) Binômio</h4><p>Em \((x+y)(x+y)^{n-1}\), \(x^jy^{n-j}\) surge de \(x\cdot x^{j-1}y^{n-j}\) ou de \(y\cdot x^jy^{n-j-1}\); seu coeficiente é a soma do lado direito.</p><h4>(c) Contagem</h4><p>Ao escolher \(j\) entre \(n\), ou incluímos o objeto destacado e escolhemos \(j-1\) dos demais, ou o excluímos e escolhemos \(j\) dos demais. Os casos são disjuntos e exaustivos.</p>
+        </details>
+      </div>

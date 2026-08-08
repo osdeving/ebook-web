@@ -1,0 +1,39 @@
+<section class="chapter-section subsection" id="sec-5-6-4">
+  <div class="section-heading">
+    <span class="section-number">5.6.4</span>
+    <h3>A álgebra dos sistemas de sigilo</h3>
+  </div>
+
+  <p>Faremos apenas algumas breves observações sobre a álgebra dos criptossistemas. Em <a href="../../references/#ref-127" data-source-xref>[127]</a>, Shannon considera maneiras de construir novos criptossistemas tomando combinações algébricas de sistemas antigos. Os novos sistemas são descritos em termos de combinações lineares e produtos das transformações de cifração originais.</p>
+
+  <div class="semantic example" id="exemplo-5-66">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.66 — Sistemas de soma</span></div>
+    <p>Se \(R\) e \(T\) são dois sistemas de sigilo, Shannon define a <strong>soma ponderada</strong> de \(R\) e \(T\) como</p>
+    <div class="equation">\[
+      S=pR+qT,\qquad\text{em que }p+q=1.
+    \]</div>
+    <p>Essa notação tem o significado seguinte. Primeiro se escolhe \(R\) ou \(T\), sendo \(p\) a probabilidade de escolher \(R\) e \(q\) a probabilidade de escolher \(T\). Imagine que a escolha seja feita lançando uma moeda não equilibrada, mas observe que Bob e Alice precisam ter, ambos, uma cópia dos resultados dos lançamentos. Em outras palavras, a lista de escolhas — ou um método de gerar essa lista — faz parte de sua chave privada.</p>
+    <p>A noção de soma se estende à soma de qualquer número de sistemas de sigilo. Os sistemas \(R\) e \(T\) precisam ter o mesmo espaço de mensagens, mas não precisam agir sobre as mensagens de maneiras semelhantes. Por exemplo, \(R\) poderia ser uma cifra de substituição e \(T\), uma cifra de deslocamento.</p>
+    <p>Como outro exemplo, suponha que \(T_i\) seja a cifra de deslocamento que cifra uma letra do alfabeto deslocando-a \(i\) posições. Então o sistema que cifra escolhendo um deslocamento ao acaso e aplicando o deslocamento escolhido é a cifra-soma</p>
+    <div class="equation">\[
+      \sum_{i=0}^{25}\frac1{26}T_i.
+    \]</div>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-67">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.67 — Sistemas de produto</span></div>
+    <p>Para definir o produto de dois criptossistemas, é necessário que os textos cifrados do primeiro sistema sejam textos claros para o segundo. Sejam, portanto,</p>
+    <div class="equation">\[
+      e:\mathcal M\to\mathcal C
+      \qquad\text{e}\qquad
+      e':\mathcal M'\to\mathcal C'
+    \]</div>
+    <p>duas funções de cifração, e suponha que \(\mathcal C=\mathcal M'\), ou, mais geralmente, que \(\mathcal C\subseteq\mathcal M'\). O sistema-produto \(e'\mathbin{\cdot}e\) é definido como a composição de \(e\) e \(e'\):</p>
+    <div class="equation">\[
+      e'\mathbin{\cdot}e:
+      \mathcal M\xrightarrow{\ e\ }\mathcal C
+      \subseteq\mathcal M'\xrightarrow{\ e'\ }\mathcal C'.
+    \]</div>
+    <p>Cifras-produto oferecem um meio de reforçar a segurança. Elas foram usadas no desenvolvimento do DES, o <em>Digital Encryption Standard</em> <a href="../../references/#ref-97" data-source-xref>[97]</a>, o primeiro padrão nacional de cifração simétrica. O DES possui várias rodadas de uma cifra denominada cifração por caixa S; portanto, é um produto múltiplo de uma cifra consigo mesma. Além disso, cada rodada consiste na composição de várias transformações diferentes. O uso de cifras-produto continua importante no desenvolvimento de novas cifras simétricas, entre elas o AES, o <em>Advanced Encryption Standard</em>. Veja a Seção 8.12 para uma breve discussão do DES e do AES.</p>
+  </div>
+</section>

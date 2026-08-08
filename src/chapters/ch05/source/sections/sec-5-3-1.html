@@ -1,0 +1,156 @@
+<section class="chapter-section subsection" id="sec-5-3-1">
+  <div class="section-heading">
+    <span class="section-number">5.3.1</span>
+    <h3>Conceitos básicos da teoria da probabilidade</h3>
+  </div>
+
+  <p>Nesta seção, introduzimos as ideias básicas da teoria da probabilidade no contexto discreto. Um espaço de probabilidade possui duas partes. A primeira é um conjunto finito \(\Omega\), formado por todos os resultados possíveis de um experimento; a segunda é um método para atribuir uma probabilidade a cada resultado possível. Em termos matemáticos, um espaço de probabilidade é um conjunto finito de resultados \(\Omega\), chamado <strong>espaço amostral</strong>, e uma função</p>
+  <div class="equation">\[\Pr:\Omega\longrightarrow\mathbb R.\]</div>
+  <p>Queremos que a função \(\Pr\) corresponda à intuição de que</p>
+  <div class="equation">\[\Pr(\omega)=\text{“probabilidade de que o resultado }\omega\text{ tenha ocorrido”}.\]</div>
+  <p>Em particular, o valor de \(\Pr(\omega)\) deve estar entre \(0\) e \(1\).</p>
+
+  <div class="semantic example" id="exemplo-5-18">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.18</span></div>
+    <p>Considere o lançamento de uma única moeda. Há dois resultados, cara (\(\mathrm H\)) e coroa (\(\mathrm T\)); portanto, tomamos \(\Omega=\{\mathrm H,\mathrm T\}\). Supondo que a moeda seja honesta, os dois resultados são igualmente prováveis, de modo que \(\Pr(\mathrm H)=\Pr(\mathrm T)=\tfrac12\).</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-19">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.19</span></div>
+    <p>Considere o lançamento de dois dados. O espaço amostral \(\Omega\) é o conjunto dos \(36\) pares de números</p>
+    <div class="equation">\[\Omega=\bigl\{(n,m):n,m\in\mathbb Z\text{ e }1\le n,m\le6\bigr\}.\]</div>
+    <p>Como no <a href="#exemplo-5-18" data-source-xref>Exemplo 5.18</a>, todos os resultados possíveis são igualmente prováveis. Por exemplo, a probabilidade de obter \((6,6)\) é igual à probabilidade de obter \((3,4)\). Assim,</p>
+    <div class="equation">\[\Pr\bigl((n,m)\bigr)=\frac1{36}\]</div>
+    <p>para qualquer escolha de \((n,m)\). Observe que a ordem importa nesse cenário. Podemos imaginar que um dado seja vermelho e o outro, azul; nesse caso, “vermelho \(3\) e azul \(5\)” é um resultado diferente de “vermelho \(5\) e azul \(3\)”.</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-20">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.20</span></div>
+    <p>Suponha que uma urna contenha \(100\) bolas, das quais \(21\) são vermelhas e as demais, azuis. Se retirarmos \(10\) bolas ao acaso, sem reposição, qual é a probabilidade de que exatamente \(3\) delas sejam vermelhas?</p>
+    <p>O número total de maneiras de escolher \(10\) bolas entre \(100\) é \(\binom{100}{10}\). De modo semelhante, há \(\binom{21}{3}\) maneiras de escolher \(3\) bolas vermelhas entre as \(21\) vermelhas e \(\binom{79}{7}\) maneiras de escolher as outras \(7\) entre as \(79\) azuis. Portanto, há \(\binom{21}{3}\binom{79}{7}\) maneiras de escolher exatamente \(3\) bolas vermelhas e \(7\) azuis. A probabilidade procurada é</p>
+    <div class="equation">\[\Pr\!\left(\substack{\text{exatamente 3 bolas vermelhas}\\\text{em 10 retiradas}}\right)=\frac{\binom{21}{3}\binom{79}{7}}{\binom{100}{10}}=\frac{20271005}{91015876}\approx0{,}223.\]</div>
+  </div>
+
+  <p>Em geral, estamos mais interessados em calcular a probabilidade de <strong>eventos compostos</strong>. Eles são subconjuntos do espaço amostral que podem incluir mais de um resultado. Por exemplo, no lançamento de dois dados do <a href="#exemplo-5-19" data-source-xref>Exemplo 5.19</a>, talvez nos interesse a probabilidade de que ao menos um dos dados mostre \(6\). Esse evento composto é o subconjunto de \(\Omega\) formado por todos os resultados que contêm o número seis:</p>
+  <div class="equation">\[\{(1,6),(2,6),(3,6),(4,6),(5,6),(6,6),(6,1),(6,2),(6,3),(6,4),(6,5)\}.\]</div>
+
+  <p>Suponha que conheçamos a probabilidade de cada resultado particular. Como calcular as probabilidades de eventos compostos ou de eventos formados por repetições independentes de um experimento? A análise desse problema conduz à ideia de independência de eventos, conceito responsável por grande parte da complexidade e da riqueza da teoria da probabilidade.</p>
+
+  <p>A teoria formal da probabilidade é uma teoria axiomática. Você provavelmente já encontrou teorias desse tipo ao estudar geometria euclidiana e espaços vetoriais abstratos. Em uma teoria axiomática, começamos com uma pequena lista de axiomas básicos e, a partir deles, deduzimos outros fatos e fórmulas interessantes. A teoria axiomática da probabilidade permite deduzir fórmulas para calcular probabilidades de eventos compostos. Neste livro, contentamo-nos com uma apresentação informal; para um tratamento axiomático mais rigoroso, veja, por exemplo, <a href="../../references/#ref-112" data-source-xref>[112, §2.3]</a>.</p>
+
+  <p>Comecemos com algumas definições.</p>
+
+  <div class="semantic definition" id="def-5-espaco-amostral">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Um <strong>espaço amostral</strong> (ou conjunto de resultados) é um conjunto finito<sup id="fnref-5-9"><a href="#fn-5-9" data-source-xref>9</a></sup> \(\Omega\). A cada resultado \(\omega\in\Omega\) atribui-se uma probabilidade \(\Pr(\omega)\), exigindo que a função de probabilidade</p>
+    <div class="equation">\[\Pr:\Omega\longrightarrow\mathbb R\]</div>
+    <p>satisfaça as duas propriedades</p>
+    <div class="equation" id="eq-5-14"><span class="equation-number">(5.14)</span>\[\text{(a)}\quad0\le\Pr(\omega)\le1\quad\text{para todo }\omega\in\Omega,\qquad\text{e}\qquad\text{(b)}\quad\sum_{\omega\in\Omega}\Pr(\omega)=1.\]</div>
+  </div>
+
+  <p>Observe que <a href="#eq-5-14" data-source-xref>(5.14)(a)</a> corresponde à intuição de que cada resultado tem probabilidade entre \(0\) — se nunca ocorre — e \(1\) — se sempre ocorre —, enquanto <a href="#eq-5-14" data-source-xref>(5.14)(b)</a> diz que algum resultado precisa ocorrer; portanto, \(\Omega\) contém todos os resultados possíveis do experimento.</p>
+
+  <div class="semantic definition" id="def-5-evento">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Um <strong>evento</strong> é qualquer subconjunto de \(\Omega\). Atribuímos uma probabilidade a um evento \(E\subset\Omega\) definindo</p>
+    <div class="equation" id="eq-5-15"><span class="equation-number">(5.15)</span>\[\Pr(E)=\sum_{\omega\in E}\Pr(\omega).\]</div>
+    <p>Em particular, por convenção, \(\Pr(\varnothing)=0\), e <a href="#eq-5-14" data-source-xref>(5.14)(b)</a> fornece \(\Pr(\Omega)=1\).</p>
+  </div>
+
+  <div class="semantic definition" id="def-5-eventos-disjuntos">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Dizemos que dois eventos \(E\) e \(F\) são <strong>disjuntos</strong> se \(E\cap F=\varnothing\).</p>
+  </div>
+
+  <p>É claro que</p>
+  <div class="equation">\[\Pr(E\cup F)=\Pr(E)+\Pr(F)\qquad\text{se }E\text{ e }F\text{ são disjuntos},\]</div>
+  <p>pois, nesse caso, \(E\cup F\) é a coleção de todos os resultados que estão em \(E\) ou em \(F\). Quando \(E\) e \(F\) não são disjuntos, a probabilidade de \(E\cup F\) não é a soma de \(\Pr(E)\) e \(\Pr(F)\), pois os resultados comuns aos dois eventos não devem ser contados duas vezes. Subtraindo os resultados comuns, obtemos a fórmula útil</p>
+  <div class="equation" id="eq-5-16"><span class="equation-number">(5.16)</span>\[\Pr(E\cup F)=\Pr(E)+\Pr(F)-\Pr(E\cap F).\]</div>
+  <p>(Veja o <a href="#exercicio-5-20" data-source-xref>Exercício 5.20</a>.)</p>
+
+  <div class="semantic definition" id="def-5-complemento-evento">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>O <strong>complemento</strong> de um evento \(E\) é o evento \(E^c\) formado por todos os resultados que não pertencem a \(E\), isto é,</p>
+    <div class="equation">\[E^c=\{\omega\in\Omega:\omega\notin E\}.\]</div>
+  </div>
+
+  <p>A probabilidade do evento complementar é</p>
+  <div class="equation" id="eq-5-17"><span class="equation-number">(5.17)</span>\[\Pr(E^c)=1-\Pr(E).\]</div>
+  <p>Às vezes, é mais fácil calcular a probabilidade do complemento de \(E\) e usar <a href="#eq-5-17" data-source-xref>(5.17)</a> para encontrar \(\Pr(E)\).</p>
+
+  <div class="semantic example" id="exemplo-5-21">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.21</span></div>
+    <p>Continuamos o <a href="#exemplo-5-19" data-source-xref>Exemplo 5.19</a>, em que \(\Omega\) contém os resultados possíveis do lançamento de dois dados. Seja \(E\) o evento</p>
+    <div class="equation">\[E=\{\text{ao menos um seis é obtido}\}.\]</div>
+    <p>Podemos escrever \(E\) explicitamente:</p>
+    <div class="equation">\[E=\{(1,6),(6,1),(2,6),(6,2),(3,6),(6,3),(4,6),(6,4),(5,6),(6,5),(6,6)\}.\]</div>
+    <p>Cada um desses \(11\) resultados tem probabilidade \(1/36\), logo</p>
+    <div class="equation">\[\Pr(E)=\sum_{\omega\in E}\Pr(\omega)=\frac{11}{36}.\]</div>
+    <p>A probabilidade de não obter um seis é, portanto,</p>
+    <div class="equation">\[\Pr(\text{nenhum seis})=\Pr(E^c)=1-\Pr(E)=\frac{25}{36}.\]</div>
+
+    <p>Considere agora o evento \(F\) definido por</p>
+    <div class="equation">\[F=\{\text{nenhum número maior que dois é obtido}\}.\]</div>
+    <p>Observe que</p>
+    <div class="equation">\[F=\{(1,1),(1,2),(2,1),(2,2)\}\]</div>
+    <p>é disjunto de \(E\). Assim, a probabilidade de obter um seis ou então não obter número maior que dois é</p>
+    <div class="equation">\[\Pr(E\cup F)=\Pr(E)+\Pr(F)=\frac{11}{36}+\frac4{36}=\frac{15}{36}.\]</div>
+
+    <p>Para eventos não disjuntos, o cálculo é mais complicado, pois precisamos evitar a contagem dupla. Considere o evento</p>
+    <div class="equation">\[G=\{\text{números iguais nos dois dados}\}=\{(1,1),(2,2),(3,3),(4,4),(5,5),(6,6)\}.\]</div>
+    <p>Os eventos \(E\) e \(G\) contêm o resultado \((6,6)\); portanto, sua união possui apenas \(16\) resultados, não \(17\). A probabilidade de obter um seis ou números iguais é \(16/36\). Também podemos usar <a href="#eq-5-16" data-source-xref>(5.16)</a>:</p>
+    <div class="equation">\[\Pr(E\cup G)=\Pr(E)+\Pr(G)-\Pr(E\cap G)=\frac{11}{36}+\frac6{36}-\frac1{36}=\frac{16}{36}=\frac49.\]</div>
+
+    <p>Para concluir, seja</p>
+    <div class="equation">\[H=\{\text{a soma dos dois dados é pelo menos 4}\}.\]</div>
+    <p>Poderíamos calcular \(\Pr(H)\) diretamente, mas é mais fácil calcular \(\Pr(H^c)\). Há apenas três resultados cuja soma é menor que \(4\):</p>
+    <div class="equation">\[H^c=\{(1,1),(1,2),(2,1)\}.\]</div>
+    <p>Logo, \(\Pr(H^c)=3/36=1/12\) e \(\Pr(H)=1-\Pr(H^c)=11/12\).</p>
+  </div>
+
+  <p>Se \(E\) e \(F\) são eventos, o evento em que ambos ocorrem é a interseção \(E\cap F\). Portanto,</p>
+  <div class="equation">\[\Pr(E\text{ e }F)=\Pr(E\cap F).\]</div>
+  <p>Como mostra o exemplo seguinte, a probabilidade da interseção de dois eventos não é uma função simples das probabilidades dos eventos individuais.</p>
+
+  <div class="semantic example" id="exemplo-5-22">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.22</span></div>
+    <p>Considere o experimento de retirar duas cartas de um baralho, sem repor a primeira antes de retirar a segunda. Sejam</p>
+    <div class="equation">\[E=\{\text{a primeira carta é um rei}\},\qquad F=\{\text{a segunda carta é um rei}\}.\]</div>
+    <p>É claro que \(\Pr(E)=1/13\). Também é verdade que \(\Pr(F)=1/13\), pois, sem informação sobre a primeira carta, não há diferença entre \(E\) e \(F\). (Se isso não parecer claro, imagine que o baralho seja distribuído entre \(52\) pessoas. A probabilidade de qualquer pessoa específica receber um rei é \(1/13\), não importa se recebeu a primeira, a segunda ou qualquer outra carta.)</p>
+    <p>Entretanto, se soubermos se \(E\) ocorreu, essa informação afeta a probabilidade de \(F\). Se \(E\) ocorreu, restam apenas \(3\) reis entre \(51\) cartas e \(F\) se torna menos provável; se \(E\) não ocorreu, restam \(4\) reis e \(F\) se torna mais provável:</p>
+    <div class="equation">\[\Pr(F\mid E\text{ ocorreu})=\frac3{51},\qquad\Pr(F\mid E\text{ não ocorreu})=\frac4{51}.\]</div>
+    <p>A probabilidade de \(E\) e \(F\) ocorrerem — isto é, de retirar dois reis consecutivos — é menor que o produto \(\Pr(E)\Pr(F)\), pois a ocorrência de \(E\) torna \(F\) menos provável. O cálculo correto é</p>
+    <div class="equation">\[\begin{aligned}\Pr(\text{dois reis})&=\Pr(E\cap F)\\&=\Pr(E)\Pr(F\mid E\text{ ocorreu})\\&=\frac1{13}\cdot\frac3{51}=\frac1{221}\approx0{,}0045.\end{aligned}\]</div>
+    <p>Seja agora</p>
+    <div class="equation">\[G=\{\text{a segunda carta é um ás}\}.\]</div>
+    <p>A ocorrência de \(E\) torna \(G\) mais provável, pois, sabendo que a primeira carta é um rei, ainda restam quatro ases. Assim, quando sabemos que \(E\) ocorreu, a probabilidade de \(G\) aumenta de \(4/52\) para \(4/51\).</p>
+    <p>Observe, porém, que, se mudarmos o experimento e repusermos a primeira carta antes da segunda retirada, a ocorrência de \(E\) não terá efeito algum sobre \(F\). Nesse cenário, a probabilidade de ambos ocorrerem é simplesmente</p>
+    <div class="equation">\[\Pr(E)\Pr(F)=\left(\frac1{13}\right)^2\approx0{,}006.\]</div>
+  </div>
+
+  <p>A discussão do <a href="#exemplo-5-22" data-source-xref>Exemplo 5.22</a> ensina duas coisas. Primeiro, a probabilidade de um evento pode depender de outro ter ocorrido. Segundo, desenvolvemos intuições probabilísticas que levam à definição matemática de independência.</p>
+
+  <div class="semantic definition" id="def-5-eventos-independentes">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Dois eventos \(E\) e \(F\) são <strong>independentes</strong> se</p>
+    <div class="equation">\[\Pr(E\cap F)=\Pr(E)\Pr(F).\]</div>
+    <p>Recorde que \(\Pr(E\cap F)\) é a probabilidade de ambos ocorrerem. Em outras palavras, \(E\) e \(F\) são independentes se a probabilidade conjunta é o produto das probabilidades individuais.</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-23">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.23</span></div>
+    <p>Uma moeda é lançada \(10\) vezes e os resultados são registrados. Quais são as probabilidades dos eventos</p>
+    <div class="equation">\[\begin{aligned}E_1&=\{\text{os cinco primeiros lançamentos dão cara}\},\\E_2&=\{\text{os cinco primeiros dão cara e os demais dão coroa}\},\\E_3&=\{\text{exatamente cinco dos dez lançamentos dão cara}\}?\end{aligned}\]</div>
+    <p>O resultado de cada lançamento é independente dos demais. Supondo uma moeda honesta, a probabilidade de obter cara nos cinco primeiros é</p>
+    <div class="equation">\[\Pr(E_1)=\left(\frac12\right)^5=\frac1{32}\approx0{,}031.\]</div>
+    <p>Para \(E_2\), pedimos exatamente a sequência <code>HHHHHTTTTT</code>. Novamente pela independência,</p>
+    <div class="equation">\[\Pr(E_2)=\left(\frac12\right)^{10}=\frac1{1024}\approx0{,}00098.\]</div>
+    <p>O cálculo de \(\Pr(E_3)\) é um pouco mais sutil, pois exige exatamente cinco caras, mas não determina quando elas ocorrem. Se especificássemos as posições das cinco caras e das cinco coroas, a probabilidade seria \(1/2^{10}\), como em \(E_2\). Basta então contar de quantas maneiras podemos distribuir cinco caras e cinco coroas em dez posições. Esse é o número de maneiras de escolher cinco posições entre dez, \(\binom{10}{5}\). Logo,</p>
+    <div class="equation">\[\Pr(E_3)=\binom{10}{5}\frac1{2^{10}}=\frac{252}{1024}=\frac{63}{256}\approx0{,}246.\]</div>
+    <p>Portanto, a chance de obter exatamente cinco caras em dez lançamentos é pouco inferior a \(25\%\).</p>
+  </div>
+
+  <ol class="footnotes" start="9">
+    <li id="fn-5-9">A teoria geral — contínua — da probabilidade também trata de espaços amostrais infinitos \(\Omega\). Nesse caso, somente certos subconjuntos de \(\Omega\) podem ser eventos e receber probabilidades, e há restrições adicionais sobre a função \(\Pr:\Omega\to\mathbb R\). Para o estudo da criptografia neste livro, espaços amostrais discretos — finitos — são suficientes. <a href="#fnref-5-9" data-source-xref aria-label="Voltar à chamada da nota 9">↩</a></li>
+  </ol>
+</section>

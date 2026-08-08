@@ -24,6 +24,8 @@ describe("controle de camadas", () => {
       scale: 1,
       layers: [],
       bookmarks: [],
+      textBookmarks: [],
+      inkNotes: [],
       notes: {},
       progress: {},
     };

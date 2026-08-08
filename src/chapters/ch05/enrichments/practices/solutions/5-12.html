@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.12">
+          <p class="graduated-help__intro">A roda substitui a linha do tableau: a rotação relativa entre os alfabetos é a letra corrente da chave.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Alinhe dois alfabetos</summary>
+      <div>Mantenha o alfabeto externo fixo e gire o interno até A ficar sob a letra da chave.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Repita o ciclo</summary>
+      <div>Para MOUSE, as rotações seguem M, O, U, S, E, M, O, U, S, E, …</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Fixe o sentido da roda</summary>
+      <div>Anote qual coroa representa claro e qual representa cifrado; inverter esse acordo troca adição por subtração.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Marque A–Z nas duas coroas. Para cifrar uma letra com deslocamento \(k\), gire a coroa interna até seu A alinhar-se com a letra \(k\) da coroa externa; procure a letra clara na coroa interna e leia a correspondente letra externa. Para decifrar, faça a leitura inversa.</p><p>Com <code>MOUSE</code>, os deslocamentos sucessivos são \(12,14,20,18,4\), repetidos. Assim, antes de cada letra, a roda ocupa as posições M, O, U, S, E e volta a M. Não é necessário retornar por rotações incrementais: basta alinhar diretamente a posição indicada.</p>
+        </details>
+      </div>

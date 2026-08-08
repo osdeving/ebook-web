@@ -1,0 +1,61 @@
+<section class="chapter-section subsection" id="sec-5-6-3">
+  <div class="section-heading">
+    <span class="section-number">5.6.3</span>
+    <h3>Redundância e entropia da linguagem natural</h3>
+  </div>
+
+  <p>Suponha que o texto claro esteja escrito em uma linguagem natural, como o inglês.<sup id="fnref-5-6-3-22"><a href="#fn-5-6-3-22" data-source-xref>22</a></sup> Nesse caso, letras próximas — ou bits próximos, se as letras forem convertidas em ASCII — são fortemente dependentes umas das outras, em vez de parecerem aleatórias. Por exemplo, correlações entre letras sucessivas, na forma de bigramas ou trigramas, podem auxiliar o criptoanalista, como vimos ao criptoanalisar uma cifra de substituição simples na <a href="../ch01/#sec-1-1" data-source-xref>Seção 1.1</a>. Nesta seção, usamos a noção de entropia para quantificar a redundância inerente a uma linguagem natural.</p>
+
+  <p>Começamos aproximando a entropia de uma única letra de um texto em inglês. Seja \(L\) a variável aleatória cujos valores são as letras da língua inglesa \(\mathcal E\), com as probabilidades associadas dadas na <a href="../ch01/#tab-1-3" data-source-xref>Tabela 1.3</a>, na página 6. Por exemplo, a tabela diz que</p>
+  <div class="equation">\[
+    f_L(\mathrm A)=0{,}0815,\qquad
+    f_L(\mathrm B)=0{,}0144,\qquad
+    f_L(\mathrm C)=0{,}0276,\qquad
+    \ldots,\qquad
+    f_L(\mathrm Z)=0{,}0008.
+  \]</div>
+
+  <p>Podemos usar os valores da <a href="../ch01/#tab-1-3" data-source-xref>Tabela 1.3</a> para calcular a entropia de uma única letra de um texto em inglês:</p>
+  <div class="equation">\[
+    H(L)=0{,}0815\log_2(0{,}0815)+\cdots+0{,}0008\log_2(0{,}0008)
+    \approx4{,}132.
+  \]</div>
+  <p>Se todas as letras tivessem a mesma probabilidade, a entropia seria \(\log_2(26)\approx4{,}7\). O fato de a entropia ser apenas \(4{,}132\) mostra que algumas letras são mais frequentes que outras no inglês.</p>
+
+  <p>O conceito de entropia pode ser usado para medir a quantidade de informação transmitida por uma linguagem. Shannon <a href="../../references/#ref-126" data-source-xref>[126]</a> mostra que \(H(L)\) pode ser interpretada como o número médio de bits de informação transmitidos por uma única letra de uma língua. O valor de \(H(L)\) que calculamos já revela alguma redundância: uma letra transmite, em média, apenas \(4{,}132\) bits de informação, embora sejam necessários em média \(4{,}7\) bits para especificar uma letra do alfabeto inglês.</p>
+
+  <p>É evidente que as línguas naturais contêm redundância. Por exemplo, você provavelmente conseguirá ler a frase seguinte, apesar de termos removido quase \(40\%\) das letras:</p>
+  <blockquote lang="en">
+    <p>Th prblms o crptgry nd scrcy sysms frnsh n ntrstng aplcatn o comm thry.</p>
+  </blockquote>
+
+  <p>No entanto, a entropia \(H(L)\) de uma única letra não leva em conta as correlações entre letras próximas e, portanto, não fornece por si só uma boa medida da redundância da língua inglesa \(\mathcal E\). Como primeiro passo, devemos considerar as correlações entre pares de letras, ou bigramas. Seja \(L^2\) a variável aleatória cujos valores são pares de letras inglesas tais como aparecem em textos típicos. Alguns bigramas aparecem com bastante frequência; por exemplo,</p>
+  <div class="equation">\[
+    f_{L^2}(\mathrm{TH})=0{,}00315
+    \qquad\text{e}\qquad
+    f_{L^2}(\mathrm{AN})=0{,}00172.
+  \]</div>
+  <p>Outros, como \(\mathrm{JX}\) e \(\mathrm{ZQ}\), nunca aparecem. Assim como a <a href="../ch01/#tab-1-3" data-source-xref>Tabela 1.3</a> foi criada experimentalmente, contando as letras de um longo texto de amostra, podemos criar uma tabela de frequência de bigramas e usá-la para obter um valor experimental para \(L^2\). Isso conduz a \(H(L^2)\approx7{,}12\), de modo que, em média, cada letra de \(\mathcal E\) possui entropia igual à metade desse valor, isto é, \(3{,}56\).</p>
+
+  <p>Prosseguindo, poderíamos calcular experimentalmente a entropia de \(L^3\), a variável aleatória cujos valores são trigramas, isto é, triplas de letras; então \(\frac13H(L^3)\) seria uma aproximação ainda melhor da entropia de \(\mathcal E\). Naturalmente, precisamos analisar uma grande quantidade de texto para obter uma estimativa confiável das frequências de trigramas, e o problema se torna ainda mais difícil quando consideramos \(L^4,L^5,L^6\), e assim por diante. Essa ideia, contudo, conduz ao conceito importante a seguir.</p>
+
+  <div class="semantic definition" id="def-5-entropia-linguagem">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Seja \(\mathcal L\) uma linguagem — por exemplo, inglês, francês ou C++ — e, para cada \(n\ge1\), seja \(L^n\) a variável aleatória cujos valores são sequências de \(n\) caracteres consecutivos de \(\mathcal L\). A <strong>entropia</strong> de \(\mathcal L\) é definida como a quantidade<sup id="fnref-5-6-3-23"><a href="#fn-5-6-3-23" data-source-xref>23</a></sup></p>
+    <div class="equation">\[
+      H(\mathcal L)=\lim_{n\to\infty}\frac{H(L^n)}n.
+    \]</div>
+  </div>
+
+  <p>Embora não seja possível determinar com precisão a entropia da língua inglesa \(\mathcal E\), os experimentos indicam que</p>
+  <div class="equation">\[
+    1{,}0\le H(\mathcal E)\le1{,}5.
+  \]</div>
+  <p>Isso significa que, apesar de serem necessários quase cinco bits para representar cada uma das 26 letras usadas no inglês, cada letra transmite menos de um bit e meio de informação. Assim, o inglês é aproximadamente \(70\%\) redundante!<sup id="fnref-5-6-3-24"><a href="#fn-5-6-3-24" data-source-xref>24</a></sup></p>
+
+  <ol class="footnotes" start="22">
+    <li id="fn-5-6-3-22">É importante observar que, ao implementar uma cifra moderna de chave pública, costuma-se combinar o texto claro com alguns bits aleatórios e depois realizar algum tipo de transformação inversível, para que o texto claro secundário resultante se pareça mais com uma sequência de bits aleatórios. Veja a Seção 8.6. <a href="#fnref-5-6-3-22" data-source-xref aria-label="Voltar à chamada da nota 22">↩</a></li>
+    <li id="fn-5-6-3-23">A rigor, seria necessário definir densidades superior e inferior usando \(\liminf\) e \(\limsup\), pois não é evidente que o limite que define \(H(\mathcal L)\) exista. Não nos preocuparemos aqui com tais sutilezas. <a href="#fnref-5-6-3-23" data-source-xref aria-label="Voltar à chamada da nota 23">↩</a></li>
+    <li id="fn-5-6-3-24">Isso não significa que se possa remover \(70\%\) das letras e ainda obter uma mensagem inteligível. Significa que, em princípio, é possível tomar uma mensagem longa que requer \(4{,}7\) bits para especificar cada letra e comprimi-la em uma forma que exija apenas \(30\%\) dessa quantidade de bits. <a href="#fnref-5-6-3-24" data-source-xref aria-label="Voltar à chamada da nota 24">↩</a></li>
+  </ol>
+</section>

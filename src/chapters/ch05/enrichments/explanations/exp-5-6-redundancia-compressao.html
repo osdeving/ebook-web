@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Redundância é previsibilidade: permite representar o mesmo conteúdo com menos bits, mas também oferece critérios para reconhecer uma decifração plausível.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Uma letra</span><p>Frequências desiguais reduzem \(H(L)\) abaixo de \(\log_2|\Sigma|\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Contexto</span><p>Bigrama e trigrama capturam dependências. A quantidade \(H(L^n)/n\) tende a cair porque o contexto prevê parte da próxima letra.</p></div>
+    <div class="step"><span class="step-tag theorem">Duas faces</span><p>Codificação explora previsibilidade para comprimir; criptoanálise estatística explora a mesma previsibilidade para pontuar chaves candidatas.</p></div>
+  </div>
+  <div class="quick-check"><p>Em amostras curtas, n-gramas raros distorcem estimativas: um valor com muitas casas decimais não é necessariamente preciso.</p></div>
+</div>

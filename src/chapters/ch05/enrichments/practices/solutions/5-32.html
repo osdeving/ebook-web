@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.32">
+          <p class="graduated-help__intro">A normalização da binomial é exatamente o teorema binomial avaliado em uma soma de probabilidades.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Substitua a densidade</summary>
+      <div>Some \(\binom nkp^k(1-p)^{n-k}\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Reconheça o binômio</summary>
+      <div>É a expansão de \((p+(1-p))^n\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Feche pelo teorema binomial</summary>
+      <div>Depois de somar a densidade, identifique exatamente quais dois termos desempenham os papéis de \(x\) e \(y\).</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Diretamente,</p><p>\[\sum_{k=0}^n f_X(k)=\sum_{k=0}^n\binom nkp^k(1-p)^{n-k}=(p+1-p)^n=1^n=\boxed1.\]</p><p>Portanto a função atribui massa total 1 e é uma densidade de probabilidade.</p>
+        </details>
+      </div>

@@ -1,0 +1,82 @@
+<section class="chapter-section subsection" id="sec-5-3-5">
+  <div class="section-heading">
+    <span class="section-number">5.3.5</span>
+    <h3>Valor esperado</h3>
+  </div>
+
+  <p>O valor esperado de uma variável aleatória \(X\) é a média de seus valores, ponderada pela probabilidade de ocorrência de cada um. Portanto, o valor esperado fornece uma primeira indicação aproximada do comportamento de \(X\).</p>
+
+  <div class="semantic definition" id="def-5-valor-esperado">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Seja \(X\) uma variável aleatória que assume os valores \(x_1,\ldots,x_n\). O <strong>valor esperado</strong>, ou <strong>média</strong>, de \(X\) é a quantidade</p>
+    <div class="equation" id="eq-5-27"><span class="equation-number">(5.27)</span>\[
+      E(X)=\sum_{i=1}^{n}x_i f_X(x_i)
+          =\sum_{i=1}^{n}x_i\Pr(X=x_i).
+    \]</div>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-35">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.35</span></div>
+    <p>Seja \(X\) a variável aleatória cujo valor é a soma dos números obtidos no lançamento de dois dados. Os valores possíveis de \(X\) são os inteiros entre \(2\) e \(12\), portanto</p>
+    <div class="equation">\[E(X)=\sum_{i=2}^{12}i\Pr(X=i).\]</div>
+    <p>Há \(36\) resultados possíveis para os dois dados, como indica a <a href="#tab-5-8" data-source-xref>Tabela 5.8(a)</a>. Nessa tabela, contamos de quantas maneiras a soma pode ser \(i\), para cada \(i\) entre \(2\) e \(12\), e reunimos os resultados na <a href="#tab-5-8" data-source-xref>Tabela 5.8(b)</a>. A probabilidade de \(X=i\) é \(1/36\) vezes o número total de maneiras pelas quais os dois dados podem somar \(i\). Assim, pela <a href="#tab-5-8" data-source-xref>Tabela 5.8(b)</a>,</p>
+    <div class="aligned-equations">\[\begin{aligned}
+      E(X)
+        &=2\cdot\frac1{36}+3\cdot\frac2{36}+4\cdot\frac3{36}
+          +5\cdot\frac4{36}+6\cdot\frac5{36}+7\cdot\frac6{36}\\
+        &\quad+8\cdot\frac5{36}+9\cdot\frac4{36}+10\cdot\frac3{36}
+          +11\cdot\frac2{36}+12\cdot\frac1{36}\\
+        &=7.
+    \end{aligned}\]</div>
+    <p>Essa resposta faz sentido, pois o valor central é \(7\) e, para todo inteiro \(j\), \(X\) tem a mesma probabilidade de assumir \(7+j\) e \(7-j\).</p>
+
+    <div class="table-wrap" id="tab-5-8">
+      <table class="numeric">
+        <caption><span class="label">Tabela 5.8.</span> Resultados do lançamento de dois dados.</caption>
+        <thead>
+          <tr><th scope="col">Dado</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">1</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+          <tr><th scope="row">2</th><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+          <tr><th scope="row">3</th><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
+          <tr><th scope="row">4</th><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+          <tr><th scope="row">5</th><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+          <tr><th scope="row">6</th><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+          <tr><th scope="row" colspan="7">(a) Soma dos dois dados</th></tr>
+          <tr><th scope="col">Soma</th><th scope="col" colspan="6">Número de maneiras</th></tr>
+          <tr><th scope="row">2 ou 12</th><td colspan="6">1</td></tr>
+          <tr><th scope="row">3 ou 11</th><td colspan="6">2</td></tr>
+          <tr><th scope="row">4 ou 10</th><td colspan="6">3</td></tr>
+          <tr><th scope="row">5 ou 9</th><td colspan="6">4</td></tr>
+          <tr><th scope="row">6 ou 8</th><td colspan="6">5</td></tr>
+          <tr><th scope="row">7</th><td colspan="6">6</td></tr>
+          <tr><th scope="row" colspan="7">(b) Número de maneiras de obter uma soma</th></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p>O nome valor “esperado” é um pouco enganoso: como a esperança \(E(X)\) é uma média ponderada, ela pode assumir um valor que a variável aleatória não assume de fato, como mostra o exemplo seguinte.</p>
+
+  <div class="semantic example" id="exemplo-5-36">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.36</span></div>
+    <p>Suponha que escolhamos ao acaso um inteiro entre os elementos de \(\{1,2,3,4,5,6\}\) e seja \(X\) o valor escolhido. Então \(\Pr(X=i)=1/6\) para cada \(1\le i\le6\), isto é, \(X\) é uniformemente distribuída. O valor esperado de \(X\) é</p>
+    <div class="equation">\[E(X)=\frac16(1+2+3+4+5+6)=\frac72.\]</div>
+    <p>Logo, a esperança de \(X\) é um valor que \(X\) não assume. Mais geralmente, o valor esperado de uma variável aleatória uniformemente distribuída em \(\{1,2,\ldots,N\}\) é \((N+1)/2\).</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-37">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.37</span></div>
+    <p>Retomemos o experimento de lançar uma moeda do <a href="#exemplo-5-31" data-source-xref>Exemplo 5.31</a>, em que a probabilidade de obter cara em qualquer lançamento é \(p\). Seja \(X\) a variável aleatória igual a \(n\) quando a primeira cara aparece no \(n\)-ésimo lançamento. Então \(X\) possui densidade geométrica, e sua função densidade \(f_X(n)\) é dada pela fórmula <a href="#eq-5-25" data-source-xref>(5.25)</a>. Calculamos \(E(X)\), o número esperado de lançamentos até a primeira cara:</p>
+    <div class="aligned-equations">\[\begin{aligned}
+      E(X)
+        &=\sum_{n=1}^{\infty}np(1-p)^{n-1}
+         =-p\sum_{n=1}^{\infty}\frac{d}{dp}\bigl((1-p)^n\bigr)\\
+        &=-p\frac{d}{dp}\left(\sum_{n=1}^{\infty}(1-p)^n\right)
+         =-p\frac{d}{dp}\left(\frac1p-1\right)
+         =\frac{p}{p^2}=\frac1p.
+    \end{aligned}\]</div>
+    <p>A resposta parece plausível: quanto menor o valor de \(p\), mais lançamentos esperamos precisar até obter a primeira cara. O cálculo de \(E(X)\) emprega um truque muito útil com derivadas, seguido da soma de uma série geométrica. Veja o <a href="#exercicio-5-33" data-source-xref>Exercício 5.33</a> para outras aplicações desse método.</p>
+  </div>
+</section>

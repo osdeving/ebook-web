@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.29">
+          <p class="graduated-help__intro">Substitua os parâmetros no limite posterior e resolva a desigualdade exponencial para o número de repetições.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Partes (a) e (b)</summary>
+      <div>Use \(\delta/[\delta+(1-\delta)(1-p)^N]\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Partes (c) e (d)</summary>
+      <div>Com \(\delta=0{,}99\), imponha \(0{,}99/(0{,}99+0{,}01\,2^{-N})\ge T\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Isole o expoente</summary>
+      <div>Depois de substituir os parâmetros, transforme o nível de confiança desejado em uma desigualdade para a potência residual.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) Para \(\delta=0{,}9\), \(p=0{,}75\) e \(N=25\), o limite é</p><p>\[\frac{0{,}9}{0{,}9+0{,}1(1/4)^{25}}=\frac{10133099161583616}{10133099161583617}\approx1-9{,}87\cdot10^{-17}.\]</p><p>(b) Com 100 testes, a distância até 1 é cerca de \(6{,}9\cdot10^{-62}\).</p><p>(c) A priori já temos 99% de confiança, portanto \(\boxed{0}\) execuções são suficientes matematicamente (se for exigida ao menos uma execução, \(N=1\) eleva o valor para \(0{,}994975\)).</p><p>(d) Para \(T=0{,}999999\), a menor solução é \(\boxed{N=14}\), produzindo aproximadamente \(0{,}9999993835\).</p>
+        </details>
+      </div>

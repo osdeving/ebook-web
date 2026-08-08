@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.4">
+          <p class="graduated-help__intro">Rotular temporariamente objetos iguais revela exatamente por quanto a contagem foi superestimada.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Agrupe por palavra sem índices</summary>
+      <div>Cada arranjo de \(A,A,B,B\) representa \(2!2!=4\) permutações rotuladas.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Imponha limites no item (d)</summary>
+      <div>Uma palavra de cinco letras pode ter 2, 3 ou 4 letras A, mas não 5.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Particione pela multiplicidade</summary>
+      <div>No último item, separe os casos pelo número de letras A; assim os casos ficam disjuntos antes da soma.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) As 24 permutações rotuladas, agrupadas pelo padrão que resta ao apagar os índices, são:</p><div class="table-scroll"><table><thead><tr><th>Padrão</th><th>Quatro permutações rotuladas</th></tr></thead><tbody><tr><th><code>AABB</code></th><td><code>A₁A₂B₁B₂</code>, <code>A₁A₂B₂B₁</code>, <code>A₂A₁B₁B₂</code>, <code>A₂A₁B₂B₁</code></td></tr><tr><th><code>ABAB</code></th><td><code>A₁B₁A₂B₂</code>, <code>A₁B₂A₂B₁</code>, <code>A₂B₁A₁B₂</code>, <code>A₂B₂A₁B₁</code></td></tr><tr><th><code>ABBA</code></th><td><code>A₁B₁B₂A₂</code>, <code>A₁B₂B₁A₂</code>, <code>A₂B₁B₂A₁</code>, <code>A₂B₂B₁A₁</code></td></tr><tr><th><code>BAAB</code></th><td><code>B₁A₁A₂B₂</code>, <code>B₁A₂A₁B₂</code>, <code>B₂A₁A₂B₁</code>, <code>B₂A₂A₁B₁</code></td></tr><tr><th><code>BABA</code></th><td><code>B₁A₁B₂A₂</code>, <code>B₁A₂B₂A₁</code>, <code>B₂A₁B₁A₂</code>, <code>B₂A₂B₁A₁</code></td></tr><tr><th><code>BBAA</code></th><td><code>B₁B₂A₁A₂</code>, <code>B₁B₂A₂A₁</code>, <code>B₂B₁A₁A₂</code>, <code>B₂B₁A₂A₁</code></td></tr></tbody></table></div><p>Cada padrão reúne as \(2!\) trocas dos A e as \(2!\) trocas dos B, portanto quatro permutações; os seis grupos cobrem \(6\cdot4=24\) casos sem repetição.</p><p>(b) \(\binom74=\boxed{35}\).</p><p>(c) \(\dfrac{9!}{4!3!2!}=\boxed{1260}\).</p><p>(d) Somando conforme o número de B, \(\binom51+\binom52+\binom53=5+10+10=\boxed{25}\).</p>
+        </details>
+      </div>

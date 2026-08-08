@@ -20,9 +20,18 @@ como HTML nesse processo.
 ## Estado local
 
 O leitor guarda progresso por ID estável nos mesmos registros locais que
-camadas, notas e marcadores. Uma seção ou exercício percorre os estados “não
-iniciado”, “em andamento” e “concluído”. Quando o hash da fonte muda, IDs que
-deixaram de existir são descartados; nenhum dado sai do navegador.
+camadas, notas e marcadores. Há três granularidades de anotação: uma seção
+inteira, um trecho selecionado e um rascunho vetorial preso a uma posição do
+texto. O rascunho aceita caneta, toque e mouse; traços e pressão ficam em
+coordenadas normalizadas para sobreviver à mudança de tela.
+Com um trecho selecionado, `Alt+Shift+M` cria um marcador e `Alt+Shift+R`
+abre o rascunho sem exigir que a seleção seja refeita com o mouse.
+
+Uma seção ou exercício percorre os estados “não iniciado”, “em andamento” e
+“concluído”. Quando o hash da fonte muda, IDs que deixaram de existir são
+descartados. Marcadores de trecho e rascunhos, que dependem de deslocamentos
+textuais, são invalidados para não reaparecerem na frase errada. Nenhum dado
+sai do navegador.
 
 ## Offline e instalação
 
@@ -44,6 +53,8 @@ Além da sequência geral do repositório, confira:
 1. busca com e sem acentos, filtros e consulta vinda por `?q=`;
 2. todos os destinos do glossário e das rotas;
 3. persistência e limpeza do progresso;
-4. prévia por mouse, foco e toque, além do segundo toque para navegar;
-5. manifesto, ícones, escopo sob o `BASE_URL`, atualização e fallback offline;
-6. layouts em 375 px, tema escuro, impressão e navegação só por teclado.
+4. vários marcadores de trecho, rascunho por caneta/toque/mouse, reabertura da
+   taxinha e restauração depois de recarregar;
+5. prévia por mouse, foco e toque, além do segundo toque para navegar;
+6. manifesto, ícones, escopo sob o `BASE_URL`, atualização e fallback offline;
+7. layouts em 375 px, tema escuro, impressão e navegação só por teclado.

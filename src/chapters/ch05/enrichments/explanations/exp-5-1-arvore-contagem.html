@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Uma árvore de escolhas transforma um enunciado em caminhos. Cada folha representa um resultado completo; contar folhas evita decorar fórmulas fora de contexto.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Nó</span><p>Em cada etapa, escreva apenas as escolhas ainda possíveis. Se toda escolha do primeiro nível admite \(b\) continuações, cada um dos \(a\) ramos gera \(b\) folhas e aparecem \(ab\) caminhos.</p></div>
+    <div class="step"><span class="step-tag manipulation">Restrições</span><p>Sem reposição, o número de ramos diminui: \(n(n-1)\cdots(n-r+1)\). Com reposição, ele permanece \(n\) em cada nível e o total é \(n^r\).</p></div>
+    <div class="step"><span class="step-tag warning">Casos</span><p>Se duas famílias de folhas não se sobrepõem, some seus tamanhos. Se podem se sobrepor, primeiro torne os casos disjuntos ou use inclusão–exclusão.</p></div>
+  </div>
+  <div class="quick-check"><p>Teste: senhas de três letras sem repetição correspondem a \(26\cdot25\cdot24\), não a \(26^3\).</p></div>
+</div>

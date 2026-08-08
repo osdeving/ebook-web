@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.27">
+          <p class="graduated-help__intro">A primeira escolha carrega sua probabilidade original; a abertura de cabras concentra a massa restante nas portas fechadas elegíveis.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Três cortinas</summary>
+      <div>Ficar vence exatamente quando a primeira escolha já era o carro.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Caso geral</summary>
+      <div>Ao trocar uniformemente, conte o número esperado de carros entre as outras cortinas ainda fechadas.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Generalize pela massa restante</summary>
+      <div>Ao trocar, distribua a probabilidade dos carros que não estavam na escolha inicial entre as portas que permanecem elegíveis.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) Ficar vence com \(\boxed{1/3}\); trocar, com \(\boxed{2/3}\). Com 1000 cortinas, são \(1/1000\) e \(999/1000\).</p><p>(b) Se Monty pode usar a opção para evitar entregar o carro e sua política é conhecida, ele força a permanência quando a primeira escolha é uma cabra e oferece a troca quando ela é o carro. Quando há escolha, ficar é ótimo; no total Dan vence apenas quando escolheu o carro inicialmente, probabilidade \(\boxed{1/3}\). Sem especificar a política de Monty, o problema não tem uma probabilidade condicional única.</p><p>(c) Sob a regra usual — Monty sempre abre \(K\) cabras e a nova cortina é escolhida uniformemente entre as \(N-K-1\) alternativas fechadas —</p><p>\[\Pr(\text{carro}\mid\text{fica})=\frac MN,\qquad \Pr(\text{carro}\mid\text{troca})=\frac{M(N-1)}{N(N-K-1)}.\]</p><p>Trocar é melhor quando \(K>0\); há empate se nenhuma cortina for aberta.</p>
+        </details>
+      </div>

@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.51">
+          <p class="graduated-help__intro">As duas condições tornam a distribuição do texto cifrado independente da mensagem.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Conte chaves favoráveis</summary>
+      <div>Para m e c fixos, há exatamente uma chave que realiza a cifração.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use uniformidade</summary>
+      <div>Essa chave tem probabilidade \(1/\#\mathcal K\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Use a lei total</summary>
+      <div>Se \(f(c\mid m)\) é a mesma constante para todo \(m\), some sobre a distribuição das mensagens para identificar \(f(c)\).</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <div class="editorial-note"><strong>Nota de direção lógica.</strong> O enunciado chama esta parte de “somente se”, mas a implicação solicitada — condições (a),(b) \(\Rightarrow\) sigilo perfeito — é a direção “se” na formulação usual.</div><p>Para qualquer \(m,c\), há uma única chave favorável e todas as chaves são uniformes, logo</p><p>\[f(c\mid m)=\frac1{\#\mathcal K}.\]</p><p>Esse valor não depende de \(m\). Pela lei total, \(f(c)=\sum_m f(c\mid m)f(m)=1/\#\mathcal K\). Assim \(f(c\mid m)=f(c)\); por Bayes, \(f(m\mid c)=f(m)\), que é sigilo perfeito.</p>
+        </details>
+      </div>

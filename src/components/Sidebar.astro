@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { chapter, note = "Edição web independente com texto-fonte e recursos opcionais em camadas." } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <aside
@@ -15,6 +16,11 @@ const { chapter, note = "Edição web independente com texto-fonte e recursos op
   aria-label="Navegação do capítulo"
   data-reader-sidebar
 >
+  <a class="sidebar-home-link" href={base} aria-label="Voltar à biblioteca">
+    <span aria-hidden="true">←</span>
+    <span>Biblioteca</span>
+  </a>
+
   <div class="brand">
     <span class="brand-mark" aria-hidden="true">{chapter.number}</span>
     <span class="brand-copy">
@@ -42,10 +48,10 @@ const { chapter, note = "Edição web independente com texto-fonte e recursos op
     ))}
   </ol>
   <nav class="sidebar-global-links" aria-label="Ferramentas do ebook">
-    <a href={`${import.meta.env.BASE_URL}search/`}>Busca global</a>
-    <a href={`${import.meta.env.BASE_URL}glossary/`}>Glossário</a>
-    <a href={`${import.meta.env.BASE_URL}study/`}>Rotas de estudo</a>
-    <a href={`${import.meta.env.BASE_URL}references/`}>Referências</a>
+    <a href={`${base}search/`}>Busca global</a>
+    <a href={`${base}glossary/`}>Glossário</a>
+    <a href={`${base}study/`}>Rotas de estudo</a>
+    <a href={`${base}references/`}>Referências</a>
   </nav>
   <p class="sidebar-note">{note}</p>
 </aside>

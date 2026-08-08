@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O rô economiza memória, mas depende de uma caminhada que misture o grupo. Uma colisão pode gerar várias classes ou nenhuma informação nova.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag manipulation">Congruência</span><p>De \(g^\alpha h^\beta=g^\gamma h^\delta\) e \(h=g^t\), resulta \((\delta-\beta)t\equiv\alpha-\gamma\pmod{p-1}\).</p></div>
+    <div class="step"><span class="step-tag warning">Mdc</span><p>Se \(d=\gcd(\delta-\beta,p-1)\), há solução apenas quando d divide \(\alpha-\gamma\); quando há, surgem d classes a verificar.</p></div>
+    <div class="step"><span class="step-tag connection">Partição</span><p>A função por três intervalos da <a href="#eq-5-41" data-source-xref>equação (5.41)</a> é uma heurística de mistura. Partições degeneradas ou ciclos curtos pedem outra caminhada, não uma conclusão sobre o logaritmo.</p></div>
+  </div>
+  <div class="quick-check"><p>Rô substitui a tabela de \(\sqrt N\) elementos por dois estados; o tempo continua heurísticamente \(O(\sqrt N)\).</p></div>
+</div>

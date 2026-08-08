@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>\(H(X\mid Y)\) pergunta: depois de observar Y, quanta incerteza sobre X resta em média?</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Média de posteriores</span><p>Para cada y, calcule a entropia da distribuição \(X\mid Y=y\); depois faça a média com pesos \(\Pr(Y=y)\).</p></div>
+    <div class="step"><span class="step-tag theorem">Regra da cadeia</span><p>\(H(X,Y)=H(Y)+H(X\mid Y)\). Primeiro descrevemos Y; depois, o que falta para determinar X.</p></div>
+    <div class="step"><span class="step-tag manipulation">Equivocação da chave</span><p>\(H(K\mid C)\) mede a incerteza residual da chave após um texto cifrado. Zero significa que cada c observável determina uma chave.</p></div>
+  </div>
+  <div class="quick-check"><p>Se X e Y são independentes, observar Y não ajuda e \(H(X\mid Y)=H(X)\).</p></div>
+</div>

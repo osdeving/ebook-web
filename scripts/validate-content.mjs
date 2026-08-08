@@ -339,6 +339,8 @@ for (const entry of await readdir(chaptersRoot, { withFileTypes: true })) {
   });
 }
 
+await validateDiscoveryTargets();
+
 for (const reference of sourceCrossReferences) {
   const location = `${reference.fromSlug}: ${reference.sourcePath}`;
   if (!reference.label) {
@@ -436,6 +438,70 @@ async function loadLocalPageTargets() {
     // A bibliografia global e opcional em instalações que usam apenas capítulos.
   }
   return targets;
+}
+
+async function validateDiscoveryTargets() {
+  const catalogs = [
+    { file: "glossary.json", label: "glossário", expand: (items) => items },
+    { file: "symbols.json", label: "símbolos", expand: (items) => items },
+    {
+      file: "learning-paths.json",
+      label: "rotas de estudo",
+      expand: (paths) => paths.flatMap((path) => (
+        Array.isArray(path?.steps)
+          ? path.steps.map((step, index) => ({
+              ...step,
+              id: `${String(path.id ?? "rota desconhecida")}/etapa-${index + 1}`,
+            }))
+          : []
+      )),
+    },
+  ];
+
+  for (const catalog of catalogs) {
+    let parsed;
+    try {
+      parsed = JSON.parse(
+        await readFile(resolve(projectRoot, "src", "content", catalog.file), "utf8"),
+      );
+    } catch (error) {
+      errors.push(`${catalog.label}: catálogo ausente ou inválido (${error.message}).`);
+      continue;
+    }
+    if (!Array.isArray(parsed)) {
+      errors.push(`${catalog.label}: catálogo precisa conter um array.`);
+      continue;
+    }
+    for (const item of catalog.expand(parsed)) {
+      const owner = `${catalog.label}: ${String(item?.id ?? "entrada sem ID")}`;
+      if (typeof item?.href !== "string") {
+        errors.push(`${owner}: href ausente.`);
+        continue;
+      }
+      const match = /^chapters\/(ch\d{2,})\/#([^#]+)$/.exec(item.href);
+      if (!match) {
+        errors.push(`${owner}: destino deve usar chapters/chNN/#alvo (${item.href}).`);
+        continue;
+      }
+      const [, slug, encodedId] = match;
+      let id;
+      try {
+        id = decodeURIComponent(encodedId);
+      } catch {
+        errors.push(`${owner}: fragmento inválido em ${item.href}.`);
+        continue;
+      }
+      if (typeof item.chapter === "string" && item.chapter !== slug) {
+        errors.push(`${owner}: chapter ${item.chapter} diverge do destino ${slug}.`);
+      }
+      const targets = chapterTargets.get(slug);
+      if (!targets) {
+        errors.push(`${owner}: capítulo de destino inexistente ${slug}.`);
+      } else if (!targets.has(id)) {
+        errors.push(`${owner}: alvo ausente ${slug}#${id}.`);
+      }
+    }
+  }
 }
 
 async function walk(root, extension) {

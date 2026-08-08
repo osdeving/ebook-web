@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.41">
+          <p class="graduated-help__intro">São necessárias apenas três novas linhas após a parte fornecida para a lebre encontrar a tartaruga.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Continue a mesma função por partes</summary>
+      <div>Atualize também os dois expoentes a cada multiplicação ou quadrado.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — A colisão ocorre em \(i=93\)</summary>
+      <div>Nesse ponto, \(x_{93}=y_{93}=1217\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Conserve o invariante</summary>
+      <div>Em cada ramo, atualize valor e expoentes juntos e confira \(x=g^\alpha h^\beta\) antes de avançar para a linha seguinte.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>As linhas seguintes são:</p><div class="table-scroll"><table><thead><tr><th>\(i\)</th><th>\(x_i\)</th><th>\(y_i\)</th><th>\(\alpha_i\)</th><th>\(\beta_i\)</th><th>\(\gamma_i\)</th><th>\(\delta_i\)</th></tr></thead><tbody><tr><td>91</td><td>5729</td><td>1417</td><td>6740</td><td>7647</td><td>4644</td><td>7655</td></tr><tr><td>92</td><td>2449</td><td>5729</td><td>6740</td><td>7648</td><td>4646</td><td>7655</td></tr><tr><td>93</td><td>1217</td><td>1217</td><td>6741</td><td>7648</td><td>4647</td><td>7656</td></tr></tbody></table></div><p>Logo \(8t\equiv2094\pmod{7962}\). O mdc é 2, produzindo dois candidatos; o que verifica a equação é</p><p>\[\boxed{t=5238},\qquad 7^{5238}\equiv3018\pmod{7963}.\]</p>
+        </details>
+      </div>

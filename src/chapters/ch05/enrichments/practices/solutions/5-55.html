@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.55">
+          <p class="graduated-help__intro">Agrupe os primeiros n−1 pesos em um único ponto médio e aplique a concavidade duas vezes.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Normalize os pesos restantes</summary>
+      <div>Defina \(A=1-\alpha_n\) e \(\beta_i=\alpha_i/A\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Caso degenerado</summary>
+      <div>Se A=0, só o último peso é não nulo e a igualdade é imediata.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Separe o caso degenerado</summary>
+      <div>Na indução, trate \(A=1-\alpha_n=0\) antes de dividir por \(A\) para normalizar os demais pesos.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>O caso \(n=2\) é a definição de concavidade. Suponha o resultado para \(n-1\). Se \(A=1-\alpha_n>0\), ponha \(\beta_i=\alpha_i/A\). Então</p><p>\[\sum_{i=1}^n\alpha_iF(x_i)=A\sum_{i&lt;n}\beta_iF(x_i)+\alpha_nF(x_n)\le AF\!\left(\sum_{i&lt;n}\beta_ix_i\right)+\alpha_nF(x_n).\]</p><p>Aplicando a concavidade a esses dois pontos, o lado direito é no máximo</p><p>\[F\!\left(A\sum_{i&lt;n}\beta_ix_i+\alpha_nx_n\right)=F\!\left(\sum_i\alpha_ix_i\right).\]</p><p>Isso completa a indução; se \(A=0\), ambos os lados coincidem.</p>
+        </details>
+      </div>

@@ -1,0 +1,64 @@
+<section class="chapter-section subsection" id="sec-5-3-3">
+  <div class="section-heading">
+    <span class="section-number">5.3.3</span>
+    <h3>Algoritmos de Monte Carlo</h3>
+  </div>
+
+  <p>Há muitos algoritmos cuja saída não tem garantia de estar correta. Por exemplo, a <a href="../ch03/#tab-3-2" data-source-xref>Tabela 3.2</a> da <a href="../ch03/#sec-3-4" data-source-xref>Seção 3.4</a> descreve o algoritmo de Miller–Rabin, usado para verificar se determinado número grande é primo. Na prática, executa-se o algoritmo muitas vezes para obter uma saída “provavelmente” correta. Ao aplicar esses chamados <strong>algoritmos de Monte Carlo</strong>, ou <strong>algoritmos probabilísticos</strong>, é importante poder calcular um <strong>nível de confiança</strong>: a probabilidade de que a saída esteja de fato correta. Nesta seção, descrevemos como usar a fórmula de Bayes para realizar esse cálculo.</p>
+
+  <p>O cenário básico consiste em um conjunto grande — possivelmente infinito — de inteiros \(S\) e uma propriedade interessante \(A\). Por exemplo, \(S\) poderia ser o conjunto de todos os inteiros ou, de maneira mais realista, o conjunto dos inteiros entre, digamos, \(2^{1024}\) e \(2^{1025}\). Um exemplo de propriedade \(A\) é ser composto.</p>
+
+  <p>Suponha agora que estejamos procurando números que não possuam a propriedade \(A\). Com o teste de Miller–Rabin, poderíamos procurar inteiros entre \(2^{1024}\) e \(2^{1025}\) que não sejam compostos, isto é, que sejam primos. Em geral, suponha que recebamos um inteiro \(m\in S\) e queiramos saber se \(m\) possui a propriedade \(A\). Normalmente conhecemos aproximadamente quantos inteiros de \(S\) possuem \(A\). Poderíamos saber, por exemplo, que \(99\%\) dos elementos têm a propriedade \(A\) e que o outro \(1\%\) não a tem. Entretanto, talvez seja difícil determinar com certeza que um \(m\in S\) específico não possui \(A\). Aceitamos, então, um algoritmo mais rápido que não tem certeza absoluta de estar correto.</p>
+
+  <p>Um algoritmo de Monte Carlo para a propriedade \(A\) recebe como entrada tanto o número \(m\in S\) a testar quanto um número \(r\) escolhido aleatoriamente e devolve como saída <em>Sim</em> ou <em>Não</em>, segundo as regras seguintes:</p>
+  <ol>
+    <li>
+      <p>Se o algoritmo devolve <em>Sim</em>, então \(m\) certamente possui a propriedade \(A\). Em notação de probabilidade condicional,</p>
+      <div class="equation">\[\Pr(m\text{ possui }A\mid\text{a saída é Sim})=1.\]</div>
+    </li>
+    <li>
+      <p>Se \(m\) possui a propriedade \(A\), então o algoritmo devolve <em>Sim</em> para pelo menos \(50\%\) das escolhas de \(r\).<sup id="fnref-5-11"><a href="#fn-5-11" data-source-xref>11</a></sup> Em notação de probabilidade condicional,</p>
+      <div class="equation">\[\Pr(\text{a saída é Sim}\mid m\text{ possui }A)\ge\frac12.\]</div>
+    </li>
+  </ol>
+
+  <p>Suponha agora que executemos o algoritmo \(N\) vezes sobre um inteiro \(m\in S\), usando \(N\) valores distintos e aleatórios de \(r\). Se uma única tentativa sequer devolver <em>Sim</em>, saberemos que \(m\) possui a propriedade \(A\). Mas suponha, ao contrário, que todas as \(N\) tentativas devolvam <em>Não</em>. Quão confiantes podemos estar de que nosso inteiro não possui \(A\)? Em terminologia probabilística, queremos estimar</p>
+  <div class="equation">\[\Pr(m\text{ não possui }A\mid\text{a saída é Não em }N\text{ tentativas}).\]</div>
+  <p>Mais precisamente, queremos mostrar que, quando \(N\) é grande, essa probabilidade se aproxima de \(1\).</p>
+
+  <p>Definimos dois eventos:</p>
+  <div class="aligned-equations">\[\begin{aligned}
+    E&=\{\text{um inteiro de }S\text{ não possui a propriedade }A\},\\
+    F&=\{\text{o algoritmo devolve Não }N\text{ vezes seguidas}\}.
+  \end{aligned}\]</div>
+  <p>Estamos interessados na probabilidade condicional \(\Pr(E\mid F)\), isto é, na probabilidade de que \(m\) não possua \(A\), dado que o algoritmo devolveu <em>Não</em> \(N\) vezes. Podemos calculá-la usando a fórmula de Bayes <a href="#eq-5-21" data-source-xref>(5.21)</a>:</p>
+  <div class="equation">\[\Pr(E\mid F)=\frac{\Pr(F\mid E)\Pr(E)}{\Pr(F\mid E)\Pr(E)+\Pr(F\mid E^c)\Pr(E^c)}.\]</div>
+
+  <p>Sabemos que \(99\%\) dos elementos de \(S\) possuem a propriedade \(A\), portanto</p>
+  <div class="equation">\[\Pr(E)=0{,}01\qquad\text{e}\qquad\Pr(E^c)=0{,}99.\]</div>
+
+  <p>Consideremos agora \(\Pr(F\mid E)\). Se \(m\) não possui a propriedade \(A\), hipótese dessa probabilidade condicional, o algoritmo sempre devolve <em>Não</em>: a regra (1) do método de Monte Carlo diz que uma saída <em>Sim</em> força \(m\) a possuir \(A\). Em símbolos, a regra (1) diz que</p>
+  <div class="equation">\[\Pr(\text{Não}\mid\text{não }A)=\Pr(A\mid\text{Sim})=1.\]</div>
+  <p>Segue que \(\Pr(F\mid E)=\Pr(\text{Não}\mid\text{não }A)^N=1\).</p>
+
+  <p>Por fim, precisamos calcular \(\Pr(F\mid E^c)\). Como o algoritmo é executado \(N\) vezes de maneira independente, temos</p>
+  <div class="aligned-equations">\[\begin{aligned}
+    \Pr(F\mid E^c)
+      &=\Pr(\text{a saída é Não}\mid m\text{ possui }A)^N\\
+      &=\bigl(1-\Pr(\text{a saída é Sim}\mid m\text{ possui }A)\bigr)^N\\
+      &\le\left(1-\frac12\right)^N &&\text{pela regra (2) do método de Monte Carlo},\\
+      &=\frac1{2^N}.
+  \end{aligned}\]</div>
+
+  <p>Substituindo esses valores na fórmula de Bayes, concluímos que, se o algoritmo devolve <em>Não</em> \(N\) vezes seguidas, a probabilidade de o inteiro \(m\) não possuir a propriedade \(A\) satisfaz</p>
+  <div class="equation">\[\Pr(E\mid F)\ge\frac{1\cdot0{,}01}{1\cdot0{,}01+2^{-N}\cdot0{,}99}=\frac1{1+99\cdot2^{-N}}=1-\frac{99}{2^N+99}.\]</div>
+  <p>Observe que, se \(N\) for grande, esse limite inferior estará muito próximo de \(1\).</p>
+
+  <p>Por exemplo, se executarmos o algoritmo \(100\) vezes e obtivermos \(100\) respostas <em>Não</em>, a probabilidade de que \(m\) não possua a propriedade \(A\) será pelo menos</p>
+  <div class="equation">\[1-\frac{99}{99+2^{100}}\approx1-10^{-32{,}1}.\]</div>
+  <p>Assim, para quase todos os fins práticos, é seguro concluir que \(m\) não possui a propriedade \(A\).</p>
+
+  <ol class="footnotes" start="11">
+    <li id="fn-5-11">De modo mais geral, a taxa de sucesso de um algoritmo de Monte Carlo não precisa ser \(50\%\): ela pode ser qualquer probabilidade positiva que não seja pequena demais. Para o teste de Miller–Rabin descrito na <a href="../ch03/#sec-3-4" data-source-xref>Seção 3.4</a>, a probabilidade correspondente é \(75\%\). Veja o <a href="#exercicio-5-28" data-source-xref>Exercício 5.28</a> para os detalhes. <a href="#fnref-5-11" data-source-xref aria-label="Voltar à chamada da nota 11">↩</a></li>
+  </ol>
+</section>

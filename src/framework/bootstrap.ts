@@ -47,22 +47,50 @@ export async function bootstrapReader(options: BootstrapReaderOptions): Promise<
     validatePreferences,
   );
   const preferences = storage.load();
+  let sourceStateChanged = false;
   if (options.sourceHash && preferences.sourceHash !== options.sourceHash) {
     preferences.bookmarks = preferences.bookmarks.filter((id) => article.querySelector(`#${CSS.escape(id)}`));
+    // Marcadores de linha e rascunhos usam deslocamentos no texto renderizado.
+    // Uma nova fonte pode deslocá-los para outra frase, portanto é mais seguro
+    // invalidá-los do que exibir uma taxinha em uma posição enganosa.
+    preferences.textBookmarks = [];
+    preferences.inkNotes = [];
     preferences.notes = Object.fromEntries(Object.entries(preferences.notes).filter(([id]) => article.querySelector(`#${CSS.escape(id)}`)));
     preferences.progress = Object.fromEntries(Object.entries(preferences.progress).filter(([id]) => article.querySelector(`#${CSS.escape(id)}`)));
     preferences.lastSection = undefined;
     preferences.sourceHash = options.sourceHash;
+    sourceStateChanged = true;
   }
   let persistTimer = 0;
+  let storageFailureAnnounced = false;
+  const savePreferences = () => {
+    const saved = storage.save(preferences);
+    if (!saved && storage.available && !storageFailureAnnounced) {
+      storageFailureAnnounced = true;
+      announce("O armazenamento do navegador está cheio ou indisponível. A última alteração ainda não foi salva.");
+    } else if (saved) {
+      storageFailureAnnounced = false;
+    }
+    return saved || !storage.available;
+  };
+  const persistNow = () => {
+    window.clearTimeout(persistTimer);
+    persistTimer = 0;
+    return savePreferences();
+  };
   const persist = () => {
     window.clearTimeout(persistTimer);
-    persistTimer = window.setTimeout(() => storage.save(preferences), 160);
+    persistTimer = window.setTimeout(() => {
+      persistTimer = 0;
+      savePreferences();
+    }, 160);
   };
-  cleanups.push(() => {
-    window.clearTimeout(persistTimer);
-    storage.save(preferences);
-  });
+  if (sourceStateChanged) persistNow();
+  cleanups.push(listen(window, "pagehide", () => { persistNow(); }));
+  cleanups.push(listen(document, "visibilitychange", () => {
+    if (document.visibilityState === "hidden") persistNow();
+  }));
+  cleanups.push(() => { persistNow(); });
 
   const safeMount = <T>(name: string, factory: () => T): T | undefined => {
     try { return factory(); }
@@ -128,7 +156,7 @@ export async function bootstrapReader(options: BootstrapReaderOptions): Promise<
   const featureCleanups = [
     safeMount("math", () => initializeMath({ root: article })),
     safeMount("details", () => mountExclusiveSupplementDetails(article)),
-    safeMount("notes-bookmarks", () => mountNotesAndBookmarks({ article, preferences, persist, announce })),
+    safeMount("notes-bookmarks", () => mountNotesAndBookmarks({ article, preferences, persist, persistNow, announce })),
     safeMount("study-progress", () => mountStudyProgress({ article, preferences, persist, announce })),
     safeMount("permalinks", () => mountSourcePermalinks(article)),
     safeMount("cross-reference-previews", () => mountCrossReferencePreviews({
@@ -166,7 +194,7 @@ export async function bootstrapReader(options: BootstrapReaderOptions): Promise<
   document.documentElement.dataset.readerReady = "true";
   const resetButton = queryOptional<HTMLButtonElement>("[data-reader-reset]");
   if (resetButton) cleanups.push(listen(resetButton, "click", () => {
-    if (!window.confirm("Redefinir camadas, marcadores, notas e progresso deste capítulo?")) return;
+    if (!window.confirm("Redefinir camadas, marcadores, rascunhos, notas e progresso deste capítulo?")) return;
     storage.clear();
     location.reload();
   }));

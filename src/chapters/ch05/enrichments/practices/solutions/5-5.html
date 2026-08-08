@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.5">
+          <p class="graduated-help__intro">Separe a escolha das pessoas da distribuição dos prêmios e observe quando posto ou repetição importa.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Pessoas com postos</summary>
+      <div>Primeiro, segundo e terceiro dão \(P(100,3)\), não \(\binom{100}{3}\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Prêmios escassos ou repetíveis</summary>
+      <div>Sem reposição use \(P(5,3)\); com cópias use \(5^3\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Compare os quatro modelos</summary>
+      <div>Marque em cada item se vencedores têm postos e se prêmios podem repetir; são duas decisões independentes.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) \(100\cdot5=\boxed{500}\).</p><p>(b) \(P(100,3)P(5,3)=100\cdot99\cdot98\cdot5\cdot4\cdot3=\boxed{58\,212\,000}\).</p><p>(c) \(P(100,3)5^3=\boxed{121\,275\,000}\), maior que no item (b), pois prêmios podem repetir.</p><p>(d) Sem postos, \(\binom{100}{3}5^3=\boxed{20\,212\,500}\). É menor que nos itens (b) e (c): removemos as \(3!\) ordens dos vencedores; em comparação com (b), a reposição de prêmios recupera apenas parte dessa diferença.</p>
+        </details>
+      </div>

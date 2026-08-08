@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O tableau é uma calculadora gráfica de adição módulo 26. A palavra-chave apenas diz qual deslocamento usar em cada posição.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Codificação</span><p>Associe \(A=0,\ldots,Z=25\). Para texto claro \(P_i\) e chave \(K_i\), calcule \(C_i\equiv P_i+K_i\pmod{26}\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Decifração</span><p>Subtrair desfaz a soma: \(P_i\equiv C_i-K_i\pmod{26}\). O “retorno” de A depois de Z é apenas redução modular.</p></div>
+    <div class="step"><span class="step-tag theorem">Periodicidade</span><p>Se a chave tem \(r\) letras e é repetida, as posições congruentes módulo \(r\) usam o mesmo deslocamento. Essa estrutura é precisamente o que a criptoanálise explora.</p></div>
+  </div>
+  <div class="quick-check"><p>Com chave B, A vira B e Z vira A: \(25+1\equiv0\pmod{26}\).</p></div>
+</div>

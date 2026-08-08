@@ -1,0 +1,78 @@
+<section class="chapter-section subsection" id="sec-5-3-2">
+  <div class="section-heading">
+    <span class="section-number">5.3.2</span>
+    <h3>Fórmula de Bayes</h3>
+  </div>
+
+  <p>Como vimos no <a href="#exemplo-5-22" data-source-xref>Exemplo 5.22</a>, há uma relação entre a probabilidade de dois eventos \(E\) e \(F\) ocorrerem simultaneamente e a probabilidade de um deles ocorrer quando sabemos que o outro ocorreu. A primeira quantidade é simplesmente \(\Pr(E\cap F)\). A segunda é chamada de <strong>probabilidade condicional</strong> de \(F\) dado \(E\).</p>
+
+  <div class="semantic definition" id="def-5-probabilidade-condicional">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>A <strong>probabilidade condicional de \(F\) dado \(E\)</strong> é denotada por</p>
+    <div class="equation">\[\Pr(F\mid E)=\Pr(F\mid E\text{ ocorreu}).\]</div>
+  </div>
+
+  <p>A probabilidade de \(E\) e \(F\) ocorrerem relaciona-se com a probabilidade condicional de \(F\) dado \(E\) pela fórmula</p>
+  <div class="equation" id="eq-5-18"><span class="equation-number">(5.18)</span>\[\Pr(F\mid E)=\frac{\Pr(F\cap E)}{\Pr(E)}.\]</div>
+
+  <p>A intuição por trás de <a href="#eq-5-18" data-source-xref>(5.18)</a>, que em geral é tomada como a definição de \(\Pr(F\mid E)\), é simples. No lado esquerdo, supomos que \(E\) ocorreu; nosso espaço amostral, ou universo, passa a ser \(E\), em vez de \(\Omega\). Perguntamos pela probabilidade de \(F\) nesse universo menor. Devemos, portanto, calcular a proporção da parte de \(F\) contida em \(E\), dividida pelo tamanho total de \(E\), o que fornece o lado direito de <a href="#eq-5-18" data-source-xref>(5.18)</a>.</p>
+
+  <p>A fórmula <a href="#eq-5-18" data-source-xref>(5.18)</a> implica imediatamente</p>
+  <div class="equation">\[\Pr(F\mid E)\Pr(E)=\Pr(F\cap E)=\Pr(E\cap F)=\Pr(E\mid F)\Pr(F).\]</div>
+  <p>Dividindo os dois lados por \(\Pr(F)\), obtemos uma versão preliminar da fórmula de Bayes:</p>
+  <div class="equation" id="eq-5-19"><span class="equation-number">(5.19)</span>\[\Pr(E\mid F)=\frac{\Pr(F\mid E)\Pr(E)}{\Pr(F)}\qquad\text{(fórmula de Bayes)}.\]</div>
+  <p>Essa fórmula é útil quando conhecemos a probabilidade condicional de \(F\) dado \(E\) e queremos a probabilidade condicional inversa, de \(E\) dado \(F\).</p>
+
+  <p>Às vezes, é mais fácil calcular a probabilidade de um evento dividindo-o em uma união de eventos disjuntos, como na proposição seguinte, que inclui outra versão da fórmula de Bayes.</p>
+
+  <aside class="semantic proposition" id="prop-5-24">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">5.24</span></div>
+    <p>Sejam \(E\) e \(F\) eventos.</p>
+    <div class="equation" id="eq-5-20"><span class="equation-number">(5.20)</span>\[\text{(a)}\qquad\Pr(E)=\Pr(E\mid F)\Pr(F)+\Pr(E\mid F^c)\Pr(F^c).\]</div>
+    <div class="equation" id="eq-5-21"><span class="equation-number">(5.21)</span>\[\text{(b)}\qquad\Pr(E\mid F)=\frac{\Pr(F\mid E)\Pr(E)}{\Pr(F\mid E)\Pr(E)+\Pr(F\mid E^c)\Pr(E^c)}\qquad\text{(fórmula de Bayes)}.\]</div>
+  </aside>
+
+  <div class="semantic proof" id="proof-5-24">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>A demonstração de (a) ilustra como se manipulam fórmulas básicas de probabilidade por meio de <a href="#eq-5-18" data-source-xref>(5.18)</a>:</p>
+    <div class="aligned-equations">\[\begin{aligned}
+      \Pr(E\mid F)\Pr(F)+\Pr(E\mid F^c)\Pr(F^c)
+      &=\Pr(E\cap F)+\Pr(E\cap F^c) &&\text{pela definição de probabilidade condicional},\\
+      &=\Pr\bigl((E\cap F)\cup(E\cap F^c)\bigr) &&\text{pois os eventos são disjuntos},\\
+      &=\Pr(E) &&\text{pois }F\cup F^c=\Omega.
+    \end{aligned}\]</div>
+    <p>Isso prova (a).</p>
+    <p>Para provar (b), trocamos os papéis de \(E\) e \(F\) em (a), obtendo</p>
+    <div class="equation" id="eq-5-22"><span class="equation-number">(5.22)</span>\[\Pr(F)=\Pr(F\mid E)\Pr(E)+\Pr(F\mid E^c)\Pr(E^c),\]</div>
+    <p>e substituímos <a href="#eq-5-22" data-source-xref>(5.22)</a> no denominador de <a href="#eq-5-19" data-source-xref>(5.19)</a>, o que produz <a href="#eq-5-21" data-source-xref>(5.21)</a>.<span class="proof-end">□</span></p>
+  </div>
+
+  <p>Eis alguns exemplos do uso de probabilidades condicionais. A fórmula de Bayes será aplicada na próxima seção.</p>
+
+  <div class="semantic example" id="exemplo-5-25">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.25</span></div>
+    <p>Temos duas urnas<sup id="fnref-5-10"><a href="#fn-5-10" data-source-xref>10</a></sup> com moedas de ouro e de prata. A urna 1 contém \(10\) moedas de ouro e \(5\) de prata; a urna 2 contém \(2\) moedas de ouro e \(8\) de prata. Uma urna é escolhida ao acaso e, em seguida, uma moeda é escolhida ao acaso. Qual é a probabilidade de escolher uma moeda de ouro?</p>
+    <p>Seja</p>
+    <div class="equation">\[E=\{\text{uma moeda de ouro é escolhida}\}.\]</div>
+    <p>A probabilidade de \(E\) depende primeiro da urna escolhida e depois da moeda escolhida nessa urna. É natural decompor \(E\) de acordo com o resultado do evento</p>
+    <div class="equation">\[F=\{\text{a urna 1 é escolhida}\}.\]</div>
+    <p>O evento \(F^c\) é a escolha da urna 2. A fórmula de decomposição <a href="#eq-5-20" data-source-xref>(5.20)</a> diz que</p>
+    <div class="equation">\[\Pr(E)=\Pr(E\mid F)\Pr(F)+\Pr(E\mid F^c)\Pr(F^c).\]</div>
+    <p>O ponto central é que todas as probabilidades do lado direito são fáceis de calcular:</p>
+    <div class="equation">\[\Pr(E\mid F)=\frac{10}{15}=\frac23,\qquad\Pr(E\mid F^c)=\frac2{10}=\frac15,\qquad\Pr(F)=\Pr(F^c)=\frac12.\]</div>
+    <p>Portanto,</p>
+    <div class="equation">\[\Pr(E)=\frac23\cdot\frac12+\frac15\cdot\frac12=\frac{13}{30}\approx0{,}433.\]</div>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-26">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.26 — O problema dos três prisioneiros</span></div>
+    <p>O problema dos três prisioneiros é um problema clássico de probabilidade condicional. Três prisioneiros, Alice, Bob e Carlos, são informados pelo carcereiro de que, no dia seguinte, um deles será libertado, mas os outros dois terão de cumprir prisão perpétua. O carcereiro afirma que não dirá a nenhum prisioneiro o que lhe acontecerá. Alice, raciocinando que sua chance de liberdade é agora \(1/3\), pede ao carcereiro o nome de um prisioneiro, diferente dela, que não será libertado. O carcereiro responde que Bob permanecerá preso.</p>
+    <p>Qual é agora a chance de Alice ser libertada? A probabilidade mudou? Alice poderia argumentar que agora tem chance \(1/2\), pois Bob certamente ficará preso. Por outro lado, também parece razoável dizer que, como Bob ou Carlos necessariamente teria de permanecer na prisão, essa nova informação não poderia alterar as chances de Alice.</p>
+    <p>Na verdade, qualquer uma das respostas pode estar correta. Tudo depende da estratégia usada pelo carcereiro para decidir qual nome dar a Alice — supondo que Alice conheça essa estratégia. Se o carcereiro escolhe um nome ao acaso sempre que Bob e Carlos são escolhas possíveis, a chance de Alice não muda. Se, porém, ele cita Bob sempre que possível e só cita Carlos quando não pode citar Bob, a nova informação de fato eleva a probabilidade de libertação de Alice para \(1/2\). Veja o <a href="#exercicio-5-26" data-source-xref>Exercício 5.26</a>.</p>
+    <p>Há muitas outras versões do problema dos três prisioneiros, entre elas o “problema de Monty Hall”, recorrente na cultura popular. O <a href="#exercicio-5-27" data-source-xref>Exercício 5.27</a> descreve o problema de Monty Hall e outras aplicações divertidas dessas ideias.</p>
+  </div>
+
+  <ol class="footnotes" start="10">
+    <li id="fn-5-10">Os autores de <a href="../../references/#ref-51" data-source-xref>[51, Capítulo 1]</a> explicam a onipresença das urnas na teoria da probabilidade por sua ligação com a expressão francesa <em>aller aux urnes</em> — ir às urnas, votar. <a href="#fnref-5-10" data-source-xref aria-label="Voltar à chamada da nota 10">↩</a></li>
+  </ol>
+</section>

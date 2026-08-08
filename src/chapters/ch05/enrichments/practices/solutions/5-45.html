@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.45">
+          <p class="graduated-help__intro">Some as probabilidades dos pares mensagem–chave que chegam a cada texto cifrado.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Cada célula tem peso</summary>
+      <div>O peso é \(f_M(m_i)f_K(k_j)\), pois mensagem e chave são independentes.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Teste sigilo em mais de um \(c\)</summary>
+      <div>Ter \(f(c_1\mid m)\) constante não basta para todos os textos cifrados.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Monte a tabela conjunta</summary>
+      <div>Antes das condicionais, atribua massa \(f_M(m)f_K(k)\) a cada par e some células que produzem o mesmo cifrado.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) Somando as células,</p><p>\[f(c_1)=\frac13,\quad f(c_2)=\frac4{15},\quad f(c_3)=\frac4{15},\quad f(c_4)=\frac2{15}.\]</p><p>(b) \(f(c_1\mid m_1)=f(c_1\mid m_2)=f(c_1\mid m_3)=1/3\). Porém isso não prova sigilo perfeito: por exemplo, \(f(c_4\mid m_1)=0\ne2/15=f(c_4)\). Portanto o sistema não tem sigilo perfeito.</p><p>(c) \(f(c_2\mid m_1)=1/3\) e \(f(c_3\mid m_1)=1/3\).</p><p>(d) \(k_1\) nunca gera \(c_3\), então \(f(k_1\mid c_3)=0\). O par \((k_2,m_2)\) responde por metade da massa de \(c_3\), logo \(f(k_2\mid c_3)=1/2\).</p>
+        </details>
+      </div>

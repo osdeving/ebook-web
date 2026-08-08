@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.36">
+          <p class="graduated-help__intro">É mais simples contar o evento complementar: todos os aniversários distintos.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Produto sem colisão</summary>
+      <div>Com \(n\) pessoas e \(N\) dias, use \(\prod_{j=0}^{n-1}(1-j/N)\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Transforme produto em exponencial</summary>
+      <div>A desigualdade \(1-u\le e^{-u}\) converte o produto em uma soma no expoente.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Compare fórmula e limite</summary>
+      <div>Calcule primeiro o complemento exato e só então use \(1-u\le e^{-u}\); isso deixa claro qual lado da estimativa é garantido.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) Com 365 dias,</p><p>\[1-\prod_{j=0}^{22}\frac{365-j}{365}=\boxed{0{,}507297},\qquad 1-\prod_{j=0}^{39}\frac{365-j}{365}=\boxed{0{,}891232}.\]</p><p>Para 200 estranhos e o seu aniversário fixo: \(1-(364/365)^{200}=\boxed{0{,}422298}\).</p><p>(b) Se \(n\le N\),</p><p>\[\boxed{\Pr(\text{alguma coincidência})=1-\frac{N(N-1)\cdots(N-n+1)}{N^n}};\]</p><p>se \(n>N\), a probabilidade é 1.</p><p>(c) O complemento é no máximo \(\exp[-\sum_{j=0}^{n-1}j/N]\), logo</p><p>\[\boxed{\Pr(\text{colisão})\ge1-e^{-n(n-1)/(2N)}}.\]</p>
+        </details>
+      </div>

@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.23">
+          <p class="graduated-help__intro">Probabilidade condicional transforma a informação dada em um novo espaço amostral.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Comece pela definição</summary>
+      <div>\(\Pr(F\mid E)=\Pr(F\cap E)/\Pr(E)\), supondo \(\Pr(E)>0\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Partição total</summary>
+      <div>Se os \(F_i\) particionam \(\Omega\), então \(E\) é a união disjunta dos \(E\cap F_i\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Derive Bayes por último</summary>
+      <div>Primeiro escreva a lei da probabilidade total para o denominador; então inverta a condicional pela probabilidade conjunta.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <div class="editorial-note"><strong>Hipóteses de domínio.</strong> As condicionais dos itens (a) e (b) só são definidas pela convenção do capítulo quando \(\Pr(E)>0\). Nos itens (d) e (e), suponha \(\Pr(F_i)>0\) para cada termo escrito; células nulas podem ser simplesmente omitidas ou substituídas pela probabilidade conjunta. Para (e), também é necessário \(\Pr(E)>0\), isto é, denominador positivo.</div><p>(a) Sob \(\Pr(E)>0\), \(\Pr(E\mid E)=\Pr(E)/\Pr(E)=1\): sabendo que \(E\) ocorreu, ele é certo. (b) Se \(E\) e \(F\) são disjuntos e \(\Pr(E)>0\), então \(\Pr(F\cap E)=0\), logo a condicional é zero.</p><p>(c) A aditividade para dois eventos disjuntos se estende por indução a \(\Pr(\bigcup_iF_i)=\sum_i\Pr(F_i)\).</p><p>(d) Como \(E=\mathbin{\dot\bigcup}_i(E\cap F_i)\),</p><p>\[\Pr(E)=\sum_i\Pr(E\cap F_i)=\sum_i\Pr(E\mid F_i)\Pr(F_i).\]</p><p>Se algum \(F_i\) tiver massa zero, sua contribuição conjunta é zero e o termo pode ser removido sem mudar a soma.</p><p>(e) Para \(\Pr(E)>0\), Bayes dá \(\Pr(F_i\mid E)=\Pr(E\mid F_i)\Pr(F_i)/\Pr(E)\); substituindo no denominador a fórmula de (d), obtemos exatamente a expressão pedida.</p>
+        </details>
+      </div>

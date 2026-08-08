@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Repetição amplifica confiança porque multiplica probabilidades de erro, desde que as execuções sejam independentes e o limite por execução seja válido.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Um lado</span><p>Se um composto engana Miller–Rabin com probabilidade no máximo \(1/4\), N bases independentes são todas enganadas com probabilidade no máximo \(4^{-N}\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Bits de confiança</span><p>Cada nova execução multiplica o erro por \(1/4=2^{-2}\): acrescenta aproximadamente dois bits de evidência contra a hipótese composta sobrevivente.</p></div>
+    <div class="step"><span class="step-tag warning">Dependência</span><p>Repetir a mesma base, reutilizar aleatoriedade correlacionada ou escolher entradas de modo adversarial pode destruir a multiplicação simples.</p></div>
+  </div>
+  <div class="quick-check"><p>Amplificação controla erro do algoritmo; a probabilidade posterior ainda incorpora a frequência a priori de primos.</p></div>
+</div>

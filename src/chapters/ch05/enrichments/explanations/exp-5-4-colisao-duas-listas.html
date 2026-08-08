@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Uma coincidência não é apenas “azar”: se construímos as duas listas com significado algébrico, a igualdade elimina uma incógnita.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Duas famílias</span><p>Para resolver \(g^x=h\), compare valores \(g^i\) com \(hg^j\).</p></div>
+    <div class="step"><span class="step-tag manipulation">Colisão útil</span><p>Se \(g^i=hg^j\), então \(h=g^{i-j}\), logo \(x\equiv i-j\) módulo a ordem de g.</p></div>
+    <div class="step"><span class="step-tag theorem">Troca tempo–memória</span><p>Listas de tamanho próximo a \(\sqrt N\) encontram colisão com probabilidade constante, mas guardá-las custa memória. Pollard rô preserva a escala de tempo reduzindo a memória.</p></div>
+  </div>
+  <div class="quick-check"><p>Reduzir o expoente pelo módulo correto — a ordem de g, não automaticamente p — faz parte da solução.</p></div>
+</div>

@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.9">
+          <p class="graduated-help__intro">Inclusão–exclusão conta permutações com pontos fixos; os derangements contam as que não têm nenhum.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Defina \(D_n\)</summary>
+      <div>Use \(D_n=n!\sum_{k=0}^n(-1)^k/k!\), ou \(D_n=(n-1)(D_{n-1}+D_{n-2})\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Exatamente um</summary>
+      <div>Escolha o ponto fixo e desarranje os \(n-1\) restantes: \(nD_{n-1}\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Separe quatro classes</summary>
+      <div>Nenhum, ao menos um, exatamente um e ao menos dois pontos fixos devem formar contagens compatíveis que somam \(n!\).</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Se \(D_n\) denota o número de desarranjos, então: (a) \(D_n\); (b) \(n!-D_n\); (c) \(nD_{n-1}\); (d) \(n!-D_n-nD_{n-1}\).</p><div class="table-scroll"><table><thead><tr><th>\(n\)</th><th>nenhum fixo</th><th>ao menos um</th><th>exatamente um</th><th>ao menos dois</th></tr></thead><tbody><tr><th>10</th><td>1 334 961</td><td>2 293 839</td><td>1 334 960</td><td>958 879</td></tr><tr><th>26</th><td>148 362 637 348 470 135 821 287 825</td><td>254 928 823 778 135 499 762 712 175</td><td>148 362 637 348 470 135 821 287 824</td><td>106 566 186 429 665 363 941 424 351</td></tr></tbody></table></div>
+        </details>
+      </div>

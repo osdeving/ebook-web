@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.10">
+          <p class="graduated-help__intro">Converta letras em 0–25, repita a palavra-chave e some módulo 26.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Ignore a pontuação na conta</summary>
+      <div>Espaços e sinais não consomem letras da chave.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Cheque a primeira letra</summary>
+      <div>Em (a), \(T+H=19+7\equiv0\pmod{26}\), portanto a cifra começa com A.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Recifre uma posição</summary>
+      <div>Depois da soma modular, subtraia a mesma letra da chave em uma posição e confira se recupera a letra clara.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Usando \(C_i\equiv P_i+K_i\pmod{26}\) e agrupando apenas para leitura:</p><p>(a) <code>AONPS KUOFE SULTT LX BZTT PUNL SFTSG</code>.</p><p>(b) <code>YVVML REXII XCFFZ FZXXH RISIM BRFNU N</code>.</p><p>Sem agrupamento, os resultados são <code>aonpskuofesulttlxbzttpunlsftsg</code> e <code>yvvmlrexiixcffzfzxxhrisimbrfnun</code>.</p>
+        </details>
+      </div>

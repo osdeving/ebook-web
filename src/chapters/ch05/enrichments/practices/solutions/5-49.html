@@ -1,0 +1,19 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.49">
+          <p class="graduated-help__intro">Uma função de cifração não pode enviar a mesma mensagem, sob a mesma chave, a dois textos cifrados distintos.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Suponha uma chave na interseção</summary>
+      <div>Então \(e_k(m)=c\) e \(e_k(m)=c'\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use unicidade do valor da função</summary>
+      <div>A contradição não exige sigilo perfeito nem igualdade de cardinalidades.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Se \(k\in S_{m,c}\cap S_{m,c'}\), então, pela definição desses conjuntos, \(e_k(m)=c\) e \(e_k(m)=c'\). Como \(e_k(m)\) tem um único valor, segue \(c=c'\), contradizendo a hipótese. Portanto, para \(c\ne c'\),</p><p>\[\boxed{S_{m,c}\cap S_{m,c'}=\varnothing}.\]</p>
+        </details>
+      </div>

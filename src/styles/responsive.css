@@ -42,7 +42,12 @@
   .hero { padding-block: 4rem; }
   .hero h1 { font-size: clamp(2.8rem, 14vw, 4.8rem); }
   .reader { width: min(calc(100% - 2rem), var(--content-width)); padding-top: 2.8rem; }
-  .enrichment-toolbar { width: min(calc(100% - 2rem), var(--content-width)); padding: .85rem; backdrop-filter: none; }
+  .enrichment-toolbar {
+    z-index: auto;
+    width: min(calc(100% - 2rem), var(--content-width));
+    padding: .85rem;
+    backdrop-filter: none;
+  }
   .enrichment-toolbar__header { align-items: stretch; flex-direction: column; }
   .enrichment-toolbar__header > .enrichment-button { width: 100%; }
   .enrichment-layer-grid { grid-template-columns: 1fr 1fr; }

@@ -1,0 +1,57 @@
+<section class="chapter-section subsection" id="sec-5-1-1">
+  <div class="section-heading">
+    <span class="section-number">5.1.1</span>
+    <h3>Permutações</h3>
+  </div>
+
+  <p>Os números \(1,2,\ldots,10\) costumam ser listados em ordem crescente, mas suponha, em vez disso, que admitamos qualquer ordenação. Então, de quantas maneiras diferentes podemos listar esses dez inteiros? Cada configuração possível é chamada de permutação de \(1,2,\ldots,10\). O problema de contar o número de permutações possíveis de uma dada lista de objetos ocorre sob muitas formas e em muitos contextos por toda a matemática.</p>
+
+  <p>Cada permutação de \(1,2,\ldots,10\) é uma sequência dos dez inteiros distintos em alguma ordem. Por exemplo, eis uma escolha aleatória: \(8,6,10,3,9,2,4,7,5,1\). Como podemos gerar todas as possibilidades? É mais fácil gerá-las listando os números um de cada vez, digamos, da esquerda para a direita. Começamos, portanto, atribuindo um número à primeira posição. Há dez escolhas. Em seguida, atribuímos um número à segunda posição, mas, para a segunda posição, há apenas nove escolhas, pois já usamos um dos inteiros na primeira posição. (Lembre-se de que não podemos usar um inteiro duas vezes.) Restam então oito inteiros como possibilidades para a terceira posição, pois já usamos dois inteiros nas duas primeiras posições. E assim por diante. Logo, o número total de permutações de \(1,2,\ldots,10\) é</p>
+  <div class="equation">\[10!=10\cdot9\cdot8\cdots2\cdot1.\]</div>
+  <p>O valor de \(10!\) é \(3628800\), portanto está entre três e quatro milhões.</p>
+
+  <p>Observe como estamos usando o princípio básico da contagem. A única sutileza é que o resultado do primeiro experimento reduz o número de resultados possíveis do segundo experimento, os resultados dos dois primeiros experimentos reduzem ainda mais o número de resultados possíveis do terceiro experimento, e assim por diante.</p>
+
+  <div class="semantic definition" id="def-permutacao">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Seja \(S\) um conjunto que contém \(n\) objetos distintos. Uma <strong>permutação de \(S\)</strong> é uma lista ordenada dos objetos de \(S\). Uma permutação do conjunto \(\{1,2,\ldots,n\}\) é chamada simplesmente de permutação de \(n\).</p>
+  </div>
+
+  <aside class="semantic proposition" id="prop-5-3">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">5.3</span></div>
+    <p>Seja \(S\) um conjunto que contém \(n\) objetos distintos. Então existem exatamente \(n!\) permutações diferentes de \(S\).</p>
+  </aside>
+
+  <div class="semantic proof" id="proof-5-3">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Nossa discussão sobre as permutações de \(\{1,\ldots,10\}\) funciona em geral. Suponha, portanto, que \(S\) contenha \(n\) objetos e que queiramos criar uma permutação de \(S\). Há \(n\) escolhas para a primeira entrada, depois \(n-1\) escolhas para a segunda entrada, depois \(n-2\) escolhas para a terceira entrada etc. Isso leva a um total de</p>
+    <div class="equation">\[n\cdot(n-1)\cdot(n-2)\cdots2\cdot1\]</div>
+    <p>permutações possíveis.<span class="proof-end">□</span></p>
+  </div>
+
+  <aside class="semantic remark" id="obs-5-4">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">5.4 — Permutações e cifras de substituição simples</span></div>
+    <p><a href="#def-permutacao" data-source-xref>Por definição</a>, uma permutação do conjunto \(\{a_1,a_2,\ldots,a_n\}\) é uma lista formada pelos \(a_i\) em alguma ordem. Também podemos descrever uma permutação usando uma função bijetiva (isto é, injetora e sobrejetora)</p>
+    <div class="equation">\[\pi:\{1,2,\ldots,n\}\longrightarrow\{1,2,\ldots,n\}.\]</div>
+    <p>A função \(\pi\) determina a permutação</p>
+    <div class="equation">\[\bigl(a_{\pi(1)},a_{\pi(2)},\ldots,a_{\pi(n)}\bigr),\]</div>
+    <p>e, dada uma permutação, é fácil escrever a função correspondente.</p>
+    <p>Suponha agora que tomemos o conjunto de letras \(\{\mathrm A,\mathrm B,\mathrm C,\ldots,\mathrm Z\}\). Uma permutação \(\pi\) desse conjunto é apenas outro nome para uma cifra de substituição simples, na qual \(\pi\) atua como a função de cifragem. Assim, \(\pi\) nos diz que A é enviada para a \(\pi(1)\)-ésima letra, B é enviada para a \(\pi(2)\)-ésima letra, e assim por diante. Para decifrar, usamos a função inversa \(\pi^{-1}\).</p>
+  </aside>
+
+  <div class="semantic example" id="exemplo-5-5">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.5</span></div>
+    <p>Às vezes, é preciso contar o número de permutações possíveis de \(n\) objetos quando alguns dos objetos são indistinguíveis. Por exemplo, há seis permutações de três objetos distintos A, B, C,</p>
+    <div class="equation">\[\mathrm{ABC},\quad\mathrm{CAB},\quad\mathrm{BCA},\quad\mathrm{ACB},\quad\mathrm{BAC}\quad\text{e}\quad\mathrm{CBA},\]</div>
+    <p>mas, se dois deles forem indistinguíveis, digamos A, A, B, haverá apenas três arranjos diferentes,</p>
+    <div class="equation">\[\mathrm{AAB},\quad\mathrm{ABA}\quad\text{e}\quad\mathrm{BAA}.\]</div>
+
+    <p>Para ilustrar a ideia em um caso mais complicado, contamos o número de arranjos distintos das cinco letras A, A, A, B, B. Se as cinco letras fossem distinguíveis, digamos que fossem rotuladas \(A_1,A_2,A_3,B_1,B_2\), haveria \(5!\) permutações. No entanto, permutações como</p>
+    <div class="equation">\[A_1A_2B_1B_2A_3\qquad\text{e}\qquad A_2A_3B_2B_1A_1\]</div>
+    <p>tornam-se iguais quando os subscritos são removidos, portanto fizemos uma contagem excessiva ao chegar ao número \(5!\). Quantos arranjos diferentes foram contados mais de uma vez?</p>
+
+    <p>Por exemplo, em qualquer permutação específica, os dois B foram colocados em posições específicas, mas sempre podemos trocá-los e obter a mesma lista sem subscritos. Isso significa que precisamos dividir \(5!\) por \(2\) para compensar a contagem excessiva do posicionamento dos B. De modo semelhante, uma vez que os três A tenham sido colocados em posições específicas, podemos permutá-los entre si de \(3!\) maneiras, portanto precisamos dividir \(5!\) por \(3!\) para compensar a contagem excessiva do posicionamento dos A. Logo, há</p>
+    <div class="equation">\[\frac{5!}{3!\cdot2!}=10\]</div>
+    <p>arranjos diferentes das cinco letras A, A, A, B, B.</p>
+  </div>
+</section>

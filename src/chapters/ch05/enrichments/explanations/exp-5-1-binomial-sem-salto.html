@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Expandir \((x+y)^n\) significa escolher, em cada um dos \(n\) fatores, ou \(x\) ou \(y\).</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Um termo</span><p>Para obter \(x^{n-j}y^j\), precisamos escolher \(y\) em exatamente \(j\) fatores.</p></div>
+    <div class="step"><span class="step-tag manipulation">O coeficiente</span><p>Há \(\binom nj\) maneiras de escolher quais são esses fatores. Por isso o termo é \(\binom njx^{n-j}y^j\).</p></div>
+    <div class="step"><span class="step-tag theorem">A soma inteira</span><p>Somando \(j=0,\ldots,n\), obtemos \((x+y)^n=\sum_{j=0}^n\binom njx^{n-j}y^j\).</p></div>
+  </div>
+  <div class="quick-check"><p>Em \((x+y)^3\), escolher dois fatores para fornecer \(y\) pode ser feito de três formas; daí o termo \(3xy^2\).</p></div>
+</div>

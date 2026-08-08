@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.8">
+          <p class="graduated-help__intro">A divisibilidade dos coeficientes internos elimina todos os termos mistos módulo p.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Onde está o fator p?</summary>
+      <div>Em \(\binom pj=p!/(j!(p-j)!)\), nenhum fator do denominador é múltiplo de \(p\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Indução aditiva</summary>
+      <div>De \((a+1)^p\equiv a^p+1\), avance de \(a\) para \(a+1\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Use o passo intermediário</summary>
+      <div>Primeiro prove o binômio módulo p; só depois especialize e faça a indução que leva ao pequeno teorema de Fermat.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) Para \(1\le j\le p-1\), \(p\mid p!\), mas \(p\nmid j!(p-j)!\); logo \(p\mid\binom pj\).</p><p>(b) Todos os termos internos do binômio são zero módulo \(p\), então \((a+b)^p\equiv a^p+b^p\pmod p\).</p><p>(c) \(0^p\equiv0\). Se \(a^p\equiv a\), então \((a+1)^p\equiv a^p+1\equiv a+1\); por indução, \(a^p\equiv a\) para \(a\ge0\), e a redução módulo \(p\) cobre todo inteiro.</p><p>(d) Se \(\gcd(a,p)=1\), \(a\) é invertível; cancelar \(a\) em \(a^p\equiv a\) dá \(\boxed{a^{p-1}\equiv1\pmod p}\).</p>
+        </details>
+      </div>

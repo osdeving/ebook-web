@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Objetos iguais criam trocas invisíveis. Conte primeiro como se todos tivessem etiquetas e depois divida exatamente pelas etiquetas que o resultado final esquece.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag manipulation">Rotule</span><p>Para AABBC, imagine \(A_1,A_2,B_1,B_2,C\). Há \(5!\) ordens rotuladas.</p></div>
+    <div class="step"><span class="step-tag theorem">Apague</span><p>Cada palavra sem índices foi contada \(2!\) vezes pela troca dos A e \(2!\) vezes pela troca dos B. Logo há \(5!/(2!2!)=30\) palavras.</p></div>
+    <div class="step"><span class="step-tag connection">Multinomial</span><p>Com multiplicidades \(n_1,\ldots,n_k\) que somam \(n\), o mesmo argumento dá \(\binom{n}{n_1,\ldots,n_k}=n!/(n_1!\cdots n_k!)\).</p></div>
+  </div>
+  <div class="quick-check"><p>Divida apenas por permutações que realmente deixam o objeto observado inalterado; posições diferentes não devem ser apagadas por acidente.</p></div>
+</div>

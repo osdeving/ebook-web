@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.58">
+          <p class="graduated-help__intro">Use as distribuições já obtidas no Exercício 5.45 e a fórmula de equivoco da chave.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Entropia da chave</summary>
+      <div>Três chaves equiprováveis dão \(\log_2 3\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Textos cifrados</summary>
+      <div>Use as massas \((1/3,4/15,4/15,2/15)\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Faça uma checagem cruzada</summary>
+      <div>Calcule \(H(K)\), \(H(M)\) e \(H(C)\) separadamente e confirme que a combinação da <a href="#prop-5-64" data-source-xref>Proposição 5.64</a> não produz valor negativo.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>As entropias são</p><p>\[H(K)=\log_2 3\approx1{,}584963,\]</p><p>\[H(M)=-2\frac25\log_2\frac25-\frac15\log_2\frac15\approx1{,}521928,\]</p><p>\[H(C)=-\frac13\log_2\frac13-2\frac4{15}\log_2\frac4{15}-\frac2{15}\log_2\frac2{15}\approx1{,}932915.\]</p><p>Logo, pela <a href="#prop-5-64" data-source-xref>Proposição 5.64</a>,</p><p>\[\boxed{H(K\mid C)\approx1{,}173976\text{ bits}}.\]</p>
+        </details>
+      </div>

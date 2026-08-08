@@ -1,0 +1,231 @@
+<section class="chapter-section subsection" id="sec-5-6-1">
+  <div class="section-heading">
+    <span class="section-number">5.6.1</span>
+    <h3>Sigilo perfeito</h3>
+  </div>
+
+  <p>Um criptossistema possui <strong>sigilo perfeito</strong> se a interceptação de um texto cifrado não fornece ao criptoanalista nenhuma informação sobre o texto claro subjacente nem sobre quaisquer mensagens cifradas futuras. Para formalizar esse conceito, introduzimos as variáveis aleatórias \(M\), \(C\) e \(K\), que representam o número finito de mensagens, textos cifrados e chaves possíveis. Em outras palavras, \(M\) é uma variável aleatória cujos valores são as mensagens possíveis (textos claros), \(C\) é uma variável aleatória cujos valores são os textos cifrados possíveis, e \(K\) é uma variável aleatória cujos valores são as chaves possíveis usadas na cifração e na decifração. Denotamos por \(f_M\), \(f_C\) e \(f_K\) as funções densidade associadas.<sup id="fnref-5-6-1-19"><a href="#fn-5-6-1-19" data-source-xref>19</a></sup> As funções densidade \(f_M\), \(f_K\) e \(f_C\) se relacionam por meio da fórmula de cifração/decifração \(d_k(e_k(m))=m\), relação que exploraremos em breve para demonstrar <a href="#eq-5-47" data-source-xref>(5.47)</a>.</p>
+
+  <p>Também temos as densidades conjuntas e as densidades condicionais de todos os pares dessas variáveis aleatórias, como \(f_{C,M}(c,m)\) e \(f_{C\mid M}(c\mid m)\), e assim por diante. Deixaremos que os nomes das variáveis simplifiquem a notação. Por exemplo, escrevemos \(f(c\mid m)\) no lugar de \(f_{C\mid M}(c\mid m)\), a densidade de probabilidade condicional das variáveis aleatórias \(C\) e \(M\), isto é,</p>
+  <div class="equation">\[
+    f(c\mid m)=\Pr(C=c\text{ dado que }M=m).
+  \]</div>
+  <p>Do mesmo modo, escrevemos \(f(m)\) no lugar de \(f_M(m)\), a probabilidade de que \(M=m\).</p>
+
+  <div class="semantic definition" id="def-5-sigilo-perfeito">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Um criptossistema possui <strong>sigilo perfeito</strong> se</p>
+    <div class="equation" id="eq-5-45"><span class="equation-number">(5.45)</span>\[
+      f(m\mid c)=f(m)\qquad\text{para todo }m\in\mathcal M\text{ e todo }c\in\mathcal C.
+    \]</div>
+  </div>
+
+  <p>O que significa <a href="#eq-5-45" data-source-xref>(5.45)</a>? Ela diz que a probabilidade de qualquer texto claro particular, \(\Pr(M=m)\), independe do texto cifrado. Intuitivamente, isso significa que o texto cifrado não revela conhecimento algum sobre o texto claro.</p>
+
+  <p>A fórmula de Bayes, o <a href="#teorema-5-33" data-source-xref>Teorema 5.33</a>, diz que</p>
+  <div class="equation">\[
+    f(m\mid c)f(c)=f(c\mid m)f(m),
+  \]</div>
+  <p>o que implica que o sigilo perfeito equivale à condição</p>
+  <div class="equation" id="eq-5-46"><span class="equation-number">(5.46)</span>\[
+    f(c\mid m)=f(c)\qquad
+    \text{para todo }c\in\mathcal C\text{ e todo }m\in\mathcal M\text{ com }f(m)\ne0.
+  \]</div>
+  <p>A fórmula <a href="#eq-5-46" data-source-xref>(5.46)</a> diz que o aparecimento de qualquer texto cifrado particular tem a mesma probabilidade, independentemente do texto claro.</p>
+
+  <p>Se conhecermos \(f_K\) e \(f_M\), então \(f_C\) estará determinada. Para ver isso, observamos que, dada uma chave \(k\), a probabilidade de o texto cifrado ser igual a \(c\) é a mesma que a probabilidade de a decifração de \(c\) ser o texto claro — supondo, é claro, que \(c\) seja a cifração de algum texto claro para a chave \(k\). Isso nos permite calcular a probabilidade total \(f_C(c)\) somando sobre todas as chaves possíveis e usando a fórmula de decomposição <a href="#eq-5-20" data-source-xref>(5.20)</a> da <a href="#prop-5-24" data-source-xref>Proposição 5.24</a>, ou, mais precisamente, sua generalização descrita no <a href="#exercicio-5-23" data-source-xref>Exercício 5.23</a>. Como de costume, \(\mathcal K\) denota o conjunto de todas as chaves possíveis, e \(e_k:\mathcal M\to\mathcal C\) e \(d_k:\mathcal C\to\mathcal M\) são as funções de cifração e decifração para a chave \(k\in\mathcal K\). Então a probabilidade de o texto cifrado ser igual a \(c\) é dada pela fórmula</p>
+  <div class="equation" id="eq-5-47"><span class="equation-number">(5.47)</span>\[
+    f_C(c)=\sum_{\substack{k\in\mathcal K\ \mathrm{tal\ que}\\
+                          c=e_k(m)\ \mathrm{para\ algum}\ m\in\mathcal M}}
+             f_K(k)f_M\bigl(d_k(c)\bigr);
+  \]</div>
+  <p>veja também o <a href="#exercicio-5-47" data-source-xref>Exercício 5.47</a>. Observamos que, se a aplicação de cifração \(e_k:\mathcal M\to\mathcal C\) for sobrejetora para toda chave \(k\), como ocorre com frequência na prática, então a soma em <a href="#eq-5-47" data-source-xref>(5.47)</a> se estenderá a todo \(k\in\mathcal K\).</p>
+
+  <div class="semantic example" id="exemplo-5-53">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.53</span></div>
+    <p>Considere a cifra de deslocamento descrita na <a href="../ch01/#sec-1-1" data-source-xref>Seção 1.1</a>. Suponha que cada uma das 26 chaves possíveis (quantidades de deslocamento) seja escolhida com a mesma probabilidade e que cada caractere do texto claro seja cifrado com uma quantidade de deslocamento nova, escolhida ao acaso. Não é difícil verificar que o criptossistema resultante possui sigilo perfeito; veja o <a href="#exercicio-5-46" data-source-xref>Exercício 5.46</a>.</p>
+  </div>
+
+  <p>Recorde que uma função de cifração é injetora, isto é, cada mensagem dá origem a um único texto cifrado. Isso implica que há pelo menos tantos textos cifrados quantos textos claros (mensagens). O sigilo perfeito impõe restrições adicionais aos tamanhos relativos dos espaços de chaves, mensagens e textos cifrados. Começamos examinando um exemplo de um criptossistema (minúsculo) que não possui sigilo perfeito.</p>
+
+  <div class="semantic example" id="exemplo-5-54">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.54</span></div>
+    <p>Suponha que um criptossistema tenha duas chaves \(k_1\) e \(k_2\), três mensagens \(m_1\), \(m_2\) e \(m_3\), e três textos cifrados \(c_1\), \(c_2\) e \(c_3\). Suponha que a função densidade da variável aleatória mensagem satisfaça</p>
+    <div class="equation" id="eq-5-48"><span class="equation-number">(5.48)</span>\[
+      f_M(m_1)=f_M(m_2)=\frac14
+      \qquad\text{e}\qquad
+      f_M(m_3)=\frac12.
+    \]</div>
+    <p>Suponha ainda que a <a href="#tab-5-12" data-source-xref>Tabela 5.12</a> descreva como as diferentes chaves agem sobre as mensagens para produzir textos cifrados.</p>
+
+    <div class="table-wrap" id="tab-5-12">
+      <table class="numeric">
+        <caption><span class="label">Tabela 5.12.</span> Cifração de mensagens com as chaves \(k_1\) e \(k_2\).</caption>
+        <thead><tr><th scope="col"></th><th scope="col">\(m_1\)</th><th scope="col">\(m_2\)</th><th scope="col">\(m_3\)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">\(k_1\)</th><td>\(c_2\)</td><td>\(c_1\)</td><td>\(c_3\)</td></tr>
+          <tr><th scope="row">\(k_2\)</th><td>\(c_1\)</td><td>\(c_3\)</td><td>\(c_2\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Por exemplo, a cifração do texto claro \(m_1\) com a chave \(k_1\) é o texto cifrado \(c_2\). Admitindo que as chaves sejam usadas com a mesma probabilidade, podemos usar <a href="#eq-5-47" data-source-xref>(5.47)</a> para calcular a probabilidade de o texto cifrado ser igual a \(c_1\):</p>
+    <div class="aligned-equations">\[
+      \begin{aligned}
+        f(c_1)
+          &amp;=f(k_1)f_M\bigl(d_{k_1}(c_1)\bigr)+f(k_2)f_M\bigl(d_{k_2}(c_1)\bigr)\\
+          &amp;=f(k_1)f(m_2)+f(k_2)f(m_1)\\
+          &amp;=\frac12\cdot\frac14+\frac12\cdot\frac14=\frac14.
+      \end{aligned}
+    \]</div>
+    <p>Por outro lado, vemos na tabela que \(f(c_1\mid m_3)=0\). Portanto, esse criptossistema não possui sigilo perfeito.</p>
+    <p>Isso corresponde à nossa intuição, pois é claro que observar um texto cifrado vaza alguma informação sobre o texto claro. Por exemplo, se observarmos o texto cifrado \(c_1\), saberemos que a mensagem foi \(m_1\) ou \(m_2\), e que não pode ter sido \(m_3\).</p>
+  </div>
+
+  <p>Como já observamos, o número de textos cifrados deve ser pelo menos tão grande quanto o número de textos claros; do contrário, a decifração não seria possível. Uma consequência do sigilo perfeito é que o número de chaves também deve ser pelo menos tão grande quanto o número de textos claros.</p>
+
+  <div class="semantic proposition" id="prop-5-55">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">5.55</span></div>
+    <p>Se um criptossistema possui sigilo perfeito, então \(\#\mathcal K\ge\#\mathcal C^+\), onde</p>
+    <div class="equation">\[
+      \mathcal C^+=\{m\in\mathcal M:f(m)&gt;0\}
+    \]</div>
+    <p>é o conjunto dos textos claros que têm probabilidade positiva de ser escolhidos.</p>
+  </div>
+
+  <div class="semantic proof" id="proof-5-55">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Começamos fixando algum texto cifrado \(c\in\mathcal C\) com \(f(c)&gt;0\). O sigilo perfeito na forma de <a href="#eq-5-46" data-source-xref>(5.46)</a> nos diz que</p>
+    <div class="equation">\[
+      f(c\mid m)=f(c)&gt;0\qquad\text{para todo }m\in\mathcal C^+.
+    \]</div>
+    <p>Isso diz que há uma probabilidade positiva de \(m\in\mathcal C^+\) ser cifrado como \(c\); portanto, existe pelo menos uma chave \(k\) que satisfaz \(e_k(m)=c\). Além disso, se começarmos com um texto claro diferente \(m'\in\mathcal C^+\), obteremos uma chave diferente \(k'\), pois, caso contrário, \(e_k(m)=c=e_k(m')\), o que contradiria a injetividade de \(e_k\).</p>
+    <p>Em resumo, mostramos que, para todo \(m\in\mathcal C^+\), o conjunto</p>
+    <div class="equation">\[
+      \{k\in\mathcal K:e_k(m)=c\}
+    \]</div>
+    <p>é não vazio e, além disso, que esses conjuntos são disjuntos para valores distintos de \(m\). Assim, cada texto claro \(m\in\mathcal C^+\) é associado a uma ou mais chaves, e valores distintos de \(m\) são associados a chaves distintas. Isso mostra que o número de chaves é pelo menos tão grande quanto o número de textos claros em \(\mathcal C^+\).<span class="proof-end">□</span></p>
+  </div>
+
+  <p>Dadas as restrições aos tamanhos relativos dos espaços de chaves, textos cifrados e textos claros em sistemas com sigilo perfeito, a saber,</p>
+  <div class="equation">\[
+    \#\mathcal K\ge\#\mathcal M
+    \qquad\text{e}\qquad
+    \#\mathcal C\ge\#\mathcal M,
+  \]</div>
+  <p>é mais eficiente supor que os espaços de chaves, textos claros e textos cifrados tenham todos o mesmo tamanho. Sob essa hipótese, Shannon demonstra um teorema que caracteriza o sigilo perfeito.</p>
+
+  <div class="semantic theorem" id="teorema-5-56">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">5.56</span></div>
+    <p>Suponha que um criptossistema satisfaça</p>
+    <div class="equation">\[
+      \#\mathcal K=\#\mathcal M=\#\mathcal C,
+    \]</div>
+    <p>isto é, que os números de chaves, textos claros e textos cifrados sejam todos iguais. Então o sistema possui sigilo perfeito se, e somente se, as duas condições seguintes forem satisfeitas:</p>
+    <ol type="a">
+      <li>Cada chave \(k\in\mathcal K\) é usada com a mesma probabilidade.</li>
+      <li>Dada uma mensagem \(m\in\mathcal M\) e um texto cifrado \(c\in\mathcal C\), há exatamente uma chave \(k\in\mathcal K\) que cifra \(m\) como \(c\).</li>
+    </ol>
+  </div>
+
+  <div class="semantic proof" id="proof-5-56">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Suponha primeiro que o criptossistema possua sigilo perfeito. Começamos verificando (b). Para qualquer texto claro \(m\in\mathcal M\) e texto cifrado \(c\in\mathcal C\), considere o conjunto, possivelmente vazio, de chaves que cifram \(m\) como \(c\):</p>
+    <div class="equation">\[
+      S_{m,c}=\{k\in\mathcal K:e_k(m)=c\}.
+    \]</div>
+    <p>Provaremos que, se o criptossistema possui sigilo perfeito, então \(\#S_{m,c}=1\) para todo \(m\in\mathcal M\) e todo \(c\in\mathcal C\), o que equivale à afirmação (b) do teorema. Faremos isso em três etapas.</p>
+
+    <div class="semantic claim" id="afirmacao-5-56-1">
+      <div class="semantic-header"><span class="semantic-label">Afirmação 1</span></div>
+      <p>Se \(m\ne m'\), então \(S_{m,c}\cap S_{m',c}=\varnothing\).</p>
+    </div>
+    <p>Suponha que \(k\in S_{m,c}\cap S_{m',c}\). Então \(e_k(m)=c=e_k(m')\), o que implica \(m=m'\), pois a função de cifração \(e_k\) é injetora. Isso demonstra a Afirmação 1.</p>
+
+    <div class="semantic claim" id="afirmacao-5-56-2">
+      <div class="semantic-header"><span class="semantic-label">Afirmação 2</span></div>
+      <p>Se o criptossistema possui sigilo perfeito, então \(S_{m,c}\) é não vazio para todos \(m\) e \(c\).</p>
+    </div>
+    <p>Usamos a hipótese de sigilo perfeito na forma \(f(m,c)=f(m)f(c)\). Sabemos que todo \(m\in\mathcal M\) é um texto claro válido para pelo menos uma chave, portanto \(f(m)&gt;0\). Do mesmo modo, todo \(c\in\mathcal C\) aparece como a cifração de pelo menos um texto claro com alguma chave, portanto \(f(c)&gt;0\). Assim, o sigilo perfeito implica</p>
+    <div class="equation" id="eq-5-49"><span class="equation-number">(5.49)</span>\[
+      f(m,c)&gt;0\qquad\text{para todo }m\in\mathcal M\text{ e todo }c\in\mathcal C.
+    \]</div>
+    <p>Mas \(f(m,c)&gt;0\) é apenas outra maneira de dizer que \(c\) é uma possível cifração de \(m\). Logo, deve haver ao menos uma chave \(k\in\mathcal K\) que satisfaça \(e_k(m)=c\), isto é, existe algum \(k\in S_{m,c}\). Isso demonstra a Afirmação 2.</p>
+
+    <div class="semantic claim" id="afirmacao-5-56-3">
+      <div class="semantic-header"><span class="semantic-label">Afirmação 3</span></div>
+      <p>Se o criptossistema possui sigilo perfeito, então \(\#S_{m,c}=1\).</p>
+    </div>
+    <p>Fixe um texto cifrado \(c\in\mathcal C\). Então</p>
+    <div class="aligned-equations">\[
+      \begin{aligned}
+        \#\mathcal K
+          &amp;\ge\#\bigcup_{m\in\mathcal M}S_{m,c}
+             &amp;&amp;\text{pois }\mathcal K\text{ contém todos os }S_{m,c},\\
+          &amp;=\sum_{m\in\mathcal M}\#S_{m,c}
+             &amp;&amp;\text{pois os }S_{m,c}\text{ são disjuntos pela Afirmação 1},\\
+          &amp;\ge\#\mathcal M
+             &amp;&amp;\text{pois }\#S_{m,c}\ge1\text{ pela Afirmação 2},\\
+          &amp;=\#\mathcal K
+             &amp;&amp;\text{pois }\#\mathcal K=\#\mathcal M\text{ por hipótese.}
+      \end{aligned}
+    \]</div>
+    <p>Todas essas desigualdades são, portanto, igualdades; em particular,</p>
+    <div class="equation">\[
+      \sum_{m\in\mathcal M}\#S_{m,c}=\#\mathcal M.
+    \]</div>
+    <p>Como, pela Afirmação 2, todo \(\#S_{m,c}\) é maior ou igual a \(1\), cada \(\#S_{m,c}\) deve ser igual a \(1\). Isso demonstra a Afirmação 3.</p>
+
+    <p>Como já observamos, a Afirmação 3 equivale à afirmação (b) do teorema. Passamos agora à afirmação (a). Considere o conjunto de triplas</p>
+    <div class="equation">\[
+      (k,m,c)\in\mathcal K\times\mathcal M\times\mathcal C
+      \qquad\text{que satisfazem}\qquad e_k(m)=c.
+    \]</div>
+    <p>É claro que \(k\) e \(m\) determinam um único valor de \(c\), e (b) diz que \(m\) e \(c\) determinam um único valor de \(k\). Também não é difícil, por um argumento semelhante e usando a hipótese \(\#\mathcal M=\#\mathcal C\), mostrar que \(c\) e \(k\) determinam um único valor de \(m\); veja o <a href="#exercicio-5-48" data-source-xref>Exercício 5.48</a>.</p>
+    <p>Para qualquer tripla \((k,m,c)\) que satisfaça \(e_k(m)=c\), calculamos</p>
+    <div class="aligned-equations">\[
+      \begin{aligned}
+        f(m)&amp;=f(m\mid c) &amp;&amp;\text{pelo sigilo perfeito},\\
+            &amp;=\frac{f(m,c)}{f(c)} &amp;&amp;\text{pela definição de probabilidade condicional},\\
+            &amp;=\frac{f(m,k)}{f(c)} &amp;&amp;\text{pois quaisquer dois entre }m,k,c\text{ determinam o terceiro},\\
+            &amp;=\frac{f(m)f(k)}{f(c)} &amp;&amp;\text{pois }M\text{ e }K\text{ são independentes.}
+      \end{aligned}
+    \]</div>
+    <p>(Há criptossistemas nos quais a mensagem faz parte da chave; veja, por exemplo, o <a href="#exercicio-5-19" data-source-xref>Exercício 5.19</a>, caso em que \(M\) e \(K\) não seriam independentes.)</p>
+    <p>Cancelando \(f(m)\) dos dois lados, mostramos que</p>
+    <div class="equation" id="eq-5-50"><span class="equation-number">(5.50)</span>\[
+      f(k)=f(c)\qquad\text{para todo }k\in\mathcal K\text{ e todo }c\in\mathcal C.
+    \]</div>
+    <p>Observe que nossa demonstração mostra que <a href="#eq-5-50" data-source-xref>(5.50)</a> vale para todo \(k\) e todo \(c\), porque o <a href="#exercicio-5-48" data-source-xref>Exercício 5.48</a> nos diz que, para todo par \((k,c)\), há um único \(m\) que satisfaz \(e_k(m)=c\).</p>
+    <p>Somamos <a href="#eq-5-50" data-source-xref>(5.50)</a> sobre todo \(c\in\mathcal C\) e dividimos por \(\#\mathcal C\), obtendo</p>
+    <div class="equation">\[
+      f(k)=\frac1{\#\mathcal C}\sum_{c\in\mathcal C}f(c)=\frac1{\#\mathcal C}.
+    \]</div>
+    <p>Isso mostra que \(f(k)\) é constante, independentemente da escolha de \(k\in\mathcal K\), que é precisamente a afirmação (a). Ao mesmo tempo, demonstramos o fato útil de que \(f(c)\) é constante, isto é, cada texto cifrado é usado com a mesma probabilidade.</p>
+
+    <p>Na direção contrária, se um criptossistema possui as propriedades (a) e (b), então as etapas propostas no <a href="#exercicio-5-46" data-source-xref>Exercício 5.46</a> para demonstrar o sigilo perfeito da cifra de deslocamento podem ser aplicadas nesse contexto mais geral. Deixamos os detalhes para o leitor.<span class="proof-end">□</span></p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-57">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.57 — A cifra de uso único</span></div>
+    <p>A cifra de uso único de Vernam, patenteada em 1917, é um criptossistema extremamente simples e perfeitamente secreto, embora muito ineficiente. A chave \(k\) consiste em uma sequência de dígitos binários \(k_0k_1\cdots k_N\). Ela é usada para cifrar uma sequência binária de texto claro \(m=m_0m_1\cdots m_N\) aplicando XOR às duas sequências, bit a bit. Veja <a href="../ch01/#eq-1-12" data-source-xref>(1.12)</a>, na página 44, para uma descrição da operação XOR, que, por conveniência, denotaremos por \(\oplus\). O texto cifrado \(c=c_0c_1\cdots c_N\) é então dado por</p>
+    <div class="equation">\[
+      c_i=k_i\oplus m_i\qquad\text{para }i=0,1,\ldots,N.
+    \]</div>
+    <p>Cada chave é usada uma única vez e depois descartada, daí o nome do sistema. Como todas as chaves são usadas com a mesma probabilidade e há exatamente uma chave que cifra um dado \(m\) como um dado \(c\), a saber, a chave \(m\oplus c\), o <a href="#teorema-5-56" data-source-xref>Teorema 5.56</a> mostra que a cifra de uso único de Vernam possui sigilo perfeito.</p>
+    <p>Infelizmente, se Bob e Alice quiserem usar uma cifra de uso único de Vernam para trocar \(N\) bits de informação, precisarão já conhecer \(N\) bits de informação secreta compartilhada para usar como chave. Isso torna as cifras de uso único ineficientes demais para redes de comunicação em grande escala. Há, contudo, situações em que foram usadas, como em comunicações ultrassecretas entre repartições diplomáticas ou em mensagens curtas entre espiões e suas bases.</p>
+    <p>Também vale observar que uma cifra de uso único só permanece completamente segura enquanto suas chaves jamais forem reutilizadas. Quando um bloco de chaves é usado mais de uma vez — seja por engano, seja pela dificuldade de fornecer material de chave suficiente —, o criptossistema pode se tornar vulnerável à criptoanálise. Isso aconteceu no mundo real quando a União Soviética reutilizou alguns blocos de uso único durante a Segunda Guerra Mundial. Os Estados Unidos empreenderam um enorme esforço criptoanalítico, denominado projeto VENONA, que decifrou com sucesso diversos documentos.</p>
+  </div>
+
+  <ol class="footnotes" start="19">
+    <li id="fn-5-6-1-19">Como é habitual, omitimos a referência aos espaços amostrais subjacentes. Para sermos completamente explícitos, temos três espaços de probabilidade, com espaços amostrais \(\Omega_M\), \(\Omega_C\) e \(\Omega_K\), e funções de probabilidade \(\Pr_M\), \(\Pr_C\) e \(\Pr_K\). Então \(M\), \(C\) e \(K\) são variáveis aleatórias
+      <div class="equation">\[
+        M:\Omega_M\to\mathcal M,\qquad K:\Omega_K\to\mathcal K,\qquad C:\Omega_C\to\mathcal C.
+      \]</div>
+      Por definição, a função densidade \(f_M\) é
+      <div class="equation">\[
+        f_M(m)=\Pr(M=m)=\Pr_M\bigl(\{\omega\in\Omega_M:M(\omega)=m\}\bigr),
+      \]</div>
+      e de modo análogo para \(K\) e \(C\). <a href="#fnref-5-6-1-19" data-source-xref aria-label="Voltar à chamada da nota 19">↩</a></li>
+  </ol>
+</section>

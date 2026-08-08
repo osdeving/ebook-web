@@ -1,0 +1,89 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.42">
+          <p class="graduated-help__intro">O programa mantém, junto de cada ponto, os expoentes de \(g\) e \(h\) que o produziram.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Estado mínimo</summary>
+      <div>Armazene \((x,\alpha,\beta)\) com \(x=g^\alpha h^\beta\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Resolva a congruência por completo</summary>
+      <div>Quando o coeficiente não for invertível, teste todas as classes produzidas pelo mdc.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Teste cada classe candidata</summary>
+      <div>Uma colisão resolve uma congruência, não necessariamente uma classe única; verifique \(g^t=h\) para eliminar as demais.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Uma implementação direta usa a função por partes <a href="#eq-5-41" data-source-xref>(5.41)</a>, avança a tartaruga uma vez e a lebre duas, e na colisão resolve \((\delta-\beta)t\equiv\alpha-\gamma\pmod{p-1}\). Este programa é executável com <code>node rho-dlp.mjs</code>; usa <code>BigInt</code>, resolve congruências mesmo quando o coeficiente não é invertível e verifica todas as classes candidatas.</p><pre><code>const mod = (a, n) =&gt; ((a % n) + n) % n;
+
+function powMod(a, e, n) {
+  let r = 1n;
+  a = mod(a, n);
+  while (e &gt; 0n) {
+    if (e % 2n === 1n) r = r * a % n;
+    a = a * a % n;
+    e /= 2n;
+  }
+  return r;
+}
+
+function egcd(a, b) {
+  if (b === 0n) return [a, 1n, 0n];
+  const [d, x, y] = egcd(b, a % b);
+  return [d, y, x - (a / b) * y];
+}
+
+function solveLinear(a, b, n) {
+  a = mod(a, n); b = mod(b, n);
+  const [d, inverseFactor] = egcd(a, n);
+  if (b % d !== 0n) return [];
+  const reducedModulus = n / d;
+  const first = mod(inverseFactor * (b / d), reducedModulus);
+  const answers = [];
+  for (let j = 0n; j &lt; d; j++) answers.push(first + j * reducedModulus);
+  return answers;
+}
+
+function step(state, p, g, h) {
+  const q = p - 1n;
+  if (3n * state.x &lt; p) {
+    return { x: state.x * g % p, a: (state.a + 1n) % q, b: state.b };
+  }
+  if (3n * state.x &lt; 2n * p) {
+    return { x: state.x * state.x % p, a: 2n * state.a % q,
+      b: 2n * state.b % q };
+  }
+  return { x: state.x * h % p, a: state.a, b: (state.b + 1n) % q };
+}
+
+function rhoDlp(p, g, h) {
+  const q = p - 1n;
+  const start = { x: 1n, a: 0n, b: 0n };
+  let slow = step(start, p, g, h);
+  let fast = step(step(start, p, g, h), p, g, h);
+  let iteration = 1;
+  while (slow.x !== fast.x &amp;&amp; iteration &lt;= 2 * Number(q)) {
+    slow = step(slow, p, g, h);
+    fast = step(step(fast, p, g, h), p, g, h);
+    iteration++;
+  }
+  if (slow.x !== fast.x) throw new Error("colisão não encontrada");
+  const coefficient = mod(fast.b - slow.b, q);
+  const rhs = mod(slow.a - fast.a, q);
+  const divisor = egcd(coefficient, q)[0];
+  const candidates = solveLinear(coefficient, rhs, q)
+    .filter((t) =&gt; powMod(g, t, p) === h);
+  return { iteration, divisor, candidates };
+}
+
+for (const input of [
+  [5011n, 2n, 2495n],
+  [17959n, 17n, 14226n],
+  [15239131n, 29n, 5953042n],
+]) console.log(input.map(String), rhoDlp(...input));</code></pre><p>A saída reproduz:</p><div class="table-scroll"><table><thead><tr><th>item</th><th>colisão \(i\)</th><th>mdc</th><th>logaritmo</th><th>checagem</th></tr></thead><tbody><tr><td>(a)</td><td>96</td><td>30</td><td>\(t=3351\)</td><td>\(2^{3351}\equiv2495\pmod{5011}\)</td></tr><tr><td>(b)</td><td>47</td><td>2</td><td>\(t=14557\)</td><td>\(17^{14557}\equiv14226\pmod{17959}\)</td></tr><tr><td>(c)</td><td>7368</td><td>30</td><td>\(t=2528453\)</td><td>\(29^{2528453}\equiv5953042\pmod{15239131}\)</td></tr></tbody></table></div><div class="editorial-note"><strong>Errata provável no texto-base.</strong> Depois de resolver a congruência <a href="#eq-5-43" data-source-xref>(5.43)</a>, devem-se testar as possibilidades de \(\log_g(h)\), o logaritmo procurado; a ocorrência de \(\log_g(a)\) não é compatível com as variáveis do algoritmo.</div>
+        </details>
+      </div>

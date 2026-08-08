@@ -54,6 +54,8 @@ npm run new:enrichment -- --chapter ch03 --type explanation \
 - busca global, glossário de conceitos e símbolos, prévias de links e relações
   inversas gerados a partir do conteúdo publicado;
 - rotas guiadas, acompanhamento local de seções e exercícios e pistas graduais;
+- vários marcadores de trecho e rascunhos vetoriais com caneta, toque ou mouse,
+  ancorados à linha exata e mantidos somente no navegador;
 - instalação como aplicativo web e leitura offline das rotas essenciais;
 - CSS por tokens, estrutura e tipo de recurso;
 - índice automático de capítulos e manifestos versionados;

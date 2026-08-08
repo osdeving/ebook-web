@@ -1,0 +1,838 @@
+<section class="chapter-section exercises-section" id="exercicios-ch05">
+  <div class="section-heading"><span class="section-number">EX</span><h2>Exercícios</h2></div>
+
+  <h3>Seção 5.1 — Princípios básicos de contagem</h3>
+
+  <div class="exercise" id="exercicio-5-1">
+    <p><span class="exercise-number">5.1.</span> O papiro de Rhind é um antigo manuscrito matemático egípcio com mais de 3.500 anos. O Problema 79 do papiro de Rhind propõe um problema que pode ser parafraseado assim: há sete casas; em cada casa vivem sete gatos; cada gato mata sete camundongos; cada camundongo comeu sete grãos de espelta;<sup id="fnref-5-ex-26"><a href="#fn-5-ex-26" data-source-xref>26</a></sup> cada grão de espelta teria produzido sete <em>hekat</em><sup id="fnref-5-ex-27"><a href="#fn-5-ex-27" data-source-xref>27</a></sup> de espelta. Qual é a soma de todos os itens mencionados? Resolva esse problema de 3.500 anos.</p>
+  </div>
+
+  <ol class="footnotes" start="26">
+    <li id="fn-5-ex-26">A espelta é um tipo antigo de trigo. <a href="#fnref-5-ex-26" data-source-xref aria-label="Voltar à chamada da nota 26">↩</a></li>
+    <li id="fn-5-ex-27">Um <em>hekat</em> corresponde a \(1/30\) de um côvado cúbico, aproximadamente \(4{,}8\) litros. <a href="#fnref-5-ex-27" data-source-xref aria-label="Voltar à chamada da nota 27">↩</a></li>
+  </ol>
+
+  <div class="exercise" id="exercicio-5-2">
+    <p><span class="exercise-number">5.2.</span></p>
+    <ol type="a">
+      <li>Quantas \(n\)-uplas \((x_1,x_2,\ldots,x_n)\) existem se as coordenadas devem ser inteiros que satisfazem \(0\le x_i&lt;q\)?</li>
+      <li>A mesma pergunta do item (a), mas agora há limites separados \(0\le x_i&lt;q_i\) para cada coordenada.</li>
+      <li>Quantas matrizes \(n\) por \(n\) existem se suas entradas \(x_{i,j}\) devem ser inteiros que satisfazem \(0\le x_{i,j}&lt;q\)?</li>
+      <li>A mesma pergunta do item (a), mas agora a ordem das coordenadas não importa. Por exemplo, \((0,0,1,3)\) e \((1,0,3,0)\) são consideradas iguais. (Este item é bastante difícil.)</li>
+      <li>Doze estudantes cursam quatro disciplinas cada um; para cada disciplina, precisam de dois cadernos de folhas soltas; para cada caderno, precisam de 100 folhas de papel; e cada folha tem 32 linhas. Ao todo, quantos estudantes, disciplinas, cadernos, folhas e linhas há? <strong>Bônus.</strong> Transforme este problema, ou um problema semelhante inventado por você, em uma rima como o enigma de St. Ives.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-3">
+    <p><span class="exercise-number">5.3.</span></p>
+    <ol type="a">
+      <li>Liste todas as permutações do conjunto \(\{\mathrm A,\mathrm B,\mathrm C\}\).</li>
+      <li>Liste todas as permutações do conjunto \(\{1,2,3,4\}\).</li>
+      <li>Quantas permutações há do conjunto \(\{1,2,\ldots,20\}\)?</li>
+      <li>Sete estudantes devem ser distribuídos em sete quartos de alojamento, cada estudante recebendo seu próprio quarto. De quantas maneiras isso pode ser feito?</li>
+      <li>Quantas palavras diferentes podem ser formadas com os quatro símbolos \(\mathrm A,\mathrm A,\mathrm B,\mathrm C\)?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-4">
+    <p><span class="exercise-number">5.4.</span></p>
+    <ol type="a">
+      <li>Liste as 24 permutações possíveis das letras \(\mathrm A_1,\mathrm A_2,\mathrm B_1,\mathrm B_2\). Se \(\mathrm A_1\) for indistinguível de \(\mathrm A_2\), e \(\mathrm B_1\) for indistinguível de \(\mathrm B_2\), mostre como as permutações se agrupam em 6 arranjos de letras distintos, cada um contendo 4 das 24 permutações originais.</li>
+      <li>Usando os sete símbolos \(\mathrm A,\mathrm A,\mathrm A,\mathrm A,\mathrm B,\mathrm B,\mathrm B\), quantas palavras diferentes de sete letras podem ser formadas?</li>
+      <li>Usando os nove símbolos \(\mathrm A,\mathrm A,\mathrm A,\mathrm A,\mathrm B,\mathrm B,\mathrm B,\mathrm C,\mathrm C\), quantas palavras diferentes de nove letras podem ser formadas?</li>
+      <li>Usando os sete símbolos \(\mathrm A,\mathrm A,\mathrm A,\mathrm A,\mathrm B,\mathrm B,\mathrm B\), quantas palavras diferentes de cinco letras podem ser formadas?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-5">
+    <p><span class="exercise-number">5.5.</span></p>
+    <ol type="a">
+      <li>Há 100 estudantes elegíveis a um prêmio, e o vencedor pode escolher entre 5 prêmios diferentes. Quantos resultados possíveis há?</li>
+      <li>A mesma situação do item (a), mas desta vez há um primeiro, um segundo e um terceiro colocados, e cada um escolhe um prêmio. Contudo, há apenas uma unidade de cada prêmio. Quantos resultados possíveis há?</li>
+      <li>A mesma situação do item (b), mas há várias unidades de cada prêmio, de modo que cada um dos três vencedores pode escolher qualquer prêmio. Quantos resultados possíveis há agora? Esse número é maior ou menor que sua resposta ao item (b)?</li>
+      <li>A mesma situação do item (c), mas, em vez de especificar primeiro, segundo e terceiro colocados, escolhemos apenas três estudantes vencedores, sem diferenciá-los. Quantos resultados possíveis há agora? Compare os tamanhos de suas respostas aos itens (b), (c) e (d).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-6">
+    <p><span class="exercise-number">5.6.</span> Use o teorema binomial, o <a href="#teorema-5-10" data-source-xref>Teorema 5.10</a>, para calcular cada uma das quantidades a seguir.</p>
+    <ol type="a">
+      <li>\((5z+2)^3\)</li>
+      <li>\((2a-3b)^4\)</li>
+      <li>\((x-2)^5\)</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-7">
+    <p><span class="exercise-number">5.7.</span> Os coeficientes binomiais satisfazem muitas identidades interessantes. Dê três demonstrações da identidade</p>
+    <div class="equation">\[
+      \binom nj=\binom{n-1}{j-1}+\binom{n-1}j.
+    \]</div>
+    <ol type="a">
+      <li>Na Demonstração 1, use a definição de \(\binom nj\) como \(n!/((n-j)!j!)\).</li>
+      <li>Na Demonstração 2, use o teorema binomial, o <a href="#teorema-5-10" data-source-xref>Teorema 5.10</a>, e compare os coeficientes de \(x^jy^{n-j}\) nos dois lados da identidade
+        <div class="equation">\[(x+y)^n=(x+y)(x+y)^{n-1}.\]</div>
+      </li>
+      <li>Na Demonstração 3, argumente diretamente que escolher \(j\) objetos de um conjunto de \(n\) objetos pode ser decomposto em escolher \(j-1\) objetos de \(n-1\) objetos ou escolher \(j\) objetos de \(n-1\) objetos.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-8">
+    <p><span class="exercise-number">5.8.</span> Seja \(p\) um número primo. Este exercício esboça outra demonstração do pequeno teorema de Fermat, o <a href="../ch01/#theorem-1-24" data-source-xref>Teorema 1.24</a>.</p>
+    <ol type="a">
+      <li>Se \(1\le j\le p-1\), prove que o coeficiente binomial \(\binom pj\) é divisível por \(p\).</li>
+      <li>Use (a) e o teorema binomial, o <a href="#teorema-5-10" data-source-xref>Teorema 5.10</a>, para provar que
+        <div class="equation">\[(a+b)^p\equiv a^p+b^p\pmod p\qquad\text{para todos }a,b\in\mathbb Z.\]</div>
+      </li>
+      <li>Use (b) com \(b=1\) e indução em \(a\) para provar que \(a^p\equiv a\pmod p\) para todo \(a\ge0\).</li>
+      <li>Use (c) para deduzir que \(a^{p-1}\equiv1\pmod p\) para todo \(a\) com \(\gcd(p,a)=1\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-9">
+    <p><span class="exercise-number">5.9.</span> Sabemos que há \(n!\) permutações distintas do conjunto \(\{1,2,\ldots,n\}\).</p>
+    <ol type="a">
+      <li>Quantas dessas permutações não deixam nenhum número fixo?</li>
+      <li>Quantas deixam pelo menos um número fixo?</li>
+      <li>Quantas deixam exatamente um número fixo?</li>
+      <li>Quantas deixam pelo menos dois números fixos?</li>
+    </ol>
+    <p>Para cada item, dê uma fórmula ou um algoritmo que permita calcular a resposta para um valor arbitrário de \(n\); depois, calcule o valor para \(n=10\) e \(n=26\). Este exercício generaliza o <a href="../ch01/#exercicio-1-5" data-source-xref>Exercício 1.5</a>.</p>
+  </div>
+
+  <h3>Seção 5.2 — A cifra de Vigenère</h3>
+
+  <div class="exercise" id="exercicio-5-10">
+    <p><span class="exercise-number">5.10.</span> Cifre cada um dos textos claros de Vigenère a seguir usando a palavra-chave indicada e o tableau de Vigenère, a <a href="#tab-5-1" data-source-xref>Tabela 5.1</a>.</p>
+    <ol type="a">
+      <li><p>Palavra-chave: <span lang="en"><code>hamlet</code></span><br>Texto claro: <span lang="en">To be, or not to be, that is the question.</span></p></li>
+      <li><p>Palavra-chave: <span lang="en"><code>fortune</code></span><br>Texto claro: <span lang="en">The treasure is buried under the big W.</span></p></li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-11">
+    <p><span class="exercise-number">5.11.</span> Decifre cada um dos textos cifrados de Vigenère a seguir usando a palavra-chave indicada e o tableau de Vigenère, a <a href="#tab-5-1" data-source-xref>Tabela 5.1</a>.</p>
+    <ol type="a">
+      <li><p>Palavra-chave: <code>condiment</code></p>
+        <pre class="ciphertext" aria-label="Texto cifrado do item a">r s g h z b m c x t d v f s q h n i g q x r n b m
+p d n s q s m b t r k u</pre>
+      </li>
+      <li><p>Palavra-chave: <code>rabbithole</code></p>
+        <pre class="ciphertext" aria-label="Texto cifrado do item b">k h f e q y m s c i e t c s i g j v p w f f b s q
+m o a p x z c s f x e p s o x y e n p k d a i c x
+c e b s m t t p t x z o o e q l a f l g k i p o c
+z s w q m t a u j w g h b o h v r j t q h u</pre>
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-12">
+    <p><span class="exercise-number">5.12.</span> Explique como uma roda de cifras com a roda interna giratória — veja a <a href="../ch01/#fig-1-1" data-source-xref>Figura 1.1</a>, na página 3 — pode substituir um tableau de Vigenère, a <a href="#tab-5-1" data-source-xref>Tabela 5.1</a>, para realizar a cifração e a decifração de Vigenère. Ilustre descrevendo a sequência de rotações usada para realizar uma cifração de Vigenère com a palavra-chave <code>mouse</code>.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-13">
+    <p><span class="exercise-number">5.13.</span> Sejam</p>
+    <div class="equation" lang="en">\[
+      \begin{aligned}
+        s&amp;=\text{“I am the very model of a modern major general.”}\\
+        t&amp;=\text{“I have information vegetable, animal, and mineral.”}
+      \end{aligned}
+    \]</div>
+    <ol type="a">
+      <li>Construa tabelas de frequência para \(s\) e \(t\).</li>
+      <li>Calcule \(\operatorname{IndCo}(s)\) e \(\operatorname{IndCo}(t)\).</li>
+      <li>Calcule \(\operatorname{MutIndCo}(s,t)\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-14">
+    <p><span class="exercise-number">5.14.</span> As sequências a seguir são blocos de uma cifração de Vigenère. A palavra-chave possui uma letra repetida, de modo que dois desses blocos foram cifrados com o mesmo deslocamento. Calcule \(\operatorname{MutIndCo}(s_i,s_j)\) para \(1\le i&lt;j\le3\) e use os valores obtidos para deduzir quais duas sequências foram cifradas com o mesmo deslocamento.</p>
+    <pre class="ciphertext" aria-label="Três blocos de uma cifra de Vigenère">s₁ = iwseesetftuonhdptbunnybioeatneghictdnsevi
+s₂ = qibfhroeqeickxmirbqlflgkrqkejbejpepldfjbk
+s₃ = iesnnciiheptevaireittuevmhooottrtaaflnatg</pre>
+  </div>
+
+  <div class="exercise" id="exercicio-5-15">
+    <p><span class="exercise-number">5.15.</span></p>
+    <ol type="a">
+      <li><p>Uma das duas sequências a seguir foi cifrada com uma cifra de substituição simples, enquanto a outra é uma sequência aleatória de letras. Calcule o índice de coincidência de cada sequência e use os resultados para conjecturar qual é qual.</p>
+        <pre class="ciphertext">s₁ = RCZBWBFHSLPSCPILHBGZJTGBIBJGLYIJIBFHCQQFZBYFP
+s₂ = KHQWGIZMGKPOYRKHUITDUXLXCWZOTWPAHFOHMGFEVUEJJ</pre>
+      </li>
+      <li><p>Uma das duas sequências a seguir foi cifrada com uma cifra de substituição simples, enquanto a outra é uma permutação aleatória do mesmo conjunto de letras.</p>
+        <pre class="ciphertext">s₁ = NTDCFVDHCTHKGUNGKEPGXKEWNECKEGWEWETWKUEVHDKK
+     CDGCWXKDEEAMNHGNDIWUVWSSCTUNIGDSWKE
+
+s₂ = IGWSKGEHEXNGECKVWNKVWNKSUTEHTWHEKDNCDXWSIEKD
+     AECKFGNDCPUCKDNCUVWEMGEKWGEUTDGTWHD</pre>
+        <p>Portanto, seus índices de coincidência são idênticos. Desenvolva um método para calcular um índice de coincidência de bigramas, isto é, baseado na frequência de pares de letras, e use-o para determinar qual sequência é, com maior probabilidade, o texto cifrado.</p>
+      </li>
+    </ol>
+    <p><strong>Bônus.</strong> Decifre os textos cifrados dos itens (a) e (b), mas esteja avisado de que os textos claros estão em latim.</p>
+  </div>
+
+  <div class="table-wrap" id="tab-5-13">
+  <figure class="source-table">
+    <pre class="ciphertext" aria-label="Texto cifrado de Vigenère para o Exercício 5.16">nhqrk vvvfe fwgjo mzjgc kocgk lejrj wossy wgvkk hnesg kwebi
+bkkcj vqazx wnvll zetjc zwgqz zwhah kwdxj fg<u>nyw</u> gdfgh bitig
+mrkwn nsu<u>hy</u> <u>i</u>ecru l<u>jjv</u>s qlvvw zzxyv woenx ujgyr kqbfj lvjzx
+dxj<u>fg nyw</u>us rwoar xhvvx ssmja vkrwt uhktm malcz ygrsz x<u>wnvl</u>
+lzavs <u>hyi</u>gh rvwpn ljazl nispv jahym ntew<u>j</u> <u>jv</u>rzg qvzcr estul
+fkwis tfylk ysnir rddpb svsux zjgqk xouhs zzrjj kyiwc zckov
+qyhdv rhh<u>ny</u> <u>wqhyi</u> rjdqm iwutf nkzgd vvibg oenwb kolca mskle
+cuwwz rgusl zgfhy etfre i<u>jjv</u>y ghfau wvwtn xlljv vywyj apgzw
+trggr dxfgs ceyts tiiih v<u>jjv</u>t tcxfj hciiv voaro lrxij vjnok
+mvrgw kmirt twfer oimsb qgrgc</pre>
+    <figcaption><span class="label">Tabela 5.13.</span> Um texto cifrado de Vigenère para o Exercício 5.16.</figcaption>
+  </figure>
+  </div>
+
+  <div class="exercise" id="exercicio-5-16">
+    <p><span class="exercise-number">5.16.</span> A <a href="#tab-5-13" data-source-xref>Tabela 5.13</a> contém um texto cifrado de Vigenère no qual marcamos alguns trigramas repetidos. Qual você acha que é o comprimento da palavra-chave? Por quê?</p>
+    <p><strong>Bônus.</strong> Complete a criptoanálise e recupere o texto claro.</p>
+  </div>
+
+  <div class="table-wrap" id="tab-5-14">
+  <figure class="source-table">
+    <pre class="ciphertext" aria-label="Texto cifrado de Vigenère para o Exercício 5.17">togmg gbymk kcqiv dmlxk kbyif vcuek cuuis vvxqs pwwej koqgg
+phumt whlsf yovww knhhm rcqfq vvhkw psued ugrsf ctwij khvfa
+thkef fwptj ggviv cgdra pgwvm osqxg hkdvt whuev kcwyj psgsn
+gfwsl jsfse ooqhw tofsh aciin gfbif gabgj adwsy topml ecqzw
+asgvs fwrqs fsfvq rhdrs nmvmk cbhrv kblxk gzi</pre>
+    <figcaption><span class="label">Tabela 5.14.</span> Um texto cifrado de Vigenère para o Exercício 5.17.</figcaption>
+  </figure>
+  </div>
+
+  <div class="table-wrap" id="tab-5-15">
+  <figure class="source-table">
+    <pre class="numeric-data" aria-label="Índices mútuos de coincidência para os deslocamentos de 0 a 12">Blocos                                  Quantidade de deslocamento
+i  j     0      1      2      3      4      5      6      7      8      9     10     11     12
+1  2   0.044  0.047  0.021  0.054  0.046  0.038  0.022  0.034  0.057  0.035  0.040  0.023  0.038
+1  3   0.038  0.031  0.027  0.037  0.045  0.036  0.034  0.032  0.039  0.039  0.047  0.038  0.050
+1  4   0.025  0.039  0.053  0.043  0.023  0.035  0.032  0.043  0.029  0.040  0.041  0.050  0.027
+1  5   0.050  0.050  0.025  0.031  0.038  0.045  0.037  0.028  0.032  0.038  0.063  0.033  0.034
+2  3   0.035  0.037  0.039  0.031  0.031  0.035  0.047  0.048  0.034  0.031  0.031  0.067  0.053
+2  4   0.040  0.033  0.046  0.031  0.033  0.023  0.052  0.027  0.031  0.039  0.078  0.034  0.029
+2  5   0.042  0.040  0.042  0.029  0.033  0.035  0.035  0.038  0.037  0.057  0.039  0.038  0.040
+3  4   0.032  0.033  0.035  0.049  0.053  0.027  0.030  0.022  0.047  0.036  0.040  0.036  0.052
+3  5   0.043  0.043  0.040  0.034  0.033  0.034  0.043  0.035  0.026  0.030  0.050  0.068  0.044
+4  5   0.045  0.033  0.044  0.046  0.021  0.032  0.030  0.038  0.047  0.040  0.025  0.037  0.068
+
+Blocos                                  Quantidade de deslocamento
+i  j    13     14     15     16     17     18     19     20     21     22     23     24     25
+1  2   0.040  0.063  0.033  0.025  0.032  0.055  0.038  0.030  0.032  0.045  0.035  0.030  0.044
+1  3   0.026  0.046  0.042  0.053  0.027  0.024  0.040  0.047  0.048  0.018  0.037  0.034  0.066
+1  4   0.042  0.050  0.042  0.031  0.024  0.052  0.027  0.051  0.020  0.037  0.042  0.069  0.031
+1  5   0.030  0.048  0.039  0.030  0.034  0.038  0.042  0.035  0.036  0.043  0.055  0.030  0.035
+2  3   0.039  0.015  0.030  0.045  0.049  0.037  0.023  0.036  0.030  0.049  0.039  0.050  0.037
+2  4   0.027  0.048  0.050  0.037  0.032  0.021  0.035  0.043  0.047  0.041  0.047  0.042  0.035
+2  5   0.033  0.035  0.039  0.033  0.037  0.047  0.037  0.028  0.034  0.066  0.054  0.032  0.022
+3  4   0.040  0.048  0.041  0.044  0.033  0.028  0.039  0.027  0.036  0.017  0.038  0.051  0.065
+3  5   0.039  0.029  0.045  0.040  0.033  0.028  0.031  0.037  0.038  0.036  0.033  0.051  0.036
+4  5   0.049  0.033  0.029  0.043  0.028  0.033  0.020  0.040  0.040  0.041  0.039  0.039  0.059</pre>
+    <figcaption><span class="label">Tabela 5.15.</span> Índices mútuos de coincidência para o Exercício 5.17.</figcaption>
+  </figure>
+  </div>
+
+  <div class="exercise" id="exercicio-5-17">
+    <p><span class="exercise-number">5.17.</span> Aplicamos o teste de Kasiski ao texto cifrado de Vigenère da <a href="#tab-5-14" data-source-xref>Tabela 5.14</a> e descobrimos que o comprimento da chave provavelmente é 5. Em seguida, aplicamos um teste de índice mútuo de coincidência a cada deslocamento de cada par de blocos e reunimos os resultados na <a href="#tab-5-15" data-source-xref>Tabela 5.15</a>. É o mesmo tipo de tabela que a <a href="#tab-5-5" data-source-xref>Tabela 5.5</a>, exceto que não sublinhamos os valores grandes. Use a <a href="#tab-5-15" data-source-xref>Tabela 5.15</a> para conjecturar as rotações relativas dos blocos, como fizemos na <a href="#tab-5-6" data-source-xref>Tabela 5.6</a>. Isso fornecerá uma versão rotacionada da palavra-chave. Tente rotacioná-la, como fizemos na <a href="#tab-5-7" data-source-xref>Tabela 5.7</a>, para encontrar a palavra-chave correta e decifrar o texto.</p>
+  </div>
+
+  <div class="table-wrap" id="tab-5-16">
+  <figure class="source-table">
+    <pre class="ciphertext" aria-label="Texto cifrado de Vigenère para o Exercício 5.18">mgodt beida psgls akowu hxukc iawlr csoyh prtrt udrqh cengx
+uuqtu habxw dgkie ktsnp sekld zlvnh wefss glzrn peaoy lbyig
+uaafv eqgjo ewabz saawl rzjpv feyky gylwu btlyd kroec bpfvt
+psgki puxfb uxfuq cvymy okagl sactt uwlrx psgiy ytpsf rjfuw
+igxhr oyazd rakce dxeyr pdobr buehr uwcue ekfic zehrq ijezr
+xsyor tcylf egcy</pre>
+    <figcaption><span class="label">Tabela 5.16.</span> Um texto cifrado de Vigenère para o Exercício 5.18.</figcaption>
+  </figure>
+  </div>
+
+  <div class="exercise" id="exercicio-5-18">
+    <p><span class="exercise-number">5.18.</span> A <a href="#tab-5-16" data-source-xref>Tabela 5.16</a> fornece um texto cifrado de Vigenère para você analisar desde o início. Provavelmente será mais fácil fazê-lo escrevendo um programa de computador, mas você pode tentar decifrá-lo apenas com papel e lápis.</p>
+    <ol type="a">
+      <li>Faça uma lista de trigramas coincidentes, como fizemos na <a href="#tab-5-3" data-source-xref>Tabela 5.3</a>. Aplique o teste de Kasiski aos trigramas coincidentes para encontrar o provável comprimento da chave.</li>
+      <li>Construa uma tabela de índices de coincidência para vários comprimentos de chave, como fizemos na <a href="#tab-5-4" data-source-xref>Tabela 5.4</a>. Use os resultados para conjecturar o provável comprimento da chave.</li>
+      <li>Usando o provável comprimento da chave obtido em (a) ou (b), construa uma tabela de índices mútuos de coincidência entre blocos rotacionados, como fizemos na <a href="#tab-5-5" data-source-xref>Tabela 5.5</a>. Selecione os maiores índices de sua tabela e use-os para conjecturar as rotações relativas dos blocos, como fizemos na <a href="#tab-5-6" data-source-xref>Tabela 5.6</a>.</li>
+      <li>Use os resultados de (c) para conjecturar uma versão rotacionada da palavra-chave; depois, tente as diferentes rotações, como fizemos na <a href="#tab-5-7" data-source-xref>Tabela 5.7</a>, para encontrar a palavra-chave correta e decifrar o texto.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-19">
+    <p><span class="exercise-number">5.19.</span> A <strong>cifra de chave automática</strong> é semelhante à cifra de Vigenère, exceto que, em vez de repetir a chave, ela simplesmente usa a chave para cifrar as primeiras letras e depois usa o próprio texto claro, deslocado, para continuar a cifração. Por exemplo, para cifrar a mensagem <span lang="en">“The autokey cipher is cool”</span> com a palavra-chave <code>random</code>, procedemos assim:</p>
+    <div class="table-wrap">
+      <table class="cipher-table">
+        <tbody>
+          <tr><th scope="row">Texto claro</th><td><code>t h e a u t o k e y c i p h e r i s c o o l</code></td></tr>
+          <tr><th scope="row">Chave</th><td><code>r a n d o m t h e a u t o k e y c i p h e r</code></td></tr>
+          <tr><th scope="row">Texto cifrado</th><td><code>k h r d i f h r i y w b d r i p k a r v s c</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A cifra de chave automática tem a vantagem de que mensagens diferentes são cifradas com chaves diferentes, exceto pelas primeiras letras. Além disso, como a chave não se repete, não há comprimento de chave; portanto, a chave automática não é diretamente suscetível à análise de Kasiski ou do índice de coincidência. Uma desvantagem é que um único erro de cifração torna ininteligível o restante da mensagem. Segundo <a href="../../references/#ref-63" data-source-xref>[63]</a>, Vigenère inventou a cifra de chave automática em 1586, mas sua invenção foi ignorada e esquecida antes de ser reinventada no século XIX.</p>
+    <ol type="a">
+      <li><p>Cifre a mensagem a seguir com a cifra de chave automática.</p>
+        <p>Palavra-chave: <code>LEAR</code><br>Texto claro: <span lang="en">Come not between the dragon and his wrath.</span></p>
+      </li>
+      <li><p>Decifre a mensagem a seguir com a cifra de chave automática.</p>
+        <p>Palavra-chave: <code>CORDELIA</code><br>Texto cifrado: <code>pckkm yowvz ejwzk knyzv vurux cstri tgac</code></p>
+      </li>
+      <li><p>Eva intercepta um texto cifrado por chave automática e consegue roubar o texto claro correspondente:</p>
+        <pre class="ciphertext">Texto claro:    ifmusicbethefoodofloveplayon
+Texto cifrado:  azdzwqvjjfbwnqphhmptjsszfjci</pre>
+        <p>Ajude Eva a descobrir a palavra-chave usada na cifração. Descreva seu método com generalidade suficiente para mostrar que a cifra de chave automática é suscetível a ataques de texto claro conhecido.</p>
+      </li>
+      <li><strong>Problema bônus.</strong> Tente formular um ataque estatístico ou algébrico à cifra de chave automática, supondo que você disponha de uma grande quantidade de texto cifrado para analisar.</li>
+    </ol>
+  </div>
+
+  <h3>Seção 5.3 — Teoria da probabilidade</h3>
+
+  <div class="exercise" id="exercicio-5-20">
+    <p><span class="exercise-number">5.20.</span> Use a definição <a href="#eq-5-15" data-source-xref>(5.15)</a> da probabilidade de um evento para provar os fatos básicos a seguir.</p>
+    <ol type="a">
+      <li>Sejam \(E\) e \(F\) eventos disjuntos. Então
+        <div class="equation">\[\Pr(E\cup F)=\Pr(E)+\Pr(F).\]</div>
+      </li>
+      <li>Sejam \(E\) e \(F\) eventos que não precisam ser disjuntos. Então
+        <div class="equation">\[\Pr(E\cup F)=\Pr(E)+\Pr(F)-\Pr(E\cap F).\]</div>
+      </li>
+      <li>Seja \(E\) um evento. Então \(\Pr(E^c)=1-\Pr(E)\).</li>
+      <li>Sejam \(E_1,E_2,E_3\) eventos. Prove que
+        <div class="equation">\[
+          \begin{aligned}
+          \Pr(E_1\cup E_2\cup E_3)
+            &amp;=\Pr(E_1)+\Pr(E_2)+\Pr(E_3)-\Pr(E_1\cap E_2)\\
+            &amp;\quad-\Pr(E_1\cap E_3)-\Pr(E_2\cap E_3)
+              +\Pr(E_1\cap E_2\cap E_3).
+          \end{aligned}
+        \]</div>
+      </li>
+    </ol>
+    <p>As fórmulas dos itens (b) e (d), e sua generalização para \(n\) eventos, são conhecidas como <strong>princípio da inclusão-exclusão</strong>.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-21">
+    <p><span class="exercise-number">5.21.</span> Continuamos com o cenário de lançamentos de moeda do <a href="#exemplo-5-23" data-source-xref>Exemplo 5.23</a>: nosso experimento consiste em lançar dez vezes uma moeda equilibrada. Calcule as probabilidades dos eventos seguintes.</p>
+    <ol type="a">
+      <li>O primeiro e o último lançamentos dão cara.</li>
+      <li>O primeiro ou o último lançamento — ou ambos — dá cara.</li>
+      <li>O primeiro ou o último lançamento — mas não ambos — dá cara.</li>
+      <li>Há exatamente \(k\) caras e \(10-k\) coroas. Calcule a probabilidade para cada valor de \(k\) entre 0 e 10. <em>Dica:</em> para poupar tempo, observe que a probabilidade de exatamente \(k\) caras é igual à probabilidade de exatamente \(k\) coroas.</li>
+      <li>Há um número par de caras.</li>
+      <li>Há um número ímpar de caras.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-22">
+    <p><span class="exercise-number">5.22.</span> Alice propõe a você a aposta seguinte. Ela lançará 14 vezes uma moeda equilibrada. Se saírem exatamente 7 caras, ela lhe dará 4 dólares; caso contrário, você lhe dará 1 dólar. Você aceitaria a aposta? Em caso afirmativo, se a repetisse 10.000 vezes, quanto dinheiro esperaria ganhar ou perder?</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-23">
+    <p><span class="exercise-number">5.23.</span> Sejam \(E\) e \(F\) eventos.</p>
+    <ol type="a">
+      <li>Prove que \(\Pr(E\mid E)=1\). Explique em palavras por que isso é razoável.</li>
+      <li>Se \(E\) e \(F\) são disjuntos, prove que \(\Pr(F\mid E)=0\). Explique em palavras por que isso é razoável.</li>
+      <li>Sejam \(F_1,\ldots,F_n\) eventos que satisfazem \(F_i\cap F_j=\varnothing\) para todo \(i\ne j\). Dizemos que \(F_1,\ldots,F_n\) são <em>dois a dois disjuntos</em>. Prove que
+        <div class="equation">\[\Pr\left(\bigcup_{i=1}^nF_i\right)=\sum_{i=1}^n\Pr(F_i).\]</div>
+      </li>
+      <li>Sejam \(F_1,\ldots,F_n\) dois a dois disjuntos como em (c), e suponha ainda que
+        <div class="equation">\[F_1\cup\cdots\cup F_n=\Omega,\]</div>
+        em que \(\Omega\) é todo o espaço amostral. Prove a seguinte versão geral da fórmula de decomposição <a href="#eq-5-20" data-source-xref>(5.20)</a> da <a href="#prop-5-24" data-source-xref>Proposição 5.24(a)</a>:
+        <div class="equation">\[\Pr(E)=\sum_{i=1}^n\Pr(E\mid F_i)\Pr(F_i).\]</div>
+      </li>
+      <li>Prove uma versão geral da fórmula de Bayes:
+        <div class="equation">\[
+          \Pr(F_i\mid E)=
+          \frac{\Pr(E\mid F_i)\Pr(F_i)}
+          {\Pr(E\mid F_1)\Pr(F_1)+\Pr(E\mid F_2)\Pr(F_2)+\cdots+\Pr(E\mid F_n)\Pr(F_n)}.
+        \]</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-24">
+    <p><span class="exercise-number">5.24.</span> Há duas urnas contendo canetas e lápis. A urna 1 contém três canetas e sete lápis; a urna 2 contém oito canetas e quatro lápis.</p>
+    <ol type="a">
+      <li>Escolhe-se uma urna ao acaso e retira-se um objeto. Qual é a probabilidade de ser um lápis?</li>
+      <li>Escolhe-se uma urna ao acaso e retira-se um objeto. Se o objeto retirado é um lápis, qual é a probabilidade de ter vindo da urna 1?</li>
+      <li>Se uma urna é escolhida ao acaso e dois objetos são retirados simultaneamente, qual é a probabilidade de ambos serem lápis?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-25">
+    <p><span class="exercise-number">5.25.</span> Uma urna contém 20 moedas de prata e 10 moedas de ouro. Você é a sexta pessoa de uma fila em que cada pessoa retira ao acaso uma moeda da urna e fica com ela.</p>
+    <ol type="a">
+      <li>Qual é a probabilidade de você retirar uma moeda de ouro?</li>
+      <li>Se você retira uma moeda de ouro, qual é a probabilidade de as cinco pessoas à sua frente terem retirado somente moedas de prata?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-26">
+    <p><span class="exercise-number">5.26.</span> Considere o cenário dos três prisioneiros descrito no <a href="#exemplo-5-26" data-source-xref>Exemplo 5.26</a>. Sejam \(A\), \(B\) e \(C\), respectivamente, os eventos de Alice, Bob e Carl serem libertados, que supomos equiprováveis; portanto, \(\Pr(A)=\Pr(B)=\Pr(C)=1/3\). Seja também \(J\) o evento em que o carcereiro diz a Alice que Bob continuará preso.</p>
+    <ol type="a">
+      <li>Calcule \(\Pr(B\mid J)\), \(\Pr(J\mid B)\) e \(\Pr(J\mid C)\).</li>
+      <li>Calcule \(\Pr(J\mid A^c)\) e \(\Pr(J^c\mid A^c)\), em que \(A^c\) é o evento de Alice continuar presa.</li>
+      <li>Suponha que, se Alice for libertada, o carcereiro lance uma moeda equilibrada para decidir se dirá a ela que Bob continuará preso ou que Carl continuará preso. Qual é o valor de \(\Pr(A\mid J)\)?</li>
+      <li>Suponha, em vez disso, que, se Alice for libertada, o carcereiro sempre diga a ela que Bob continuará preso. Qual é agora o valor de \(\Pr(A\mid J)\)?</li>
+    </ol>
+    <p>Outros problemas semelhantes, com conclusões contraintuitivas, incluem o problema de Monty Hall, o <a href="#exercicio-5-27" data-source-xref>Exercício 5.27</a>, o paradoxo das caixas de Bertrand e o princípio da escolha restrita no bridge de contrato.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-27">
+    <p><span class="exercise-number">5.27.</span> <strong>O problema de Monty Hall.</strong> Monty Hall oferece a Dan três cortinas. Atrás de uma delas há um carro; atrás das outras duas, cabras. Dan escolhe uma cortina, mas, antes que ela seja aberta, Monty Hall abre uma das outras e revela uma cabra. Depois, oferece a Dan a opção de manter sua cortina original ou trocar pela outra cortina ainda fechada. O problema de Monty Hall é determinar a melhor estratégia de Dan: “manter ou trocar?”</p>
+    <ol type="a">
+      <li>Qual é a probabilidade de Dan ganhar o carro se sempre mantiver sua primeira escolha? Qual é a probabilidade de ganhar se sempre trocar de cortina? Qual é a melhor estratégia? Se a resposta parecer contraintuitiva, suponha que haja 1.000 cortinas e que Monty Hall abra 998 cortinas com cabras. Quais serão, então, as probabilidades de vitória das duas estratégias?</li>
+      <li>Suponha que demos a Monty Hall outra opção: ele pode obrigar Dan a manter sua primeira cortina. Admitindo que Monty Hall não goste de dar carros, qual é agora a melhor estratégia de Dan e qual é sua probabilidade de ganhar um carro?</li>
+      <li>Mais geralmente, suponha que haja \(N\) cortinas e \(M\) carros, e que Monty Hall abra \(K\) cortinas que têm cabras atrás delas. Calcule
+        <div class="equation">\[
+          \Pr(\text{Dan ganha um carro}\mid\text{Dan mantém}),\qquad
+          \Pr(\text{Dan ganha um carro}\mid\text{Dan troca}).
+        \]</div>
+        Qual é a melhor estratégia?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-28">
+    <p><span class="exercise-number">5.28.</span> Seja \(S\) um conjunto, seja \(A\) uma propriedade de interesse e suponha que, para \(m\in S\),</p>
+    <div class="equation">\[
+      \Pr(m\text{ não possui a propriedade }A)=\delta.
+    \]</div>
+    <p>Suponha ainda que um algoritmo de Monte Carlo, aplicado a \(m\) e a um número aleatório \(r\), satisfaça:</p>
+    <ol>
+      <li>Se o algoritmo devolve <em>Sim</em>, então \(m\) certamente possui a propriedade \(A\).</li>
+      <li>Se \(m\) possui a propriedade \(A\), a probabilidade de o algoritmo devolver <em>Sim</em> é pelo menos \(p\).</li>
+    </ol>
+    <p>Podemos reformular (1) e (2) como probabilidades condicionais:</p>
+    <ol>
+      <li>\(\Pr(m\text{ possui }A\mid\text{o algoritmo devolve Sim})=1\);</li>
+      <li>\(\Pr(\text{o algoritmo devolve Sim}\mid m\text{ possui }A)\ge p\).</li>
+    </ol>
+    <p>Suponha que executemos o algoritmo \(N\) vezes sobre o número \(m\), e que ele devolva <em>Não</em> em todas as execuções. Obtenha um limite inferior, em termos de \(\delta\), \(p\) e \(N\), para a probabilidade de \(m\) não possuir a propriedade \(A\). Isso generaliza a versão do método de Monte Carlo estudada na <a href="#sec-5-3-3" data-source-xref>Seção 5.3.3</a>, com \(\delta=0{,}01\) e \(p=1/2\). Tenha cuidado para distinguir \(p\) de \(1-p\) nos cálculos.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-29">
+    <p><span class="exercise-number">5.29.</span> Continuamos com a situação descrita no <a href="#exercicio-5-28" data-source-xref>Exercício 5.28</a>.</p>
+    <ol type="a">
+      <li>Suponha que \(\delta=9/10\) e \(p=3/4\). Se executarmos o algoritmo 25 vezes sobre a entrada \(m\) e recebermos sempre <em>Não</em>, qual é a probabilidade de \(m\) não possuir a propriedade \(A\)?</li>
+      <li>A mesma pergunta de (a), mas desta vez executamos o algoritmo 100 vezes.</li>
+      <li>Suponha que \(\delta=99/100\) e \(p=1/2\). Quantas vezes devemos executar o algoritmo sobre \(m\) para ter \(99\%\) de confiança de que \(m\) não possui a propriedade \(A\), supondo que toda saída seja <em>Não</em>?</li>
+      <li>A mesma pergunta de (c), mas agora queremos \(99{,}9999\%\) de confiança.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-30">
+    <p><span class="exercise-number">5.30.</span> Se um inteiro \(n\) é composto, o teste de Miller–Rabin tem probabilidade de pelo menos \(75\%\) de conseguir provar que \(n\) é composto, ao passo que jamais identifica erroneamente um primo como composto. Veja a <a href="../ch03/#tab-3-2" data-source-xref>Tabela 3.2</a>, na <a href="../ch03/#sec-3-4" data-source-xref>Seção 3.4</a>, para uma descrição do teste. Suponha que executemos o teste de Miller–Rabin \(N\) vezes sobre \(n\) e que ele não consiga provar que \(n\) é composto. Mostre que a probabilidade de \(n\) ser primo satisfaz aproximadamente</p>
+    <div class="equation">\[
+      \Pr(n\text{ é primo}\mid\text{Miller--Rabin falha \(N\) vezes})
+      \ge1-\frac{\ln n}{4^N}.
+    \]</div>
+    <p><em>Dica:</em> use o <a href="#exercicio-5-28" data-source-xref>Exercício 5.28</a> com escolhas apropriadas de \(A\), \(S\), \(\delta\) e \(p\). Você também pode usar a estimativa da <a href="../ch03/#sec-3-4-1" data-source-xref>Seção 3.4.1</a> de que a probabilidade de \(n\) ser primo é aproximadamente \(1/\ln n\).</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-31">
+    <p><span class="exercise-number">5.31.</span> É natural supor que, se \(\Pr(E\mid F)\) é significativamente maior que \(\Pr(E)\), então, de algum modo, \(F\) está causando \(E\). A fórmula de Bayes ilustra a falácia desse tipo de raciocínio, pois diz que</p>
+    <div class="equation">\[
+      \frac{\Pr(E\mid F)}{\Pr(E)}=\frac{\Pr(F\mid E)}{\Pr(F)}.
+    \]</div>
+    <p>Logo, se \(F\) “causa” \(E\), o mesmo raciocínio mostra que \(E\) “causa” \(F\). Tudo o que se pode realmente dizer é que \(E\) e \(F\) estão correlacionados, no sentido de que a ocorrência de qualquer um deles aumenta a probabilidade de ocorrência do outro. É incorreto deduzir uma relação de causa e efeito.</p>
+    <p>Eis um exemplo concreto. Testes mostram que estudantes do primeiro ano escolar têm maior probabilidade de soletrar bem quando calçam sapatos maiores que a média. Isso é um fato experimental. Portanto, se alongarmos o pé de uma criança, ela soletrará melhor! Ou, pela fórmula de Bayes, se lhe dermos aulas extras de ortografia, seus pés crescerão mais depressa! Explique por que essas duas últimas afirmações são absurdas e descreva o que está realmente acontecendo.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-32">
+    <p><span class="exercise-number">5.32.</span> Seja \(f_X(k)\) a função densidade binomial <a href="#eq-5-23" data-source-xref>(5.23)</a>. Prove diretamente, usando o teorema binomial, que</p>
+    <div class="equation">\[
+      \sum_{k=0}^n f_X(k)=1.
+    \]</div>
+  </div>
+
+  <div class="exercise" id="exercicio-5-33">
+    <p><span class="exercise-number">5.33.</span> No <a href="#exemplo-5-37" data-source-xref>Exemplo 5.37</a>, usamos um truque de diferenciação para calcular o valor da série infinita \(\sum_{n=1}^{\infty}np(1-p)^{n-1}\). Este exercício desenvolve melhor essa técnica útil. O ponto de partida é a fórmula da série geométrica</p>
+    <div class="equation" id="eq-5-57"><span class="equation-number">(5.57)</span>\[
+      \sum_{n=0}^{\infty}x^n=\frac1{1-x}\qquad\text{para }|x|&lt;1
+    \]</div>
+    <p>e o operador diferencial</p>
+    <div class="equation">\[
+      D=x\frac d{dx}.
+    \]</div>
+    <ol type="a">
+      <li>Usando \(D(x^n)=nx^n\), prove que
+        <div class="equation" id="eq-5-58"><span class="equation-number">(5.58)</span>\[
+          \sum_{n=1}^{\infty}nx^n=\frac{x}{(1-x)^2}
+        \]</div>
+        aplicando \(D\) aos dois lados de <a href="#eq-5-57" data-source-xref>(5.57)</a>. Para quais valores de \(x\) o lado esquerdo de <a href="#eq-5-58" data-source-xref>(5.58)</a> converge? <em>Dica:</em> use o teste da razão.</li>
+      <li>Aplicando \(D\) novamente, prove que
+        <div class="equation" id="eq-5-59"><span class="equation-number">(5.59)</span>\[
+          \sum_{n=0}^{\infty}n^2x^n=\frac{x+x^2}{(1-x)^3}.
+        \]</div>
+      </li>
+      <li>Mais geralmente, prove que, para todo valor de \(k\), existe um polinômio \(F_k(x)\) tal que
+        <div class="equation" id="eq-5-60"><span class="equation-number">(5.60)</span>\[
+          \sum_{n=0}^{\infty}n^kx^n=\frac{F_k(x)}{(1-x)^{k+1}}.
+        \]</div>
+        <em>Dica:</em> use indução em \(k\).</li>
+      <li>Os primeiros polinômios \(F_k(x)\) de (c) são \(F_0(x)=1\), \(F_1(x)=x\) e \(F_2(x)=x+x^2\). Eles decorrem de <a href="#eq-5-57" data-source-xref>(5.57)</a>, <a href="#eq-5-58" data-source-xref>(5.58)</a> e <a href="#eq-5-59" data-source-xref>(5.59)</a>. Calcule \(F_3(x)\) e \(F_4(x)\).</li>
+      <li>Prove que o polinômio \(F_k(x)\) de (c) tem grau \(k\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-34">
+    <p><span class="exercise-number">5.34.</span> Em cada caso, calcule a esperança da variável aleatória \(X\).</p>
+    <ol type="a">
+      <li>Os valores de \(X\) são uniformemente distribuídos no conjunto \(\{0,1,2,\ldots,N-1\}\). Veja o <a href="#exemplo-5-28" data-source-xref>Exemplo 5.28</a>.</li>
+      <li>Os valores de \(X\) são uniformemente distribuídos no conjunto \(\{1,2,\ldots,N\}\).</li>
+      <li>Os valores de \(X\) são uniformemente distribuídos no conjunto \(\{1,3,7,11,19,23\}\).</li>
+      <li>\(X\) é uma variável aleatória com função densidade binomial; veja a fórmula <a href="#eq-5-23" data-source-xref>(5.23)</a> no <a href="#exemplo-5-29" data-source-xref>Exemplo 5.29</a>, na página 240.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-35">
+    <p><span class="exercise-number">5.35.</span> Seja \(X\) uma variável aleatória no espaço de probabilidade \(\Omega\). Talvez pareça mais natural definir o valor esperado de \(X\) pela fórmula</p>
+    <div class="equation" id="eq-5-61"><span class="equation-number">(5.61)</span>\[
+      \sum_{\omega\in\Omega}X(\omega)\Pr(\omega).
+    \]</div>
+    <p>Prove que a fórmula <a href="#eq-5-61" data-source-xref>(5.61)</a> fornece o mesmo valor que <a href="#eq-5-27" data-source-xref>(5.27)</a>, na página 244, usada no texto para definir \(E(X)\).</p>
+  </div>
+
+  <h3>Seção 5.4 — Algoritmos de colisão e o paradoxo do aniversário</h3>
+
+  <div class="exercise" id="exercicio-5-36">
+    <p><span class="exercise-number">5.36.</span></p>
+    <ol type="a">
+      <li>Em um grupo de 23 desconhecidos, qual é a probabilidade de pelo menos dois fazerem aniversário no mesmo dia? E se houver 40 desconhecidos? Em um grupo de 200 desconhecidos, qual é a probabilidade de um deles fazer aniversário no mesmo dia que você? <em>Dica:</em> veja a discussão na <a href="#sec-5-4-1" data-source-xref>Seção 5.4.1</a>.</li>
+      <li>Suponha que haja \(N\) dias em um ano, em que \(N\) pode ser qualquer número, e que haja \(n\) pessoas. Obtenha uma fórmula geral, análoga a <a href="#eq-5-28" data-source-xref>(5.28)</a>, para a probabilidade de pelo menos duas delas fazerem aniversário no mesmo dia. <em>Dica:</em> faça um cálculo semelhante ao da demonstração de <a href="#eq-5-28" data-source-xref>(5.28)</a> no teorema de colisão, o <a href="#teorema-5-38" data-source-xref>Teorema 5.38</a>, mas observe que a fórmula é um pouco diferente porque os aniversários são escolhidos de uma única lista de \(N\) dias.</li>
+      <li>Encontre um limite inferior da forma
+        <div class="equation">\[
+          \Pr(\text{pelo menos uma coincidência})
+          \ge1-e^{-(\text{alguma função de \(n\) e \(N\)})}
+        \]</div>
+        para a probabilidade de (b), análogo à estimativa <a href="#eq-5-29" data-source-xref>(5.29)</a>.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-37">
+    <p><span class="exercise-number">5.37.</span> Um baralho é embaralhado e as oito cartas do topo são viradas.</p>
+    <ol type="a">
+      <li>Qual é a probabilidade de o rei de copas estar visível?</li>
+      <li>Um segundo baralho é embaralhado e suas oito cartas do topo são viradas. Qual é a probabilidade de uma carta visível do primeiro baralho coincidir com uma carta visível do segundo? Observe que isso difere um pouco do <a href="#exemplo-5-39" data-source-xref>Exemplo 5.39</a>, pois as cartas do segundo baralho não são repostas.</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-38">
+    <p><span class="exercise-number">5.38.</span></p>
+    <ol type="a">
+      <li>Prove que
+        <div class="equation">\[e^{-x}\ge1-x\qquad\text{para todo }x.\]</div>
+        <em>Dica:</em> examine os gráficos de \(e^{-x}\) e \(1-x\), ou use cálculo para determinar o mínimo de \(f(x)=e^{-x}-(1-x)\).</li>
+      <li>Prove que, para todo \(a&gt;1\), a desigualdade
+        <div class="equation">\[
+          e^{-ax}\le(1-x)^a+\frac12ax^2
+        \]</div>
+        é válida para todo \(0\le x\le1\). Este é um problema desafiador.</li>
+      <li>Usamos a desigualdade de (a) na demonstração do limite inferior <a href="#eq-5-29" data-source-xref>(5.29)</a> no teorema de colisão, o <a href="#teorema-5-38" data-source-xref>Teorema 5.38</a>. Use (b) para provar que
+        <div class="equation">\[
+          \Pr(\text{pelo menos uma vermelha})
+          \le1-e^{-mn/N}+\frac{mn^2}{2N^2}.
+        \]</div>
+        Assim, se \(N\) é grande e \(m\) e \(n\) não são muito maiores que \(\sqrt N\), a estimativa
+        <div class="equation">\[
+          \Pr(\text{pelo menos uma vermelha})\approx1-e^{-mn/N}
+        \]</div>
+        é bastante precisa. <em>Dica:</em> use (b) com \(a=m\) e \(x=n/N\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-39">
+    <p><span class="exercise-number">5.39.</span> Resolva o problema do logaritmo discreto \(10^x=106\) no corpo finito \(\mathbb F_{811}\), encontrando uma colisão entre as potências aleatórias \(10^i\) e \(106\cdot10^i\) listadas na <a href="#tab-5-17" data-source-xref>Tabela 5.17</a>.</p>
+  </div>
+
+  <div class="table-wrap" id="tab-5-17">
+    <table class="numeric">
+      <caption><span class="label">Tabela 5.17.</span> Dados para o Exercício 5.39: \(g=10\), \(h=106\), \(p=811\).</caption>
+      <thead><tr><th>\(i\)</th><th>\(g^i\)</th><th>\(h\cdot g^i\)</th><th>\(i\)</th><th>\(g^i\)</th><th>\(h\cdot g^i\)</th><th>\(i\)</th><th>\(g^i\)</th><th>\(h\cdot g^i\)</th><th>\(i\)</th><th>\(g^i\)</th><th>\(h\cdot g^i\)</th></tr></thead>
+      <tbody>
+        <tr><td>116</td><td>96</td><td>444</td><td>519</td><td>291</td><td>28</td><td>791</td><td>496</td><td>672</td><td>406</td><td>801</td><td>562</td></tr>
+        <tr><td>497</td><td>326</td><td>494</td><td>286</td><td>239</td><td>193</td><td>385</td><td>437</td><td>95</td><td>745</td><td>194</td><td>289</td></tr>
+        <tr><td>225</td><td>757</td><td>764</td><td>298</td><td>358</td><td>642</td><td>178</td><td>527</td><td>714</td><td>234</td><td>304</td><td>595</td></tr>
+        <tr><td>233</td><td>517</td><td>465</td><td>500</td><td>789</td><td>101</td><td>471</td><td>117</td><td>237</td><td>556</td><td>252</td><td>760</td></tr>
+        <tr><td>677</td><td>787</td><td>700</td><td>272</td><td>24</td><td>111</td><td>42</td><td>448</td><td>450</td><td>326</td><td>649</td><td>670</td></tr>
+        <tr><td>622</td><td>523</td><td>290</td><td>307</td><td>748</td><td>621</td><td>258</td><td>413</td><td>795</td><td>399</td><td>263</td><td>304</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Seção 5.5 — O método \(\rho\) de Pollard</h3>
+
+  <div class="exercise" id="exercicio-5-40">
+    <p><span class="exercise-number">5.40.</span> A <a href="#tab-5-18" data-source-xref>Tabela 5.18</a> fornece parte dos cálculos para resolver o problema do logaritmo discreto</p>
+    <div class="equation" id="eq-5-62"><span class="equation-number">(5.62)</span>\[
+      11^t=41387\quad\text{em }\mathbb F_{81799}
+    \]</div>
+    <p>pelo método \(\rho\) de Pollard. Ela é semelhante à <a href="#tab-5-11" data-source-xref>Tabela 5.11</a> do <a href="#exemplo-5-52" data-source-xref>Exemplo 5.52</a>. Use os dados da <a href="#tab-5-18" data-source-xref>Tabela 5.18</a> para resolver <a href="#eq-5-62" data-source-xref>(5.62)</a>.</p>
+  </div>
+
+  <div class="table-wrap" id="tab-5-18">
+    <table class="numeric">
+      <caption><span class="label">Tabela 5.18.</span> Cálculos para resolver \(11^t=41387\) em \(\mathbb F_{81799}\), para o Exercício 5.40.</caption>
+      <thead><tr><th>\(i\)</th><th>\(x_i\)</th><th>\(y_i\)</th><th>\(\alpha_i\)</th><th>\(\beta_i\)</th><th>\(\gamma_i\)</th><th>\(\delta_i\)</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>11</td><td>121</td><td>1</td><td>0</td><td>2</td><td>0</td></tr>
+        <tr><td>2</td><td>121</td><td>14641</td><td>2</td><td>0</td><td>4</td><td>0</td></tr>
+        <tr><td>3</td><td>1331</td><td>42876</td><td>3</td><td>0</td><td>12</td><td>2</td></tr>
+        <tr><td>4</td><td>14641</td><td>7150</td><td>4</td><td>0</td><td>25</td><td>4</td></tr>
+        <tr><td colspan="7">⋮</td></tr>
+        <tr><td>151</td><td>4862</td><td>33573</td><td>40876</td><td>45662</td><td>29798</td><td>73363</td></tr>
+        <tr><td>152</td><td>23112</td><td>53431</td><td>81754</td><td>9527</td><td>37394</td><td>48058</td></tr>
+        <tr><td>153</td><td>8835</td><td>23112</td><td>81755</td><td>9527</td><td>67780</td><td>28637</td></tr>
+        <tr><td>154</td><td>15386</td><td>15386</td><td>81756</td><td>9527</td><td>67782</td><td>28637</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="exercise" id="exercicio-5-41">
+    <p><span class="exercise-number">5.41.</span> A <a href="#tab-5-19" data-source-xref>Tabela 5.19</a> fornece parte dos cálculos para resolver o problema do logaritmo discreto</p>
+    <div class="equation" id="eq-5-63"><span class="equation-number">(5.63)</span>\[
+      7^t=3018\quad\text{em }\mathbb F_{7963}
+    \]</div>
+    <p>pelo método \(\rho\) de Pollard. Ela é semelhante à <a href="#tab-5-11" data-source-xref>Tabela 5.11</a> do <a href="#exemplo-5-52" data-source-xref>Exemplo 5.52</a>. Estenda a <a href="#tab-5-19" data-source-xref>Tabela 5.19</a> até encontrar uma colisão — prometemos que não levará muito tempo — e depois resolva <a href="#eq-5-63" data-source-xref>(5.63)</a>.</p>
+  </div>
+
+  <div class="table-wrap" id="tab-5-19">
+    <table class="numeric">
+      <caption><span class="label">Tabela 5.19.</span> Cálculos para resolver \(7^t=3018\) em \(\mathbb F_{7963}\), para o Exercício 5.41.</caption>
+      <thead><tr><th>\(i\)</th><th>\(x_i\)</th><th>\(y_i\)</th><th>\(\alpha_i\)</th><th>\(\beta_i\)</th><th>\(\gamma_i\)</th><th>\(\delta_i\)</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>7</td><td>49</td><td>1</td><td>0</td><td>2</td><td>0</td></tr>
+        <tr><td>2</td><td>49</td><td>2401</td><td>2</td><td>0</td><td>4</td><td>0</td></tr>
+        <tr><td>3</td><td>343</td><td>6167</td><td>3</td><td>0</td><td>6</td><td>0</td></tr>
+        <tr><td>4</td><td>2401</td><td>1399</td><td>4</td><td>0</td><td>7</td><td>1</td></tr>
+        <tr><td colspan="7">⋮</td></tr>
+        <tr><td>87</td><td>1329</td><td>1494</td><td>6736</td><td>7647</td><td>3148</td><td>3904</td></tr>
+        <tr><td>88</td><td>1340</td><td>1539</td><td>6737</td><td>7647</td><td>3150</td><td>3904</td></tr>
+        <tr><td>89</td><td>1417</td><td>4767</td><td>6738</td><td>7647</td><td>6302</td><td>7808</td></tr>
+        <tr><td>90</td><td>1956</td><td>1329</td><td>6739</td><td>7647</td><td>4642</td><td>7655</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="exercise" id="exercicio-5-42">
+    <p><span class="exercise-number">5.42.</span> Escreva um programa de computador que implemente o método \(\rho\) de Pollard para resolver o problema do logaritmo discreto e use-o para resolver:</p>
+    <ol type="a">
+      <li>\(2^t=2495\) em \(\mathbb F_{5011}\);</li>
+      <li>\(17^t=14226\) em \(\mathbb F_{17959}\);</li>
+      <li>\(29^t=5953042\) em \(\mathbb F_{15239131}\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-43">
+    <p><span class="exercise-number">5.43.</span> Calcule a integral</p>
+    <div class="equation">\[
+      I=\int_0^\infty t^2e^{-t^2/2}\,dt
+    \]</div>
+    <p>que aparece na demonstração do <a href="#teorema-5-48" data-source-xref>Teorema 5.48</a>. <em>Dica:</em> escreva \(I^2\) como a integral iterada</p>
+    <div class="equation">\[
+      I^2=\int_0^\infty\int_0^\infty
+      x^2e^{-x^2/2}\,y^2e^{-y^2/2}\,dx\,dy
+    \]</div>
+    <p>e passe para coordenadas polares.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-44">
+    <p><span class="exercise-number">5.44.</span> Este exercício descreve o algoritmo \(\rho\) de Pollard para fatoração. Ele é particularmente eficiente para fatorar números \(N\) que possuem um fator primo \(p\) consideravelmente menor que \(N/p\). Mais adiante estudaremos um algoritmo de fatoração ainda mais rápido, embora mais complicado, com essa propriedade, baseado na teoria das curvas elípticas; veja a Seção 6.6.</p>
+    <p>Seja \(N\) um inteiro que não é primo e seja</p>
+    <div class="equation">\[
+      f:\mathbb Z/N\mathbb Z\longrightarrow\mathbb Z/N\mathbb Z
+    \]</div>
+    <p>uma função misturadora, por exemplo, \(f(x)=x^2+1\bmod N\). Como na versão abstrata do método \(\rho\) de Pollard, o <a href="#teorema-5-48" data-source-xref>Teorema 5.48</a>, tome \(x_0=y_0\) como valor inicial e gere sequências definindo \(x_{i+1}=f(x_i)\) e \(y_{i+1}=f(f(y_i))\). Em cada etapa, calcule também o máximo divisor comum</p>
+    <div class="equation">\[
+      g_i=\gcd\bigl(|x_i-y_i|,N\bigr).
+    \]</div>
+    <ol type="a">
+      <li>Seja \(p\) o menor divisor primo de \(N\). Se \(f\) é suficientemente aleatória, mostre que, com alta probabilidade,
+        <div class="equation">\[
+          g_k=p\qquad\text{para algum }k=O(\sqrt p).
+        \]</div>
+        Portanto, o algoritmo fatora \(N\) em \(O(\sqrt p)\) etapas.</li>
+      <li>Programe o algoritmo \(\rho\) de Pollard com \(f(x)=x^2+1\) e \(x_0=y_0=0\), e use-o para fatorar os números seguintes. Em cada caso, forneça o menor valor de \(k\) para o qual \(g_k\) é um fator não trivial de \(N\) e imprima a razão \(k/\sqrt N\).
+        <ol type="i">
+          <li>\(N=2201\);</li>
+          <li>\(N=9409613\);</li>
+          <li>\(N=1782886219\).</li>
+        </ol>
+      </li>
+      <li>Repita os cálculos de (b) com a função \(f(x)=x^2+2\). Os tempos de execução mudam?</li>
+      <li>Explique o que acontece ao executar o algoritmo \(\rho\) de Pollard quando \(N\) é primo.</li>
+      <li>Explique o que acontece ao executar o algoritmo \(\rho\) de Pollard com \(f(x)=x^2\) e quaisquer valores iniciais \(x_0\).</li>
+      <li>Experimente executar o algoritmo \(\rho\) de Pollard com \(f(x)=x^2-2\). Explique o que acontece. <em>Dica:</em> esta parte é mais desafiadora. Pode ser útil empregar a identidade
+        <div class="equation">\[
+          f^n(u+u^{-1})=u^{2^n}+u^{-2^n},
+        \]</div>
+        que pode ser provada por indução.</li>
+    </ol>
+  </div>
+
+  <h3>Seção 5.6 — Teoria da informação</h3>
+
+  <div class="exercise" id="exercicio-5-45">
+    <p><span class="exercise-number">5.45.</span> Considere uma cifra com três chaves, três textos claros e quatro textos cifrados, combinados pela tabela de cifração a seguir, semelhante à <a href="#tab-5-12" data-source-xref>Tabela 5.12</a> usada no <a href="#exemplo-5-54" data-source-xref>Exemplo 5.54</a>, na página 265.</p>
+    <div class="table-wrap">
+      <table class="numeric">
+        <thead><tr><th></th><th>\(m_1\)</th><th>\(m_2\)</th><th>\(m_3\)</th></tr></thead>
+        <tbody>
+          <tr><th>\(k_1\)</th><td>\(c_2\)</td><td>\(c_4\)</td><td>\(c_1\)</td></tr>
+          <tr><th>\(k_2\)</th><td>\(c_1\)</td><td>\(c_3\)</td><td>\(c_2\)</td></tr>
+          <tr><th>\(k_3\)</th><td>\(c_3\)</td><td>\(c_1\)</td><td>\(c_2\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Suponha ainda que os textos claros e as chaves sejam usados com as probabilidades seguintes:</p>
+    <div class="equation">\[
+      f(m_1)=f(m_2)=\frac25,\qquad f(m_3)=\frac15,\qquad
+      f(k_1)=f(k_2)=f(k_3)=\frac13.
+    \]</div>
+    <ol type="a">
+      <li>Calcule \(f(c_1)\), \(f(c_2)\), \(f(c_3)\) e \(f(c_4)\).</li>
+      <li>Calcule \(f(c_1\mid m_1)\), \(f(c_1\mid m_2)\) e \(f(c_1\mid m_3)\). Esse criptossistema possui sigilo perfeito?</li>
+      <li>Calcule \(f(c_2\mid m_1)\) e \(f(c_3\mid m_1)\).</li>
+      <li>Calcule \(f(k_1\mid c_3)\) e \(f(k_2\mid c_3)\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-46">
+    <p><span class="exercise-number">5.46.</span> Suponha que se use uma cifra de deslocamento na qual cada chave — isto é, cada deslocamento de 0 a 25 — tenha a mesma probabilidade e se escolha uma nova chave para cifrar cada letra sucessiva. Mostre que esse criptossistema possui sigilo perfeito, completando os detalhes das etapas seguintes.</p>
+    <ol type="a">
+      <li>Mostre que
+        <div class="equation">\[
+          \sum_{k\in\mathcal K}f_M\bigl(d_k(c)\bigr)=1
+        \]</div>
+        para todo texto cifrado \(c\in\mathcal C\).</li>
+      <li>Calcule a função densidade \(f_C\) do texto cifrado usando <a href="#eq-5-47" data-source-xref>(5.47)</a>, que, neste caso, diz que
+        <div class="equation">\[
+          f_C(c)=\sum_{k\in\mathcal K}f_K(k)f_M\bigl(d_k(c)\bigr).
+        \]</div>
+      </li>
+      <li>Compare \(f_C(c)\) com \(f_{C\mid M}(c\mid m)\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-47">
+    <p><span class="exercise-number">5.47.</span> Dê os detalhes da demonstração de <a href="#eq-5-47" data-source-xref>(5.47)</a>, que afirma que</p>
+    <div class="equation">\[
+      f_C(c)=
+      \sum_{\substack{k\in\mathcal K\ \mathrm{tal\ que}\\c\in e_k(\mathcal M)}}
+      f_K(k)f_M\bigl(d_k(c)\bigr).
+    \]</div>
+    <p><em>Dica:</em> use a fórmula de decomposição do <a href="#exercicio-5-23" data-source-xref>Exercício 5.23(d)</a>.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-48">
+    <p><span class="exercise-number">5.48.</span> Suponha que um criptossistema tenha o mesmo número de textos claros e textos cifrados, \(\#\mathcal M=\#\mathcal C\). Prove que, para qualquer chave \(k\in\mathcal K\) e qualquer texto cifrado \(c\in\mathcal C\), existe um único texto claro \(m\in\mathcal M\) que é cifrado como \(c\) pela chave \(k\). Usamos esse fato na demonstração do <a href="#teorema-5-56" data-source-xref>Teorema 5.56</a>. Observe que a demonstração não exige que o criptossistema possua sigilo perfeito; basta que \(\#\mathcal M=\#\mathcal C\).</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-49">
+    <p><span class="exercise-number">5.49.</span> Seja</p>
+    <div class="equation">\[
+      S_{m,c}=\{k\in\mathcal K:e_k(m)=c\}
+    \]</div>
+    <p>o conjunto usado na demonstração do <a href="#teorema-5-56" data-source-xref>Teorema 5.56</a>. Prove que, se \(c\ne c'\), então \(S_{m,c}\cap S_{m,c'}=\varnothing\). Prove isso para qualquer criptossistema; não é necessário supor sigilo perfeito.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-50">
+    <p><span class="exercise-number">5.50.</span> Suponha que um criptossistema satisfaça \(\#\mathcal K=\#\mathcal M=\#\mathcal C\) e possua sigilo perfeito. Prove que todo texto cifrado é usado com a mesma probabilidade e que todo texto claro é usado com a mesma probabilidade. <em>Dica:</em> demonstramos uma dessas afirmações durante a demonstração do <a href="#teorema-5-56" data-source-xref>Teorema 5.56</a>. A demonstração da outra é semelhante.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-51">
+    <p><span class="exercise-number">5.51.</span> Prove a parte “somente se” do <a href="#teorema-5-56" data-source-xref>Teorema 5.56</a>, isto é, prove que, se um criptossistema com o mesmo número de chaves, textos claros e textos cifrados satisfaz as condições (a) e (b) do <a href="#teorema-5-56" data-source-xref>Teorema 5.56</a>, então possui sigilo perfeito.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-52">
+    <p><span class="exercise-number">5.52.</span> Seja \(X_n\) uma variável aleatória uniformemente distribuída em \(n\) objetos, e seja \(r\ge1\). Prove diretamente a partir da <a href="#propriedade-h3" data-source-xref>Propriedade H3</a> da entropia que</p>
+    <div class="equation">\[
+      H(X_{n^r})=rH(X_n).
+    \]</div>
+    <p>Isso generaliza o <a href="#exemplo-5-58" data-source-xref>Exemplo 5.58</a>.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-53">
+    <p><span class="exercise-number">5.53.</span> Sejam \(X,Y,Z_1,\ldots,Z_m\) variáveis aleatórias como as descritas na <a href="#propriedade-h3" data-source-xref>Propriedade H3</a>, na página 270. Sejam</p>
+    <div class="equation">\[
+      p_i=\Pr(Y=Z_i)
+      \qquad\text{e}\qquad
+      q_{ij}=\Pr(Z_i=x_{ij}),
+      \qquad\text{de modo que}\qquad
+      \Pr(X=x_{ij})=p_iq_{ij}.
+    \]</div>
+    <p>Nessa notação, a Propriedade H3 diz que</p>
+    <div class="equation">\[
+      H\left((p_iq_{ij})_{\substack{1\le i\le n\\1\le j\le m_i}}\right)
+      =
+      H\left((p_i)_{1\le i\le n}\right)
+      +\sum_{i=1}^np_iH\left((q_{ij})_{1\le j\le m_i}\right).
+    \]</div>
+    <p>Veja o <a href="#exemplo-5-59" data-source-xref>Exemplo 5.59</a>. A fórmula <a href="#eq-5-51" data-source-xref>(5.51)</a> para a entropia, dada no <a href="#teorema-5-60" data-source-xref>Teorema 5.60</a>, implica</p>
+    <div class="equation" id="eq-5-64"><span class="equation-number">(5.64)</span>\[
+      \sum_{i=1}^n\sum_{j=1}^{m_i}p_iq_{ij}\log_2(p_iq_{ij})
+      =
+      \sum_{i=1}^np_i\log_2p_i
+      +\sum_{i=1}^np_i\sum_{j=1}^{m_i}q_{ij}\log_2q_{ij}.
+    \]</div>
+    <p>Prove diretamente que <a href="#eq-5-64" data-source-xref>(5.64)</a> é verdadeira. <em>Dica:</em> lembre-se de que as probabilidades satisfazem \(\sum_i p_i=1\) e \(\sum_jq_{ij}=1\).</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-54">
+    <p><span class="exercise-number">5.54.</span> Seja \(F(x)\) uma função duas vezes diferenciável tal que \(F''(x)&lt;0\) para todo \(x\) em seu domínio. Prove que \(F\) é côncava no sentido de <a href="#eq-5-52" data-source-xref>(5.52)</a>. Conclua, em particular, que \(F(x)=\log x\) é côncava para todo \(x&gt;0\).</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-55">
+    <p><span class="exercise-number">5.55.</span> Use indução para provar a desigualdade de Jensen, o <a href="#teorema-5-61" data-source-xref>Teorema 5.61</a>.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-56">
+    <p><span class="exercise-number">5.56.</span> Sejam \(X\) e \(Y\) variáveis aleatórias independentes.</p>
+    <ol type="a">
+      <li>Prove que a equivocação \(H(X\mid Y)\) é igual à entropia \(H(X)\).</li>
+      <li>Se \(H(X\mid Y)=H(X)\), é necessariamente verdade que \(X\) e \(Y\) são independentes?</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-57">
+    <p><span class="exercise-number">5.57.</span> Prove que a equivocação da chave satisfaz a fórmula</p>
+    <div class="equation">\[
+      H(K\mid C)=H(K)+H(M)-H(C),
+    \]</div>
+    <p>como descrito na <a href="#prop-5-64" data-source-xref>Proposição 5.64</a>.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-58">
+    <p><span class="exercise-number">5.58.</span> Continuamos com a cifra descrita no <a href="#exercicio-5-45" data-source-xref>Exercício 5.45</a>.</p>
+    <ol type="a">
+      <li>Calcule as entropias \(H(K)\), \(H(M)\) e \(H(C)\).</li>
+      <li>Calcule a equivocação da chave \(H(K\mid C)\).</li>
+    </ol>
+  </div>
+
+  <div class="exercise" id="exercicio-5-59">
+    <p><span class="exercise-number">5.59.</span> Suponha que a equivocação da chave de certo criptossistema seja nula, isto é, suponha que \(H(K\mid C)=0\). Prove que até mesmo um único texto cifrado observado determina unicamente qual chave foi usada.</p>
+  </div>
+
+  <div class="exercise" id="exercicio-5-60">
+    <p><span class="exercise-number">5.60.</span> Escreva um programa que leia um arquivo de texto e realize as tarefas seguintes.</p>
+    <ol>
+      <li>Converta todos os caracteres alfabéticos em minúsculas e converta toda sequência de caracteres não alfabéticos consecutivos em um único espaço. O motivo para conservar um espaço é que, ao contar bigramas e trigramas, você desejará saber onde as palavras começam e terminam.</li>
+      <li>Conte a frequência de cada letra de <code>a</code> a <code>z</code>, imprima uma tabela de frequências e use-a para estimar a entropia de uma única letra do inglês, como fizemos na <a href="#sec-5-6-3" data-source-xref>Seção 5.6.3</a> usando a <a href="../ch01/#tab-1-3" data-source-xref>Tabela 1.3</a>.</li>
+      <li>Conte a frequência de cada bigrama <code>aa</code>, <code>ab</code>, …, <code>zz</code>, tomando o cuidado de incluir apenas bigramas que ocorram dentro de palavras. Como alternativa, permita também bigramas que comecem ou terminem com um espaço; nesse caso, há \(27^2-1=728\) bigramas possíveis. Imprima uma tabela de frequências com os 25 bigramas mais comuns e suas probabilidades e use sua tabela completa para estimar a entropia dos bigramas em inglês. Na notação da <a href="#sec-5-6-3" data-source-xref>Seção 5.6.3</a>, essa é a quantidade \(H(L^2)\). Compare \(\frac12H(L^2)\) ao valor de \(H(L)\) obtido na etapa [1].</li>
+      <li>Repita [3], desta vez com trigramas. Compare \(\frac13H(L^3)\) aos valores de \(H(L)\) e \(\frac12H(L^2)\) obtidos em [2] e [3]. Para esta parte, você precisará de uma grande quantidade de texto para obter frequências razoáveis.</li>
+    </ol>
+    <p>Experimente executar seu programa em blocos longos de texto. Por exemplo, as obras sem copyright a seguir estão disponíveis como arquivos de texto simples no <a href="https://www.gutenberg.org/" rel="noreferrer">Projeto Gutenberg</a>. Até que ponto as frequências das letras são semelhantes, e até que ponto diferem entre esses textos?</p>
+    <ol type="a">
+      <li><a href="https://www.gutenberg.org/ebooks/11" rel="noreferrer"><span lang="en"><em>Alice’s Adventures in Wonderland</em></span>, de Lewis Carroll</a>;</li>
+      <li><a href="https://www.gutenberg.org/ebooks/5001" rel="noreferrer"><span lang="en"><em>Relativity: The Special and General Theory</em></span>, de Albert Einstein</a>;</li>
+      <li><a href="https://www.gutenberg.org/ebooks/1609" rel="noreferrer"><span lang="en"><em>The Old Testament</em></span> — traduzido do hebraico original, é claro!</a>;</li>
+      <li><a href="https://www.gutenberg.org/ebooks/5097" rel="noreferrer"><span lang="fr"><em>20.000 Lieues sous les mers</em></span>, de Jules Verne</a>. Este é um pouco mais trabalhoso, pois primeiro será necessário converter todas as letras para suas formas sem acentos.</li>
+    </ol>
+  </div>
+</section>

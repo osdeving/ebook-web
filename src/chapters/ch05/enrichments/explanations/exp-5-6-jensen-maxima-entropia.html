@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Entropia é máxima quando não há preferência entre alternativas. A concavidade do logaritmo transforma essa intuição em desigualdade.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag theorem">Jensen</span><p>Para função côncava F, \(F(\sum_i\alpha_ix_i)\ge\sum_i\alpha_iF(x_i)\), com pesos não negativos que somam 1.</p></div>
+    <div class="step"><span class="step-tag manipulation">Aplique ao log</span><p>Escolhendo pesos \(p_i\) e valores \(1/p_i\), obtemos um limite para \(\sum_i p_i\log(1/p_i)=H(X)\).</p></div>
+    <div class="step"><span class="step-tag result">Máximo</span><p>Com n resultados, \(H(X)\le\log_2n\); a igualdade ocorre quando \(p_i=1/n\) em todos os pontos de massa positiva.</p></div>
+  </div>
+  <div class="quick-check"><p>Concentrar probabilidade torna alguns resultados previsíveis e reduz a surpresa média.</p></div>
+</div>

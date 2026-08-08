@@ -58,5 +58,17 @@
   { "id": "elgamal-signature-second", "symbol": "S₂ ≡ (D−aS₁)k⁻¹ (mod p−1)", "meaning": "segundo componente da assinatura Elgamal", "href": "chapters/ch04/#sec-4-3", "chapter": "ch04" },
   { "id": "elgamal-signature-check", "symbol": "A^S₁ S₁^S₂ ≡ g^D (mod p)", "meaning": "equação de verificação da assinatura Elgamal", "href": "chapters/ch04/#sec-4-3", "chapter": "ch04" },
   { "id": "dsa-subgroup-condition", "symbol": "p ≡ 1 (mod q)", "meaning": "condição para um subgrupo de ordem prima q em F_p*", "href": "chapters/ch04/#sec-4-3", "chapter": "ch04" },
-  { "id": "dsa-verification-exponents", "symbol": "V₁ = DS₂⁻¹, V₂ = S₁S₂⁻¹ (mod q)", "meaning": "expoentes públicos usados na verificação DSA", "href": "chapters/ch04/#sec-4-3", "chapter": "ch04" }
+  { "id": "dsa-verification-exponents", "symbol": "V₁ = DS₂⁻¹, V₂ = S₁S₂⁻¹ (mod q)", "meaning": "expoentes públicos usados na verificação DSA", "href": "chapters/ch04/#sec-4-3", "chapter": "ch04" },
+  { "id": "factorial", "symbol": "n!", "meaning": "produto n(n−1)⋯2·1 e número de permutações de n elementos", "href": "chapters/ch05/#def-permutacao", "chapter": "ch05" },
+  { "id": "binomial-coefficient", "symbol": "C(n,k)", "meaning": "coeficiente binomial: número de subconjuntos com k elementos escolhidos entre n", "href": "chapters/ch05/#def-combinacao", "chapter": "ch05" },
+  { "id": "probability", "symbol": "Pr(E)", "meaning": "probabilidade do evento E", "href": "chapters/ch05/#def-5-evento", "chapter": "ch05" },
+  { "id": "conditional-probability", "symbol": "Pr(E | F)", "meaning": "probabilidade de E condicionada à ocorrência de F", "href": "chapters/ch05/#def-5-probabilidade-condicional", "chapter": "ch05" },
+  { "id": "independent-events", "symbol": "Pr(E∩F)=Pr(E)Pr(F)", "meaning": "critério de independência dos eventos E e F", "href": "chapters/ch05/#def-5-eventos-independentes", "chapter": "ch05" },
+  { "id": "expected-value", "symbol": "E(X)", "meaning": "valor esperado da variável aleatória X", "href": "chapters/ch05/#def-5-valor-esperado", "chapter": "ch05" },
+  { "id": "entropy", "symbol": "H(X)", "meaning": "entropia de Shannon da variável aleatória X", "href": "chapters/ch05/#sec-5-6-2", "chapter": "ch05" },
+  { "id": "conditional-entropy", "symbol": "H(X | Y)", "meaning": "entropia de X condicionada ao conhecimento de Y", "href": "chapters/ch05/#def-5-entropia-condicional", "chapter": "ch05" },
+  { "id": "key-equivocation", "symbol": "H(K | C)", "meaning": "incerteza média restante sobre a chave K após observar o texto cifrado C", "href": "chapters/ch05/#prop-5-64", "chapter": "ch05" },
+  { "id": "crypto-space-sizes", "symbol": "#K, #M, #C", "meaning": "quantidades de chaves, mensagens e textos cifrados de um criptossistema", "href": "chapters/ch05/#teorema-5-56", "chapter": "ch05" },
+  { "id": "class-p-symbol", "symbol": "P", "meaning": "classe de problemas de decisão resolvíveis deterministicamente em tempo polinomial", "href": "chapters/ch05/#def-5-classe-p", "chapter": "ch05" },
+  { "id": "class-np-symbol", "symbol": "NP", "meaning": "classe de problemas de decisão com certificados verificáveis em tempo polinomial", "href": "chapters/ch05/#def-5-classe-np", "chapter": "ch05" }
 ]

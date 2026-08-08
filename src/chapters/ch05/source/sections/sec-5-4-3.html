@@ -1,0 +1,79 @@
+<section class="chapter-section subsection" id="sec-5-4-3">
+  <div class="section-heading">
+    <span class="section-number">5.4.3</span>
+    <h3>Um algoritmo de colisão para logaritmos discretos</h3>
+  </div>
+
+  <p>Há muitas aplicações de algoritmos de colisão à criptografia. Elas podem envolver buscas em espaços de chaves, textos claros ou textos cifrados; em criptossistemas de chave pública, podem ter como objetivo resolver o problema matemático difícil subjacente. Nesta seção, ilustramos a teoria geral formulando um algoritmo abstrato e aleatorizado de colisão para resolver o problema do logaritmo discreto. No corpo finito \(\mathbb F_p\), ele resolve o problema do logaritmo discreto em aproximadamente \(\sqrt p\) passos.</p>
+
+  <p>É natural perguntar por que o algoritmo probabilístico da <a href="#prop-5-44" data-source-xref>Proposição 5.44</a>, com tempo esperado \(O(\sqrt N)\), é interessante, já que o algoritmo de passos de bebê e passos de gigante da <a href="../ch02/#sec-2-7" data-source-xref>Seção 2.7</a> é determinístico e resolve o mesmo problema no mesmo tempo. Uma resposta é que ambos também exigem armazenamento \(O(\sqrt N)\), uma restrição séria quando \(N\) é grande. Assim, o algoritmo da <a href="#prop-5-44" data-source-xref>Proposição 5.44</a> pode ser visto como preparação para o algoritmo rô de Pollard, um algoritmo de colisão com tempo \(O(\sqrt N)\), mas armazenamento apenas \(O(1)\). Estudaremos o algoritmo de Pollard na <a href="#sec-5-5" data-source-xref>Seção 5.5</a>.</p>
+
+  <p>Também se poderia perguntar por que qualquer desses algoritmos \(O(\sqrt N)\) é interessante, pois o cálculo de índices da <a href="../ch03/#sec-3-8" data-source-xref>Seção 3.8</a> resolve o problema do logaritmo discreto em \(\mathbb F_p\) muito mais depressa. Existem, porém, outros grupos — por exemplo, grupos de curvas elípticas — nos quais algoritmos de colisão são a maneira mais rápida conhecida de resolver o problema. Isso explica por que grupos de curvas elípticas são empregados em criptografia: atualmente, em grupos de tamanhos comparáveis, o problema do logaritmo discreto em uma curva elíptica é muito mais difícil que em \(\mathbb F_p^*\). Curvas elípticas e seu uso em criptografia são o tema do Capítulo 6.</p>
+
+  <div class="semantic proposition" id="prop-5-44">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">5.44</span></div>
+    <p>Seja \(G\) um grupo e seja \(g\in G\) um elemento de ordem \(N\), isto é, \(g^N=e\) e nenhuma potência positiva menor de \(g\) é igual a \(e\). Suponha que o problema do logaritmo discreto</p>
+    <div class="equation" id="eq-5-30"><span class="equation-number">(5.30)</span>\[g^x=h\]</div>
+    <p>tenha solução. Então uma solução pode ser encontrada em \(O(\sqrt N)\) passos, cada um dos quais é uma exponenciação no grupo \(G\). Observe que, como \(g^N=e\), o algoritmo de exponenciação da <a href="../ch01/#sec-1-3-2" data-source-xref>Seção 1.3.2</a> permite elevar \(g\) a qualquer potência usando menos de \(2\log_2N\) multiplicações no grupo.</p>
+  </div>
+
+  <div class="semantic proof" id="proof-5-44">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>A ideia é escrever \(x=y-z\) e procurar uma solução de</p>
+    <div class="equation">\[g^y=h\,g^z.\]</div>
+    <p>Para isso, formamos uma lista de valores \(g^y\), outra de valores \(h\,g^z\) e procuramos uma coincidência entre elas.</p>
+    <p>Começamos escolhendo expoentes aleatórios \(y_1,y_2,\ldots,y_n\) entre \(1\) e \(N\) e calculando</p>
+    <div class="equation" id="eq-5-31"><span class="equation-number">(5.31)</span>\[g^{y_1},g^{y_2},g^{y_3},\ldots,g^{y_n}\quad\text{em }G.\]</div>
+    <p>Todos os valores de <a href="#eq-5-31" data-source-xref>(5.31)</a> pertencem ao conjunto</p>
+    <div class="equation">\[S=\{1,g,g^2,g^3,\ldots,g^{N-1}\},\]</div>
+    <p>de modo que <a href="#eq-5-31" data-source-xref>(5.31)</a> é uma seleção de aproximadamente \(n\) elementos de \(S\). Na linguagem do <a href="#teorema-5-38" data-source-xref>Teorema de colisão 5.38</a>, vemos \(S\) como uma urna com \(N\) bolas e a lista <a href="#eq-5-31" data-source-xref>(5.31)</a> como uma maneira de pintar \(n\) bolas de vermelho.</p>
+    <p>Em seguida, escolhemos expoentes aleatórios adicionais \(z_1,z_2,\ldots,z_n\) entre \(1\) e \(k\) e calculamos</p>
+    <div class="equation" id="eq-5-32"><span class="equation-number">(5.32)</span>\[h\,g^{z_1},h\,g^{z_2},h\,g^{z_3},\ldots,h\,g^{z_n}\quad\text{em }G.\]</div>
+    <p>Como supomos que <a href="#eq-5-30" data-source-xref>(5.30)</a> tenha solução, isto é, que \(h\) seja uma potência de \(g\), cada valor \(h\,g^{z_i}\) também pertence a \(S\). Assim, a lista <a href="#eq-5-32" data-source-xref>(5.32)</a> seleciona \(n\) elementos da urna. Queremos a probabilidade de selecionar pelo menos uma bola vermelha, isto é, de algum elemento de <a href="#eq-5-32" data-source-xref>(5.32)</a> coincidir com um elemento de <a href="#eq-5-31" data-source-xref>(5.31)</a>. O <a href="#teorema-5-38" data-source-xref>Teorema 5.38</a> fornece a aproximação</p>
+    <div class="equation">\[
+      \Pr\!\left(\text{pelo menos uma coincidência entre as duas listas}\right)
+      \approx1-\left(1-\frac nN\right)^n
+      \approx1-e^{-n^2/N}.
+    \]</div>
+    <p>Se escolhermos, por exemplo, \(n\approx3\sqrt N\), a probabilidade de uma coincidência será maior que \(99{,}98\%\). Se isso não bastar, \(n\approx5\sqrt N\) fornece probabilidade de sucesso maior que \(1-10^{-10}\). Assim que encontramos uma coincidência, digamos \(g^y=h\,g^z\), resolvemos <a href="#eq-5-30" data-source-xref>(5.30)</a> tomando \(x=y-z\).<sup id="fnref-5-4-3-16"><a href="#fn-5-4-3-16" data-source-xref>16</a></sup></p>
+    <p>Quanto tempo leva para encontrar a solução? Cada uma das listas <a href="#eq-5-31" data-source-xref>(5.31)</a> e <a href="#eq-5-32" data-source-xref>(5.32)</a> contém \(n\) elementos. Cada elemento requer calcular \(g^i\) para algum \(1\le i\le N\), o que custa aproximadamente \(2\log_2(i)\) multiplicações no grupo pelo algoritmo de exponenciação rápida da <a href="../ch01/#sec-1-3-2" data-source-xref>Seção 1.3.2</a>. Portanto, montar as duas listas custa aproximadamente \(4n\log_2N\) multiplicações. Além disso, verificar se um elemento da segunda lista pertence à primeira custa cerca de \(\log_2n\) passos, por exemplo, depois de ordenar a primeira lista, num total de \(n\log_2n\) comparações. O tempo total é, aproximadamente,</p>
+    <div class="equation">\[4n\log_2N+n\log_2n=n\log_2(N^4n)\quad\text{passos}.\]</div>
+    <p>Tomando \(n\approx3\sqrt N\), que dá probabilidade de sucesso de \(99{,}98\%\), obtemos</p>
+    <div class="equation">\[\text{tempo de cálculo}\approx13{,}5\sqrt N\,\log_2(1{,}3N).\]</div>
+    <p><span class="proof-end">□</span></p>
+  </div>
+
+  <div class="table-wrap" id="tab-5-9">
+    <table>
+      <caption><span class="label">Tabela 5.9.</span> Solução de \(2^x=390\) em \(\mathbb F_{659}\) por colisões entre expoentes aleatórios.</caption>
+      <thead><tr><th>\(t\)</th><th>\(g^t\)</th><th>\(h\,g^t\)</th><th>\(t\)</th><th>\(g^t\)</th><th>\(h\,g^t\)</th><th>\(t\)</th><th>\(g^t\)</th><th>\(h\,g^t\)</th></tr></thead>
+      <tbody>
+        <tr><td>564</td><td>410</td><td>422</td><td>53</td><td>10</td><td>605</td><td>513</td><td>164</td><td>37</td></tr>
+        <tr><td>469</td><td>357</td><td>181</td><td>332</td><td>651</td><td>175</td><td>71</td><td>597</td><td>203</td></tr>
+        <tr><td>276</td><td>593</td><td>620</td><td>178</td><td>121</td><td>401</td><td>314</td><td>554</td><td>567</td></tr>
+        <tr><td>601</td><td>416</td><td>126</td><td>477</td><td>450</td><td>206</td><td>581</td><td>47</td><td>537</td></tr>
+        <tr><td>9</td><td>512</td><td>3</td><td>503</td><td>116</td><td>428</td><td>371</td><td>334</td><td>437</td></tr>
+        <tr><td>350</td><td>445</td><td>233</td><td>198</td><td>426</td><td>72</td><td>83</td><td>422</td><td>489</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-45">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.45</span></div>
+    <p>Fazemos um exemplo com números pequenos para ilustrar o uso de colisões. Resolvemos</p>
+    <div class="equation">\[2^x=390\quad\text{no corpo finito }\mathbb F_{659}.\]</div>
+    <p>O número \(2\) tem ordem \(658\) módulo \(659\), portanto é uma raiz primitiva. Neste exemplo, \(g=2\) e \(h=390\). Escolhemos expoentes aleatórios \(t\) e calculamos \(g^t\) e \(h\,g^t\) até obter uma coincidência. Os resultados estão na <a href="#tab-5-9" data-source-xref>Tabela 5.9</a>, na qual vemos que</p>
+    <div class="equation">\[2^{83}=390\cdot2^{564}=422\quad\text{em }\mathbb F_{659}.\]</div>
+    <p>Assim, duas listas de comprimento 18 resolveram um problema de logaritmo discreto em \(\mathbb F_{659}\). A chance de uma coincidência com esse comprimento era \(39\%\), portanto tivemos um pouco de sorte. A solução é</p>
+    <div class="equation">\[2^{83}\cdot2^{-564}=2^{-481}=2^{177}=390\quad\text{em }\mathbb F_{659}.\]</div>
+  </div>
+
+  <aside class="semantic remark" id="obs-5-46">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">5.46</span></div>
+    <p>Os algoritmos das <a href="../ch02/#prop-2-21" data-source-xref>Proposições 2.21</a> e <a href="#prop-5-44" data-source-xref>5.44</a> resolvem o problema do logaritmo discreto em \(O(\sqrt N)\) passos. É interessante, portanto, que Victor Shoup <a href="../../references/#ref-130" data-source-xref>[130]</a> tenha demonstrado, em certo sentido, que não pode existir um algoritmo geral que resolva o problema em um grupo finito arbitrário em menos de \(O(\sqrt p)\) passos, em que \(p\) é o maior primo que divide a ordem do grupo. Esse é o chamado problema do logaritmo discreto em <em>caixa-preta</em>: recebe-se uma caixa que executa instantaneamente as operações do grupo, mas não se pode olhar dentro dela para descobrir como realiza os cálculos.</p>
+  </aside>
+
+  <ol class="footnotes">
+    <li id="fn-5-4-3-16">Se esse valor de \(x\) for negativo e quisermos uma solução positiva, podemos usar \(g^N=1\) e substituí-lo por \(x=y-z+N\). <a href="#fnref-5-4-3-16" data-source-xref aria-label="Voltar à chamada da nota 16">↩</a></li>
+  </ol>
+</section>

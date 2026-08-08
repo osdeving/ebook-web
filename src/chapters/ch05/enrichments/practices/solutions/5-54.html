@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.54">
+          <p class="graduated-help__intro">Segunda derivada negativa significa que a inclinação diminui; por isso a corda fica abaixo do gráfico.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Subtraia a corda</summary>
+      <div>Fixe \(s&lt;t\) e defina \(G(x)=F(x)-L(x)\), onde \(L\) é a reta secante.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Logaritmo</summary>
+      <div>Para \(F(x)=\log x\), \(F''(x)=-1/x^2\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Traduza derivada em cordas</summary>
+      <div>Se \(F''&lt;0\), então \(F'\) é decrescente; compare as inclinações das duas secantes que compartilham um extremo.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Fixe \(s&lt;t\). Pelo teorema do valor médio, a inclinação das secantes de \(F\) diminui à medida que o intervalo se move para a direita, pois \(F'\) é estritamente decrescente quando \(F''&lt;0\). Para \(x=(1-\alpha)s+\alpha t\), isso implica</p><p>\[\frac{F(x)-F(s)}{x-s}\ge\frac{F(t)-F(s)}{t-s},\]</p><p>que, após rearranjar, é \(F(x)\ge(1-\alpha)F(s)+\alpha F(t)\). Logo \(F\) é côncava. Como \((\log x)''=-1/x^2&lt;0\) para \(x>0\), \(\log x\) é côncava nesse domínio.</p>
+        </details>
+      </div>

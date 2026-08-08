@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O índice mútuo mede quanto dois histogramas se alinham. Girar um histograma testa todas as diferenças possíveis entre duas letras da chave.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Produto cruzado</span><p>Para frequências relativas \(p_i\) e \(q_i\), o alinhamento sem rotação é \(\sum_i p_iq_i\). Picos surgem quando letras frequentes ocupam as mesmas posições.</p></div>
+    <div class="step"><span class="step-tag manipulation">Desloque</span><p>Teste \(\sum_i p_iq_{i+r}\) para \(r=0,\ldots,25\). O melhor r estima a diferença entre os deslocamentos das duas colunas, não seus valores absolutos.</p></div>
+    <div class="step"><span class="step-tag connection">Fixe a origem</span><p>Depois de obter diferenças relativas, ainda resta uma rotação comum. Pontuação linguística ou uma palavra provável determina essa última liberdade.</p></div>
+  </div>
+  <div class="quick-check"><p>Uma amostra curta pode produzir pico falso; compare várias colunas e confirme recifrando.</p></div>
+</div>

@@ -1006,5 +1006,266 @@
     "category": "Assinaturas digitais",
     "chapter": "ch04",
     "href": "chapters/ch04/#sec-4-3"
+  },
+  {
+    "id": "principio-basico-contagem",
+    "term": "Princípio básico da contagem",
+    "aliases": ["princípio multiplicativo"],
+    "definition": "Se uma escolha pode ser feita de m maneiras e, para cada uma delas, outra escolha pode ser feita de n maneiras, o par de escolhas pode ser feito de mn maneiras.",
+    "category": "Combinatória",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#principio-basico-contagem"
+  },
+  {
+    "id": "permutacao",
+    "term": "Permutação",
+    "aliases": ["arranjo de todos os elementos"],
+    "definition": "Ordenação dos elementos de um conjunto; para n elementos distintos existem n! permutações.",
+    "category": "Combinatória",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-permutacao"
+  },
+  {
+    "id": "combinacao",
+    "term": "Combinação",
+    "aliases": ["coeficiente binomial", "escolha sem ordem"],
+    "definition": "Escolha de k elementos entre n na qual a ordem não importa, contada pelo coeficiente binomial n sobre k.",
+    "category": "Combinatória",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-combinacao"
+  },
+  {
+    "id": "teorema-binomial",
+    "term": "Teorema binomial",
+    "aliases": ["fórmula do binômio", "binomial theorem"],
+    "definition": "Expansão de uma potência (x+y)^n como soma de monômios ponderados por coeficientes binomiais.",
+    "category": "Combinatória",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#teorema-5-10"
+  },
+  {
+    "id": "cifra-vigenere",
+    "term": "Cifra de Vigenère",
+    "aliases": ["Vigenère", "cifra polialfabética"],
+    "definition": "Cifra clássica que repete uma palavra-chave para aplicar deslocamentos diferentes às letras sucessivas do texto claro.",
+    "category": "Criptografia clássica",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#sec-5-2"
+  },
+  {
+    "id": "indice-coincidencia",
+    "term": "Índice de coincidência",
+    "aliases": ["IC", "index of coincidence"],
+    "definition": "Probabilidade estimada de duas letras sorteadas sem reposição de um texto serem iguais; ajuda a distinguir distribuições linguísticas de texto uniforme.",
+    "category": "Criptoanálise",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-indice-coincidencia"
+  },
+  {
+    "id": "indice-mutuo-coincidencia",
+    "term": "Índice mútuo de coincidência",
+    "aliases": ["mutual index of coincidence"],
+    "definition": "Medida de coincidência entre duas distribuições de letras, usada para testar o alinhamento relativo de colunas de um criptograma polialfabético.",
+    "category": "Criptoanálise",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-indice-mutuo-coincidencia"
+  },
+  {
+    "id": "espaco-amostral",
+    "term": "Espaço amostral",
+    "aliases": ["universo de resultados", "sample space"],
+    "definition": "Conjunto de todos os resultados possíveis de um experimento probabilístico.",
+    "category": "Probabilidade",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-espaco-amostral"
+  },
+  {
+    "id": "evento",
+    "term": "Evento",
+    "aliases": ["evento probabilístico"],
+    "definition": "Subconjunto do espaço amostral cuja ocorrência se deseja medir.",
+    "category": "Probabilidade",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-evento"
+  },
+  {
+    "id": "eventos-disjuntos",
+    "term": "Eventos disjuntos",
+    "aliases": ["eventos mutuamente exclusivos"],
+    "definition": "Eventos que não podem ocorrer simultaneamente porque sua interseção é vazia.",
+    "category": "Probabilidade",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-eventos-disjuntos"
+  },
+  {
+    "id": "eventos-independentes",
+    "term": "Eventos independentes",
+    "aliases": ["independência probabilística"],
+    "definition": "Eventos para os quais conhecer a ocorrência de um não altera a probabilidade do outro; equivalentemente, Pr(E∩F)=Pr(E)Pr(F).",
+    "category": "Probabilidade",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-eventos-independentes"
+  },
+  {
+    "id": "probabilidade-condicional",
+    "term": "Probabilidade condicional",
+    "aliases": ["probabilidade dado um evento"],
+    "definition": "Probabilidade de E quando se sabe que F ocorreu, obtida restringindo o espaço de resultados a F.",
+    "category": "Probabilidade",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-probabilidade-condicional"
+  },
+  {
+    "id": "formula-bayes",
+    "term": "Fórmula de Bayes",
+    "aliases": ["teorema de Bayes"],
+    "definition": "Identidade que atualiza a probabilidade de uma hipótese após uma evidência, invertendo o sentido de uma probabilidade condicional.",
+    "category": "Probabilidade",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#prop-5-24"
+  },
+  {
+    "id": "metodo-monte-carlo",
+    "term": "Método de Monte Carlo",
+    "aliases": ["algoritmo de Monte Carlo"],
+    "definition": "Procedimento aleatorizado que admite uma probabilidade controlada de erro em troca de eficiência, repetível para reduzir essa probabilidade.",
+    "category": "Algoritmos probabilísticos",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#sec-5-3-3"
+  },
+  {
+    "id": "variavel-aleatoria",
+    "term": "Variável aleatória",
+    "aliases": ["random variable"],
+    "definition": "Função que associa um valor numérico a cada resultado de um experimento aleatório.",
+    "category": "Probabilidade",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-variavel-aleatoria"
+  },
+  {
+    "id": "funcao-densidade",
+    "term": "Função densidade de probabilidade",
+    "aliases": ["distribuição de probabilidade", "probability mass function"],
+    "definition": "Função que atribui a cada valor possível de uma variável aleatória discreta a probabilidade de esse valor ocorrer.",
+    "category": "Probabilidade",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-funcao-densidade"
+  },
+  {
+    "id": "valor-esperado",
+    "term": "Valor esperado",
+    "aliases": ["esperança matemática", "média"],
+    "definition": "Média ponderada dos valores de uma variável aleatória, usando suas probabilidades como pesos.",
+    "category": "Probabilidade",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-valor-esperado"
+  },
+  {
+    "id": "paradoxo-aniversario",
+    "term": "Paradoxo do aniversário",
+    "aliases": ["birthday paradox", "problema do aniversário"],
+    "definition": "Fenômeno pelo qual colisões se tornam prováveis após cerca da raiz quadrada do número de resultados possíveis.",
+    "category": "Probabilidade aplicada",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#sec-5-4-1"
+  },
+  {
+    "id": "pollard-rho-logaritmo-discreto",
+    "term": "Método rho de Pollard para logaritmos discretos",
+    "aliases": ["Pollard rho DLP", "método rho"],
+    "definition": "Algoritmo de baixa memória que procura uma colisão em uma caminhada pseudoaleatória para obter uma relação linear entre logaritmos discretos.",
+    "category": "Logaritmo discreto",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#sec-5-5"
+  },
+  {
+    "id": "teoria-informacao",
+    "term": "Teoria da informação",
+    "aliases": ["information theory"],
+    "definition": "Estrutura matemática para quantificar incerteza, informação e limites de comunicação, aplicada aqui à segurança de criptossistemas.",
+    "category": "Teoria da informação",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#sec-5-6"
+  },
+  {
+    "id": "sigilo-perfeito",
+    "term": "Sigilo perfeito",
+    "aliases": ["segurança incondicional", "perfect secrecy"],
+    "definition": "Propriedade em que observar o texto cifrado não altera a distribuição de probabilidade do texto claro.",
+    "category": "Segurança criptográfica",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-sigilo-perfeito"
+  },
+  {
+    "id": "cifra-uso-unico",
+    "term": "Cifra de uso único",
+    "aliases": ["one-time pad", "cifra de Vernam"],
+    "definition": "Cifra que combina a mensagem com uma chave aleatória de mesmo comprimento, usada exatamente uma vez; sob essas condições, possui sigilo perfeito.",
+    "category": "Criptografia simétrica",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#exemplo-5-57"
+  },
+  {
+    "id": "entropia",
+    "term": "Entropia",
+    "aliases": ["entropia de Shannon", "information entropy"],
+    "definition": "Média da informação associada aos resultados de uma variável aleatória; mede a incerteza antes de observar seu valor.",
+    "category": "Teoria da informação",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#sec-5-6-2"
+  },
+  {
+    "id": "entropia-condicional",
+    "term": "Entropia condicional",
+    "aliases": ["conditional entropy"],
+    "definition": "Incerteza média restante sobre uma variável aleatória depois que outra variável é observada.",
+    "category": "Teoria da informação",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-entropia-condicional"
+  },
+  {
+    "id": "equivocacao-chave",
+    "term": "Equivocação da chave",
+    "aliases": ["key equivocation"],
+    "definition": "Entropia condicional H(K|C): quantidade média de incerteza sobre a chave que permanece após observar o texto cifrado.",
+    "category": "Teoria da informação",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#prop-5-64"
+  },
+  {
+    "id": "entropia-linguagem",
+    "term": "Entropia de uma linguagem",
+    "aliases": ["language entropy"],
+    "definition": "Taxa assintótica de informação por símbolo em uma fonte linguística, considerando as dependências entre símbolos sucessivos.",
+    "category": "Teoria da informação",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-entropia-linguagem"
+  },
+  {
+    "id": "redundancia-linguagem",
+    "term": "Redundância de uma linguagem",
+    "aliases": ["language redundancy"],
+    "definition": "Diferença entre a informação máxima possível por símbolo e a entropia efetiva da linguagem.",
+    "category": "Teoria da informação",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#sec-5-6-3"
+  },
+  {
+    "id": "classe-p",
+    "term": "Classe P",
+    "aliases": ["P", "tempo polinomial determinístico"],
+    "definition": "Classe dos problemas de decisão resolvíveis por um algoritmo determinístico em tempo polinomial no tamanho da entrada.",
+    "category": "Complexidade computacional",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-classe-p"
+  },
+  {
+    "id": "classe-np",
+    "term": "Classe NP",
+    "aliases": ["NP", "tempo polinomial não determinístico"],
+    "definition": "Classe dos problemas de decisão cujas respostas positivas possuem certificados verificáveis em tempo polinomial.",
+    "category": "Complexidade computacional",
+    "chapter": "ch05",
+    "href": "chapters/ch05/#def-5-classe-np"
   }
 ]

@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Com \(n\) amostras, não há apenas n oportunidades de colisão: há \(\binom n2\approx n^2/2\) pares.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag manipulation">Complemento</span><p>A chance de nenhuma repetição em N valores é \(\prod_{j=0}^{n-1}(1-j/N)\).</p></div>
+    <div class="step"><span class="step-tag theorem">Aproximação</span><p>Como \(\log(1-u)\approx-u\), o produto fica próximo de \(e^{-n(n-1)/(2N)}\).</p></div>
+    <div class="step"><span class="step-tag definition">Escala crítica</span><p>A probabilidade deixa de ser pequena quando \(n^2/N\) é da ordem de 1, isto é, quando \(n\) é da ordem de \(\sqrt N\).</p></div>
+  </div>
+  <div class="quick-check"><p>Para um hash de b bits, resistência genérica a colisões é da ordem de \(2^{b/2}\), não \(2^b\).</p></div>
+</div>

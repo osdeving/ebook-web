@@ -1,0 +1,144 @@
+<section class="chapter-section subsection" id="sec-5-5-1">
+  <div class="section-heading">
+    <span class="section-number">5.5.1</span>
+    <h3>Formulação abstrata do método rô de Pollard</h3>
+  </div>
+
+  <p>Começamos em um contexto abstrato. Seja \(S\) um conjunto finito e seja</p>
+  <div class="equation">\[f:S\longrightarrow S\]</div>
+  <p>uma função que misture bem os elementos de \(S\). Suponha que comecemos com algum \(x\in S\) e apliquemos \(f\) repetidamente para criar uma sequência</p>
+  <div class="equation">\[x_0=x,\quad x_1=f(x_0),\quad x_2=f(x_1),\quad x_3=f(x_2),\quad x_4=f(x_3),\quad\ldots\]</div>
+  <p>Em outras palavras,</p>
+  <div class="equation">\[x_i=\underbrace{(f\circ f\circ\cdots\circ f)}_{i\text{ iterações de }f}(x).\]</div>
+
+  <p>A aplicação \(f\) de \(S\) em si mesmo é um exemplo de sistema dinâmico discreto. A sequência</p>
+  <div class="equation" id="eq-5-33"><span class="equation-number">(5.33)</span>\[x_0,x_1,x_2,x_3,x_4,\ldots\]</div>
+  <p>é chamada de <strong>órbita direta</strong> de \(x\) pela aplicação \(f\) e é denotada por \(O_f^+(x)\).</p>
+
+  <p>O conjunto \(S\) é finito, portanto algum elemento acabará aparecendo duas vezes na órbita \(O_f^+(x)\). Podemos ilustrar a órbita como na <a href="#fig-5-1" data-source-xref>Figura 5.1</a>. Durante algum tempo, os pontos \(x_0,x_1,x_2,x_3,\ldots\) percorrem um “caminho” sem repetição, até que finalmente entram em um laço e produzem um elemento repetido. Depois, continuam percorrendo o laço. Como na figura, seja \(T\) o número de elementos da “cauda” antes do laço e seja \(M\) o número de elementos do laço. Matematicamente,</p>
+  <div class="equation">\[
+    T=\max\{t:x_{t-1}\text{ aparece uma única vez em }O_f^+(x)\},\qquad
+    M=\min\{m:x_{T+m}=x_T\}.
+  \]</div>
+
+  <aside class="semantic remark" id="obs-5-47">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">5.47</span></div>
+    <p>Observe novamente a <a href="#fig-5-1" data-source-xref>Figura 5.1</a>. Ela talvez lhe recorde certa letra grega. Por isso, algoritmos de colisão baseados em seguir a órbita de um elemento de um sistema dinâmico discreto são chamados de <strong>algoritmos rô</strong>. O primeiro algoritmo rô foi inventado por Pollard em 1974.</p>
+  </aside>
+
+  <p>Suponha que \(S\) contenha \(N\) elementos. Mais adiante, no <a href="#teorema-5-48" data-source-xref>Teorema 5.48</a>, esboçaremos uma demonstração de que \(T+M\) em geral não ultrapassa um pequeno múltiplo de \(\sqrt N\). Como \(x_T=x_{T+M}\) por definição, obtemos uma colisão em \(O(\sqrt N)\) passos. Contudo, como não conhecemos \(T\) e \(M\), parece necessário formar a lista \(x_0,x_1,\ldots,x_{T+M}\) para detectar a colisão.</p>
+
+  <p>A ideia engenhosa de Pollard é que se pode detectar uma colisão em \(O(\sqrt N)\) passos sem armazenar todos esses valores. Há várias maneiras de fazer isso. Descrevemos uma que, embora não seja a mais eficiente, é fácil de compreender. Para métodos mais eficientes, veja <a href="../../references/#ref-23" data-source-xref>[23]</a>, <a href="../../references/#ref-28" data-source-xref>[28, §8.5]</a> ou <a href="../../references/#ref-90" data-source-xref>[90]</a>. A ideia é calcular não só \(x_i\), mas uma segunda sequência \(y_i\), definida por</p>
+  <div class="equation">\[y_0=x_0\qquad\text{e}\qquad y_{i+1}=f(f(y_i))\quad(i=0,1,2,\ldots).\]</div>
+  <p>Em outras palavras, cada vez que aplicamos \(f\) uma vez para gerar o próximo termo de \(x_i\), aplicamos \(f\) duas vezes para gerar o próximo termo de \(y_i\). É claro que</p>
+  <div class="equation">\[y_i=x_{2i}.\]</div>
+
+  <p>Quanto tempo levará para encontrar \(i\) tal que \(x_{2i}=x_i\)? Em geral, para \(j&gt;i\),</p>
+  <div class="equation">\[x_j=x_i\quad\Longleftrightarrow\quad i\ge T\quad\text{e}\quad j\equiv i\pmod M.\]</div>
+  <p>Isso fica claro na figura em forma de rô: temos \(x_j=x_i\) exatamente quando já passamos por \(x_T\), isto é, \(i\ge T\), e quando \(x_j\) deu um número inteiro de voltas no laço depois de \(x_i\), isto é, quando \(j-i\) é múltiplo de \(M\).</p>
+
+  <p>Logo, \(x_{2i}=x_i\) se, e somente se, \(i\ge T\) e \(2i\equiv i\pmod M\). A segunda condição equivale a \(M\mid i\), portanto \(x_{2i}=x_i\) exatamente quando \(i\) é o primeiro múltiplo de \(M\) maior ou igual a \(T\). Como um dos números \(T,T+1,\ldots,T+M-1\) é divisível por \(M\),</p>
+  <div class="equation">\[x_{2i}=x_i\quad\text{para algum }1\le i&lt;T+M.\]</div>
+
+  <p>O teorema seguinte mostra que o valor médio de \(T+M\) é aproximadamente \(1{,}25\sqrt N\). Assim, há grande chance de encontrar uma colisão em um pequeno múltiplo de \(\sqrt N\) passos. Esse é, em essência, o mesmo tempo do algoritmo da <a href="#sec-5-4-3" data-source-xref>Seção 5.4.3</a>, mas agora basta armazenar dois números: os valores correntes das sequências \(x_i\) e \(y_i\).</p>
+
+  <div class="semantic theorem" id="teorema-5-48">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">5.48 — Método rô de Pollard: versão abstrata</span></div>
+    <p>Seja \(S\) um conjunto finito com \(N\) elementos, seja \(f:S\to S\) uma aplicação e seja \(x\in S\) um ponto inicial.</p>
+    <ol type="a">
+      <li>Suponha que a órbita direta \(O_f^+(x)=\{x_0,x_1,x_2,\ldots\}\) tenha uma cauda de comprimento \(T\) e um laço de comprimento \(M\), como na <a href="#fig-5-1" data-source-xref>Figura 5.1</a>. Então
+        <div class="equation" id="eq-5-34"><span class="equation-number">(5.34)</span>\[x_{2i}=x_i\quad\text{para algum }1\le i&lt;T+M.\]</div>
+      </li>
+      <li>Se \(f\) for suficientemente aleatória, então
+        <div class="equation">\[E(T+M)\approx1{,}2533\sqrt N.\]</div>
+        Portanto, quando \(N\) é grande, é provável encontrar uma colisão como em <a href="#eq-5-34" data-source-xref>(5.34)</a> em \(O(\sqrt N)\) passos, em que um “passo” é uma avaliação de \(f\).</li>
+    </ol>
+  </div>
+
+  <div class="semantic proof" id="proof-5-48">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>O item (a) foi demonstrado anteriormente nesta seção. Esboçamos (b) porque é uma combinação instrutiva de teoria da probabilidade e análise de algoritmos; o leitor que desejar uma demonstração rigorosa precisará completar alguns detalhes.</p>
+    <p>Suponha que calculemos \(x_0,x_1,\ldots,x_{k-1}\). Se os valores sucessivos forem escolhas aleatórias em \(S\), a probabilidade de não haver coincidência é</p>
+    <div class="equation" id="eq-5-35"><span class="equation-number">(5.35)</span>\[
+      \Pr(x_0,\ldots,x_{k-1}\text{ distintos})
+      =\prod_{i=1}^{k-1}\Pr\!\left(\substack{x_i\ne x_j\text{ para todo }0\le j&lt;i\\\mid x_0,\ldots,x_{i-1}\text{ distintos}}\right)
+      =\prod_{i=1}^{k-1}\frac{N-i}{N}.
+    \]</div>
+    <div class="equation" id="eq-5-36"><span class="equation-number">(5.36)</span>\[
+      \Pr(x_0,\ldots,x_{k-1}\text{ distintos})=\prod_{i=1}^{k-1}\left(1-\frac iN\right).
+    \]</div>
+    <p>A fórmula <a href="#eq-5-35" data-source-xref>(5.35)</a> decorre do fato de que, se as primeiras \(i\) escolhas são distintas, exatamente \(N-i\) dos \(N\) valores possíveis para \(x_i\) diferem das escolhas anteriores.</p>
+
+    <p>Aproximamos <a href="#eq-5-36" data-source-xref>(5.36)</a> por \(1-t\approx e^{-t}\), válida para \(t\) pequeno. Compare com a demonstração do <a href="#teorema-5-38" data-source-xref>Teorema 5.38(b)</a> e veja o <a href="#exercicio-5-38" data-source-xref>Exercício 5.38</a>. Na prática, \(k\) será da ordem de \(\sqrt N\), e \(i/N\) será pequeno. Logo,</p>
+    <div class="equation" id="eq-5-37"><span class="equation-number">(5.37)</span>\[
+      \Pr(x_0,\ldots,x_{k-1}\text{ distintos})
+      \approx\prod_{i=1}^{k-1}e^{-i/N}
+      =e^{-(1+2+\cdots+(k-1))/N}
+      \approx e^{-k^2/(2N)}.
+    \]</div>
+    <p>Na última aproximação usamos \(1+2+\cdots+(k-1)=(k^2-k)/2\approx k^2/2\).</p>
+
+    <p>Supondo que \(x_0,\ldots,x_{k-1}\) sejam distintos, a probabilidade de \(x_k\) coincidir com um deles é</p>
+    <div class="equation" id="eq-5-38"><span class="equation-number">(5.38)</span>\[
+      \Pr(x_k\text{ é coincidência}\mid x_0,\ldots,x_{k-1}\text{ distintos})=\frac kN.
+    \]</div>
+    <p>Portanto, usando <a href="#eq-5-37" data-source-xref>(5.37)</a> e <a href="#eq-5-38" data-source-xref>(5.38)</a>,</p>
+    <div class="equation">\[
+      \Pr(x_k\text{ é a primeira coincidência})
+      \approx\frac kN e^{-k^2/(2N)}.
+    \]</div>
+    <p>O número esperado de passos antes da primeira coincidência é, então,</p>
+    <div class="equation" id="eq-5-39"><span class="equation-number">(5.39)</span>\[
+      E(\text{primeira coincidência})
+      =\sum_{k\ge1}k\Pr(x_k\text{ é a primeira coincidência})
+      \approx\sum_{k\ge1}\frac{k^2}{N}e^{-k^2/(2N)}.
+    \]</div>
+
+    <p>Para estimar essa série em função de \(N\), usamos o lema seguinte, cuja derivação emprega cálculo elementar.</p>
+
+    <div class="semantic lemma" id="lema-5-49">
+      <div class="semantic-header"><span class="semantic-label">Lema</span><span class="semantic-title">5.49</span></div>
+      <p>Seja \(F(t)\) uma função real “bem-comportada”<sup id="fnref-5-5-1-17"><a href="#fn-5-5-1-17" data-source-xref>17</a></sup> tal que \(\int_0^\infty F(t)\,dt\) convirja. Para valores grandes de \(n\),</p>
+      <div class="equation" id="eq-5-40"><span class="equation-number">(5.40)</span>\[
+        \sum_{k=1}^\infty F\!\left(\frac kn\right)\approx n\int_0^\infty F(t)\,dt.
+      \]</div>
+    </div>
+
+    <div class="semantic proof" id="proof-5-49">
+      <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+      <p>Começamos com a integral de \(F\) em \(0\le t\le A\). Pela definição como limite de somas de Riemann,</p>
+      <div class="equation">\[\int_0^A F(t)\,dt=\lim_{n\to\infty}\sum_{k=1}^{An}F\!\left(\frac kn\right)\frac1n.\]</div>
+      <p>Assim, para \(n\) grande,</p>
+      <div class="equation">\[n\int_0^A F(t)\,dt\approx\sum_{k=1}^{An}F\!\left(\frac kn\right).\]</div>
+      <p>Fazer \(A\to\infty\) fornece <a href="#eq-5-40" data-source-xref>(5.40)</a>. Não afirmamos que esse argumento seja rigoroso; ele apenas transmite a ideia subjacente. O leitor interessado pode completar os detalhes e obter limites superiores e inferiores explícitos.<span class="proof-end">□</span></p>
+    </div>
+
+    <p>Aplicamos o <a href="#lema-5-49" data-source-xref>Lema 5.49</a> a <a href="#eq-5-39" data-source-xref>(5.39)</a>:</p>
+    <div class="equation">\[
+      \begin{aligned}
+        E(\text{primeira coincidência})
+          &amp;\approx\sum_{k\ge1}\frac{k^2}{N}e^{-k^2/(2N)}\\
+          &amp;=\sum_{k\ge1}F\!\left(\frac{k}{\sqrt N}\right),
+             \qquad F(t)=t^2e^{-t^2/2},\\
+          &amp;\approx\sqrt N\int_0^\infty t^2e^{-t^2/2}\,dt\\
+          &amp;\approx1{,}2533\sqrt N.
+      \end{aligned}
+    \]</div>
+    <p>Na última linha usamos integração numérica, embora a integral possa ser calculada exatamente: seu valor é \(\sqrt{\pi/2}\); veja o <a href="#exercicio-5-43" data-source-xref>Exercício 5.43</a>. Isso conclui (b) e, com (a), a demonstração do teorema.<span class="proof-end">□</span></p>
+  </div>
+
+  <aside class="semantic remark" id="obs-5-50">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">5.50</span></div>
+    <p>É instrutivo verificar numericamente a precisão das estimativas usadas na demonstração do <a href="#teorema-5-48" data-source-xref>Teorema 5.48</a>. Afirmamos que, para \(N\) grande, o número esperado de passos até a primeira coincidência é dado pelas três fórmulas</p>
+    <div class="equation">\[
+      E_1=\sum_{k\ge1}\frac{k^2}{N}\prod_{i=1}^{k-1}\left(1-\frac iN\right),\qquad
+      E_2=\sum_{k\ge1}\frac{k^2}{N}e^{-k^2/(2N)},\qquad
+      E_3=\sqrt N\int_0^\infty t^2e^{-t^2/2}\,dt.
+    \]</div>
+    <p>Mais precisamente, \(E_1\) é exata, mas difícil de calcular quando \(N\) é muito grande, ao passo que \(E_2\) e \(E_3\) são aproximações. Calculamos as três para alguns valores moderados de \(N\) e reunimos os resultados na <a href="#tab-5-10" data-source-xref>Tabela 5.10</a>. \(E_2\) e \(E_3\) são muito próximas e, quando \(N\) fica razoavelmente grande, também aproximam bem \(E_1\). Assim, para valores muito grandes, digamos \(2^{80}&lt;N&lt;2^{160}\), é razoável estimar \(E_1\) por \(E_3\).</p>
+  </aside>
+
+  <ol class="footnotes">
+    <li id="fn-5-5-1-17">Por exemplo, basta que \(F\) tenha derivada contínua. <a href="#fnref-5-5-1-17" data-source-xref aria-label="Voltar à chamada da nota 17">↩</a></li>
+  </ol>
+</section>

@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.30">
+          <p class="graduated-help__intro">‘Provavelmente primo’ combina o erro unilateral de Miller–Rabin com a densidade a priori de primos.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Escolha a propriedade</summary>
+      <div>Tome A = ‘n é composto’; o teste retorna Sim com probabilidade ao menos 3/4 quando A vale.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Aproxime a priori</summary>
+      <div>Use \(\Pr(n\text{ primo})\approx1/\ln n\) e \(\Pr(n\text{ composto})\le1\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Combine erro e taxa-base</summary>
+      <div>A sobrevivência de um composto e a densidade a priori de primos ocupam papéis diferentes no numerador de Bayes.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Após \(N\) falhas independentes, um composto sobrevive com probabilidade no máximo \(4^{-N}\), enquanto um primo sempre sobrevive. Assim, com \(\pi\approx1/\ln n\),</p><p>\[\Pr(\text{primo}\mid\text{N falhas})\ge\frac{\pi}{\pi+(1-\pi)4^{-N}}\ge\frac1{1+(\ln n)4^{-N}}.\]</p><p>Como \(1/(1+x)\ge1-x\) para \(x\ge0\),</p><p>\[\boxed{\Pr(\text{primo}\mid\text{N falhas})\gtrsim1-\frac{\ln n}{4^N}}.\]</p><p>O expoente em \(4^N\) é essencial: a confiança cresce exponencialmente com repetições independentes.</p>
+        </details>
+      </div>

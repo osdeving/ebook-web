@@ -90,6 +90,70 @@ test("o menu móvel fica fora da navegação quando fechado", async ({ page }) =
   await expect(sidebar).toHaveAttribute("inert", "");
 });
 
+test("o leitor oferece retorno acessível à biblioteca no desktop e no mobile", async ({ page }) => {
+  await page.goto("/chapters/ch01/");
+  const desktopHome = page.locator("[data-reader-sidebar]").getByRole("link", { name: "Voltar à biblioteca" });
+  await expect(desktopHome).toBeVisible();
+  await expect(desktopHome).toHaveAttribute("href", "/");
+
+  await page.setViewportSize({ width: 320, height: 720 });
+  const mobileHome = page.locator(".mobile-bar").getByRole("link", { name: "Voltar à biblioteca" });
+  await expect(mobileHome).toBeVisible();
+  await mobileHome.click();
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.getByRole("heading", { name: "Explore o conteúdo de forma dinâmica." })).toBeVisible();
+});
+
+test("cabeçalhos dos cards não criam coluna implícita nem vazam no mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.goto("/chapters/ch01/#lab-1-2-euclides-estendido");
+  await expect.poll(
+    () => page.locator("html").getAttribute("data-reader-ready"),
+    { timeout: 20_000 },
+  ).toBe("true");
+
+  const lab = page.locator("#lab-1-2-euclides-estendido");
+  await expect(lab).toBeVisible();
+  expect(await lab.locator(".supplement__summary > .supplement__duration").count()).toBe(0);
+  await expect(lab.locator(".supplement__heading > .supplement__duration"))
+    .toHaveText("Seção 1.2 · 10–15 min");
+
+  const layout = await lab.evaluate((card) => {
+    const summary = card.querySelector<HTMLElement>(".supplement__summary")!;
+    const heading = card.querySelector<HTMLElement>(".supplement__heading")!;
+    const title = card.querySelector<HTMLElement>(".supplement__title")!;
+    const summaryBox = summary.getBoundingClientRect();
+    const headingBox = heading.getBoundingClientRect();
+    const titleBox = title.getBoundingClientRect();
+    return {
+      cardFits: card.scrollWidth <= card.clientWidth,
+      summaryFits: summary.scrollWidth <= summary.clientWidth,
+      headingFits: headingBox.left >= summaryBox.left && headingBox.right <= summaryBox.right,
+      titleFits: titleBox.left >= headingBox.left && titleBox.right <= headingBox.right,
+    };
+  });
+  expect(layout).toEqual({
+    cardFits: true,
+    summaryFits: true,
+    headingFits: true,
+    titleFits: true,
+  });
+
+  const overflowingCards = await page.locator(".supplement__summary").evaluateAll((summaries) => (
+    summaries.flatMap((summary) => {
+      const heading = summary.querySelector<HTMLElement>(".supplement__heading");
+      if (!heading) return [summary.textContent?.trim() ?? "Cabeçalho sem título"];
+      const summaryBox = summary.getBoundingClientRect();
+      const headingBox = heading.getBoundingClientRect();
+      const overflows = summary.scrollWidth > summary.clientWidth
+        || headingBox.left < summaryBox.left
+        || headingBox.right > summaryBox.right;
+      return overflows ? [summary.textContent?.trim() ?? "Card sem nome"] : [];
+    })
+  ));
+  expect(overflowingCards).toEqual([]);
+});
+
 test("entradas decimais recebem feedback em vez de lançar RangeError", async ({ page }) => {
   const errors: Error[] = [];
   page.on("pageerror", (error) => errors.push(error));

@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.46">
+          <p class="graduated-help__intro">Para qualquer mensagem e qualquer texto cifrado existe exatamente um deslocamento que liga os dois.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Permutação das mensagens</summary>
+      <div>Quando \(k\) percorre 0–25, \(d_k(c)\) percorre cada letra clara uma vez.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Uma chave favorável</summary>
+      <div>Para \(m,c\) fixos, a única chave é \(k=c-m\pmod{26}\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Não suponha fonte uniforme</summary>
+      <div>Deixe \(f_M\) simbólica; a bijeção das chaves deve fazer a soma valer \(1\) para qualquer distribuição de mensagens.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) Como \(k\mapsto d_k(c)\) é uma bijeção de \(\mathcal K\) em \(\mathcal M\),</p><p>\[\sum_{k\in\mathcal K}f_M(d_k(c))=\sum_{m\in\mathcal M}f_M(m)=1.\]</p><p>(b) Cada chave tem massa \(1/26\), então \(f_C(c)=\sum_k(1/26)f_M(d_k(c))=1/26\).</p><p>(c) Para \(m,c\) fixos, exatamente uma das 26 chaves produz \(c\), logo \(f(c\mid m)=1/26=f(c)\). Portanto o sistema tem sigilo perfeito, independentemente da distribuição das letras claras.</p>
+        </details>
+      </div>

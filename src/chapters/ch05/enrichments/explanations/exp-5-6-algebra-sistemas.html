@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Combinar sistemas de sigilo é uma operação algébrica sobre famílias de transformações, não uma garantia automática de “segurança somada”.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Produto</span><p>Cifrar primeiro com \(e_k\) e depois com \(e'_{k'}\) produz a transformação composta \(e'_{k'}\circ e_k\), indexada pelo par de chaves \((k,k')\).</p></div>
+    <div class="step"><span class="step-tag theorem">Inversão</span><p>Decifrar reverte a ordem: \(d_k\circ d'_{k'}\). Essa troca de ordem é a mesma regra \((AB)^{-1}=B^{-1}A^{-1}\).</p></div>
+    <div class="step"><span class="step-tag warning">Fechamento não basta</span><p>Se a família é fechada por composição, duas camadas podem equivaler a uma única chave efetiva. Cifrar duas vezes não duplica necessariamente o espaço de transformações distintas.</p></div>
+  </div>
+  <div class="quick-check"><p>Conte transformações resultantes, não apenas pares de chaves escritos.</p></div>
+</div>

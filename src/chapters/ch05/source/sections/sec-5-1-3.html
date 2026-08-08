@@ -1,0 +1,45 @@
+<section class="chapter-section subsection" id="sec-5-1-3">
+  <div class="section-heading">
+    <span class="section-number">5.1.3</span>
+    <h3>O teorema binomial</h3>
+  </div>
+
+  <p>Você talvez já tenha visto os números combinatórios \(\binom nr\) no teorema binomial,<sup id="fnref-5-1-3-3"><a href="#fn-5-1-3-3" data-source-xref>3</a></sup> que fornece uma fórmula para a \(n\)-ésima potência da soma de dois números.</p>
+
+  <div class="semantic theorem" id="teorema-5-10">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">5.10 — Teorema binomial</span></div>
+    <div class="equation" id="eq-5-1"><span class="equation-number">(5.1)</span>\[(x+y)^n=\sum_{j=0}^n\binom nj x^j y^{n-j}.\]</div>
+  </div>
+
+  <div class="semantic proof" id="proof-5-10">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Comecemos com um caso particular, digamos \(n=3\). Se desenvolvermos o produto</p>
+    <div class="equation" id="eq-5-2"><span class="equation-number">(5.2)</span>\[(x+y)^3=(x+y)(x+y)(x+y),\]</div>
+    <p>o resultado será uma soma de termos \(x^3,x^2y,xy^2,y^3\). Há apenas um termo \(x^3\), pois, para obtê-lo, precisamos escolher \(x\) em cada um dos três fatores de <a href="#eq-5-2" data-source-xref>(5.2)</a>. Quantas cópias de \(x^2y\) aparecem? Podemos obtê-lo de várias maneiras: por exemplo, escolhendo \(x\) nos dois primeiros fatores e \(y\) no último, ou escolhendo \(x\) no primeiro e no terceiro fator e \(y\) no segundo. Assim, obtemos \(x^2y\) escolhendo dois dos três fatores de <a href="#eq-5-2" data-source-xref>(5.2)</a> para fornecer \(x\); o fator restante fornece \(y\). Há, portanto, \(\binom32=3\) maneiras de obter \(x^2y\). Analogamente, há \(\binom31=3\) maneiras de obter \(xy^2\) e apenas uma maneira de obter \(y^3\). Logo,</p>
+    <div class="equation">\[
+      (x+y)^3=\binom33x^3+\binom32x^2y+\binom31xy^2+\binom30y^3
+      =x^3+3x^2y+3xy^2+y^3.
+    \]</div>
+    <p>O caso geral é idêntico. Ao desenvolver o produto</p>
+    <div class="equation" id="eq-5-3"><span class="equation-number">(5.3)</span>\[(x+y)^n=(x+y)(x+y)(x+y)\cdots(x+y),\]</div>
+    <p>obtemos uma soma de termos \(x^n,x^{n-1}y,\ldots,xy^{n-1},y^n\). Obtemos cópias de \(x^jy^{n-j}\) escolhendo \(x\) em quaisquer \(j\) fatores de <a href="#eq-5-3" data-source-xref>(5.3)</a> e \(y\) nos outros \(n-j\). Portanto, aparecem \(\binom nj\) cópias de \(x^jy^{n-j}\). Somar sobre os valores possíveis de \(j\) fornece <a href="#eq-5-1" data-source-xref>(5.1)</a>, concluindo a demonstração.<span class="proof-end">□</span></p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-11">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.11</span></div>
+    <p>Usamos o teorema binomial para calcular</p>
+    <div class="equation">\[
+      \begin{aligned}
+        (2t+3)^4
+          &amp;=\binom44(2t)^4+\binom43(2t)^3\cdot3+\binom42(2t)^2\cdot3^2
+            +\binom41(2t)\cdot3^3+\binom403^4\\
+          &amp;=16t^4+4\cdot8t^3\cdot3+6\cdot4t^2\cdot9+4\cdot2t\cdot27+81\\
+          &amp;=16t^4+96t^3+216t^2+216t+81.
+      \end{aligned}
+    \]</div>
+  </div>
+
+  <ol class="footnotes">
+    <li id="fn-5-1-3-3">A fama do teorema binomial vai além da matemática. Moriarty, o arqui-inimigo de Sherlock Holmes, “escreveu um tratado sobre o teorema binomial”, graças ao qual obteve uma cátedra de matemática. E o Major-General Stanley, aquele verdadeiro modelo de um Major-General moderno, informa orgulhosamente ao Rei dos Piratas e a seu bando sanguinário: “Sobre o teorema binomial tenho muitas novidades — com muitos fatos alegres sobre o quadrado da hipotenusa.” (<em>The Pirates of Penzance</em>, W. S. Gilbert e A. Sullivan, 1879.) <a href="#fnref-5-1-3-3" data-source-xref aria-label="Voltar à chamada da nota 3">↩</a></li>
+  </ol>
+</section>

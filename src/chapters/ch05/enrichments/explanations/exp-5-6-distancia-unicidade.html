@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Redundância linguística elimina chaves porque a maioria das decifrações possíveis não se parece com uma mensagem válida.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Taxa</span><p>Se um alfabeto oferece R bits máximos por símbolo e a língua usa em média r bits, a redundância é \(D=R-r\) bits por símbolo.</p></div>
+    <div class="step"><span class="step-tag connection">Candidatos</span><p>Uma chave adiciona incerteza; cada símbolo cifrado fornece aproximadamente D bits de restrição linguística. Heuristicamente, textos mais longos descartam candidatos exponencialmente.</p></div>
+    <div class="step"><span class="step-tag warning">Não é teorema universal</span><p>A chamada distância de unicidade depende do modelo de língua, da distribuição de chaves e do sistema. Ela estima quando tende a restar uma chave plausível, não garante recuperá-la eficientemente.</p></div>
+  </div>
+  <div class="quick-check"><p>Compressão remove redundância; criptoanálise clássica explora essa mesma redundância antes que ela seja removida.</p></div>
+</div>

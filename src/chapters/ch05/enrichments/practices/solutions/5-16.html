@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.16">
+          <p class="graduated-help__intro">Repetições separadas por múltiplos de 17 fazem o período aparecer antes de qualquer análise de frequência.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Fatore as distâncias</summary>
+      <div>Para <code>nyw</code>, as distâncias incluem \(68=4\cdot17\), \(221=13\cdot17\) e \(153=9\cdot17\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Separe em colunas</summary>
+      <div>Com período 17, cada coluna é uma cifra de César; alinhe as frequências e leia a chave.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Valide o período inteiro</summary>
+      <div>Depois de propor 17, alinhe todas as colunas e exija que a mesma chave recifre cada uma das 475 letras.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>O teste de Kasiski aponta \(\boxed{17}\): várias distâncias entre trigramas repetidos compartilham o fator 17. Dividindo o texto em 17 blocos e alinhando suas frequências, a palavra-chave é</p><p><code>FOURSCOREANDSEVEN</code>.</p><p><strong>Texto claro integral recuperado:</strong></p><blockquote lang="en"><p>It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way—in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.</p></blockquote><p>É a abertura de <cite>A Tale of Two Cities</cite>, de Charles Dickens, disponível em domínio público no <a href="https://www.gutenberg.org/ebooks/98" target="_blank" rel="noopener noreferrer">Project Gutenberg</a>. Removendo espaços, pontuação e caixa, o bloco possui exatamente 475 letras; a recifragem integral com a chave recuperada coincide com a tabela.</p>
+        </details>
+      </div>

@@ -96,7 +96,7 @@
     "id": "maratona-exercicios",
     "title": "Maratona de exercícios",
     "tagline": "Pratique em blocos, com dicas antes da solução",
-    "description": "Seleção crescente de problemas textuais dos quatro capítulos, organizada por objetivo e não apenas por numeração.",
+    "description": "Seleção crescente de problemas textuais dos cinco capítulos, organizada por objetivo e não apenas por numeração.",
     "level": "Todos os níveis",
     "duration": "Flexível",
     "goal": "exercicios",
@@ -111,7 +111,8 @@
       { "title": "RSA e primalidade", "why": "Conecte potências modulares, geração de chaves e testes de primos.", "href": "chapters/ch03/#exercicio-3-1", "type": "Exercícios 3.1–3.21" },
       { "title": "Fatoração e crivos", "why": "Passe de métodos elementares à coleta de relações suaves.", "href": "chapters/ch03/#exercicio-3-22", "type": "Exercícios 3.22–3.33" },
       { "title": "Resíduos e cifragem probabilística", "why": "Consolide reciprocidade quadrática e Goldwasser–Micali.", "href": "chapters/ch03/#exercicio-3-34", "type": "Exercícios 3.34–3.43" },
-      { "title": "Assinaturas digitais", "why": "Feche com RSA, Elgamal, DSA e falhas de nonce.", "href": "chapters/ch04/#exercicio-4-1", "type": "Exercícios 4.1–4.11" }
+      { "title": "Assinaturas digitais", "why": "Pratique RSA, Elgamal, DSA e falhas de nonce.", "href": "chapters/ch04/#exercicio-4-1", "type": "Exercícios 4.1–4.11" },
+      { "title": "Contagem, probabilidade e informação", "why": "Feche conectando modelos probabilísticos, colisões, sigilo perfeito e entropia.", "href": "chapters/ch05/#exercicio-5-1", "type": "Exercícios 5.1–5.60" }
     ]
   },
   {
@@ -188,6 +189,28 @@
       { "title": "Comprima a assinatura com DSA", "why": "Entenda o papel do subgrupo de ordem prima q.", "href": "chapters/ch04/#sec-4-3", "type": "Explicação e laboratório" },
       { "title": "Reutilize k e quebre a chave", "why": "Observe como duas assinaturas transformam um nonce repetido em equações solucionáveis.", "href": "chapters/ch04/#exercicio-4-8", "type": "Exercício e laboratório" },
       { "title": "Compare com padrões atuais", "why": "Distinga os esquemas didáticos das codificações e recomendações de produção.", "href": "chapters/ch04/#sec-4-3", "type": "Leitura externa" }
+    ]
+  },
+  {
+    "id": "probabilidade-e-informacao",
+    "title": "Probabilidade e informação para criptografia",
+    "tagline": "De contar possibilidades a medir o que um adversário aprende",
+    "description": "Percurso que constrói modelos probabilísticos, explica colisões e termina em sigilo perfeito, entropia e complexidade computacional.",
+    "level": "Intermediário",
+    "duration": "7–9 horas",
+    "goal": "probabilidade",
+    "steps": [
+      { "title": "Conte escolhas sem dupla contagem", "why": "Fixe soma, produto, permutações e combinações antes de atribuir probabilidades.", "href": "chapters/ch05/#sec-5-1", "type": "Leitura e explicação" },
+      { "title": "Meça coincidências em textos", "why": "Veja como uma estatística simples revela estrutura numa cifra polialfabética.", "href": "chapters/ch05/#sec-5-2-1", "type": "Criptoanálise e laboratório" },
+      { "title": "Defina o espaço probabilístico", "why": "Separe resultados, eventos e distribuições para não calcular sobre um modelo ambíguo.", "href": "chapters/ch05/#sec-5-3-1", "type": "Definições" },
+      { "title": "Inverta condicionais com Bayes", "why": "Transforme evidência observada em probabilidade posterior sem trocar as condições.", "href": "chapters/ch05/#sec-5-3-2", "type": "Leitura e laboratório" },
+      { "title": "Entenda algoritmos de Monte Carlo", "why": "Quantifique o que sucessivas tentativas aleatórias permitem concluir.", "href": "chapters/ch05/#sec-5-3-3", "type": "Algoritmo probabilístico" },
+      { "title": "Use linearidade da esperança", "why": "Calcule médias globais mesmo quando as variáveis não são independentes.", "href": "chapters/ch05/#sec-5-3-5", "type": "Ferramenta" },
+      { "title": "Encontre a raiz do paradoxo do aniversário", "why": "Relacione o número de pares à escala quadrática dos ataques por colisão.", "href": "chapters/ch05/#sec-5-4-1", "type": "Leitura e laboratório" },
+      { "title": "Economize memória com o método rô", "why": "Troque duas listas por uma órbita pseudoaleatória e detecção de ciclos.", "href": "chapters/ch05/#sec-5-5", "type": "Algoritmo" },
+      { "title": "Defina sigilo perfeito", "why": "Expresse segurança como independência entre mensagem e texto cifrado.", "href": "chapters/ch05/#sec-5-6-1", "type": "Definição e teorema" },
+      { "title": "Meça surpresa com entropia", "why": "Passe de probabilidades individuais à informação média e condicional.", "href": "chapters/ch05/#sec-5-6-2", "type": "Leitura e laboratório" },
+      { "title": "Separe tempo polinomial de exponencial", "why": "Feche distinguindo tamanho da entrada, classes P e NP e reduções.", "href": "chapters/ch05/#sec-5-7", "type": "Complexidade" }
     ]
   }
 ]

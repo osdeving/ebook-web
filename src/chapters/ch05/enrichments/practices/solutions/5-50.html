@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.50">
+          <p class="graduated-help__intro">O enunciado impresso contém uma errata: sigilo perfeito força chaves e textos cifrados uniformes, mas não força mensagens uniformes.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Compare com o one-time pad</summary>
+      <div>Uma fonte pode preferir uma mensagem e ainda ser perfeitamente ocultada por uma chave uniforme de uso único.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Recupere o resultado correto</summary>
+      <div>O <a href="#teorema-5-56" data-source-xref>Teorema 5.56</a> dá \(f(k)=f(c)\) para todo par \(k,c\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Teste a afirmação com um bit</summary>
+      <div>Antes de tentar provar uniformidade das mensagens, use um one-time pad de um bit e uma fonte enviesada como teste de sanidade.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <div class="editorial-note"><strong>Errata matemática.</strong> A afirmação sobre todos os textos claros serem equiprováveis é falsa. Considere o one-time pad em um bit com chave uniforme e \(\Pr(M=0)=0{,}9\): ele tem sigilo perfeito, mas \(M\) não é uniforme.</div><p>O resultado demonstrável — e coerente com o <a href="#teorema-5-56" data-source-xref>Teorema 5.56</a> — é que chaves e textos cifrados são uniformes. Sob sigilo perfeito e cardinalidades iguais, para qualquer tripla compatível \((k,m,c)\),</p><p>\[f(m)=f(m\mid c)=\frac{f(m,k)}{f(c)}=\frac{f(m)f(k)}{f(c)},\]</p><p>logo \(f(k)=f(c)\). Como todo par \(k,c\) possui uma mensagem compatível, isso vale para todos; somar sobre \(c\) dá \(f(k)=1/\#\mathcal C\), e então \(f(c)=1/\#\mathcal C\). Nenhum passo restringe \(f_M\).</p>
+        </details>
+      </div>

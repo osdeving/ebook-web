@@ -1,0 +1,207 @@
+<section class="chapter-section subsection" id="sec-5-3-4">
+  <div class="section-heading">
+    <span class="section-number">5.3.4</span>
+    <h3>Variáveis aleatórias</h3>
+  </div>
+
+  <p>Em geral, interessam-nos mais as consequências de um experimento — por exemplo, a perda ou o ganho líquido em um jogo de azar — do que o experimento em si. Matematicamente, isso significa que estamos interessados em funções definidas sobre os eventos e que assumem valores em algum conjunto.</p>
+
+  <div class="semantic definition" id="def-5-variavel-aleatoria">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Uma <strong>variável aleatória</strong> é uma função</p>
+    <div class="equation">\[X:\Omega\longrightarrow\mathbb R\]</div>
+    <p>cujo domínio é o espaço amostral \(\Omega\) e que assume valores nos números reais. Mais geralmente, uma variável aleatória é uma função \(X:\Omega\to S\) cuja imagem pode ser qualquer conjunto; por exemplo, \(S\) poderia ser um conjunto de chaves ou um conjunto de textos claros.</p>
+  </div>
+
+  <p>Como nossos espaços amostrais são finitos, uma variável aleatória assume apenas um número finito de valores. Variáveis aleatórias são úteis para definir eventos. Por exemplo, se \(X:\Omega\to\mathbb R\) é uma variável aleatória, qualquer número real \(x\) define três eventos interessantes:</p>
+  <div class="equation">\[\{\omega\in\Omega:X(\omega)\le x\},\qquad
+    \{\omega\in\Omega:X(\omega)=x\},\qquad
+    \{\omega\in\Omega:X(\omega)>x\}.\]</div>
+
+  <div class="semantic definition" id="def-5-funcao-densidade">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Seja \(X:\Omega\to\mathbb R\) uma variável aleatória. A <strong>função densidade de probabilidade</strong> de \(X\), denotada por \(f_X(x)\), é definida por</p>
+    <div class="equation">\[f_X(x)=\Pr(X=x).\]</div>
+    <p>Em outras palavras, \(f_X(x)\) é a probabilidade de \(X\) assumir o valor \(x\). Às vezes escrevemos apenas \(f(x)\), quando a variável aleatória está clara.</p>
+  </div>
+
+  <aside class="semantic remark" id="obs-5-27">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">5.27</span></div>
+    <p>Na teoria da probabilidade, usa-se com frequência a <strong>função de distribuição</strong> de \(X\), que é a função</p>
+    <div class="equation">\[F_X(x)=\Pr(X\le x),\]</div>
+    <p>em lugar da função densidade. De fato, ao estudar espaços amostrais infinitos, é essencial usar \(F_X\). Entretanto, como nossos espaços amostrais são finitos e, portanto, nossas variáveis aleatórias são finitas e discretas, as duas noções são essencialmente intercambiáveis. Por simplicidade, ficaremos com as funções densidade.</p>
+  </aside>
+
+  <p>Há diversas funções densidade padrão que aparecem com frequência nos cálculos de probabilidade discreta. Descrevemos brevemente algumas das mais comuns.</p>
+
+  <div class="semantic example" id="exemplo-5-28">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.28 — Distribuição uniforme</span></div>
+    <p>Seja \(S\) um conjunto com \(N\) elementos; por exemplo, \(S=\{0,1,\ldots,N-1\}\). Seja \(X\) uma variável aleatória que satisfaz</p>
+    <div class="equation">\[
+      f_X(j)=\Pr(X=j)=
+      \begin{cases}
+        \dfrac1N,&\text{se }j\in S,\\
+        0,&\text{se }j\notin S.
+      \end{cases}
+    \]</div>
+    <p>Dizemos que \(X\) é <strong>uniformemente distribuída</strong>, ou que possui <strong>densidade uniforme</strong>, pois todos os resultados em \(S\) são igualmente prováveis.</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-29">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.29 — Distribuição binomial</span></div>
+    <p>Suponha que um experimento tenha dois resultados, sucesso ou fracasso, e seja \(p\) a probabilidade de sucesso. O experimento é realizado \(n\) vezes, e a variável aleatória \(X\) registra o número de sucessos. O espaço amostral \(\Omega\) consiste em todas as sequências binárias \(\omega=b_1b_2\cdots b_n\) de comprimento \(n\), em que \(b_i=0\) se o \(i\)-ésimo experimento fracassa e \(b_i=1\) se tem sucesso. O valor de \(X\) em \(\omega\) é simplesmente \(X(\omega)=b_1+b_2+\cdots+b_n\), o número de sucessos.</p>
+    <p>Usando \(X\), podemos exprimir a probabilidade de um único evento \(\omega\) como</p>
+    <div class="equation">\[\Pr(\{\omega\})=p^{X(\omega)}(1-p)^{n-X(\omega)}.\]</div>
+    <p>(Você vê por que essa fórmula está correta?) Ela nos permite calcular a probabilidade de exatamente \(k\) sucessos:</p>
+    <div class="aligned-equations">\[\begin{aligned}
+      f_X(k)=\Pr(X=k)
+        &=\sum_{\substack{\omega\in\Omega\\X(\omega)=k}}\Pr(\{\omega\})\\
+        &=\sum_{\substack{\omega\in\Omega\\X(\omega)=k}}p^{X(\omega)}(1-p)^{n-X(\omega)}\\
+        &=\sum_{\substack{\omega\in\Omega\\X(\omega)=k}}p^k(1-p)^{n-k}\\
+        &=\#\{\omega\in\Omega:X(\omega)=k\}\,p^k(1-p)^{n-k}\\
+        &=\binom nk p^k(1-p)^{n-k}.
+    \end{aligned}\]</div>
+    <p>A última linha decorre do fato de haver \(\binom nk\) maneiras de selecionar exatamente \(k\) dos \(n\) experimentos para serem sucessos. A função</p>
+    <div class="equation" id="eq-5-23"><span class="equation-number">(5.23)</span>\[f_X(k)=\binom nk p^k(1-p)^{n-k}\]</div>
+    <p>é chamada de <strong>função densidade binomial</strong>.</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-30">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.30 — Distribuição hipergeométrica</span></div>
+    <p>Uma urna contém \(N\) bolas, das quais \(m\) são vermelhas e \(N-m\) são azuis. Dessa coleção, escolhem-se ao acaso \(n\) bolas, sem reposição. Seja \(X\) o número de bolas vermelhas escolhidas. Então \(X\) é uma variável aleatória que assume valores inteiros no intervalo</p>
+    <div class="equation">\[0\le X(\omega)\le\min\{m,n\}.\]</div>
+    <p>No caso em que \(n\le m\), um argumento semelhante ao que demos no <a href="#exemplo-5-20" data-source-xref>Exemplo 5.20</a> mostra que a função densidade de \(X\) é dada por</p>
+    <div class="equation" id="eq-5-24"><span class="equation-number">(5.24)</span>\[
+      f_X(i)=\Pr(X=i)=\frac{\binom mi\binom{N-m}{n-i}}{\binom Nn}.
+    \]</div>
+    <p>Essa é chamada de <strong>função densidade hipergeométrica</strong>.</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-31">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.31 — Distribuição geométrica</span></div>
+    <p>Daremos um exemplo de espaço de probabilidade infinito. Suponha que lancemos repetidamente uma moeda não equilibrada, cuja probabilidade de dar cara seja algum número \(0&lt;p&lt;1\). Seja \(X\) a variável aleatória que fornece o número total de lançamentos necessários até aparecer cara pela primeira vez. Observe que \(X\) pode assumir qualquer valor inteiro positivo, pois é possível — embora improvável — obter uma sequência tremendamente longa de coroas.<sup id="fnref-5-12"><a href="#fn-5-12" data-source-xref>12</a></sup></p>
+    <p>O espaço amostral \(\Omega\) consiste em todas as sequências binárias \(\omega=b_1b_2b_3\cdots\), em que \(b_i=0\) se o \(i\)-ésimo lançamento dá coroa e \(b_i=1\) se dá cara. Observe que \(\Omega\) é infinito. Atribuímos probabilidades a certos eventos, isto é, a certos subconjuntos de \(\Omega\), especificando os resultados de alguns lançamentos iniciais. Para qualquer sequência binária finita \(\gamma_1\gamma_2\cdots\gamma_n\), atribuímos a probabilidade</p>
+    <div class="equation">\[
+      \Pr\bigl(\{\omega\in\Omega:\omega\text{ começa por }\gamma_1\gamma_2\cdots\gamma_n\}\bigr)
+      =p^{\#\{i:\gamma_i=1\}}(1-p)^{\#\{i:\gamma_i=0\}}.
+    \]</div>
+    <p>A variável aleatória \(X\) é definida por</p>
+    <div class="equation">\[X(\omega)=X(b_1b_2b_3\cdots)=\min\{i:b_i=1\}.\]</div>
+    <p>Então</p>
+    <div class="equation">\[
+      \{X=n\}=\{\omega\in\Omega:X(\omega)=n\}
+      =\{\underbrace{00\cdots00}_{n-1\text{ zeros}}1b_{n+1}b_{n+2}\cdots\},
+    \]</div>
+    <p>o que fornece a fórmula</p>
+    <div class="equation" id="eq-5-25"><span class="equation-number">(5.25)</span>\[
+      f_X(n)=\Pr(X=n)=(1-p)^{n-1}p\qquad\text{para }n=1,2,3,\ldots.
+    \]</div>
+    <p>Dizemos que uma variável aleatória com a função densidade <a href="#eq-5-25" data-source-xref>(5.25)</a> possui <strong>densidade geométrica</strong>, pois a sequência de probabilidades \(f_X(1),f_X(2),f_X(3),\ldots\) forma uma progressão geométrica.<sup id="fnref-5-13"><a href="#fn-5-13" data-source-xref>13</a></sup> Mais adiante, no <a href="#exemplo-5-37" data-source-xref>Exemplo 5.37</a>, calcularemos o valor esperado de \(X\) somando uma série geométrica infinita.</p>
+  </div>
+
+  <p>Anteriormente, estudamos aspectos da teoria da probabilidade que envolviam a interação de dois ou mais eventos. Agora discutiremos o material que nos permite estudar a interação de duas ou mais variáveis aleatórias.</p>
+
+  <div class="semantic definition" id="def-5-densidades-conjunta-condicional">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Sejam \(X\) e \(Y\) duas variáveis aleatórias. A <strong>função densidade conjunta</strong> de \(X\) e \(Y\), denotada por \(f_{X,Y}(x,y)\), é a probabilidade de \(X\) assumir o valor \(x\) e \(Y\) assumir o valor \(y\). Assim,<sup id="fnref-5-14"><a href="#fn-5-14" data-source-xref>14</a></sup></p>
+    <div class="equation">\[f_{X,Y}(x,y)=\Pr(X=x\text{ e }Y=y).\]</div>
+    <p>De modo semelhante, a <strong>função densidade condicional</strong>, denotada por \(f_{X\mid Y}(x\mid y)\), é a probabilidade de \(X\) assumir o valor \(x\), dado que \(Y\) assume o valor \(y\):</p>
+    <div class="equation">\[f_{X\mid Y}(x\mid y)=\Pr(X=x\mid Y=y).\]</div>
+    <p>Dizemos que \(X\) e \(Y\) são <strong>independentes</strong> se</p>
+    <div class="equation">\[f_{X,Y}(x,y)=f_X(x)f_Y(y)\qquad\text{para todos }x\text{ e }y.\]</div>
+  </div>
+
+  <p>Isso equivale a os eventos \(\{X=x\}\) e \(\{Y=y\}\) serem independentes no sentido anterior, definido na <a href="#def-5-eventos-independentes" data-source-xref>Seção 5.3.1</a>. Quando não houver risco de confusão, às vezes escrevemos \(f(x,y)\) e \(f(x\mid y)\) no lugar de \(f_{X,Y}(x,y)\) e \(f_{X\mid Y}(x\mid y)\), respectivamente.</p>
+
+  <div class="semantic example" id="exemplo-5-32">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.32</span></div>
+    <p>Uma urna contém quatro moedas de ouro e três moedas de prata. Uma moeda é retirada ao acaso, examinada e devolvida à urna; em seguida, uma segunda moeda é retirada ao acaso e examinada. Seja \(X\) o número de moedas de ouro retiradas, e seja \(Y\) o número de moedas de prata.</p>
+    <p>Para encontrar a função densidade conjunta \(f_{X,Y}(x,y)\), precisamos calcular a probabilidade do evento \(\{X=x\text{ e }Y=y\}\). Para esclarecer o cálculo, definimos duas variáveis aleatórias adicionais:</p>
+    <div class="equation">\[
+      F=\begin{cases}1,&\text{se a primeira escolha é ouro},\\0,&\text{se a primeira escolha é prata},\end{cases}
+      \qquad\text{e}\qquad
+      S=\begin{cases}1,&\text{se a segunda escolha é ouro},\\0,&\text{se a segunda escolha é prata}.\end{cases}
+    \]</div>
+    <p>Observe que \(X=F+S\) e \(Y=2-X=2-F-S\). Além disso, \(F\) e \(S\) são independentes, e \(\Pr(F=1)=\Pr(S=1)=4/7\). Podemos calcular \(f_{X,Y}(1,1)\) da seguinte maneira:</p>
+    <div class="aligned-equations">\[\begin{aligned}
+      f_{X,Y}(1,1)
+        &=\Pr(X=1\text{ e }Y=1)\\
+        &=\Pr(F=1\text{ e }S=0)+\Pr(F=0\text{ e }S=1)\\
+        &=\Pr(F=1)\Pr(S=0)+\Pr(F=0)\Pr(S=1)\\
+        &=\frac47\cdot\frac37+\frac37\cdot\frac47
+         =\frac{24}{49}\approx0{,}4898.
+    \end{aligned}\]</div>
+    <p>Em outras palavras, a probabilidade de retirar uma moeda de ouro e uma de prata é de aproximadamente \(0{,}4898\). O cálculo dos outros valores de \(f_{X,Y}\) é semelhante.</p>
+    <p>Esses cálculos foram fáceis porque \(F\) e \(S\) são independentes. Como eles mudam se a primeira moeda não for devolvida antes da segunda escolha? Nesse caso, a probabilidade de obter prata na segunda escolha depende de a primeira ter sido ouro ou prata. Por exemplo, o cálculo anterior de \(f_{X,Y}(1,1)\) passa a ser</p>
+    <div class="aligned-equations">\[\begin{aligned}
+      f_{X,Y}(1,1)
+        &=\Pr(X=1\text{ e }Y=1)\\
+        &=\Pr(F=1\text{ e }S=0)+\Pr(F=0\text{ e }S=1)\\
+        &=\Pr(S=0\mid F=1)\Pr(F=1)+\Pr(S=1\mid F=0)\Pr(F=0)\\
+        &=\frac36\cdot\frac47+\frac46\cdot\frac37
+         =\frac47\approx0{,}5714.
+    \end{aligned}\]</div>
+    <p>Portanto, a chance de obter exatamente uma moeda de ouro e exatamente uma de prata é um pouco maior quando as moedas não são devolvidas após cada escolha.</p>
+    <p>Esse último cálculo é um caso especial da distribuição hipergeométrica; veja o <a href="#exemplo-5-30" data-source-xref>Exemplo 5.30</a>. Assim, o valor \(f_{X,Y}(1,1)=4/7\) pode ser calculado pela fórmula <a href="#eq-5-24" data-source-xref>(5.24)</a> com \(N=7\), \(m=4\), \(n=2\) e \(i=1\), o que fornece</p>
+    <div class="equation">\[\frac{\binom41\binom31}{\binom72}=\frac47.\]</div>
+  </div>
+
+  <p>A reformulação seguinte da fórmula de Bayes costuma ser conveniente em cálculos com probabilidades condicionais.</p>
+
+  <aside class="semantic theorem" id="teorema-5-33">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">5.33 — Fórmula de Bayes</span></div>
+    <p>Sejam \(X\) e \(Y\) variáveis aleatórias e suponha que \(f_Y(y)&gt;0\). Então</p>
+    <div class="equation">\[f_{X\mid Y}(x\mid y)=\frac{f_X(x)f_{Y\mid X}(y\mid x)}{f_Y(y)}.\]</div>
+    <p>Em particular,</p>
+    <div class="equation">\[
+      X\text{ e }Y\text{ são independentes}
+      \quad\Longleftrightarrow\quad
+      f_{X\mid Y}(x\mid y)=f_X(x)\quad\text{para todos }x\text{ e }y.
+    \]</div>
+  </aside>
+
+  <div class="semantic example" id="exemplo-5-34">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.34</span></div>
+    <p>Neste exemplo, usamos a fórmula de Bayes para explorar a independência de pares de variáveis aleatórias tomadas de uma tripla \((X,Y,Z)\). Sejam \(X\) e \(Y\) variáveis aleatórias independentes que assumem os valores \(+1\) e \(-1\), cada um com probabilidade \(1/2\), e seja \(Z=XY\). Então \(Z\) também assume os valores \(+1\) e \(-1\), e temos</p>
+    <div class="equation" id="eq-5-26"><span class="equation-number">(5.26)</span>\[
+      f_Z(1)=\sum_{x\in\{-1,+1\}}\sum_{y\in\{-1,+1\}}
+      \Pr(Z=1\mid X=x\text{ e }Y=y)\,f_{X,Y}(x,y).
+    \]</div>
+    <p>Se \((X,Y)=(+1,-1)\) ou \((X,Y)=(-1,+1)\), então \(Z\ne1\); portanto, apenas os dois termos com \((x,y)=(1,1)\) e \((x,y)=(-1,-1)\) aparecem na soma <a href="#eq-5-26" data-source-xref>(5.26)</a>. Para esses dois termos, \(\Pr(Z=1\mid X=x\text{ e }Y=y)=1\), de modo que</p>
+    <div class="aligned-equations">\[\begin{aligned}
+      f_Z(1)
+        &=\Pr(X=1\text{ e }Y=1)+\Pr(X=-1\text{ e }Y=-1)\\
+        &=\frac12\cdot\frac12+\frac12\cdot\frac12=\frac12.
+    \end{aligned}\]</div>
+    <p>Segue que \(f_Z(-1)=1-f_Z(1)\) também é igual a \(1/2\).</p>
+    <p>Em seguida, calculamos a densidade de probabilidade conjunta de \(Z\) e \(X\). Por exemplo,</p>
+    <div class="aligned-equations">\[\begin{aligned}
+      f_{Z,X}(1,1)
+        &=\Pr(Z=1\text{ e }X=1)\\
+        &=\Pr(X=1\text{ e }Y=1)\\
+        &=\frac14 &&\text{pois }X\text{ e }Y\text{ são independentes},\\
+        &=f_Z(1)f_X(1).
+    \end{aligned}\]</div>
+    <p>Cálculos semelhantes mostram que</p>
+    <div class="equation">\[f_{Z,X}(z,x)=f_Z(z)f_X(x)\qquad\text{para todos }z,x\in\{-1,+1\},\]</div>
+    <p>logo, pelo <a href="#teorema-5-33" data-source-xref>Teorema 5.33</a>, \(Z\) e \(X\) são independentes. O argumento funciona igualmente para \(Z\) e \(Y\), de modo que \(Z\) e \(Y\) também são independentes. Assim, entre as três variáveis \(X\), \(Y\) e \(Z\), qualquer par é independente. Contudo, não desejaríamos chamar as três, em conjunto, de família independente, pois o valor de \(Z\) é determinado pelos valores de \(X\) e \(Y\). Isso motiva a definição seguinte.</p>
+  </div>
+
+  <div class="semantic definition" id="def-5-familia-variaveis-independentes">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Uma família de duas ou mais variáveis aleatórias \(\{X_1,X_2,\ldots,X_n\}\) é <strong>independente</strong> se os eventos</p>
+    <div class="equation">\[\{X_1=x_1\},\ \{X_2=x_2\},\ \ldots,\ \{X_n=x_n\}\]</div>
+    <p>são independentes para toda escolha de \(x_1,x_2,\ldots,x_n\).</p>
+  </div>
+
+  <p>Observe que as variáveis aleatórias \(X\), \(Y\) e \(Z=XY\) do <a href="#exemplo-5-34" data-source-xref>Exemplo 5.34</a> não formam uma família independente, pois</p>
+  <div class="equation">\[\Pr(Z=1\text{ e }X=1\text{ e }Y=-1)=0,\]</div>
+  <p>enquanto</p>
+  <div class="equation">\[\Pr(Z=1)\Pr(X=1)\Pr(Y=-1)=\frac18.\]</div>
+
+  <ol class="footnotes" start="12">
+    <li id="fn-5-12">Para um comentário divertido sobre longas sequências de caras, veja o Ato I de <span lang="en"><em>Rosencrantz and Guildenstern Are Dead</em></span>, de Tom Stoppard. <a href="#fnref-5-12" data-source-xref aria-label="Voltar à chamada da nota 12">↩</a></li>
+    <li id="fn-5-13">Uma sequência \(a_1,a_2,a_3,\ldots\) é chamada de progressão geométrica se todas as razões \(a_{n+1}/a_n\) são iguais. De modo semelhante, ela é uma progressão aritmética se todas as diferenças \(a_{n+1}-a_n\) são iguais. <a href="#fnref-5-13" data-source-xref aria-label="Voltar à chamada da nota 13">↩</a></li>
+    <li id="fn-5-14">A expressão \(\Pr(X=x\text{ e }Y=y)\) é, na verdade, uma abreviação para a probabilidade do evento \(\{\omega\in\Omega:X(\omega)=x\text{ e }Y(\omega)=y\}\). Se você se confundir com probabilidades expressas em termos dos valores de variáveis aleatórias, costuma ajudar escrevê-las explicitamente em termos de um evento, isto é, como a probabilidade de certo subconjunto de \(\Omega\). <a href="#fnref-5-14" data-source-xref aria-label="Voltar à chamada da nota 14">↩</a></li>
+  </ol>
+</section>

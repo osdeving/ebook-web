@@ -1,0 +1,106 @@
+<section class="chapter-section subsection" id="sec-5-2-1">
+  <div class="section-heading">
+    <span class="section-number">5.2.1</span>
+    <h3>Criptoanálise da cifra de Vigenère: teoria</h3>
+  </div>
+
+  <p>Em vários momentos da história, afirmou-se que cifras do tipo Vigenère, sobretudo as que usam alfabetos mistos, eram “indecifráveis”. Na realidade, nada poderia estar mais longe da verdade. Se Eva conhece Bob e Alice, talvez consiga adivinhar parte da palavra-chave e prosseguir a partir daí. (Quantas pessoas você conhece que usam alguma variação do próprio nome e da data de nascimento como senha na internet?) Mesmo sem palpites afortunados, porém, métodos estatísticos elementares desenvolvidos no século XIX permitem uma criptoanálise direta de cifras do tipo Vigenère. Para simplificar, ficaremos com a Vigenère original, isto é, não permitiremos alfabetos mistos no quadro.</p>
+
+  <p>Talvez você se pergunte por que dedicamos tempo à criptoanálise da cifra de Vigenère, já que hoje ninguém a utiliza em comunicações seguras. A resposta é que nossa exposição foi concebida principalmente para apresentar o uso de ferramentas estatísticas na criptoanálise. Isso se apoia na aplicação elementar de tabelas de frequência que usamos na <a href="../ch01/#sec-1-1-1" data-source-xref>Seção 1.1.1</a> para criptoanalisar cifras de substituição simples e a amplia. Nesta seção, descrevemos as ferramentas teóricas empregadas na criptoanálise da Vigenère; na <a href="#sec-5-2-2" data-source-xref>seção seguinte</a>, aplicaremos essas ferramentas para decifrar um texto cifrado de exemplo. Se, em algum momento, a teoria desta seção parecer confusa, talvez ajude consultar a <a href="#sec-5-2-2" data-source-xref>Seção 5.2.2</a> e ver como ela é aplicada na prática.</p>
+
+  <p>O primeiro objetivo ao criptoanalisar uma cifra de Vigenère é descobrir o comprimento da palavra-chave, às vezes chamado de <strong>tamanho do bloco</strong> ou <strong>período</strong>. Já vimos na <a href="#obs-5-14" data-source-xref>Observação 5.14</a> como isso pode ser feito procurando fragmentos repetidos no texto cifrado. O ponto é que certos fragmentos do texto claro, como <code>the</code>, aparecem com grande frequência, enquanto outros, como <code>ugw</code>, aparecem raramente ou nunca. Entre as muitas ocorrências de <code>the</code> no texto claro, certa porcentagem se alinhará exatamente com a mesma parte da palavra-chave.</p>
+
+  <p>Isso conduz ao <strong>método de Kasiski</strong>, descrito pela primeira vez pelo oficial militar alemão Friedrich Kasiski em seu livro <em>Die Geheimschriften und die Dechiffrier-kunst</em><sup id="fnref-5-6"><a href="#fn-5-6" data-source-xref>6</a></sup>, publicado em 1863. Procuram-se fragmentos repetidos no texto cifrado e compila-se uma lista das distâncias que separam as repetições. É provável que o comprimento da chave divida muitas dessas distâncias. Naturalmente, certo número de repetições ocorrerá por puro acaso, mas estas são aleatórias, enquanto as que provêm de fragmentos repetidos do texto claro sempre têm distância divisível pelo comprimento da chave. Em geral, não é difícil identificar o comprimento da chave nesses dados.</p>
+
+  <p>Há outro método para estimar o comprimento da chave que trabalha com letras individuais, e não com fragmentos de várias letras. A ideia subjacente remonta à tabela de frequência das letras do inglês (<a href="../ch01/#tab-1-3" data-source-xref>Tabela 1.3</a>), que mostra que algumas letras têm maior probabilidade de aparecer que outras. Suponha que você receba um texto cifrado com Vigenère e estime que ele tenha sido cifrado com uma palavra-chave de comprimento \(5\). Isso significa que cada quinta letra foi cifrada pela mesma rotação. Portanto, se você extrair uma letra a cada cinco e formar uma sequência, toda essa sequência terá sido cifrada por uma única cifra de substituição. As frequências de suas letras deverão, assim, se parecer mais ou menos com as frequências do inglês: algumas letras serão muito mais frequentes, e outras, muito menos. O mesmo valerá para a sequência formada pela 2ª, 7ª, 12ª, ... letras do texto cifrado, e assim por diante. Por outro lado, se o palpite estiver errado e o comprimento da chave não for cinco, a sequência formada por cada quinta letra deverá ser mais ou menos aleatória, e suas frequências serão diferentes das do inglês.</p>
+
+  <p>Como podemos quantificar as duas afirmações seguintes de modo a distingui-las?</p>
+  <div class="equation" id="eq-5-4"><span class="equation-number">(5.4)</span><a href="../ch01/#tab-1-3" data-source-xref aria-label="Tabela 1.3">\[\text{A sequência 1 tem frequências de letras semelhantes às da Tabela 1.3.}\]</a></div>
+  <div class="equation" id="eq-5-5"><span class="equation-number">(5.5)</span>\[\text{A sequência 2 tem frequências de letras que parecem mais ou menos aleatórias.}\]</div>
+  <p>Um método consiste em usar o dispositivo a seguir.</p>
+
+  <div class="semantic definition" id="def-5-indice-coincidencia">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Seja \(s=c_1c_2c_3\cdots c_n\) uma sequência de \(n\) caracteres alfabéticos. O <strong>índice de coincidência</strong> de \(s\), denotado por \(\operatorname{IndCo}(s)\), é a probabilidade de que dois caracteres escolhidos aleatoriamente na sequência \(s\) sejam idênticos.</p>
+  </div>
+
+  <p>Vamos deduzir uma fórmula para o índice de coincidência. É conveniente identificar as letras <code>a</code>, ..., <code>z</code> com os números \(0,1,\ldots,25\), respectivamente. Para cada \(i=0,1,2,\ldots,25\), seja \(F_i\) a frequência com que a letra \(i\) aparece na sequência \(s\). Por exemplo, se a letra <code>h</code> aparece \(23\) vezes em \(s\), então \(F_7=23\), pois <code>h</code>\(=7\) em nossa rotulagem do alfabeto.</p>
+
+  <p>Para cada \(i\), há \(\binom{F_i}{2}=F_i(F_i-1)/2\) maneiras de escolher duas ocorrências da \(i\)-ésima letra do alfabeto em \(s\). Assim, o número total de maneiras de obter uma letra repetida é a soma de \(F_i(F_i-1)/2\) para \(i=0,1,\ldots,25\). Por outro lado, há \(\binom n2=n(n-1)/2\) maneiras de escolher dois caracteres quaisquer em \(s\). A probabilidade de escolher duas letras idênticas é o número total de maneiras de escolher duas letras idênticas dividido pelo número total de maneiras de escolher duas letras quaisquer. Portanto,</p>
+  <div class="equation" id="eq-5-6"><span class="equation-number">(5.6)</span>\[\operatorname{IndCo}(s)=\frac{1}{n(n-1)}\sum_{i=0}^{25}F_i(F_i-1).\]</div>
+
+  <div class="semantic example" id="exemplo-5-15">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.15</span></div>
+    <p>Seja \(s\) a sequência</p>
+    <blockquote lang="en">A bird in hand is worth two in the bush.</blockquote>
+    <p>Ignorando os espaços entre as palavras, \(s\) possui \(30\) caracteres. A tabela a seguir conta as frequências de cada letra que aparece ao menos uma vez:</p>
+    <div class="table-wrap">
+      <table class="numeric">
+        <tbody>
+          <tr><th scope="row">Letra</th><td>A</td><td>B</td><td>D</td><td>E</td><td>H</td><td>I</td><td>N</td><td>O</td><td>R</td><td>S</td><td>T</td><td>U</td><td>W</td></tr>
+          <tr><th scope="row">\(i\)</th><td>0</td><td>1</td><td>3</td><td>4</td><td>7</td><td>8</td><td>13</td><td>14</td><td>17</td><td>18</td><td>19</td><td>20</td><td>22</td></tr>
+          <tr><th scope="row">\(F_i\)</th><td>2</td><td>2</td><td>2</td><td>1</td><td>4</td><td>4</td><td>3</td><td>2</td><td>2</td><td>2</td><td>3</td><td>1</td><td>2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Então, pela fórmula <a href="#eq-5-6" data-source-xref>(5.6)</a>, o índice de coincidência de \(s\) é</p>
+    <div class="equation">\[\operatorname{IndCo}(s)=\frac{1}{30\cdot29}\bigl(2\cdot1+2\cdot1+2\cdot1+4\cdot3+4\cdot3+3\cdot2+\cdots+3\cdot2+2\cdot1\bigr)\approx0{,}0575.\]</div>
+  </div>
+
+  <p>Voltemos às afirmações <a href="#eq-5-4" data-source-xref>(5.4)</a> e <a href="#eq-5-5" data-source-xref>(5.5)</a>. Suponha primeiro que \(s\) seja formada por caracteres aleatórios. A probabilidade de \(c_i=c_j\) é exatamente \(1/26\), de modo que esperaríamos \(\operatorname{IndCo}(s)\approx1/26\approx0{,}0385\). Se, ao contrário, \(s\) for um texto em inglês, esperaríamos as frequências relativas da <a href="../ch01/#tab-1-3" data-source-xref>Tabela 1.3</a>. Por exemplo, se \(s\) tiver \(10000\) caracteres, esperaríamos aproximadamente \(815\) letras A, \(144\) letras B, \(276\) letras C, e assim por diante. O índice de coincidência de uma sequência de texto em inglês deverá, portanto, ser aproximadamente</p>
+  <div class="equation">\[\frac{815\cdot814+144\cdot143+276\cdot275+\cdots+8\cdot7}{10000\cdot9999}\approx0{,}0685.\]</div>
+  <p>A diferença entre \(0{,}0385\) e \(0{,}0685\), por menor que pareça, permite distinguir as afirmações <a href="#eq-5-4" data-source-xref>(5.4)</a> e <a href="#eq-5-5" data-source-xref>(5.5)</a>. Mais precisamente:</p>
+  <div class="equation" id="eq-5-7"><span class="equation-number">(5.7)</span>\[\operatorname{IndCo}(s)\approx0{,}068\quad\Longrightarrow\quad s\text{ se parece com inglês cifrado por substituição simples}.\]</div>
+  <div class="equation" id="eq-5-8"><span class="equation-number">(5.8)</span>\[\operatorname{IndCo}(s)\approx0{,}038\quad\Longrightarrow\quad s\text{ se parece com letras aleatórias}.\]</div>
+  <p>Naturalmente, o valor de \(\operatorname{IndCo}(s)\) tende a oscilar, sobretudo se \(s\) for relativamente curta. A lição de <a href="#eq-5-7" data-source-xref>(5.7)</a> e <a href="#eq-5-8" data-source-xref>(5.8)</a> é que valores maiores tornam mais provável que \(s\) seja inglês cifrado por algum tipo de substituição simples, enquanto valores menores tornam mais provável que \(s\) seja aleatória.</p>
+
+  <p>Suponha agora que Eva intercepte uma mensagem \(s\) que acredita ter sido cifrada com Vigenère e queira verificar se a palavra-chave tem comprimento \(k\). Seu primeiro passo é dividir \(s\) em \(k\) partes \(s_1,s_2,\ldots,s_k\), em que \(s_1\) contém cada \(k\)-ésima letra a partir da primeira, \(s_2\) contém cada \(k\)-ésima letra a partir da segunda, e assim por diante. Em termos matemáticos, se \(s=c_1c_2c_3\cdots c_n\), então</p>
+  <div class="equation">\[s_i=c_i c_{i+k}c_{i+2k}c_{i+3k}\cdots.\]</div>
+  <p>Observe que, se o palpite de Eva estiver correto e a palavra-chave tiver comprimento \(k\), cada \(s_i\) será formada por caracteres cifrados com o mesmo deslocamento. Embora esses caracteres não formem palavras ao serem decifrados — lembre-se de que \(s_i\) contém uma letra a cada \(k\) do texto —, o padrão de suas frequências se parecerá com o do inglês. Se o palpite estiver errado, as sequências \(s_i\) serão mais ou menos aleatórias.</p>
+
+  <p>Assim, para cada \(k\), Eva calcula \(\operatorname{IndCo}(s_i)\) para \(i=1,2,\ldots,k\) e verifica se esses números estão mais próximos de \(0{,}068\) ou de \(0{,}038\). Ela repete o procedimento para \(k=3,4,5,\ldots\), até encontrar um \(k\) para o qual a média de \(\operatorname{IndCo}(s_1),\operatorname{IndCo}(s_2),\ldots,\operatorname{IndCo}(s_k)\) seja grande, digamos, superior a \(0{,}06\). Esse \(k\) provavelmente é o tamanho correto do bloco.</p>
+
+  <p>Suponhamos que Eva tenha usado o teste de Kasiski ou o teste do índice de coincidência para determinar que a palavra-chave tem comprimento \(k\). É um bom começo, mas ainda falta muito para descobrir o texto claro. O passo seguinte é comparar entre si as sequências \(s_1,s_2,\ldots,s_k\). A ferramenta usada para comparar sequências distintas é chamada de <strong>índice mútuo de coincidência</strong>. A ideia geral é que cada uma das \(k\) sequências foi cifrada por uma cifra de deslocamento diferente. Se \(s_i\) foi deslocada em \(\beta_i\) e \(s_j\), em \(\beta_j\), esperamos que as frequências de \(s_i\) se ajustem melhor às de \(s_j\) quando os símbolos de \(s_i\) forem deslocados por uma quantidade adicional</p>
+  <div class="equation">\[\sigma\equiv\beta_j-\beta_i\pmod{26}.\]</div>
+
+  <div class="semantic definition" id="def-5-indice-mutuo-coincidencia">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Sejam \(s=c_1c_2c_3\cdots c_n\) e \(t=d_1d_2d_3\cdots d_m\) sequências de caracteres alfabéticos. O <strong>índice mútuo de coincidência</strong> de \(s\) e \(t\), denotado por \(\operatorname{MutIndCo}(s,t)\), é a probabilidade de que um caractere escolhido aleatoriamente em \(s\) e um caractere escolhido aleatoriamente em \(t\) sejam iguais.</p>
+  </div>
+
+  <p>Se \(F_i(s)\) denota o número de vezes que a \(i\)-ésima letra do alfabeto aparece em \(s\), e analogamente para \(F_i(t)\), a probabilidade de escolher a \(i\)-ésima letra em ambas é o produto das probabilidades \(F_i(s)/n\) e \(F_i(t)/m\). Somando essas probabilidades sobre todas as letras possíveis, obtemos</p>
+  <div class="equation" id="eq-5-9"><span class="equation-number">(5.9)</span>\[\operatorname{MutIndCo}(s,t)=\frac{1}{nm}\sum_{i=0}^{25}F_i(s)F_i(t).\]</div>
+
+  <div class="semantic example" id="exemplo-5-16">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.16</span></div>
+    <p>Sejam \(s\) e \(t\) as sequências</p>
+    <blockquote lang="en">\(s=\) “A bird in hand is worth two in the bush,”<br>\(t=\) “A stitch in time saves nine.”</blockquote>
+    <p>O uso da fórmula <a href="#eq-5-9" data-source-xref>(5.9)</a> fornece \(\operatorname{MutIndCo}(s,t)=0{,}0773\).</p>
+  </div>
+
+  <p>O índice mútuo de coincidência tem propriedades muito semelhantes às do índice de coincidência. Por exemplo, há análogos das afirmações <a href="#eq-5-7" data-source-xref>(5.7)</a> e <a href="#eq-5-8" data-source-xref>(5.8)</a>. O valor de \(\operatorname{MutIndCo}(s,t)\) pode confirmar se um deslocamento estimado está correto. Se duas sequências \(s\) e \(t\) foram cifradas pela mesma cifra de substituição simples, seu índice mútuo tende a ser grande por causa da frequência desigual das letras. Se foram cifradas por substituições diferentes, não têm relação entre si e o índice mútuo tende a ser muito menor.</p>
+
+  <p>Voltemos ao ataque de Eva à cifra de Vigenère. Ela conhece o comprimento \(k\) da chave e dividiu o texto cifrado, como de costume, nos \(k\) blocos \(s_1,s_2,\ldots,s_k\). Os caracteres de cada bloco foram cifrados pelo mesmo deslocamento; escrevamos</p>
+  <div class="equation">\[\beta_i=\text{quantidade pela qual o bloco }s_i\text{ foi deslocado}.\]</div>
+  <p>Eva compara \(s_i\) com a sequência obtida deslocando os caracteres de \(s_j\) por diversas quantidades. Como abreviação, escrevemos</p>
+  <div class="equation">\[s_j+\sigma=\text{a sequência }s_j\text{ com cada caractere deslocado }\sigma\text{ posições no alfabeto}.\]</div>
+  <p>Suponha que \(\sigma=\beta_i-\beta_j\). Então \(s_j+\sigma\) foi deslocada, ao todo, por \(\beta_j+\sigma=\beta_i\) em relação ao texto claro. Logo, \(s_j+\sigma\) e \(s_i\) foram cifradas pelo mesmo deslocamento, e seu índice mútuo de coincidência será relativamente grande. Se \(\sigma\ne\beta_i-\beta_j\), as duas sequências terão sido cifradas por deslocamentos diferentes e o índice mútuo tenderá a ser pequeno.</p>
+
+  <p>Para colocar a ideia em prática, Eva calcula todos os índices mútuos</p>
+  <div class="equation">\[\operatorname{MutIndCo}(s_i,s_j+\sigma)\qquad\text{para }1\le i&lt;j\le k\text{ e }0\le\sigma\le25.\]</div>
+  <p>Examinando a lista de valores, ela separa os grandes, digamos, os superiores a \(0{,}065\). Cada valor grande torna provável que</p>
+  <div class="equation" id="eq-5-10"><span class="equation-number">(5.10)</span>\[\beta_i-\beta_j\equiv\sigma\pmod{26}.\]</div>
+  <p>A relação é apenas uma congruência módulo \(26\), pois um deslocamento de \(26\) equivale a um deslocamento de \(0\). Isso produz um sistema de equações da forma <a href="#eq-5-10" data-source-xref>(5.10)</a> nas variáveis \(\beta_1,\ldots,\beta_k\). Na prática, algumas dessas equações serão espúrias; depois de alguma tentativa e erro, Eva chegará a valores \(\gamma_2,\ldots,\gamma_k\) que satisfazem</p>
+  <div class="equation">\[\beta_2=\beta_1+\gamma_2,\quad\beta_3=\beta_1+\gamma_3,\quad\beta_4=\beta_1+\gamma_4,\quad\ldots,\quad\beta_k=\beta_1+\gamma_k.\]</div>
+
+  <p>Assim, se a palavra-chave começar por A, sua segunda letra será A deslocada por \(\gamma_2\), sua terceira letra será A deslocada por \(\gamma_3\), e assim por diante. Se começar por B, a segunda letra será B deslocada por \(\gamma_2\), a terceira será B deslocada por \(\gamma_3\), etc. Eva precisa apenas testar cada uma das \(26\) letras iniciais possíveis e decifrar a mensagem com cada uma das \(26\) palavras-chave correspondentes. Examinando os primeiros caracteres dos \(26\) possíveis textos claros, ela identifica facilmente o correto.</p>
+
+  <aside class="semantic remark" id="obs-5-17">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">5.17</span></div>
+    <p>Façamos uma última observação antes do exemplo prático. Dissemos que, entre as muitas ocorrências de <code>the</code> no texto claro, certa porcentagem se alinhará exatamente com a mesma parte da palavra-chave. Essas cifragens repetidas ocorrem com frequência muito maior do que se poderia imaginar. Trata-se de um exemplo do “paradoxo do aniversário”, segundo o qual a probabilidade de ocorrer uma coincidência — de trigramas, aniversários, cores etc. — é bastante alta. Discutiremos o paradoxo do aniversário e algumas de suas muitas aplicações à criptografia na <a href="#sec-5-4" data-source-xref>Seção 5.4</a>.</p>
+  </aside>
+
+  <ol class="footnotes" start="6">
+    <li id="fn-5-6"><em>Criptografia e a arte da decifração.</em> <a href="#fnref-5-6" data-source-xref aria-label="Voltar à chamada da nota 6">↩</a></li>
+  </ol>
+</section>

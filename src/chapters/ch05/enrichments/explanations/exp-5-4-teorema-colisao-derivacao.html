@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Duas listas com m e n amostras oferecem mn pares cruzados. A probabilidade de nenhum par coincidir é o objeto mais simples de estimar.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag example">Fixe a primeira lista</span><p>Se ela contém n valores distintos em um universo de tamanho N, uma nova amostra da segunda lista evita todos eles com chance \(1-n/N\).</p></div>
+    <div class="step"><span class="step-tag theorem">Repita</span><p>Para m amostras independentes, a chance de evitar a lista inteira é \((1-n/N)^m\); o complemento é a chance de pelo menos uma colisão.</p></div>
+    <div class="step"><span class="step-tag manipulation">Exponencial</span><p>Como \(1-x\le e^{-x}\), obtemos \(\Pr(\text{colisão})\ge1-e^{-mn/N}\). Probabilidade constante aparece quando \(mn\) tem a ordem de N.</p></div>
+  </div>
+  <div class="quick-check"><p>Listas balanceadas \(m\approx n\approx\sqrt N\) minimizam o maior dos dois tamanhos, mas ainda exigem memória para comparar valores.</p></div>
+</div>

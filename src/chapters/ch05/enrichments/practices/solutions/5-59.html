@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.59">
+          <p class="graduated-help__intro">Entropia condicional zero significa ausência total de incerteza residual em cada texto cifrado que pode ocorrer.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Média de termos não negativos</summary>
+      <div>\(H(K\mid C)=\sum_cf_C(c)H(K\mid C=c)\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Quando uma distribuição tem entropia zero?</summary>
+      <div>Exatamente quando toda a massa está concentrada em um único resultado.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Caracterize entropia zero</summary>
+      <div>Mostre primeiro que uma distribuição discreta tem \(H=0\) somente quando toda a massa se concentra em um resultado.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Cada \(H(K\mid C=c)\) é não negativo. Se sua média ponderada é zero, então todo termo com \(f_C(c)>0\) deve ser zero. Uma distribuição discreta tem entropia zero somente se uma alternativa tem probabilidade 1. Portanto, para cada texto cifrado observável \(c\), existe uma chave \(k(c)\) com</p><p>\[\Pr(K=k(c)\mid C=c)=1.\]</p><p>Assim uma única observação determina a chave sem ambiguidade (embora ainda possa ser necessário computá-la).</p>
+        </details>
+      </div>

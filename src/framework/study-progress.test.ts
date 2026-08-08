@@ -29,6 +29,8 @@ describe("progresso de estudo", () => {
       scale: 1,
       layers: [],
       bookmarks: [],
+      textBookmarks: [],
+      inkNotes: [],
       notes: {},
       progress: {},
     };

@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.43">
+          <p class="graduated-help__intro">Ao elevar a integral ao quadrado, coordenadas polares separam a parte radial da angular.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Quadrante</summary>
+      <div>Use \(x=r\cos\theta,y=r\sin\theta\), com \(r\ge0\) e \(0\le\theta\le\pi/2\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Separe os fatores</summary>
+      <div>O jacobiano acrescenta \(r\): \(x^2y^2\,dx\,dy=r^5\cos^2\theta\sin^2\theta\,dr\,d\theta\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Cheque por outra identidade</summary>
+      <div>Depois das coordenadas polares, use integração por partes para reduzir a integral à meia gaussiana e comparar resultados.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Para \(I=\int_0^\infty t^2e^{-t^2/2}\,dt\),</p><p>\[I^2=\int_0^{\pi/2}\cos^2\theta\sin^2\theta\,d\theta\int_0^\infty r^5e^{-r^2/2}\,dr.\]</p><p>A integral angular vale \(\pi/16\). Na radial, faça \(u=r^2/2\); então \(r^5\,dr=4u^2\,du\) e</p><p>\[\int_0^\infty r^5e^{-r^2/2}\,dr=4\int_0^\infty u^2e^{-u}\,du=4\Gamma(3)=8.\]</p><p>Logo \(I^2=(\pi/16)8=\pi/2\). Como \(I>0\),</p><p>\[\boxed{I=\sqrt{\pi/2}}.\]</p><p>Por integração por partes, \(I=\int_0^\infty e^{-t^2/2}\,dt\), a meia integral gaussiana, o que fornece a mesma resposta.</p>
+        </details>
+      </div>

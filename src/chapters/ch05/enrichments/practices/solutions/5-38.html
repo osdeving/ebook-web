@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.38">
+          <p class="graduated-help__intro">As duas desigualdades controlam o erro ao substituir produtos de probabilidades por exponenciais.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Parte (a)</summary>
+      <div>A função \(e^{-x}-(1-x)\) tem mínimo zero em \(x=0\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Parte (b)</summary>
+      <div>Integre a derivada de \(e^{-ax}-(1-x)^a\) e limite o integrando por \(t\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Parte (c)</summary>
+      <div>Substitua \(a=m\) e \(x=n/N\).</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) Para \(f(x)=e^{-x}-1+x\), temos \(f'(x)=1-e^{-x}\), negativo antes de 0 e positivo depois; logo \(f(x)\ge f(0)=0\).</p><p>(b) Defina \(D(x)=e^{-ax}-(1-x)^a\). Então</p><p>\[D(x)=a\int_0^x\big((1-t)^{a-1}-e^{-at}\big)\,dt.\]</p><p>Como \((1-t)^{a-1}\le e^{-(a-1)t}\), o integrando é no máximo \(e^{-at}(e^t-1)=e^{-(a-1)t}(1-e^{-t})\le t\). Assim \(D(x)\le ax^2/2\), que é a desigualdade pedida.</p><p>(c) A probabilidade exata é \(1-(1-n/N)^m\). Aplicando (b),</p><p>\[e^{-mn/N}\le(1-n/N)^m+\frac{mn^2}{2N^2},\]</p><p>e rearranjando obtemos \(\Pr(\text{ao menos um vermelho})\le1-e^{-mn/N}+mn^2/(2N^2)\).</p>
+        </details>
+      </div>

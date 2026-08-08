@@ -1,10 +1,12 @@
 import { listen } from "./dom";
+import { mountLineAnnotations, updateBookmarkCount } from "./line-annotations";
 import type { ReaderPreferences } from "./types";
 
 export interface NotesBookmarksOptions {
   article: HTMLElement;
   preferences: ReaderPreferences;
   persist(): void;
+  persistNow?(): boolean;
   announce(message: string): void;
 }
 
@@ -36,13 +38,19 @@ export function mountNotesAndBookmarks(options: NotesBookmarksOptions): () => vo
     panel.hidden = true;
 
     cleanups.push(listen(bookmark, "click", () => {
+      const previous = options.preferences.bookmarks;
       const bookmarks = new Set(options.preferences.bookmarks);
       const adding = !bookmarks.has(section.id);
       if (adding) bookmarks.add(section.id);
       else bookmarks.delete(section.id);
       options.preferences.bookmarks = [...bookmarks];
       syncBookmark(bookmark, adding);
-      options.persist();
+      if (!persistExplicitly(options)) {
+        options.preferences.bookmarks = previous;
+        syncBookmark(bookmark, !adding);
+        renderBookmarkList(options);
+        return;
+      }
       renderBookmarkList(options);
       options.announce(adding ? "Seção adicionada aos marcadores." : "Seção removida dos marcadores.");
     }));
@@ -58,14 +66,20 @@ export function mountNotesAndBookmarks(options: NotesBookmarksOptions): () => vo
   }
 
   renderBookmarkList(options);
+  cleanups.push(mountLineAnnotations(options));
   cleanups.push(listen(document, "click", ((event: Event) => {
     const target = event.target as Element;
     const link = target.closest<HTMLAnchorElement>("[data-bookmark-link]");
     if (link) document.querySelector<HTMLElement>(link.hash)?.scrollIntoView({ block: "start" });
     const remove = target.closest<HTMLButtonElement>("[data-remove-bookmark]");
     if (remove?.dataset.removeBookmark) {
+      const previous = options.preferences.bookmarks;
       options.preferences.bookmarks = options.preferences.bookmarks.filter((id) => id !== remove.dataset.removeBookmark);
-      options.persist();
+      if (!persistExplicitly(options)) {
+        options.preferences.bookmarks = previous;
+        renderBookmarkList(options);
+        return;
+      }
       renderBookmarkList(options);
       const toggle = options.article.querySelector<HTMLButtonElement>(`[data-bookmark-section="${CSS.escape(remove.dataset.removeBookmark)}"]`);
       if (toggle) syncBookmark(toggle, false);
@@ -104,22 +118,28 @@ function createNotePanel(
   let timer = 0;
   cleanups.push(listen(textarea, "input", () => {
     window.clearTimeout(timer);
+    const value = textarea.value.trim();
+    if (value) options.preferences.notes[sectionId] = value;
+    else delete options.preferences.notes[sectionId];
     status.textContent = "Salvando…";
     timer = window.setTimeout(() => {
-      const value = textarea.value.trim();
-      if (value) options.preferences.notes[sectionId] = value;
-      else delete options.preferences.notes[sectionId];
-      options.persist();
-      status.textContent = value ? "Nota salva localmente" : "";
+      const saved = persistExplicitly(options);
+      status.textContent = saved ? (value ? "Nota salva localmente" : "") : "Não foi possível salvar";
     }, 220);
   }));
   cleanups.push(() => window.clearTimeout(timer));
   cleanups.push(listen(remove, "click", () => {
     if (!textarea.value && !options.preferences.notes[sectionId]) return;
     if (!window.confirm("Apagar esta nota local?")) return;
+    const previous = options.preferences.notes[sectionId];
     textarea.value = "";
     delete options.preferences.notes[sectionId];
-    options.persist();
+    if (!persistExplicitly(options)) {
+      if (previous !== undefined) options.preferences.notes[sectionId] = previous;
+      textarea.value = previous ?? "";
+      status.textContent = "Não foi possível apagar";
+      return;
+    }
     status.textContent = "Nota apagada";
   }));
   return panel;
@@ -131,17 +151,16 @@ function syncBookmark(button: HTMLButtonElement, marked: boolean): void {
 }
 
 function renderBookmarkList(options: NotesBookmarksOptions): void {
-  const host = document.querySelector<HTMLElement>("[data-bookmark-list]");
-  const count = document.querySelector<HTMLElement>("[data-bookmark-count]");
+  const host = document.querySelector<HTMLElement>("[data-section-bookmark-list]");
   const valid = options.preferences.bookmarks.filter((id) => options.article.querySelector(`#${CSS.escape(id)}`));
   options.preferences.bookmarks = valid;
-  if (count) count.textContent = String(valid.length);
+  updateBookmarkCount(options);
   if (!host) return;
   host.replaceChildren();
   if (!valid.length) {
     const empty = document.createElement("p");
     empty.className = "enrichment-empty";
-    empty.textContent = "Nenhuma seção marcada ainda.";
+    empty.textContent = "Nenhuma seção marcada ainda. Use ☆ Marcar junto ao título de uma seção.";
     host.append(empty);
     return;
   }
@@ -165,4 +184,10 @@ function renderBookmarkList(options: NotesBookmarksOptions): void {
     list.append(item);
   }
   host.append(list);
+}
+
+function persistExplicitly(options: NotesBookmarksOptions): boolean {
+  if (options.persistNow) return options.persistNow();
+  options.persist();
+  return true;
 }

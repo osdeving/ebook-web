@@ -1,0 +1,105 @@
+<section class="chapter-section subsection" id="sec-5-4-2">
+  <div class="section-heading">
+    <span class="section-number">5.4.2</span>
+    <h3>Um teorema de colisão</h3>
+  </div>
+
+  <p>As aplicações criptográficas dos algoritmos de colisão costumam se basear na seguinte situação. Bob possui uma caixa com \(N\) números. Ele escolhe \(n\) números distintos da caixa e os coloca em uma lista. Em seguida, forma uma segunda lista escolhendo \(m\) números da caixa, não necessariamente distintos. O fato notável é que, se \(n\) e \(m\) forem ambos um pouco maiores que \(\sqrt N\), será muito provável que as duas listas tenham um elemento em comum.</p>
+
+  <p>Começamos com um resultado elementar que ilustra o tipo de cálculo usado para quantificar a probabilidade de sucesso de um algoritmo de colisão.</p>
+
+  <div class="semantic theorem" id="teorema-5-38">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">5.38 — Teorema de colisão</span></div>
+    <p>Uma urna contém \(N\) bolas, das quais \(n\) são vermelhas e \(N-n\) são azuis. Bob escolhe uma bola da urna ao acaso, devolve-a à urna, escolhe ao acaso uma segunda bola, devolve-a, e assim por diante, até ter observado um total de \(m\) bolas.</p>
+    <ol type="a">
+      <li>A probabilidade de Bob selecionar pelo menos uma bola vermelha é
+        <div class="equation" id="eq-5-28"><span class="equation-number">(5.28)</span>\[
+          \Pr(\text{pelo menos uma vermelha})=1-\left(1-\frac nN\right)^m.
+        \]</div>
+      </li>
+      <li>Um limite inferior para a probabilidade de <a href="#eq-5-28" data-source-xref>(5.28)</a> é
+        <div class="equation" id="eq-5-29"><span class="equation-number">(5.29)</span>\[
+          \Pr(\text{pelo menos uma vermelha})\ge1-e^{-mn/N}.
+        \]</div>
+        Se \(N\) for grande e \(m\) e \(n\) não forem muito maiores que \(\sqrt N\), por exemplo, se \(m,n&lt;10\sqrt N\), então <a href="#eq-5-29" data-source-xref>(5.29)</a> será quase uma igualdade.</li>
+    </ol>
+  </div>
+
+  <div class="semantic proof" id="proof-5-38">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>A cada escolha de Bob, a probabilidade de obter uma bola vermelha é \(n/N\). Poderíamos pensar que, como ele escolhe \(m\) bolas, a probabilidade de obter uma vermelha seria \(mn/N\). Uma breve reflexão mostra que isso não pode estar correto: se \(m\) for grande, obteríamos uma probabilidade maior que \(1\). A dificuldade, como no exemplo dos aniversários da <a href="#sec-5-4-1" data-source-xref>Seção 5.4.1</a>, é a sobrecontagem dos casos em que Bob escolhe mais de uma bola vermelha.</p>
+    <p>O cálculo correto consiste em encontrar a probabilidade de Bob escolher somente bolas azuis e subtrair essa probabilidade complementar de \(1\):</p>
+    <div class="equation">\[
+      \begin{aligned}
+        \Pr\!\left(\substack{\text{pelo menos uma bola vermelha}\\\text{em }m\text{ tentativas}}\right)
+          &amp;=1-\Pr(\text{todas as }m\text{ escolhas são azuis})\\
+          &amp;=1-\prod_{i=1}^m\Pr(\text{a }i\text{-ésima escolha é azul})\\
+          &amp;=1-\prod_{i=1}^m\frac{N-n}{N}\\
+          &amp;=1-\left(1-\frac nN\right)^m.
+      \end{aligned}
+    \]</div>
+    <p>Isso demonstra o item (a).</p>
+    <p>Para (b), usamos a desigualdade</p>
+    <div class="equation">\[e^{-x}\ge1-x\qquad\text{para todo }x\in\mathbb R.\]</div>
+    <p>Veja o <a href="#exercicio-5-38" data-source-xref>Exercício 5.38(a)</a> para uma demonstração. Tomando \(x=n/N\) e elevando os dois lados à \(m\)-ésima potência, obtemos</p>
+    <div class="equation">\[
+      1-\left(1-\frac nN\right)^m
+      \ge1-\left(e^{-n/N}\right)^m
+      =1-e^{-mn/N},
+    \]</div>
+    <p>o que demonstra a desigualdade importante do item (b). Deixamos para o leitor, no <a href="#exercicio-5-38" data-source-xref>Exercício 5.38(b)</a>, mostrar que ela fica próxima de uma igualdade quando \(m\) e \(n\) não são grandes demais em comparação com \(\sqrt N\).<span class="proof-end">□</span></p>
+  </div>
+
+  <p>Para relacionar o <a href="#teorema-5-38" data-source-xref>Teorema 5.38</a> ao problema de encontrar uma coincidência entre duas listas de números, imagine a urna com \(N\) bolas azuis numeradas. Depois de formar a primeira lista de \(n\) bolas numeradas distintas, pintamos essas \(n\) bolas de vermelho e as devolvemos à caixa. A segunda lista é formada retirando \(m\) bolas da urna, uma por vez, anotando seu número e sua cor e devolvendo cada uma. A probabilidade de retirar pelo menos uma bola vermelha é igual à probabilidade de haver um número coincidente nas duas listas.</p>
+
+  <div class="semantic example" id="exemplo-5-39">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.39</span></div>
+    <p>Um baralho é embaralhado e oito cartas são distribuídas com a face para cima. Bob toma então um segundo baralho e escolhe oito cartas ao acaso, devolvendo cada carta antes da escolha seguinte. Qual é a probabilidade de Bob obter uma das cartas do primeiro baralho?</p>
+    <p>Encaramos as oito cartas do primeiro baralho como marcas nas cartas correspondentes do segundo. A “urna” é o segundo baralho, as “bolas vermelhas” são as oito cartas marcadas e as “bolas azuis” são as outras 44 cartas. O <a href="#teorema-5-38" data-source-xref>Teorema 5.38(a)</a> fornece</p>
+    <div class="equation">\[\Pr(\text{coincidência})=1-\left(1-\frac8{52}\right)^8\approx73{,}7\%.\]</div>
+    <p>A aproximação do <a href="#teorema-5-38" data-source-xref>Teorema 5.38(b)</a> fornece o limite inferior \(70{,}8\%\).</p>
+    <p>Suponha, em vez disso, que Bob distribua dez cartas do primeiro baralho e escolha apenas cinco do segundo. Então</p>
+    <div class="equation">\[\Pr(\text{coincidência})=1-\left(1-\frac{10}{52}\right)^5\approx65{,}6\%.\]</div>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-40">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.40</span></div>
+    <p>Uma caixa contém dez bilhões de objetos rotulados. Bob escolhe ao acaso \(100\,000\) objetos distintos, faz uma lista dos escolhidos e os devolve à caixa. Em seguida, escolhe ao acaso outros \(100\,000\) objetos, com reposição, e forma uma segunda lista. Qual é a probabilidade de as duas listas terem uma coincidência? A fórmula <a href="#eq-5-28" data-source-xref>(5.28)</a> diz que</p>
+    <div class="equation">\[
+      \Pr(\text{coincidência})=1-\left(1-\frac{100\,000}{10^{10}}\right)^{100\,000}
+      \approx0{,}632122.
+    \]</div>
+    <p>O limite inferior aproximado dado por <a href="#eq-5-29" data-source-xref>(5.29)</a> é \(0{,}632121\), portanto a aproximação é bastante precisa.</p>
+    <p>Se Bob duplicar o tamanho das listas para \(200\,000\), a probabilidade de uma coincidência subirá para \(98{,}2\%\). Se triplicar para \(300\,000\), ela será \(99{,}988\%\). Esse aumento rápido reflete o fato de que a função exponencial de <a href="#eq-5-29" data-source-xref>(5.29)</a> decresce muito depressa assim que \(mn\) ultrapassa \(N\).</p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-41">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.41</span></div>
+    <p>Um conjunto contém \(N\) objetos. Bob escolhe \(n\) deles ao acaso, forma uma lista, repõe os objetos e escolhe outros \(n\). Qual deve ser o valor de \(n\) para que a chance de uma coincidência seja \(50\%\)? E para que seja \(99{,}99\%\)?</p>
+    <p>Na primeira pergunta, Bob usa o limite inferior razoavelmente preciso de <a href="#eq-5-29" data-source-xref>(5.29)</a> e impõe</p>
+    <div class="equation">\[\Pr(\text{coincidência})\approx1-e^{-n^2/N}=\frac12.\]</div>
+    <p>Logo,</p>
+    <div class="equation">\[
+      e^{-n^2/N}=\frac12
+      \quad\Longrightarrow\quad
+      -\frac{n^2}{N}=\ln\frac12
+      \quad\Longrightarrow\quad
+      n=\sqrt{N\ln2}\approx0{,}83\sqrt N.
+    \]</div>
+    <p>Assim, basta formar listas um pouco menores que \(\sqrt N\).</p>
+    <p>Para a segunda pergunta, Bob resolve</p>
+    <div class="equation">\[\Pr(\text{coincidência})\approx1-e^{-n^2/N}=0{,}9999=1-10^{-4},\]</div>
+    <p>cuja solução é</p>
+    <div class="equation">\[n=\sqrt{N\ln10^4}\approx3{,}035\sqrt N.\]</div>
+  </div>
+
+  <aside class="semantic remark" id="obs-5-42">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">5.42</span></div>
+    <p>Algoritmos que procuram elementos coincidentes em uma ou mais listas recebem vários nomes, entre eles <strong>algoritmo de colisão</strong>, <strong>algoritmo de encontro no meio</strong>, <strong>algoritmo do paradoxo do aniversário</strong> e <strong>algoritmo de raiz quadrada</strong>. O último nome alude ao fato de que o tempo de execução de um algoritmo de colisão costuma ser um pequeno múltiplo da raiz quadrada do tempo exigido por uma busca exaustiva. A relação com aniversários foi discutida brevemente na <a href="#sec-5-4-1" data-source-xref>Seção 5.4.1</a>; veja também o <a href="#exercicio-5-36" data-source-xref>Exercício 5.36</a>. Quando um desses algoritmos é usado para quebrar um criptossistema, “algoritmo” costuma ser substituído por “ataque”, de modo que os criptoanalistas falam em ataques de encontro no meio, ataques de raiz quadrada etc.</p>
+  </aside>
+
+  <aside class="semantic remark" id="obs-5-43">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">5.43</span></div>
+    <p>Algoritmos de colisão tendem a executar aproximadamente \(\sqrt N\) passos para encontrar uma colisão entre \(N\) objetos. Uma desvantagem é que eles exigem uma ou mais listas de tamanho aproximado \(\sqrt N\). Quando \(N\) é grande, armazenar \(\sqrt N\) números pode ser um obstáculo maior que realizar o cálculo. Na <a href="#sec-5-5" data-source-xref>Seção 5.5</a>, descrevemos um método de colisão de Pollard que, ao custo de uma pequena quantidade de cálculo adicional, praticamente não exige armazenamento.</p>
+  </aside>
+</section>

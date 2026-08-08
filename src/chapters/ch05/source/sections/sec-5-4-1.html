@@ -1,0 +1,53 @@
+<section class="chapter-section subsection" id="sec-5-4-1">
+  <div class="section-heading">
+    <span class="section-number">5.4.1</span>
+    <h3>O paradoxo do aniversário</h3>
+  </div>
+
+  <p>A ideia fundamental por trás dos algoritmos de colisão é ilustrada de maneira impressionante pelo famoso paradoxo do aniversário. Em um grupo aleatório de quarenta pessoas, considere estas duas perguntas:</p>
+
+  <ol>
+    <li>Qual é a probabilidade de alguém fazer aniversário no mesmo dia que você?</li>
+    <li>Qual é a probabilidade de pelo menos duas pessoas fazerem aniversário no mesmo dia?</li>
+  </ol>
+
+  <p>As respostas às duas perguntas são muito diferentes. Como aquecimento, começamos pela primeira, mais fácil.</p>
+
+  <p>Uma resposta aproximada seria dizer que, como qualquer pessoa tem uma chance em \(365\) de fazer aniversário no mesmo dia que você, em um grupo de quarenta pessoas a probabilidade seria aproximadamente \(40/365\approx11\%\). Isso, porém, é uma superestimativa, pois conta mais de uma vez os casos em que duas ou mais pessoas do grupo compartilham seu aniversário.<sup id="fnref-5-4-1-15"><a href="#fn-5-4-1-15" data-source-xref>15</a></sup> A resposta exata é obtida calculando a probabilidade de que nenhuma das pessoas compartilhe seu aniversário e subtraindo o resultado de \(1\):</p>
+
+  <div class="equation">\[
+    \begin{aligned}
+      \Pr(\text{alguém faz aniversário no mesmo dia que você})
+        &amp;=1-\Pr(\text{nenhuma das 40 pessoas faz aniversário nesse dia})\\
+        &amp;=1-\prod_{i=1}^{40}\Pr(\text{a pessoa }i\text{ não faz aniversário nesse dia})\\
+        &amp;=1-\left(\frac{364}{365}\right)^{40}\\
+        &amp;\approx10{,}4\%.
+    \end{aligned}
+  \]</div>
+
+  <p>Assim, entre quarenta pessoas desconhecidas, a chance de que uma delas faça aniversário no mesmo dia que você é apenas um pouco maior que \(10\%\).</p>
+
+  <p>Considere agora a segunda pergunta, na qual basta que quaisquer duas pessoas do grupo compartilhem o aniversário. Novamente, é mais fácil calcular a probabilidade de que todas as quarenta pessoas tenham aniversários diferentes. O cálculo muda porque agora exigimos que a \(i\)-ésima pessoa tenha um aniversário diferente dos aniversários de todas as \(i-1\) pessoas anteriores. Portanto,</p>
+
+  <div class="equation">\[
+    \begin{aligned}
+      \Pr(\text{duas pessoas fazem aniversário no mesmo dia})
+        &amp;=1-\Pr(\text{as 40 pessoas têm aniversários diferentes})\\
+        &amp;=1-\prod_{i=1}^{40}\Pr\!\left(\substack{\text{a pessoa }i\text{ não compartilha o aniversário}\\\text{com nenhuma das }i-1\text{ pessoas anteriores}}\right)\\
+        &amp;=1-\prod_{i=1}^{40}\frac{365-(i-1)}{365}\\
+        &amp;=1-\frac{365}{365}\cdot\frac{364}{365}\cdot\frac{363}{365}\cdots\frac{326}{365}\\
+        &amp;\approx89{,}1\%.
+    \end{aligned}
+  \]</div>
+
+  <p>Assim, entre quarenta pessoas desconhecidas, há quase \(90\%\) de chance de que duas façam aniversário no mesmo dia.</p>
+
+  <p>A única parte desse cálculo que merece comentário é a fórmula para a probabilidade de que a \(i\)-ésima pessoa faça aniversário em uma data diferente das \(i-1\) pessoas anteriores. Entre as \(365\) datas possíveis, as pessoas anteriores já ocuparam \(i-1\). Logo, a probabilidade de o aniversário da \(i\)-ésima pessoa estar entre as \(365-(i-1)\) datas restantes é</p>
+  <div class="equation">\[\frac{365-(i-1)}{365}.\]</div>
+
+  <p>Muitas pessoas tendem a supor que as perguntas 1 e 2 tenham essencialmente a mesma resposta. O fato de não terem é chamado de <strong>paradoxo do aniversário</strong>. Na verdade, bastam 23 pessoas para que a chance de haver dois aniversários coincidentes seja maior que \(50\%\), enquanto são necessárias 253 pessoas para que haja mais de \(50\%\) de chance de encontrar alguém que faça aniversário no mesmo dia que você.</p>
+
+  <ol class="footnotes">
+    <li id="fn-5-4-1-15">Se você acha que \(40/365\) é a resposta correta, pense na mesma situação com 366 pessoas. A probabilidade de alguém compartilhar sua data de aniversário não pode ser \(366/365\), pois esse número é maior que \(1\). <a href="#fnref-5-4-1-15" data-source-xref aria-label="Voltar à chamada da nota 15">↩</a></li>
+  </ol>
+</section>

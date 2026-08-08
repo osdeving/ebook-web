@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.57">
+          <p class="graduated-help__intro">Cifração reversível preserva a informação conjunta: conhecer chave e mensagem equivale a conhecer chave e texto cifrado.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Duas regras da cadeia</summary>
+      <div>Use \(H(K,C)=H(C)+H(K\mid C)\) e \(H(K,M)=H(K)+H(M)\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Bijeção entre pares</summary>
+      <div>O mapa \((k,m)\mapsto(k,e_k(m))\) é bijetivo.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Acompanhe a bijeção</summary>
+      <div>O par \((K,M)\) determina \((K,C)\) e vice-versa; escreva as duas regras da cadeia após registrar essa preservação de entropia.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Como mensagem e chave são escolhidas independentemente, \(H(K,M)=H(K)+H(M)\). Para cada \(k\), \(e_k\) é reversível, então o mapa \((K,M)\leftrightarrow(K,C)\) apenas renomeia resultados e preserva entropia: \(H(K,M)=H(K,C)\). Pela regra da cadeia, \(H(K,C)=H(C)+H(K\mid C)\). Igualando,</p><p>\[H(K)+H(M)=H(C)+H(K\mid C),\]</p><p>e portanto \(\boxed{H(K\mid C)=H(K)+H(M)-H(C)}\).</p>
+        </details>
+      </div>

@@ -66,4 +66,29 @@ describe("montagem de enriquecimentos", () => {
     expect(renderMath).toHaveBeenCalledOnce();
     mounted.destroy();
   });
+
+  it("agrupa duração e título sem criar uma coluna implícita no cabeçalho", async () => {
+    const chapterRoot = document.querySelector<HTMLElement>("#chapter")!;
+    const mounted = await mountEnrichments({
+      chapterRoot,
+      definitions: [{
+        id: "lab-com-duracao",
+        layer: "lab",
+        anchor: "slot-reference",
+        title: "Euclides estendido, linha por linha",
+        duration: "Seção 1.2 · 10–15 min",
+        content: trustedHtml("<p>Laboratório.</p>"),
+      }],
+    });
+
+    const summary = chapterRoot.querySelector<HTMLElement>("#lab-com-duracao summary")!;
+    const heading = summary.querySelector<HTMLElement>(".supplement__heading")!;
+    expect(summary.children).toHaveLength(1);
+    expect(heading.querySelector(".supplement__title")?.textContent)
+      .toBe("Euclides estendido, linha por linha");
+    expect(heading.querySelector(".supplement__duration")?.textContent)
+      .toBe("Seção 1.2 · 10–15 min");
+
+    mounted.destroy();
+  });
 });

@@ -148,8 +148,8 @@ function headerMarkup(definition: EnrichmentDefinition, summary: boolean): strin
     <span class="supplement__heading">
       <span class="supplement__kicker">${escapeText(definition.kicker ?? layerLabel(definition.layer))}</span>
       <span class="supplement__title">${escapeText(definition.title)}</span>
+      ${duration}
     </span>
-    ${duration}
   </${wrapper}>`;
 }
 

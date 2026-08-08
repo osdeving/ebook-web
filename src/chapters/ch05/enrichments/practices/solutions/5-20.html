@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.20">
+          <p class="graduated-help__intro">Todas as identidades seguem de decompor eventos em partes disjuntas e somar as probabilidades dos resultados elementares.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Particione a união</summary>
+      <div>Escreva \(E\cup F=E\mathbin{\dot\cup}(F\setminus E)\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Três eventos</summary>
+      <div>Conte cada resultado conforme ele pertence a uma, duas ou três das parcelas.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Conte por multiplicidade de pertença</summary>
+      <div>Para conferir inclusão–exclusão, acompanhe quanto um resultado que pertence a uma, duas ou três parcelas contribui ao total.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) Se \(E\cap F=\varnothing\), a soma que define \(\Pr(E\cup F)\) se separa nas somas sobre \(E\) e \(F\).</p><p>(b) Em \(\Pr(E)+\Pr(F)\), \(E\cap F\) foi contado duas vezes; subtraí-lo uma vez produz a união.</p><p>(c) \(\Omega=E\mathbin{\dot\cup}E^c\), então \(1=\Pr(E)+\Pr(E^c)\).</p><p>(d) Aplique (b) a \((E_1\cup E_2)\cup E_3\) e depois expanda \((E_1\cup E_2)\cap E_3=(E_1\cap E_3)\cup(E_2\cap E_3)\). A interseção tripla havia sido subtraída duas vezes nessa última união, o que gera</p><p>\[\sum_i\Pr(E_i)-\sum_{i&lt;j}\Pr(E_i\cap E_j)+\Pr(E_1\cap E_2\cap E_3).\]</p>
+        </details>
+      </div>

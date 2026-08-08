@@ -1,0 +1,41 @@
+<section class="chapter-section" id="sec-5-5">
+  <div class="section-heading">
+    <span class="section-number">5.5</span>
+    <h2>Método rô de Pollard</h2>
+  </div>
+
+  <p>Como observamos na <a href="#obs-5-43" data-source-xref>Observação 5.43</a>, os algoritmos de colisão tendem a exigir uma quantidade considerável de armazenamento. Uma bela ideia de Pollard permite muitas vezes usar quase nenhum armazenamento, ao custo de uma pequena quantidade de cálculo adicional. Explicamos a ideia básica de seu método e a ilustramos resolvendo mais uma vez uma pequena instância do problema do logaritmo discreto em \(\mathbb F_p\). Veja também o <a href="#exercicio-5-44" data-source-xref>Exercício 5.44</a>, que apresenta um algoritmo de fatoração baseado nas mesmas ideias.</p>
+
+  <figure class="figure" id="fig-5-1">
+    <svg viewBox="0 0 760 320" role="img" aria-labelledby="fig-5-1-title fig-5-1-desc">
+      <title id="fig-5-1-title">Órbita em forma da letra grega rô</title>
+      <desc id="fig-5-1-desc">Os pontos partem de x zero, percorrem uma cauda de comprimento T e entram em um laço de comprimento M.</desc>
+      <defs>
+        <marker id="fig-5-1-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="currentColor"></path></marker>
+      </defs>
+      <path d="M55 205 C145 205 210 185 280 150 C340 120 385 95 455 95" fill="none" stroke="currentColor" stroke-width="3" marker-end="url(#fig-5-1-arrow)"></path>
+      <path d="M455 95 C595 35 705 115 665 220 C625 300 470 285 430 205 C405 155 420 120 455 95" fill="none" stroke="currentColor" stroke-width="3" marker-end="url(#fig-5-1-arrow)"></path>
+      <g fill="currentColor" font-size="18" text-anchor="middle">
+        <circle cx="55" cy="205" r="5"></circle><text x="55" y="235">x<tspan baseline-shift="sub" font-size="12">0</tspan></text>
+        <circle cx="120" cy="201" r="5"></circle><text x="120" y="230">x<tspan baseline-shift="sub" font-size="12">1</tspan></text>
+        <circle cx="185" cy="188" r="5"></circle><text x="185" y="217">x<tspan baseline-shift="sub" font-size="12">2</tspan></text>
+        <circle cx="245" cy="165" r="5"></circle><text x="245" y="194">x<tspan baseline-shift="sub" font-size="12">3</tspan></text>
+        <text x="325" y="145" font-size="24">…</text>
+        <circle cx="420" cy="112" r="5"></circle><text x="395" y="92">x<tspan baseline-shift="sub" font-size="12">T−1</tspan></text>
+        <circle cx="455" cy="95" r="6"></circle><text x="455" y="70">x<tspan baseline-shift="sub" font-size="12">T</tspan> = x<tspan baseline-shift="sub" font-size="12">M+T</tspan></text>
+        <circle cx="555" cy="73" r="5"></circle><text x="555" y="50">x<tspan baseline-shift="sub" font-size="12">T+1</tspan></text>
+        <circle cx="665" cy="145" r="5"></circle><text x="704" y="148">x<tspan baseline-shift="sub" font-size="12">T+2</tspan></text>
+        <circle cx="625" cy="252" r="5"></circle><text x="660" y="278">x<tspan baseline-shift="sub" font-size="12">T+3</tspan></text>
+        <circle cx="485" cy="260" r="5"></circle><text x="505" y="295">x<tspan baseline-shift="sub" font-size="12">T+4</tspan></text>
+        <text x="455" y="285" font-size="24">…</text>
+        <circle cx="455" cy="247" r="4"></circle><text x="420" y="270">x<tspan baseline-shift="sub" font-size="12">M+T−4</tspan></text>
+        <circle cx="432" cy="225" r="4"></circle><text x="390" y="242">x<tspan baseline-shift="sub" font-size="12">M+T−3</tspan></text>
+        <circle cx="420" cy="190" r="4"></circle><text x="370" y="195">x<tspan baseline-shift="sub" font-size="12">M+T−2</tspan></text>
+        <circle cx="421" cy="150" r="4"></circle><text x="365" y="150">x<tspan baseline-shift="sub" font-size="12">M+T−1</tspan></text>
+      </g>
+      <text x="200" y="275" fill="currentColor" font-size="18" text-anchor="middle">comprimento da cauda = T</text>
+      <text x="560" y="190" fill="currentColor" font-size="18" text-anchor="middle">comprimento do laço = M</text>
+    </svg>
+    <figcaption><span class="label">Figura 5.1.</span> Método rô de Pollard.</figcaption>
+  </figure>
+</section>

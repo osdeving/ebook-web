@@ -1,0 +1,54 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.60">
+          <p class="graduated-help__intro">Esta é uma tarefa de implementação e corpus: a solução fornece o programa completo; os números finais dependem dos arquivos escolhidos.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Normalize antes de contar</summary>
+      <div>Converta diacríticos, caixa e sequências não alfabéticas de forma explícita e reproduzível.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Entropia de n-gramas</summary>
+      <div>Calcule \(-\sum_gp_g\log_2p_g\) e compare \(H(L^n)/n\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Não cruze palavras sem querer</summary>
+      <div>Para o modo pedido, gere n-gramas separadamente dentro de cada palavra.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>O programa abaixo resolve as etapas [1]–[4] em JavaScript moderno. Execute com <code>node entropia.mjs arquivo.txt</code>.</p><p>Corpora sugeridos pelo enunciado: <a href="https://www.gutenberg.org/ebooks/11" target="_blank" rel="noopener noreferrer"><cite>Alice's Adventures in Wonderland</cite></a>, <a href="https://www.gutenberg.org/ebooks/5001" target="_blank" rel="noopener noreferrer"><cite>Relativity: The Special and General Theory</cite></a>, <a href="https://www.gutenberg.org/ebooks/1609" target="_blank" rel="noopener noreferrer"><cite>The King James Version of the Bible</cite></a> e <a href="https://www.gutenberg.org/ebooks/5097" target="_blank" rel="noopener noreferrer"><cite>Twenty Thousand Leagues under the Sea</cite></a>. Registre a edição e o hash do arquivo baixado.</p><pre><code>import { readFile } from "node:fs/promises";
+
+const raw = await readFile(process.argv[2], "utf8");
+const text = raw.normalize("NFD").replace(/\p{M}/gu, "")
+  .toLowerCase().replace(/[^a-z]+/g, " ").trim();
+const words = text.split(" ").filter(Boolean);
+
+function counts(n) {
+  const map = new Map();
+  for (const word of words) {
+    for (let i = 0; i + n &lt;= word.length; i++) {
+      const g = word.slice(i, i + n);
+      map.set(g, (map.get(g) ?? 0) + 1);
+    }
+  }
+  return map;
+}
+
+function report(n) {
+  const map = counts(n);
+  const total = [...map.values()].reduce((a, b) =&gt; a + b, 0);
+  const grams = n === 1 ? [..."abcdefghijklmnopqrstuvwxyz"] : [...map.keys()];
+  const rows = grams.map((g) =&gt; ({
+    g, count: map.get(g) ?? 0, p: total === 0 ? 0 : (map.get(g) ?? 0) / total,
+  })).sort((a, b) =&gt; b.count - a.count);
+  const H = -rows.reduce((sum, row) =&gt;
+    row.p === 0 ? sum : sum + row.p * Math.log2(row.p), 0);
+  console.log("n=" + n + "; amostras=" + total + "; H=" + H + "; H/n=" + (H / n));
+  console.table(rows.slice(0, n === 1 ? 26 : 25));
+}
+
+report(1); report(2); report(3);</code></pre><p>Os valores de \(H(L)\), \(H(L^2)/2\) e \(H(L^3)/3\) devem ser recalculados para cada obra. Comparar Carroll, Einstein, a Bíblia e Verne é a parte genuinamente experimental: tamanho, idioma, tradução, cabeçalhos do arquivo e política de acentos afetam o resultado. Por isso não há um único trio numérico correto sem fixar as edições e registrar seus hashes.</p><div class="editorial-note"><strong>Errata de remissão no texto-base.</strong> A etapa [3] manda comparar com \(H(L)\) da etapa [1], mas a entropia de letras é calculada na etapa [2].</div>
+        </details>
+      </div>

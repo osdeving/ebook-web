@@ -1,0 +1,81 @@
+<section class="chapter-section" id="sec-5-7">
+  <div class="section-heading">
+    <span class="section-number">5.7</span>
+    <h2>Teoria da complexidade e P versus NP</h2>
+  </div>
+
+  <p>Um <strong>problema de decisão</strong> é um problema de um sistema formal cuja resposta é “sim” ou “não”. Por exemplo, PRIMO é o problema de decidir se um inteiro dado é primo; nós o discutimos na <a href="../ch03/#sec-3-4" data-source-xref>Seção 3.4</a>. Outro exemplo é o problema decisório de Diffie–Hellman, apresentado no <a href="../ch02/#exercicio-2-7" data-source-xref>Exercício 2.7</a>: dados \(g^a\bmod p\) e \(g^b\bmod p\), determinar se um número \(C\) é igual a \(g^{ab}\bmod p\). A teoria da complexidade procura compreender e quantificar a dificuldade de resolver problemas de decisão específicos.</p>
+
+  <p>A história inicial desse campo é fascinante: matemáticos tentavam compreender os limites da demonstrabilidade em sistemas formais. Em 1936, Alan Turing demonstrou que não existe algoritmo para resolver o <strong>problema da parada</strong>, isto é, não há algoritmo que determine se um programa de computador arbitrário, ao receber uma entrada arbitrária, acabará interrompendo sua execução. Um problema desse tipo é chamado de <strong>indecidível</strong>. No início do mesmo ano, Alonzo Church havia publicado uma demonstração da indecidibilidade de um problema do cálculo lambda. Church e Turing mostraram depois que o cálculo lambda e a noção de máquina de Turing são essencialmente equivalentes.</p>
+
+  <p>Os avanços da teoria da indecidibilidade nas décadas de 1930 e 1940 começaram como resposta às perguntas de Hilbert sobre a completude dos sistemas axiomáticos e a existência de problemas matemáticos insolúveis. Church e Turing foram influenciados pela descoberta de Gödel, em 1930, de que todo sistema axiomático suficientemente forte e preciso é incompleto: ele contém afirmações verdadeiras que não podem ser demonstradas dentro do próprio sistema.</p>
+
+  <p>Há uma quantidade não enumerável de problemas indecidíveis na matemática, alguns com formulações simples e interessantes. Um exemplo fácil de enunciar é o <strong>problema de correspondência de Post</strong> <a href="../../references/#ref-106" data-source-xref>[106]</a>. Suponha que seja dada uma sequência de pares de cadeias</p>
+  <div class="equation">\[(s_1,t_1),(s_2,t_2),(s_3,t_3),\ldots,(s_k,t_k),\]</div>
+  <p>em que uma cadeia é apenas uma lista de caracteres de um alfabeto que contém pelo menos duas letras. O problema pergunta se existe um inteiro \(r\ge1\) e uma lista de índices</p>
+  <div class="equation" id="eq-5-55"><span class="equation-number">(5.55)</span>\[i_1,i_2,\ldots,i_r\quad\text{entre }1\text{ e }k\]</div>
+  <p>tais que as concatenações</p>
+  <div class="equation" id="eq-5-56"><span class="equation-number">(5.56)</span>\[s_{i_1}s_{i_2}\cdots s_{i_r}\qquad\text{e}\qquad t_{i_1}t_{i_2}\cdots t_{i_r}\quad\text{sejam iguais}.\]</div>
+  <p>Se limitarmos \(r\), digamos \(r\le r_0\), o problema se torna decidível, pois há somente um número finito de concatenações a verificar. Com essa restrição, ele é chamado de <strong>problema limitado de correspondência de Post</strong>.</p>
+
+  <p>No outro extremo estão os problemas de decisão para os quais existem algoritmos rápidos. Já chamamos de rápidos os algoritmos de tempo polinomial e de lentos os de tempo exponencial; veja as <a href="../ch02/#sec-2-6" data-source-xref>Seções 2.6</a> e <a href="../ch03/#sec-3-4-2" data-source-xref>3.4.2</a>.</p>
+
+  <div class="semantic definition" id="def-5-classe-p">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Um problema de decisão pertence à classe \(\mathsf P\) se existe um algoritmo de tempo polinomial que o resolva. Isto é, dada uma entrada de comprimento \(n\), a resposta é produzida em um número de passos polinomial em \(n\). Diz-se que os problemas de decisão de \(\mathsf P\) são aqueles que podem ser resolvidos em tempo polinomial.</p>
+  </div>
+
+  <p>O conceito de verificação em tempo polinomial possui sutilezas que só uma definição mais precisa, não apresentada aqui, consegue exprimir. A classe \(\mathsf{NP}\) é definida pelo conceito de algoritmo de tempo polinomial em uma máquina “não determinística”. Em termos aproximados, podemos adivinhar uma solução, mas o tempo necessário para verificar que o palpite está correto precisa ser polinomial no comprimento da entrada.</p>
+
+  <p>Um exemplo de problema de decisão em \(\mathsf P\) é determinar se dois inteiros têm um fator não trivial em comum. Ele pertence a \(\mathsf P\) porque o algoritmo de Euclides usa menos de \(O(n^3)\) passos. Observe que, nesse contexto, ele usa mais que \(O(n)\), pois precisamos contabilizar o tempo de somar, subtrair, multiplicar e dividir números de \(n\) bits. Outro problema em \(\mathsf P\) é determinar se um inteiro é primo. O célebre algoritmo AKS, o <a href="../ch03/#teorema-3-26" data-source-xref>Teorema 3.26</a>, usa menos de \(O(n^7)\) passos para testar a primalidade.</p>
+
+  <div class="semantic definition" id="def-5-classe-np">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Um problema de decisão pertence à classe \(\mathsf{NP}\) se uma instância cuja resposta é “sim” pode ser verificada em tempo polinomial.</p>
+  </div>
+
+  <p>Por exemplo, o problema limitado de correspondência de Post pertence a \(\mathsf{NP}\). Se recebermos uma lista de índices <a href="#eq-5-55" data-source-xref>(5.55)</a>, de comprimento limitado, para a qual se afirma que as concatenações <a href="#eq-5-56" data-source-xref>(5.56)</a> são iguais, a verificação exige um número polinomial de passos. Por outro lado, verificar exaustivamente todas as concatenações possíveis de comprimento até \(r_0\) exige um número exponencial em \(r_0\) de passos. É menos evidente, mas pode ser demonstrado, que não se consegue encontrar uma solução em um número polinomial de passos.</p>
+
+  <p>Isso nos leva a uma das perguntas em aberto mais famosas de toda a matemática e ciência da computação:<sup id="fnref-5-7-25"><a href="#fn-5-7-25" data-source-xref>25</a></sup></p>
+  <div class="equation">\[\mathsf P\stackrel{?}=\mathsf{NP}.\]</div>
+
+  <p>Como a questão \(\mathsf P\) versus \(\mathsf{NP}\) não está resolvida, é útil caracterizar problemas por sua dificuldade relativa. Dizemos que um problema \(A\) pode ser <strong>reduzido em tempo polinomial</strong> a um problema \(B\) se existe uma transformação construtiva de tempo polinomial que leva qualquer instância de \(A\) a uma instância de \(B\). Assim, todo algoritmo que resolve \(B\) pode ser transformado em um algoritmo que resolve \(A\). Se \(B\in\mathsf P\) e \(A\) é redutível a \(B\), então \(A\in\mathsf P\). Intuitivamente, resolver \(A\) não é mais difícil que resolver \(B\), a menos de uma quantidade polinomial de cálculo.</p>
+
+  <p>O artigo de Stephen Cook de 1971, “The Complexity of Theorem Proving Procedures” <a href="../../references/#ref-30" data-source-xref>[30]</a>, lançou os fundamentos da teoria da completude em \(\mathsf{NP}\). Cook trabalha com um problema de \(\mathsf{NP}\) chamado <strong>satisfatibilidade</strong>, abreviado SAT. Dada uma expressão booleana que contém apenas variáveis, parênteses, OU, E e NÃO, SAT pergunta se existe uma atribuição de valores de verdade que torne a expressão verdadeira. Cook demonstra que:</p>
+
+  <ol>
+    <li>Todo problema de \(\mathsf{NP}\) é redutível em tempo polinomial a SAT.</li>
+    <li>Se existir algum problema de \(\mathsf{NP}\) que não pertença a \(\mathsf P\), então SAT não pertence a \(\mathsf P\).</li>
+  </ol>
+
+  <p>Um problema com essas duas propriedades é chamado de <strong>\(\mathsf{NP}\)-completo</strong>. Desde o artigo de Cook, demonstrou-se que muitos outros problemas são \(\mathsf{NP}\)-completos.</p>
+
+  <p>Uma noção relacionada é a de dificuldade \(\mathsf{NP}\). Um problema é <strong>\(\mathsf{NP}\)-difícil</strong> se possui a propriedade de redução do item 1, embora não precise pertencer a \(\mathsf{NP}\). Todo problema \(\mathsf{NP}\)-completo é \(\mathsf{NP}\)-difícil, mas a recíproca não vale. O problema da parada, por exemplo, é \(\mathsf{NP}\)-difícil, mas não \(\mathsf{NP}\)-completo.</p>
+
+  <p>Para colocar essa discussão informal em bases matemáticas firmes, é preciso introduzir algum formalismo. Começamos com um conjunto finito de símbolos \(\Sigma\), e \(\Sigma^*\) denota o conjunto de todas as cadeias finitas desses símbolos. Um subconjunto de \(\Sigma^*\) é chamado de <strong>linguagem</strong>. Um problema de decisão consiste em decidir se uma cadeia de entrada pertence a uma linguagem. As definições precisas de \(\mathsf P\) e \(\mathsf{NP}\) são dadas nesse quadro, que não desenvolveremos aqui. Para uma excelente introdução à teoria da complexidade, veja <a href="../../references/#ref-46" data-source-xref>[46]</a>; para material adicional relacionado à criptografia, veja, por exemplo, <a href="../../references/#ref-143" data-source-xref>[143, Capítulos 2 e 3]</a>.</p>
+
+  <p>Até aqui discutimos a complexidade de problemas de decisão, mas nem todo problema tem resposta “sim” ou “não”. A fatoração de inteiros — dado um número composto, encontrar um fator não trivial — tem como solução um inteiro, assim como o problema do logaritmo discreto — dados \(g,h\in\mathbb F_p^*\), encontrar \(x\) tal que \(g^x=h\). É possível formular uma teoria da complexidade para problemas computacionais gerais, mas nos limitamos a dois exemplos. A fatoração pertence a \(\mathsf{NP}\), pois, dados \(N\) e um suposto fator \(m\), pode-se verificar em tempo polinomial que \(m\mid N\). O logaritmo discreto também pertence a \(\mathsf{NP}\), pois, dada uma suposta solução \(x\), a exponenciação rápida permite verificar em tempo polinomial que \(g^x=h\). Não se sabe se algum desses problemas pertence a \(\mathsf P\); não são conhecidos algoritmos de tempo polinomial para fatoração de inteiros nem para logaritmos discretos. O consenso geral é que provavelmente não pertencem.</p>
+
+  <p>Passamos ao papel da teoria da complexidade em problemas criptográficos. Supõe-se que fatorar inteiros e calcular logaritmos discretos sejam difíceis porque ninguém descobriu algoritmos de tempo polinomial que produzam soluções. Entretanto, produzir uma solução — o chamado <strong>problema de função</strong> — pode ser diferente de decidir se uma solução existe. Eis a fatoração como problema de decisão:</p>
+
+  <blockquote><p>Existe um fator não trivial de \(N\) menor que \(k\)?</p></blockquote>
+
+  <p>Uma instância com resposta “sim” possui um algoritmo trivial de verificação em tempo polinomial, portanto o problema pertence a \(\mathsf{NP}\). Também se pode demonstrar que o problema complementar pertence a \(\mathsf{NP}\): se \(N\) é uma instância com resposta “não”, sua primalidade pode ser verificada em tempo polinomial em uma máquina de Turing não determinística. Quando tanto as instâncias “sim” quanto as “não” podem ser verificadas em tempo polinomial, diz-se que o problema pertence a \(\mathsf{coNP}\). Como se acredita amplamente que \(\mathsf{NP}\ne\mathsf{coNP}\), também se acreditava que a fatoração não era \(\mathsf{NP}\)-completa. Em 2004, Agrawal, Kayal e Saxena <a href="../../references/#ref-1" data-source-xref>[1]</a> mostraram que decidir se um número é primo de fato pertence a \(\mathsf P\), resolvendo a antiga questão de saber se esse problema de decisão poderia ser \(\mathsf{NP}\)-completo.</p>
+
+  <p>Um criptossistema é tão seguro quanto o problema difícil subjacente, portanto seria desejável construir criptossistemas baseados em problemas \(\mathsf{NP}\)-difíceis. Houve grande interesse em construir criptossistemas de chave pública eficientes desse tipo. Uma dificuldade importante é que precisamos não apenas de um problema \(\mathsf{NP}\)-difícil, mas também de um alçapão para a decifração. Isso levou a vários criptossistemas baseados em casos especiais de problemas \(\mathsf{NP}\)-difíceis, sem que se saiba se esses casos especiais são, eles próprios, \(\mathsf{NP}\)-difíceis.</p>
+
+  <p>O primeiro criptossistema de chave pública construído em torno de um problema \(\mathsf{NP}\)-completo foi o criptossistema da mochila de Merkle e Hellman. Mais precisamente, ele se baseou no problema da soma de subconjuntos:</p>
+  <blockquote>
+    <p>Dados \(n\) inteiros positivos \(a_1,\ldots,a_n\) e uma soma-alvo \(S\), encontre um subconjunto dos \(a_i\) tal que</p>
+    <div class="equation">\[a_{i_1}+a_{i_2}+\cdots+a_{i_t}=S.\]</div>
+  </blockquote>
+  <p>O problema é \(\mathsf{NP}\)-completo, pois qualquer instância de SAT pode ser reduzida a uma instância da soma de subconjuntos e vice-versa. Para construir um criptossistema de chave pública a partir desse problema difícil, Merkle e Hellman precisaram inserir um alçapão. Fizeram isso usando apenas certos casos especiais do problema, mas esses casos revelaram-se muito mais fáceis que o caso geral, e o criptossistema foi quebrado. Apesar do trabalho posterior de vários criptógrafos, ninguém conseguiu construir um criptossistema de soma de subconjuntos que fosse ao mesmo tempo eficiente e seguro. Veja a Seção 7.2 para uma discussão detalhada de seu funcionamento e de como é quebrado.</p>
+
+  <p>Outro alerta na passagem da teoria à prática é que o fato de uma coleção de problemas ser \(\mathsf{NP}\)-difícil não significa que todo problema da coleção seja difícil. Em certo sentido, a dificuldade \(\mathsf{NP}\) mede a instância mais difícil da coleção, não a instância média. Não seria prudente basear um criptossistema em um problema no qual poucas instâncias sejam muito difíceis, mas a maioria seja muito fácil. Idealmente, desejamos uma coleção em que a maioria das instâncias seja difícil.</p>
+
+  <p>Um exemplo interessante é o problema do vetor mais próximo, CVP, que consiste em encontrar em um reticulado um vetor próximo de um vetor dado. Discutiremos reticulados e CVP no Capítulo 7; por ora, observamos que CVP é \(\mathsf{NP}\)-difícil. Nosso interesse vem de um resultado célebre de Ajtai e Dwork <a href="../../references/#ref-4" data-source-xref>[4]</a>, que construíram um criptossistema baseado em CVP para certa família de reticulados. Eles mostraram que a dificuldade média de resolver CVP nesses reticulados pode ser reduzida em tempo polinomial à solução da instância mais difícil de CVP em uma família semelhante, de dimensão um pouco menor. Embora não fosse prático, seu criptossistema de chave pública foi a primeira construção a exibir equivalência entre pior caso e caso médio.</p>
+
+  <ol class="footnotes">
+    <li id="fn-5-7-25">Como mencionado na <a href="../ch02/#sec-2-1" data-source-xref>Seção 2.1</a>, a pergunta \(\mathsf P=\mathsf{NP}\) é um dos Problemas do Milênio, com prêmio de um milhão de dólares. <a href="#fnref-5-7-25" data-source-xref aria-label="Voltar à chamada da nota 25">↩</a></li>
+  </ol>
+</section>

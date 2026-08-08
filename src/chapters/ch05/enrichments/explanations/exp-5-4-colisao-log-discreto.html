@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Uma colisão útil não é apenas igualdade de números: cada lado precisa carregar uma expressão algébrica conhecida.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag example">Duas listas</span><p>Construa \(g^i\) e \(hg^j\). Se \(g^i=hg^j\), então \(h=g^{i-j}\), e o logaritmo aparece pela subtração de expoentes.</p></div>
+    <div class="step"><span class="step-tag manipulation">Reduza</span><p>Expoentes pertencem a \(\mathbb Z/N\mathbb Z\), onde N é a ordem de g. Assim \(i-j\) deve ser reduzido módulo N, inclusive quando é negativo.</p></div>
+    <div class="step"><span class="step-tag warning">Verifique</span><p>Se g não gera todo o grupo ou a ordem usada está errada, a classe pode ser ambígua. Sempre teste se \(g^t=h\) no grupo original.</p></div>
+  </div>
+  <div class="quick-check"><p>O algoritmo troca uma busca de N candidatos por cerca de \(\sqrt N\) elementos em cada lista, ao custo de armazenamento semelhante.</p></div>
+</div>

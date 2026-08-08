@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.28">
+          <p class="graduated-help__intro">Uma sequência só de respostas ‘Não’ favorece a ausência da propriedade, mas é preciso combinar evidência e probabilidade a priori.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Defina o evento observado</summary>
+      <div>Seja \(N_0\) o evento de \(N\) respostas negativas.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Limite a falsa sequência</summary>
+      <div>Se \(A\) é verdadeiro, \(\Pr(N_0\mid A)\le(1-p)^N\); se é falso, \(\Pr(N_0\mid A^c)=1\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Nomeie os eventos</summary>
+      <div>Chame de \(N_0\) a sequência de falhas e escreva separadamente sua probabilidade quando \(A\) vale e quando \(A\) não vale.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Temos \(\Pr(A^c)=\delta\), \(\Pr(A)=1-\delta\), \(\Pr(N_0\mid A^c)=1\) pela propriedade (1), e \(\Pr(N_0\mid A)\le(1-p)^N\), assumindo execuções independentes. Bayes fornece</p><p>\[\Pr(A^c\mid N_0)=\frac{\delta}{\delta+(1-\delta)\Pr(N_0\mid A)}\ge\boxed{\frac{\delta}{\delta+(1-\delta)(1-p)^N}}.\]</p><p>É um limite inferior; torna-se igualdade quando a taxa de sucesso sob \(A\) é exatamente \(p\) em cada execução.</p>
+        </details>
+      </div>

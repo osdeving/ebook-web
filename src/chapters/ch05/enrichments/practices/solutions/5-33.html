@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.33">
+          <p class="graduated-help__intro">O operador \(D=x\,d/dx\) transforma o peso \(n^k\) em \(n^{k+1}\) sem mudar a base \(x^n\).</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Derive dentro do raio</summary>
+      <div>A série geométrica e suas derivadas convergem para \(|x|&lt;1\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Recorrência dos numeradores</summary>
+      <div>Se \(S_k=F_k/(1-x)^{k+1}\), então \(F_{k+1}=x(1-x)F_k'+(k+1)xF_k\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Mantenha o denominador comum</summary>
+      <div>Ao aplicar \(D\), coloque o resultado sobre \((1-x)^{k+2}\); daí surge uma recorrência apenas para os numeradores.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) Aplicar \(D\) a \((1-x)^{-1}\) dá \(\sum_{n\ge1}nx^n=x/(1-x)^2\), convergente para \(|x|&lt;1\).</p><p>(b) Outra aplicação dá \(D[x(1-x)^{-2}]=(x+x^2)/(1-x)^3\).</p><p>(c) A recorrência</p><p>\[F_{k+1}=x(1-x)F_k'+(k+1)xF_k\]</p><p>prova por indução que o numerador continua polinomial.</p><p>(d) \(F_3=x+4x^2+x^3\) e \(F_4=x+11x^2+11x^3+x^4\).</p><p>(e) Se o coeficiente líder de \(F_k\) é 1 e seu grau é \(k\), os termos de grau \(k+1\) da recorrência têm coeficiente \(-k+(k+1)=1\); logo \(\deg F_{k+1}=k+1\).</p>
+        </details>
+      </div>

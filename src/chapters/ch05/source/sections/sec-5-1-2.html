@@ -1,0 +1,64 @@
+<section class="chapter-section subsection" id="sec-5-1-2">
+  <div class="section-heading">
+    <span class="section-number">5.1.2</span>
+    <h3>Combinações</h3>
+  </div>
+
+  <p>Uma permutação é uma maneira de organizar um conjunto de objetos em uma lista. Uma combinação é semelhante, mas agora a ordem dos elementos da lista não importa. Começamos com um exemplo típico de problemas envolvendo combinações.</p>
+
+  <div class="semantic example" id="exemplo-5-6">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.6</span></div>
+    <p>Cinco pessoas — Alice, Bob, Carl, Dave e Eve<sup id="fnref-5-1-2-2"><a href="#fn-5-1-2-2" data-source-xref>2</a></sup> — estão pedindo uma refeição em um restaurante chinês. O cardápio contém vinte itens diferentes. Cada pessoa escolhe um prato, nenhum prato pode ser pedido duas vezes e todos pretendem compartilhar a comida. Quantas refeições diferentes são possíveis?</p>
+    <p>Alice escolhe primeiro e tem vinte opções. Bob escolhe entre os dezenove pratos restantes, Carl entre os dezoito restantes, e assim por diante. Parece, portanto, haver</p>
+    <div class="equation">\[20\cdot19\cdot18\cdot17\cdot16=1\,860\,480\]</div>
+    <p>refeições possíveis. Contudo, a ordem em que os pratos são pedidos não importa. Se Alice pedir arroz frito e Bob pedir rolinhos primavera, ou se Alice pedir rolinhos primavera e Bob pedir arroz frito, a refeição será a mesma. Isso não foi levado em conta no número \(1\,860\,480\).</p>
+    <p>Numere os pratos como \(D_1,D_2,\ldots,D_{20}\). Queremos, por exemplo, contar as duas listas</p>
+    <div class="equation">\[D_1,D_5,D_7,D_{18},D_{20}\qquad\text{e}\qquad D_5,D_{18},D_{20},D_7,D_1\]</div>
+    <p>como a mesma refeição, embora a ordem seja diferente. No produto \(20\cdot19\cdot18\cdot17\cdot16\), cada permutação de um mesmo conjunto de cinco pratos foi contada separadamente. Para corrigir essa sobrecontagem, dividimos pelo número \(5!\) de maneiras de permutar cinco pratos distintos. Logo, o número de refeições diferentes é</p>
+    <div class="equation">\[\frac{20\cdot19\cdot18\cdot17\cdot16}{5!}=15\,504.\]</div>
+    <p>Também é conveniente escrever essa quantidade inteiramente em termos de fatoriais, multiplicando numerador e denominador por \(15!\):</p>
+    <div class="equation">\[
+      \frac{20\cdot19\cdot18\cdot17\cdot16}{5!}
+      =\frac{(20\cdot19\cdot18\cdot17\cdot16)(15\cdot14\cdots3\cdot2\cdot1)}{5!\,15!}
+      =\frac{20!}{5!\,15!}.
+    \]</div>
+  </div>
+
+  <div class="semantic definition" id="def-combinacao">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Seja \(S\) um conjunto com \(n\) objetos distintos. Uma <strong>combinação de \(r\) objetos de \(S\)</strong> é um subconjunto formado por exatamente \(r\) elementos distintos de \(S\), no qual a ordem dos objetos não importa.</p>
+  </div>
+
+  <aside class="semantic proposition" id="prop-5-7">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">5.7</span></div>
+    <p>O número de combinações possíveis de \(r\) objetos escolhidos de um conjunto de \(n\) objetos é</p>
+    <div class="equation">\[\binom nr=\frac{n!}{r!(n-r)!}.\]</div>
+  </aside>
+
+  <aside class="semantic remark" id="obs-5-8">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">5.8</span></div>
+    <p>O símbolo \(\binom nr\) é chamado de <strong>símbolo combinatório</strong> ou <strong>coeficiente binomial</strong> e é lido como “\(n\) escolhe \(r\)”. Por convenção, \(0!=1\), de modo que</p>
+    <div class="equation">\[\binom n0=\frac{n!}{n!\,0!}=1.\]</div>
+    <p>Isso faz sentido, pois há apenas uma maneira de escolher zero objetos de um conjunto.</p>
+  </aside>
+
+  <div class="semantic proof" id="proof-5-7">
+    <div class="semantic-header"><span class="semantic-label">Demonstração da Proposição 5.7</span></div>
+    <p>Se você compreendeu a discussão do <a href="#exemplo-5-6" data-source-xref>Exemplo 5.6</a>, a demonstração do caso geral é clara. O número de maneiras de formar uma lista ordenada com \(r\) elementos distintos de \(S\) é</p>
+    <div class="equation">\[n(n-1)(n-2)\cdots(n-r+1),\]</div>
+    <p>pois há \(n\) escolhas para o primeiro elemento, \(n-1\) para o segundo, e assim por diante, até selecionar \(r\) elementos. Dividimos então por \(r!\) para compensar as maneiras de permutar os \(r\) elementos do subconjunto, já que não importa a ordem em que foram escolhidos. Portanto, o número total de combinações é</p>
+    <div class="equation">\[\frac{n(n-1)(n-2)\cdots(n-r+1)}{r!}=\frac{n!}{r!(n-r)!}.\]</div>
+    <p><span class="proof-end">□</span></p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-9">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.9</span></div>
+    <p>Voltando às cinco pessoas no restaurante chinês, suponha que elas queiram pedir dois pratos vegetarianos e três pratos com carne e que o cardápio ofereça cinco opções vegetarianas e quinze opções com carne. Há \(\binom52\) escolhas para os dois pratos vegetarianos e \(\binom{15}3\) escolhas para os três pratos com carne. Pelo princípio básico de contagem, há</p>
+    <div class="equation">\[\binom52\binom{15}3=10\cdot455=4550\]</div>
+    <p>refeições possíveis.</p>
+  </div>
+
+  <ol class="footnotes">
+    <li id="fn-5-1-2-2">Você talvez se pergunte por que Alice e Bob, aqueles intrépidos interlocutores que trocam mensagens secretas cifradas, estão fazendo uma refeição com sua adversária criptográfica Eve. No mundo real, isso acontece o tempo todo, sobretudo em congressos de criptografia! <a href="#fnref-5-1-2-2" data-source-xref aria-label="Voltar à chamada da nota 2">↩</a></li>
+  </ol>
+</section>

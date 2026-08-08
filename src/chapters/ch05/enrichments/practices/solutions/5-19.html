@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.19">
+          <p class="graduated-help__intro">No autokey, o fluxo começa com a palavra secreta e continua com o próprio texto claro.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Cifre e decifre em fluxo</summary>
+      <div>Ao decifrar, cada nova letra clara recuperada é anexada ao fim da chave.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Ataque com texto conhecido</summary>
+      <div>Calcule \(K_i=C_i-P_i\pmod{26}\) e procure onde o fluxo passa a repetir o início do texto claro.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Localize a transição do autokey</summary>
+      <div>No fluxo \(C-P\), procure o ponto em que a semente termina e começa a repetição do próprio prefixo claro.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) O texto cifrado é <code>NSMVPCFFRHPFIGPLIQKHKREATRUIFZYILD</code>.</p><p>(b) A decifração é <q>Nothing will come of nothing. Speak again.</q></p><p>(c) A subtração \(C-P\) revela o fluxo <code>SURFEITIFMUSICBETHEFOODOFLOV…</code>. A partir da oitava posição ele coincide com o início do texto claro, logo a palavra inicial é \(\boxed{\text{SURFEIT}}\). Em geral, teste comprimentos \(\ell\) até que o fluxo observado após \(\ell\) coincida com o prefixo do texto claro.</p><p>(d) Sem texto conhecido, pode-se testar comprimentos iniciais e pontuar a decifração pelo modelo estatístico da língua; a realimentação cria relações \(P_i=C_i-P_{i-\ell}\) após a semente, permitindo validar cada hipótese. É mais trabalhoso que Kasiski, mas não elimina a redundância linguística.</p>
+        </details>
+      </div>

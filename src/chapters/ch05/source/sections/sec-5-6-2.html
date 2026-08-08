@@ -1,0 +1,287 @@
+<section class="chapter-section subsection" id="sec-5-6-2">
+  <div class="section-heading">
+    <span class="section-number">5.6.2</span>
+    <h3>Entropia</h3>
+  </div>
+
+  <p>Em criptossistemas eficientes, uma única chave precisa ser usada para cifrar muitos textos claros diferentes, de modo que o sigilo perfeito não é possível. Na melhor das hipóteses, podemos esperar construir criptossistemas computacionalmente seguros. Infelizmente, qualquer coisa aquém do sigilo perfeito deixa aberta a possibilidade de que uma lista de textos cifrados revele informação significativa sobre a chave. Para estudar esse fenômeno, Shannon introduziu o conceito de <strong>entropia</strong>, uma medida da incerteza de um sistema. Assim, se interpretarmos \(f_X(x)=\Pr(X=x)\) como a probabilidade de o resultado de certo experimento ser igual a \(x\), a entropia de \(X\) será pequena se o resultado de um único experimento revelar uma quantidade significativa de informação sobre a variável aleatória \(X\).</p>
+
+  <p>Seja \(X\) uma variável aleatória que assume um número finito de valores \(x_1,x_2,\ldots,x_n\), e sejam \(p_1,p_2,\ldots,p_n\) as probabilidades associadas,</p>
+  <div class="equation">\[
+    p_i=f_X(x_i)=\Pr(X=x_i).
+  \]</div>
+  <p>A entropia \(H(X)\) de \(X\) é um número que depende apenas das probabilidades \(p_1,\ldots,p_n\) dos resultados possíveis de \(X\), de modo que escrevemos<sup id="fnref-5-6-2-20"><a href="#fn-5-6-2-20" data-source-xref>20</a></sup></p>
+  <div class="equation">\[
+    H(X)=H(p_1,\ldots,p_n).
+  \]</div>
+  <p>Queremos expressar a ideia de que \(H\) é o valor esperado de uma variável aleatória que mede a incerteza de que o resultado \(x_i\) tenha ocorrido. Portanto, quanto maior o valor de \(H(X)\), menos informação sobre \(X\) é revelada pelo resultado de um experimento.</p>
+
+  <p>Que propriedades \(H\) deveria possuir?</p>
+
+  <aside class="semantic property" id="propriedade-h1">
+    <div class="semantic-header"><span class="semantic-label">Propriedade H1</span></div>
+    <p>A função \(H\) deve ser contínua nas variáveis \(p_i\).</p>
+    <p>Isso reflete a intuição de que uma pequena variação em \(p_i\) deve produzir uma pequena variação na quantidade de informação revelada por \(X\).</p>
+  </aside>
+
+  <aside class="semantic property" id="propriedade-h2">
+    <div class="semantic-header"><span class="semantic-label">Propriedade H2</span></div>
+    <p>Seja \(X_n\) a variável aleatória uniformemente distribuída no conjunto \(\{x_1,\ldots,x_n\}\), isto é, \(X_n\) possui \(n\) resultados possíveis, cada qual ocorrendo com probabilidade \(1/n\). Então</p>
+    <div class="equation">\[
+      H(X_{n+1})&gt;H(X_n)\qquad\text{para todo }n\ge1.
+    \]</div>
+    <p>Isso reflete a intuição de que, se todos os resultados são igualmente prováveis, a incerteza deve crescer com o número de resultados.</p>
+  </aside>
+
+  <aside class="semantic property" id="propriedade-h3">
+    <div class="semantic-header"><span class="semantic-label">Propriedade H3</span></div>
+    <p>A terceira propriedade é mais sutil. Ela diz que, se um resultado de \(X\) for visto como uma escolha, e essa escolha puder ser decomposta em duas escolhas sucessivas, então o valor original de \(H\) será uma soma ponderada dos valores de \(H\) para as escolhas sucessivas. Para quantificar essa intuição, consideramos variáveis aleatórias \(X,Y,Z_1,\ldots,Z_n\) com valores nos conjuntos</p>
+    <div class="aligned-equations">\[
+      \begin{aligned}
+        X&amp;:\Omega\longrightarrow\{x_{ij}:1\le i\le n\text{ e }1\le j\le m_i\},\\
+        Y&amp;:\Omega\longrightarrow\{Z_1,\ldots,Z_n\},\\
+        Z_i&amp;:\Omega\longrightarrow\{x_{ij}:1\le j\le m_i\},
+      \end{aligned}
+    \]</div>
+    <p>e que satisfazem</p>
+    <div class="equation">\[
+      \Pr(X=x_{ij})=\Pr(Y=Z_i\text{ e }Z_i=x_{ij}).
+    \]</div>
+    <p>Isso reflete a ideia de que o resultado \(X=x_{ij}\) está sendo decomposto nas escolhas sucessivas \(Y=Z_i\) e, depois, \(Z_i=x_{ij}\). A Propriedade H3 é, então, a fórmula</p>
+    <div class="equation">\[
+      H(X)=H(Y)+\sum_{i=1}^n\Pr(Y=Z_i)H(Z_i).
+    \]</div>
+  </aside>
+
+  <div class="semantic example" id="exemplo-5-58">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.58</span></div>
+    <p>Seja \(X_n\) uma variável aleatória uniformemente distribuída em \(n\) objetos. Afirmamos que</p>
+    <div class="equation">\[
+      H(X_{n^2})=2H(X_n).
+    \]</div>
+    <p>Para ver isso, interpretamos \(X_{n^2}\) como a escolha de um elemento de \(\{x_{ij}:1\le i,j\le n\}\) e decompomos essa escolha em duas: primeiro escolhemos um índice \(i\) e depois um índice \(j\). A <a href="#propriedade-h3" data-source-xref>Propriedade H3</a> diz que</p>
+    <div class="equation">\[
+      H(X_{n^2})=H(X_n)+\sum_{i=1}^n\frac1nH(X_n)=2H(X_n).
+    \]</div>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-59">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.59</span></div>
+    <p>Ilustramos a <a href="#propriedade-h3" data-source-xref>Propriedade H3</a> com um exemplo mais elaborado. Suponha que \(X\) tenha os cinco resultados possíveis \(\{x_1,x_2,x_3,x_4,x_5\}\), com probabilidades</p>
+    <div class="equation">\[
+      f_X(x_1)=\frac12,\quad
+      f_X(x_2)=\frac14,\quad
+      f_X(x_3)=\frac1{12},\quad
+      f_X(x_4)=\frac18,\quad
+      f_X(x_5)=\frac1{24}.
+    \]</div>
+    <p>Os cinco resultados de \(X\) são ilustrados pela árvore ramificada da <a href="#fig-5-2" data-source-xref>Figura 5.2(a)</a>.</p>
+    <p>Suponha agora que \(X\) seja escrito como duas escolhas sucessivas: a primeira decide entre os subconjuntos \(\{x_1,x_2,x_3\}\) e \(\{x_4,x_5\}\), e a segunda escolhe um elemento do subconjunto designado. Temos, portanto, as variáveis aleatórias \(Y,Z_1,Z_2\), em que</p>
+    <div class="equation">\[
+      f_Y(Z_1)=\frac56\qquad\text{e}\qquad f_Y(Z_2)=\frac16,
+    \]</div>
+    <p>e</p>
+    <div class="equation">\[
+      f_{Z_1}(x_1)=\frac35,\quad
+      f_{Z_1}(x_2)=\frac3{10},\quad
+      f_{Z_1}(x_3)=\frac1{10},\quad
+      f_{Z_2}(x_4)=\frac34,\quad
+      f_{Z_2}(x_5)=\frac14,
+    \]</div>
+    <p>como ilustra a <a href="#fig-5-2" data-source-xref>Figura 5.2(b)</a>. A Propriedade H3, neste exemplo, diz que</p>
+    <div class="equation">\[
+      \underbrace{H\left(\frac12,\frac14,\frac1{12},\frac18,\frac1{24}\right)}_{H(X)}
+      =
+      \underbrace{H\left(\frac56,\frac16\right)}_{H(Y)}
+      +\frac56\underbrace{H\left(\frac35,\frac3{10},\frac1{10}\right)}_{H(Z_1)}
+      +\frac16\underbrace{H\left(\frac34,\frac14\right)}_{H(Z_2)}.
+    \]</div>
+  </div>
+
+  <figure class="source-figure" id="fig-5-2">
+    <svg viewBox="0 0 820 330" role="img" aria-labelledby="fig-5-2-title fig-5-2-desc">
+      <title id="fig-5-2-title">Decomposição de uma escolha em duas escolhas sucessivas</title>
+      <desc id="fig-5-2-desc">À esquerda, uma árvore com cinco resultados e probabilidades um meio, um quarto, um doze avos, um oitavo e um vinte e quatro avos. À direita, a primeira escolha conduz a Z um com probabilidade cinco sextos ou a Z dois com probabilidade um sexto; escolhas condicionais conduzem aos cinco resultados.</desc>
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M55 165 L210 35 M55 165 L210 95 M55 165 L210 155 M55 165 L210 215 M55 165 L210 275"/>
+        <path d="M455 165 L550 95 M455 165 L550 235"/>
+        <path d="M550 95 L740 35 M550 95 L740 95 M550 95 L740 155"/>
+        <path d="M550 235 L740 215 M550 235 L740 275"/>
+      </g>
+      <g fill="currentColor" font-family="serif" font-size="18">
+        <text x="20" y="25">(a)</text><text x="430" y="25">(b)</text>
+        <text x="35" y="171">X</text>
+        <text x="125" y="84">1/2</text><text x="125" y="117">1/4</text><text x="125" y="151">1/12</text><text x="125" y="205">1/8</text><text x="125" y="253">1/24</text>
+        <text x="220" y="41">x₁</text><text x="220" y="101">x₂</text><text x="220" y="161">x₃</text><text x="220" y="221">x₄</text><text x="220" y="281">x₅</text>
+        <text x="435" y="171">Y</text><text x="490" y="116">5/6</text><text x="490" y="218">1/6</text>
+        <text x="555" y="89">Z₁</text><text x="555" y="252">Z₂</text>
+        <text x="635" y="56">3/5</text><text x="635" y="93">3/10</text><text x="635" y="137">1/10</text><text x="635" y="213">3/4</text><text x="635" y="269">1/4</text>
+        <text x="750" y="41">x₁</text><text x="750" y="101">x₂</text><text x="750" y="161">x₃</text><text x="750" y="221">x₄</text><text x="750" y="281">x₅</text>
+        <text x="785" y="41">1/2</text><text x="785" y="101">1/4</text><text x="785" y="161">1/12</text><text x="785" y="221">1/8</text><text x="785" y="281">1/24</text>
+      </g>
+    </svg>
+    <figcaption><span class="label">Figura 5.2.</span> Decomposição de \(X\) em \(Y\), seguida por \(Z_1\) ou \(Z_2\). (a) Cinco resultados de uma escolha. (b) Decomposição em duas escolhas.</figcaption>
+  </figure>
+
+  <div class="semantic theorem" id="teorema-5-60">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">5.60</span></div>
+    <p>Toda função que possui as Propriedades <a href="#propriedade-h1" data-source-xref>H1</a>, <a href="#propriedade-h2" data-source-xref>H2</a> e <a href="#propriedade-h3" data-source-xref>H3</a> é um múltiplo constante da função</p>
+    <div class="equation" id="eq-5-51"><span class="equation-number">(5.51)</span>\[
+      H(p_1,\ldots,p_n)=-\sum_{i=1}^n p_i\log_2p_i,
+    \]</div>
+    <p>em que \(\log_2\) denota o logaritmo na base \(2\), e, se \(p=0\), definimos \(p\log_2p=0\).<sup id="fnref-5-6-2-21"><a href="#fn-5-6-2-21" data-source-xref>21</a></sup></p>
+  </div>
+
+  <div class="semantic proof" id="proof-5-60">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Veja o artigo de Shannon <a href="../../references/#ref-126" data-source-xref>[126]</a>.<span class="proof-end">□</span></p>
+  </div>
+
+  <p>Para ilustrar a noção de incerteza, considere o que acontece quando uma das probabilidades \(p_i\) é \(1\) e todas as outras são \(0\). Nesse caso, a fórmula de entropia <a href="#eq-5-51" data-source-xref>(5.51)</a> fornece \(H(p_1,\ldots,p_n)=0\), o que faz sentido, pois não há incerteza quanto ao resultado de um experimento com apenas um resultado possível.</p>
+
+  <p>O outro extremo, isto é, a incerteza máxima, ocorre quando todas as probabilidades \(p_i\) são iguais. Para demonstrar esse fato, usaremos uma desigualdade importante da análise real, conhecida como desigualdade de Jensen. Antes de enunciá-la, precisamos de uma definição.</p>
+
+  <div class="semantic definition" id="def-5-funcao-concava">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Uma função \(F\) na reta real é chamada <strong>côncava (para baixo)</strong> em um intervalo \(I\) se a desigualdade seguinte for verdadeira para todo \(0\le\alpha\le1\) e todos \(s,t\in I\):</p>
+    <div class="equation" id="eq-5-52"><span class="equation-number">(5.52)</span>\[
+      (1-\alpha)F(s)+\alpha F(t)\le F\bigl((1-\alpha)s+\alpha t\bigr).
+    \]</div>
+  </div>
+
+  <p>Essa definição pode parecer misteriosa, mas possui uma interpretação geométrica simples. Se fixarmos \(s\) e \(t\) e fizermos \(\alpha\) variar de \(0\) a \(1\), os pontos \((1-\alpha)s+\alpha t\) percorrerão o intervalo de \(s\) a \(t\) na reta real. Assim, a desigualdade <a href="#eq-5-52" data-source-xref>(5.52)</a> é a afirmação geométrica de que o segmento de reta que liga quaisquer dois pontos do gráfico de \(F\) fica abaixo do gráfico de \(F\). Por exemplo, \(F(t)=1-t^2\) é côncava. A <a href="#fig-5-3" data-source-xref>Figura 5.3</a> ilustra uma função côncava e uma não côncava, com segmentos de reta representativos. Se \(F\) possui segunda derivada, o teste da segunda derivada estudado em cálculo pode ser usado para verificar a concavidade; veja o <a href="#exercicio-5-54" data-source-xref>Exercício 5.54</a>.</p>
+
+  <figure class="source-figure" id="fig-5-3">
+    <svg viewBox="0 0 820 300" role="img" aria-labelledby="fig-5-3-title fig-5-3-desc">
+      <title id="fig-5-3-title">Funções côncava e não côncava</title>
+      <desc id="fig-5-3-desc">No painel a, um segmento entre dois pontos permanece abaixo de uma curva côncava. No painel b, parte do segmento fica acima de uma curva não côncava.</desc>
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M50 250 H365 M75 275 V25 M455 250 H770 M480 275 V25" opacity=".55"/>
+        <path d="M95 225 C155 55 270 45 340 205" stroke-width="3"/>
+        <path d="M125 166 L310 145" stroke-dasharray="7 5"/>
+        <circle cx="125" cy="166" r="5" fill="currentColor"/><circle cx="310" cy="145" r="5" fill="currentColor"/>
+        <path d="M500 220 C555 55 610 245 750 75" stroke-width="3"/>
+        <path d="M525 160 L720 111" stroke-dasharray="7 5"/>
+        <circle cx="525" cy="160" r="5" fill="currentColor"/><circle cx="720" cy="111" r="5" fill="currentColor"/>
+      </g>
+      <g fill="currentColor" font-family="serif" font-size="18">
+        <text x="25" y="24">(a)</text><text x="430" y="24">(b)</text>
+      </g>
+    </svg>
+    <figcaption><span class="label">Figura 5.3.</span> Uma ilustração da concavidade. (a) Uma função côncava. (b) Uma função não côncava.</figcaption>
+  </figure>
+
+  <div class="semantic theorem" id="teorema-5-61">
+    <div class="semantic-header"><span class="semantic-label">Teorema</span><span class="semantic-title">5.61 — Desigualdade de Jensen</span></div>
+    <p>Suponha que \(F\) seja côncava em um intervalo \(I\), e sejam \(\alpha_1,\alpha_2,\ldots,\alpha_n\) números não negativos que satisfazem</p>
+    <div class="equation">\[
+      \alpha_1+\alpha_2+\cdots+\alpha_n=1.
+    \]</div>
+    <p>Então</p>
+    <div class="equation" id="eq-5-53"><span class="equation-number">(5.53)</span>\[
+      \sum_{i=1}^n\alpha_iF(t_i)
+      \le F\left(\sum_{i=1}^n\alpha_it_i\right)
+      \qquad\text{para todos }t_1,t_2,\ldots,t_n\in I.
+    \]</div>
+    <p>Além disso, há igualdade em <a href="#eq-5-53" data-source-xref>(5.53)</a> se, e somente se, \(F\) for uma função linear ou \(t_1=t_2=\cdots=t_n\).</p>
+  </div>
+
+  <div class="semantic proof" id="proof-5-61">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Observe que, para \(n=2\), a desigualdade desejada <a href="#eq-5-53" data-source-xref>(5.53)</a> é exatamente a definição de concavidade <a href="#eq-5-52" data-source-xref>(5.52)</a>. O caso geral é demonstrado por indução; veja o <a href="#exercicio-5-55" data-source-xref>Exercício 5.55</a>.<span class="proof-end">□</span></p>
+  </div>
+
+  <div class="semantic corollary" id="cor-5-62">
+    <div class="semantic-header"><span class="semantic-label">Corolário</span><span class="semantic-title">5.62</span></div>
+    <p>Seja \(X\) uma variável aleatória que assume um número finito de valores possíveis \(x_1,\ldots,x_n\).</p>
+    <ol type="a">
+      <li>\(H(X)\le\log_2n\).</li>
+      <li>\(H(X)=\log_2n\) se, e somente se, cada evento \(X=x_i\) ocorrer com a mesma probabilidade \(1/n\).</li>
+    </ol>
+  </div>
+
+  <div class="semantic proof" id="proof-5-62">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Seja \(p_i=\Pr(X=x_i)\) para \(i=1,2,\ldots,n\). Como \(p_1+\cdots+p_n=1\), podemos aplicar a desigualdade de Jensen à função \(F(t)=\log_2t\), tomando \(\alpha_i=p_i\) e \(t_i=1/p_i\). (Veja o <a href="#exercicio-5-54" data-source-xref>Exercício 5.54</a> para uma demonstração de que \(\log_2t\) é côncava.) O lado esquerdo de <a href="#eq-5-53" data-source-xref>(5.53)</a> é exatamente a fórmula da entropia <a href="#eq-5-51" data-source-xref>(5.51)</a>, portanto</p>
+    <div class="aligned-equations">\[
+      \begin{aligned}
+        H(X)
+          &amp;=-\sum_{i=1}^n p_i\log_2p_i
+           =\sum_{i=1}^n p_i\log_2\frac1{p_i}\\
+          &amp;\le\log_2\left(\sum_{i=1}^n p_i\frac1{p_i}\right)
+           =\log_2n.
+      \end{aligned}
+    \]</div>
+    <p>Isso demonstra (a). Além disso, \(\log_2t\) não é linear, de modo que a igualdade ocorre se, e somente se, \(p_1=p_2=\cdots=p_n\), isto é, se todas as probabilidades satisfazem \(p_i=1/n\). Isso demonstra (b).<span class="proof-end">□</span></p>
+  </div>
+
+  <p>O <a href="#cor-5-62" data-source-xref>Corolário 5.62</a> diz que a entropia é máxima quando todas as probabilidades são iguais. Isso está de acordo com nossa compreensão intuitiva de que a incerteza é máxima quando todos os resultados são igualmente prováveis.</p>
+
+  <p>A teoria da entropia é aplicada à criptografia calculando-se a entropia de variáveis aleatórias associadas ao criptossistema, como \(K\), \(M\) e \(C\), e comparando-se os valores obtidos aos maiores valores possíveis. É claro que, quanto maior a entropia, melhor para o usuário, pois a incerteza elevada torna mais difícil a tarefa do criptoanalista.</p>
+
+  <p>Por exemplo, considere uma cifra de deslocamento e a variável aleatória \(K\) associada às suas chaves. A variável \(K\) possui 26 valores possíveis, pois o deslocamento pode ser qualquer inteiro entre 0 e 25, e cada quantidade de deslocamento tem a mesma probabilidade. Portanto, \(K\) possui entropia máxima \(H(K)=\log_2(26)\).</p>
+
+  <div class="semantic example" id="exemplo-5-63">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.63</span></div>
+    <p>Considere o sistema com duas chaves descrito no <a href="#exemplo-5-54" data-source-xref>Exemplo 5.54</a>, na página 265. Cada chave tem a mesma probabilidade, portanto \(H(K)=\log_2(2)=1\). Do mesmo modo, podemos usar as probabilidades dos textos claros dadas em <a href="#eq-5-48" data-source-xref>(5.48)</a> para calcular a entropia da variável aleatória \(M\) associada aos textos claros:</p>
+    <div class="equation">\[
+      H(M)
+        =-\frac14\log_2\frac14-\frac14\log_2\frac14-\frac12\log_2\frac12
+        =\frac32=1{,}5.
+    \]</div>
+    <p>Observe que \(H(M)\) é um pouco menor que \(\log_2(3)\approx1{,}585\), que seria a maior entropia possível para \(M\) em um criptossistema com três textos claros.</p>
+  </div>
+
+  <p>Introduzimos agora o conceito de entropia condicional e sua aplicação aos sistemas de sigilo. Suponha que um sinal seja enviado por um canal ruidoso, isto é, que o sinal possa ser distorcido durante a transmissão. Shannon <a href="../../references/#ref-126" data-source-xref>[126]</a> define a <em>equivocação</em> como a entropia condicional do sinal original dado o sinal recebido. Ele usa essa quantidade para medir a incerteza presente nas transmissões por um canal ruidoso. Mais tarde, Shannon <a href="../../references/#ref-127" data-source-xref>[127]</a> observou que um canal de comunicação ruidoso também serve de modelo para um sistema de sigilo. O sinal original, o texto claro, é “distorcido” pela aplicação do processo de cifração; o sinal recebido, o texto cifrado, é assim uma versão ruidosa do sinal original. Desse modo, a noção de equivocação pode ser aplicada à criptografia, e uma equivocação grande indica que o texto cifrado oculta a maior parte da informação sobre o texto claro.</p>
+
+  <div class="semantic definition" id="def-5-entropia-condicional">
+    <div class="semantic-header"><span class="semantic-label">Definição</span></div>
+    <p>Sejam \(X\) e \(Y\) variáveis aleatórias, sejam \(x_1,\ldots,x_n\) os valores possíveis de \(X\) e sejam \(y_1,\ldots,y_m\) os valores possíveis de \(Y\). A <strong>equivocação</strong>, ou <strong>entropia condicional</strong>, de \(X\) dado \(Y\) é a quantidade \(H(X\mid Y)\) definida por</p>
+    <div class="equation">\[
+      H(X\mid Y)
+        =-\sum_{i=1}^n\sum_{j=1}^m
+          f_Y(y_j)f_{X\mid Y}(x_i\mid y_j)\log_2f_{X\mid Y}(x_i\mid y_j).
+    \]</div>
+  </div>
+
+  <p>Quando \(X=K\) é a variável aleatória chave e \(Y=C\) é a variável aleatória texto cifrado, a quantidade \(H(K\mid C)\) é chamada <strong>equivocação da chave</strong>. Ela mede a quantidade total de informação sobre a chave revelada pelo texto cifrado ou, mais precisamente, é o valor esperado da entropia condicional \(H(K\mid c)\) de \(K\), dada uma única observação \(c\) de \(C\). A equivocação da chave pode ser determinada calculando todas as probabilidades condicionais \(f(k\mid c)\) do criptossistema. Como alternativa, pode-se usar o resultado seguinte.</p>
+
+  <div class="semantic proposition" id="prop-5-64">
+    <div class="semantic-header"><span class="semantic-label">Proposição</span><span class="semantic-title">5.64</span></div>
+    <p>A equivocação da chave de um criptossistema \((\mathcal K,\mathcal M,\mathcal C)\) se relaciona às entropias individuais de \(K\), \(M\) e \(C\) pela fórmula</p>
+    <div class="equation" id="eq-5-54"><span class="equation-number">(5.54)</span>\[
+      H(K\mid C)=H(K)+H(M)-H(C).
+    \]</div>
+  </div>
+
+  <div class="semantic proof" id="proof-5-64">
+    <div class="semantic-header"><span class="semantic-label">Demonstração</span></div>
+    <p>Deixamos a demonstração como exercício; veja o <a href="#exercicio-5-57" data-source-xref>Exercício 5.57</a>.<span class="proof-end">□</span></p>
+  </div>
+
+  <div class="semantic example" id="exemplo-5-65">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.65</span></div>
+    <p>Calculamos a equivocação da chave do criptossistema descrito nos <a href="#exemplo-5-54" data-source-xref>Exemplos 5.54</a> e <a href="#exemplo-5-63" data-source-xref>5.63</a>. Já calculamos \(H(K)=1\) e \(H(M)=3/2\), de modo que resta calcular \(H(C)\). Para isso, precisamos dos valores de \(f(c)\) para cada texto cifrado \(c\in\mathcal C\). Já calculamos \(f(c_1)=1/4\), e um cálculo semelhante, usando <a href="#eq-5-48" data-source-xref>(5.48)</a> e a <a href="#tab-5-12" data-source-xref>Tabela 5.12</a>, fornece</p>
+    <div class="aligned-equations">\[
+      \begin{aligned}
+        f(c_2)&amp;=f(k_1)f(m_1)+f(k_2)f(m_3)
+                =\frac12\cdot\frac14+\frac12\cdot\frac12=\frac38,\\
+        f(c_3)&amp;=f(k_1)f(m_3)+f(k_2)f(m_2)
+                =\frac12\cdot\frac12+\frac12\cdot\frac14=\frac38.
+      \end{aligned}
+    \]</div>
+    <p>Portanto,</p>
+    <div class="equation">\[
+      H(C)=-\frac14\log_2\frac14-2\cdot\frac38\log_2\frac38\approx1{,}56,
+    \]</div>
+    <p>e, usando <a href="#eq-5-54" data-source-xref>(5.54)</a>, obtemos</p>
+    <div class="equation">\[
+      H(K\mid C)=H(K)+H(M)-H(C)\approx1+1{,}5-1{,}56\approx0{,}94.
+    \]</div>
+  </div>
+
+  <ol class="footnotes" start="20">
+    <li id="fn-5-6-2-20">Embora essa notação seja útil, é importante lembrar que o domínio de \(H\) é o conjunto das variáveis aleatórias, e não o conjunto das \(n\)-uplas para algum valor fixo de \(n\). Portanto, o próprio domínio de \(H\) é um conjunto de funções. <a href="#fnref-5-6-2-20" data-source-xref aria-label="Voltar à chamada da nota 20">↩</a></li>
+    <li id="fn-5-6-2-21">Essa convenção faz sentido porque queremos que \(H\) seja contínua nas variáveis \(p_i\), e de fato \(\lim_{p\to0}p\log_2p=0\). <a href="#fnref-5-6-2-21" data-source-xref aria-label="Voltar à chamada da nota 21">↩</a></li>
+  </ol>
+</section>

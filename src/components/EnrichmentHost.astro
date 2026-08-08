@@ -75,8 +75,28 @@ const labels: Record<EnrichmentLayer, { name: string; help: string }> = {
       </section>
 
       <details class="enrichment-panel bookmark-panel">
-        <summary>Marcadores <span data-bookmark-count>0</span></summary>
-        <div class="bookmark-panel__content" data-bookmark-list></div>
+        <summary>Marcadores e rascunhos <span data-bookmark-count>0</span></summary>
+        <div class="bookmark-panel__content">
+          <p class="bookmark-panel__intro">Marque uma seção inteira, selecione um trecho para voltar à linha exata ou prenda uma conta feita à mão. Com uma seleção ativa, use <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> para marcar ou <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> para abrir um rascunho.</p>
+          <button
+            class="enrichment-button bookmark-panel__ink-action"
+            type="button"
+            aria-pressed="false"
+            data-ink-note-mode
+          >✎ Rascunho em uma linha</button>
+          <section class="bookmark-panel__group" aria-labelledby={`${drawerId}-section-bookmarks`}>
+            <h4 id={`${drawerId}-section-bookmarks`}>Seções</h4>
+            <div data-section-bookmark-list></div>
+          </section>
+          <section class="bookmark-panel__group" aria-labelledby={`${drawerId}-text-bookmarks`}>
+            <h4 id={`${drawerId}-text-bookmarks`}>Trechos</h4>
+            <div data-text-bookmark-list></div>
+          </section>
+          <section class="bookmark-panel__group" aria-labelledby={`${drawerId}-ink-notes`}>
+            <h4 id={`${drawerId}-ink-notes`}>Rascunhos à mão</h4>
+            <div data-ink-note-list></div>
+          </section>
+        </div>
       </details>
 
       <details class="enrichment-panel study-progress-panel">
@@ -105,7 +125,7 @@ const labels: Record<EnrichmentLayer, { name: string; help: string }> = {
         <button class="enrichment-button" type="button" data-reader-print>Imprimir / salvar PDF</button>
         <button class="enrichment-button enrichment-button--danger" type="button" data-reader-reset>Redefinir dados locais</button>
       </div>
-      <p class="enrichment-storage-note">Notas e preferências ficam apenas neste navegador. Nenhum dado é enviado.</p>
+      <p class="enrichment-storage-note">Notas, marcadores, rascunhos e preferências ficam apenas neste navegador. Nenhum dado é enviado.</p>
     </div>
   </div>
 </section>

@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>O algoritmo não sabe o logaritmo, mas sabe como cada passo altera uma representação \(x_i=g^{\alpha_i}h^{\beta_i}\).</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag manipulation">Multiplicar por g</span><p>Some 1 a \(\alpha\). Multiplicar por h soma 1 a \(\beta\). Elevar ao quadrado dobra ambos.</p></div>
+    <div class="step"><span class="step-tag theorem">Na colisão</span><p>\(g^\alpha h^\beta=g^\gamma h^\delta\) implica \((\delta-\beta)\log_g h\equiv\alpha-\gamma\) módulo a ordem do grupo.</p></div>
+    <div class="step"><span class="step-tag warning">Congruência não é divisão comum</span><p>Se o coeficiente tem mdc \(d>1\) com o módulo, há d classes candidatas ou nenhuma. Resolva a congruência e teste cada candidato.</p></div>
+  </div>
+  <div class="quick-check"><p>Cancelar um coeficiente não invertível é uma das fontes mais comuns de respostas erradas nesse método.</p></div>
+</div>

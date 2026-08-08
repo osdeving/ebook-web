@@ -1,0 +1,379 @@
+.bookmark-panel__intro {
+  margin: 0 0 .65rem;
+  line-height: 1.48;
+}
+
+.bookmark-panel__intro kbd {
+  padding: .05rem .22rem;
+  border: 1px solid var(--line-strong);
+  border-radius: .24rem;
+  background: var(--surface-raised);
+  box-shadow: 0 1px 0 var(--line-strong);
+  font: 650 .68em/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.bookmark-panel__ink-action { width: 100%; }
+
+.bookmark-panel__group {
+  margin-top: .8rem;
+  padding-top: .7rem;
+  border-top: 1px solid var(--line);
+}
+
+.bookmark-panel__group h4 {
+  margin: 0 0 .45rem;
+  color: var(--ink);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.bookmark-list__item--stacked { align-items: start; }
+
+.bookmark-list__link--quote {
+  display: grid;
+  min-width: 0;
+  gap: .18rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.bookmark-list__link--quote span {
+  display: -webkit-box;
+  overflow: hidden;
+  font-weight: 720;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.bookmark-list__link--quote small {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: .63rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bookmark-list__remove {
+  display: grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  place-items: center;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.bookmark-list__remove:hover,
+.bookmark-list__remove:focus-visible {
+  border-color: var(--line-strong);
+  background: var(--surface-raised);
+  color: var(--ink);
+}
+
+.line-selection-toolbar {
+  position: fixed;
+  z-index: 95;
+  display: flex;
+  gap: .3rem;
+  padding: .32rem;
+  border: 1px solid var(--line-strong);
+  border-radius: .72rem;
+  background: var(--surface-raised);
+  box-shadow: 0 .65rem 1.8rem rgb(7 23 28 / .25);
+}
+
+.line-selection-toolbar[hidden] { display: none; }
+
+.line-selection-toolbar button {
+  min-height: 2.35rem;
+  padding: .42rem .65rem;
+  border: 0;
+  border-radius: .52rem;
+  background: transparent;
+  color: var(--ink);
+  font-size: .72rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.line-selection-toolbar button:hover,
+.line-selection-toolbar button:focus-visible {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.text-bookmark-marker {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 1em;
+  scroll-margin-top: 30vh;
+}
+
+.text-bookmark-marker::before {
+  position: absolute;
+  right: .12rem;
+  bottom: .62em;
+  width: .62rem;
+  height: .62rem;
+  border: 2px solid var(--gold);
+  border-radius: 50% 50% 50% 0;
+  background: var(--gold-soft);
+  content: "";
+  transform: rotate(-45deg);
+  box-shadow: 0 1px 4px rgb(7 23 28 / .22);
+}
+
+.ink-note-pin {
+  position: relative;
+  display: inline-grid;
+  width: 1.35rem;
+  height: 1.35rem;
+  place-items: center;
+  margin: 0 .18rem;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--gold) 65%, var(--line));
+  border-radius: 50%;
+  background: var(--gold-soft);
+  color: var(--gold);
+  vertical-align: .08em;
+  cursor: pointer;
+  scroll-margin-top: 30vh;
+}
+
+.ink-note-pin::before {
+  content: "✎";
+  font-size: .78rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.text-bookmark-marker.is-highlighted::before,
+.ink-note-pin.is-highlighted {
+  animation: bookmark-pulse .65s ease-in-out 2;
+}
+
+.ink-anchor-picker {
+  position: fixed;
+  z-index: 96;
+  right: 1rem;
+  bottom: 1rem;
+  left: max(1rem, calc(50% - 20rem));
+  display: flex;
+  max-width: 40rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .75rem .9rem;
+  border: 1px solid var(--gold);
+  border-radius: .8rem;
+  background: var(--surface-raised);
+  color: var(--ink);
+  box-shadow: 0 .75rem 2rem rgb(7 23 28 / .28);
+  font-size: .78rem;
+  font-weight: 760;
+}
+
+.ink-anchor-picker[hidden] { display: none; }
+
+.ink-anchor-picker button {
+  min-height: 2.25rem;
+  padding: .4rem .65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: .55rem;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+body.reader-picking-ink-anchor [data-reader-content] { cursor: crosshair; }
+
+.ink-note-dialog {
+  width: min(94vw, 58rem);
+  max-width: none;
+  max-height: 94vh;
+  padding: 0;
+  overflow: visible;
+  border: 1px solid var(--line-strong);
+  border-radius: 1rem;
+  background: var(--surface-raised);
+  color: var(--ink);
+  box-shadow: 0 1.2rem 4rem rgb(7 23 28 / .35);
+}
+
+.ink-note-dialog::backdrop {
+  background: rgb(7 18 22 / .62);
+  backdrop-filter: blur(3px);
+}
+
+.ink-note-dialog__shell {
+  display: grid;
+  max-height: 92vh;
+  gap: .75rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.ink-note-dialog__header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.ink-note-dialog__eyebrow {
+  color: var(--accent);
+  font-size: .65rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.ink-note-dialog__header h2 {
+  margin: .16rem 0 0;
+  font-size: 1.3rem;
+}
+
+.ink-note-dialog__close {
+  min-height: 2.35rem;
+  padding: .4rem .7rem;
+  border: 1px solid var(--line);
+  border-radius: .58rem;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.ink-note-dialog__description {
+  margin: 0;
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.45;
+}
+
+.ink-note-dialog__label {
+  display: grid;
+  gap: .28rem;
+  color: var(--muted);
+  font-size: .7rem;
+  font-weight: 800;
+}
+
+.ink-note-dialog__label input {
+  min-height: 2.55rem;
+  padding: .52rem .7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: .62rem;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+
+.ink-note-canvas-frame {
+  min-height: 16rem;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: .82rem;
+  background-color: #fffef8;
+  background-image:
+    linear-gradient(rgb(40 86 95 / .1) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(40 86 95 / .1) 1px, transparent 1px);
+  background-size: 1.5rem 1.5rem;
+}
+
+.ink-note-canvas {
+  display: block;
+  width: 100%;
+  height: clamp(16rem, 48vh, 30rem);
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.ink-note-dialog__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: .55rem;
+}
+
+.ink-note-dialog__tools label {
+  display: grid;
+  gap: .2rem;
+  color: var(--muted);
+  font-size: .66rem;
+  font-weight: 800;
+}
+
+.ink-note-dialog__tools input[type="color"] {
+  width: 3rem;
+  height: 2.35rem;
+  padding: .14rem;
+  border: 1px solid var(--line);
+  border-radius: .52rem;
+  background: var(--paper);
+}
+
+.ink-note-dialog__tools input[type="range"] {
+  width: min(12rem, 35vw);
+  min-height: 2.35rem;
+}
+
+.ink-note-dialog__tools button {
+  min-height: 2.35rem;
+  padding: .42rem .7rem;
+  border: 1px solid var(--line);
+  border-radius: .55rem;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.ink-note-dialog__footer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: .65rem;
+  align-items: center;
+}
+
+.ink-note-dialog__status {
+  min-height: 1.2em;
+  margin: 0;
+  color: var(--muted);
+  font-size: .7rem;
+}
+
+.ink-note-dialog__actions {
+  display: flex;
+  justify-content: end;
+  gap: .5rem;
+}
+
+@keyframes bookmark-pulse {
+  50% {
+    outline: .36rem solid color-mix(in srgb, var(--gold) 30%, transparent);
+    transform: scale(1.16);
+  }
+}
+
+@media (max-width: 640px) {
+  .line-selection-toolbar { max-width: calc(100vw - 1rem); }
+  .line-selection-toolbar button { padding-inline: .5rem; font-size: .66rem; }
+  .ink-anchor-picker { right: .55rem; bottom: .55rem; left: .55rem; }
+  .ink-note-dialog { width: calc(100vw - .7rem); max-height: calc(100vh - .7rem); }
+  .ink-note-dialog__shell { max-height: calc(100vh - .8rem); padding: .72rem; }
+  .ink-note-canvas-frame { min-height: 13rem; }
+  .ink-note-canvas { height: min(45vh, 22rem); }
+  .ink-note-dialog__footer { grid-template-columns: 1fr; }
+  .ink-note-dialog__actions { justify-content: stretch; }
+  .ink-note-dialog__actions button { flex: 1; }
+}

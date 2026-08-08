@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Complexidade mede trabalho em função do comprimento da representação, não do valor numérico escrito no papel.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Comprimento binário</span><p>Um inteiro N usa \(n=\lfloor\log_2N\rfloor+1\) bits.</p></div>
+    <div class="step"><span class="step-tag manipulation">Mudança de escala</span><p>Testar todos os divisores até \(\sqrt N\) custa cerca de \(2^{n/2}\) tentativas: exponencial em n, embora seja uma raiz de N.</p></div>
+    <div class="step"><span class="step-tag theorem">Tempo polinomial</span><p>Um limite \(O(n^k)\) é polinomial no tamanho da entrada. A base de codificação muda constantes, não essa classe.</p></div>
+  </div>
+  <div class="quick-check"><p>Dizer “o algoritmo leva N passos” para uma entrada inteira geralmente significa tempo exponencial no número de bits.</p></div>
+</div>

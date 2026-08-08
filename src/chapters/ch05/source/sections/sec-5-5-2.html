@@ -1,0 +1,152 @@
+<section class="chapter-section subsection" id="sec-5-5-2">
+  <div class="section-heading">
+    <span class="section-number">5.5.2</span>
+    <h3>Logaritmos discretos pelo método rô de Pollard</h3>
+  </div>
+
+  <div class="table-wrap" id="tab-5-10">
+    <table>
+      <caption><span class="label">Tabela 5.10.</span> Número esperado de passos até uma colisão rô.</caption>
+      <thead><tr><th>\(N\)</th><th>\(E_1\)</th><th>\(E_2\)</th><th>\(E_3\)</th><th>\(E_1/E_3\)</th></tr></thead>
+      <tbody>
+        <tr><td>100</td><td>12,210</td><td>12,533</td><td>12,533</td><td>0,97421</td></tr>
+        <tr><td>500</td><td>27,696</td><td>28,025</td><td>28,025</td><td>0,98827</td></tr>
+        <tr><td>1000</td><td>39,303</td><td>39,633</td><td>39,633</td><td>0,99167</td></tr>
+        <tr><td>5000</td><td>88,291</td><td>88,623</td><td>88,623</td><td>0,99626</td></tr>
+        <tr><td>10&nbsp;000</td><td>124,999</td><td>125,331</td><td>125,331</td><td>0,99735</td></tr>
+        <tr><td>20&nbsp;000</td><td>176,913</td><td>177,245</td><td>177,245</td><td>0,99812</td></tr>
+        <tr><td>50&nbsp;000</td><td>279,917</td><td>280,250</td><td>280,250</td><td>0,99881</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Nesta seção, descrevemos como usar o método rô de Pollard para resolver</p>
+  <div class="equation">\[g^t=h\quad\text{em }\mathbb F_p^*,\]</div>
+  <p>quando \(g\) é uma raiz primitiva módulo \(p\). A ideia é encontrar uma colisão entre \(g^ih^j\) e \(g^kh^\ell\), para expoentes conhecidos \(i,j,k,\ell\). Então \(g^{i-k}=h^{\ell-j}\), e extrair raízes em \(\mathbb F_p\) mais ou menos resolve o problema de expressar \(h\) como potência de \(g\).</p>
+
+  <p>A dificuldade é encontrar uma função \(f:\mathbb F_p\to\mathbb F_p\) complicada o bastante para misturar os elementos, mas simples o bastante para que possamos acompanhar suas órbitas. Pollard <a href="../../references/#ref-104" data-source-xref>[104]</a> sugere</p>
+  <div class="equation" id="eq-5-41"><span class="equation-number">(5.41)</span>\[
+    f(x)=
+    \begin{cases}
+      gx,&amp;0\le x&lt;p/3,\\
+      x^2,&amp;p/3\le x&lt;2p/3,\\
+      hx,&amp;2p/3\le x&lt;p.
+    \end{cases}
+  \]</div>
+  <p>Antes de usar <a href="#eq-5-41" data-source-xref>(5.41)</a> para determinar \(f(x)\), é preciso reduzir \(x\) módulo \(p\) ao intervalo \(0\le x&lt;p\).</p>
+
+  <aside class="semantic remark" id="obs-5-51">
+    <div class="semantic-header"><span class="semantic-label">Observação</span><span class="semantic-title">5.51</span></div>
+    <p>Ninguém demonstrou que a função de <a href="#eq-5-41" data-source-xref>(5.41)</a> seja suficientemente aleatória para garantir que o <a href="#teorema-5-48" data-source-xref>Teorema 5.48</a> se aplique a ela, mas experimentalmente funciona razoavelmente bem. Teske <a href="../../references/#ref-144" data-source-xref>[144]</a>, <a href="../../references/#ref-145" data-source-xref>[145]</a> mostrou, contudo, que ela não é aleatória o bastante para produzir resultados ótimos e apresentou funções um pouco mais complicadas que funcionam melhor na prática.</p>
+  </aside>
+
+  <p>Considere o que ocorre quando aplicamos repetidamente a função <a href="#eq-5-41" data-source-xref>(5.41)</a> ao ponto inicial \(x_0=1\). Em cada passo, multiplicamos o valor anterior por \(g\), multiplicamo-lo por \(h\) ou o elevamos ao quadrado. Portanto, depois de \(i\) passos temos</p>
+  <div class="equation">\[
+    x_i=\underbrace{(f\circ f\circ\cdots\circ f)}_{i\text{ iterações de }f}(1)=g^{\alpha_i}h^{\beta_i}.
+  \]</div>
+  <p>Não podemos prever \(\alpha_i\) e \(\beta_i\), mas podemos calculá-los junto com \(x_i\), usando a definição de \(f\). É claro que \(\alpha_0=\beta_0=0\), e os valores seguintes são dados por</p>
+  <div class="equation">\[
+    \alpha_{i+1}=
+    \begin{cases}
+      \alpha_i+1,&amp;0\le x_i&lt;p/3,\\
+      2\alpha_i,&amp;p/3\le x_i&lt;2p/3,\\
+      \alpha_i,&amp;2p/3\le x_i&lt;p,
+    \end{cases}
+    \qquad
+    \beta_{i+1}=
+    \begin{cases}
+      \beta_i,&amp;0\le x_i&lt;p/3,\\
+      2\beta_i,&amp;p/3\le x_i&lt;2p/3,\\
+      \beta_i+1,&amp;2p/3\le x_i&lt;p.
+    \end{cases}
+  \]</div>
+  <p>Basta acompanhar \(\alpha_i\) e \(\beta_i\) módulo \(p-1\), pois \(g^{p-1}=h^{p-1}=1\). Isso é importante, pois, de outro modo, os expoentes cresceriam demais.</p>
+
+  <p>De maneira semelhante, calculamos</p>
+  <div class="equation">\[y_0=1\qquad\text{e}\qquad y_{i+1}=f(f(y_i)).\]</div>
+  <p>Então</p>
+  <div class="equation">\[y_i=x_{2i}=g^{\gamma_i}h^{\delta_i},\]</div>
+  <p>em que \(\gamma_i\) e \(\delta_i\) são calculados com duas repetições das recorrências de \(\alpha_i\) e \(\beta_i\). Na primeira repetição usamos \(y_i\) para escolher o caso de <a href="#eq-5-41" data-source-xref>(5.41)</a>; na segunda, usamos \(f(y_i)\).</p>
+
+  <p>Esse procedimento acaba produzindo uma colisão, digamos \(y_i=x_i\). Isso significa que</p>
+  <div class="equation">\[g^{\alpha_i}h^{\beta_i}=g^{\gamma_i}h^{\delta_i}.\]</div>
+  <p>Se</p>
+  <div class="equation">\[u\equiv\alpha_i-\gamma_i\pmod{p-1}\qquad\text{e}\qquad v\equiv\delta_i-\beta_i\pmod{p-1},\]</div>
+  <p>então \(g^u=h^v\) em \(\mathbb F_p\). Equivalentemente,</p>
+  <div class="equation" id="eq-5-42"><span class="equation-number">(5.42)</span>\[v\log_g(h)\equiv u\pmod{p-1}.\]</div>
+  <p>Se \(\gcd(v,p-1)=1\), multiplicamos os dois lados de <a href="#eq-5-42" data-source-xref>(5.42)</a> pelo inverso de \(v\) módulo \(p-1\) e resolvemos o problema.</p>
+
+  <p>Mais geralmente, se \(d=\gcd(v,p-1)\ge2\), o algoritmo de Euclides estendido, o <a href="../ch01/#theorem-1-11" data-source-xref>Teorema 1.11</a>, fornece um inteiro \(s\) tal que</p>
+  <div class="equation">\[sv\equiv d\pmod{p-1}.\]</div>
+  <p>Multiplicar <a href="#eq-5-42" data-source-xref>(5.42)</a> por \(s\) fornece</p>
+  <div class="equation" id="eq-5-43"><span class="equation-number">(5.43)</span>\[d\log_g(h)\equiv w\pmod{p-1},\]</div>
+  <p>em que \(w\equiv su\pmod{p-1}\). Todas as quantidades dessa congruência, exceto \(\log_g(h)\), são conhecidas. O fato de \(d\mid p-1\) força \(d\mid w\). Assim, \(w/d\) é uma solução de <a href="#eq-5-43" data-source-xref>(5.43)</a>, e o conjunto completo é</p>
+  <div class="equation">\[
+    \log_g(h)\in\left\{\frac wd+k\frac{p-1}{d}:k=0,1,2,\ldots,d-1\right\}.
+  \]</div>
+  <p>Na prática, \(d\) tende a ser pequeno,<sup id="fnref-5-5-2-18"><a href="#fn-5-5-2-18" data-source-xref>18</a></sup> de modo que basta verificar as \(d\) possibilidades para \(\log_g(a)\) até encontrar o valor correto.</p>
+
+  <div class="semantic example" id="exemplo-5-52">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.52</span></div>
+    <p>Ilustramos o método rô de Pollard resolvendo</p>
+    <div class="equation">\[19^t\equiv24717\pmod{48611}.\]</div>
+    <p>Primeiro calculamos as sequências \(x\) e \(y\) até encontrar \(y_i=x_i\), acompanhando também \(\alpha,\beta,\gamma,\delta\). Os primeiros passos e os últimos antes da colisão aparecem na <a href="#tab-5-11" data-source-xref>Tabela 5.11</a>.</p>
+
+    <div class="table-wrap" id="tab-5-11">
+      <table>
+        <caption><span class="label">Tabela 5.11.</span> Cálculos do método rô de Pollard para resolver \(19^t=24717\) em \(\mathbb F_{48611}\).</caption>
+        <thead><tr><th>\(i\)</th><th>\(x_i\)</th><th>\(y_i=x_{2i}\)</th><th>\(\alpha_i\)</th><th>\(\beta_i\)</th><th>\(\gamma_i\)</th><th>\(\delta_i\)</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>1</td><td>19</td><td>361</td><td>1</td><td>0</td><td>2</td><td>0</td></tr>
+          <tr><td>2</td><td>361</td><td>33099</td><td>2</td><td>0</td><td>4</td><td>0</td></tr>
+          <tr><td>3</td><td>6859</td><td>13523</td><td>3</td><td>0</td><td>4</td><td>2</td></tr>
+          <tr><td>4</td><td>33099</td><td>20703</td><td>4</td><td>0</td><td>6</td><td>2</td></tr>
+          <tr><td>5</td><td>33464</td><td>14974</td><td>4</td><td>1</td><td>13</td><td>4</td></tr>
+          <tr><td>6</td><td>13523</td><td>18931</td><td>4</td><td>2</td><td>14</td><td>5</td></tr>
+          <tr><td>7</td><td>13882</td><td>30726</td><td>5</td><td>2</td><td>56</td><td>20</td></tr>
+          <tr><td>8</td><td>20703</td><td>1000</td><td>6</td><td>2</td><td>113</td><td>40</td></tr>
+          <tr><td>9</td><td>11022</td><td>14714</td><td>12</td><td>4</td><td>228</td><td>80</td></tr>
+          <tr><td colspan="7">⋮</td></tr>
+          <tr><td>542</td><td>21034</td><td>46993</td><td>13669</td><td>2519</td><td>27258</td><td>30257</td></tr>
+          <tr><td>543</td><td>20445</td><td>37138</td><td>27338</td><td>5038</td><td>27259</td><td>30258</td></tr>
+          <tr><td>544</td><td>40647</td><td>33210</td><td>6066</td><td>10076</td><td>5908</td><td>11908</td></tr>
+          <tr><td>545</td><td>28362</td><td>21034</td><td>6066</td><td>10077</td><td>5909</td><td>11909</td></tr>
+          <tr><td>546</td><td>36827</td><td>40647</td><td>12132</td><td>20154</td><td>23636</td><td>47636</td></tr>
+          <tr><td>547</td><td>11984</td><td>36827</td><td>12132</td><td>20155</td><td>47272</td><td>46664</td></tr>
+          <tr><td>548</td><td>33252</td><td>33252</td><td>12133</td><td>20155</td><td>47273</td><td>46665</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>A tabela mostra que \(x_{1096}=x_{548}=33252\) em \(\mathbb F_{48611}\). Os expoentes associados são</p>
+    <div class="equation">\[\alpha_{548}=12133,\quad\beta_{548}=20155,\quad\gamma_{548}=47273,\quad\delta_{548}=46665.\]</div>
+    <p>Logo,</p>
+    <div class="equation">\[19^{12133}\cdot24717^{20155}=19^{47273}\cdot24717^{46665}\quad\text{em }\mathbb F_{48611}.\]</div>
+    <p>Antes de prosseguir, convém verificar essa igualdade para garantir que não houve erro aritmético. Reunir as potências de \(19\) de um lado e as de \(24717\) do outro fornece \(19^{-35140}=24717^{26510}\); somar \(48610=p-1\) ao expoente de \(19\) dá</p>
+    <div class="equation" id="eq-5-44"><span class="equation-number">(5.44)</span>\[19^{13470}=24717^{26510}\quad\text{em }\mathbb F_{48611}.\]</div>
+    <p>Agora,</p>
+    <div class="equation">\[\gcd(26510,48610)=10\qquad\text{e}\qquad970\cdot26510\equiv10\pmod{48610}.\]</div>
+    <p>Elevar <a href="#eq-5-44" data-source-xref>(5.44)</a> à potência \(970\) produz</p>
+    <div class="equation">\[19^{13470\cdot970}=19^{13065900}=19^{38420}=24717^{10}\quad\text{em }\mathbb F_{48611}.\]</div>
+    <p>Portanto,</p>
+    <div class="equation">\[10\log_{19}(24717)\equiv38420\pmod{48610},\]</div>
+    <p>isto é,</p>
+    <div class="equation">\[\log_{19}(24717)\equiv3842\pmod{4861}.\]</div>
+    <p>Os valores possíveis são obtidos somando múltiplos de \(4861\) a \(3842\):</p>
+    <div class="equation">\[\{3842,8703,13564,18425,23286,28147,33008,37869,42730,47591\}.\]</div>
+    <p>Calculamos \(19\) elevado a esses valores até obter \(24717\):</p>
+    <div class="equation">\[
+      \begin{gathered}
+        19^{3842}=16580,\quad19^{8703}=29850,\quad19^{13564}=23894,\quad19^{18425}=20794,\\
+        19^{23286}=10170,\quad19^{28147}=32031,\quad19^{33008}=18761,\quad19^{37869}=24717.
+      \end{gathered}
+    \]</div>
+    <p>Assim, \(\log_{19}(24717)=37869\). Verificamos a resposta:</p>
+    <div class="equation">\[19^{37869}=24717\quad\text{em }\mathbb F_{48611}.\]</div>
+  </div>
+
+  <ol class="footnotes">
+    <li id="fn-5-5-2-18">Na maioria das aplicações criptográficas, escolhe-se \(p\) de modo que \(p-1\) tenha exatamente um fator primo grande; caso contrário, o algoritmo de Pohlig–Hellman, o <a href="../ch02/#teorema-2-31" data-source-xref>Teorema 2.31</a>, pode ser aplicável. É improvável que \(d\) seja divisível pelo fator primo grande de \(p-1\). <a href="#fnref-5-5-2-18" data-source-xref aria-label="Voltar à chamada da nota 18">↩</a></li>
+  </ol>
+</section>

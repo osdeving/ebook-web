@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.2">
+          <p class="graduated-help__intro">Escolhas independentes multiplicam; quando a ordem deixa de importar, o problema muda para multiconjuntos.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Conte posições</summary>
+      <div>Uma matriz \(n\times n\) possui \(n^2\) entradas.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use estrelas e barras</summary>
+      <div>No item (d), conte soluções de \(y_0+\cdots+y_{q-1}=n\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Não misture níveis</summary>
+      <div>No item (e), calcule cada categoria e só depois some.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <h4>(a)–(d)</h4><p>(a) Cada coordenada tem \(q\) escolhas: \(\boxed{q^n}\). (b) As escolhas são \(\boxed{q_1q_2\cdots q_n}\). (c) Há \(n^2\) posições: \(\boxed{q^{n^2}}\). (d) Um resultado sem ordem é determinado pelas multiplicidades dos \(q\) valores; estrelas e barras dá \(\boxed{\binom{n+q-1}{n}}\).</p><h4>(e)</h4><p>São \(12\) estudantes, \(12\cdot4=48\) matrículas em disciplinas, \(48\cdot2=96\) cadernos, \(96\cdot100=9600\) folhas e \(9600\cdot32=307200\) linhas. A soma é</p><p>\[12+48+96+9600+307200=\boxed{316956}.\]</p><p><strong>Uma rima possível para o bônus:</strong></p><blockquote><p>Doze alunos, quatro matérias a escolher;<br>dois cadernos por matéria para tudo escrever.<br>Cem folhas em cada um, trinta e duas linhas no papel:<br>somando alunos, matrículas, cadernos, folhas e linhas, dá trezentos e dezesseis mil novecentos e cinquenta e seis no cordel.</p></blockquote><p>A sequência preservada é \(12\to4\to2\to100\to32\), e a contagem continua sendo \(316956\). A rima é apenas uma resposta possível.</p>
+        </details>
+      </div>

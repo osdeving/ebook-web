@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.56">
+          <p class="graduated-help__intro">Independência significa que observar \(Y\) não altera a distribuição condicional de \(X\).</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Parte (a)</summary>
+      <div>Substitua \(f_{X\mid Y}(x\mid y)=f_X(x)\) na definição.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Parte (b)</summary>
+      <div>Use a não negatividade da informação mútua — ou a igualdade estrita na concavidade do log.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Justifique a igualdade</summary>
+      <div>A não negatividade vem da desigualdade log-sum; acompanhe também quando há igualdade e como tratar pares de massa zero.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) Se \(X\) e \(Y\) são independentes,</p><p>\[H(X\mid Y)=-\sum_yf_Y(y)\sum_xf_X(x)\log_2f_X(x)=H(X)\sum_yf_Y(y)=H(X).\]</p><p>(b) Sim, para variáveis discretas. Escreva \(p_{xy}=f(x,y)\) e \(q_{xy}=f_X(x)f_Y(y)\). Nos pares com \(p_{xy}=0\), adotamos \(0\log(0/q)=0\); se \(p_{xy}>0\) e \(q_{xy}=0\), a divergência é infinita e a desigualdade abaixo é imediata. No caso restante, a desigualdade elementar \(\ln u\le u-1\) dá</p><p>\[-\sum_{x,y}p_{xy}\ln\frac{p_{xy}}{q_{xy}}=\sum_{p_{xy}>0}p_{xy}\ln\frac{q_{xy}}{p_{xy}}\le\sum_{p_{xy}>0}(q_{xy}-p_{xy})\le0.\]</p><p>Logo, mudando da base \(e\) para a base 2,</p><p>\[I(X;Y)=\sum_{x,y}p_{xy}\log_2\frac{p_{xy}}{q_{xy}}\ge0.\]</p><p>A igualdade em \(\ln u\le u-1\) ocorre somente quando \(u=1\). Além disso, a segunda desigualdade só pode ser igualdade se não houver massa de \(q\) fora do suporte de \(p\). Portanto \(I(X;Y)=0\) se, e somente se, \(p_{xy}=q_{xy}\) para todos os pares: exatamente a independência. Finalmente, uma expansão direta das definições fornece \(H(X)-H(X\mid Y)=I(X;Y)\); assim, \(H(X\mid Y)=H(X)\) implica independência.</p>
+        </details>
+      </div>

@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.26">
+          <p class="graduated-help__intro">O protocolo do carcereiro — especialmente sua escolha quando dispõe de dois nomes — faz parte do experimento.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Casos impossíveis</summary>
+      <div>Se Bob será libertado, o carcereiro não pode afirmar que Bob ficará.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Aplique Bayes com a regra explícita</summary>
+      <div>Compare \(\Pr(J\mid A)\), \(\Pr(J\mid B)\) e \(\Pr(J\mid C)\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Especifique a política</summary>
+      <div>Quando o carcereiro possui duas respostas possíveis, a regra que escolhe entre elas precisa aparecer na probabilidade condicional.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) \(\Pr(B\mid J)=0\), \(\Pr(J\mid B)=0\) e \(\Pr(J\mid C)=1\).</p><p>(b) Condicionado a \(A^c=B\cup C\), B e C têm pesos iguais; então \(\Pr(J\mid A^c)=1/2\) e \(\Pr(J^c\mid A^c)=1/2\).</p><p>(c) Se \(\Pr(J\mid A)=1/2\),</p><p>\[\Pr(A\mid J)=\frac{(1/2)(1/3)}{(1/2)(1/3)+0(1/3)+1(1/3)}=\boxed{1/3}.\]</p><p>(d) Se \(\Pr(J\mid A)=1\), o mesmo cálculo dá \(\Pr(A\mid J)=\boxed{1/2}\). A resposta muda porque mudou o mecanismo de informação, não a chance inicial de libertação.</p>
+        </details>
+      </div>

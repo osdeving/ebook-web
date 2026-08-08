@@ -1,0 +1,19 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.39">
+          <p class="graduated-help__intro">Uma igualdade entre as duas listas transforma imediatamente o alvo \(h\) em uma potência conhecida de \(g\).</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Ache o valor repetido</summary>
+      <div>Na tabela, \(g^{234}=304\) e \(h g^{399}=304\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Isole h</summary>
+      <div>De \(g^i=hg^j\), segue \(h=g^{i-j}\), reduzindo o expoente módulo \(810\).</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>A colisão é</p><p>\[10^{234}\equiv304\equiv106\cdot10^{399}\pmod{811}.\]</p><p>Logo \(106\equiv10^{234-399}=10^{-165}\equiv10^{645}\pmod{811}\), pois \(|\mathbb F_{811}^*|=810\). Portanto,</p><p>\[\boxed{x=645\pmod{810}}.\]</p><p>A verificação direta dá \(10^{645}\bmod811=106\).</p>
+        </details>
+      </div>

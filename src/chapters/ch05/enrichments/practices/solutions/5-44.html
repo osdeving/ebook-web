@@ -1,0 +1,43 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.44">
+          <p class="graduated-help__intro">A colisão precisa ocorrer módulo um fator antes de ocorrer módulo \(N\); então o mdc revela esse fator.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Parte (a)</summary>
+      <div>Uma função que mistura bem colide módulo \(p\) após \(O(\sqrt p)\) passos pelo paradoxo do aniversário.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Registre falhas também</summary>
+      <div>Se \(\gcd(|x-y|,N)=N\), os dois módulos colidiram juntos e aquela execução não fatorou.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Observe \(x^2-2\)</summary>
+      <div>Com início zero, a órbita entra rapidamente no ponto fixo 2.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) Projetada em \(\mathbb Z/p\mathbb Z\), a órbita se comporta como amostras de um conjunto de tamanho \(p\); uma colisão surge em \(O(\sqrt p)\). Antes da colisão módulo os demais fatores, \(p\mid x_k-y_k\) mas \(N\nmid x_k-y_k\), de modo que o mdc revela \(p\).</p><div class="editorial-note"><strong>Errata provável na <a href="#prop-5-44" data-source-xref>Proposição 5.44</a>.</strong> Os valores \(z_1,\ldots,z_n\) devem ser escolhidos entre 1 e \(N\), em simetria com os \(y_i\); a letra \(k\) impressa nesse ponto não havia sido definida.</div><p>(b) Este programa completo usa Floyd e pode ser executado com <code>node rho-fator.mjs</code>:</p><pre><code>function gcd(a, b) {
+  while (b !== 0n) [a, b] = [b, a % b];
+  return a &lt; 0n ? -a : a;
+}
+
+function rhoFactor(N, c = 1n, x0 = 0n) {
+  const f = (x) =&gt; (x * x + c) % N;
+  let slow = x0, fast = x0, divisor = 1n, iteration = 0;
+  while (divisor === 1n) {
+    slow = f(slow);
+    fast = f(f(fast));
+    iteration++;
+    divisor = gcd(slow - fast, N);
+  }
+  return { factor: divisor, iteration, failed: divisor === N };
+}
+
+const inputs = [2201n, 9409613n, 1782886219n];
+for (const c of [1n, 2n]) {
+  for (const N of inputs) console.log({ N, c, ...rhoFactor(N, c) });
+}</code></pre><p>Para \(f(x)=x^2+1\) e \(x_0=0\), a saída é:</p><div class="table-scroll"><table><thead><tr><th>\(N\)</th><th>fatoração</th><th>primeiro \(k\)</th><th>\(k/\sqrt N\)</th></tr></thead><tbody><tr><td>2201</td><td>\(31\cdot71\)</td><td>4 (fator 31)</td><td>0,085261</td></tr><tr><td>9409613</td><td>\(541\cdot17393\)</td><td>34 (fator 541)</td><td>0,011084</td></tr><tr><td>1782886219</td><td>\(7933\cdot224743\)</td><td>126 (fator 7933)</td><td>0,002984</td></tr></tbody></table></div><p>(c) Com \(x^2+2\), os casos dão respectivamente \(k=6\) com mdc \(N\) (falha), \(k=6\) com fator 541 e \(k=68\) com fator 7933: o tempo muda e uma semente/função pode precisar ser trocada.</p><p>(d) Se \(N\) é primo, todo mdc é 1 ou \(N\); não existe fator não trivial.</p><p>(e) Para qualquer semente, a função \(f(x)=x^2\) produz</p><p>\[x_i=x_0^{2^i},\qquad y_i=x_0^{2^{2i}},\qquad g_i=\gcd\!\left(x_0^{2^i}-x_0^{2^{2i}},N\right).\]</p><p>A órbita é uma duplicação determinística de expoentes, não uma função misturadora; portanto a heurística de \(O(\sqrt p)\) não se aplica. Isso não significa falha para toda semente: o resultado depende das ordens de \(x_0\) módulo cada fator de \(N\). Por exemplo, com \(N=15\), \(x_0=1\) dá \(x_1=y_1=1\) e \(g_1=15\), uma falha trivial; já \(x_0=2\) dá \(x_1=4\), \(y_1=1\) e \(g_1=\gcd(3,15)=3\), uma fatoração imediata. Sementes divisíveis por um fator de \(N\), ou sementes que entram simultaneamente em ciclos módulo todos os fatores, também podem produzir fatores ou a falha \(g_i=N\). Assim, para “quaisquer” \(x_0\), deve-se analisar a órbita; não há um desfecho universal.</p><p>(f) Para \(x^2-2\) e \(x_0=0\), \(0\mapsto-2\mapsto2\mapsto2\), então tartaruga e lebre coincidem módulo todos os fatores e o mdc vira \(N\). A identidade sugerida explica a estrutura algébrica que impede a mistura.</p>
+        </details>
+      </div>

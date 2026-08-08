@@ -4,6 +4,22 @@ import type { LearningPathRecord } from "../lib/discovery";
 interface Props { paths: readonly LearningPathRecord[]; }
 const { paths } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const goalLabels: Record<string, string> = {
+  fundamentos: "Começar do zero",
+  matematica: "Teoria dos números",
+  "diffie-hellman": "Diffie–Hellman",
+  algoritmos: "Algoritmos de ataque",
+  algebra: "Álgebra",
+  exercicios: "Exercícios",
+  rsa: "RSA",
+  fatoracao: "Primos e fatoração",
+  residuos: "Resíduos quadráticos",
+  assinaturas: "Assinaturas digitais",
+  probabilidade: "Probabilidade e informação",
+};
+const goals = [...new Set(paths.map(({ goal }) => goal))]
+  .map((goal) => ({ goal, label: goalLabels[goal] ?? goal }))
+  .sort((left, right) => left.label.localeCompare(right.label, "pt-BR"));
 ---
 
 <section class="study-paths" id="page-content" data-study-paths>
@@ -17,12 +33,7 @@ const base = import.meta.env.BASE_URL;
       <span>Objetivo</span>
       <select data-path-goal>
         <option value="">Todos</option>
-        <option value="fundamentos">Começar do zero</option>
-        <option value="matematica">Teoria dos números</option>
-        <option value="diffie-hellman">Diffie–Hellman</option>
-        <option value="algoritmos">Algoritmos de ataque</option>
-        <option value="algebra">Álgebra</option>
-        <option value="exercicios">Exercícios</option>
+        {goals.map(({ goal, label }) => <option value={goal}>{label}</option>)}
       </select>
     </label>
     <label>

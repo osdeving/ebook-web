@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.40">
+          <p class="graduated-help__intro">Na colisão \(x=y\), subtraia os expoentes conhecidos e resolva uma congruência linear para o logaritmo.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Forme \(u\) e \(v\)</summary>
+      <div>Use \(u=\alpha-\gamma\) e \(v=\delta-\beta\) módulo \(81798\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Não cancele o mdc</summary>
+      <div>\(\gcd(v,81798)=6\), portanto surgem seis candidatos.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Liste todas as classes</summary>
+      <div>Se o mdc não é \(1\), resolva a congruência reduzida e some múltiplos do novo módulo antes de testar no grupo.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Na linha 154, \(x_{154}=y_{154}=15386\). Assim,</p><p>\[u=81756-67782=13974,\qquad v=28637-9527=19110,\]</p><p>e \(19110t\equiv13974\pmod{81798}\). Dividindo pelo mdc 6 e resolvendo módulo 13633, obtemos</p><p>\[t\equiv10325\pmod{13633}.\]</p><p>Os seis candidatos módulo 81798 são \(10325,23958,37591,51224,64857,78490\). Somente</p><p>\[\boxed{t=64857}\]</p><p>satisfaz \(11^t\equiv41387\pmod{81799}\).</p>
+        </details>
+      </div>

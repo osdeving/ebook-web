@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.53">
+          <p class="graduated-help__intro">Expanda o logaritmo do produto e use que cada família de probabilidades soma um.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Separe o log</summary>
+      <div>\(\log_2(p_iq_{ij})=\log_2p_i+\log_2q_{ij}\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Colapse as somas</summary>
+      <div>Use \(\sum_jq_{ij}=1\) e \(\sum_ip_i=1\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Normalize as somas internas</summary>
+      <div>Ao expandir \(\log(p_iq_{ij})\), use primeiro \(\sum_jq_{ij}=1\); só depois reorganize o segundo termo.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>O lado esquerdo de (5.64) é</p><p>\[\sum_{i,j}p_iq_{ij}\log_2p_i+\sum_{i,j}p_iq_{ij}\log_2q_{ij}.\]</p><p>No primeiro termo, somar \(q_{ij}\) em \(j\) dá 1, produzindo \(\sum_i p_i\log_2p_i\). No segundo, fatorar \(p_i\) produz \(\sum_i p_i\sum_jq_{ij}\log_2q_{ij}\). É exatamente o lado direito. Multiplicar toda a igualdade por \(-1\) fornece a identidade correspondente entre entropias.</p>
+        </details>
+      </div>

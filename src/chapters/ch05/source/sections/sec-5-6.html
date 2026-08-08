@@ -1,0 +1,18 @@
+<section class="chapter-section" id="sec-5-6">
+  <div class="section-heading">
+    <span class="section-number">5.6</span>
+    <h2>Teoria da informação</h2>
+  </div>
+
+  <p>Em 1948 e 1949, Claude Shannon publicou dois artigos <a href="../../references/#ref-126" data-source-xref>[126]</a>, <a href="../../references/#ref-127" data-source-xref>[127]</a> que constituem o fundamento matemático da criptografia moderna. Neles, define o conceito de sigilo perfeito, ou incondicional, introduz as ideias de entropia da linguagem natural e de análise estatística, apresenta as primeiras demonstrações de segurança que empregam teoria da probabilidade e estabelece relações precisas entre segurança demonstrável e os tamanhos dos espaços de chaves, textos claros e textos cifrados.</p>
+
+  <p>Na criptografia de chave pública, interessa saber quão difícil é, do ponto de vista computacional, quebrar um sistema. A segurança é, portanto, relativa: um criptossistema é difícil de quebrar se supusermos que algum problema subjacente é difícil de resolver. Formular esses conceitos adequadamente exige cuidado. Nesta seção, apresentamos brevemente as ideias de Shannon e explicamos sua relevância para sistemas de chave simétrica.</p>
+
+  <p>Em <a href="../../references/#ref-127" data-source-xref>[127]</a>, Shannon desenvolve uma teoria da segurança para criptossistemas na qual não se impõe limite algum aos recursos computacionais empregados contra eles. Cifras simétricas como a cifra de substituição simples da <a href="../ch01/#sec-1-1" data-source-xref>Seção 1.1</a> e a cifra de Vigenère da <a href="#sec-5-2" data-source-xref>Seção 5.2</a> não são computacionalmente seguras: com recursos ilimitados — na verdade, mesmo com recursos bastante limitados — uma adversária pode quebrá-las facilmente. Se desejamos segurança incondicional, precisamos buscar novos algoritmos ou modificar a implementação de algoritmos conhecidos.</p>
+
+  <p>Shannon demonstra que criptossistemas perfeitamente seguros precisam ter pelo menos tantas chaves quantos textos claros e que todas as chaves precisam ser usadas com a mesma probabilidade. Isso significa que a maioria dos criptossistemas práticos não é incondicionalmente segura. Discutimos o sigilo perfeito na <a href="#sec-5-6-1" data-source-xref>Seção 5.6.1</a>.</p>
+
+  <p>Em <a href="../../references/#ref-126" data-source-xref>[126]</a>, Shannon desenvolve uma teoria matemática para medir a quantidade de informação revelada por uma variável aleatória. Quando a variável representa os possíveis textos claros, textos cifrados ou chaves de uma cifra usada para codificar uma linguagem natural, como o inglês, obtemos uma estrutura para o estudo matemático rigoroso da segurança criptográfica.</p>
+
+  <p>Shannon adotou o termo <strong>entropia</strong> para essa medida por sua semelhança formal com a definição de entropia de Boltzmann na mecânica estatística e também porque via a linguagem como um processo estocástico, isto é, um sistema governado por probabilidades que produz uma sequência de símbolos. Mais tarde, o físico E. T. Jaynes <a href="../../references/#ref-60" data-source-xref>[60]</a> argumentou que a entropia termodinâmica podia ser interpretada como uma aplicação de certa entropia da teoria da informação. Como medida da “incerteza” de um sistema, a fórmula logarítmica da entropia é determinada, a menos de uma constante, pelas exigências de continuidade, monotonicidade e de certa propriedade aditiva. Estudamos a entropia da teoria da informação e sua aplicação à criptografia na <a href="#sec-5-6-2" data-source-xref>Seção 5.6.2</a>.</p>
+</section>

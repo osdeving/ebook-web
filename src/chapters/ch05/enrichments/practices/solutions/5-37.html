@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.37">
+          <p class="graduated-help__intro">A primeira mão define um conjunto de oito cartas; a segunda precisa evitar esse conjunto inteiro para não haver par.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Carta fixa</summary>
+      <div>Cada carta tem a mesma chance de ocupar uma das oito primeiras posições.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Complemento na segunda mão</summary>
+      <div>Sem correspondência significa escolher as oito cartas da segunda mão entre as outras 44.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Condicione na primeira mão</summary>
+      <div>Fixada a primeira mão, conte quantas segundas mãos evitam todas as oito cartas visíveis e tome o complemento.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) \(\Pr(\text{rei de copas visível})=8/52=\boxed{2/13}\).</p><p>(b) Condicionada à primeira mão, a segunda mão é um subconjunto uniforme de tamanho 8. A chance de evitar todas as oito cartas visíveis é \(\binom{44}{8}/\binom{52}{8}\). Portanto,</p><p>\[\Pr(\text{alguma correspondência})=1-\frac{\binom{44}{8}}{\binom{52}{8}}=\frac{44254271}{57887550}\approx\boxed{0{,}764487}.\]</p>
+        </details>
+      </div>

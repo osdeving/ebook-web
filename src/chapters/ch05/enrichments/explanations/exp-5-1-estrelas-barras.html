@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Estrelas e barras traduz “quantidades não negativas que somam um total” em uma única cadeia de símbolos.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag example">Codifique</span><p>A solução \(x_1+x_2+x_3=5\), como \((2,0,3)\), vira <code>**||***</code>: cinco estrelas e duas barras.</p></div>
+    <div class="step"><span class="step-tag theorem">Conte posições</span><p>Toda solução produz exatamente uma cadeia com \(5\) estrelas e \(3-1\) barras, e vice-versa. Escolher onde ficam as barras dá \(\binom{5+3-1}{3-1}\).</p></div>
+    <div class="step"><span class="step-tag warning">Positividade</span><p>Se cada \(x_i\ge1\), reserve uma unidade por caixa: escreva \(y_i=x_i-1\). O total restante cai de \(n\) para \(n-k\).</p></div>
+  </div>
+  <div class="quick-check"><p>A técnica conta multiconjuntos e distribuições; ela não serve quando a ordem das retiradas é parte do resultado.</p></div>
+</div>

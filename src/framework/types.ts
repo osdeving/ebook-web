@@ -86,11 +86,38 @@ export type EnrichmentInitializer = (
   context: EnrichmentMountContext,
 ) => void | EnrichmentCleanup | Promise<void | EnrichmentCleanup>;
 
+export interface ReaderTextBookmark {
+  id: string;
+  sectionId: string;
+  offset: number;
+  quote: string;
+  createdAt: string;
+}
+
+export type ReaderInkPoint = readonly [x: number, y: number, pressure: number];
+
+export interface ReaderInkStroke {
+  color: string;
+  size: number;
+  points: ReaderInkPoint[];
+}
+
+export interface ReaderInkNote {
+  id: string;
+  sectionId: string;
+  offset: number;
+  label: string;
+  createdAt: string;
+  strokes: ReaderInkStroke[];
+}
+
 export interface ReaderPreferences {
   theme: "light" | "dark";
   scale: number;
   layers: EnrichmentLayer[];
   bookmarks: string[];
+  textBookmarks: ReaderTextBookmark[];
+  inkNotes: ReaderInkNote[];
   notes: Record<string, string>;
   progress: Record<string, "started" | "completed">;
   lastSection?: string;

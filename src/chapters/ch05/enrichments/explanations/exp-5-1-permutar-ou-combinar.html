@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Imagine apagar os rótulos das posições. Se o resultado muda, a ordem importava; se não muda, estávamos contando o mesmo subconjunto várias vezes.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Permutação</span><p>Ordenar todos os \(n\) objetos dá \(n!\): há \(n\) escolhas para a primeira posição, depois \(n-1\), e assim por diante.</p></div>
+    <div class="step"><span class="step-tag manipulation">Arranjo</span><p>Preencher apenas \(r\) posições dá \(n!/(n-r)!\). Ainda há primeiro, segundo, …, \(r\)-ésimo lugar.</p></div>
+    <div class="step"><span class="step-tag theorem">Combinação</span><p>Se a ordem dos \(r\) escolhidos é invisível, cada subconjunto apareceu \(r!\) vezes. Dividir produz \(\binom nr=n!/[r!(n-r)!]\).</p></div>
+  </div>
+  <div class="quick-check"><p>“Escolher Alice, Bob” e “escolher Bob, Alice” são a mesma comissão, mas são resultados diferentes numa corrida.</p></div>
+</div>

@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.52">
+          <p class="graduated-help__intro">Escolher uniformemente um entre \(n^r\) objetos equivale a fazer \(r\) escolhas uniformes sucessivas entre \(n\) objetos.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Separe a primeira coordenada</summary>
+      <div>A primeira escolha tem entropia \(H(X_n)\); cada ramo deixa \(n^{r-1}\) opções.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Induza em \(r\)</summary>
+      <div>H3 fornece \(H(X_{n^r})=H(X_n)+H(X_{n^{r-1}})\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Construa a árvore de H3</summary>
+      <div>Veja a escolha uniforme de uma \(r\)-tupla como primeiro símbolo mais um ramo uniforme com \(r-1\) símbolos.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Para \(r=1\), a identidade é imediata. Suponha \(H(X_{n^{r-1}})=(r-1)H(X_n)\). Quebre a escolha de uma \(r\)-tupla em: escolher a primeira coordenada uniformemente entre \(n\), e depois escolher as \(r-1\) restantes uniformemente entre \(n^{r-1}\). Pela propriedade H3,</p><p>\[H(X_{n^r})=H(X_n)+\sum_{i=1}^n\frac1nH(X_{n^{r-1}})=H(X_n)+(r-1)H(X_n)=\boxed{rH(X_n)}.\]</p>
+        </details>
+      </div>

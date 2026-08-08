@@ -1,0 +1,72 @@
+<section class="chapter-section" id="sec-5-1">
+  <div class="chapter-introduction">
+    <p>Ao considerar a utilidade e a praticidade de um sistema criptográfico, é necessário medir sua resistência a várias formas de ataque. Entre elas estão buscas simples por força bruta no espaço de chaves ou de mensagens, buscas um pouco mais rápidas por meio de algoritmos de colisão ou de encontro no meio e métodos mais sofisticados usados para calcular logaritmos discretos, fatorar inteiros e encontrar vetores curtos em reticulados. Já estudamos alguns desses algoritmos nos Capítulos 2 e 3, e veremos os demais neste capítulo e nos seguintes. Ao estudar esses algoritmos, é importante saber analisar quanto tempo eles levam para resolver o problema visado. Em geral, essa análise exige ferramentas de combinatória, teoria da probabilidade e teoria da informação. Neste capítulo, apresentamos uma introdução a esses temas de maneira em grande parte autocontida.</p>
+
+    <p>Começamos com princípios básicos de contagem e prosseguimos com o desenvolvimento dos fundamentos da teoria da probabilidade, sobretudo no contexto discreto. As seções seguintes introduzem variáveis aleatórias (discretas), funções de densidade de probabilidade, probabilidade condicional e a fórmula de Bayes. As aplicações da teoria da probabilidade à criptografia são numerosas. Estudamos com algum detalhe algoritmos de Monte Carlo e algoritmos de colisão, bem como seus usos em criptografia. Incluímos ainda uma seção sobre a criptoanálise estatística de uma cifra de substituição polialfabética de interesse histórico, chamada cifra de Vigenère. Contudo, esse material não é usado em outras partes do livro e pode ser omitido pelo leitor que queira chegar mais depressa à criptografia moderna.</p>
+
+    <p>O capítulo termina com uma introdução muito breve ao conceito de complexidade e às noções de algoritmos de tempo polinomial e de tempo polinomial não determinístico. Se fosse desenvolvida como merece, essa seção constituiria por si só um livro; aqui, podemos apenas dar uma ideia das técnicas e ideias poderosas empregadas nesse tema.</p>
+  </div>
+
+  <div class="section-heading">
+    <span class="section-number">5.1</span>
+    <h2>Princípios básicos de contagem</h2>
+  </div>
+
+  <blockquote>
+    <p>Quando eu ia para St. Ives,<br>
+    encontrei um homem com sete esposas;<br>
+    cada esposa tinha sete sacos,<br>
+    cada saco tinha sete gatos,<br>
+    cada gato tinha sete filhotes.<br>
+    Filhotes, gatos, sacos e esposas:<br>
+    quantos iam para St. Ives?</p>
+  </blockquote>
+
+  <p>A resposta engenhosa para esse antigo enigma é que há apenas uma pessoa indo para St. Ives: o narrador. Afinal, todas as outras pessoas, animais e coisas que ele encontra na rima não estão indo para St. Ives, mas se afastando de lá! Entretanto, se estivermos com espírito pedante, e não engenhoso, podemos fazer a pergunta natural: quantas pessoas, animais e coisas o narrador encontra?</p>
+
+  <p>A resposta é</p>
+  <div class="equation">
+    \[2801=
+      \underbrace{1}_{\text{homem}}+
+      \underbrace{7}_{\text{esposas}}+
+      \underbrace{7^2}_{\text{sacos}}+
+      \underbrace{7^3}_{\text{gatos}}+
+      \underbrace{7^4}_{\text{filhotes}}.
+    \]
+  </div>
+
+  <p>O cálculo desse número emprega princípios básicos de contagem fundamentais para os cálculos de probabilidade usados em criptografia e em muitas outras áreas da matemática. Já vimos um exemplo na <a href="../ch01/#sec-1-1-1" data-source-xref>Seção 1.1.1</a>, na qual calculamos o número de cifras de substituição simples diferentes.</p>
+
+  <p>Diz-se que uma cifra é <strong>combinatoriamente segura</strong> se não for viável quebrar o sistema verificando exaustivamente todas as chaves possíveis.<sup id="fnref-5-1-1"><a href="#fn-5-1-1" data-source-xref>1</a></sup> Isso depende, até certo ponto, do tempo necessário para testar cada chave, mas depende sobretudo do número de chaves. Nesta seção, desenvolvemos algumas técnicas básicas de contagem que serão usadas de várias maneiras para analisar a segurança de construções criptográficas.</p>
+
+  <div class="semantic example" id="exemplo-5-1">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.1 — Um princípio básico de contagem</span></div>
+    <p>Bob está em um restaurante que oferece duas entradas, rolinhos primavera e wontons fritos, e vinte pratos principais. Supondo que pretenda pedir uma entrada e um prato principal, quantas refeições diferentes Bob pode pedir?</p>
+    <p>Precisamos contar os pares \((x,y)\), em que \(x\) é “rolinho primavera” ou “wonton frito” e \(y\) é um prato principal. Fazemos \(x\) variar entre as duas possibilidades e \(y\) entre as vinte possibilidades e contamos todos os pares:</p>
+    <div class="equation">\[(R,1),(R,2),\ldots,(R,20),(W,1),(W,2),\ldots,(W,20).\]</div>
+    <p>Há quarenta possibilidades, pois</p>
+    <div class="equation">\[40=\underbrace{2}_{\text{entradas}}\cdot\underbrace{20}_{\text{pratos principais}}.\]</div>
+    <p>Nesse exemplo, primeiro contamos as maneiras de atribuir uma entrada à variável \(x\). É conveniente encarar essa atribuição como o resultado de um experimento: realizamos um experimento cujo resultado é “rolinho primavera” ou “wonton frito” e atribuímos esse valor a \(x\). De modo semelhante, realizamos um segundo experimento independente, cujos resultados possíveis são os vinte pratos principais, e atribuímos o resultado a \(y\). O número total de resultados dos dois experimentos é o produto dos números de resultados de cada um.</p>
+  </div>
+
+  <aside class="semantic principle" id="principio-basico-contagem">
+    <div class="semantic-header"><span class="semantic-label">Princípio básico de contagem</span></div>
+    <p>Se forem realizados dois experimentos, um com \(n\) resultados possíveis e outro com \(m\) resultados possíveis, haverá \(nm\) resultados possíveis para a realização dos dois experimentos.</p>
+  </aside>
+
+  <p>Mais geralmente, se forem realizados \(k\) experimentos independentes e o número de resultados possíveis do \(i\)-ésimo experimento for \(n_i\), então o número total de resultados de todos os experimentos será \(n_1n_2\cdots n_k\). Para ver isso, escreva \(x_i\) para o resultado do \(i\)-ésimo experimento. O resultado dos \(k\) experimentos é o valor da \(k\)-upla \((x_1,x_2,\ldots,x_k)\), e o número total de \(k\)-uplas possíveis é \(n_1n_2\cdots n_k\).</p>
+
+  <div class="semantic example" id="exemplo-5-2">
+    <div class="semantic-header"><span class="semantic-label">Exemplo</span><span class="semantic-title">5.2</span></div>
+    <p>Suponha que Bob também queira pedir uma sobremesa e que haja cinco sobremesas no cardápio. Agora contamos triplas \((x,y,z)\), em que \(x\) é uma das duas entradas, \(y\) é um dos vinte pratos principais e \(z\) é uma das cinco sobremesas. Portanto, o número total de refeições é</p>
+    <div class="equation">\[200=\underbrace{2}_{\text{entradas}}\cdot\underbrace{20}_{\text{pratos principais}}\cdot\underbrace{5}_{\text{sobremesas}}.\]</div>
+  </div>
+
+  <p>O princípio básico de contagem é usado na solução da versão pedante do problema de St. Ives. Por exemplo, o número de gatos que se afastam de St. Ives é</p>
+  <div class="equation">\[\#\{\text{gatos}\}=343=7^3=\underbrace{1}_{\text{homem}}\cdot\underbrace{7}_{\text{esposas}}\cdot\underbrace{7}_{\text{sacos}}\cdot\underbrace{7}_{\text{gatos}}.\]</div>
+  <p>A versão publicada mais antiga do enigma de St. Ives data de cerca de 1730, mas problemas semelhantes remontam à Antiguidade; veja o <a href="#exercicio-5-1" data-source-xref>Exercício 5.1</a>.</p>
+
+  <ol class="footnotes">
+    <li id="fn-5-1-1">Às vezes, a busca pode ser significativamente abreviada combinando partes de chaves retiradas de duas ou mais listas. Esse tipo de ataque é chamado de ataque de colisão ou de encontro no meio; veja a <a href="#sec-5-4" data-source-xref>Seção 5.4</a>. <a href="#fnref-5-1-1" data-source-xref aria-label="Voltar à chamada da nota 1">↩</a></li>
+  </ol>
+</section>

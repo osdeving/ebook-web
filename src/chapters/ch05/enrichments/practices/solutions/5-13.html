@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.13">
+          <p class="graduated-help__intro">O índice usa pares ordenados de ocorrências iguais; o índice mútuo cruza as frequências das duas frases.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Normalize o texto</summary>
+      <div>Remova espaços e pontuação e use uma única caixa.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Use os denominadores corretos</summary>
+      <div>Para uma cadeia, \(n(n-1)\); entre duas cadeias, \(n_sn_t\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Audite pares, não letras isoladas</summary>
+      <div>O numerador conta pares ordenados de ocorrências iguais; por isso aparece \(f_i(f_i-1)\), e não apenas \(f_i^2\).</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>Após normalização, \(s\) tem 36 letras e \(t\), 41.</p><p>Frequências não nulas de \(s\): A4, D2, E6, F1, G1, H1, I1, J1, L2, M4, N2, O4, R4, T1, V1, Y1. Em \(t\): A7, B1, D1, E5, F1, G1, H1, I5, L3, M3, N5, O2, R2, T2, V2.</p><p>Daí,</p><p>\[\operatorname{IndCo}(s)=\frac{84}{36\cdot35}=\boxed{0{,}066667},\qquad \operatorname{IndCo}(t)=\frac{122}{41\cdot40}=\boxed{0{,}074390}.\]</p><p>O produto cruzado das frequências soma 116, portanto</p><p>\[\operatorname{MutIndCo}(s,t)=\frac{116}{36\cdot41}=\boxed{0{,}078591}.\]</p>
+        </details>
+      </div>

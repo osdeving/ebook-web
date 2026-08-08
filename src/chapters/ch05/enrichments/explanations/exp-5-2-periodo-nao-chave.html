@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Descobrir o comprimento da chave Vigenère não descobre a chave. São duas inferências separadas e usam evidências diferentes.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Período</span><p>Distâncias entre trechos repetidos sugerem múltiplos de \(\ell\). O máximo divisor comum de várias distâncias oferece candidatos, mas coincidências acidentais também ocorrem.</p></div>
+    <div class="step"><span class="step-tag manipulation">Colunas</span><p>Para um candidato \(\ell\), reúna posições congruentes módulo \(\ell\). Cada coluna foi deslocada por uma única letra e pode ser analisada como César.</p></div>
+    <div class="step"><span class="step-tag warning">Harmônicos</span><p>Se \(\ell\) funciona, múltiplos de \(\ell\) podem parecer bons porque apenas subdividem colunas coerentes. Prefira o menor período que explica os dados e recifra o texto inteiro.</p></div>
+  </div>
+  <div class="quick-check"><p>Kasiski propõe o período; frequências estimam deslocamentos; a recifragem valida a hipótese completa.</p></div>
+</div>

@@ -1,0 +1,9 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Um algoritmo Monte Carlo pode responder rápido porque aceita uma pequena probabilidade de erro; repetir controla esse erro, desde que as tentativas sejam independentes.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Erro unilateral</span><p>Em Miller–Rabin, um testemunho prova composição; a ausência de testemunho numa rodada não prova primalidade.</p></div>
+    <div class="step"><span class="step-tag manipulation">Amplificação</span><p>Se um composto escapa de uma rodada com probabilidade no máximo \(q\), escapa de \(N\) rodadas independentes com probabilidade no máximo \(q^N\).</p></div>
+    <div class="step"><span class="step-tag theorem">Posterior</span><p>Para falar “probabilidade de ser primo”, combine esse limite com uma distribuição a priori. O erro do algoritmo e a incerteza sobre a entrada são probabilidades diferentes.</p></div>
+  </div>
+  <div class="quick-check"><p>Repetir a mesma base não cria independência; é preciso sortear novas escolhas conforme o algoritmo especifica.</p></div>
+</div>

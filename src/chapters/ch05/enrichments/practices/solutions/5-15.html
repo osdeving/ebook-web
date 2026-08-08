@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.15">
+          <p class="graduated-help__intro">Uma substituição preserva histogramas de letras e de n-gramas; uma permutação aleatória preserva só o histograma de letras.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Parte (a)</summary>
+      <div>O índice de coincidência mais alto é o candidato a língua natural sob substituição.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Parte (b)</summary>
+      <div>Trate cada bigrama como símbolo e calcule \(\sum_B f_B(f_B-1)/(78\cdot77)\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Use o bônus como verificação</summary>
+      <div>Uma decifração linguística plausível deve também explicar por que o índice de bigramas se separa do índice de letras.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) \(\operatorname{IndCo}(s_1)=\boxed{0{,}057576}\) e \(\operatorname{IndCo}(s_2)=\boxed{0{,}030303}\). Portanto \(s_1\) é a substituição. O bônus decifra para <q>Facilius per partes in cognitionem totius adducimur</q>.</p><p>(b) Como as cadeias usam o mesmo multiconjunto de letras, seus índices de uma letra coincidem. Para os 78 bigramas, obtemos \(\operatorname{IndCo}_2(s_1)=\boxed{0{,}003996}\) e \(\operatorname{IndCo}_2(s_2)=\boxed{0{,}009990}\); logo \(s_2\) é o texto cifrado. Sua decifração é <q>Frustra laborant quotquot se calculationibus fatigant pro inventione quadraturae circuli</q>.</p>
+        </details>
+      </div>

@@ -8,7 +8,9 @@
   },
   {
     "number": 2,
-    "citation": "L.V. Ahlfors, Complex Analysis: An Introduction to the Theory of Analytic Functions of One Complex Variable. International Series in Pure and Applied Mathematics, 3rd edn. (McGraw-Hill, New York, 1978)"
+    "citation": "L.V. Ahlfors, Complex Analysis: An Introduction to the Theory of Analytic Functions of One Complex Variable. International Series in Pure and Applied Mathematics, 3rd edn. (McGraw-Hill, New York, 1978)",
+    "url": "https://books.google.com/books/about/Complex_Analysis.html?id=nd0N0QEACAAJ",
+    "linkSource": "curated"
   },
   {
     "number": 3,
@@ -19,7 +21,10 @@
   },
   {
     "number": 4,
-    "citation": "M. Ajtai, C. Dwork, A public-key cryptosystem with worst-case/average-case equivalence, in STOC ’97, El Paso (ACM, New York, 1999), pp. 284–293 (electronic)"
+    "citation": "M. Ajtai, C. Dwork, A public-key cryptosystem with worst-case/average-case equivalence, in STOC ’97, El Paso (ACM, New York, 1999), pp. 284–293 (electronic)",
+    "url": "https://doi.org/10.1145/258533.258604",
+    "doi": "10.1145/258533.258604",
+    "linkSource": "crossref"
   },
   {
     "number": 5,
@@ -279,7 +284,9 @@
   },
   {
     "number": 46,
-    "citation": "M.R. Garey, D.S. Johnson, Computers and Intractability: A Guide to the Theory of NP-Completeness. A Series of Books in the Mathematical Sciences (W. H. Freeman, San Francisco, 1979)"
+    "citation": "M.R. Garey, D.S. Johnson, Computers and Intractability: A Guide to the Theory of NP-Completeness. A Series of Books in the Mathematical Sciences (W. H. Freeman, San Francisco, 1979)",
+    "url": "https://books.google.com/books/about/Computers_and_Intractability.html?id=fjxGAQAAIAAJ",
+    "linkSource": "curated"
   },
   {
     "number": 47,
@@ -310,7 +317,10 @@
   },
   {
     "number": 51,
-    "citation": "G.R. Grimmett, D.R. Stirzaker, Probability and Random Processes, 3rd edn. (Oxford University Press, New York, 2001)"
+    "citation": "G.R. Grimmett, D.R. Stirzaker, Probability and Random Processes, 3rd edn. (Oxford University Press, New York, 2001)",
+    "url": "https://doi.org/10.1093/oso/9780198572237.001.0001",
+    "doi": "10.1093/oso/9780198572237.001.0001",
+    "linkSource": "crossref"
   },
   {
     "number": 52,
@@ -673,7 +683,9 @@
   },
   {
     "number": 112,
-    "citation": "S. Ross, A First Course in Probability, 9th edn. (Pearson, England, 2001)"
+    "citation": "S. Ross, A First Course in Probability, 9th edn. (Pearson, England, 2001)",
+    "url": "https://search.worldcat.org/title/A-first-course-in-probability/oclc/1015884203",
+    "linkSource": "curated"
   },
   {
     "number": 113,
@@ -868,7 +880,10 @@
   },
   {
     "number": 143,
-    "citation": "J. Talbot, D. Welsh, Complexity and Cryptography: An Introduction (Cambridge University Press, Cambridge, 2006)"
+    "citation": "J. Talbot, D. Welsh, Complexity and Cryptography: An Introduction (Cambridge University Press, Cambridge, 2006)",
+    "url": "https://doi.org/10.1017/CBO9780511755286",
+    "doi": "10.1017/CBO9780511755286",
+    "linkSource": "crossref"
   },
   {
     "number": 144,

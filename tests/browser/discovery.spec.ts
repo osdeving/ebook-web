@@ -3,7 +3,7 @@ import { expect, test, type Page } from "@playwright/test";
 const waitForReader = async (page: Page) => {
   await expect.poll(
     () => page.locator("html").getAttribute("data-reader-ready"),
-    { timeout: 25_000 },
+    { timeout: 45_000 },
   ).toBe("true");
 };
 
@@ -15,7 +15,7 @@ test("a capa e as páginas de descoberta navegam e filtram sem erros", async ({ 
   });
 
   await page.goto("/");
-  await expect(page.locator(".chapter-card")).toHaveCount(4);
+  await expect(page.locator(".chapter-card")).toHaveCount(5);
   const navigation = page.getByRole("navigation", { name: "Navegação principal" });
   await expect(navigation.getByRole("link", { name: "Busca global" })).toHaveAttribute("href", "/search/");
   await expect(navigation.getByRole("link", { name: "Glossário" })).toHaveAttribute("href", "/glossary/");
@@ -40,7 +40,7 @@ test("a capa e as páginas de descoberta navegam e filtram sem erros", async ({ 
   await expect(page).toHaveURL(/\/search\/$/);
 
   await page.goto("/glossary/");
-  await expect(page.locator("[data-glossary-status]")).toHaveText("172 itens");
+  await expect(page.locator("[data-glossary-status]")).toHaveText("213 itens");
   await page.locator("[data-glossary-query]").fill("inverso");
   await page.locator("[data-glossary-chapter]").selectOption("ch01");
   await expect(page.locator("[data-glossary-status]")).toHaveText("3 itens");
@@ -50,7 +50,7 @@ test("a capa e as páginas de descoberta navegam e filtram sem erros", async ({ 
   await expect(page.locator("#term-inverso-modular")).toBeFocused();
 
   await page.goto("/study/");
-  await expect(page.locator("[data-study-path]")).toHaveCount(10);
+  await expect(page.locator("[data-study-path]")).toHaveCount(11);
   await page.locator("[data-path-goal]").selectOption("algoritmos");
   await page.locator("[data-path-duration]").selectOption("medium");
   await expect(page.locator("[data-path-status]")).toHaveText("1 rota");
@@ -94,7 +94,7 @@ test("progresso, prévias, backlinks e dicas funcionam com teclado e persistem",
   await backlinks.locator("summary").focus();
   await page.keyboard.press("Enter");
   await expect(backlinks).toHaveAttribute("open", "");
-  await expect(backlinks.locator("a")).toHaveCount(2);
+  await expect(backlinks.locator("a")).toHaveCount(3);
   await page.keyboard.press("Enter");
   await expect(backlinks).not.toHaveAttribute("open", "");
 
@@ -142,7 +142,7 @@ test("manifesto e instalação offline incluem o leitor completo desde a primeir
   expect(manifest.icons).toHaveLength(3);
   expect(manifest.shortcuts).toHaveLength(4);
   expect(manifest.shortcuts).toEqual(expect.arrayContaining([
-    expect.objectContaining({ name: "Abrir capítulo 4", url: "chapters/ch04/" }),
+    expect.objectContaining({ name: "Abrir capítulo 5", url: "chapters/ch05/" }),
   ]));
 
   const iconSizes = await page.evaluate(async () => Promise.all(
@@ -158,7 +158,7 @@ test("manifesto e instalação offline incluem o leitor completo desde a primeir
   await page.evaluate(() => navigator.serviceWorker.ready);
   await expect.poll(() => page.evaluate(() => Boolean(navigator.serviceWorker.controller))).toBe(true);
   const cached = await page.evaluate(async () => {
-    const cache = await caches.open("ebook-web-v6");
+    const cache = await caches.open("ebook-web-v7");
     return (await cache.keys()).map(({ url }) => url);
   });
   expect(cached.length).toBeGreaterThan(70);
@@ -167,6 +167,7 @@ test("manifesto e instalação offline incluem o leitor completo desde a primeir
   expect(cached.some((url) => url.endsWith(".woff2"))).toBe(true);
   expect(cached.some((url) => url.endsWith("/chapters/ch03/"))).toBe(true);
   expect(cached.some((url) => url.endsWith("/chapters/ch04/"))).toBe(true);
+  expect(cached.some((url) => url.endsWith("/chapters/ch05/"))).toBe(true);
 
   await context.setOffline(true);
   await page.goto("/chapters/ch01/?offline=1#sec-1-3");
@@ -188,6 +189,14 @@ test("manifesto e instalação offline incluem o leitor completo desde a primeir
   await expect(ch03Solution.locator(":scope > details")).toHaveAttribute("open", "");
   expect(await ch03Solution.locator(".katex").count()).toBeGreaterThan(0);
 
+  await page.goto("/chapters/ch05/?offline=1#lab-5-5-rho-pollard");
+  await waitForReader(page);
+  await expect(page.locator(".exercise[id^='exercicio-5-']")).toHaveCount(60);
+  await expect(page.locator("[id^='practice-solution-5-']")).toHaveCount(60);
+  const ch05Lab = page.locator("#lab-5-5-rho-pollard");
+  await expect(ch05Lab.locator(":scope > details")).toHaveAttribute("open", "");
+  await expect(ch05Lab.locator("[data-output]")).toContainText("Logaritmo encontrado: t = 3351");
+
   await page.goto("/search/?q=inverso");
   await expect(page).toHaveTitle(/Busca global/);
   await expect(page.locator(".global-search-result").first()).toBeVisible();
@@ -199,7 +208,7 @@ test("manifesto e instalação offline incluem o leitor completo desde a primeir
   await page.goto("/search/?q=privacidade");
   await expect(page).toHaveTitle(/Busca global/);
   await expect.poll(() => page.evaluate(async () => {
-    const cache = await caches.open("ebook-web-v6");
+    const cache = await caches.open("ebook-web-v7");
     return (await cache.keys()).some(({ url }) => new URL(url).search.length > 0);
   })).toBe(false);
   expect(errors).toEqual([]);

@@ -1,0 +1,23 @@
+
+      <div class="exercise-solution">
+        <div class="graduated-help" aria-label="Ajuda gradual para o Exercício 5.21">
+          <p class="graduated-help__intro">As 1024 sequências de dez lançamentos são equiprováveis; escolha as posições das caras.</p>
+
+    <details class="solution-hint">
+      <summary>Dica 1 — Fixe as pontas</summary>
+      <div>Depois de determinar primeiro e último lançamentos, os oito centrais continuam livres.</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 2 — Paridade</summary>
+      <div>A soma dos coeficientes binomiais pares e a dos ímpares valem \(2^9\).</div>
+    </details>
+    <details class="solution-hint">
+      <summary>Dica 3 — Explore a simetria da paridade</summary>
+      <div>Use as expansões de \((1+1)^{10}\) e \((1-1)^{10}\) para separar coeficientes de índices pares e ímpares.</div>
+    </details>
+        </div>
+        <details class="solution-reveal">
+          <summary>Ver solução completa</summary>
+          <p>(a) \(1/4\). (b) \(1-1/4=3/4\). (c) \(2/4=1/2\).</p><p>(d) \(\Pr(k\text{ caras})=\binom{10}{k}/1024\). Para \(k=0,\ldots,10\), os numeradores são</p><p><code>1, 10, 45, 120, 210, 252, 210, 120, 45, 10, 1</code>.</p><p>(e) Pela identidade \((1+1)^{10}+(1-1)^{10}=2\sum_{k\text{ par}}\binom{10}{k}\), a probabilidade é \(1/2\). (f) Analogamente, a soma ímpar também dá \(1/2\).</p>
+        </details>
+      </div>

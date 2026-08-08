@@ -1,0 +1,226 @@
+<section class="chapter-section subsection" id="sec-5-2-2">
+  <div class="section-heading">
+    <span class="section-number">5.2.2</span>
+    <h3>Criptoanálise da cifra de Vigenère: prática</h3>
+  </div>
+
+  <p>Nesta seção, ilustramos como criptoanalisar um texto cifrado com Vigenère decifrando a mensagem da <a href="#tab-5-2" data-source-xref>Tabela 5.2</a>.</p>
+
+  <div class="table-wrap" id="tab-5-2">
+    <table>
+      <caption><span class="label">Tabela 5.2.</span> Um texto cifrado com Vigenère para criptoanalisar.</caption>
+      <tbody>
+        <tr><td><pre class="ciphertext" lang="en">zpgdl rjlaj kpylx zpyyg lrjgd lrzhz qyjzq repvm swrzy rigzh
+zvreg kwivs saolt nliuw oldie aqewf iiykh bjowr hdogc qhkwa
+jyagg emisr zqoqh oavlk bjofr ylvps rtgiu avmsw lzgms evwpc
+dmjsv jqbrn klpcf iowhv kxjbj pmfkr qthtk ozrgq ihbmq sbivd
+ardym qmpbu nivxm tzwqv gefjh ucbor vwpcd xuwft qmoow jipds
+fluqm oeavl jgqea lrkti wvext vkrrg xani</pre></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-wrap" id="tab-5-3">
+    <table class="numeric">
+      <caption><span class="label">Tabela 5.3.</span> Trigramas repetidos no texto cifrado da Tabela 5.2.</caption>
+      <thead>
+        <tr><th scope="col">Trigrama</th><th scope="col">Posições</th><th scope="col">Diferença</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>avl</code></td><td>117 e 258</td><td>\(141=3\cdot47\)</td></tr>
+        <tr><td><code>bjo</code></td><td>86 e 121</td><td>\(35=5\cdot7\)</td></tr>
+        <tr><td><code>dlr</code></td><td>4 e 25</td><td>\(21=3\cdot7\)</td></tr>
+        <tr><td><code>gdl</code></td><td>3 e 24</td><td>\(16=2^4\)</td></tr>
+        <tr><td><code>lrj</code></td><td>5 e 21</td><td>\(98=2\cdot7^2\)</td></tr>
+        <tr><td><code>msw</code></td><td>40 e 138</td><td>\(84=2^2\cdot3\cdot7\)</td></tr>
+        <tr><td><code>pcd</code></td><td>149 e 233</td><td>\(13=13\)</td></tr>
+        <tr><td><code>qmo</code></td><td>241 e 254</td><td>\(98=2\cdot7^2\)</td></tr>
+        <tr><td><code>vms</code></td><td>39 e 137</td><td>\(84=2^2\cdot3\cdot7\)</td></tr>
+        <tr><td><code>vwp</code></td><td>147 e 231</td><td>\(84=2^2\cdot3\cdot7\)</td></tr>
+        <tr><td><code>wpc</code></td><td>148 e 232</td><td>\(21=3\cdot7\)</td></tr>
+        <tr><td><code>zhz</code></td><td>28 e 49</td><td>\(21=3\cdot7\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-wrap" id="tab-5-4">
+    <table class="numeric">
+      <caption><span class="label">Tabela 5.4.</span> Índices de coincidência da Tabela 5.2 para diversos comprimentos de chave.</caption>
+      <thead>
+        <tr><th scope="col">Comprimento da chave</th><th scope="col">Índice médio</th><th scope="col">Índices de coincidência individuais</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>4</td><td>0,038</td><td>0,034; 0,042; 0,039; 0,035</td></tr>
+        <tr><td>5</td><td>0,037</td><td>0,038; 0,039; 0,043; 0,027; 0,036</td></tr>
+        <tr><td>6</td><td>0,036</td><td>0,038; 0,038; 0,039; 0,038; 0,032; 0,033</td></tr>
+        <tr><td>7</td><td>0,062</td><td>0,062; 0,057; 0,065; 0,059; 0,060; 0,064; 0,064</td></tr>
+        <tr><td>8</td><td>0,038</td><td>0,037; 0,029; 0,038; 0,030; 0,034; 0,057; 0,040; 0,039</td></tr>
+        <tr><td>9</td><td>0,037</td><td>0,032; 0,036; 0,028; 0,030; 0,026; 0,032; 0,045; 0,047; 0,056</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Começamos aplicando o teste de Kasiski. A <a href="#tab-5-3" data-source-xref>Tabela 5.3</a> lista os trigramas repetidos, suas posições no texto cifrado e o número de letras que os separa. A maioria das diferenças da última coluna é divisível por \(7\), e \(7\) é o maior número com essa propriedade; por isso, estimamos que o comprimento da palavra-chave seja \(7\).</p>
+
+  <p>Embora o teste de Kasiski indique que o período provavelmente é \(7\), também aplicamos o teste do índice de coincidência para ilustrar seu funcionamento. A <a href="#tab-5-4" data-source-xref>Tabela 5.4</a> lista os índices de coincidência para várias escolhas de comprimento da chave, além do índice médio para cada comprimento. Vemos que o comprimento \(7\) tem índice médio muito maior que os demais comprimentos possíveis, confirmando a conclusão do teste de Kasiski.</p>
+
+  <p>Agora que Eva sabe que o comprimento da chave é \(7\), ela compara os blocos entre si, como descrito na <a href="#sec-5-2-1" data-source-xref>Seção 5.2.1</a>. Primeiro, divide o texto cifrado em sete blocos, tomando uma letra a cada sete. Observe como as sete primeiras letras do texto cifrado descem pela primeira coluna, as sete seguintes descem pela segunda, e assim por diante:</p>
+  <pre class="cipher-analysis" lang="en">s₁ = zlxrhrrhwloehdweoklilwvlhphqbynwhwfjulrxx
+s₂ = pazjzezzitlwboamqbvuzpjpvmtiimiquptiqjkta
+s₃ = gjpgqpyvvndfjgjihjpagcqckfkhvqvvccqpmgtvn
+s₄ = dkydyvrrsliiocysoosvmdbfxkobdmxgbdmdoqiki
+s₅ = lpyljmiesieiwqarafrmsmrijrzmapmeoxoseewr
+s₆ = rygrzsggauayrhgzvrtsejnobqrqrbtfruofaavr
+s₇ = jllzqwzkowqkhkgqlygwvskwjtgsduzjvwwlvleg</pre>
+
+  <p>Ela compara então o \(i\)-ésimo bloco \(s_i\) com o \(j\)-ésimo bloco deslocado por \(\sigma\), que denotamos por \(s_j+\sigma\), tomando sucessivamente \(\sigma=0,1,2,\ldots,25\). A <a href="#tab-5-5" data-source-xref>Tabela 5.5</a> fornece a lista completa dos \(546\) índices mútuos de coincidência</p>
+  <div class="equation">\[
+    \operatorname{MutIndCo}(s_i,s_j+\sigma)
+    \qquad\text{para }1\le i&lt;j\le7\text{ e }0\le\sigma\le25.
+  \]</div>
+
+  <div class="table-wrap" id="tab-5-5">
+    <table class="numeric">
+      <caption><span class="label">Tabela 5.5.</span> Índices mútuos de coincidência dos blocos deslocados da Tabela 5.2.</caption>
+      <thead>
+        <tr><th scope="col">\(i\)</th><th scope="col">\(j\)</th><th scope="col">\(0\)</th><th scope="col">\(1\)</th><th scope="col">\(2\)</th><th scope="col">\(3\)</th><th scope="col">\(4\)</th><th scope="col">\(5\)</th><th scope="col">\(6\)</th><th scope="col">\(7\)</th><th scope="col">\(8\)</th><th scope="col">\(9\)</th><th scope="col">\(10\)</th><th scope="col">\(11\)</th><th scope="col">\(12\)</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">1</th><th scope="row">2</th><td>0,025</td><td>0,034</td><td>0,045</td><td>0,049</td><td>0,025</td><td>0,032</td><td>0,037</td><td>0,042</td><td>0,049</td><td>0,031</td><td>0,032</td><td>0,037</td><td>0,043</td></tr>
+        <tr><th scope="row">1</th><th scope="row">3</th><td>0,023</td><td><u>0,067</u></td><td>0,055</td><td>0,022</td><td>0,034</td><td>0,049</td><td>0,036</td><td>0,040</td><td>0,040</td><td>0,046</td><td>0,025</td><td>0,031</td><td>0,046</td></tr>
+        <tr><th scope="row">1</th><th scope="row">4</th><td>0,032</td><td>0,041</td><td>0,027</td><td>0,040</td><td>0,045</td><td>0,037</td><td>0,045</td><td>0,028</td><td>0,049</td><td>0,042</td><td>0,042</td><td>0,030</td><td>0,039</td></tr>
+        <tr><th scope="row">1</th><th scope="row">5</th><td>0,043</td><td>0,021</td><td>0,031</td><td>0,052</td><td>0,027</td><td>0,049</td><td>0,037</td><td>0,050</td><td>0,033</td><td>0,033</td><td>0,035</td><td>0,044</td><td>0,030</td></tr>
+        <tr><th scope="row">1</th><th scope="row">6</th><td>0,037</td><td>0,036</td><td>0,030</td><td>0,037</td><td>0,037</td><td>0,055</td><td>0,046</td><td>0,038</td><td>0,035</td><td>0,031</td><td>0,032</td><td>0,037</td><td>0,032</td></tr>
+        <tr><th scope="row">1</th><th scope="row">7</th><td>0,054</td><td>0,063</td><td>0,034</td><td>0,030</td><td>0,034</td><td>0,040</td><td>0,035</td><td>0,032</td><td>0,042</td><td>0,025</td><td>0,019</td><td>0,061</td><td>0,054</td></tr>
+        <tr><th scope="row">2</th><th scope="row">3</th><td>0,041</td><td>0,029</td><td>0,036</td><td>0,041</td><td>0,045</td><td>0,038</td><td>0,060</td><td>0,031</td><td>0,020</td><td>0,045</td><td>0,056</td><td>0,029</td><td>0,030</td></tr>
+        <tr><th scope="row">2</th><th scope="row">4</th><td>0,028</td><td>0,043</td><td>0,042</td><td>0,032</td><td>0,032</td><td>0,047</td><td>0,035</td><td>0,048</td><td>0,037</td><td>0,040</td><td>0,028</td><td>0,051</td><td>0,037</td></tr>
+        <tr><th scope="row">2</th><th scope="row">5</th><td>0,047</td><td>0,037</td><td>0,032</td><td>0,044</td><td>0,059</td><td>0,029</td><td>0,017</td><td>0,044</td><td>0,060</td><td>0,034</td><td>0,037</td><td>0,046</td><td>0,039</td></tr>
+        <tr><th scope="row">2</th><th scope="row">6</th><td>0,033</td><td>0,035</td><td>0,052</td><td>0,040</td><td>0,032</td><td>0,031</td><td>0,031</td><td>0,029</td><td>0,055</td><td>0,052</td><td>0,043</td><td>0,028</td><td>0,023</td></tr>
+        <tr><th scope="row">2</th><th scope="row">7</th><td>0,038</td><td>0,037</td><td>0,035</td><td>0,046</td><td>0,046</td><td>0,054</td><td>0,037</td><td>0,018</td><td>0,029</td><td>0,052</td><td>0,041</td><td>0,026</td><td>0,037</td></tr>
+        <tr><th scope="row">3</th><th scope="row">4</th><td>0,029</td><td>0,039</td><td>0,033</td><td>0,048</td><td>0,044</td><td>0,043</td><td>0,030</td><td>0,051</td><td>0,033</td><td>0,034</td><td>0,034</td><td>0,040</td><td>0,038</td></tr>
+        <tr><th scope="row">3</th><th scope="row">5</th><td>0,021</td><td>0,041</td><td>0,041</td><td>0,037</td><td>0,051</td><td>0,035</td><td>0,036</td><td>0,038</td><td>0,025</td><td>0,043</td><td>0,034</td><td>0,039</td><td>0,036</td></tr>
+        <tr><th scope="row">3</th><th scope="row">6</th><td>0,037</td><td>0,034</td><td>0,042</td><td>0,034</td><td>0,051</td><td>0,029</td><td>0,027</td><td>0,041</td><td>0,034</td><td>0,040</td><td>0,037</td><td>0,046</td><td>0,036</td></tr>
+        <tr><th scope="row">3</th><th scope="row">7</th><td>0,046</td><td>0,023</td><td>0,028</td><td>0,040</td><td>0,031</td><td>0,040</td><td>0,045</td><td>0,039</td><td>0,020</td><td>0,030</td><td><u>0,069</u></td><td>0,042</td><td>0,037</td></tr>
+        <tr><th scope="row">4</th><th scope="row">5</th><td>0,041</td><td>0,033</td><td>0,041</td><td>0,038</td><td>0,036</td><td>0,031</td><td>0,056</td><td>0,032</td><td>0,026</td><td>0,034</td><td>0,049</td><td>0,029</td><td>0,054</td></tr>
+        <tr><th scope="row">4</th><th scope="row">6</th><td>0,035</td><td>0,037</td><td>0,032</td><td>0,039</td><td>0,041</td><td>0,033</td><td>0,032</td><td>0,039</td><td>0,042</td><td>0,031</td><td>0,049</td><td>0,039</td><td>0,058</td></tr>
+        <tr><th scope="row">4</th><th scope="row">7</th><td>0,031</td><td>0,032</td><td>0,046</td><td>0,038</td><td>0,039</td><td>0,042</td><td>0,033</td><td>0,056</td><td>0,046</td><td>0,027</td><td>0,027</td><td>0,036</td><td>0,036</td></tr>
+        <tr><th scope="row">5</th><th scope="row">6</th><td>0,048</td><td>0,036</td><td>0,026</td><td>0,031</td><td>0,033</td><td>0,039</td><td>0,037</td><td>0,027</td><td>0,037</td><td>0,045</td><td>0,032</td><td>0,040</td><td>0,041</td></tr>
+        <tr><th scope="row">5</th><th scope="row">7</th><td>0,030</td><td>0,051</td><td>0,043</td><td>0,031</td><td>0,034</td><td>0,041</td><td>0,048</td><td>0,032</td><td>0,053</td><td>0,037</td><td>0,024</td><td>0,029</td><td>0,045</td></tr>
+        <tr><th scope="row">6</th><th scope="row">7</th><td>0,032</td><td>0,033</td><td>0,030</td><td>0,038</td><td>0,032</td><td>0,035</td><td>0,047</td><td>0,050</td><td>0,049</td><td>0,033</td><td>0,057</td><td>0,050</td><td>0,021</td></tr>
+      </tbody>
+    </table>
+    <table class="numeric">
+      <caption><span class="label">Tabela 5.5 (continuação).</span> Índices mútuos de coincidência dos blocos deslocados da Tabela 5.2.</caption>
+      <thead>
+        <tr><th scope="col">\(i\)</th><th scope="col">\(j\)</th><th scope="col">\(13\)</th><th scope="col">\(14\)</th><th scope="col">\(15\)</th><th scope="col">\(16\)</th><th scope="col">\(17\)</th><th scope="col">\(18\)</th><th scope="col">\(19\)</th><th scope="col">\(20\)</th><th scope="col">\(21\)</th><th scope="col">\(22\)</th><th scope="col">\(23\)</th><th scope="col">\(24\)</th><th scope="col">\(25\)</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">1</th><th scope="row">2</th><td>0,034</td><td>0,052</td><td>0,037</td><td>0,030</td><td>0,037</td><td>0,054</td><td>0,021</td><td>0,018</td><td>0,052</td><td>0,052</td><td>0,043</td><td>0,042</td><td>0,046</td></tr>
+        <tr><th scope="row">1</th><th scope="row">3</th><td>0,031</td><td>0,037</td><td>0,038</td><td>0,050</td><td>0,039</td><td>0,040</td><td>0,026</td><td>0,037</td><td>0,044</td><td>0,043</td><td>0,023</td><td>0,045</td><td>0,032</td></tr>
+        <tr><th scope="row">1</th><th scope="row">4</th><td>0,039</td><td>0,040</td><td>0,032</td><td>0,041</td><td>0,028</td><td>0,019</td><td><u>0,071</u></td><td>0,038</td><td>0,040</td><td>0,034</td><td>0,045</td><td>0,026</td><td>0,052</td></tr>
+        <tr><th scope="row">1</th><th scope="row">5</th><td>0,042</td><td>0,032</td><td>0,038</td><td>0,037</td><td>0,032</td><td>0,045</td><td>0,045</td><td>0,033</td><td>0,041</td><td>0,043</td><td>0,035</td><td>0,028</td><td>0,063</td></tr>
+        <tr><th scope="row">1</th><th scope="row">6</th><td>0,040</td><td>0,030</td><td>0,028</td><td><u>0,071</u></td><td>0,051</td><td>0,033</td><td>0,036</td><td>0,047</td><td>0,029</td><td>0,037</td><td>0,046</td><td>0,041</td><td>0,027</td></tr>
+        <tr><th scope="row">1</th><th scope="row">7</th><td>0,040</td><td>0,032</td><td>0,049</td><td>0,037</td><td>0,035</td><td>0,035</td><td>0,039</td><td>0,023</td><td>0,043</td><td>0,035</td><td>0,041</td><td>0,042</td><td>0,027</td></tr>
+        <tr><th scope="row">2</th><th scope="row">3</th><td>0,054</td><td>0,040</td><td>0,028</td><td>0,031</td><td>0,039</td><td>0,033</td><td>0,052</td><td>0,046</td><td>0,037</td><td>0,026</td><td>0,028</td><td>0,036</td><td>0,048</td></tr>
+        <tr><th scope="row">2</th><th scope="row">4</th><td>0,047</td><td>0,034</td><td>0,027</td><td>0,038</td><td>0,047</td><td>0,042</td><td>0,026</td><td>0,038</td><td>0,029</td><td>0,046</td><td>0,040</td><td>0,061</td><td>0,025</td></tr>
+        <tr><th scope="row">2</th><th scope="row">5</th><td>0,034</td><td>0,026</td><td>0,035</td><td>0,038</td><td>0,048</td><td>0,035</td><td>0,033</td><td>0,032</td><td>0,040</td><td>0,041</td><td>0,045</td><td>0,033</td><td>0,036</td></tr>
+        <tr><th scope="row">2</th><th scope="row">6</th><td>0,033</td><td>0,034</td><td>0,036</td><td>0,036</td><td>0,048</td><td>0,040</td><td>0,041</td><td>0,049</td><td>0,058</td><td>0,028</td><td>0,021</td><td>0,043</td><td>0,049</td></tr>
+        <tr><th scope="row">2</th><th scope="row">7</th><td>0,042</td><td>0,037</td><td>0,041</td><td>0,059</td><td>0,031</td><td>0,027</td><td>0,043</td><td>0,046</td><td>0,028</td><td>0,021</td><td>0,044</td><td>0,048</td><td>0,040</td></tr>
+        <tr><th scope="row">3</th><th scope="row">4</th><td>0,037</td><td>0,045</td><td>0,033</td><td>0,028</td><td>0,029</td><td><u>0,073</u></td><td>0,026</td><td>0,040</td><td>0,040</td><td>0,026</td><td>0,043</td><td>0,042</td><td>0,043</td></tr>
+        <tr><th scope="row">3</th><th scope="row">5</th><td>0,035</td><td>0,029</td><td>0,036</td><td>0,044</td><td>0,055</td><td>0,034</td><td>0,033</td><td>0,046</td><td>0,041</td><td>0,024</td><td>0,041</td><td><u>0,067</u></td><td>0,037</td></tr>
+        <tr><th scope="row">3</th><th scope="row">6</th><td>0,023</td><td>0,043</td><td><u>0,074</u></td><td>0,047</td><td>0,033</td><td>0,043</td><td>0,030</td><td>0,026</td><td>0,042</td><td>0,045</td><td>0,032</td><td>0,035</td><td>0,040</td></tr>
+        <tr><th scope="row">3</th><th scope="row">7</th><td>0,035</td><td>0,035</td><td>0,035</td><td>0,028</td><td>0,048</td><td>0,033</td><td>0,035</td><td>0,041</td><td>0,038</td><td>0,052</td><td>0,038</td><td>0,029</td><td>0,062</td></tr>
+        <tr><th scope="row">4</th><th scope="row">5</th><td>0,032</td><td>0,041</td><td>0,036</td><td>0,032</td><td>0,046</td><td>0,035</td><td>0,039</td><td>0,042</td><td>0,038</td><td>0,034</td><td>0,043</td><td>0,036</td><td>0,048</td></tr>
+        <tr><th scope="row">4</th><th scope="row">6</th><td>0,034</td><td>0,034</td><td>0,036</td><td>0,029</td><td>0,043</td><td>0,037</td><td>0,039</td><td>0,036</td><td>0,039</td><td>0,033</td><td><u>0,066</u></td><td>0,037</td><td>0,028</td></tr>
+        <tr><th scope="row">4</th><th scope="row">7</th><td>0,043</td><td>0,032</td><td>0,039</td><td>0,034</td><td>0,029</td><td><u>0,071</u></td><td>0,037</td><td>0,039</td><td>0,030</td><td>0,044</td><td>0,037</td><td>0,030</td><td>0,041</td></tr>
+        <tr><th scope="row">5</th><th scope="row">6</th><td>0,052</td><td>0,035</td><td>0,019</td><td>0,036</td><td>0,063</td><td>0,045</td><td>0,030</td><td>0,039</td><td>0,049</td><td>0,029</td><td>0,036</td><td>0,052</td><td>0,041</td></tr>
+        <tr><th scope="row">5</th><th scope="row">7</th><td>0,040</td><td>0,031</td><td>0,034</td><td>0,052</td><td>0,026</td><td>0,034</td><td>0,051</td><td>0,044</td><td>0,041</td><td>0,039</td><td>0,034</td><td>0,046</td><td>0,029</td></tr>
+        <tr><th scope="row">6</th><th scope="row">7</th><td>0,029</td><td>0,035</td><td>0,039</td><td>0,032</td><td>0,028</td><td>0,039</td><td>0,026</td><td>0,036</td><td><u>0,069</u></td><td>0,052</td><td>0,035</td><td>0,034</td><td>0,038</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Na <a href="#tab-5-5" data-source-xref>Tabela 5.5</a>, a entrada na linha correspondente a \((i,j)\) e na coluna correspondente ao deslocamento \(\sigma\) é igual a</p>
+  <div class="equation" id="eq-5-11"><span class="equation-number">(5.11)</span>\[
+    \operatorname{MutIndCo}(s_i,s_j+\sigma)
+    =\operatorname{MutIndCo}(\text{bloco }s_i,\text{ bloco }s_j\text{ deslocado por }\sigma).
+  \]</div>
+
+  <p>Se essa quantidade for grande, isso sugere que \(s_j\) foi deslocado \(\sigma\) posições além de \(s_i\). Como na <a href="#sec-5-2-1" data-source-xref>Seção 5.2.1</a>, escrevemos</p>
+  <div class="equation">\[\beta_i=\text{quantidade pela qual o bloco }s_i\text{ foi deslocado}.\]</div>
+  <p>Então um valor grande em <a href="#eq-5-11" data-source-xref>(5.11)</a> torna provável que</p>
+  <div class="equation" id="eq-5-12"><span class="equation-number">(5.12)</span>\[\beta_i-\beta_j\equiv\sigma\pmod{26}.\]</div>
+
+  <p>Sublinhamos na <a href="#tab-5-5" data-source-xref>Tabela 5.5</a> os valores grandes — os maiores que \(0{,}065\) — e os reunimos, com a relação de deslocamento correspondente em <a href="#eq-5-12" data-source-xref>(5.12)</a>, na <a href="#tab-5-6" data-source-xref>Tabela 5.6</a>.</p>
+
+  <div class="table-wrap" id="tab-5-6">
+    <table class="numeric">
+      <caption><span class="label">Tabela 5.6.</span> Índices de coincidência grandes e relações de deslocamento.</caption>
+      <thead>
+        <tr><th scope="col">\(i\)</th><th scope="col">\(j\)</th><th scope="col">Deslocamento</th><th scope="col">\(\operatorname{MutIndCo}\)</th><th scope="col">Relação</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>3</td><td>1</td><td>0,067</td><td>\(\beta_1-\beta_3\equiv1\)</td></tr>
+        <tr><td>3</td><td>7</td><td>10</td><td>0,069</td><td>\(\beta_3-\beta_7\equiv10\)</td></tr>
+        <tr><td>1</td><td>4</td><td>19</td><td>0,071</td><td>\(\beta_1-\beta_4\equiv19\)</td></tr>
+        <tr><td>1</td><td>6</td><td>16</td><td>0,071</td><td>\(\beta_1-\beta_6\equiv16\)</td></tr>
+        <tr><td>3</td><td>4</td><td>18</td><td>0,073</td><td>\(\beta_3-\beta_4\equiv18\)</td></tr>
+        <tr><td>3</td><td>5</td><td>24</td><td>0,067</td><td>\(\beta_3-\beta_5\equiv24\)</td></tr>
+        <tr><td>3</td><td>6</td><td>15</td><td>0,074</td><td>\(\beta_3-\beta_6\equiv15\)</td></tr>
+        <tr><td>4</td><td>6</td><td>23</td><td>0,066</td><td>\(\beta_4-\beta_6\equiv23\)</td></tr>
+        <tr><td>4</td><td>7</td><td>18</td><td>0,071</td><td>\(\beta_4-\beta_7\equiv18\)</td></tr>
+        <tr><td>6</td><td>7</td><td>21</td><td>0,069</td><td>\(\beta_6-\beta_7\equiv21\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>O passo seguinte de Eva é resolver o sistema de equações lineares da última coluna da <a href="#tab-5-6" data-source-xref>Tabela 5.6</a>, lembrando que todos os valores são tomados módulo \(26\), pois deslocar \(26\) posições equivale a não deslocar. Há \(10\) equações nas seis variáveis \(\beta_1,\beta_3,\beta_4,\beta_5,\beta_6,\beta_7\). Infelizmente, \(\beta_2\) não aparece; trataremos dela depois. Em geral, um sistema de \(10\) equações em \(6\) variáveis não possui solução,<sup id="fnref-5-7"><a href="#fn-5-7" data-source-xref>7</a></sup> mas, neste caso, um pouco de álgebra mostra não só que há solução, como também que há uma solução para cada valor de \(\beta_1\). Em outras palavras, obtemos todas as soluções exprimindo cada uma das variáveis \(\beta_3,\ldots,\beta_7\) em função de \(\beta_1\):</p>
+  <div class="equation" id="eq-5-13"><span class="equation-number">(5.13)</span>\[
+    \beta_3=\beta_1+25,\quad
+    \beta_4=\beta_1+7,\quad
+    \beta_5=\beta_1+1,\quad
+    \beta_6=\beta_1+10,\quad
+    \beta_7=\beta_1+15
+    \pmod{26}.
+  \]</div>
+
+  <p>O que Eva deve fazer com \(\beta_2\)? Ela poderia simplesmente ignorá-la por enquanto, mas prefere selecionar na <a href="#tab-5-5" data-source-xref>Tabela 5.5</a> os maiores valores relacionados ao bloco \(2\). Esses valores ocorrem em \((i,j)=(2,3)\), com deslocamento \(6\) e índice \(0{,}060\), e em \((i,j)=(2,4)\), com deslocamento \(24\) e índice \(0{,}061\). Eles fornecem as relações</p>
+  <div class="equation">\[\beta_2-\beta_3\equiv6\pmod{26}\qquad\text{e}\qquad\beta_2-\beta_4\equiv24\pmod{26}.\]</div>
+  <p>Substituindo os valores de <a href="#eq-5-13" data-source-xref>(5.13)</a>, ambas fornecem \(\beta_2=\beta_1+5\), e essa concordância dá a Eva confiança de que estão corretas.</p>
+
+  <div class="table-wrap" id="tab-5-7">
+    <table>
+      <caption><span class="label">Tabela 5.7.</span> Decifração da Tabela 5.2 usando deslocamentos da palavra-chave <code>AFZHBKP</code>.</caption>
+      <thead>
+        <tr><th scope="col">Deslocamento</th><th scope="col">Palavra-chave</th><th scope="col">Texto decifrado</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td><code>AFZHBKP</code></td><td><code>zkhwkhulvkdoowxuqrxwwrehwkhkhurripbrzqolih</code></td></tr>
+        <tr><td>1</td><td><code>BGAICLQ</code></td><td><code>yjgvjgtkujcnnvwtpqwvvqdgvjgjgtqqhoaqypnkhg</code></td></tr>
+        <tr><td>2</td><td><code>CHBJDMR</code></td><td><code>xifuifsjtibmmuvsopvuupcfuififsppgnzpxomjgf</code></td></tr>
+        <tr><td>3</td><td><code>DICKENS</code></td><td><code>whetherishallturnouttobetheheroofmyownlife</code></td></tr>
+        <tr><td>4</td><td><code>EJDLFOT</code></td><td><code>vgdsgdqhrgzkkstqmntssnadsgdgdqnnelxnvmkhed</code></td></tr>
+        <tr><td>5</td><td><code>FKEMGPU</code></td><td><code>ufcrfcpgqfyjjrsplmsrrmzcrfcfcpmmdkwmuljgdc</code></td></tr>
+        <tr><td>6</td><td><code>GLFNHQV</code></td><td><code>tebqebofpexiiqroklrqqlybqebebollcjvltkifcb</code></td></tr>
+        <tr><td>7</td><td><code>HMGOIRW</code></td><td><code>sdapdaneodwhhpqnjkqppkxapdadankkbiuksjheba</code></td></tr>
+        <tr><td>8</td><td><code>INHPJSX</code></td><td><code>rczoczmdncvggopmijpoojwzoczczmjjahtjrigdaz</code></td></tr>
+        <tr><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Em resumo, Eva sabe agora que, seja qual for a rotação do primeiro bloco \(s_1\), os blocos \(s_2,s_3,\ldots,s_7\) são deslocados, respectivamente, \(5,25,7,1,10\) e \(15\) posições além de \(s_1\). Por exemplo, se \(s_1\) não for deslocado — isto é, se \(\beta_1=0\) e a primeira letra da palavra-chave for A —, a palavra-chave completa será <code>AFZHBKP</code>. Eva a usa para decifrar os primeiros blocos do texto cifrado e encontra o “texto claro”</p>
+  <pre class="plaintext" lang="en">zkhwkhulvkdoowxuqrxwwrehwkhkhurripbrzqolihruzkhwkh.</pre>
+  <p>Isso não parece nada bom! Em seguida, ela tenta \(\beta_1=1\) e uma palavra-chave iniciada pela letra B. Continuando assim, precisa verificar apenas as \(26\) possibilidades para \(\beta_1\). Os resultados aparecem na <a href="#tab-5-7" data-source-xref>Tabela 5.7</a>.</p>
+
+  <p>Tomando \(\beta_1=3\), obtemos a palavra-chave <code>DICKENS</code> e um texto claro aceitável. Completando a decifração com essa palavra-chave e acrescentando as divisões entre palavras, a pontuação e as maiúsculas apropriadas, Eva recupera o texto claro completo:</p>
+  <blockquote lang="en">
+    <p>Whether I shall turn out to be the hero of my own life, or whether that station will be held by anybody else, these pages must show.</p>
+    <p>To begin my life with the beginning of my life, I record that I was born (as I have been informed and believe) on a Friday, at twelve o’clock at night. It was remarked that the clock began to strike, and I began to cry, simultaneously.<sup id="fnref-5-8"><a href="#fn-5-8" data-source-xref>8</a></sup></p>
+  </blockquote>
+
+  <ol class="footnotes" start="7">
+    <li id="fn-5-7">Tivemos um pouco de sorte: todas as relações da <a href="#tab-5-6" data-source-xref>Tabela 5.6</a> estão corretas. Às vezes surgem relações errôneas, mas não é difícil eliminá-las com alguma tentativa e erro. <a href="#fnref-5-7" data-source-xref aria-label="Voltar à chamada da nota 7">↩</a></li>
+    <li id="fn-5-8"><a href="https://www.gutenberg.org/ebooks/766" lang="en"><em>David Copperfield</em></a>, 1850, Charles Dickens; edição digital de domínio público no Project Gutenberg. <a href="#fnref-5-8" data-source-xref aria-label="Voltar à chamada da nota 8">↩</a></li>
+  </ol>
+</section>

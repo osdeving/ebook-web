@@ -1,0 +1,10 @@
+<div class="explanation-body">
+  <div class="mental-model"><p>Um texto cifrado pode parecer caótico e ainda vazar; sigilo perfeito exige uma igualdade entre distribuições.</p></div>
+  <div class="slow-steps">
+    <div class="step"><span class="step-tag definition">Posterior igual à priori</span><p>\(f(m\mid c)=f(m)\) para todo par possível. Ver c não muda a crença sobre nenhuma mensagem.</p></div>
+    <div class="step"><span class="step-tag theorem">Forma equivalente</span><p>Por Bayes, isso equivale a \(f(c\mid m)=f(c)\): a distribuição do texto cifrado não depende da mensagem.</p></div>
+    <div class="step"><span class="step-tag warning">Custo</span><p>O one-time pad alcança a definição usando uma chave uniforme tão longa quanto a mensagem e nunca reutilizada. Segurança computacional relaxa essa exigência.</p></div>
+  </div>
+  <div class="editorial-note"><strong>Errata de notação na Proposição 5.55.</strong> O conjunto definido por \(\{m\in\mathcal M:f(m)>0\}\) é o suporte das mensagens e, portanto, deve ser denotado por \(\mathcal M^+\). A impressão \(\mathcal C^+\) mistura o espaço de textos cifrados com elementos \(m\) do espaço de mensagens; na desigualdade correspondente, lê-se \(\#\mathcal K\ge\#\mathcal M^+\).</div>
+  <div class="quick-check"><p>Sigilo perfeito não obriga as mensagens a serem equiprováveis; ele preserva qualquer distribuição a priori que a fonte já possua.</p></div>
+</div>
